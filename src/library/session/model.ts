@@ -8,7 +8,12 @@ import { Account } from "../account/schema";
 
 import { Session, SessionCredentials, SESSION_CREDENTIALS } from "./schema";
 
-const queries = readQueries("session", ["create", "destroy", "verify"]);
+const queries = readQueries("session", [
+	"clearExpired",
+	"create",
+	"destroy",
+	"verify"
+]);
 
 export const create = async (attrs: SessionCredentials) => {
 	const { email, password } = await SESSION_CREDENTIALS.parseAsync(attrs);
@@ -38,3 +43,5 @@ export const verify = (sessionId: Session["id"]) =>
 
 export const destroy = (sessionId: Session["id"]) =>
 	db.none(queries.destroy, { sessionId });
+
+export const clearExpired = () => db.none(queries.clearExpired);

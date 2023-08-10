@@ -1,11 +1,32 @@
-import { Inter } from "next/font/google";
+import classNames from "classnames";
+import { Metadata } from "next";
+import { Noto_Sans, Noto_Sans_Mono } from "next/font/google";
+
+import BreadcrumbTrail from "@/components/BreadcrumbTrail/BreadcrumbTrail";
+import SiteMasthead from "@/components/SiteMasthead/SiteMasthead";
+import SiteStern from "@/components/SiteStern/SiteStern";
+import TableOfContents from "@/components/TableOfContents/TableOfContents";
+
+import styles from "./layout.module.css";
 
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const notoSans = Noto_Sans({
+	subsets: ["latin"],
+	variable: "--font-sans",
+	weight: "400"
+});
 
-export const metadata = {
-	title: "Minecraft Tools",
+const notoSansMono = Noto_Sans_Mono({
+	subsets: ["latin"],
+	variable: "--font-mono"
+});
+
+export const metadata: Metadata = {
+	title: {
+		default: "Minecraft Tools",
+		template: "%s | Minecraft Tools"
+	},
 	description: "Unofficial reference and structured notes for Minecraft"
 };
 
@@ -15,8 +36,26 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en">
-			<body className={inter.className}>{children}</body>
+		<html
+			className={classNames(notoSans.variable, notoSansMono.variable)}
+			lang="en_US"
+		>
+			<body>
+				<div className={styles["app-root"]}>
+					<SiteMasthead
+						tagline="NOT official!"
+						title="Unofficial Minecraft Tools"
+					/>
+
+					<TableOfContents />
+
+					<BreadcrumbTrail />
+
+					<main className={styles.main}>{children}</main>
+
+					<SiteStern />
+				</div>
+			</body>
 		</html>
 	);
 }

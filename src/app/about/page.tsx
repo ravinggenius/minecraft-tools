@@ -1,6 +1,10 @@
 import styles from "./page.module.css";
 
-export default function Home() {
+export const metadata = {
+	title: "About"
+};
+
+export default function AboutPage() {
 	return (
 		<div className={styles.description}>
 			<p>
@@ -10,11 +14,6 @@ export default function Home() {
 				villager trades, loot tables, mob drops et cetera) of the game.
 				Data is tagged with edition and version, so you can always find
 				relevent information.
-			</p>
-
-			<p>
-				Explore the table of contents above to find what&apos;s
-				available.
 			</p>
 		</div>
 	);

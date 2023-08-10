@@ -1,0 +1,47 @@
+.leaf {
+	grid-area: title;
+	padding-block: 0.5rem;
+}
+
+.toggle.toggle {
+	color: #000000;
+	font-family: var(--font-mono);
+	grid-area: toggle;
+	padding-block: 0.5rem;
+	padding-inline: 3rem;
+}
+
+.toggle:hover {
+	text-decoration: none;
+}
+
+.branch {
+	align-items: center;
+	display: grid;
+	margin: 0;
+}
+
+.branch[data-children="false"] {
+	grid-template-areas: "title";
+}
+
+.branch[data-children="true"] {
+	grid-template-areas: "title toggle" "children children";
+	grid-template-columns: 1fr max-content;
+}
+
+.tree {
+	font-size: 4rem;
+	grid-area: children;
+	inline-size: 100%;
+	list-style-type: none;
+	padding-inline-start: 0;
+}
+
+.tree[data-open="false"] {
+	display: none;
+}
+
+.branch > .tree {
+	padding-inline-start: 2ch;
+}

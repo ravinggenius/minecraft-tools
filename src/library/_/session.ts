@@ -18,7 +18,7 @@ export const writeSessionCookie = async (session: Session) =>
 		}
 	);
 
-const readSessionCookie = async () => {
+export const readSessionCookie = async () => {
 	const token = cookies().get(config.sessionName)?.value;
 
 	return token
@@ -29,6 +29,8 @@ const readSessionCookie = async () => {
 		  ) as Promise<Session["id"]>)
 		: undefined;
 };
+
+export const clearSessionCookie = () => cookies().delete(config.sessionName);
 
 const maybeAccountFromSession = async () => {
 	const maybeSessionId = await readSessionCookie();

@@ -33,8 +33,8 @@ export const create = async (attrs: AccountCreateAttrs) => {
 		);
 
 		if (alreadyExists) {
-			throw new CodedError(ERROR_CODE.UNIQUE_CONTRAINT_VIOLATION, {
-				data: ["account", "email"]
+			throw new CodedError(ERROR_CODE.DUPLICATE_ENTRY, {
+				path: ["account", "email"]
 			});
 		}
 

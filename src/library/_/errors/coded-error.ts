@@ -1,7 +1,10 @@
 import { pick } from "rambda";
 
 export const ERROR_CODE = {
-	UNIQUE_CONTRAINT_VIOLATION: "unique-contraint-violation"
+	CONFIRMATION_MISMATCH: "confirmation-mismatch",
+	CREDENTIALS_INVALID: "credentials-invalid",
+	DUPLICATE_ENTRY: "duplicate-entry",
+	UNKNOWN: "unknown"
 } as const;
 
 export type ErrorCode = (typeof ERROR_CODE)[keyof typeof ERROR_CODE];
@@ -13,33 +16,32 @@ export type UniqueConstraint = [
 	UniqueConstraintPath
 ];
 
-export interface CodedErrorOptions<TData> {
-	data: TData;
+export interface CodedErrorOptions {
+	path?: Array<string | number>;
 }
 
-export interface CodedErrorAttrs<TCode extends ErrorCode, TData>
-	extends CodedErrorOptions<TData> {
-	code: TCode;
+export interface CodedErrorAttrs extends CodedErrorOptions {
+	code: ErrorCode;
 	name: "CodedError";
 }
 
-class CodedError<TCode extends ErrorCode, TData> extends Error {
-	data: TData;
+class CodedError extends Error {
+	path: CodedErrorOptions["path"];
 
-	constructor(code: TCode, { data, ...rest }: CodedErrorOptions<TData>) {
+	constructor(code: ErrorCode, { path, ...rest }: CodedErrorOptions = {}) {
 		super(code, rest);
 
 		this.name = "CodedError";
-		this.data = data;
+		this.path = path;
 	}
 
 	get code() {
-		return this.message as TCode;
+		return this.message as ErrorCode;
 	}
 
-	toJsonAlt(): CodedErrorAttrs<TCode, TData> {
+	toJson(): CodedErrorAttrs {
 		// @ts-ignore not a real error
-		return pick(["code", "data", "name"], this);
+		return pick(["code", "name", "path"], this);
 	}
 }
 

@@ -14,13 +14,15 @@ const queries = readQueries("account", [
 
 export const create = async (attrs: AccountCreateAttrs) => {
 	const {
-		account: {
-			password,
-			passwordConfirmation: _passwordConfirmation,
-			...account
-		},
+		account: { password, passwordConfirmation, ...account },
 		profile
 	} = await ACCOUNT_CREATE_ATTRS.parseAsync(attrs);
+
+	if (passwordConfirmation !== password) {
+		throw new CodedError(ERROR_CODE.CONFIRMATION_MISMATCH, {
+			path: ["account", "passwordConfirmation"]
+		});
+	}
 
 	const hashword = await bcrypt.hash(password, config.passwordSaltRounds);
 

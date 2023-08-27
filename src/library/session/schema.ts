@@ -33,11 +33,9 @@ export interface Session extends z.infer<typeof SESSION> {}
 
 export const SESSION_CREDENTIALS = ACCOUNT.pick({
 	email: true
-}).merge(
-	ACCOUNT_PASSWORD_ATTRS.pick({
-		password: true
-	})
-);
+}).extend({
+	password: z.string().nonempty()
+});
 
 export interface SessionCredentials
 	extends z.infer<typeof SESSION_CREDENTIALS> {}

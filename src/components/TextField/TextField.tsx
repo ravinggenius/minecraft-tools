@@ -63,7 +63,7 @@ export default function TextField({
 }
 
 export const useTextField = (
-	{ formFeedback }: Pick<ReturnType<typeof useForm>, "formFeedback">,
+	{ fieldFeedback }: Pick<ReturnType<typeof useForm>, "fieldFeedback">,
 	name: string,
 	initialValue: string = ""
 ) => {
@@ -91,7 +91,7 @@ export const useTextField = (
 	};
 
 	return {
-		feedback: formFeedback[name],
+		feedback: fieldFeedback[name],
 		id,
 		meta: {
 			dirty,

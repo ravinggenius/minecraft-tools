@@ -12,19 +12,14 @@ export default function CreateSessionForm({
 }: {
 	action: ServerAction;
 }) {
-	const form = useForm(SESSION_CREDENTIALS, createSession);
+	const form = useForm(createSession, SESSION_CREDENTIALS);
 
 	const email = useTextField(form, "email", "");
 
 	const password = useTextField(form, "password", "");
 
 	return (
-		<Form
-			action={form.clientServerAction}
-			className={styles.form}
-			feedback={form.formFeedback._}
-			submitLabel="Create Session"
-		>
+		<Form {...form} className={styles.form} submitLabel="Create Session">
 			<TextField {...email} label="Email" required type="email" />
 
 			<TextField

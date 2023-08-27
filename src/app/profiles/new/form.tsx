@@ -12,7 +12,7 @@ export default function CreateProfileForm({
 }: {
 	action: ServerAction;
 }) {
-	const form = useForm(ACCOUNT_CREATE_ATTRS, createProfile);
+	const form = useForm(createProfile, ACCOUNT_CREATE_ATTRS);
 
 	const name = useTextField(form, "profile.name", "");
 
@@ -28,10 +28,9 @@ export default function CreateProfileForm({
 
 	return (
 		<Form
-			action={form.clientServerAction}
+			{...form}
 			className={styles.form}
 			debug
-			feedback={form.formFeedback._}
 			submitLabel="Create Profile"
 		>
 			<TextField {...name} label="Name" required />

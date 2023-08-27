@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { omit } from "rambda";
 import { ComponentProps, ReactElement, useState } from "react";
 import { ZodError, ZodSchema } from "zod";
 
@@ -12,12 +13,17 @@ import { ServerAction } from "@/library/_/types";
 
 import styles from "./Form.module.css";
 
+export interface FormMeta {
+	submitting: boolean;
+}
+
 export default function Form({
 	action,
 	children,
 	className,
 	debug = false,
 	feedback = [],
+	meta,
 	submitLabel
 }: {
 	action: (data: FormData) => Promise<unknown>;
@@ -25,6 +31,7 @@ export default function Form({
 	className?: string;
 	debug?: boolean;
 	feedback?: Array<Feedback>;
+	meta: FormMeta;
 	submitLabel: string;
 }) {
 	return (
@@ -33,11 +40,13 @@ export default function Form({
 
 			{children}
 
-			<Button type="submit" variant="primary">
+			<Button disabled={meta.submitting} type="submit" variant="primary">
 				{submitLabel}
 			</Button>
 
-			{debug ? <Pre>{JSON.stringify({ feedback }, null, 2)}</Pre> : null}
+			{debug ? (
+				<Pre>{JSON.stringify({ feedback, meta }, null, 2)}</Pre>
+			) : null}
 		</form>
 	);
 }
@@ -47,8 +56,10 @@ interface FormFeedback {
 	[Field: string]: Array<Feedback> | undefined;
 }
 
-export const useForm = (schema: ZodSchema, serverAction: ServerAction) => {
+export const useForm = (serverAction: ServerAction, schema?: ZodSchema) => {
 	const [formFeedback, setFormFeedback] = useState<FormFeedback>({});
+
+	const [submitting, setSubmitting] = useState(false);
 
 	const setFeedback = (error: unknown) => {
 		if (
@@ -99,23 +110,37 @@ export const useForm = (schema: ZodSchema, serverAction: ServerAction) => {
 	};
 
 	const clientServerAction = async (data: FormData) => {
-		try {
-			await schema.parseAsync(normalizeFormData(data));
-		} catch (error: unknown) {
-			setFeedback(error);
+		setSubmitting(true);
 
-			return;
+		if (schema) {
+			try {
+				await schema.parseAsync(normalizeFormData(data));
+			} catch (error: unknown) {
+				setFeedback(error);
+
+				setSubmitting(false);
+
+				return;
+			}
 		}
 
-		const reply = await serverAction(data);
+		try {
+			const reply = await serverAction(data);
 
-		if (reply) {
-			setFeedback(reply);
+			if (reply) {
+				setFeedback(reply);
+			}
+		} finally {
+			setSubmitting(false);
 		}
 	};
 
 	return {
-		clientServerAction,
-		formFeedback
+		action: clientServerAction,
+		feedback: formFeedback._,
+		fieldFeedback: omit(["_"], formFeedback),
+		meta: {
+			submitting
+		} satisfies FormMeta as FormMeta
 	};
 };

@@ -3,9 +3,9 @@ import { Metadata } from "next";
 import { Noto_Sans, Noto_Sans_Mono } from "next/font/google";
 
 import BreadcrumbTrail from "@/components/BreadcrumbTrail/BreadcrumbTrail";
-import SiteMasthead from "@/components/SiteMasthead/SiteMasthead";
+import SiteDeck from "@/components/SiteDeck/SiteDeck";
 import SiteStern from "@/components/SiteStern/SiteStern";
-import TableOfContents from "@/components/TableOfContents/TableOfContents";
+import { maybeProfileFromSession } from "@/library/_/session";
 
 import styles from "./layout.module.css";
 
@@ -30,11 +30,13 @@ export const metadata: Metadata = {
 	description: "Unofficial reference and structured notes for Minecraft"
 };
 
-export default function RootLayout({
+export default async function RootLayout({
 	children
 }: {
 	children: React.ReactNode;
 }) {
+	const maybeProfile = await maybeProfileFromSession();
+
 	return (
 		<html
 			className={classNames(notoSans.variable, notoSansMono.variable)}
@@ -42,12 +44,7 @@ export default function RootLayout({
 		>
 			<body>
 				<div className={styles["app-root"]}>
-					<SiteMasthead
-						tagline="NOT official!"
-						title="Unofficial Minecraft Tools"
-					/>
-
-					<TableOfContents />
+					<SiteDeck profile={maybeProfile} />
 
 					<BreadcrumbTrail />
 

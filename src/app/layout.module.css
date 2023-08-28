@@ -1,14 +1,14 @@
+.main {
+	margin-block-end: 8rem;
+}
+
 .app-root {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	margin-block: 8rem;
 	margin-inline: auto;
 	max-inline-size: 612px;
 	padding-block: 0;
 	padding-inline: 2rem;
-}
-
-.main {
-	margin-block-end: 8rem;
+	position: relative;
 }

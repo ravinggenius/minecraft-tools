@@ -1,4 +1,4 @@
-.anchor {
+.anchor.anchor.anchor {
 	color: inherit;
 	font-size: unset;
 }
@@ -21,5 +21,4 @@
 	align-items: center;
 	display: flex;
 	flex-direction: column;
-	margin-block-end: 4rem;
 }

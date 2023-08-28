@@ -40,7 +40,7 @@ export const create = async (attrs: SessionCredentials) => {
 };
 
 export const verify = (sessionId: Session["id"]) =>
-	db.one<Account>(queries.verify, { sessionId });
+	db.oneOrNone<Account>(queries.verify, { sessionId });
 
 export const destroy = (sessionId: Session["id"]) =>
 	db.none(queries.destroy, { sessionId });

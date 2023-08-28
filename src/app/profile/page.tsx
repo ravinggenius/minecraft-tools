@@ -2,7 +2,6 @@ import { Metadata } from "next";
 
 import { requireVerifiedProfile } from "@/library/_/session";
 
-import LogoutForm from "./LogoutForm";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -17,8 +16,6 @@ export default async function Profile() {
 			<p>your profile page!</p>
 
 			<pre>{JSON.stringify(profile, null, 2)}</pre>
-
-			<LogoutForm />
 		</main>
 	);
 }

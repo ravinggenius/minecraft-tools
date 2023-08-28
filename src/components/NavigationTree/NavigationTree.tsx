@@ -1,40 +1,22 @@
 import classNames from "classnames";
-import { useState } from "react";
 
 import Anchor from "@/components/Anchor/Anchor";
-import Button from "@/components/Button/Button";
-import { Resource } from "@/components/TableOfContents/schemas";
+import { Resource } from "@/components/SiteDeck/schemas";
 
 import styles from "./NavigationTree.module.css";
 
-export function Branch({ branch }: { branch: Resource }) {
-	const [showChildren, setShowChildren] = useState(false);
-
+function Branch({ branch }: { branch: Resource }) {
 	return (
 		<li
 			className={styles.branch}
 			data-children={Boolean(branch.children?.length)}
 		>
-			{branch.children?.length ? (
-				<Button
-					className={styles.toggle}
-					onClick={() => setShowChildren((prev) => !prev)}
-					type="button"
-					variant="inline"
-				>
-					{showChildren ? "-" : "+"}
-				</Button>
-			) : null}
-
 			<Anchor className={styles.leaf} href={branch.href} variant="inline">
 				{branch.title}
 			</Anchor>
 
 			{branch.children?.length ? (
-				<NavigationTree
-					branches={branch.children}
-					open={showChildren}
-				/>
+				<NavigationTree branches={branch.children} />
 			) : null}
 		</li>
 	);
@@ -42,15 +24,13 @@ export function Branch({ branch }: { branch: Resource }) {
 
 export default function NavigationTree({
 	branches,
-	className,
-	open = false
+	className
 }: {
 	branches: Array<Resource>;
 	className?: string;
-	open?: boolean;
 }) {
 	return (
-		<ol className={classNames(styles.tree, className)} data-open={open}>
+		<ol className={classNames(styles.tree, className)}>
 			{branches.map((branch) => (
 				<Branch {...{ branch }} key={branch.title} />
 			))}

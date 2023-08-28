@@ -56,58 +56,56 @@ interface FormFeedback {
 	[Field: string]: Array<Feedback> | undefined;
 }
 
+const extractFeedbackFrom = (error: unknown) => {
+	if (
+		"code" in (error as CodedErrorAttrs) &&
+		"path" in (error as CodedErrorAttrs)
+	) {
+		return {
+			[(error as CodedErrorAttrs).path!.join(".")]: [
+				{
+					message: (error as CodedErrorAttrs).code,
+					type: "negative"
+				}
+			]
+		} satisfies FormFeedback;
+	} else if ("code" in (error as Pick<CodedErrorAttrs, "code">)) {
+		return {
+			_: [
+				{
+					message: (error as Pick<CodedErrorAttrs, "code">).code,
+					type: "negative"
+				}
+			]
+		} satisfies FormFeedback;
+	} else if ("issues" in (error as ZodError)) {
+		return (error as ZodError).issues.reduce<FormFeedback>(
+			(memo, issue) => {
+				const pathKey = issue.path.join(".") || "_";
+
+				return {
+					...memo,
+					[pathKey]: [
+						...(memo[pathKey] || []),
+						{ message: issue.message, type: "negative" }
+					]
+				};
+			},
+			{}
+		);
+	} else if ("message" in (error as Error)) {
+		return {
+			_: [{ message: (error as Error).message, type: "negative" }]
+		} satisfies FormFeedback;
+	} else {
+		return {} satisfies FormFeedback;
+	}
+};
+
 export const useForm = (serverAction: ServerAction, schema?: ZodSchema) => {
-	const [formFeedback, setFormFeedback] = useState<FormFeedback>({});
+	const [feedback, setFeedback] = useState<FormFeedback>({});
 
 	const [submitting, setSubmitting] = useState(false);
-
-	const setFeedback = (error: unknown) => {
-		if (
-			"code" in (error as CodedErrorAttrs) &&
-			"path" in (error as CodedErrorAttrs)
-		) {
-			setFormFeedback({
-				[(error as CodedErrorAttrs).path!.join(".")]: [
-					{
-						message: (error as CodedErrorAttrs).code,
-						type: "negative"
-					}
-				]
-			});
-		} else if ("code" in (error as Pick<CodedErrorAttrs, "code">)) {
-			setFormFeedback({
-				_: [
-					{
-						message: (error as Pick<CodedErrorAttrs, "code">).code,
-						type: "negative"
-					}
-				]
-			});
-		} else if ("issues" in (error as ZodError)) {
-			setFormFeedback(
-				(error as ZodError).issues.reduce<FormFeedback>(
-					(memo, issue) => {
-						const pathKey = issue.path.join(".") || "_";
-
-						return {
-							...memo,
-							[pathKey]: [
-								...(memo[pathKey] || []),
-								{ message: issue.message, type: "negative" }
-							]
-						};
-					},
-					{}
-				)
-			);
-		} else if ("message" in (error as Error)) {
-			setFormFeedback({
-				_: [{ message: (error as Error).message, type: "negative" }]
-			});
-		} else {
-			setFormFeedback({});
-		}
-	};
 
 	const clientServerAction = async (data: FormData) => {
 		setSubmitting(true);
@@ -116,7 +114,7 @@ export const useForm = (serverAction: ServerAction, schema?: ZodSchema) => {
 			try {
 				await schema.parseAsync(normalizeFormData(data));
 			} catch (error: unknown) {
-				setFeedback(error);
+				setFeedback(extractFeedbackFrom(error));
 
 				setSubmitting(false);
 
@@ -128,7 +126,7 @@ export const useForm = (serverAction: ServerAction, schema?: ZodSchema) => {
 			const reply = await serverAction(data);
 
 			if (reply) {
-				setFeedback(reply);
+				setFeedback(extractFeedbackFrom(reply));
 			}
 		} finally {
 			setSubmitting(false);
@@ -137,8 +135,8 @@ export const useForm = (serverAction: ServerAction, schema?: ZodSchema) => {
 
 	return {
 		action: clientServerAction,
-		feedback: formFeedback._,
-		fieldFeedback: omit(["_"], formFeedback),
+		feedback: feedback._,
+		fieldFeedback: omit(["_"], feedback),
 		meta: {
 			submitting
 		} satisfies FormMeta as FormMeta

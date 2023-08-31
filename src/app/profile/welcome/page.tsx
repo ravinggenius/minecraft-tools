@@ -1,24 +1,24 @@
 import { Metadata } from "next";
-import { redirect } from "next/navigation";
 
 import { requireVerifiedProfile } from "@/library/_/session";
+import * as profileModel from "@/library/profile/model";
 
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-	title: "Profile"
+	title: "Welcome"
 };
 
-export default async function Profile() {
+export default async function Welcome() {
 	const profile = await requireVerifiedProfile();
 
 	if (profile.isWelcomeNeeded) {
-		redirect("/profile/welcome");
+		await profileModel.markAsWelcomed(profile.id);
 	}
 
 	return (
 		<main className={styles.main}>
-			<p>your profile page!</p>
+			<p>Welcome {profile.name}!</p>
 		</main>
 	);
 }

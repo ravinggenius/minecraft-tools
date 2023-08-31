@@ -61,6 +61,7 @@ const lookupLabel = async (
 		sessions: "Sessions",
 		trades: "Trades",
 		waypoints: "Waypoints",
+		welcome: "Welcome",
 		worlds: "Worlds"
 	}[segmentName];
 

@@ -55,5 +55,9 @@ export const requireVerifiedProfile = async () => {
 		redirect("/sessions/new");
 	}
 
+	if (!(await profileModel.isEmailVerified(maybeProfile.id))) {
+		// redirect("/profile/confirmation-prompt");
+	}
+
 	return maybeProfile;
 };

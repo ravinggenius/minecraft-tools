@@ -1,0 +1,7 @@
+.form {
+	--border-width: 1px;
+
+	border: solid var(--border-width) currentColor;
+	max-inline-size: 500px;
+	padding: calc(3rem - var(--border-width));
+}

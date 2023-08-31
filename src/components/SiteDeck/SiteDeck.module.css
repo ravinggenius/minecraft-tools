@@ -1,0 +1,51 @@
+.header {
+	grid-area: header;
+	justify-self: start;
+	z-index: 1;
+}
+
+.auth {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	grid-area: auth;
+	justify-self: end;
+	z-index: 1;
+}
+
+.toggle {
+	grid-area: toggle;
+	justify-self: end;
+	inline-size: fit-content;
+	z-index: 1;
+}
+
+.tree-root {
+	block-size: fit-content;
+	inline-size: fit-content;
+}
+
+.wrapper {
+	align-items: center;
+	background-color: inherit;
+	block-size: 100vh;
+	display: flex;
+	grid-area: tree;
+	justify-content: center;
+	inset-block-start: 0;
+	inset-inline: 0;
+	margin-inline: auto;
+	position: absolute;
+}
+
+.deck {
+	align-items: center;
+	background-color: #ffffff;
+	column-gap: 20px;
+	display: grid;
+	grid-template-areas:
+		"header toggle"
+		"header auth"
+		"tree   tree";
+	margin-block-end: 6rem;
+}

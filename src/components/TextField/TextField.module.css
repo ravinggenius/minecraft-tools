@@ -1,0 +1,14 @@
+.input {
+	--border-width: 1px;
+
+	border: solid var(--border-width) #999999;
+	border-radius: 0;
+	padding: calc(1rem - var(--border-width));
+	width: 100%;
+}
+
+.input:focus {
+	--border-width: 2px;
+
+	border-color: #000000;
+}

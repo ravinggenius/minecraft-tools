@@ -17,22 +17,25 @@ export const readQueries = <Keys extends string>(
 	modelName: string,
 	keys: Array<Keys>
 ) =>
-	keys.reduce((memo, key) => {
-		const queryFile = new QueryFile(
-			new URL(
-				join("..", modelName, "queries", `${key}.sql`),
-				import.meta.url
-			)
-				.toString()
-				.replace(/^file:\/\//, "")
-		);
+	keys.reduce(
+		(memo, key) => {
+			const queryFile = new QueryFile(
+				new URL(
+					join("..", modelName, "queries", `${key}.sql`),
+					import.meta.url
+				)
+					.toString()
+					.replace(/^file:\/\//, "")
+			);
 
-		if (queryFile.error) {
-			console.error(queryFile.error);
-		}
+			if (queryFile.error) {
+				console.error(queryFile.error);
+			}
 
-		return {
-			...memo,
-			[key]: queryFile
-		};
-	}, {} as Record<Keys, QueryFile>);
+			return {
+				...memo,
+				[key]: queryFile
+			};
+		},
+		{} as Record<Keys, QueryFile>
+	);

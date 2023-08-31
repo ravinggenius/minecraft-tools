@@ -1,0 +1,10 @@
+.disclaimer {
+	display: block;
+	font-size: 3rem;
+}
+
+.source-link {
+	font-family: var(--font-mono);
+	font-size: 3rem;
+	padding: 0;
+}

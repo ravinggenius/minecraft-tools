@@ -1,8 +1,10 @@
 import classNames from "classnames";
+import { dir } from "i18next";
 import { Metadata } from "next";
 import { Noto_Sans, Noto_Sans_Mono } from "next/font/google";
 import { ReactNode } from "react";
 
+import { SUPPORTED_LOCALES, SupportedLocale } from "@/app/i18n/settings";
 import BreadcrumbTrail from "@/components/BreadcrumbTrail/BreadcrumbTrail";
 import SiteDeck from "@/components/SiteDeck/SiteDeck";
 import SiteStern from "@/components/SiteStern/SiteStern";
@@ -23,6 +25,9 @@ const notoSansMono = Noto_Sans_Mono({
 	variable: "--font-mono"
 });
 
+export const generateStaticParams = async () =>
+	SUPPORTED_LOCALES.map((locale) => ({ locale }));
+
 export const metadata = {
 	title: {
 		default: "Minecraft Tools",
@@ -32,16 +37,21 @@ export const metadata = {
 } satisfies Metadata;
 
 export default async function RootLayout({
-	children
+	children,
+	params: { locale }
 }: {
 	children: ReactNode;
+	params: {
+		locale: SupportedLocale;
+	};
 }) {
 	const maybeProfile = await maybeProfileFromSession();
 
 	return (
 		<html
 			className={classNames(notoSans.variable, notoSansMono.variable)}
-			lang="en_US"
+			dir={dir(locale)}
+			lang={locale}
 		>
 			<body>
 				<div className={styles["app-root"]}>

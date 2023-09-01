@@ -4,8 +4,9 @@ import { Metadata } from "next";
 import { Noto_Sans, Noto_Sans_Mono } from "next/font/google";
 import { ComponentProps, ReactNode } from "react";
 
+import { CommonPageProps } from "@/app/common-page-props";
 import { loadPageTranslations } from "@/app/i18n/server";
-import { SUPPORTED_LOCALES, SupportedLocale } from "@/app/i18n/settings";
+import { SUPPORTED_LOCALES } from "@/app/i18n/settings";
 import BreadcrumbTrail from "@/components/BreadcrumbTrail/BreadcrumbTrail";
 import SiteDeck from "@/components/SiteDeck/SiteDeck";
 import SiteStern from "@/components/SiteStern/SiteStern";
@@ -50,10 +51,7 @@ export default async function RootLayout({
 	params: { locale }
 }: {
 	children: ReactNode;
-	params: {
-		locale: SupportedLocale;
-	};
-}) {
+} & CommonPageProps) {
 	const maybeProfile = await maybeProfileFromSession();
 
 	return (
@@ -70,7 +68,7 @@ export default async function RootLayout({
 
 					<main className={styles.main}>{children}</main>
 
-					<SiteStern />
+					<SiteStern {...{ locale }} />
 				</div>
 			</body>
 		</html>

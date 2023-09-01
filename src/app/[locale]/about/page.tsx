@@ -1,22 +1,33 @@
 import { Metadata } from "next";
+import { ComponentProps } from "react";
+
+import { CommonPageProps } from "@/app/common-page-props";
+import { loadPageTranslations } from "@/app/i18n/server";
 
 import styles from "./page.module.css";
 
-export const metadata = {
-	title: "About"
-} satisfies Metadata;
+export const generateMetadata = async ({
+	params: { locale }
+}: ComponentProps<typeof AboutPage>) => {
+	const { t } = await loadPageTranslations(locale, "page-about", {
+		keyPrefix: "metadata"
+	});
 
-export default function AboutPage() {
+	return {
+		title: t("title")
+	} satisfies Metadata;
+};
+
+export default async function AboutPage({
+	params: { locale }
+}: CommonPageProps) {
+	const { t } = await loadPageTranslations(locale, "page-about", {
+		keyPrefix: "content"
+	});
+
 	return (
 		<div className={styles.description}>
-			<p>
-				Notepads and other tools to keep information about your worlds
-				organized. Track your world&apos;s metadata and waypoints.
-				Quickly filter structured data about many aspects (potential
-				villager trades, loot tables, mob drops et cetera) of the game.
-				Data is tagged with edition and version, so you can always find
-				relevent information.
-			</p>
+			<p>{t("description")}</p>
 		</div>
 	);
 }

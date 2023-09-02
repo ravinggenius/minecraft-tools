@@ -5,11 +5,11 @@ import * as profileModel from "@/library/profile/model";
 
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
+export const metadata = {
 	title: "Welcome"
-};
+} satisfies Metadata;
 
-export default async function Welcome() {
+export default async function WelcomePage() {
 	const profile = await requireVerifiedProfile();
 
 	if (profile.isWelcomeNeeded) {

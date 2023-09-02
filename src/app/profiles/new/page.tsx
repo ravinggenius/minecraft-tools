@@ -8,11 +8,11 @@ import { createProfile } from "./actions";
 import CreateProfileForm from "./form";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
+export const metadata = {
 	title: "Create Profile"
-};
+} satisfies Metadata;
 
-export default async function ProfilesNew() {
+export default async function ProfilesNewPage() {
 	const maybeProfile = await maybeProfileFromSession();
 
 	if (maybeProfile) {

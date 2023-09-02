@@ -1,4 +1,4 @@
-import * as config from "@/library/_/config.mjs";
+import * as config from "@/library/_/config-public.mjs";
 
 export const FALLBACK_LOCALE = "en-US" as const;
 

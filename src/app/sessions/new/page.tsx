@@ -8,11 +8,11 @@ import { createSession } from "./actions";
 import CreateSessionForm from "./form";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
+export const metadata = {
 	title: "Create Session"
-};
+} satisfies Metadata;
 
-export default async function SessionsNew() {
+export default async function SessionsNewPage() {
 	const maybeProfile = await maybeProfileFromSession();
 
 	if (maybeProfile) {

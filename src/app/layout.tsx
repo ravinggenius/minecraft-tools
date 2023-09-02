@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { Metadata } from "next";
 import { Noto_Sans, Noto_Sans_Mono } from "next/font/google";
+import { ReactNode } from "react";
 
 import BreadcrumbTrail from "@/components/BreadcrumbTrail/BreadcrumbTrail";
 import SiteDeck from "@/components/SiteDeck/SiteDeck";
@@ -22,18 +23,18 @@ const notoSansMono = Noto_Sans_Mono({
 	variable: "--font-mono"
 });
 
-export const metadata: Metadata = {
+export const metadata = {
 	title: {
 		default: "Minecraft Tools",
 		template: "%s | Minecraft Tools"
 	},
 	description: "Unofficial reference and structured notes for Minecraft"
-};
+} satisfies Metadata;
 
 export default async function RootLayout({
 	children
 }: {
-	children: React.ReactNode;
+	children: ReactNode;
 }) {
 	const maybeProfile = await maybeProfileFromSession();
 

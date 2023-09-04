@@ -3,19 +3,16 @@
 import i18next from "i18next";
 import resourcesToBackend from "i18next-resources-to-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import {
 	initReactI18next,
 	useTranslation as useTranslationOrignal
 } from "react-i18next";
 
-import {
-	cookieName,
-	getOptions,
-	SUPPORTED_LOCALES,
-	SupportedLocale
-} from "./settings";
+import { LocaleContext } from "@/components/_/LocaleProvider/LocaleProvider";
+
+import { cookieName, getOptions, SUPPORTED_LOCALES } from "./settings";
 
 const runsOnServer = typeof window === "undefined";
 
@@ -38,18 +35,19 @@ i18next
 	});
 
 export const useTranslation = (
-	lng: SupportedLocale,
 	ns: Parameters<typeof useTranslationOrignal>[0],
-	options: Parameters<typeof useTranslationOrignal>[1]
+	options?: Parameters<typeof useTranslationOrignal>[1]
 ) => {
+	const locale = useContext(LocaleContext);
+
 	const [cookies, setCookie] = useCookies([cookieName]);
 
 	const reply = useTranslationOrignal(ns, options);
 
 	const { i18n } = reply;
 
-	if (runsOnServer && lng && i18n.resolvedLanguage !== lng) {
-		i18n.changeLanguage(lng);
+	if (runsOnServer && locale && i18n.resolvedLanguage !== locale) {
+		i18n.changeLanguage(locale);
 	} else {
 		// eslint-disable-next-line react-hooks/rules-of-hooks
 		const [activeLng, setActiveLng] = useState(i18n.resolvedLanguage);
@@ -65,24 +63,24 @@ export const useTranslation = (
 
 		// eslint-disable-next-line react-hooks/rules-of-hooks
 		useEffect(() => {
-			if (!lng || i18n.resolvedLanguage === lng) {
+			if (!locale || i18n.resolvedLanguage === locale) {
 				return;
 			}
 
-			i18n.changeLanguage(lng);
-		}, [lng, i18n]);
+			i18n.changeLanguage(locale);
+		}, [locale, i18n]);
 
 		const cookieLng = cookies[cookieName];
 
 		// eslint-disable-next-line react-hooks/rules-of-hooks
 		useEffect(() => {
-			if (cookieLng === lng) {
+			if (cookieLng === locale) {
 				return;
 			}
 
-			setCookie(cookieName, lng, { path: "/" });
+			setCookie(cookieName, locale, { path: "/" });
 			// eslint-disable-next-line react-hooks/exhaustive-deps
-		}, [lng, cookieLng]);
+		}, [locale, cookieLng]);
 	}
 
 	return reply;

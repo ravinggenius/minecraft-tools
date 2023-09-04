@@ -7,6 +7,7 @@ import { ComponentProps, ReactNode } from "react";
 import { CommonPageProps } from "@/app/common-page-props";
 import { loadPageTranslations } from "@/app/i18n/server";
 import { SUPPORTED_LOCALES } from "@/app/i18n/settings";
+import LocaleProvider from "@/components/_/LocaleProvider/LocaleProvider";
 import BreadcrumbTrail from "@/components/BreadcrumbTrail/BreadcrumbTrail";
 import SiteDeck from "@/components/SiteDeck/SiteDeck";
 import SiteStern from "@/components/SiteStern/SiteStern";
@@ -62,13 +63,15 @@ export default async function RootLayout({
 		>
 			<body>
 				<div className={styles["app-root"]}>
-					<SiteDeck profile={maybeProfile} />
+					<LocaleProvider {...{ locale }}>
+						<SiteDeck profile={maybeProfile} />
 
-					<BreadcrumbTrail />
+						<BreadcrumbTrail />
 
-					<main className={styles.main}>{children}</main>
+						<main className={styles.main}>{children}</main>
 
-					<SiteStern {...{ locale }} />
+						<SiteStern {...{ locale }} />
+					</LocaleProvider>
 				</div>
 			</body>
 		</html>

@@ -3,11 +3,8 @@
 import classNames from "classnames";
 import { usePathname, useSelectedLayoutSegments } from "next/navigation";
 import { zip } from "rambda";
-import { ComponentProps, ReactNode, useEffect, useState } from "react";
 
 import Anchor from "@/components/Anchor/Anchor";
-// import { getLabel as getWaypointLabel } from "@/library/_legacy/waypoint/schemas";
-// import { getLabel as getWorldLabel } from "@/library/_legacy/world/schemas";
 
 import styles from "./BreadcrumbTrail.module.css";
 
@@ -23,136 +20,57 @@ interface NestedCrumb extends Crumb {
 
 type Trail = Crumb | NestedCrumb;
 
-// ...
-
-function BreadcrumbListItem({
-	children,
-	className,
-	isRoot = false
-}: {
-	children: ReactNode;
-	className?: string;
-	isRoot?: boolean;
-}) {
-	return (
-		<li
-			className={classNames(styles["breadcrumb-list-item"], className)}
-			data-root={isRoot}
-		>
-			{children}
-		</li>
-	);
-}
-
-const lookupLabel = async (
-	segmentName: string,
-	segmentValue: string
-): Promise<string> => {
-	const staticLabel = {
-		about: "About",
-		account: "Account",
-		command: "Command",
-		compendium: "Compendium",
-		home: "Home",
-		items: "Items",
-		new: "New",
-		profile: "Profile",
-		profiles: "Profiles",
-		sessions: "Sessions",
-		trades: "Trades",
-		waypoints: "Waypoints",
-		welcome: "Welcome",
-		worlds: "Worlds"
-	}[segmentName];
-
-	if (staticLabel) {
-		return staticLabel;
-	}
-
-	const getLabel = {
-		// waypointId: getWaypointLabel,
-		// worldId: getWorldLabel
-	}[segmentName];
-
-	if (getLabel) {
-		// return getLabel(segmentValue);
-	}
-
-	return segmentName;
+const STATIC_LABELS: Record<string, string> = {
+	about: "About",
+	account: "Account",
+	command: "Command",
+	compendium: "Compendium",
+	home: "Home",
+	items: "Items",
+	new: "New",
+	profile: "Profile",
+	profiles: "Profiles",
+	sessions: "Sessions",
+	trades: "Trades",
+	waypoints: "Waypoints",
+	welcome: "Welcome",
+	worlds: "Worlds"
 };
 
-function BreadcrumbLeaf({
+function BreadcrumbSegment({
 	child,
 	className,
 	href,
 	isRoot = false,
 	segmentName,
-	segmentValue
+	segmentValue: _segmentValue
 }: Crumb & {
 	className?: string;
 	child?: NestedCrumb["child"];
-	isRoot?: ComponentProps<typeof BreadcrumbListItem>["isRoot"];
-}) {
-	const [label, setLabel] = useState(segmentName);
-
-	useEffect(() => {
-		lookupLabel(segmentName, segmentValue).then(setLabel, () => null);
-	}, [segmentName, segmentValue]);
-
-	return (
-		<BreadcrumbListItem {...{ className, isRoot }}>
-			{child ? (
-				<Anchor
-					{...{ href }}
-					className={styles["leaf-label"]}
-					variant="inline"
-				>
-					{label}
-				</Anchor>
-			) : (
-				<span className={styles["leaf-label"]}>{label}</span>
-			)}
-
-			{child ? <BreadcrumbBranch trail={child} /> : null}
-		</BreadcrumbListItem>
-	);
-}
-
-// ...
-
-function BreadcrumbList({
-	children,
-	className,
-	isRoot = false
-}: {
-	children: ReactNode;
-	className?: string;
 	isRoot?: boolean;
 }) {
+	const label = STATIC_LABELS[segmentName];
+
 	return (
 		<ol className={classNames(styles["breadcrumb-list"], className)}>
-			{children}
+			<li className={styles["breadcrumb-list-item"]} data-root={isRoot}>
+				{child ? (
+					<Anchor
+						{...{ href }}
+						className={styles["leaf-label"]}
+						variant="inline"
+					>
+						{label}
+					</Anchor>
+				) : (
+					<span className={styles["leaf-label"]}>{label}</span>
+				)}
+
+				{child ? <BreadcrumbSegment {...child} /> : null}
+			</li>
 		</ol>
 	);
 }
-
-function BreadcrumbBranch({
-	className,
-	isRoot = false,
-	trail
-}: {
-	className?: string;
-	isRoot?: ComponentProps<typeof BreadcrumbList>["isRoot"];
-	trail: Trail;
-}) {
-	return (
-		<BreadcrumbList {...{ className, isRoot }}>
-			<BreadcrumbLeaf {...{ isRoot }} {...trail} />
-		</BreadcrumbList>
-	);
-}
-
-// ...
 
 const splitPath = (path: string): Array<string> =>
 	path.split("/").filter(Boolean);
@@ -160,21 +78,17 @@ const splitPath = (path: string): Array<string> =>
 const buildBreadcrumbTrail = (
 	segmentNames: Array<string>,
 	segmentValues: Array<string>
-): Trail => {
-	const crumbs: Array<Crumb> = [
-		["home", ""],
-		...zip(segmentNames, segmentValues)
-	].map(([segmentName, segmentValue], index) => ({
-		href: `/${segmentValues.slice(0, index).join("/")}`,
-		segmentName: segmentName.replace("[", "").replace("]", ""),
-		segmentValue
-	}));
-
-	return crumbs.reduceRight((memo, crumb) => ({
-		child: memo,
-		...crumb
-	}));
-};
+): Trail =>
+	[["home", ""], ...zip(segmentNames, segmentValues)]
+		.map(([segmentName, segmentValue], index) => ({
+			href: `/${segmentValues.slice(0, index + 1).join("/")}`,
+			segmentName: segmentName.replace("[", "").replace("]", ""),
+			segmentValue
+		}))
+		.reduceRight((memo, crumb) => ({
+			child: memo,
+			...crumb
+		}));
 
 export default function BreadcrumbTrail({ className }: { className?: string }) {
 	const pathname = usePathname();
@@ -182,9 +96,9 @@ export default function BreadcrumbTrail({ className }: { className?: string }) {
 
 	return (
 		<nav className={classNames(styles["breadcrumb-trail"], className)}>
-			<BreadcrumbBranch
+			<BreadcrumbSegment
+				{...buildBreadcrumbTrail(segments, splitPath(pathname))}
 				isRoot
-				trail={buildBreadcrumbTrail(segments, splitPath(pathname))}
 			/>
 		</nav>
 	);

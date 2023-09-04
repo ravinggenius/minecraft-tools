@@ -5,6 +5,7 @@ import { usePathname, useSelectedLayoutSegments } from "next/navigation";
 import { zip } from "rambda";
 import { ComponentProps, ReactNode, useEffect, useState } from "react";
 
+import { useTranslation } from "@/app/i18n/client";
 import Anchor from "@/components/Anchor/Anchor";
 // import { getLabel as getWaypointLabel } from "@/library/_legacy/waypoint/schemas";
 // import { getLabel as getWorldLabel } from "@/library/_legacy/world/schemas";
@@ -44,43 +45,6 @@ function BreadcrumbListItem({
 	);
 }
 
-const lookupLabel = async (
-	segmentName: string,
-	segmentValue: string
-): Promise<string> => {
-	const staticLabel = {
-		about: "About",
-		account: "Account",
-		command: "Command",
-		compendium: "Compendium",
-		home: "Home",
-		items: "Items",
-		new: "New",
-		profile: "Profile",
-		profiles: "Profiles",
-		sessions: "Sessions",
-		trades: "Trades",
-		waypoints: "Waypoints",
-		welcome: "Welcome",
-		worlds: "Worlds"
-	}[segmentName];
-
-	if (staticLabel) {
-		return staticLabel;
-	}
-
-	const getLabel = {
-		// waypointId: getWaypointLabel,
-		// worldId: getWorldLabel
-	}[segmentName];
-
-	if (getLabel) {
-		// return getLabel(segmentValue);
-	}
-
-	return segmentName;
-};
-
 function BreadcrumbLeaf({
 	child,
 	className,
@@ -93,10 +57,21 @@ function BreadcrumbLeaf({
 	child?: NestedCrumb["child"];
 	isRoot?: ComponentProps<typeof BreadcrumbListItem>["isRoot"];
 }) {
-	const [label, setLabel] = useState(segmentName);
+	const { t } = useTranslation("component-breadcrumb-trail");
+
+	const staticLabel: string | undefined = t(`segment-labels.${segmentName}`);
+
+	const [label, setLabel] = useState(staticLabel ?? segmentName);
 
 	useEffect(() => {
-		lookupLabel(segmentName, segmentValue).then(setLabel, () => null);
+		const getLabel = {
+			// waypointId: getWaypointLabel,
+			// worldId: getWorldLabel
+		}[segmentName];
+
+		if (getLabel) {
+			// getLabel(segmentValue).then(setLabel, () => null);
+		}
 	}, [segmentName, segmentValue]);
 
 	return (

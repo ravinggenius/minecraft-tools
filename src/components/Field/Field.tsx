@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { ReactNode } from "react";
 
+import { useTranslation } from "@/app/i18n/client";
 import ExampleList, { Example } from "@/components/ExampleList/ExampleList";
 import FeedbackList, { Feedback } from "@/components/FeedbackList/FeedbackList";
 import Pre from "@/components/Pre/Pre";
@@ -37,13 +38,17 @@ export default function Field({
 	name: string;
 	required?: boolean;
 }) {
+	const { t } = useTranslation("component-field");
+
 	return (
 		<div className={classNames(styles.layout, className)}>
 			<label className={styles.label} htmlFor={id}>
 				<span className={styles["label-text"]}>{label}</span>
 
 				<span className={styles["label-indicator"]}>
-					{required ? "(required)" : "(optional)"}
+					{t("requirement-indicator", {
+						context: required ? "required" : "optional"
+					})}
 				</span>
 			</label>
 

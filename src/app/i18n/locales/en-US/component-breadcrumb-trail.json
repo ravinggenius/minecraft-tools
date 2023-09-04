@@ -1,0 +1,18 @@
+{
+  "segment-labels": {
+    "about": "About",
+    "account": "Account",
+    "command": "Command",
+    "compendium": "Compendium",
+    "home": "Home",
+    "items": "Items",
+    "new": "New",
+    "profile": "Profile",
+    "profiles": "Profiles",
+    "sessions": "Sessions",
+    "trades": "Trades",
+    "waypoints": "Waypoints",
+    "welcome": "Welcome",
+    "worlds": "Worlds"
+  }
+}

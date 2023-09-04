@@ -4,6 +4,7 @@ import classNames from "classnames";
 import { useState } from "react";
 
 import LogoutForm from "@/app/[locale]/profile/LogoutForm";
+import { useTranslation } from "@/app/i18n/client";
 import Anchor from "@/components/Anchor/Anchor";
 import Button from "@/components/Button/Button";
 import NavigationTree from "@/components/NavigationTree/NavigationTree";
@@ -20,14 +21,16 @@ export default function SiteDeck({
 	className?: string;
 	profile?: Profile | undefined;
 }) {
+	const { t } = useTranslation("component-site-deck");
+
 	const [show, setShow] = useState(false);
 
 	return (
 		<nav className={classNames(styles.deck, className)}>
 			<SiteMasthead
 				className={styles.header}
-				tagline="NOT official!"
-				title="Unofficial Minecraft Tools"
+				tagline={t("branding.tagline")}
+				title={t("branding.title")}
 			/>
 
 			<div className={styles.auth}>
@@ -36,20 +39,20 @@ export default function SiteDeck({
 				) : (
 					<>
 						<Anchor href="/profiles/new" variant="secondary">
-							sign up
+							{t("authentication.sign-up-cta")}
 						</Anchor>
 
 						<Anchor href="/sessions/new" variant="inline">
-							log in
+							{t("authentication.log-in-cta")}
 						</Anchor>
 					</>
 				)}
 			</div>
 
 			<Button
-				aria-label={
-					show ? "close table of contents" : "open table of contents"
-				}
+				aria-label={t("table-of-contents.label", {
+					context: show ? "opened" : "closed"
+				})}
 				className={styles.toggle}
 				onClick={() => {
 					setShow((prev) => !prev);
@@ -57,7 +60,9 @@ export default function SiteDeck({
 				type="button"
 				variant="secondary"
 			>
-				{show ? "close" : "open"}
+				{t("table-of-contents.toggle", {
+					context: show ? "opened" : "closed"
+				})}
 			</Button>
 
 			<div

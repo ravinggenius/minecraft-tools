@@ -14,17 +14,11 @@ export const config = {
 };
 
 export const middleware = (request: NextRequest) => {
-	let locale;
-
-	if (request.cookies.has(cookieName)) {
-		locale = acceptLanguage.get(request.cookies.get(cookieName)?.value);
-	}
-	if (!locale) {
-		locale = acceptLanguage.get(request.headers.get("Accept-Language"));
-	}
-	if (!locale) {
-		locale = FALLBACK_LOCALE;
-	}
+	const locale =
+		acceptLanguage.get(
+			request.cookies.get(cookieName)?.value ??
+				request.headers.get("Accept-Language")
+		) ?? FALLBACK_LOCALE;
 
 	if (
 		!SUPPORTED_LOCALES.some((loc) =>

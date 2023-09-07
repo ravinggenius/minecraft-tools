@@ -43,6 +43,10 @@ export default async function RootLayout({
 }: {
 	children: ReactNode;
 }) {
+	const { t } = await translation("layout-root", {
+		keyPrefix: "content"
+	});
+
 	const locale = extractLocaleFromRequest();
 
 	const maybeProfile = await maybeProfileFromSession();
@@ -54,7 +58,17 @@ export default async function RootLayout({
 		>
 			<body>
 				<div className={styles["app-root"]}>
-					<SiteDeck profile={maybeProfile} />
+					<SiteDeck
+						authentication={{
+							signUpCta: t("authentication.sign-up-cta"),
+							logInCta: t("authentication.log-in-cta")
+						}}
+						branding={{
+							tagline: t("branding.tagline"),
+							title: t("branding.title")
+						}}
+						profile={maybeProfile}
+					/>
 
 					<BreadcrumbTrail />
 

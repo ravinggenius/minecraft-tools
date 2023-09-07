@@ -1,15 +1,26 @@
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
 
+import { translation } from "@/i18n/server";
 import { requireVerifiedProfile } from "@/library/_/session";
 
 import styles from "./page.module.css";
 
-export const metadata = {
-	title: "Profile"
-} satisfies Metadata;
+export const generateMetadata = async () => {
+	const { t } = await translation("page-profile", {
+		keyPrefix: "metadata"
+	});
+
+	return {
+		title: t("title")
+	} satisfies Metadata;
+};
 
 export default async function ProfilePage() {
+	const { t } = await translation("page-profile", {
+		keyPrefix: "content"
+	});
+
 	const profile = await requireVerifiedProfile();
 
 	if (profile.isWelcomeNeeded) {
@@ -18,7 +29,7 @@ export default async function ProfilePage() {
 
 	return (
 		<main className={styles.main}>
-			<p>your profile page!</p>
+			<p>{t("description")}</p>
 		</main>
 	);
 }

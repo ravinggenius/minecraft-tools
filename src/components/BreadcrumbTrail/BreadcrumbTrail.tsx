@@ -5,6 +5,7 @@ import { usePathname, useSelectedLayoutSegments } from "next/navigation";
 import { zip } from "rambda";
 
 import Anchor from "@/components/Anchor/Anchor";
+import { useTranslation } from "@/i18n/client";
 
 import styles from "./BreadcrumbTrail.module.css";
 
@@ -20,23 +21,6 @@ interface NestedCrumb extends Crumb {
 
 type Trail = Crumb | NestedCrumb;
 
-const STATIC_LABELS: Record<string, string> = {
-	about: "About",
-	account: "Account",
-	command: "Command",
-	compendium: "Compendium",
-	home: "Home",
-	items: "Items",
-	new: "New",
-	profile: "Profile",
-	profiles: "Profiles",
-	sessions: "Sessions",
-	trades: "Trades",
-	waypoints: "Waypoints",
-	welcome: "Welcome",
-	worlds: "Worlds"
-};
-
 function BreadcrumbSegment({
 	child,
 	className,
@@ -49,7 +33,9 @@ function BreadcrumbSegment({
 	child?: NestedCrumb["child"];
 	isRoot?: boolean;
 }) {
-	const label = STATIC_LABELS[segmentName];
+	const { t } = useTranslation("component-breadcrumb-trail");
+
+	const label = t(`segment-labels.${segmentName}`);
 
 	return (
 		<ol className={classNames(styles["breadcrumb-list"], className)}>

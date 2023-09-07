@@ -1,24 +1,24 @@
 import classNames from "classnames";
 
 import Anchor from "@/components/Anchor/Anchor";
+import { translation } from "@/i18n/server";
 import { SOURCE_URL } from "@/library/_/constants";
 
 import styles from "./SiteStern.module.css";
 
-export default function SiteStern({ className }: { className?: string }) {
+export default async function SiteStern({ className }: { className?: string }) {
+	const { t } = await translation("component-site-stern");
+
 	return (
 		<footer className={classNames(styles["site-stern"], className)}>
-			<small className={styles.disclaimer}>
-				Not an official Minecraft product. Not endorsed by or associated
-				with Mojang or Microsoft.
-			</small>
+			<small className={styles.disclaimer}>{t("disclaimer")}</small>
 
 			<Anchor
 				className={styles["source-link"]}
 				href={SOURCE_URL}
 				variant="inline"
 			>
-				view project source code
+				{t("project-source-cta")}
 			</Anchor>
 		</footer>
 	);

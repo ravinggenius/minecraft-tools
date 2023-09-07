@@ -1,0 +1,15 @@
+{
+  "name": {
+    "label": "Name"
+  },
+  "email": {
+    "label": "Email"
+  },
+  "password": {
+    "label": "Password"
+  },
+  "password-confirmation": {
+    "label": "Password Confirmation"
+  },
+  "submit": "Create Profile"
+}

@@ -2,17 +2,28 @@ import { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import Anchor from "@/components/Anchor/Anchor";
+import { translation } from "@/i18n/server";
 import { maybeProfileFromSession } from "@/library/_/session";
 
 import { createProfile } from "./actions";
 import CreateProfileForm from "./form";
 import styles from "./page.module.css";
 
-export const metadata = {
-	title: "Create Profile"
-} satisfies Metadata;
+export const generateMetadata = async () => {
+	const { t } = await translation("page-profiles-new", {
+		keyPrefix: "metadata"
+	});
+
+	return {
+		title: t("title")
+	} satisfies Metadata;
+};
 
 export default async function ProfilesNewPage() {
+	const { t } = await translation("page-profiles-new", {
+		keyPrefix: "content"
+	});
+
 	const maybeProfile = await maybeProfileFromSession();
 
 	if (maybeProfile) {
@@ -24,7 +35,7 @@ export default async function ProfilesNewPage() {
 			<CreateProfileForm action={createProfile} />
 
 			<Anchor href="/sessions/new" variant="secondary">
-				Sign In
+				{t("log-in-cta")}
 			</Anchor>
 		</main>
 	);

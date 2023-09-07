@@ -1,0 +1,16 @@
+{
+  "branding": {
+    "tagline": "NOT official!",
+    "title": "Unofficial Minecraft Tools"
+  },
+  "authentication": {
+    "sign-up-cta": "Sign Up",
+    "log-in-cta": "Log In"
+  },
+  "table-of-contents": {
+    "label_closed": "open table of contents",
+    "label_opened": "close table of contents",
+    "toggle_closed": "open",
+    "toggle_opened": "close"
+  }
+}

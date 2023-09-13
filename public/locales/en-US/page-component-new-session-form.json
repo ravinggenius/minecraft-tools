@@ -1,0 +1,9 @@
+{
+  "email": {
+    "label": "Email"
+  },
+  "password": {
+    "label": "Password"
+  },
+  "submit": "Create Session"
+}

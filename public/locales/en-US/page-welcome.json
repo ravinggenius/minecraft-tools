@@ -1,0 +1,9 @@
+{
+  "metadata": {
+    "title": "Welcome"
+  },
+
+  "content": {
+    "welcome": "Welcome {{name}}!"
+  }
+}

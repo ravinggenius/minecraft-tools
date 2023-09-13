@@ -8,7 +8,7 @@ Open [http://localhost:3000/](http://localhost:3000/) with your browser to see t
 
 - [x] Next 13
 - [x] Authentication
-- [ ] Internationalization
+- [x] Internationalization (sorta - SEE https://github.com/vercel/next.js/issues/54992)
 - [ ] Email Queueing
 - [ ] Forgot Password
 - [ ] Bot Protection (https://www.youtube.com/watch?v=YzaChz8rCn0)

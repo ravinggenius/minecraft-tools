@@ -2,6 +2,7 @@
 
 import Form, { useForm } from "@/components/Form/Form";
 import TextField, { useTextField } from "@/components/TextField/TextField";
+import { useTranslation } from "@/i18n/client";
 import { ServerAction } from "@/library/_/types";
 import { SESSION_CREDENTIALS } from "@/library/session/schema";
 
@@ -12,6 +13,8 @@ export default function CreateSessionForm({
 }: {
 	action: ServerAction;
 }) {
+	const { t } = useTranslation("page-component-new-session-form");
+
 	const form = useForm(createSession, SESSION_CREDENTIALS);
 
 	const email = useTextField(form, "email", "");
@@ -19,12 +22,17 @@ export default function CreateSessionForm({
 	const password = useTextField(form, "password", "");
 
 	return (
-		<Form {...form} className={styles.form} submitLabel="Create Session">
-			<TextField {...email} label="Email" required type="email" />
+		<Form {...form} className={styles.form} submitLabel={t("submit")}>
+			<TextField
+				{...email}
+				label={t("email.label")}
+				required
+				type="email"
+			/>
 
 			<TextField
 				{...password}
-				label="Password"
+				label={t("password.label")}
 				required
 				type="password"
 			/>

@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "title": {
+      "default": "Minecraft Tools",
+      "template": "%s | Minecraft Tools"
+    },
+    "description": "Unofficial reference and structured notes for Minecraft"
+  },
+
+  "content": {
+    "branding": {
+      "tagline": "NOT official!",
+      "title": "Unofficial Minecraft Tools"
+    },
+    "authentication": {
+      "sign-up-cta": "Sign Up",
+      "log-in-cta": "Log In"
+    }
+  }
+}

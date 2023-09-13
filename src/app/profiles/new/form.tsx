@@ -2,6 +2,7 @@
 
 import Form, { useForm } from "@/components/Form/Form";
 import TextField, { useTextField } from "@/components/TextField/TextField";
+import { useTranslation } from "@/i18n/client";
 import { ServerAction } from "@/library/_/types";
 import { ACCOUNT_CREATE_ATTRS } from "@/library/account/schema";
 
@@ -12,6 +13,8 @@ export default function CreateProfileForm({
 }: {
 	action: ServerAction;
 }) {
+	const { t } = useTranslation("page-component-new-profile-form");
+
 	const form = useForm(createProfile, ACCOUNT_CREATE_ATTRS);
 
 	const name = useTextField(form, "profile.name", "");
@@ -27,26 +30,26 @@ export default function CreateProfileForm({
 	);
 
 	return (
-		<Form
-			{...form}
-			className={styles.form}
-			debug
-			submitLabel="Create Profile"
-		>
-			<TextField {...name} label="Name" required />
+		<Form {...form} className={styles.form} submitLabel={t("submit")}>
+			<TextField {...name} label={t("name.label")} required />
 
-			<TextField {...email} label="Email" required type="email" />
+			<TextField
+				{...email}
+				label={t("email.label")}
+				required
+				type="email"
+			/>
 
 			<TextField
 				{...password}
-				label="Password"
+				label={t("password.label")}
 				required
 				type="password"
 			/>
 
 			<TextField
 				{...passwordConfirmation}
-				label="Password Confirmation"
+				label={t("password-confirmation.label")}
 				required
 				type="password"
 			/>

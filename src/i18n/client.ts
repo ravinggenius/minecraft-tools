@@ -22,23 +22,13 @@ export const useTranslation = (
 	namespace: string,
 	options?: MakeTranslateOptions
 ) => {
-	const [localeFromBrowser, setLocaleFromBrowser] = useState<string>();
-
-	const [locale, setLocale] = useState<SupportedLocale>(FALLBACK_LOCALE);
-
 	const [translation, setTranslation] = useState<Translation>({});
 
-	useEffect(() => {
-		setLocaleFromBrowser(extractLocaleFromBrowser());
-	}, []);
+	const localeFromBrowser = extractLocaleFromBrowser();
 
-	useEffect(() => {
-		setLocale(
-			SUPPORTED_LOCALES.includes(localeFromBrowser as SupportedLocale)
-				? (localeFromBrowser as SupportedLocale)
-				: locale
-		);
-	}, [localeFromBrowser, locale]);
+	const locale = SUPPORTED_LOCALES.includes(localeFromBrowser)
+		? (localeFromBrowser as SupportedLocale)
+		: FALLBACK_LOCALE;
 
 	useEffect(() => {
 		fetch(`/locales/${locale}/${namespace}.json`).then((response) =>

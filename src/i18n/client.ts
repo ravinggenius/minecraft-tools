@@ -48,7 +48,5 @@ export const useTranslation = (
 		);
 	}, [locale, namespace]);
 
-	return {
-		t: makeTranslate(translation, options)
-	};
+	return makeTranslate(translation, options);
 };

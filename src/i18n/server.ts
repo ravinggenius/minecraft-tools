@@ -46,7 +46,5 @@ export const translation = async (
 		await import(`@/../public/locales/${locale}/${namespace}.json`)
 	).default;
 
-	return {
-		t: makeTranslate(translation, options)
-	};
+	return makeTranslate(translation, options);
 };

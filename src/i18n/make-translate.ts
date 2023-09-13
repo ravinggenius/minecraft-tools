@@ -27,9 +27,14 @@ const pluralKey = (
 		() => `${baseKey}_${suffix}`
 	] satisfies CondPair<[number], string>;
 
-const makeTranslate =
-	(translation: Translation, { keyPrefix }: MakeTranslateOptions = {}) =>
-	(key: string, { context, count, values = {} }: InterpolateOptions = {}) => {
+const makeTranslate = (
+	translation: Translation,
+	{ keyPrefix }: MakeTranslateOptions = {}
+) => {
+	const t = (
+		key: string,
+		{ context, count, values = {} }: InterpolateOptions = {}
+	) => {
 		const baseKey = keyPrefix ? `${keyPrefix}.${key}` : key;
 
 		const withContext = context ? `${baseKey}_${context}` : baseKey;
@@ -66,5 +71,8 @@ const makeTranslate =
 			  )
 			: baseKey;
 	};
+
+	return { t };
+};
 
 export default makeTranslate;

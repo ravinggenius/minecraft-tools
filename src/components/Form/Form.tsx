@@ -3,9 +3,9 @@ import { omit } from "rambda";
 import { ComponentProps, forwardRef, ReactElement, Ref, useState } from "react";
 import { ZodError, ZodSchema } from "zod";
 
+import Debug from "@/components/Debug/Debug";
 import FeedbackList, { Feedback } from "@/components/FeedbackList/FeedbackList";
 import Field from "@/components/Field/Field";
-import Pre from "@/components/Pre/Pre";
 import SubmitButton from "@/components/SubmitButton/SubmitButton";
 import { CodedErrorAttrs } from "@/library/_/errors/coded-error";
 import normalizeFormData from "@/library/_/normalize-form-data";
@@ -44,7 +44,7 @@ export default forwardRef(function Form(
 
 			<SubmitButton label={submitLabel} />
 
-			{debug ? <Pre>{JSON.stringify({ feedback }, null, 2)}</Pre> : null}
+			{debug ? <Debug value={{ feedback }} /> : null}
 		</form>
 	);
 });

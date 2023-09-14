@@ -1,9 +1,9 @@
 import classNames from "classnames";
 import { ReactNode } from "react";
 
+import Debug from "@/components/Debug/Debug";
 import ExampleList, { Example } from "@/components/ExampleList/ExampleList";
 import FeedbackList, { Feedback } from "@/components/FeedbackList/FeedbackList";
-import Pre from "@/components/Pre/Pre";
 import { useTranslation } from "@/i18n/client";
 
 import styles from "./Field.module.css";
@@ -63,20 +63,16 @@ export default function Field({
 			<ExampleList {...{ examples }} />
 
 			{debug ? (
-				<Pre>
-					{JSON.stringify(
-						{
-							name,
-							required,
-							meta,
-							description,
-							examples,
-							feedback
-						},
-						null,
-						2
-					)}
-				</Pre>
+				<Debug
+					value={{
+						name,
+						required,
+						meta,
+						description,
+						examples,
+						feedback
+					}}
+				/>
 			) : null}
 		</div>
 	);

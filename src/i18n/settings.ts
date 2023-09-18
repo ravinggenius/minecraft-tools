@@ -6,7 +6,7 @@ export const SUPPORTED_LOCALES = [FALLBACK_LOCALE] as const;
 
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
 
-export const cookieName = "_locale";
+export const cookieName = config.i18nName;
 
 export const defaultNS = "translation";
 

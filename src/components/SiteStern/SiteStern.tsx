@@ -1,8 +1,8 @@
 import classNames from "classnames";
 
-import { loadPageTranslations } from "@/app/i18n/server";
-import { SupportedLocale } from "@/app/i18n/settings";
 import Anchor from "@/components/Anchor/Anchor";
+import { loadPageTranslations } from "@/i18n/server";
+import { SupportedLocale } from "@/i18n/settings";
 import { SOURCE_URL } from "@/library/_/constants";
 
 import styles from "./SiteStern.module.css";

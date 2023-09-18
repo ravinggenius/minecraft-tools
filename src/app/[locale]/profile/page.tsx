@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { ComponentProps } from "react";
 
 import { CommonPageProps } from "@/app/common-page-props";
-import { loadPageTranslations } from "@/app/i18n/server";
+import { loadPageTranslations } from "@/i18n/server";
 import { requireVerifiedProfile } from "@/library/_/session";
 
 import styles from "./page.module.css";

@@ -5,12 +5,12 @@ import { Noto_Sans, Noto_Sans_Mono } from "next/font/google";
 import { ComponentProps, ReactNode } from "react";
 
 import { CommonPageProps } from "@/app/common-page-props";
-import { loadPageTranslations } from "@/app/i18n/server";
-import { SUPPORTED_LOCALES } from "@/app/i18n/settings";
 import LocaleProvider from "@/components/_/LocaleProvider/LocaleProvider";
 import BreadcrumbTrail from "@/components/BreadcrumbTrail/BreadcrumbTrail";
 import SiteDeck from "@/components/SiteDeck/SiteDeck";
 import SiteStern from "@/components/SiteStern/SiteStern";
+import { loadPageTranslations } from "@/i18n/server";
+import { SUPPORTED_LOCALES } from "@/i18n/settings";
 import { maybeProfileFromSession } from "@/library/_/session";
 
 import styles from "./layout.module.css";

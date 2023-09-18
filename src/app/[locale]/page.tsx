@@ -1,5 +1,5 @@
 import { CommonPageProps } from "@/app/common-page-props";
-import { loadPageTranslations } from "@/app/i18n/server";
+import { loadPageTranslations } from "@/i18n/server";
 
 import styles from "./page.module.css";
 

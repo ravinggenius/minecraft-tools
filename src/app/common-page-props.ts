@@ -1,4 +1,4 @@
-import { SupportedLocale } from "@/app/i18n/settings";
+import { SupportedLocale } from "@/i18n/settings";
 
 export interface CommonPageProps {
 	params: {

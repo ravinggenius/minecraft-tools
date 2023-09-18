@@ -1,10 +1,10 @@
 import classNames from "classnames";
 import { ReactNode } from "react";
 
-import { useTranslation } from "@/app/i18n/client";
 import ExampleList, { Example } from "@/components/ExampleList/ExampleList";
 import FeedbackList, { Feedback } from "@/components/FeedbackList/FeedbackList";
 import Pre from "@/components/Pre/Pre";
+import { useTranslation } from "@/i18n/client";
 
 import styles from "./Field.module.css";
 

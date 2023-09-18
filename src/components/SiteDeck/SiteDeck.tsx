@@ -4,11 +4,11 @@ import classNames from "classnames";
 import { useState } from "react";
 
 import LogoutForm from "@/app/[locale]/profile/LogoutForm";
-import { useTranslation } from "@/app/i18n/client";
 import Anchor from "@/components/Anchor/Anchor";
 import Button from "@/components/Button/Button";
 import NavigationTree from "@/components/NavigationTree/NavigationTree";
 import SiteMasthead from "@/components/SiteMasthead/SiteMasthead";
+import { useTranslation } from "@/i18n/client";
 import { Profile } from "@/library/profile/schema";
 
 import { ALL as BASE_RESOURCES } from "./data";

@@ -3,8 +3,8 @@ import { redirect } from "next/navigation";
 import { ComponentProps } from "react";
 
 import { CommonPageProps } from "@/app/common-page-props";
-import { loadPageTranslations } from "@/app/i18n/server";
 import Anchor from "@/components/Anchor/Anchor";
+import { loadPageTranslations } from "@/i18n/server";
 import { maybeProfileFromSession } from "@/library/_/session";
 
 import { createSession } from "./actions";

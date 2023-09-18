@@ -5,7 +5,7 @@ import {
 	FALLBACK_LOCALE,
 	SUPPORTED_LOCALES,
 	cookieName
-} from "@/app/i18n/settings";
+} from "@/i18n/settings";
 
 acceptLanguage.languages([...SUPPORTED_LOCALES]);
 

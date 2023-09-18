@@ -2,7 +2,7 @@
 
 import { ReactNode, createContext } from "react";
 
-import { FALLBACK_LOCALE, SupportedLocale } from "@/app/i18n/settings";
+import { FALLBACK_LOCALE, SupportedLocale } from "@/i18n/settings";
 
 export const LocaleContext = createContext<SupportedLocale>(FALLBACK_LOCALE);
 

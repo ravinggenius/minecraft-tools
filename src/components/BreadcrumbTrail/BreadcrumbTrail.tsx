@@ -4,8 +4,8 @@ import classNames from "classnames";
 import { usePathname, useSelectedLayoutSegments } from "next/navigation";
 import { zip } from "rambda";
 
-import { useTranslation } from "@/app/i18n/client";
 import Anchor from "@/components/Anchor/Anchor";
+import { useTranslation } from "@/i18n/client";
 
 import styles from "./BreadcrumbTrail.module.css";
 

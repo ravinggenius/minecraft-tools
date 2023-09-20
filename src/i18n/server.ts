@@ -36,7 +36,7 @@ export const extractLocaleFromRequest = () => {
 	return FALLBACK_LOCALE;
 };
 
-export const translation = async (
+export const loadPageTranslations = async (
 	namespace: string,
 	options?: MakeTranslateOptions
 ) => {

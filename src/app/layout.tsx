@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 import BreadcrumbTrail from "@/components/BreadcrumbTrail/BreadcrumbTrail";
 import SiteDeck from "@/components/SiteDeck/SiteDeck";
 import SiteStern from "@/components/SiteStern/SiteStern";
-import { extractLocaleFromRequest, translation } from "@/i18n/server";
+import { extractLocaleFromRequest, loadPageTranslations } from "@/i18n/server";
 import { maybeProfileFromSession } from "@/library/_/session";
 
 import styles from "./layout.module.css";
@@ -25,7 +25,7 @@ const notoSansMono = Noto_Sans_Mono({
 });
 
 export const generateMetadata = async () => {
-	const { t } = await translation("layout-root", {
+	const { t } = await loadPageTranslations("layout-root", {
 		keyPrefix: "metadata"
 	});
 
@@ -43,7 +43,7 @@ export default async function RootLayout({
 }: {
 	children: ReactNode;
 }) {
-	const { t } = await translation("layout-root", {
+	const { t } = await loadPageTranslations("layout-root", {
 		keyPrefix: "content"
 	});
 

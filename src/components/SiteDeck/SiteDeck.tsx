@@ -3,7 +3,7 @@
 import classNames from "classnames";
 import { useState } from "react";
 
-import LogoutForm from "@/app/[locale]/profile/LogoutForm";
+import LogoutForm from "@/app/profile/LogoutForm";
 import Anchor from "@/components/Anchor/Anchor";
 import Button from "@/components/Button/Button";
 import NavigationTree from "@/components/NavigationTree/NavigationTree";

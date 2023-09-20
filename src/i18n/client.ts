@@ -29,7 +29,7 @@ i18next
 		...getOptions(),
 		lng: undefined,
 		detection: {
-			order: ["path", "htmlTag", "cookie", "navigator"]
+			order: ["cookie", "navigator"]
 		},
 		preload: runsOnServer ? SUPPORTED_LOCALES : []
 	});

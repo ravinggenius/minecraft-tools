@@ -1,8 +1,6 @@
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { ComponentProps } from "react";
 
-import { CommonPageProps } from "@/app/common-page-props";
 import Anchor from "@/components/Anchor/Anchor";
 import { loadPageTranslations } from "@/i18n/server";
 import { maybeProfileFromSession } from "@/library/_/session";
@@ -11,10 +9,8 @@ import { createSession } from "./actions";
 import CreateSessionForm from "./form";
 import styles from "./page.module.css";
 
-export const generateMetadata = async ({
-	params: { locale }
-}: ComponentProps<typeof SessionsNewPage>) => {
-	const { t } = await loadPageTranslations(locale, "page-sessions-new", {
+export const generateMetadata = async () => {
+	const { t } = await loadPageTranslations("page-sessions-new", {
 		keyPrefix: "metadata"
 	});
 
@@ -23,16 +19,14 @@ export const generateMetadata = async ({
 	} as Metadata;
 };
 
-export default async function SessionsNewPage({
-	params: { locale }
-}: CommonPageProps) {
+export default async function SessionsNewPage() {
 	const maybeProfile = await maybeProfileFromSession();
 
 	if (maybeProfile) {
 		redirect("/profile");
 	}
 
-	const { t } = await loadPageTranslations(locale, "page-sessions-new", {
+	const { t } = await loadPageTranslations("page-sessions-new", {
 		keyPrefix: "content"
 	});
 

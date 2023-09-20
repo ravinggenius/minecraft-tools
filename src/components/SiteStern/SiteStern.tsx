@@ -2,19 +2,12 @@ import classNames from "classnames";
 
 import Anchor from "@/components/Anchor/Anchor";
 import { loadPageTranslations } from "@/i18n/server";
-import { SupportedLocale } from "@/i18n/settings";
 import { SOURCE_URL } from "@/library/_/constants";
 
 import styles from "./SiteStern.module.css";
 
-export default async function SiteStern({
-	className,
-	locale
-}: {
-	className?: string;
-	locale: SupportedLocale;
-}) {
-	const { t } = await loadPageTranslations(locale, "component-site-stern");
+export default async function SiteStern({ className }: { className?: string }) {
+	const { t } = await loadPageTranslations("component-site-stern");
 
 	return (
 		<footer className={classNames(styles["site-stern"], className)}>

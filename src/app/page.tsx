@@ -1,12 +1,9 @@
-import { CommonPageProps } from "@/app/common-page-props";
 import { loadPageTranslations } from "@/i18n/server";
 
 import styles from "./page.module.css";
 
-export default async function HomePage({
-	params: { locale }
-}: CommonPageProps) {
-	const { t } = await loadPageTranslations(locale, "page-home", {
+export default async function HomePage() {
+	const { t } = await loadPageTranslations("page-home", {
 		keyPrefix: "content"
 	});
 

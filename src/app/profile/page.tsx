@@ -1,17 +1,13 @@
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { ComponentProps } from "react";
 
-import { CommonPageProps } from "@/app/common-page-props";
 import { loadPageTranslations } from "@/i18n/server";
 import { requireVerifiedProfile } from "@/library/_/session";
 
 import styles from "./page.module.css";
 
-export const generateMetadata = async ({
-	params: { locale }
-}: ComponentProps<typeof ProfilePage>) => {
-	const { t } = await loadPageTranslations(locale, "page-about", {
+export const generateMetadata = async () => {
+	const { t } = await loadPageTranslations("page-about", {
 		keyPrefix: "metadata"
 	});
 
@@ -20,16 +16,14 @@ export const generateMetadata = async ({
 	} satisfies Metadata;
 };
 
-export default async function ProfilePage({
-	params: { locale }
-}: CommonPageProps) {
+export default async function ProfilePage() {
 	const profile = await requireVerifiedProfile();
 
 	if (profile.isWelcomeNeeded) {
 		redirect("/profile/welcome");
 	}
 
-	const { t } = await loadPageTranslations(locale, "page-profile", {
+	const { t } = await loadPageTranslations("page-profile", {
 		keyPrefix: "content"
 	});
 

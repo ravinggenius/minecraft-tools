@@ -69,9 +69,9 @@ const buildBreadcrumbTrail = (
 	segmentNames: Array<string>,
 	segmentValues: Array<string>
 ): Trail =>
-	zip(segmentNames, segmentValues)
+	[["home", ""], ...zip(segmentNames, segmentValues)]
 		.map(([segmentName, segmentValue], index) => ({
-			href: `/${segmentValues.slice(0, index + 1).join("/")}`,
+			href: `/${segmentValues.slice(0, index).join("/")}`,
 			segmentName: segmentName.replace("[", "").replace("]", ""),
 			segmentValue
 		}))
@@ -82,7 +82,7 @@ const buildBreadcrumbTrail = (
 
 export default function BreadcrumbTrail({ className }: { className?: string }) {
 	const pathname = usePathname();
-	const segments = ["[home]", ...useSelectedLayoutSegments()];
+	const segments = useSelectedLayoutSegments();
 
 	return (
 		<nav className={classNames(styles["breadcrumb-trail"], className)}>

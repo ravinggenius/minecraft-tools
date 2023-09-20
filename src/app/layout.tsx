@@ -2,15 +2,13 @@ import classNames from "classnames";
 import { dir } from "i18next";
 import { Metadata } from "next";
 import { Noto_Sans, Noto_Sans_Mono } from "next/font/google";
-import { ComponentProps, ReactNode } from "react";
+import { ReactNode } from "react";
 
-import { CommonPageProps } from "@/app/common-page-props";
 import LocaleProvider from "@/components/_/LocaleProvider/LocaleProvider";
 import BreadcrumbTrail from "@/components/BreadcrumbTrail/BreadcrumbTrail";
 import SiteDeck from "@/components/SiteDeck/SiteDeck";
 import SiteStern from "@/components/SiteStern/SiteStern";
-import { loadPageTranslations } from "@/i18n/server";
-import { SUPPORTED_LOCALES } from "@/i18n/settings";
+import { extractLocaleFromRequest, loadPageTranslations } from "@/i18n/server";
 import { maybeProfileFromSession } from "@/library/_/session";
 
 import styles from "./layout.module.css";
@@ -28,13 +26,8 @@ const notoSansMono = Noto_Sans_Mono({
 	variable: "--font-mono"
 });
 
-export const generateStaticParams = async () =>
-	SUPPORTED_LOCALES.map((locale) => ({ locale }));
-
-export const generateMetadata = async ({
-	params: { locale }
-}: ComponentProps<typeof RootLayout>) => {
-	const { t } = await loadPageTranslations(locale, "layout", {
+export const generateMetadata = async () => {
+	const { t } = await loadPageTranslations("layout", {
 		keyPrefix: "metadata"
 	});
 
@@ -48,11 +41,12 @@ export const generateMetadata = async ({
 };
 
 export default async function RootLayout({
-	children,
-	params: { locale }
+	children
 }: {
 	children: ReactNode;
-} & CommonPageProps) {
+}) {
+	const locale = extractLocaleFromRequest();
+
 	const maybeProfile = await maybeProfileFromSession();
 
 	return (
@@ -70,7 +64,7 @@ export default async function RootLayout({
 
 						<main className={styles.main}>{children}</main>
 
-						<SiteStern {...{ locale }} />
+						<SiteStern />
 					</LocaleProvider>
 				</div>
 			</body>

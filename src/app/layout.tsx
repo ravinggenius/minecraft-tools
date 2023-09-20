@@ -4,7 +4,6 @@ import { Metadata } from "next";
 import { Noto_Sans, Noto_Sans_Mono } from "next/font/google";
 import { ReactNode } from "react";
 
-import LocaleProvider from "@/components/_/LocaleProvider/LocaleProvider";
 import BreadcrumbTrail from "@/components/BreadcrumbTrail/BreadcrumbTrail";
 import SiteDeck from "@/components/SiteDeck/SiteDeck";
 import SiteStern from "@/components/SiteStern/SiteStern";
@@ -57,15 +56,13 @@ export default async function RootLayout({
 		>
 			<body>
 				<div className={styles["app-root"]}>
-					<LocaleProvider {...{ locale }}>
-						<SiteDeck profile={maybeProfile} />
+					<SiteDeck profile={maybeProfile} />
 
-						<BreadcrumbTrail />
+					<BreadcrumbTrail />
 
-						<main className={styles.main}>{children}</main>
+					<main className={styles.main}>{children}</main>
 
-						<SiteStern />
-					</LocaleProvider>
+					<SiteStern />
 				</div>
 			</body>
 		</html>

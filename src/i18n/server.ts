@@ -7,17 +7,16 @@ import { cookies, headers } from "next/headers";
 import { availableLocales } from "preferred-locale";
 import { initReactI18next } from "react-i18next/initReactI18next";
 
-import * as config from "@/library/_/config.mjs";
-
 import {
 	FALLBACK_LOCALE,
 	SUPPORTED_LOCALES,
 	SupportedLocale,
+	cookieName,
 	getOptions
 } from "./settings";
 
 const initI18next = async (
-	lng: SupportedLocale,
+	locale: SupportedLocale,
 	ns: string | Array<string>
 ) => {
 	const i18nInstance = createInstance();
@@ -30,13 +29,17 @@ const initI18next = async (
 					import(`@/../public/locales/${language}/${namespace}.json`)
 			)
 		)
-		.init(getOptions(lng, ns));
+		.init({
+			...getOptions(),
+			lng: locale,
+			ns
+		});
 
 	return i18nInstance;
 };
 
 export const extractLocaleFromRequest = () => {
-	const cookieLocale = cookies().get(config.i18nName)?.value;
+	const cookieLocale = cookies().get(cookieName)?.value;
 
 	if (SUPPORTED_LOCALES.includes(cookieLocale as SupportedLocale)) {
 		return cookieLocale as SupportedLocale;

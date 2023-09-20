@@ -1,24 +1,18 @@
+import { InitOptions } from "i18next";
+
 import * as config from "@/library/_/config-public.mjs";
 
-export const FALLBACK_LOCALE = "en-US" as const;
+export const SUPPORTED_LOCALES = ["en-US"] as const;
 
-export const SUPPORTED_LOCALES = [FALLBACK_LOCALE] as const;
+export const FALLBACK_LOCALE = SUPPORTED_LOCALES[0];
 
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
 
 export const cookieName = config.i18nName;
 
-export const defaultNS = "translation";
-
-export const getOptions = (
-	lng: SupportedLocale = FALLBACK_LOCALE,
-	ns: string | Array<string> = defaultNS
-) => ({
-	debug: config.debugI18n,
-	supportedLngs: SUPPORTED_LOCALES,
-	fallbackLng: FALLBACK_LOCALE,
-	lng,
-	fallbackNS: defaultNS,
-	defaultNS,
-	ns
-});
+export const getOptions = () =>
+	({
+		debug: config.debugI18n,
+		fallbackLng: FALLBACK_LOCALE,
+		supportedLngs: SUPPORTED_LOCALES
+	}) satisfies InitOptions as InitOptions;

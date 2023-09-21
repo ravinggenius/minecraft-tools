@@ -26,7 +26,7 @@ const notoSansMono = Noto_Sans_Mono({
 });
 
 export const generateMetadata = async () => {
-	const { t } = await loadPageTranslations("layout", {
+	const { t } = await loadPageTranslations("layout-root", {
 		keyPrefix: "metadata"
 	});
 

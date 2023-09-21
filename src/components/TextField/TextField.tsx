@@ -96,7 +96,7 @@ export const useTextField = (
 		meta: {
 			dirty,
 			focus
-		} satisfies FieldMeta,
+		} satisfies FieldMeta as FieldMeta,
 		name,
 		onChange: handleChange,
 		onFocus: handleFocus,

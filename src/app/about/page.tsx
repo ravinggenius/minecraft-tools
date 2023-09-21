@@ -11,7 +11,7 @@ export const generateMetadata = async () => {
 
 	return {
 		title: t("title")
-	} satisfies Metadata;
+	} satisfies Metadata as Metadata;
 };
 
 export default async function AboutPage() {

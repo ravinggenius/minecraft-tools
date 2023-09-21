@@ -36,7 +36,7 @@ export const generateMetadata = async () => {
 			template: t("title.template")
 		},
 		description: t("description")
-	} satisfies Metadata;
+	} satisfies Metadata as Metadata;
 };
 
 export default async function RootLayout({

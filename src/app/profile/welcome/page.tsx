@@ -29,11 +29,7 @@ export default async function WelcomePage() {
 
 	return (
 		<main className={styles.main}>
-			<p>
-				{t("welcome", {
-					values: { name: profile.name }
-				})}
-			</p>
+			<p>{t("welcome", { name: profile.name })}</p>
 		</main>
 	);
 }

@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { dir } from "i18next";
 import { Metadata } from "next";
 import { Noto_Sans, Noto_Sans_Mono } from "next/font/google";
 import { ReactNode } from "react";
@@ -43,10 +44,6 @@ export default async function RootLayout({
 }: {
 	children: ReactNode;
 }) {
-	const { t } = await loadPageTranslations("layout-root", {
-		keyPrefix: "content"
-	});
-
 	const locale = extractLocaleFromRequest();
 
 	const maybeProfile = await maybeProfileFromSession();
@@ -54,21 +51,12 @@ export default async function RootLayout({
 	return (
 		<html
 			className={classNames(notoSans.variable, notoSansMono.variable)}
+			dir={dir(locale)}
 			lang={locale}
 		>
 			<body>
 				<div className={styles["app-root"]}>
-					<SiteDeck
-						authentication={{
-							signUpCta: t("authentication.sign-up-cta"),
-							logInCta: t("authentication.log-in-cta")
-						}}
-						branding={{
-							tagline: t("branding.tagline"),
-							title: t("branding.title")
-						}}
-						profile={maybeProfile}
-					/>
+					<SiteDeck profile={maybeProfile} />
 
 					<BreadcrumbTrail />
 

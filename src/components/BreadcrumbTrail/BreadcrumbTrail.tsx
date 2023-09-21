@@ -67,7 +67,7 @@ const buildBreadcrumbTrail = (
 ): Trail =>
 	[["home", ""], ...zip(segmentNames, segmentValues)]
 		.map(([segmentName, segmentValue], index) => ({
-			href: `/${segmentValues.slice(0, index + 1).join("/")}`,
+			href: `/${segmentValues.slice(0, index).join("/")}`,
 			segmentName: segmentName.replace("[", "").replace("]", ""),
 			segmentValue
 		}))

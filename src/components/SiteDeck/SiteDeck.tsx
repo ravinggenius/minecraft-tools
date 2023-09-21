@@ -15,19 +15,9 @@ import { ALL as BASE_RESOURCES } from "./data";
 import styles from "./SiteDeck.module.css";
 
 export default function SiteDeck({
-	authentication,
-	branding,
 	className,
 	profile
 }: {
-	authentication: {
-		signUpCta: string;
-		logInCta: string;
-	};
-	branding: {
-		tagline: string;
-		title: string;
-	};
 	className?: string;
 	profile?: Profile | undefined;
 }) {
@@ -37,7 +27,11 @@ export default function SiteDeck({
 
 	return (
 		<nav className={classNames(styles.deck, className)}>
-			<SiteMasthead {...branding} className={styles.header} />
+			<SiteMasthead
+				className={styles.header}
+				tagline={t("branding.tagline")}
+				title={t("branding.title")}
+			/>
 
 			<div className={styles.auth}>
 				{profile ? (
@@ -45,11 +39,11 @@ export default function SiteDeck({
 				) : (
 					<>
 						<Anchor href="/profiles/new" variant="secondary">
-							{authentication.signUpCta}
+							{t("authentication.sign-up-cta")}
 						</Anchor>
 
 						<Anchor href="/sessions/new" variant="inline">
-							{authentication.logInCta}
+							{t("authentication.log-in-cta")}
 						</Anchor>
 					</>
 				)}

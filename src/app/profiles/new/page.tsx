@@ -20,15 +20,15 @@ export const generateMetadata = async () => {
 };
 
 export default async function ProfilesNewPage() {
+	const { t } = await loadPageTranslations("page-profiles-new", {
+		keyPrefix: "content"
+	});
+
 	const maybeProfile = await maybeProfileFromSession();
 
 	if (maybeProfile) {
 		redirect("/profile");
 	}
-
-	const { t } = await loadPageTranslations("page-profiles-new", {
-		keyPrefix: "content"
-	});
 
 	return (
 		<main className={styles.main}>

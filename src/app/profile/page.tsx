@@ -7,7 +7,7 @@ import { requireVerifiedProfile } from "@/library/_/session";
 import styles from "./page.module.css";
 
 export const generateMetadata = async () => {
-	const { t } = await loadPageTranslations("page-about", {
+	const { t } = await loadPageTranslations("page-profile", {
 		keyPrefix: "metadata"
 	});
 
@@ -17,15 +17,15 @@ export const generateMetadata = async () => {
 };
 
 export default async function ProfilePage() {
+	const { t } = await loadPageTranslations("page-profile", {
+		keyPrefix: "content"
+	});
+
 	const profile = await requireVerifiedProfile();
 
 	if (profile.isWelcomeNeeded) {
 		redirect("/profile/welcome");
 	}
-
-	const { t } = await loadPageTranslations("page-profile", {
-		keyPrefix: "content"
-	});
 
 	return (
 		<main className={styles.main}>

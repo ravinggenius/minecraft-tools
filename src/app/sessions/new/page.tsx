@@ -20,15 +20,15 @@ export const generateMetadata = async () => {
 };
 
 export default async function SessionsNewPage() {
+	const { t } = await loadPageTranslations("page-sessions-new", {
+		keyPrefix: "content"
+	});
+
 	const maybeProfile = await maybeProfileFromSession();
 
 	if (maybeProfile) {
 		redirect("/profile");
 	}
-
-	const { t } = await loadPageTranslations("page-sessions-new", {
-		keyPrefix: "content"
-	});
 
 	return (
 		<main className={styles.main}>

@@ -1,13 +1,13 @@
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
 
-import { translation } from "@/i18n/server";
+import { loadPageTranslations } from "@/i18n/server";
 import { requireVerifiedProfile } from "@/library/_/session";
 
 import styles from "./page.module.css";
 
 export const generateMetadata = async () => {
-	const { t } = await translation("page-profile", {
+	const { t } = await loadPageTranslations("page-profile", {
 		keyPrefix: "metadata"
 	});
 
@@ -17,7 +17,7 @@ export const generateMetadata = async () => {
 };
 
 export default async function ProfilePage() {
-	const { t } = await translation("page-profile", {
+	const { t } = await loadPageTranslations("page-profile", {
 		keyPrefix: "content"
 	});
 

@@ -1,9 +1,9 @@
-import { translation } from "@/i18n/server";
+import { loadPageTranslations } from "@/i18n/server";
 
 import styles from "./page.module.css";
 
 export default async function HomePage() {
-	const { t } = await translation("page-home", {
+	const { t } = await loadPageTranslations("page-home", {
 		keyPrefix: "content"
 	});
 

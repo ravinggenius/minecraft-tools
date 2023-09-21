@@ -1,11 +1,11 @@
 import { Metadata } from "next";
 
-import { translation } from "@/i18n/server";
+import { loadPageTranslations } from "@/i18n/server";
 
 import styles from "./page.module.css";
 
 export const generateMetadata = async () => {
-	const { t } = await translation("page-about", {
+	const { t } = await loadPageTranslations("page-about", {
 		keyPrefix: "metadata"
 	});
 
@@ -15,7 +15,7 @@ export const generateMetadata = async () => {
 };
 
 export default async function AboutPage() {
-	const { t } = await translation("page-about", {
+	const { t } = await loadPageTranslations("page-about", {
 		keyPrefix: "content"
 	});
 

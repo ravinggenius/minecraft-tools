@@ -27,7 +27,9 @@ export default function Form({
 	submitLabel
 }: {
 	action: (data: FormData) => Promise<unknown>;
-	children?: Array<ReactElement<ComponentProps<typeof Field>>>;
+	children?:
+		| ReactElement<ComponentProps<typeof Field>>
+		| Array<ReactElement<ComponentProps<typeof Field>>>;
 	className?: string;
 	debug?: boolean;
 	feedback?: Array<Feedback>;

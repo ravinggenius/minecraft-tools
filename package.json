@@ -29,6 +29,7 @@
     "intl-parse-accept-language": "^1.0.0",
     "next": "^13.5.2",
     "node-pg-migrate": "^6.2.2",
+    "nodemailer": "^6.9.5",
     "pg-promise": "^11.5.4",
     "preferred-locale": "^2.0.1",
     "rambda": "^8.3.0",
@@ -44,6 +45,7 @@
     "@total-typescript/ts-reset": "^0.5.1",
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "@types/bcrypt": "^5.0.0",
+    "@types/nodemailer": "^6.4.10",
     "@types/validator": "^13.11.1",
     "eslint-config-prettier": "^9.0.0",
     "prettier": "^3.0.2"

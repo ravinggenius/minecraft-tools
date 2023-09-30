@@ -3,16 +3,22 @@ import bcrypt from "bcrypt";
 import * as config from "../_/config.mjs";
 import { db, readQueries } from "../_/datastore";
 import CodedError, { ERROR_CODE } from "../_/errors/coded-error";
+import { Profile } from "../profile/schema";
 
 import { Account, ACCOUNT_CREATE_ATTRS, AccountCreateAttrs } from "./schema";
 
 const queries = readQueries("account", [
 	"create",
 	"getByEmail",
+	"markEmailAsVerified",
+	"updateVerificationNonce",
 	"validateUniqueEmail"
 ]);
 
-export const create = async (attrs: AccountCreateAttrs) => {
+export const create = async (
+	attrs: AccountCreateAttrs,
+	tokenNonce: Account["tokenNonce"]
+) => {
 	const {
 		account: { password, passwordConfirmation, ...account },
 		profile
@@ -41,7 +47,7 @@ export const create = async (attrs: AccountCreateAttrs) => {
 		}
 
 		return t.one<Account>(queries.create, {
-			account: { ...account, hashword },
+			account: { ...account, hashword, tokenNonce },
 			profile
 		});
 	});
@@ -57,4 +63,19 @@ export const findByEmail = async (email: Account["email"]) => {
 	});
 
 	return maybeAccountPlusHashword || undefined;
+};
+
+export const updateVerificationNonce = async (
+	profileId: Profile["id"],
+	tokenNonce: Account["tokenNonce"]
+) =>
+	db.one<Account>(queries.updateVerificationNonce, {
+		profileId,
+		tokenNonce
+	});
+
+export const markEmailAsVerified = async (id: Account["id"]) => {
+	await db.none(queries.markEmailAsVerified, {
+		accountId: id
+	});
 };

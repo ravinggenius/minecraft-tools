@@ -1,4 +1,5 @@
 import Iron from "@hapi/iron";
+import crypto from "crypto";
 
 import * as config from "@/library/_/config.mjs";
 
@@ -11,3 +12,5 @@ export const decrypt = (payloadRaw: string) =>
 		config.sessionSecret,
 		Iron.defaults
 	) as Promise<unknown>;
+
+export const nonce = () => crypto.randomBytes(16).toString("base64");

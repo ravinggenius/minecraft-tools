@@ -6,6 +6,15 @@ export * from "./config-public.mjs";
 const env = createEnv({
 	runtimeEnvStrict: {
 		DATABASE_URL: process.env.DATABASE_URL,
+		EMAIL_AUTH_USERNAME: process.env.EMAIL_AUTH_USERNAME,
+		EMAIL_AUTH_PASSWORD: process.env.EMAIL_AUTH_PASSWORD,
+		EMAIL_FROM_ADDRESS: process.env.EMAIL_FROM_ADDRESS,
+		EMAIL_HOST: process.env.EMAIL_HOST,
+		EMAIL_PORT: process.env.EMAIL_PORT,
+		EMAIL_SECURE: process.env.EMAIL_SECURE,
+		EMAIL_VERIFICATION_EXPIRY_DAYS:
+			process.env.EMAIL_VERIFICATION_EXPIRY_DAYS,
+		HOST_URL: process.env.HOST_URL,
 		NODE_ENV: process.env.NODE_ENV,
 		PASSWORD_SALT_ROUNDS: process.env.PASSWORD_SALT_ROUNDS,
 		SESSION_COOKIE_PATH: process.env.SESSION_COOKIE_PATH,
@@ -16,6 +25,22 @@ const env = createEnv({
 	},
 	server: {
 		DATABASE_URL: z.string().url(),
+		EMAIL_AUTH_USERNAME: z.string(),
+		EMAIL_AUTH_PASSWORD: z.string(),
+		EMAIL_FROM_ADDRESS: z.string().email(),
+		EMAIL_HOST: z.string(),
+		EMAIL_PORT: z
+			.string()
+			.transform((n) => Number.parseInt(n, 10))
+			.pipe(z.number().min(1).max(65535)),
+		EMAIL_SECURE: z
+			.string()
+			.refine((s) => s === "true" || s === "false")
+			.transform((s) => s === "true"),
+		EMAIL_VERIFICATION_EXPIRY_DAYS: z
+			.string()
+			.transform((n) => Number.parseInt(n, 10)),
+		HOST_URL: z.string().url(),
 		NODE_ENV: z.enum(["development", "production", "test"]),
 		PASSWORD_SALT_ROUNDS: z
 			.string()
@@ -42,6 +67,23 @@ export const isTest = env.NODE_ENV === "test";
  * Postgres database connection URL. Can point to a connection pool
  */
 export const databaseUrl = env.DATABASE_URL;
+
+export const email = {
+	auth: {
+		username: env.EMAIL_AUTH_USERNAME,
+		password: env.EMAIL_AUTH_PASSWORD
+	},
+	from: {
+		address: env.EMAIL_FROM_ADDRESS
+	},
+	host: env.EMAIL_HOST,
+	port: env.EMAIL_PORT,
+	secure: env.EMAIL_SECURE
+};
+
+export const emailVerificationExpiryDays = env.EMAIL_VERIFICATION_EXPIRY_DAYS;
+
+export const hostUrl = env.HOST_URL;
 
 export const passwordSaltRounds = env.PASSWORD_SALT_ROUNDS;
 

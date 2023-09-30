@@ -6,29 +6,25 @@ import { ZodError } from "zod";
 
 import sendAddressVerification from "@/emails/address-verification";
 import * as config from "@/library/_/config.mjs";
-import CodedError, { ERROR_CODE } from "@/library/_/errors/coded-error";
-import normalizeFormData from "@/library/_/normalize-form-data";
-import {
-	maybeProfileFromSession,
-	writeSessionCookie
-} from "@/library/_/session";
-import { ServerAction } from "@/library/_/types";
+import CodedError from "@/library/_/errors/coded-error";
+import { maybeProfileFromSession } from "@/library/_/session";
 import * as accountModel from "@/library/account/model";
-import { AccountCreateAttrs } from "@/library/account/schema";
-import * as sessionModel from "@/library/session/model";
 import * as secretService from "@/services/secret-service";
 
-export const createProfile: ServerAction = async (data: FormData) => {
+export const resendEmailVerification = async () => {
 	try {
 		const maybeProfile = await maybeProfileFromSession();
 
-		if (maybeProfile) {
+		if (!maybeProfile) {
 			redirect("/profile");
 		}
 
-		const attrs = normalizeFormData(data) as AccountCreateAttrs;
+		const tokenNonce = secretService.nonce();
 
-		const account = await accountModel.create(attrs, secretService.nonce());
+		const account = await accountModel.updateVerificationNonce(
+			maybeProfile.id,
+			tokenNonce
+		);
 
 		const token = await secretService.encrypt({
 			email: account.email,
@@ -50,13 +46,6 @@ export const createProfile: ServerAction = async (data: FormData) => {
 		}).toString();
 
 		await sendAddressVerification(account.email, verificationUrl);
-
-		const session = await sessionModel.create({
-			email: account.email,
-			password: data.get("account.password") as string
-		});
-
-		await writeSessionCookie(session);
 	} catch (error: unknown) {
 		if (error instanceof CodedError) {
 			return error.toJson();
@@ -66,6 +55,4 @@ export const createProfile: ServerAction = async (data: FormData) => {
 			throw error;
 		}
 	}
-
-	redirect("/profile");
 };

@@ -1,0 +1,10 @@
+{
+  "metadata": {
+    "title": "Verify your email"
+  },
+
+  "content": {
+    "instructions": "You need to verify your email address. Please check your email and follow the verification link.",
+    "resend-submit": "Resend"
+  }
+}

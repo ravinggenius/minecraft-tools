@@ -27,7 +27,15 @@ export const ACCOUNT = z.object({
 		.string()
 		.datetime()
 		.transform((eva) => (eva ? parseJSON(eva) : undefined))
-		.nullish()
+		.nullish(),
+	tokenNonce: z.string(),
+	tokenNonceUpdatedAt: z
+		.string()
+		.transform(parseJSON)
+		.refine(
+			(ts) => ts instanceof Date && ts.valueOf() > 0,
+			"must be a valid date"
+		)
 });
 
 export interface Account extends z.infer<typeof ACCOUNT> {}
@@ -37,7 +45,9 @@ export const ACCOUNT_ATTRS = ACCOUNT.omit({
 	createdAt: true,
 	updatedAt: true,
 	profileId: true,
-	emailVerifiedAt: true
+	emailVerifiedAt: true,
+	tokenNonce: true,
+	tokenNonceUpdatedAt: true
 });
 
 export interface AccountAttrs extends z.infer<typeof ACCOUNT_ATTRS> {}

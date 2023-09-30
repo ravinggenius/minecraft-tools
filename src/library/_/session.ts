@@ -28,16 +28,22 @@ export const maybeProfileFromSession = async () => {
 		: undefined;
 };
 
-export const requireVerifiedProfile = async () => {
+export const requireProfile = async () => {
 	const maybeProfile = await maybeProfileFromSession();
 
 	if (!maybeProfile) {
 		redirect("/sessions/new");
 	}
 
-	if (!(await profileModel.isEmailVerified(maybeProfile.id))) {
-		// redirect("/profile/confirmation-prompt");
+	return maybeProfile;
+};
+
+export const requireVerifiedProfile = async () => {
+	const profile = await requireProfile();
+
+	if (!(await profileModel.isEmailVerified(profile.id))) {
+		redirect("/profile/verification-prompt");
 	}
 
-	return maybeProfile;
+	return profile;
 };

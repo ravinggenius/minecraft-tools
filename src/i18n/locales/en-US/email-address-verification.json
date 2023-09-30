@@ -1,0 +1,6 @@
+{
+  "subject": "Verify your email",
+  "body": {
+    "text": ["Follow this link to verify your email:", "{{- link}}"]
+  }
+}

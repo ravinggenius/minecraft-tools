@@ -14,6 +14,8 @@ const env = createEnv({
 		EMAIL_SECURE: process.env.EMAIL_SECURE,
 		EMAIL_VERIFICATION_EXPIRY_DAYS:
 			process.env.EMAIL_VERIFICATION_EXPIRY_DAYS,
+		EMAIL_VERIFICATION_REMINDER_EXPIRY_MINUTES:
+			process.env.EMAIL_VERIFICATION_REMINDER_EXPIRY_MINUTES,
 		HOST_URL: process.env.HOST_URL,
 		NODE_ENV: process.env.NODE_ENV,
 		PASSWORD_SALT_ROUNDS: process.env.PASSWORD_SALT_ROUNDS,
@@ -40,6 +42,10 @@ const env = createEnv({
 		EMAIL_VERIFICATION_EXPIRY_DAYS: z
 			.string()
 			.transform((n) => Number.parseInt(n, 10)),
+		EMAIL_VERIFICATION_REMINDER_EXPIRY_MINUTES: z
+			.string()
+			.transform((n) => Number.parseInt(n, 10))
+			.pipe(z.number().positive()),
 		HOST_URL: z.string().url(),
 		NODE_ENV: z.enum(["development", "production", "test"]),
 		PASSWORD_SALT_ROUNDS: z
@@ -82,6 +88,8 @@ export const email = {
 };
 
 export const emailVerificationExpiryDays = env.EMAIL_VERIFICATION_EXPIRY_DAYS;
+export const emailVerificationReminderExpiryMinutes =
+	env.EMAIL_VERIFICATION_REMINDER_EXPIRY_MINUTES;
 
 export const hostUrl = env.HOST_URL;
 

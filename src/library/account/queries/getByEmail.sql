@@ -7,7 +7,7 @@ SELECT
 	email_verified_at AS "emailVerifiedAt",
 	hashword,
 	token_nonce AS "tokenNonce",
-	token_nonce_updated_at AS "tokenNonceUpdatedAt"
+	token_nonce_count AS "tokenNonceCount"
 FROM accounts
 WHERE email = $<email>::email
 LIMIT 1;

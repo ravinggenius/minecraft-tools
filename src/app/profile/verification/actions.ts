@@ -29,18 +29,13 @@ export const markEmailAsVerified = async (data: FormData) => {
 			await secretService.decrypt(token)
 		);
 
-		const now = new Date();
-
 		if (
 			account &&
+			!account.emailVerifiedAt &&
 			account.tokenNonce &&
-			addDays(
-				account.tokenNonceUpdatedAt,
-				config.emailVerificationExpiryDays
-			) > now &&
 			decrypted.email === account.email &&
 			decrypted.nonce === account.tokenNonce &&
-			decrypted.expiresAt > now
+			decrypted.expiresAt > new Date()
 		) {
 			await accountModel.markEmailAsVerified(account.id);
 

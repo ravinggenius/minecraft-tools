@@ -10,6 +10,7 @@ import { Account, ACCOUNT_CREATE_ATTRS, AccountCreateAttrs } from "./schema";
 const queries = readQueries("account", [
 	"create",
 	"getByEmail",
+	"getTokenNonceCount",
 	"markEmailAsVerified",
 	"updateVerificationNonce",
 	"validateUniqueEmail"
@@ -73,6 +74,17 @@ export const updateVerificationNonce = async (
 		profileId,
 		tokenNonce
 	});
+
+export const getTokenNonceCount = async (profileId: Profile["id"]) => {
+	const { tokenNonceCount } = await db.one<Pick<Account, "tokenNonceCount">>(
+		queries.getTokenNonceCount,
+		{
+			profileId
+		}
+	);
+
+	return tokenNonceCount;
+};
 
 export const markEmailAsVerified = async (id: Account["id"]) => {
 	await db.none(queries.markEmailAsVerified, {

@@ -2,10 +2,10 @@
 
 ALTER TABLE accounts
 ADD COLUMN token_nonce text NOT NULL DEFAULT '',
-ADD COLUMN token_nonce_updated_at timestamp with time zone NOT NULL DEFAULT now();
+ADD COLUMN token_nonce_count integer NOT NULL DEFAULT 1;
 
 -- Down Migration
 
 ALTER TABLE accounts
-DROP COLUMN token_nonce,
-DROP COLUMN token_nonce_updated_at;
+DROP COLUMN token_nonce_count,
+DROP COLUMN token_nonce;

@@ -1,8 +1,11 @@
+import { addMinutes } from "date-fns";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { loadPageTranslations } from "@/i18n/server";
+import * as config from "@/library/_/config.mjs";
 import { requireProfile } from "@/library/_/session";
+import * as accountModel from "@/library/account/model";
 import * as profileModel from "@/library/profile/model";
 
 import { resendEmailVerification } from "./actions";
@@ -36,11 +39,20 @@ export default async function ProfileVerificationPrompt() {
 		redirect("/profile");
 	}
 
+	const tokenResendCount = await accountModel.getTokenNonceCount(profile.id);
+
 	return (
 		<article className={styles.article}>
 			<p className={styles.intructions}>{t("instructions")}</p>
 
-			<VerifyEmailPromptForm action={resendEmailVerification} />
+			<VerifyEmailPromptForm
+				action={resendEmailVerification}
+				resendReminderExpiry={addMinutes(
+					new Date(),
+					config.emailVerificationReminderExpiryMinutes *
+						Math.min(tokenResendCount, 10)
+				)}
+			/>
 		</article>
 	);
 }

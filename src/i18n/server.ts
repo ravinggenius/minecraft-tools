@@ -8,11 +8,11 @@ import { availableLocales } from "preferred-locale";
 import { initReactI18next } from "react-i18next/initReactI18next";
 
 import {
-	FALLBACK_LOCALE,
-	SUPPORTED_LOCALES,
-	SupportedLocale,
 	cookieName,
-	getOptions
+	FALLBACK_LOCALE,
+	getOptions,
+	SUPPORTED_LOCALES,
+	SupportedLocale
 } from "./settings";
 
 const initI18next = async (

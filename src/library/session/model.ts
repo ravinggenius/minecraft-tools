@@ -7,7 +7,7 @@ import CodedError, { ERROR_CODE } from "@/library/_/errors/coded-error";
 import * as accountModel from "@/library/account/model";
 import { Account } from "@/library/account/schema";
 
-import { Session, SessionCredentials, SESSION_CREDENTIALS } from "./schema";
+import { Session, SESSION_CREDENTIALS, SessionCredentials } from "./schema";
 
 const queries = readQueries("session", [
 	"clearExpired",

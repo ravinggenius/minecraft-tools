@@ -4,7 +4,7 @@ import * as config from "../_/config.mjs";
 import { db, readQueries } from "../_/datastore";
 import CodedError, { ERROR_CODE } from "../_/errors/coded-error";
 
-import { Account, AccountCreateAttrs, ACCOUNT_CREATE_ATTRS } from "./schema";
+import { Account, ACCOUNT_CREATE_ATTRS, AccountCreateAttrs } from "./schema";
 
 const queries = readQueries("account", [
 	"create",

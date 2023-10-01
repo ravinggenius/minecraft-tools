@@ -5,7 +5,7 @@ import { useTimer } from "react-timer-hook";
 
 import Form, { useForm } from "@/components/Form/Form";
 import { useTranslation } from "@/i18n/client";
-import { ServerAction } from "@/library/_/types";
+import { ServerAction } from "@/library/_/server-action";
 
 import styles from "./form.module.css";
 

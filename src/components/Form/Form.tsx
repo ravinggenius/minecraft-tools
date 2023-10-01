@@ -8,8 +8,7 @@ import FeedbackList, { Feedback } from "@/components/FeedbackList/FeedbackList";
 import Field from "@/components/Field/Field";
 import SubmitButton from "@/components/SubmitButton/SubmitButton";
 import { CodedErrorAttrs } from "@/library/_/errors/coded-error";
-import normalizeFormData from "@/library/_/normalize-form-data";
-import { ServerAction } from "@/library/_/types";
+import { normalizeFormData, ServerAction } from "@/library/_/server-action";
 
 import styles from "./Form.module.css";
 
@@ -23,7 +22,7 @@ export default forwardRef(function Form(
 		submitLabel,
 		submitVariant
 	}: {
-		action: (data: FormData) => Promise<unknown>;
+		action: ServerAction;
 		children?:
 			| ReactElement<ComponentProps<typeof Field>>
 			| Array<ReactElement<ComponentProps<typeof Field>>>;
@@ -112,7 +111,7 @@ export const useForm = (
 ) => {
 	const [feedback, setFeedback] = useState<FormFeedback>({});
 
-	const clientServerAction = async (data: FormData) => {
+	const clientServerAction: ServerAction = async (data) => {
 		if (schema) {
 			try {
 				await schema.parseAsync(normalizeFormData(data));

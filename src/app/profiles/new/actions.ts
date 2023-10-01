@@ -6,19 +6,18 @@ import { ZodError } from "zod";
 
 import sendAddressVerification from "@/emails/address-verification";
 import * as config from "@/library/_/config.mjs";
-import CodedError, { ERROR_CODE } from "@/library/_/errors/coded-error";
-import normalizeFormData from "@/library/_/normalize-form-data";
+import CodedError from "@/library/_/errors/coded-error";
+import { normalizeFormData, ServerAction } from "@/library/_/server-action";
 import {
 	maybeProfileFromSession,
 	writeSessionCookie
 } from "@/library/_/session";
-import { ServerAction } from "@/library/_/types";
 import * as accountModel from "@/library/account/model";
 import { AccountCreateAttrs } from "@/library/account/schema";
 import * as sessionModel from "@/library/session/model";
 import * as secretService from "@/services/secret-service";
 
-export const createProfile: ServerAction = async (data: FormData) => {
+export const createProfile: ServerAction = async (data) => {
 	try {
 		const maybeProfile = await maybeProfileFromSession();
 

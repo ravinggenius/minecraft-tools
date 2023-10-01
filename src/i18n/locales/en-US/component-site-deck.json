@@ -5,7 +5,8 @@
   },
   "authentication": {
     "sign-up-cta": "Sign Up",
-    "log-in-cta": "Log In"
+    "log-in-cta": "Log In",
+    "profile": "Welcome {{name}}!"
   },
   "table-of-contents": {
     "label_closed": "open table of contents",

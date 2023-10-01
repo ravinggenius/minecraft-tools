@@ -110,7 +110,14 @@ const extractFeedbackFrom = (error: unknown) => {
 	}
 };
 
-export const useForm = (serverAction: ServerAction, schema?: ZodSchema) => {
+interface UseFormOptions {
+	schema?: ZodSchema;
+}
+
+export const useForm = (
+	serverAction: ServerAction,
+	{ schema }: UseFormOptions = {}
+) => {
 	const [feedback, setFeedback] = useState<FormFeedback>({});
 
 	const [submitting, setSubmitting] = useState(false);

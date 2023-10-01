@@ -15,7 +15,7 @@ export default function CreateProfileForm({
 }) {
 	const { t } = useTranslation("page-component-new-profile-form");
 
-	const form = useForm(createProfile, ACCOUNT_CREATE_ATTRS);
+	const form = useForm(createProfile, { schema: ACCOUNT_CREATE_ATTRS });
 
 	const name = useTextField(form, "profile.name", "");
 

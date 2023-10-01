@@ -26,7 +26,7 @@ export default function VerifyEmailtForm({
 
 	const formElement = useRef<HTMLFormElement>(null);
 
-	const form = useForm(verifyEmail, DATA);
+	const form = useForm(verifyEmail, { schema: DATA });
 
 	const email = useTextField(form, "email", query.get("email") ?? "");
 

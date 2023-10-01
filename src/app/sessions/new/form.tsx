@@ -15,7 +15,7 @@ export default function CreateSessionForm({
 }) {
 	const { t } = useTranslation("page-component-new-session-form");
 
-	const form = useForm(createSession, SESSION_CREDENTIALS);
+	const form = useForm(createSession, { schema: SESSION_CREDENTIALS });
 
 	const email = useTextField(form, "email", "");
 

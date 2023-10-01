@@ -12,10 +12,9 @@ const env = createEnv({
 		EMAIL_HOST: process.env.EMAIL_HOST,
 		EMAIL_PORT: process.env.EMAIL_PORT,
 		EMAIL_SECURE: process.env.EMAIL_SECURE,
+		EMAIL_RESEND_EXPIRY_MINUTES: process.env.EMAIL_RESEND_EXPIRY_MINUTES,
 		EMAIL_VERIFICATION_EXPIRY_DAYS:
 			process.env.EMAIL_VERIFICATION_EXPIRY_DAYS,
-		EMAIL_VERIFICATION_REMINDER_EXPIRY_MINUTES:
-			process.env.EMAIL_VERIFICATION_REMINDER_EXPIRY_MINUTES,
 		ENCRYPTION_SECRET: process.env.ENCRYPTION_SECRET,
 		HOST_URL: process.env.HOST_URL,
 		NODE_ENV: process.env.NODE_ENV,
@@ -39,13 +38,13 @@ const env = createEnv({
 			.string()
 			.refine((s) => s === "true" || s === "false")
 			.transform((s) => s === "true"),
-		EMAIL_VERIFICATION_EXPIRY_DAYS: z
-			.string()
-			.transform((n) => Number.parseInt(n, 10)),
-		EMAIL_VERIFICATION_REMINDER_EXPIRY_MINUTES: z
+		EMAIL_RESEND_EXPIRY_MINUTES: z
 			.string()
 			.transform((n) => Number.parseInt(n, 10))
 			.pipe(z.number().positive()),
+		EMAIL_VERIFICATION_EXPIRY_DAYS: z
+			.string()
+			.transform((n) => Number.parseInt(n, 10)),
 		ENCRYPTION_SECRET: z.string().min(32),
 		HOST_URL: z.string().url(),
 		NODE_ENV: z.enum(["development", "production", "test"]),
@@ -87,9 +86,9 @@ export const email = {
 	secure: env.EMAIL_SECURE
 };
 
+export const emailResendExpiryMinutes = env.EMAIL_RESEND_EXPIRY_MINUTES;
+
 export const emailVerificationExpiryDays = env.EMAIL_VERIFICATION_EXPIRY_DAYS;
-export const emailVerificationReminderExpiryMinutes =
-	env.EMAIL_VERIFICATION_REMINDER_EXPIRY_MINUTES;
 
 export const encryptionSecret = env.ENCRYPTION_SECRET;
 

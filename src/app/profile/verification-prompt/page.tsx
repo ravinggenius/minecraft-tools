@@ -49,7 +49,7 @@ export default async function ProfileVerificationPrompt() {
 				action={resendEmailVerification}
 				resendReminderExpiry={addMinutes(
 					new Date(),
-					config.emailVerificationReminderExpiryMinutes *
+					config.emailResendExpiryMinutes *
 						Math.min(tokenResendCount, 10)
 				)}
 			/>

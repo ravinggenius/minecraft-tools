@@ -31,12 +31,12 @@ export default async function SessionsNewPage() {
 	}
 
 	return (
-		<main className={styles.main}>
+		<article className={styles.article}>
 			<CreateSessionForm action={createSession} />
 
 			<Anchor href="/profiles/new" variant="secondary">
 				{t("sign-up-cta")}
 			</Anchor>
-		</main>
+		</article>
 	);
 }

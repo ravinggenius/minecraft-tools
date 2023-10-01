@@ -27,7 +27,9 @@ export const ACCOUNT = z.object({
 		.string()
 		.datetime()
 		.transform((eva) => (eva ? parseJSON(eva) : undefined))
-		.nullish()
+		.nullish(),
+	tokenNonce: z.string(),
+	tokenNonceCount: z.number().int().positive()
 });
 
 export interface Account extends z.infer<typeof ACCOUNT> {}
@@ -37,7 +39,9 @@ export const ACCOUNT_ATTRS = ACCOUNT.omit({
 	createdAt: true,
 	updatedAt: true,
 	profileId: true,
-	emailVerifiedAt: true
+	emailVerifiedAt: true,
+	tokenNonce: true,
+	tokenNonceCount: true
 });
 
 export interface AccountAttrs extends z.infer<typeof ACCOUNT_ATTRS> {}

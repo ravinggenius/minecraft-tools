@@ -1,0 +1,6 @@
+{
+  "title": "Minecraft Tools",
+  "email": {
+    "from-name": "$t(title)"
+  }
+}

@@ -10,9 +10,8 @@ import SiteStern from "@/components/SiteStern/SiteStern";
 import { extractLocaleFromRequest, loadPageTranslations } from "@/i18n/server";
 import { maybeProfileFromSession } from "@/library/_/session";
 
-import styles from "./layout.module.css";
-
 import "./globals.css";
+import styles from "./layout.module.css";
 
 const notoSans = Noto_Sans({
 	subsets: ["latin"],

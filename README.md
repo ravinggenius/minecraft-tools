@@ -9,7 +9,7 @@ Open [http://localhost:3000/](http://localhost:3000/) with your browser to see t
 - [x] Next 13
 - [x] Authentication
 - [x] Internationalization
-- [ ] Email Queueing
+- [x] Email Verification
 - [ ] Forgot Password
 - [ ] Bot Protection (https://www.youtube.com/watch?v=YzaChz8rCn0)
   - header analysis

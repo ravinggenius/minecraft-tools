@@ -1,36 +1,16 @@
-import Iron from "@hapi/iron";
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 import * as profileModel from "@/library/profile/model";
 import * as sessionModel from "@/library/session/model";
 import { Session } from "@/library/session/schema";
-
-import * as config from "./config.mjs";
+import * as sessionCookieService from "@/services/session-cookie-service";
 
 export const writeSessionCookie = async (session: Session) =>
-	cookies().set(
-		config.sessionName,
-		await Iron.seal(session.id, config.sessionSecret, Iron.defaults),
-		{
-			...config.sessionCookieOptions,
-			expires: session.expiresAt
-		}
-	);
+	sessionCookieService.write(session.id, session.expiresAt);
 
-export const readSessionCookie = async () => {
-	const token = cookies().get(config.sessionName)?.value;
+export const readSessionCookie = () => sessionCookieService.read();
 
-	return token
-		? await (Iron.unseal(
-				token,
-				config.sessionSecret,
-				Iron.defaults
-		  ) as Promise<Session["id"]>)
-		: undefined;
-};
-
-export const clearSessionCookie = () => cookies().delete(config.sessionName);
+export const clearSessionCookie = () => sessionCookieService.clear();
 
 const maybeAccountFromSession = async () => {
 	const maybeSessionId = await readSessionCookie();
@@ -48,16 +28,22 @@ export const maybeProfileFromSession = async () => {
 		: undefined;
 };
 
-export const requireVerifiedProfile = async () => {
+export const requireProfile = async () => {
 	const maybeProfile = await maybeProfileFromSession();
 
 	if (!maybeProfile) {
 		redirect("/sessions/new");
 	}
 
-	if (!(await profileModel.isEmailVerified(maybeProfile.id))) {
-		// redirect("/profile/confirmation-prompt");
+	return maybeProfile;
+};
+
+export const requireVerifiedProfile = async () => {
+	const profile = await requireProfile();
+
+	if (!(await profileModel.isEmailVerified(profile.id))) {
+		redirect("/profile/verification-prompt");
 	}
 
-	return maybeProfile;
+	return profile;
 };

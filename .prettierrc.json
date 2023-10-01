@@ -1,4 +1,9 @@
 {
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "importOrder": ["^@/(.*)$", "^../", "^./"],
+  "importOrderCaseInsensitive": true,
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
   "quoteProps": "consistent",
   "semi": true,
   "tabWidth": 4,

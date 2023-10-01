@@ -1,55 +1,53 @@
 import classNames from "classnames";
 import { omit } from "rambda";
-import { ComponentProps, ReactElement, useState } from "react";
+import { ComponentProps, forwardRef, ReactElement, Ref, useState } from "react";
 import { ZodError, ZodSchema } from "zod";
 
-import Button from "@/components/Button/Button";
+import Debug from "@/components/Debug/Debug";
 import FeedbackList, { Feedback } from "@/components/FeedbackList/FeedbackList";
 import Field from "@/components/Field/Field";
-import Pre from "@/components/Pre/Pre";
+import SubmitButton from "@/components/SubmitButton/SubmitButton";
 import { CodedErrorAttrs } from "@/library/_/errors/coded-error";
 import normalizeFormData from "@/library/_/normalize-form-data";
 import { ServerAction } from "@/library/_/types";
 
 import styles from "./Form.module.css";
 
-export interface FormMeta {
-	submitting: boolean;
-}
-
-export default function Form({
-	action,
-	children,
-	className,
-	debug = false,
-	feedback = [],
-	meta,
-	submitLabel
-}: {
-	action: (data: FormData) => Promise<unknown>;
-	children?: Array<ReactElement<ComponentProps<typeof Field>>>;
-	className?: string;
-	debug?: boolean;
-	feedback?: Array<Feedback>;
-	meta: FormMeta;
-	submitLabel: string;
-}) {
+export default forwardRef(function Form(
+	{
+		action,
+		children,
+		className,
+		debug = false,
+		feedback = [],
+		submitLabel
+	}: {
+		action: (data: FormData) => Promise<unknown>;
+		children?:
+			| ReactElement<ComponentProps<typeof Field>>
+			| Array<ReactElement<ComponentProps<typeof Field>>>;
+		className?: string;
+		debug?: boolean;
+		feedback?: Array<Feedback>;
+		submitLabel: string;
+	},
+	ref: Ref<HTMLFormElement>
+) {
 	return (
-		<form {...{ action }} className={classNames(styles.form, className)}>
+		<form
+			{...{ action, ref }}
+			className={classNames(styles.form, className)}
+		>
 			<FeedbackList {...{ feedback }} />
 
 			{children}
 
-			<Button disabled={meta.submitting} type="submit" variant="primary">
-				{submitLabel}
-			</Button>
+			<SubmitButton label={submitLabel} />
 
-			{debug ? (
-				<Pre>{JSON.stringify({ feedback, meta }, null, 2)}</Pre>
-			) : null}
+			{debug ? <Debug value={{ feedback }} /> : null}
 		</form>
 	);
-}
+});
 
 interface FormFeedback {
 	_?: Array<Feedback> | undefined;
@@ -102,43 +100,37 @@ const extractFeedbackFrom = (error: unknown) => {
 	}
 };
 
-export const useForm = (serverAction: ServerAction, schema?: ZodSchema) => {
+interface UseFormOptions {
+	schema?: ZodSchema;
+}
+
+export const useForm = (
+	serverAction: ServerAction,
+	{ schema }: UseFormOptions = {}
+) => {
 	const [feedback, setFeedback] = useState<FormFeedback>({});
 
-	const [submitting, setSubmitting] = useState(false);
-
 	const clientServerAction = async (data: FormData) => {
-		setSubmitting(true);
-
 		if (schema) {
 			try {
 				await schema.parseAsync(normalizeFormData(data));
 			} catch (error: unknown) {
 				setFeedback(extractFeedbackFrom(error));
 
-				setSubmitting(false);
-
 				return;
 			}
 		}
 
-		try {
-			const reply = await serverAction(data);
+		const reply = await serverAction(data);
 
-			if (reply) {
-				setFeedback(extractFeedbackFrom(reply));
-			}
-		} finally {
-			setSubmitting(false);
+		if (reply) {
+			setFeedback(extractFeedbackFrom(reply));
 		}
 	};
 
 	return {
 		action: clientServerAction,
 		feedback: feedback._,
-		fieldFeedback: omit(["_"], feedback),
-		meta: {
-			submitting
-		} satisfies FormMeta as FormMeta
+		fieldFeedback: omit(["_"], feedback)
 	};
 };

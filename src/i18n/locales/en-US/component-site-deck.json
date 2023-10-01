@@ -6,6 +6,7 @@
   "authentication": {
     "sign-up-cta": "Sign Up",
     "log-in-cta": "Log In",
+    "log-out-cta": "Log Out",
     "profile": "Welcome {{name}}!"
   },
   "table-of-contents": {

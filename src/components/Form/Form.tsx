@@ -20,7 +20,8 @@ export default forwardRef(function Form(
 		className,
 		debug = false,
 		feedback = [],
-		submitLabel
+		submitLabel,
+		submitVariant
 	}: {
 		action: (data: FormData) => Promise<unknown>;
 		children?:
@@ -29,7 +30,8 @@ export default forwardRef(function Form(
 		className?: string;
 		debug?: boolean;
 		feedback?: Array<Feedback>;
-		submitLabel: string;
+		submitLabel: ComponentProps<typeof SubmitButton>["label"];
+		submitVariant?: ComponentProps<typeof SubmitButton>["variant"];
 	},
 	ref: Ref<HTMLFormElement>
 ) {
@@ -42,7 +44,7 @@ export default forwardRef(function Form(
 
 			{children}
 
-			<SubmitButton label={submitLabel} />
+			<SubmitButton label={submitLabel} variant={submitVariant} />
 
 			{debug ? <Debug value={{ feedback }} /> : null}
 		</form>

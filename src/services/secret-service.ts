@@ -4,12 +4,12 @@ import crypto from "crypto";
 import * as config from "@/library/_/config.mjs";
 
 export const encrypt = (payload: unknown) =>
-	Iron.seal(payload, config.sessionSecret, Iron.defaults);
+	Iron.seal(payload, config.encryptionSecret, Iron.defaults);
 
 export const decrypt = (payloadRaw: string) =>
 	Iron.unseal(
 		payloadRaw,
-		config.sessionSecret,
+		config.encryptionSecret,
 		Iron.defaults
 	) as Promise<unknown>;
 

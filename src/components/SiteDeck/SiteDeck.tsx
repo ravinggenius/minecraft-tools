@@ -35,7 +35,15 @@ export default function SiteDeck({
 
 			<div className={styles.auth}>
 				{profile ? (
-					<LogoutForm />
+					<>
+						<Anchor href="/profile" variant="inline">
+							{t("authentication.profile", {
+								name: profile.name
+							})}
+						</Anchor>
+
+						<LogoutForm />
+					</>
 				) : (
 					<>
 						<Anchor href="/profiles/new" variant="secondary">

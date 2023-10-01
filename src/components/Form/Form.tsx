@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { omit } from "rambda";
-import { ComponentProps, ReactElement, useState } from "react";
+import { ComponentProps, forwardRef, ReactElement, Ref, useState } from "react";
 import { ZodError, ZodSchema } from "zod";
 
 import Button from "@/components/Button/Button";
@@ -17,27 +17,33 @@ export interface FormMeta {
 	submitting: boolean;
 }
 
-export default function Form({
-	action,
-	children,
-	className,
-	debug = false,
-	feedback = [],
-	meta,
-	submitLabel
-}: {
-	action: (data: FormData) => Promise<unknown>;
-	children?:
-		| ReactElement<ComponentProps<typeof Field>>
-		| Array<ReactElement<ComponentProps<typeof Field>>>;
-	className?: string;
-	debug?: boolean;
-	feedback?: Array<Feedback>;
-	meta: FormMeta;
-	submitLabel: string;
-}) {
+export default forwardRef(function Form(
+	{
+		action,
+		children,
+		className,
+		debug = false,
+		feedback = [],
+		meta,
+		submitLabel
+	}: {
+		action: (data: FormData) => Promise<unknown>;
+		children?:
+			| ReactElement<ComponentProps<typeof Field>>
+			| Array<ReactElement<ComponentProps<typeof Field>>>;
+		className?: string;
+		debug?: boolean;
+		feedback?: Array<Feedback>;
+		meta: FormMeta;
+		submitLabel: string;
+	},
+	ref: Ref<HTMLFormElement>
+) {
 	return (
-		<form {...{ action }} className={classNames(styles.form, className)}>
+		<form
+			{...{ action, ref }}
+			className={classNames(styles.form, className)}
+		>
 			<FeedbackList {...{ feedback }} />
 
 			{children}
@@ -51,7 +57,7 @@ export default function Form({
 			) : null}
 		</form>
 	);
-}
+});
 
 interface FormFeedback {
 	_?: Array<Feedback> | undefined;

@@ -3,6 +3,7 @@
 import classNames from "classnames";
 import { useSearchParams } from "next/navigation";
 import { pick } from "rambda";
+import { useEffect, useRef } from "react";
 
 import Form, { useForm } from "@/components/Form/Form";
 import { useTextField } from "@/components/TextField/TextField";
@@ -23,16 +24,23 @@ export default function VerifyEmailtForm({
 
 	const query = useSearchParams();
 
+	const formElement = useRef<HTMLFormElement>(null);
+
 	const form = useForm(verifyEmail, DATA);
 
 	const email = useTextField(form, "email", query.get("email") ?? "");
 
 	const token = useTextField(form, "token", query.get("token") ?? "");
 
+	useEffect(() => {
+		formElement.current?.requestSubmit();
+	});
+
 	return (
 		<Form
 			{...form}
 			className={classNames(styles.form, className)}
+			ref={formElement}
 			submitLabel={t("submit")}
 		>
 			<input {...pick(["name", "value"], email)} type="hidden" />

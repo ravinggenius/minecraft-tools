@@ -1,5 +1,9 @@
 import { redirect } from "next/navigation";
 
-export default async function SessionAssistancePage() {
+export const generateMetadata = () => {
 	redirect("/sessions/new");
+};
+
+export default async function SessionAssistancePage() {
+	return null;
 }

@@ -17,6 +17,7 @@ import {
 const queries = readQueries("password-reset", [
 	"create",
 	"clear",
+	"clearExpired",
 	"resetPassword"
 ]);
 
@@ -57,3 +58,5 @@ export const reset = async (attrs: PasswordResetResetAttrs) => {
 		return success;
 	});
 };
+
+export const clearExpired = () => db.none(queries.clearExpired);

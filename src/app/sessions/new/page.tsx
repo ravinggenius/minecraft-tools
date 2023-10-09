@@ -37,6 +37,10 @@ export default async function SessionsNewPage() {
 			<Anchor href="/profiles/new" variant="secondary">
 				{t("sign-up-cta")}
 			</Anchor>
+
+			<Anchor href="/sessions/assistance/password/new" variant="inline">
+				{t("password-assistance-cta")}
+			</Anchor>
 		</article>
 	);
 }

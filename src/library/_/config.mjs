@@ -22,7 +22,9 @@ const env = createEnv({
 		SESSION_COOKIE_PATH: process.env.SESSION_COOKIE_PATH,
 		SESSION_COOKIE_SAME_SITE: process.env.SESSION_COOKIE_SAME_SITE,
 		SESSION_MAX_AGE_SECONDS: process.env.SESSION_MAX_AGE_SECONDS,
-		SESSION_NAME: process.env.SESSION_NAME
+		SESSION_NAME: process.env.SESSION_NAME,
+		SESSION_ASSISTANCE_PASSWORD_RESET_EXPIRY_MINUTES:
+			process.env.SESSION_ASSISTANCE_PASSWORD_RESET_EXPIRY_MINUTES
 	},
 	server: {
 		DATABASE_URL: z.string().url(),
@@ -58,7 +60,11 @@ const env = createEnv({
 			.string()
 			.transform((n) => Number.parseInt(n, 10))
 			.pipe(z.number().positive()),
-		SESSION_NAME: z.string()
+		SESSION_NAME: z.string(),
+		SESSION_ASSISTANCE_PASSWORD_RESET_EXPIRY_MINUTES: z
+			.string()
+			.transform((n) => Number.parseInt(n, 10))
+			.pipe(z.number().positive())
 	}
 });
 
@@ -106,3 +112,6 @@ export const sessionCookieOptions = {
 export const sessionMaxAgeSeconds = env.SESSION_MAX_AGE_SECONDS;
 
 export const sessionName = env.SESSION_NAME;
+
+export const sessionAssistancePasswordResetExpiryMinutes =
+	env.SESSION_ASSISTANCE_PASSWORD_RESET_EXPIRY_MINUTES;

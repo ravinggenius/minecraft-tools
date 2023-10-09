@@ -11,6 +11,7 @@ const queries = readQueries("account", [
 	"create",
 	"getByEmail",
 	"getTokenNonceCount",
+	"isEmailVerified",
 	"markEmailAsVerified",
 	"updateVerificationNonce",
 	"validateUniqueEmail"
@@ -90,4 +91,13 @@ export const markEmailAsVerified = async (id: Account["id"]) => {
 	await db.none(queries.markEmailAsVerified, {
 		accountId: id
 	});
+};
+
+export const isEmailVerified = async (email: Account["email"]) => {
+	const result = await db.oneOrNone<{ isVerified: boolean }>(
+		queries.isEmailVerified,
+		{ email }
+	);
+
+	return Boolean(result?.isVerified);
 };

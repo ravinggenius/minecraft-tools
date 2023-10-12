@@ -3,7 +3,7 @@
 import Form, { useForm } from "@/components/Form/Form";
 import TextField, { useTextField } from "@/components/TextField/TextField";
 import { useTranslation } from "@/i18n/client";
-import { ServerAction } from "@/library/_/types";
+import { ServerAction } from "@/library/_/server-action";
 import { SESSION_CREDENTIALS } from "@/library/session/schema";
 
 import styles from "./form.module.css";

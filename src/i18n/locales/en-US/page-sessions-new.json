@@ -4,6 +4,7 @@
   },
 
   "content": {
-    "sign-up-cta": "Create Session"
+    "sign-up-cta": "Create Session",
+    "password-assistance-cta": "Password Assistance"
   }
 }

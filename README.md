@@ -10,7 +10,7 @@ Open [http://localhost:3000/](http://localhost:3000/) with your browser to see t
 - [x] Authentication
 - [x] Internationalization
 - [x] Email Verification
-- [ ] Forgot Password
+- [x] Forgot Password
 - [ ] Bot Protection (https://www.youtube.com/watch?v=YzaChz8rCn0)
   - header analysis
   - captcha (browser fingerprint analysis)

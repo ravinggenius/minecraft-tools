@@ -3,7 +3,8 @@
 import classNames from "classnames";
 import { useState } from "react";
 
-import LogoutForm from "@/app/profile/LogoutForm";
+import { deleteSession } from "@/app/profile/actions";
+import ActionButton from "@/components/ActionButton/ActionButton";
 import Anchor from "@/components/Anchor/Anchor";
 import Button from "@/components/Button/Button";
 import NavigationTree from "@/components/NavigationTree/NavigationTree";
@@ -42,7 +43,10 @@ export default function SiteDeck({
 							})}
 						</Anchor>
 
-						<LogoutForm />
+						<ActionButton
+							action={deleteSession}
+							label={t("authentication.log-out-cta")}
+						/>
 					</>
 				) : (
 					<>

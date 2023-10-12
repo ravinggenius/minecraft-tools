@@ -1,19 +1,17 @@
 "use server";
 
-import { addDays } from "date-fns";
 import { redirect } from "next/navigation";
 import { ZodError } from "zod";
 
-import * as config from "@/library/_/config.mjs";
 import CodedError, { ERROR_CODE } from "@/library/_/errors/coded-error";
-import normalizeFormData from "@/library/_/normalize-form-data";
+import { normalizeFormData, ServerAction } from "@/library/_/server-action";
 import { maybeProfileFromSession } from "@/library/_/session";
 import * as accountModel from "@/library/account/model";
 import * as secretService from "@/services/secret-service";
 
 import { DATA, TOKEN } from "./schema";
 
-export const markEmailAsVerified = async (data: FormData) => {
+export const markEmailAsVerified: ServerAction = async (data) => {
 	try {
 		const maybeProfile = await maybeProfileFromSession();
 

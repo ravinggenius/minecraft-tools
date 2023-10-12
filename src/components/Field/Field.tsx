@@ -52,7 +52,7 @@ export default function Field({
 				</span>
 			</label>
 
-			<div className={styles.label}>{children}</div>
+			<div className={styles.control}>{children}</div>
 
 			<FeedbackList {...{ feedback }} />
 

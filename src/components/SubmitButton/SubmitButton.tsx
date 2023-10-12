@@ -1,12 +1,27 @@
+import classNames from "classnames";
+import { ComponentProps } from "react";
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
 
 import Button from "@/components/Button/Button";
 
-export default function SubmitButton({ label }: { label: string }) {
+import styles from "./SubmitButton.module.css";
+
+export default function SubmitButton({
+	className,
+	label,
+	variant = "primary"
+}: Partial<Pick<ComponentProps<typeof Button>, "className" | "variant">> & {
+	label: ComponentProps<typeof Button>["children"];
+}) {
 	const { pending } = useFormStatus();
 
 	return (
-		<Button disabled={pending} type="submit" variant="primary">
+		<Button
+			{...{ variant }}
+			className={classNames(styles.button, className)}
+			disabled={pending}
+			type="submit"
+		>
 			{label}
 		</Button>
 	);

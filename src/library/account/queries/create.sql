@@ -8,7 +8,7 @@ WITH profile AS (
 		name
 )
 INSERT INTO accounts (profile_id, email, hashword, token_nonce)
-VALUES ((SELECT id FROM profile), $<account.email>, $<account.hashword>, $<tokenNonce>)
+VALUES ((SELECT id FROM profile), $<account.email>, $<account.hashword>, $<account.tokenNonce>)
 RETURNING
 	id,
 	created_at AS "createdAt",

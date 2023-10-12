@@ -9,24 +9,26 @@ Tools and structured notes for keeping track of things while playing Minecraft.
 - [x] Internationalization
 - [x] Email Verification
 - [x] Forgot Password
+- [ ] Design System
 - [ ] Bot Protection (https://www.youtube.com/watch?v=YzaChz8rCn0)
   - header analysis
   - captcha (browser fingerprint analysis)
   - rate limiting
   - disposable email detection
+- [ ] Logging
 - [ ] Background Jobs (session management at least)
-- [ ] Design System
+- [ ] Automated Test Suite
 - [ ] Legacy Profession Data
 - [ ] RELEASE
 - [ ] Automated Database Backups
 - [ ] Authorization
 - [ ] Profile Management
 - [ ] Worlds
-- [ ] Compendium (statistics reference)
-- [ ] Command (admin area especially for duplicating game versions)
+- [ ] Compendium (statistics reference and search)
+- [ ] Command (admin area especially for duplicating compendium for new game releases)
 - [ ] Tools (multi-spawner farm calculator, villager trading hall notes et cetera)
 - [ ] Communities
-- [ ] Who's who
+- [ ] Who's Who
 - [ ] Schematics
 
 ## Development
@@ -39,7 +41,7 @@ Install dependencies:
 npm install
 ```
 
-While that's running, copy `.env` to `.env.local` and adjust any values you need to. Most values can be left alone, but (Postgres) `DATABASE_URL` is required. Any values not set will fall back to `.env`.
+While that's running, copy `.env` to `.env.local`. Fill in or adjust any values in `.env.local` as needed.
 
 ```shell
 cp .env .env.local

@@ -2,8 +2,6 @@
 
 Tools and structured notes for keeping track of things while playing Minecraft.
 
-Open [http://localhost:3000/](http://localhost:3000/) with your browser to see the result.
-
 ## Project Roadmap
 
 - [x] Next 13
@@ -53,6 +51,8 @@ Then run the development server:
 npm run dev
 ```
 
+Open [http://localhost:3000/](http://localhost:3000/) with your browser to see the result.
+
 ## Production
 
-This project is meant to be hosted on (Vercel)[https://vercel.com/]. See the (Next deploy page)[https://nextjs.org/docs/app/building-your-application/deploying] for more information.
+This project is meant to be hosted on [Vercel](https://vercel.com/). See the [Next deploy page](https://nextjs.org/docs/app/building-your-application/deploying) for more information.

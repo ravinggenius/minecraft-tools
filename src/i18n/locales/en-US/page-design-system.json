@@ -1,0 +1,12 @@
+{
+  "metadata": {
+    "title": "Design System"
+  },
+
+  "content": {
+    "description": "Showcase for all common style atoms and components.",
+    "table-of-contents": {
+      "palette": "Palette"
+    }
+  }
+}

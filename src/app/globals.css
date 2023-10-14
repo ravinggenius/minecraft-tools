@@ -1,3 +1,5 @@
+@import "./design-system/_palette.css";
+
 :root {
 	--base-size-unit: 4px;
 }

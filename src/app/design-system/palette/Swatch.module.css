@@ -1,8 +1,13 @@
 .item {
 	align-items: center;
+	cursor: default;
 	display: flex;
 	inline-size: 100%;
 	justify-content: center;
 	list-style-type: none;
 	padding: 4rem;
+}
+
+.item:active {
+	transform: scale(1.05);
 }

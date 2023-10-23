@@ -1,3 +1,5 @@
+"use client";
+
 import classNames from "classnames";
 import { always, cond } from "rambda";
 
@@ -31,6 +33,9 @@ export default function Swatch({
 		<li
 			className={classNames(styles.item, className)}
 			key={lightness}
+			onClick={() => {
+				navigator.clipboard.writeText(`var(${color})`);
+			}}
 			style={{
 				backgroundColor: `var(${color})`,
 				color: `var(${contrastColor})`

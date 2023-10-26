@@ -3,6 +3,7 @@
 import classNames from "classnames";
 import { usePathname, useSelectedLayoutSegments } from "next/navigation";
 import { zip } from "rambda";
+import { ComponentProps } from "react";
 
 import Anchor from "@/components/Anchor/Anchor";
 import { useTranslation } from "@/i18n/client";
@@ -10,7 +11,7 @@ import { useTranslation } from "@/i18n/client";
 import styles from "./BreadcrumbTrail.module.css";
 
 interface Crumb {
-	href: string;
+	href: ComponentProps<typeof Anchor>["href"];
 	segmentName: string;
 	segmentValue: string;
 }
@@ -67,7 +68,9 @@ const buildBreadcrumbTrail = (
 ): Trail =>
 	[["home", ""], ...zip(segmentNames, segmentValues)]
 		.map(([segmentName, segmentValue], index) => ({
-			href: `/${segmentValues.slice(0, index).join("/")}`,
+			href: `/${segmentValues
+				.slice(0, index)
+				.join("/")}` as ComponentProps<typeof Anchor>["href"],
 			segmentName: segmentName.replace("[", "").replace("]", ""),
 			segmentValue
 		}))

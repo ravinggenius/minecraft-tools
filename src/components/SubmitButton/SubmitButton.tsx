@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { ComponentProps } from "react";
-import { experimental_useFormStatus as useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
 
 import Button from "@/components/Button/Button";
 

@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { ComponentProps } from "react";
 
 import Anchor from "@/components/Anchor/Anchor";
 import { Resource } from "@/components/SiteDeck/schemas";
@@ -11,7 +12,11 @@ function Branch({ branch }: { branch: Resource }) {
 			className={styles.branch}
 			data-children={Boolean(branch.children?.length)}
 		>
-			<Anchor className={styles.leaf} href={branch.href} variant="inline">
+			<Anchor
+				className={styles.leaf}
+				href={branch.href as ComponentProps<typeof Anchor>["href"]}
+				variant="inline"
+			>
 				{branch.title}
 			</Anchor>
 

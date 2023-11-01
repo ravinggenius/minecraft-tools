@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "title": "Elevation"
+  },
+
+  "content": {
+    "title": "Elevation",
+    "description": "Showcase for all common style atoms and components.",
+    "border": {
+      "none": {
+        "title": "No Border"
+      },
+      "thin": {
+        "title": "Thin Border"
+      },
+      "thick": {
+        "title": "Thick Border"
+      }
+    },
+    "shadow": {
+      "low": {
+        "title": "Low Shadow"
+      },
+      "high": {
+        "title": "High Shadow"
+      }
+    }
+  }
+}

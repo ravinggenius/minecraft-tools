@@ -1,0 +1,28 @@
+@import "./_palette.css";
+
+:root {
+	--border-none-width: 0px;
+	--border-none-color: var(--color-neutral-500);
+	--border-none: solid var(--border-width, var(--border-none-width))
+		var(--border-color, var(--border-none-color));
+
+	--border-thin-width: 1px;
+	--border-thin-color: var(--color-neutral-600);
+	--border-thin: solid var(--border-width, var(--border-thin-width))
+		var(--border-color, var(--border-thin-color));
+
+	--border-thick-width: 3px;
+	--border-thick-color: var(--color-neutral-400);
+	--border-thick: solid var(--border-width, var(--border-thick-width))
+		var(--border-color, var(--border-thick-color));
+}
+
+:root {
+	--shadow-high-color: var(--color-neutral-300);
+	--shadow-high: var(--shadow-color, var(--shadow-high-color)) 0 0 3px,
+		var(--shadow-color, var(--shadow-high-color)) 4px 4px 6px;
+
+	--shadow-low-color: var(--color-neutral-500);
+	--shadow-low: var(--shadow-color, var(--shadow-low-color)) 0 0 1px,
+		var(--shadow-color, var(--shadow-low-color)) 2px 2px 3px;
+}

@@ -31,6 +31,10 @@ export default async function DesignSystemPage() {
 		{
 			href: "/design-system/elevation",
 			text: t("table-of-contents.elevation")
+		},
+		{
+			href: "/design-system/typography",
+			text: t("table-of-contents.typography")
 		}
 	];
 

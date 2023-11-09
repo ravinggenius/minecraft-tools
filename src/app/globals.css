@@ -8,8 +8,6 @@
 html,
 body {
 	font-family: var(--font-sans);
-	margin: 0;
-	padding: 0;
 }
 
 html {
@@ -20,13 +18,17 @@ html {
 
 body {
 	block-size: 100%;
+	font-family: var(--font-sans);
 	font-size: 4rem;
+	line-height: 5rem;
 	/* min-block-size: 100%; */
 }
 
 * {
 	box-sizing: border-box;
 	line-height: inherit;
+	margin: 0;
+	padding: 0;
 }
 
 img {

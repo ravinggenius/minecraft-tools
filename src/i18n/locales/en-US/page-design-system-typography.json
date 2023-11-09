@@ -1,0 +1,37 @@
+{
+  "metadata": {
+    "title": "Typography"
+  },
+
+  "content": {
+    "title": "Typography",
+    "description": "Showcase for all common style atoms and components.",
+    "copy-cta": "copy",
+    "examples": {
+      "primary-title": {
+        "description": ""
+      },
+      "secondary-title": {
+        "description": ""
+      },
+      "tertiary-title": {
+        "description": ""
+      },
+      "hero": {
+        "description": ""
+      },
+      "technical": {
+        "description": ""
+      },
+      "primary-body": {
+        "description": "These styles are copied to the body element as defaults."
+      },
+      "secondary-body": {
+        "description": ""
+      },
+      "fine": {
+        "description": ""
+      }
+    }
+  }
+}

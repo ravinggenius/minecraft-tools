@@ -1,0 +1,47 @@
+.primary-title {
+	font-family: var(--font-mono);
+	font-size: 8rem;
+}
+
+.secondary-title {
+	font-family: var(--font-sans);
+	font-size: 7rem;
+}
+
+.tertiary-title {
+	font-family: var(--font-sans);
+	font-size: 6rem;
+	font-variant: small-caps;
+	font-weight: bold;
+}
+
+.hero {
+	font-family: var(--font-sans);
+	font-size: 5rem;
+	line-height: 6rem;
+}
+
+.technical {
+	font-family: var(--font-mono);
+	font-size: 4rem;
+	line-height: 5rem;
+}
+
+/* default body style */
+.primary-body {
+	font-family: var(--font-sans);
+	font-size: 4rem;
+	line-height: 5rem;
+}
+
+.secondary-body {
+	font-family: var(--font-sans);
+	font-size: 3.5rem;
+	line-height: 5rem;
+}
+
+.fine {
+	font-family: var(--font-mono);
+	font-size: 3rem;
+	line-height: 4rem;
+}

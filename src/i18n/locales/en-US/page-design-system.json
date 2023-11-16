@@ -11,7 +11,8 @@
       "typography": "Typography",
       "cards": "Cards",
       "interactive": "Interactive (anchors, buttons)",
-      "input": "Input"
+      "input": "Input",
+      "table": "Table"
     }
   }
 }

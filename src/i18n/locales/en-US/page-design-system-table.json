@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "title": "Table"
+  },
+
+  "content": {
+    "title": "Table (And Related Elements)",
+    "description": "Showcase for all common style atoms and components.",
+    "table": {
+      "caption": "Some neat animals listed with common and scientific names",
+      "headers": {
+        "scientific": "Scientific Name",
+        "common": "Common Name"
+      },
+      "footer": "some animals listed",
+      "body": {
+        "bowfin": {
+          "scientific": "Amia calva",
+          "common": "Bowfin"
+        },
+        "eel": {
+          "scientific": "Anarrhichthys ocellatus",
+          "common": "Wolf Eel"
+        },
+        "mammal": {
+          "scientific": "Arctictis binturong",
+          "common": "Binturong"
+        },
+        "stork": {
+          "scientific": "Balaeniceps rex",
+          "common": "Shoebill Stork"
+        },
+        "shark": {
+          "scientific": "Carcharodon carcharias",
+          "common": "Great White Shark"
+        }
+      }
+    }
+  }
+}

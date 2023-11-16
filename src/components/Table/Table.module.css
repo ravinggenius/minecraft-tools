@@ -1,0 +1,36 @@
+.caption {
+	font-size: 5rem;
+}
+
+.th {
+	font-family: monospace;
+	font-weight: bold;
+	padding-block: 0;
+	padding-inline: 1rem;
+}
+
+.td {
+	padding-block: 0;
+	padding-inline: 1rem;
+}
+
+.thead {
+	font-size: 4rem;
+}
+
+.tbody {
+	font-size: 4rem;
+
+	.th {
+		text-align: start;
+	}
+}
+
+.tfoot {
+	font-size: 3rem;
+}
+
+.table {
+	margin-inline: auto;
+	white-space: nowrap;
+}

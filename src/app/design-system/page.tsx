@@ -39,6 +39,10 @@ export default async function DesignSystemPage() {
 		{
 			href: "/design-system/cards",
 			text: t("table-of-contents.cards")
+		},
+		{
+			href: "/design-system/interactive",
+			text: t("table-of-contents.interactive")
 		}
 	];
 

@@ -9,7 +9,8 @@
       "palette": "Palette",
       "elevation": "Elevation (borders, shadows)",
       "typography": "Typography",
-      "cards": "Cards"
+      "cards": "Cards",
+      "interactive": "Interactive (anchors, buttons)"
     }
   }
 }

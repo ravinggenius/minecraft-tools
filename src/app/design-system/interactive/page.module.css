@@ -1,0 +1,9 @@
+.example {
+}
+
+.examples {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 3rem;
+	justify-items: center;
+}

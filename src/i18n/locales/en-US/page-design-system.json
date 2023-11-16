@@ -8,7 +8,8 @@
     "table-of-contents": {
       "palette": "Palette",
       "elevation": "Elevation (borders, shadows)",
-      "typography": "Typography"
+      "typography": "Typography",
+      "cards": "Cards"
     }
   }
 }

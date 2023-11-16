@@ -1,0 +1,10 @@
+.example {
+	inline-size: 50%;
+	text-align: center;
+}
+
+.examples {
+	display: flex;
+	flex-direction: row;
+	gap: 3rem;
+}

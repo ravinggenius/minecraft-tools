@@ -1,0 +1,13 @@
+.card {
+	border: var(--border-thin);
+	border-radius: 1rem;
+	padding: 3rem;
+}
+
+.card[data-variant="high"] {
+	box-shadow: var(--shadow-high);
+}
+
+.card[data-variant="low"] {
+	box-shadow: var(--shadow-low);
+}

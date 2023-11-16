@@ -1,5 +1,6 @@
 {
   "segment-labels": {
+    "__DEFAULT__": "Not Found",
     "about": "About",
     "account": "Account",
     "assistance": "Assistance",

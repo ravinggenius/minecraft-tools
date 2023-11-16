@@ -5,7 +5,7 @@ import { ComponentProps } from "react";
 
 import Form, { useForm } from "../Form/Form";
 
-import styles from "./ActionButton.module.css";
+import styles from "./ActionButton.module.scss";
 
 export default function ActionButton({
 	action,

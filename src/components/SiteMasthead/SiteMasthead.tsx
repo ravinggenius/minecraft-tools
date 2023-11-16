@@ -2,7 +2,7 @@ import classNames from "classnames";
 
 import Anchor from "@/components/Anchor/Anchor";
 
-import styles from "./SiteMasthead.module.css";
+import styles from "./SiteMasthead.module.scss";
 
 export default function SiteMasthead({
 	className,

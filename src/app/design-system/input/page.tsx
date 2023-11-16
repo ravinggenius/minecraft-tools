@@ -2,7 +2,7 @@ import Field from "@/components/Field/Field";
 import TextField from "@/components/TextField/TextField";
 import { loadPageTranslations } from "@/i18n/server";
 
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 
 export const generateMetadata = async () => {
 	const { t } = await loadPageTranslations("page-design-system-input", {

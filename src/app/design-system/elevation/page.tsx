@@ -1,6 +1,6 @@
 import { loadPageTranslations } from "@/i18n/server";
 
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import { BORDER_STYLES, SHADOW_STYLES } from "./schema";
 
 export const generateMetadata = async () => {

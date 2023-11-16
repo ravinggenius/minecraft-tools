@@ -7,7 +7,7 @@ import {
 	ThHTMLAttributes
 } from "react";
 
-import styles from "./Table.module.css";
+import styles from "./Table.module.scss";
 
 export default function Table({
 	children,

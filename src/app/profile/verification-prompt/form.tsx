@@ -7,7 +7,7 @@ import Form, { useForm } from "@/components/Form/Form";
 import { useTranslation } from "@/i18n/client";
 import { ServerAction } from "@/library/_/server-action";
 
-import styles from "./form.module.css";
+import styles from "./form.module.scss";
 
 export default function VerifyEmailPromptForm({
 	action: resendVerification,

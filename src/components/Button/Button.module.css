@@ -1,5 +1,0 @@
-@value interactive from "../_/interactive/interactive.module.css";
-
-.button {
-	composes: interactive;
-}

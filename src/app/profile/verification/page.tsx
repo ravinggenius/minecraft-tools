@@ -7,7 +7,7 @@ import * as profileModel from "@/library/profile/model";
 
 import { markEmailAsVerified } from "./actions";
 import VerifyEmailtForm from "./form";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 
 export const generateMetadata = async () => {
 	const { t } = await loadPageTranslations("page-profile-verification", {

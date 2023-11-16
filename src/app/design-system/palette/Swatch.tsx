@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { always, cond } from "rambda";
 
 import { Hue, Lightness } from "./schema";
-import styles from "./Swatch.module.css";
+import styles from "./Swatch.module.scss";
 
 const contrastColorLightness: (arg: { h: Hue; l: Lightness }) => 100 | 900 =
 	cond([

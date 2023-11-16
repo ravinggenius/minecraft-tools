@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { loadPageTranslations } from "@/i18n/server";
 import { maybeProfileFromSession } from "@/library/_/session";
 
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import { QUERY } from "./schema";
 
 export const generateMetadata = async () => {

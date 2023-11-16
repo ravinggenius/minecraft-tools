@@ -10,7 +10,7 @@ import SubmitButton from "@/components/SubmitButton/SubmitButton";
 import { CodedErrorAttrs } from "@/library/_/errors/coded-error";
 import { normalizeFormData, ServerAction } from "@/library/_/server-action";
 
-import styles from "./Form.module.css";
+import styles from "./Form.module.scss";
 
 export default forwardRef(function Form(
 	{

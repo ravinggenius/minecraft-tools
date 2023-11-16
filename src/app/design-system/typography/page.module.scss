@@ -1,0 +1,44 @@
+.primary-title {
+	composes: primary-title from "../_typography.module.scss";
+}
+
+.secondary-title {
+	composes: secondary-title from "../_typography.module.scss";
+}
+
+.tertiary-title {
+	composes: tertiary-title from "../_typography.module.scss";
+}
+
+.hero {
+	composes: hero from "../_typography.module.scss";
+}
+
+.technical {
+	composes: technical from "../_typography.module.scss";
+}
+
+.primary-body {
+	composes: primary-body from "../_typography.module.scss";
+}
+
+.secondary-body {
+	composes: secondary-body from "../_typography.module.scss";
+}
+
+.fine {
+	composes: fine from "../_typography.module.scss";
+}
+
+.example {
+	composes: technical from "../_typography.module.scss";
+	display: block;
+	margin-inline-start: 3rem;
+}
+
+.examples {
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+	margin-block-start: 6rem;
+}

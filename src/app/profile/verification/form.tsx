@@ -10,7 +10,7 @@ import { useTextField } from "@/components/TextField/TextField";
 import { useTranslation } from "@/i18n/client";
 import { ServerAction } from "@/library/_/server-action";
 
-import styles from "./form.module.css";
+import styles from "./form.module.scss";
 import { DATA } from "./schema";
 
 export default function VerifyEmailtForm({

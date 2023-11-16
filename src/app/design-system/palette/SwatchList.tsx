@@ -2,7 +2,7 @@ import classNames from "classnames";
 
 import { Hue, LIGHTNESSES } from "./schema";
 import Swatch from "./Swatch";
-import styles from "./SwatchList.module.css";
+import styles from "./SwatchList.module.scss";
 
 export default function SwatchList({
 	className,

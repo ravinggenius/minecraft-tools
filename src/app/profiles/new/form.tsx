@@ -6,7 +6,7 @@ import { useTranslation } from "@/i18n/client";
 import { ServerAction } from "@/library/_/server-action";
 import { ACCOUNT_CREATE_ATTRS } from "@/library/account/schema";
 
-import styles from "./form.module.css";
+import styles from "./form.module.scss";
 
 export default function CreateProfileForm({
 	action: createProfile

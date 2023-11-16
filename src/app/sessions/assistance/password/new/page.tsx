@@ -6,7 +6,7 @@ import { maybeProfileFromSession } from "@/library/_/session";
 
 import { initiateForgotPasswordReset } from "./actions";
 import SessionsAssistancePasswordNewForm from "./form";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 
 export const generateMetadata = async () => {
 	const { t } = await loadPageTranslations(

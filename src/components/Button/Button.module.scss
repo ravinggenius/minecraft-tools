@@ -1,0 +1,5 @@
+@value interactive from "../_/interactive/interactive.module.scss";
+
+.button {
+	composes: interactive;
+}

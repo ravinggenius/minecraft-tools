@@ -4,7 +4,7 @@ import { ComponentProps } from "react";
 import Anchor from "@/components/Anchor/Anchor";
 import { Resource } from "@/components/SiteDeck/schemas";
 
-import styles from "./NavigationTree.module.css";
+import styles from "./NavigationTree.module.scss";
 
 function Branch({ branch }: { branch: Resource }) {
 	return (

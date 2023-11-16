@@ -7,7 +7,7 @@ import { maybeProfileFromSession } from "@/library/_/session";
 
 import { createProfile } from "./actions";
 import CreateProfileForm from "./form";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 
 export const generateMetadata = async () => {
 	const { t } = await loadPageTranslations("page-profiles-new", {

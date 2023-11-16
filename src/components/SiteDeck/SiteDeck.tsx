@@ -13,7 +13,7 @@ import { useTranslation } from "@/i18n/client";
 import { Profile } from "@/library/profile/schema";
 
 import { ALL as BASE_RESOURCES } from "./data";
-import styles from "./SiteDeck.module.css";
+import styles from "./SiteDeck.module.scss";
 
 export default function SiteDeck({
 	className,

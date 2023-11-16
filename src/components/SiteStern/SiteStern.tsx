@@ -4,7 +4,7 @@ import Anchor from "@/components/Anchor/Anchor";
 import { loadPageTranslations } from "@/i18n/server";
 import { SOURCE_URL } from "@/library/_/constants";
 
-import styles from "./SiteStern.module.css";
+import styles from "./SiteStern.module.scss";
 
 export default async function SiteStern({ className }: { className?: string }) {
 	const { t } = await loadPageTranslations("component-site-stern");

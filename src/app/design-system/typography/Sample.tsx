@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 import Button from "@/components/Button/Button";
 
-import styles from "./Sample.module.css";
+import styles from "./Sample.module.scss";
 import { Name } from "./schema";
 
 export default function Sample({
@@ -21,7 +21,7 @@ export default function Sample({
 			className={classNames(styles.example, className)}
 			onClick={() => {
 				navigator.clipboard.writeText(
-					`composes: ${name} from "@/app/design-system/_typography.module.css";`
+					`composes: ${name} from "@/app/design-system/_typography.module.scss";`
 				);
 			}}
 			variant="inline"

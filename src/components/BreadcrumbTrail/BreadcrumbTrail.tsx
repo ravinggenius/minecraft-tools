@@ -8,7 +8,7 @@ import { ComponentProps } from "react";
 import Anchor from "@/components/Anchor/Anchor";
 import { useTranslation } from "@/i18n/client";
 
-import styles from "./BreadcrumbTrail.module.css";
+import styles from "./BreadcrumbTrail.module.scss";
 
 interface Crumb {
 	href: ComponentProps<typeof Anchor>["href"];

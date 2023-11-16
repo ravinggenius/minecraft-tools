@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "title": "Input"
+  },
+
+  "content": {
+    "title": "Input",
+    "description": "Showcase for all common style atoms and components.",
+    "field": {
+      "explanation": "Input fields share a common set of properties defined by the Field component.",
+      "input-here": "place input control here",
+      "description": "Helpful (optional) description so user knows what is expected.",
+      "label": "Required Label"
+    },
+    "text-field": {
+      "explanation": "Normally Field isn't used directly. Instead it is wrapped with a specific input control. Here is a TextField.",
+      "description": "Type your favorite color. Maybe it will be used to customize the UI.... (It won't. Sorry)",
+      "example": {
+        "description": "whatever color you like most",
+        "sample": "royal blue"
+      },
+      "feedback": {
+        "positive": "Sample positive feedback",
+        "neutral": "Sample neutral feedback",
+        "negative": "Sample negative feedback"
+      },
+      "label": "Favorite Color",
+      "placeholder": "grey"
+    }
+  }
+}

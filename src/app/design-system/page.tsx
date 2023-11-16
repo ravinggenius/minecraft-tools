@@ -43,6 +43,10 @@ export default async function DesignSystemPage() {
 		{
 			href: "/design-system/interactive",
 			text: t("table-of-contents.interactive")
+		},
+		{
+			href: "/design-system/input",
+			text: t("table-of-contents.input")
 		}
 	];
 

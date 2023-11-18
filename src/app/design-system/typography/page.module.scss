@@ -1,37 +1,37 @@
 .primary-title {
-	composes: primary-title from "../_typography.module.scss";
+	composes: primary-title from "@/design-system/_/_typography.module.scss";
 }
 
 .secondary-title {
-	composes: secondary-title from "../_typography.module.scss";
+	composes: secondary-title from "@/design-system/_/_typography.module.scss";
 }
 
 .tertiary-title {
-	composes: tertiary-title from "../_typography.module.scss";
+	composes: tertiary-title from "@/design-system/_/_typography.module.scss";
 }
 
 .hero {
-	composes: hero from "../_typography.module.scss";
+	composes: hero from "@/design-system/_/_typography.module.scss";
 }
 
 .technical {
-	composes: technical from "../_typography.module.scss";
+	composes: technical from "@/design-system/_/_typography.module.scss";
 }
 
 .primary-body {
-	composes: primary-body from "../_typography.module.scss";
+	composes: primary-body from "@/design-system/_/_typography.module.scss";
 }
 
 .secondary-body {
-	composes: secondary-body from "../_typography.module.scss";
+	composes: secondary-body from "@/design-system/_/_typography.module.scss";
 }
 
 .fine {
-	composes: fine from "../_typography.module.scss";
+	composes: fine from "@/design-system/_/_typography.module.scss";
 }
 
 .example {
-	composes: technical from "../_typography.module.scss";
+	composes: technical from "@/design-system/_/_typography.module.scss";
 	display: block;
 	margin-inline-start: 3rem;
 }

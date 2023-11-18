@@ -21,7 +21,7 @@ export default function Sample({
 			className={classNames(styles.example, className)}
 			onClick={() => {
 				navigator.clipboard.writeText(
-					`composes: ${name} from "@/app/design-system/_typography.module.scss";`
+					`composes: ${name} from "@/design-system/_/_typography.module.scss";`
 				);
 			}}
 			variant="inline"

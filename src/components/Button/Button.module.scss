@@ -1,5 +1,3 @@
-@value interactive from "../_/interactive/interactive.module.scss";
-
 .button {
-	composes: interactive;
+	composes: interactive from "@/design-system/_/_interactive.module.scss";
 }

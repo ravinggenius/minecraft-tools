@@ -1,0 +1,10 @@
+@use "@/design-system/_/_typography.module.scss" as typography;
+
+.content {
+	@include typography.primary-body();
+}
+
+.description {
+	inline-size: 100%;
+	max-inline-size: var(--max-width);
+}

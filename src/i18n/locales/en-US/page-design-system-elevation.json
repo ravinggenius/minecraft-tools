@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "title": "Elevation"
+  },
+
+  "content": {
+    "border": {
+      "none": {
+        "title": "No Border"
+      },
+      "thin": {
+        "title": "Thin Border"
+      },
+      "thick": {
+        "title": "Thick Border"
+      }
+    },
+    "radius": {
+      "none": {
+        "title": "No Radius"
+      },
+      "sharp": {
+        "title": "Small Radius"
+      },
+      "dull": {
+        "title": "Large Radius"
+      }
+    },
+    "shadow": {
+      "low": {
+        "title": "Low Shadow"
+      },
+      "high": {
+        "title": "High Shadow"
+      }
+    }
+  }
+}

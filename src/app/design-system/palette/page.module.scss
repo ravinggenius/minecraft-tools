@@ -1,0 +1,11 @@
+@use "@/design-system/_/_typography.module.scss" as typography;
+
+.title {
+	@include typography.secondary-title();
+}
+
+.header {
+}
+
+.description {
+}

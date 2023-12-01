@@ -1,0 +1,40 @@
+@use "@/design-system/_/_typography.module.scss" as typography;
+
+@import "@/design-system/_/_elevation.scss";
+@import "@/design-system/_/_palette.scss";
+
+:root {
+	--base-size-unit: 4px;
+}
+
+html,
+body {
+	font-family: var(--font-sans);
+}
+
+html {
+	block-size: 100%;
+	font-size: var(--base-size-unit);
+	line-height: 1;
+}
+
+body {
+	@include typography.primary-body();
+
+	block-size: 100%;
+	color: var(--color-neutral-900);
+	/* min-block-size: 100%; */
+}
+
+* {
+	box-sizing: border-box;
+	font-weight: normal;
+	line-height: inherit;
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	display: block;
+	max-inline-size: 100%;
+}

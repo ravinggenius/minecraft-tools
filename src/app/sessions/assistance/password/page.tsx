@@ -6,7 +6,7 @@ import { maybeProfileFromSession } from "@/library/_/session";
 
 import { resetForgottenPassword } from "./actions";
 import SessionAssistancePasswordForm from "./form";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import { QUERY } from "./schema";
 
 export const generateMetadata = async () => {

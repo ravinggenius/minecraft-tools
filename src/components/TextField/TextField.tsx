@@ -1,3 +1,5 @@
+"use client";
+
 import classNames from "classnames";
 import {
 	ChangeEventHandler,
@@ -10,7 +12,7 @@ import {
 import Field, { FieldMeta } from "@/components/Field/Field";
 import { useForm } from "@/components/Form/Form";
 
-import styles from "./TextField.module.css";
+import styles from "./TextField.module.scss";
 
 export default function TextField({
 	className,

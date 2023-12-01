@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { ReactNode } from "react";
 
-import styles from "./Pre.module.css";
+import styles from "./Pre.module.scss";
 
 export default function Pre({
 	children,

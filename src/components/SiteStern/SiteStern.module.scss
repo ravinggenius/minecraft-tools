@@ -1,0 +1,11 @@
+@use "@/design-system/_/_typography.module.scss" as typography;
+
+.disclaimer {
+	@include typography.fine();
+
+	display: block;
+}
+
+.source-link {
+	padding: 0;
+}

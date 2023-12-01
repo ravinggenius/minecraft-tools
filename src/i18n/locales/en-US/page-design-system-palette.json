@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "title": "Palette"
+  },
+
+  "content": {
+    "base": "Base",
+    "neutral": {
+      "title": "neutral",
+      "description": "background, foreground, border, shadow et cetera"
+    },
+    "red": {
+      "title": "red",
+      "description": "errors and warnings"
+    },
+    "green": {
+      "title": "green",
+      "description": "success"
+    },
+    "blue": {
+      "title": "blue",
+      "description": "information and feedback"
+    },
+    "yellow": {
+      "title": "yellow",
+      "description": "hints and tips"
+    }
+  }
+}

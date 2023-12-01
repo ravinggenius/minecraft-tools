@@ -1,0 +1,11 @@
+{
+  "metadata": {
+    "title": "Interactive"
+  },
+
+  "content": {
+    "anchor": "{{variant}} anchor",
+    "button": "{{variant}} button",
+    "button_disabled": "{{variant}} button (disabled)"
+  }
+}

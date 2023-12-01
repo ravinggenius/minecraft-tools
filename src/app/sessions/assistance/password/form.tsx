@@ -8,7 +8,7 @@ import TextField, { useTextField } from "@/components/TextField/TextField";
 import { useTranslation } from "@/i18n/client";
 import { ServerAction } from "@/library/_/server-action";
 
-import styles from "./form.module.css";
+import styles from "./form.module.scss";
 import { DATA, Query } from "./schema";
 
 export default function SessionAssistancePasswordForm({

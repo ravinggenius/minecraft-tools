@@ -6,7 +6,7 @@ import { useTranslation } from "@/i18n/client";
 import { ServerAction } from "@/library/_/server-action";
 import { SESSION_CREDENTIALS } from "@/library/session/schema";
 
-import styles from "./form.module.css";
+import styles from "./form.module.scss";
 
 export default function CreateSessionForm({
 	action: createSession

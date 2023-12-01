@@ -4,7 +4,7 @@ import { useFormStatus } from "react-dom";
 
 import Button from "@/components/Button/Button";
 
-import styles from "./SubmitButton.module.css";
+import styles from "./SubmitButton.module.scss";
 
 export default function SubmitButton({
 	className,

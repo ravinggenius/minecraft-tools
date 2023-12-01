@@ -1,0 +1,5 @@
+@use "@/design-system/_/_interactive.module.scss" as interactive;
+
+.button {
+	@include interactive.interactive();
+}

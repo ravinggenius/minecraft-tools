@@ -1,0 +1,41 @@
+@use "@/design-system/_/_typography.module.scss" as typography;
+
+.caption {
+	@include typography.technical();
+}
+
+.th {
+	@include typography.hero();
+
+	padding-block: 0;
+	padding-inline: 1rem;
+}
+
+.td {
+	padding-block: 0;
+	padding-inline: 1rem;
+}
+
+.thead {
+}
+
+.tbody {
+	.th {
+		text-align: start;
+	}
+
+	.td {
+		@include typography.primary-body();
+	}
+}
+
+.tfoot {
+	.td {
+		@include typography.secondary-body();
+	}
+}
+
+.table {
+	margin-inline: auto;
+	white-space: nowrap;
+}

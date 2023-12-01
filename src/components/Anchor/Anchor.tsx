@@ -5,7 +5,7 @@ import { AnchorHTMLAttributes } from "react";
 
 import { Interactive } from "@/components/_/interactive/interactive";
 
-import styles from "./Anchor.module.css";
+import styles from "./Anchor.module.scss";
 
 export default function Anchor<HREF extends string>({
 	children,

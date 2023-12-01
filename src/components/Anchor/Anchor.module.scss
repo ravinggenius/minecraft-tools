@@ -1,0 +1,5 @@
+@use "@/design-system/_/_interactive.module.scss" as interactive;
+
+.anchor {
+	@include interactive.interactive();
+}

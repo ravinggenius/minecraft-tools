@@ -1,3 +1,5 @@
+"use client";
+
 import classNames from "classnames";
 import { ReactNode } from "react";
 
@@ -6,7 +8,7 @@ import ExampleList, { Example } from "@/components/ExampleList/ExampleList";
 import FeedbackList, { Feedback } from "@/components/FeedbackList/FeedbackList";
 import { useTranslation } from "@/i18n/client";
 
-import styles from "./Field.module.css";
+import styles from "./Field.module.scss";
 
 export interface FieldMeta {
 	dirty: boolean;

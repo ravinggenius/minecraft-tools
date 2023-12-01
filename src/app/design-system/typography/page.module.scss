@@ -1,0 +1,47 @@
+@use "@/design-system/_/_typography.module.scss" as typography;
+
+.primary-title {
+	@include typography.primary-title();
+}
+
+.secondary-title {
+	@include typography.secondary-title();
+}
+
+.tertiary-title {
+	@include typography.tertiary-title();
+}
+
+.hero {
+	@include typography.hero();
+}
+
+.technical {
+	@include typography.technical();
+}
+
+.primary-body {
+	@include typography.primary-body();
+}
+
+.secondary-body {
+	@include typography.secondary-body();
+}
+
+.fine {
+	@include typography.fine();
+}
+
+.example {
+	@include typography.technical();
+
+	display: block;
+	margin-inline-start: 3rem;
+}
+
+.examples {
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+	margin-block-start: 6rem;
+}

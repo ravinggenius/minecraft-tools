@@ -1,6 +1,6 @@
 import { loadPageTranslations } from "@/i18n/server";
 
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 
 export default async function HomePage() {
 	const { t } = await loadPageTranslations("page-home", {
@@ -8,10 +8,10 @@ export default async function HomePage() {
 	});
 
 	return (
-		<div className={styles.description}>
-			<p>{t("intro")}</p>
+		<article className={styles.description}>
+			<p className={styles.introduction}>{t("intro")}</p>
 
-			<p>{t("explore")}</p>
-		</div>
+			<p className={styles.explore}>{t("explore")}</p>
+		</article>
 	);
 }

@@ -1,0 +1,76 @@
+@use "@/design-system/_/_typography.module.scss" as typography;
+
+@mixin interactive {
+	@include typography.technical();
+
+	border-radius: var(--radius-sharp);
+	border-width: var(--border-width);
+	display: inline-block;
+	padding-block: calc(2rem - var(--border-width));
+	padding-inline: calc(4rem - var(--border-width));
+	text-decoration: none;
+
+	&[data-variant="primary"] {
+		--border-width: 0px;
+
+		background-color: var(--color-neutral-800);
+		color: var(--color-neutral-100);
+
+		&:not(:disabled):active,
+		&:not(:disabled):focus,
+		&:not(:disabled):hover {
+			--border-color: var(--color-blue-600);
+			--border-width: var(--border-thick-width);
+
+			background-color: var(--color-special-snow);
+			border: var(--border-thick);
+			color: var(--color-neutral-800);
+		}
+
+		&:disabled {
+			background-color: var(--color-neutral-200);
+			color: var(--color-neutral-900);
+		}
+	}
+
+	&[data-variant="secondary"] {
+		--border-width: var(--border-thick-width);
+
+		background-color: var(--color-special-snow);
+		border: var(--border-thick);
+		border-color: var(--color-neutral-500);
+		color: var(--color-neutral-700);
+
+		&:not(:disabled):active,
+		&:not(:disabled):focus,
+		&:not(:disabled):hover {
+			border-color: var(--color-neutral-700);
+			color: var(--color-neutral-900);
+		}
+
+		&:disabled {
+			--border-width: var(--border-thin-width);
+
+			background-color: var(--color-neutral-100);
+			border: var(--border-thin);
+			color: var(--color-neutral-600);
+		}
+	}
+
+	&[data-variant="inline"] {
+		--border-width: 0px;
+
+		background-color: inherit;
+		color: var(--color-blue-600);
+
+		&:not(:disabled):active,
+		&:not(:disabled):focus,
+		&:not(:disabled):hover {
+			text-decoration: underline;
+		}
+
+		&:disabled {
+			color: var(--color-neutral-600);
+		}
+	}
+}

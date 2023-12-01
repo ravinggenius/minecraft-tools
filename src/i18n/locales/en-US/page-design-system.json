@@ -1,0 +1,17 @@
+{
+  "metadata": {
+    "title": "Design System"
+  },
+
+  "content": {
+    "table-of-contents": {
+      "palette": "Palette",
+      "elevation": "Elevation (borders, shadows)",
+      "typography": "Typography",
+      "cards": "Cards",
+      "interactive": "Interactive (anchors, buttons)",
+      "input": "Input",
+      "table": "Table"
+    }
+  }
+}

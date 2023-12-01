@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-import styles from "./ExampleList.module.css";
+import styles from "./ExampleList.module.scss";
 
 export interface Example {
 	description: string;

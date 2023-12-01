@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { loadPageTranslations } from "@/i18n/server";
 import { requireVerifiedProfile } from "@/library/_/session";
 
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 
 export const generateMetadata = async () => {
 	const { t } = await loadPageTranslations("page-profile", {
@@ -28,8 +28,8 @@ export default async function ProfilePage() {
 	}
 
 	return (
-		<main className={styles.main}>
+		<article className={styles.main}>
 			<p>{t("description")}</p>
-		</main>
+		</article>
 	);
 }

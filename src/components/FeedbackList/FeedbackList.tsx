@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-import styles from "./FeedbackList.module.css";
+import styles from "./FeedbackList.module.scss";
 
 export interface Feedback {
 	message: string;

@@ -2,7 +2,7 @@ import classNames from "classnames";
 
 import Pre from "../Pre/Pre";
 
-import styles from "./Debug.module.css";
+import styles from "./Debug.module.scss";
 
 export default function Debug({
 	className,

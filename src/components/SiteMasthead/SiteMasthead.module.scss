@@ -1,0 +1,28 @@
+@use "@/design-system/_/_typography.module.scss" as typography;
+
+.site-masthead .title .anchor {
+	color: inherit;
+	font-size: unset;
+	padding: 0;
+}
+
+.title {
+	@include typography.primary-title();
+
+	display: block;
+	inline-size: 100%;
+	text-align: center;
+}
+
+.tagline {
+	@include typography.technical();
+
+	margin-inline-start: auto;
+	transform: rotate(330deg);
+}
+
+.site-masthead {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}

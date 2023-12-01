@@ -1,0 +1,52 @@
+@mixin primary-title {
+	display: block;
+	font-family: var(--font-mono);
+	font-size: 8rem;
+	font-weight: bold;
+	line-height: 11rem;
+}
+
+@mixin secondary-title {
+	font-family: var(--font-sans);
+	font-size: 7rem;
+	line-height: 9rem;
+}
+
+@mixin tertiary-title {
+	font-family: var(--font-sans);
+	font-size: 6rem;
+	font-variant: small-caps;
+	font-weight: bold;
+	line-height: 7rem;
+}
+
+@mixin hero {
+	font-family: var(--font-sans);
+	font-size: 5rem;
+	line-height: 6rem;
+}
+
+@mixin technical {
+	font-family: var(--font-mono);
+	font-size: 4rem;
+	line-height: 5rem;
+}
+
+// default body style
+@mixin primary-body {
+	font-family: var(--font-sans);
+	font-size: 4rem;
+	line-height: 5rem;
+}
+
+@mixin secondary-body {
+	font-family: var(--font-sans);
+	font-size: 3.5rem;
+	line-height: 5rem;
+}
+
+@mixin fine {
+	font-family: var(--font-mono);
+	font-size: 3rem;
+	line-height: 4rem;
+}

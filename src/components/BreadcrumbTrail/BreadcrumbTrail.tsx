@@ -8,7 +8,7 @@ import { ComponentProps } from "react";
 import Anchor from "@/components/Anchor/Anchor";
 import { useTranslation } from "@/i18n/client";
 
-import styles from "./BreadcrumbTrail.module.css";
+import styles from "./BreadcrumbTrail.module.scss";
 
 interface Crumb {
 	href: ComponentProps<typeof Anchor>["href"];
@@ -50,7 +50,9 @@ function BreadcrumbSegment({
 						{label}
 					</Anchor>
 				) : (
-					<span className={styles["leaf-label"]}>{label}</span>
+					<span className={styles["leaf-label-terminal"]}>
+						{label}
+					</span>
 				)}
 
 				{child ? <BreadcrumbSegment {...child} /> : null}

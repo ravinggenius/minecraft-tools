@@ -1,9 +1,0 @@
-.description {
-	inline-size: 100%;
-	max-inline-size: var(--max-width);
-}
-
-.description p {
-	margin: 0;
-	padding: 1rem;
-}

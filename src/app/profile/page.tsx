@@ -28,8 +28,8 @@ export default async function ProfilePage() {
 	}
 
 	return (
-		<main className={styles.main}>
+		<article className={styles.main}>
 			<p>{t("description")}</p>
-		</main>
+		</article>
 	);
 }

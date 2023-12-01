@@ -11,13 +11,14 @@ import styles from "./Table.module.scss";
 
 export default function Table({
 	children,
-	className
+	className,
+	...rest
 }: {
 	children: ReactNode;
 	className?: string;
 } & TableHTMLAttributes<HTMLTableElement>) {
 	return (
-		<table className={classNames(styles.table, className)}>
+		<table {...rest} className={classNames(styles.table, className)}>
 			{children}
 		</table>
 	);
@@ -25,13 +26,14 @@ export default function Table({
 
 export function Caption({
 	children,
-	className
+	className,
+	...rest
 }: {
 	children: ReactNode;
 	className?: string;
 } & AllHTMLAttributes<HTMLTableCaptionElement>) {
 	return (
-		<caption className={classNames(styles.caption, className)}>
+		<caption {...rest} className={classNames(styles.caption, className)}>
 			{children}
 		</caption>
 	);
@@ -39,43 +41,59 @@ export function Caption({
 
 export function TH({
 	children,
-	className
+	className,
+	...rest
 }: {
 	children: ReactNode;
 	className?: string;
 } & ThHTMLAttributes<HTMLTableCellElement>) {
-	return <th className={classNames(styles.th, className)}>{children}</th>;
+	return (
+		<th {...rest} className={classNames(styles.th, className)}>
+			{children}
+		</th>
+	);
 }
 
 export function TD({
 	children,
-	className
+	className,
+	...rest
 }: {
 	children: ReactNode;
 	className?: string;
 } & TdHTMLAttributes<HTMLTableCellElement>) {
-	return <td className={classNames(styles.td, className)}>{children}</td>;
+	return (
+		<td {...rest} className={classNames(styles.td, className)}>
+			{children}
+		</td>
+	);
 }
 
 export function TR({
 	children,
-	className
+	className,
+	...rest
 }: {
 	children: ReactNode;
 	className?: string;
 } & AllHTMLAttributes<HTMLTableRowElement>) {
-	return <tr className={classNames(styles.tr, className)}>{children}</tr>;
+	return (
+		<tr {...rest} className={classNames(styles.tr, className)}>
+			{children}
+		</tr>
+	);
 }
 
 export function THead({
 	children,
-	className
+	className,
+	...rest
 }: {
 	children: ReactNode;
 	className?: string;
 } & AllHTMLAttributes<HTMLTableSectionElement>) {
 	return (
-		<thead className={classNames(styles.thead, className)}>
+		<thead {...rest} className={classNames(styles.thead, className)}>
 			{children}
 		</thead>
 	);
@@ -83,13 +101,14 @@ export function THead({
 
 export function TBody({
 	children,
-	className
+	className,
+	...rest
 }: {
 	children: ReactNode;
 	className?: string;
 } & AllHTMLAttributes<HTMLTableSectionElement>) {
 	return (
-		<tbody className={classNames(styles.tbody, className)}>
+		<tbody {...rest} className={classNames(styles.tbody, className)}>
 			{children}
 		</tbody>
 	);
@@ -97,13 +116,14 @@ export function TBody({
 
 export function TFoot({
 	children,
-	className
+	className,
+	...rest
 }: {
 	children: ReactNode;
 	className?: string;
 } & AllHTMLAttributes<HTMLTableSectionElement>) {
 	return (
-		<tfoot className={classNames(styles.tfoot, className)}>
+		<tfoot {...rest} className={classNames(styles.tfoot, className)}>
 			{children}
 		</tfoot>
 	);

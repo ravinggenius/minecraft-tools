@@ -4,7 +4,6 @@
   },
 
   "content": {
-    "description": "Showcase for all common style atoms and components.",
     "table-of-contents": {
       "palette": "Palette",
       "elevation": "Elevation (borders, shadows)",

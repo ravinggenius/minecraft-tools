@@ -1,5 +1,12 @@
-.leaf-label {
+@use "@/design-system/_/_typography.module.scss" as typography;
+
+.leaf-label,
+.leaf-label-terminal {
 	padding: 0;
+}
+
+.leaf-label-terminal {
+	font-style: italic;
 }
 
 .breadcrumb-list-item {
@@ -17,11 +24,11 @@
 
 .breadcrumb-list {
 	display: inline-block;
-	font-size: 4rem;
 	padding-inline-start: 0;
 }
 
 .breadcrumb-trail {
-	font-size: 4rem;
+	@include typography.technical();
+
 	margin-block-end: 6rem;
 }

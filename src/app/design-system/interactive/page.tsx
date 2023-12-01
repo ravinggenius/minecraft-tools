@@ -23,34 +23,32 @@ export default async function DesignSystemInteractivePage() {
 	});
 
 	return (
-		<article className={styles.article}>
-			<p>{t("description")}</p>
+		<section className={styles.examples}>
+			{(
+				["primary", "secondary", "inline"] as Array<
+					Interactive["variant"]
+				>
+			).map((variant) => (
+				<Fragment key={variant}>
+					<div className={styles.example}>
+						<Anchor {...{ variant }} href="#">
+							{t("anchor", { variant })}
+						</Anchor>
+					</div>
 
-			<header>
-				<h1>{t("title")}</h1>
-			</header>
+					<div className={styles.example}>
+						<Button {...{ variant }} type="button">
+							{t("button", { variant })}
+						</Button>
+					</div>
 
-			<section className={styles.examples}>
-				{(
-					["primary", "secondary", "inline"] as Array<
-						Interactive["variant"]
-					>
-				).map((variant) => (
-					<Fragment key={variant}>
-						<div className={styles.example}>
-							<Anchor {...{ variant }} href="#">
-								{`${variant} Anchor`}
-							</Anchor>
-						</div>
-
-						<div className={styles.example}>
-							<Button {...{ variant }} type="button">
-								{`${variant} Button`}
-							</Button>
-						</div>
-					</Fragment>
-				))}
-			</section>
-		</article>
+					<div className={styles.example}>
+						<Button {...{ variant }} disabled type="button">
+							{t("button", { context: "disabled", variant })}
+						</Button>
+					</div>
+				</Fragment>
+			))}
+		</section>
 	);
 }

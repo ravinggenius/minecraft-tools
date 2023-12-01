@@ -27,46 +27,38 @@ export default async function DesignSystemTablePage() {
 	});
 
 	return (
-		<article className={styles.article}>
-			<p>{t("description")}</p>
+		<section>
+			<Table>
+				<Caption>{t("table.caption")}</Caption>
 
-			<header>
-				<h1>{t("title")}</h1>
-			</header>
+				<THead>
+					<TR>
+						<TH>{t("table.headers.scientific")}</TH>
+						<TH>{t("table.headers.common")}</TH>
+					</TR>
+				</THead>
 
-			<section>
-				<Table>
-					<Caption>{t("table.caption")}</Caption>
+				<TFoot>
+					<TR>
+						<TD colSpan={2}>{t("table.footer")}</TD>
+					</TR>
+				</TFoot>
 
-					<THead>
-						<TR>
-							<TH>{t("table.headers.scientific")}</TH>
-							<TH>{t("table.headers.common")}</TH>
-						</TR>
-					</THead>
-
-					<TFoot>
-						<TR>
-							<TD colSpan={2}>{t("table.footer")}</TD>
-						</TR>
-					</TFoot>
-
-					<TBody>
-						{["bowfin", "eel", "mammal", "stork", "shark"].map(
-							(code) => (
-								<TR key={code}>
-									<TD>
-										<em>
-											{t(`table.body.${code}.scientific`)}
-										</em>
-									</TD>
-									<TD>{t(`table.body.${code}.common`)}</TD>
-								</TR>
-							)
-						)}
-					</TBody>
-				</Table>
-			</section>
-		</article>
+				<TBody>
+					{["bowfin", "eel", "mammal", "stork", "shark"].map(
+						(code) => (
+							<TR key={code}>
+								<TD>
+									<em>
+										{t(`table.body.${code}.scientific`)}
+									</em>
+								</TD>
+								<TD>{t(`table.body.${code}.common`)}</TD>
+							</TR>
+						)
+					)}
+				</TBody>
+			</Table>
+		</section>
 	);
 }

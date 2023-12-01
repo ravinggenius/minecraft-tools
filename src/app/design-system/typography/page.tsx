@@ -20,26 +20,18 @@ export default async function DesignSystemTypographyPage() {
 	});
 
 	return (
-		<article className={styles.article}>
-			<p>{t("description")}</p>
+		<section className={styles.examples}>
+			{NAMES.map((name) => (
+				<section key={name}>
+					<p className={styles[name]}>{name}</p>
 
-			<header>
-				<h1>{t("title")}</h1>
-			</header>
+					<Sample {...{ name }}>{t("copy-cta")}</Sample>
 
-			<section className={styles.examples}>
-				{NAMES.map((name) => (
-					<section key={name}>
-						<p className={styles[name]}>{name}</p>
-
-						<Sample {...{ name }}>{t("copy-cta")}</Sample>
-
-						<p className={styles.description}>
-							{t(`examples.${name}.description`)}
-						</p>
-					</section>
-				))}
-			</section>
-		</article>
+					<p className={styles.description}>
+						{t(`examples.${name}.description`)}
+					</p>
+				</section>
+			))}
+		</section>
 	);
 }

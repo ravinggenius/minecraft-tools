@@ -1,7 +1,7 @@
 import { loadPageTranslations } from "@/i18n/server";
 
 import styles from "./page.module.scss";
-import { BORDER_STYLES, SHADOW_STYLES } from "./schema";
+import { BORDER_STYLES, RADIUS_STYLES, SHADOW_STYLES } from "./schema";
 
 export const generateMetadata = async () => {
 	const { t } = await loadPageTranslations("page-design-system-elevation", {
@@ -19,21 +19,46 @@ export default async function DesignSystemElevationPage() {
 	});
 
 	return (
-		<article className={styles.article}>
-			<p>{t("description")}</p>
-
-			<header>
-				<h1>{t("title")}</h1>
-			</header>
-
+		<>
 			{BORDER_STYLES.map((borderStyle) => (
 				<section key={borderStyle}>
 					<header>
-						<h2>{t(`border.${borderStyle}.title`)}</h2>
+						<h2 className={styles.title}>
+							{t(`border.${borderStyle}.title`)}
+						</h2>
 					</header>
 
-					<div style={{ border: `var(--border-${borderStyle})` }}>
-						<p>{`--border-${borderStyle}`}</p>
+					<div
+						className={styles.sample}
+						style={{
+							// @ts-ignore custom properties are allowed
+							"--border-width": `var(--border-${borderStyle}-width)`,
+							"border": `var(--border-${borderStyle})`
+						}}
+					>
+						<pre>{`--border-${borderStyle}`}</pre>
+					</div>
+				</section>
+			))}
+
+			{RADIUS_STYLES.map((radiusStyle) => (
+				<section key={radiusStyle}>
+					<header>
+						<h2 className={styles.title}>
+							{t(`radius.${radiusStyle}.title`)}
+						</h2>
+					</header>
+
+					<div
+						className={styles.sample}
+						style={{
+							// @ts-ignore custom properties are allowed
+							"--border-width": "var(--border-thin-width)",
+							"border": "var(--border-thin)",
+							"borderRadius": `var(--radius-${radiusStyle})`
+						}}
+					>
+						<pre>{`--border-${radiusStyle}`}</pre>
 					</div>
 				</section>
 			))}
@@ -41,14 +66,19 @@ export default async function DesignSystemElevationPage() {
 			{SHADOW_STYLES.map((shadowStyle) => (
 				<section key={shadowStyle}>
 					<header>
-						<h2>{t(`shadow.${shadowStyle}.title`)}</h2>
+						<h2 className={styles.title}>
+							{t(`shadow.${shadowStyle}.title`)}
+						</h2>
 					</header>
 
-					<div style={{ boxShadow: `var(--shadow-${shadowStyle})` }}>
-						<p>{`--shadow-${shadowStyle}`}</p>
+					<div
+						className={styles.sample}
+						style={{ boxShadow: `var(--shadow-${shadowStyle})` }}
+					>
+						<pre>{`--shadow-${shadowStyle}`}</pre>
 					</div>
 				</section>
 			))}
-		</article>
+		</>
 	);
 }

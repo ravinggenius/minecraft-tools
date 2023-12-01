@@ -8,10 +8,10 @@ export default async function HomePage() {
 	});
 
 	return (
-		<div className={styles.description}>
-			<p>{t("intro")}</p>
+		<article className={styles.description}>
+			<p className={styles.introduction}>{t("intro")}</p>
 
-			<p>{t("explore")}</p>
-		</div>
+			<p className={styles.explore}>{t("explore")}</p>
+		</article>
 	);
 }

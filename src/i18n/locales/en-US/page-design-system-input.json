@@ -4,8 +4,6 @@
   },
 
   "content": {
-    "title": "Input",
-    "description": "Showcase for all common style atoms and components.",
     "field": {
       "explanation": "Input fields share a common set of properties defined by the Field component.",
       "input-here": "place input control here",

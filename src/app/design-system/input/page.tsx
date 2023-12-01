@@ -1,3 +1,4 @@
+import Card from "@/components/Card/Card";
 import Field from "@/components/Field/Field";
 import TextField from "@/components/TextField/TextField";
 import { loadPageTranslations } from "@/i18n/server";
@@ -20,14 +21,8 @@ export default async function DesignSystemInputPage() {
 	});
 
 	return (
-		<article className={styles.article}>
-			<p>{t("description")}</p>
-
-			<header>
-				<h1>{t("title")}</h1>
-			</header>
-
-			<section>
+		<>
+			<Card variant="flat">
 				<p>{t("field.explanation")}</p>
 
 				<Field
@@ -40,9 +35,9 @@ export default async function DesignSystemInputPage() {
 				>
 					<pre>{t("field.input-here")}</pre>
 				</Field>
-			</section>
+			</Card>
 
-			<section>
+			<Card variant="flat">
 				<p>{t("text-field.explanation")}</p>
 
 				<TextField
@@ -73,7 +68,7 @@ export default async function DesignSystemInputPage() {
 					meta={{ dirty: false, focus: false }}
 					placeholder={t("text-field.placeholder")}
 				/>
-			</section>
-		</article>
+			</Card>
+		</>
 	);
 }

@@ -10,7 +10,7 @@ export default function Card({
 }: {
 	children: ReactNode;
 	className?: string;
-	variant: "high" | "low";
+	variant: "flat" | "low" | "high";
 }) {
 	return (
 		<div

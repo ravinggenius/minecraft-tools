@@ -55,20 +55,16 @@ export default async function DesignSystemPage() {
 	];
 
 	return (
-		<article className={styles.article}>
-			<p>{t("description")}</p>
-
-			<nav>
-				<ol>
-					{designElements.map(({ href, text }) => (
-						<li key={href}>
-							<Anchor {...{ href }} variant="inline">
-								{text}
-							</Anchor>
-						</li>
-					))}
-				</ol>
-			</nav>
-		</article>
+		<nav>
+			<ol>
+				{designElements.map(({ href, text }) => (
+					<li key={href}>
+						<Anchor {...{ href }} variant="inline">
+							{text}
+						</Anchor>
+					</li>
+				))}
+			</ol>
+		</nav>
 	);
 }

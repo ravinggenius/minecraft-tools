@@ -4,8 +4,6 @@
   },
 
   "content": {
-    "title": "Table (And Related Elements)",
-    "description": "Showcase for all common style atoms and components.",
     "table": {
       "caption": "Some neat animals listed with common and scientific names",
       "headers": {

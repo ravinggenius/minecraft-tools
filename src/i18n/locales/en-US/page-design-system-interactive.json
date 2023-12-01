@@ -4,7 +4,8 @@
   },
 
   "content": {
-    "title": "Interactive",
-    "description": "Showcase for all common style atoms and components."
+    "anchor": "{{variant}} anchor",
+    "button": "{{variant}} button",
+    "button_disabled": "{{variant}} button (disabled)"
   }
 }

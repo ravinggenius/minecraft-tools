@@ -9,7 +9,7 @@ Tools and structured notes for keeping track of things while playing Minecraft.
 - [x] Internationalization
 - [x] Email Verification
 - [x] Forgot Password
-- [ ] Design System
+- [x] Design System
 - [ ] Bot Protection (https://www.youtube.com/watch?v=YzaChz8rCn0)
   - header analysis
   - captcha (browser fingerprint analysis)

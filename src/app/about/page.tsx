@@ -20,8 +20,8 @@ export default async function AboutPage() {
 	});
 
 	return (
-		<div className={styles.description}>
-			<p>{t("description")}</p>
-		</div>
+		<article className={styles.description}>
+			<p className={styles.content}>{t("description")}</p>
+		</article>
 	);
 }

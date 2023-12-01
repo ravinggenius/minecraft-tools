@@ -20,11 +20,9 @@ export default function Sample({
 		<Button
 			className={classNames(styles.example, className)}
 			onClick={() => {
-				navigator.clipboard.writeText(
-					`composes: ${name} from "@/design-system/_/_typography.module.scss";`
-				);
+				navigator.clipboard.writeText(`@include typography.${name}();`);
 			}}
-			variant="inline"
+			variant="secondary"
 		>
 			{children}
 		</Button>

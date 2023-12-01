@@ -1,4 +1,8 @@
+@use "@/design-system/_/_typography.module.scss" as typography;
+
 .item {
+	@include typography.technical();
+
 	align-items: center;
 	cursor: default;
 	display: flex;
@@ -8,6 +12,7 @@
 	padding: 4rem;
 }
 
-.item:active {
+.item:focus,
+.item:hover {
 	transform: scale(1.05);
 }

@@ -1,37 +1,40 @@
+@use "@/design-system/_/_typography.module.scss" as typography;
+
 .primary-title {
-	composes: primary-title from "@/design-system/_/_typography.module.scss";
+	@include typography.primary-title();
 }
 
 .secondary-title {
-	composes: secondary-title from "@/design-system/_/_typography.module.scss";
+	@include typography.secondary-title();
 }
 
 .tertiary-title {
-	composes: tertiary-title from "@/design-system/_/_typography.module.scss";
+	@include typography.tertiary-title();
 }
 
 .hero {
-	composes: hero from "@/design-system/_/_typography.module.scss";
+	@include typography.hero();
 }
 
 .technical {
-	composes: technical from "@/design-system/_/_typography.module.scss";
+	@include typography.technical();
 }
 
 .primary-body {
-	composes: primary-body from "@/design-system/_/_typography.module.scss";
+	@include typography.primary-body();
 }
 
 .secondary-body {
-	composes: secondary-body from "@/design-system/_/_typography.module.scss";
+	@include typography.secondary-body();
 }
 
 .fine {
-	composes: fine from "@/design-system/_/_typography.module.scss";
+	@include typography.fine();
 }
 
 .example {
-	composes: technical from "@/design-system/_/_typography.module.scss";
+	@include typography.technical();
+
 	display: block;
 	margin-inline-start: 3rem;
 }

@@ -4,8 +4,6 @@
   },
 
   "content": {
-    "title": "Elevation",
-    "description": "Showcase for all common style atoms and components.",
     "border": {
       "none": {
         "title": "No Border"
@@ -15,6 +13,17 @@
       },
       "thick": {
         "title": "Thick Border"
+      }
+    },
+    "radius": {
+      "none": {
+        "title": "No Radius"
+      },
+      "sharp": {
+        "title": "Small Radius"
+      },
+      "dull": {
+        "title": "Large Radius"
       }
     },
     "shadow": {

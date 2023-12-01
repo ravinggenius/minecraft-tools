@@ -26,3 +26,7 @@
 .branch > .tree {
 	padding-inline-start: 2ch;
 }
+
+.tree .branch .leaf {
+	color: var(--color-neutral-900);
+}

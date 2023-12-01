@@ -50,7 +50,9 @@ function BreadcrumbSegment({
 						{label}
 					</Anchor>
 				) : (
-					<span className={styles["leaf-label"]}>{label}</span>
+					<span className={styles["leaf-label-terminal"]}>
+						{label}
+					</span>
 				)}
 
 				{child ? <BreadcrumbSegment {...child} /> : null}

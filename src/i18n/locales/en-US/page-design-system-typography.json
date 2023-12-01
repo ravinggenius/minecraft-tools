@@ -4,8 +4,6 @@
   },
 
   "content": {
-    "title": "Typography",
-    "description": "Showcase for all common style atoms and components.",
     "copy-cta": "copy",
     "examples": {
       "primary-title": {

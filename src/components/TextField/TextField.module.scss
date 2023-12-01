@@ -2,7 +2,7 @@
 	--border-width: 1px;
 
 	border: solid var(--border-width) #999999;
-	border-radius: 0;
+	border-radius: var(--radius-none);
 	padding: calc(1rem - var(--border-width));
 	width: 100%;
 }

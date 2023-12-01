@@ -4,8 +4,6 @@
   },
 
   "content": {
-    "description": "Showcase for all common style atoms and components.",
-    "title": "Palette",
     "base": "Base",
     "neutral": {
       "title": "neutral",

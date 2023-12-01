@@ -18,6 +18,14 @@
 }
 
 :root {
+	--radius-none: 0px;
+
+	--radius-sharp: 1rem;
+
+	--radius-dull: 2rem;
+}
+
+:root {
 	--shadow-high-color: var(--color-neutral-300);
 	--shadow-high: var(--shadow-color, var(--shadow-high-color)) 0 0 3px,
 		var(--shadow-color, var(--shadow-high-color)) 4px 4px 6px;

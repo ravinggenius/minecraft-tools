@@ -19,22 +19,18 @@ export default async function DesignSystemCardsPage() {
 	});
 
 	return (
-		<article className={styles.article}>
-			<p>{t("description")}</p>
+		<section className={styles.examples}>
+			<Card className={styles.example} variant="flat">
+				<pre>{'variant="flat"'}</pre>
+			</Card>
 
-			<header>
-				<h1>{t("title")}</h1>
-			</header>
+			<Card className={styles.example} variant="low">
+				<pre>{'variant="low"'}</pre>
+			</Card>
 
-			<section className={styles.examples}>
-				<Card className={styles.example} variant="high">
-					<pre>high</pre>
-				</Card>
-
-				<Card className={styles.example} variant="low">
-					<pre>low</pre>
-				</Card>
-			</section>
-		</article>
+			<Card className={styles.example} variant="high">
+				<pre>{'variant="high"'}</pre>
+			</Card>
+		</section>
 	);
 }

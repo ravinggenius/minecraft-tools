@@ -1,3 +1,5 @@
+@use "@/design-system/_/_typography.module.scss" as typography;
+
 @import "@/design-system/_/_elevation.scss";
 @import "@/design-system/_/_palette.scss";
 
@@ -17,15 +19,16 @@ html {
 }
 
 body {
+	@include typography.primary-body();
+
 	block-size: 100%;
-	font-family: var(--font-sans);
-	font-size: 4rem;
-	line-height: 5rem;
+	color: var(--color-neutral-900);
 	/* min-block-size: 100%; */
 }
 
 * {
 	box-sizing: border-box;
+	font-weight: normal;
 	line-height: inherit;
 	margin: 0;
 	padding: 0;

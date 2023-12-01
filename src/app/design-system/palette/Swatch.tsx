@@ -40,6 +40,7 @@ export default function Swatch({
 				backgroundColor: `var(${color})`,
 				color: `var(${contrastColor})`
 			}}
+			tabIndex={0}
 		>{`${color}`}</li>
 	);
 }

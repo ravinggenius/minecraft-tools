@@ -1,0 +1,18 @@
+@use "@/design-system/_/_typography.module.scss" as typography;
+
+.title {
+	@include typography.primary-title();
+}
+
+.header {
+}
+
+.description {
+	@include typography.hero();
+}
+
+.article {
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+}

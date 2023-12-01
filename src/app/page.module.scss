@@ -1,9 +1,17 @@
-.description {
-	inline-size: 100%;
-	max-inline-size: var(--max-width);
+@use "@/design-system/_/_typography.module.scss" as typography;
+
+.introduction {
+	@include typography.primary-body();
 }
 
-.description p {
-	margin: 0;
-	padding: 1rem;
+.explore {
+	@include typography.secondary-body();
+}
+
+.description {
+	display: flex;
+	flex-direction: column;
+	inline-size: 100%;
+	gap: 2rem;
+	max-inline-size: var(--max-width);
 }

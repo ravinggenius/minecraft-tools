@@ -1,10 +1,12 @@
+@use "@/design-system/_/_typography.module.scss" as typography;
+
 .caption {
-	font-size: 5rem;
+	@include typography.technical();
 }
 
 .th {
-	font-family: monospace;
-	font-weight: bold;
+	@include typography.hero();
+
 	padding-block: 0;
 	padding-inline: 1rem;
 }
@@ -15,19 +17,22 @@
 }
 
 .thead {
-	font-size: 4rem;
 }
 
 .tbody {
-	font-size: 4rem;
-
 	.th {
 		text-align: start;
+	}
+
+	.td {
+		@include typography.primary-body();
 	}
 }
 
 .tfoot {
-	font-size: 3rem;
+	.td {
+		@include typography.secondary-body();
+	}
 }
 
 .table {

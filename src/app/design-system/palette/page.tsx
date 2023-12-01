@@ -19,25 +19,15 @@ export default async function DesignSystemPalettePage() {
 		keyPrefix: "content"
 	});
 
-	return (
-		<article className={styles.article}>
-			<p>{t("description")}</p>
-
-			<header>
-				<h1>{t("title")}</h1>
+	return HUES.map((hue) => (
+		<section key={hue}>
+			<header className={styles.header}>
+				<h2 className={styles.title}>{t(`${hue}.title`)}</h2>
 			</header>
 
-			{HUES.map((hue) => (
-				<section key={hue}>
-					<header>
-						<h2>{t(`${hue}.title`)}</h2>
-					</header>
+			<p className={styles.description}>{t(`${hue}.description`)}</p>
 
-					<p>{t(`${hue}.description`)}</p>
-
-					<SwatchList {...{ hue }} />
-				</section>
-			))}
-		</article>
-	);
+			<SwatchList {...{ hue }} />
+		</section>
+	));
 }

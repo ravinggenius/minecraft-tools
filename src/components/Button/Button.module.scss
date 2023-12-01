@@ -1,3 +1,5 @@
+@use "@/design-system/_/_interactive.module.scss" as interactive;
+
 .button {
-	composes: interactive from "@/design-system/_/_interactive.module.scss";
+	@include interactive.interactive();
 }

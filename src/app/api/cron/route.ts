@@ -1,7 +1,7 @@
 import * as passwordReset from "@/library/password-reset/model";
 import * as sessionModel from "@/library/session/model";
 
-export const POST = async (request: Request) => {
+export const GET = async (request: Request) => {
 	await Promise.allSettled([
 		passwordReset.clearExpired(),
 		sessionModel.clearExpired()

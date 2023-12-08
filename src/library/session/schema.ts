@@ -1,31 +1,12 @@
-import { parseJSON } from "date-fns";
 import { z } from "zod";
 
 import { ACCOUNT, ACCOUNT_PASSWORD_ATTRS } from "../account/schema";
 
 export const SESSION = z.object({
 	id: z.string().uuid(),
-	createdAt: z
-		.string()
-		.transform(parseJSON)
-		.refine(
-			(ts) => ts instanceof Date && ts.valueOf() > 0,
-			"must be a valid date"
-		),
-	updatedAt: z
-		.string()
-		.transform(parseJSON)
-		.refine(
-			(ts) => ts instanceof Date && ts.valueOf() > 0,
-			"must be a valid date"
-		),
-	expiresAt: z
-		.string()
-		.transform(parseJSON)
-		.refine(
-			(ts) => ts instanceof Date && ts.valueOf() > 0,
-			"must be a valid date"
-		),
+	createdAt: z.coerce.date(),
+	updatedAt: z.coerce.date(),
+	expiresAt: z.coerce.date(),
 	accountId: ACCOUNT.shape.id
 });
 

@@ -1,41 +1,34 @@
-import { join } from "path";
-import pgPromise, { IInitOptions, QueryFile } from "pg-promise";
+import trim from "cool-trim";
+import { createPool, Interceptor, sql } from "slonik";
+import { createQueryLoggingInterceptor } from "slonik-interceptor-query-logging";
+import { createQueryNormalisationInterceptor } from "slonik-interceptor-query-normalisation";
+import { z } from "zod";
 
 import * as config from "./config.mjs";
 
-const initOptions: IInitOptions = {
-	capSQL: true,
-	noWarnings: !config.isProduction
-};
+const createQueryTrimInterceptor = () =>
+	({
+		transformQuery: (_context, query) => ({
+			...query,
+			sql: trim(query.sql)
+		})
+	}) satisfies Interceptor;
 
-const pgp = pgPromise(initOptions);
+export const pool = createPool(config.databaseUrl, {
+	captureStackTrace: true,
+	interceptors: [
+		config.isProduction
+			? createQueryNormalisationInterceptor()
+			: createQueryTrimInterceptor(),
+		createQueryLoggingInterceptor()
+	]
+});
 
-// SEE https://github.com/vitaly-t/pg-promise/issues/175#issuecomment-766663282
-export const db = pgp(config.databaseUrl);
+export { sql };
 
-export const readQueries = <Keys extends string>(
-	modelName: string,
-	keys: Array<Keys>
-) =>
-	keys.reduce(
-		(memo, key) => {
-			const queryFile = new QueryFile(
-				new URL(
-					join("..", modelName, "queries", `${key}.sql`),
-					import.meta.url
-				)
-					.toString()
-					.replace(/^file:\/\//, "")
-			);
+export const BOOLEAN_NAMED = (name: string) =>
+	z.object({
+		[name]: z.boolean()
+	});
 
-			if (queryFile.error) {
-				console.error(queryFile.error);
-			}
-
-			return {
-				...memo,
-				[key]: queryFile
-			};
-		},
-		{} as Record<Keys, QueryFile>
-	);
+export const VOID = z.object({}).strict();

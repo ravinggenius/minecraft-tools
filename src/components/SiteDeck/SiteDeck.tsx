@@ -20,7 +20,7 @@ export default function SiteDeck({
 	profile
 }: {
 	className?: string;
-	profile?: Profile | undefined;
+	profile?: Pick<Profile, "name"> | undefined;
 }) {
 	const { t } = useTranslation("component-site-deck");
 

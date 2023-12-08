@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { ACCOUNT, ACCOUNT_PASSWORD_ATTRS } from "../account/schema";
+import { ACCOUNT } from "../account/schema";
 
 export const SESSION = z.object({
 	id: z.string().uuid(),
@@ -15,7 +15,7 @@ export interface Session extends z.infer<typeof SESSION> {}
 export const SESSION_CREDENTIALS = ACCOUNT.pick({
 	email: true
 }).extend({
-	password: z.string().nonempty()
+	password: z.string().min(1)
 });
 
 export interface SessionCredentials

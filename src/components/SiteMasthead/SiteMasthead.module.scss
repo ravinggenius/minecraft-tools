@@ -3,6 +3,7 @@
 .site-masthead .title .anchor {
 	color: inherit;
 	font-size: unset;
+	line-height: unset;
 	padding: 0;
 }
 
@@ -18,7 +19,7 @@
 	@include typography.technical();
 
 	margin-inline-start: auto;
-	transform: rotate(330deg);
+	transform: translateX(35px) rotate(330deg);
 }
 
 .site-masthead {

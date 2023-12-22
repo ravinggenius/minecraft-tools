@@ -1,151 +1,141 @@
-// prettier-ignore
-
 :root {
+	$stops: (
+		"050": 4.5,
+		"100": 4,
+		"200": 3,
+		"300": 2,
+		"400": 1,
+		"500": 0,
+		"600": -1,
+		"700": -2,
+		"800": -3,
+		"900": -4,
+		"950": -4.5
+	);
+
 	--color-special-coal: lch(0% 0 0);
 	--color-special-snow: lch(100% 0 0);
 	--color-special-glass: lch(100% 0 0 / 0%);
 
 	/* background, foreground, border, shadow */
-	--color-neutral-050: lch(95% 6.703 240);
-	--color-neutral-100: lch(90% 6.703 240);
-	--color-neutral-200: lch(80% 6.703 240);
-	--color-neutral-300: lch(70% 6.703 240);
-	--color-neutral-400: lch(60% 6.703 240);
-	--color-neutral-500: lch(50% 6.703 240);
-	--color-neutral-600: lch(40% 6.703 240);
-	--color-neutral-700: lch(30% 6.703 240);
-	--color-neutral-800: lch(20% 6.703 240);
-	--color-neutral-900: lch(10% 6.703 240);
-	--color-neutral-950: lch(5% 6.703 240);
+	$neutral-step: 10;
+
+	@each $lightness, $stop in $stops {
+		--color-neutral-#{$lightness}: lch(
+			#{50% + ($neutral-step * $stop)} 6.703 240
+		);
+	}
 
 	/* errors and warnings */
-	--color-red-050: lch(95% calc(6.703 + 100) 30);
-	--color-red-100: lch(90% calc(6.703 + 100) 30);
-	--color-red-200: lch(80% calc(6.703 + 100) 30);
-	--color-red-300: lch(70% calc(6.703 + 100) 30);
-	--color-red-400: lch(60% calc(6.703 + 100) 30);
-	--color-red-500: lch(50% calc(6.703 + 100) 30);
-	--color-red-600: lch(40% calc(6.703 + 100) 30);
-	--color-red-700: lch(30% calc(6.703 + 100) 30);
-	--color-red-800: lch(20% calc(6.703 + 100) 30);
-	--color-red-900: lch(10% calc(6.703 + 100) 30);
-	--color-red-950: lch(5% calc(6.703 + 100) 30);
+	$red-step: $neutral-step;
+
+	@each $lightness, $stop in $stops {
+		--color-red-#{$lightness}: lch(
+			#{50% + ($red-step * $stop)} calc(6.703 + 100) 30
+		);
+	}
 
 	/* success */
-	--color-green-050: lch(95% calc(6.703 + 100) 150);
-	--color-green-100: lch(90% calc(6.703 + 100) 150);
-	--color-green-200: lch(80% calc(6.703 + 100) 150);
-	--color-green-300: lch(70% calc(6.703 + 100) 150);
-	--color-green-400: lch(60% calc(6.703 + 100) 150);
-	--color-green-500: lch(50% calc(6.703 + 100) 150);
-	--color-green-600: lch(40% calc(6.703 + 100) 150);
-	--color-green-700: lch(30% calc(6.703 + 100) 150);
-	--color-green-800: lch(20% calc(6.703 + 100) 150);
-	--color-green-900: lch(10% calc(6.703 + 100) 150);
-	--color-green-950: lch(5% calc(6.703 + 100) 150);
+	$green-step: $neutral-step;
+
+	@each $lightness, $stop in $stops {
+		--color-green-#{$lightness}: lch(
+			#{50% + ($green-step * $stop)} calc(6.703 + 100) 150
+		);
+	}
 
 	/* information and feedback */
-	--color-blue-050: lch(95% calc(6.703 + 100) 290);
-	--color-blue-100: lch(90% calc(6.703 + 100) 290);
-	--color-blue-200: lch(80% calc(6.703 + 100) 290);
-	--color-blue-300: lch(70% calc(6.703 + 100) 290);
-	--color-blue-400: lch(60% calc(6.703 + 100) 290);
-	--color-blue-500: lch(50% calc(6.703 + 100) 290);
-	--color-blue-600: lch(40% calc(6.703 + 100) 290);
-	--color-blue-700: lch(30% calc(6.703 + 100) 290);
-	--color-blue-800: lch(20% calc(6.703 + 100) 290);
-	--color-blue-900: lch(10% calc(6.703 + 100) 290);
-	--color-blue-950: lch(5% calc(6.703 + 100) 290);
+	$blue-step: $neutral-step;
+
+	@each $lightness, $stop in $stops {
+		--color-blue-#{$lightness}: lch(
+			#{50% + ($blue-step * $stop)} calc(6.703 + 100) 290
+		);
+	}
 
 	/* tips */
-	--color-yellow-050: lch(97.5% calc(6.703 + 100) 100);
-	--color-yellow-100: lch(95% calc(6.703 + 100) 100);
-	--color-yellow-200: lch(90% calc(6.703 + 100) 100);
-	--color-yellow-300: lch(85% calc(6.703 + 100) 100);
-	--color-yellow-400: lch(80% calc(6.703 + 100) 100);
-	--color-yellow-500: lch(75% calc(6.703 + 100) 100);
-	--color-yellow-600: lch(70% calc(6.703 + 100) 100);
-	--color-yellow-700: lch(65% calc(6.703 + 100) 100);
-	--color-yellow-800: lch(60% calc(6.703 + 100) 100);
-	--color-yellow-900: lch(55% calc(6.703 + 100) 100);
-	--color-yellow-950: lch(52.5% calc(6.703 + 100) 100);
+	$yellow-step: 5;
+
+	@each $lightness, $stop in $stops {
+		--color-yellow-#{$lightness}: lch(
+			#{75% + ($yellow-step * $stop)} calc(6.703 + 100) 100
+		);
+	}
 
 	/* SEE https://caniuse.com/css-relative-colors */
 	/* SEE https://caniuse.com/mdn-css_types_color_color-contrast */
 	@supports (color: lch(from lch(0% 0 0) l c h)) {
 		/* background, foreground, border, shadow */
 		--color-neutral-base: lch(50% 6.703 240);
-		--color-neutral-step: 10;
-		--color-neutral-050: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * 4.5)) c h);
-		--color-neutral-100: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * 4)) c h);
-		--color-neutral-200: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * 3)) c h);
-		--color-neutral-300: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * 2)) c h);
-		--color-neutral-400: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * 1)) c h);
-		--color-neutral-500: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * 0)) c h);
-		--color-neutral-600: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * -1)) c h);
-		--color-neutral-700: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * -2)) c h);
-		--color-neutral-800: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * -3)) c h);
-		--color-neutral-900: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * -4)) c h);
-		--color-neutral-950: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * -4.5)) c h);
+		--color-neutral-step: #{$neutral-step};
+
+		@each $lightness, $stop in $stops {
+			--color-neutral-#{$lightness}: lch(
+				from var(--color-neutral-base)
+					calc(l + (var(--color-neutral-step) * #{$stop}))
+					c
+					h
+			);
+		}
 
 		/* errors and warnings */
-		--color-red-base: lch(from var(--color-neutral-base) l calc(c + 100) 30);
-		--color-red-step: var(--color-neutral-step);
-		--color-red-050: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * 4.5)) c h);
-		--color-red-100: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * 4)) c h);
-		--color-red-200: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * 3)) c h);
-		--color-red-300: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * 2)) c h);
-		--color-red-400: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * 1)) c h);
-		--color-red-500: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * 0)) c h);
-		--color-red-600: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * -1)) c h);
-		--color-red-700: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * -2)) c h);
-		--color-red-800: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * -3)) c h);
-		--color-red-900: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * -4)) c h);
-		--color-red-950: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * -4.5)) c h);
+		--color-red-base: lch(
+			from var(--color-neutral-base) l calc(c + 100) 30
+		);
+		--color-red-step: #{$red-step};
+
+		@each $lightness, $stop in $stops {
+			--color-red-#{$lightness}: lch(
+				from var(--color-red-base)
+					calc(l + (var(--color-red-step) * #{$stop}))
+					c
+					h
+			);
+		}
 
 		/* success */
-		--color-green-base: lch(from var(--color-neutral-base) l calc(c + 100) 150);
-		--color-green-step: var(--color-neutral-step);
-		--color-green-050: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * 4.5)) c h);
-		--color-green-100: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * 4)) c h);
-		--color-green-200: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * 3)) c h);
-		--color-green-300: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * 2)) c h);
-		--color-green-400: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * 1)) c h);
-		--color-green-500: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * 0)) c h);
-		--color-green-600: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * -1)) c h);
-		--color-green-700: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * -2)) c h);
-		--color-green-800: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * -3)) c h);
-		--color-green-900: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * -4)) c h);
-		--color-green-950: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * -4.5)) c h);
+		--color-green-base: lch(
+			from var(--color-neutral-base) l calc(c + 100) 150
+		);
+		--color-green-step: #{$green-step};
+
+		@each $lightness, $stop in $stops {
+			--color-green-#{$lightness}: lch(
+				from var(--color-green-base)
+					calc(l + (var(--color-green-step) * #{$stop}))
+					c
+					h
+			);
+		}
 
 		/* information and feedback */
-		--color-blue-base: lch(from var(--color-neutral-base) l calc(c + 100) 290);
-		--color-blue-step: var(--color-neutral-step);
-		--color-blue-050: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * 4.5)) c h);
-		--color-blue-100: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * 4)) c h);
-		--color-blue-200: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * 3)) c h);
-		--color-blue-300: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * 2)) c h);
-		--color-blue-400: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * 1)) c h);
-		--color-blue-500: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * 0)) c h);
-		--color-blue-600: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * -1)) c h);
-		--color-blue-700: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * -2)) c h);
-		--color-blue-800: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * -3)) c h);
-		--color-blue-900: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * -4)) c h);
-		--color-blue-950: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * -4.5)) c h);
+		--color-blue-base: lch(
+			from var(--color-neutral-base) l calc(c + 100) 290
+		);
+		--color-blue-step: #{$blue-step};
+
+		@each $lightness, $stop in $stops {
+			--color-blue-#{$lightness}: lch(
+				from var(--color-blue-base)
+					calc(l + (var(--color-blue-step) * #{$stop}))
+					c
+					h
+			);
+		}
 
 		/* tips */
-		--color-yellow-base: lch(from var(--color-neutral-base) 75% calc(c + 100) 100);
-		--color-yellow-step: 5;
-		--color-yellow-050: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * 4.5)) c h);
-		--color-yellow-100: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * 4)) c h);
-		--color-yellow-200: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * 3)) c h);
-		--color-yellow-300: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * 2)) c h);
-		--color-yellow-400: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * 1)) c h);
-		--color-yellow-500: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * 0)) c h);
-		--color-yellow-600: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * -1)) c h);
-		--color-yellow-700: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * -2)) c h);
-		--color-yellow-800: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * -3)) c h);
-		--color-yellow-900: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * -4)) c h);
-		--color-yellow-950: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * -4.5)) c h);
+		--color-yellow-base: lch(
+			from var(--color-neutral-base) 75% calc(c + 100) 100
+		);
+		--color-yellow-step: #{$yellow-step};
+
+		@each $lightness, $stop in $stops {
+			--color-yellow-#{$lightness}: lch(
+				from var(--color-yellow-base)
+					calc(l + (var(--color-yellow-step) * #{$stop}))
+					c
+					h
+			);
+		}
 	}
 }

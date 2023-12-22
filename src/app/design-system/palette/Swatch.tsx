@@ -7,7 +7,7 @@ import { Hue, Lightness } from "./schema";
 import styles from "./Swatch.module.scss";
 
 const isDark = cond<[{ h: Hue; l: Lightness }], boolean>([
-	[({ h, l }) => h === "yellow" && l === 900, T],
+	[({ h, l }) => h === "yellow" && l >= 700, T],
 	[({ h, l }) => h === "yellow", F],
 	[({ l }) => l >= 450, T],
 	[({ l }) => l < 450, F]

@@ -1,149 +1,151 @@
+// prettier-ignore
+
 :root {
 	--color-special-coal: lch(0% 0 0);
 	--color-special-snow: lch(100% 0 0);
 	--color-special-glass: lch(100% 0 0 / 0%);
 
-	/*
-	https://colorkit.co/color-palette-generator/8a8b97-9b9daa-acb0be-bec3d1-cfd7e5/
-
-	red = #ff2738 - hue to 120, saturation to 50
-	green = #57d06a - hue to -105, saturation to 50
-	blue = #555fce - hue to 0, saturation to 50
-	yellow/orange = #cfc554 - hue to 180, saturation to 50
-	neutrals = #c4c5cb - brightness to 50 (https://colorkit.co/color-palette-generator/c4c5cb-cdced4-d5d6dd-dee0e6-e7eaf0/)
-
-	https://colorkit.co/color-palette-generator/ff2738-57d06a-555fce-cfc554-c4c5cb/
-	*/
-
 	/* background, foreground, border, shadow */
-	--color-neutral-base: lch(50% 6.703 240);
+	--color-neutral-050: lch(95% 6.703 240);
 	--color-neutral-100: lch(90% 6.703 240);
 	--color-neutral-200: lch(80% 6.703 240);
 	--color-neutral-300: lch(70% 6.703 240);
 	--color-neutral-400: lch(60% 6.703 240);
-	--color-neutral-500: var(--color-neutral-base);
+	--color-neutral-500: lch(50% 6.703 240);
 	--color-neutral-600: lch(40% 6.703 240);
 	--color-neutral-700: lch(30% 6.703 240);
 	--color-neutral-800: lch(20% 6.703 240);
 	--color-neutral-900: lch(10% 6.703 240);
+	--color-neutral-950: lch(5% 6.703 240);
 
 	/* errors and warnings */
-	--color-red-base: lch(50% calc(6.703 + 100) 30);
+	--color-red-050: lch(95% calc(6.703 + 100) 30);
 	--color-red-100: lch(90% calc(6.703 + 100) 30);
 	--color-red-200: lch(80% calc(6.703 + 100) 30);
 	--color-red-300: lch(70% calc(6.703 + 100) 30);
 	--color-red-400: lch(60% calc(6.703 + 100) 30);
-	--color-red-500: var(--color-red-base);
+	--color-red-500: lch(50% calc(6.703 + 100) 30);
 	--color-red-600: lch(40% calc(6.703 + 100) 30);
 	--color-red-700: lch(30% calc(6.703 + 100) 30);
 	--color-red-800: lch(20% calc(6.703 + 100) 30);
 	--color-red-900: lch(10% calc(6.703 + 100) 30);
+	--color-red-950: lch(5% calc(6.703 + 100) 30);
 
 	/* success */
-	--color-green-base: lch(50% calc(6.703 + 100) 150);
+	--color-green-050: lch(95% calc(6.703 + 100) 150);
 	--color-green-100: lch(90% calc(6.703 + 100) 150);
 	--color-green-200: lch(80% calc(6.703 + 100) 150);
 	--color-green-300: lch(70% calc(6.703 + 100) 150);
 	--color-green-400: lch(60% calc(6.703 + 100) 150);
-	--color-green-500: var(--color-green-base);
+	--color-green-500: lch(50% calc(6.703 + 100) 150);
 	--color-green-600: lch(40% calc(6.703 + 100) 150);
 	--color-green-700: lch(30% calc(6.703 + 100) 150);
 	--color-green-800: lch(20% calc(6.703 + 100) 150);
 	--color-green-900: lch(10% calc(6.703 + 100) 150);
+	--color-green-950: lch(5% calc(6.703 + 100) 150);
 
 	/* information and feedback */
-	--color-blue-base: lch(50% calc(6.703 + 100) 290);
+	--color-blue-050: lch(95% calc(6.703 + 100) 290);
 	--color-blue-100: lch(90% calc(6.703 + 100) 290);
 	--color-blue-200: lch(80% calc(6.703 + 100) 290);
 	--color-blue-300: lch(70% calc(6.703 + 100) 290);
 	--color-blue-400: lch(60% calc(6.703 + 100) 290);
-	--color-blue-500: var(--color-blue-base);
+	--color-blue-500: lch(50% calc(6.703 + 100) 290);
 	--color-blue-600: lch(40% calc(6.703 + 100) 290);
 	--color-blue-700: lch(30% calc(6.703 + 100) 290);
 	--color-blue-800: lch(20% calc(6.703 + 100) 290);
 	--color-blue-900: lch(10% calc(6.703 + 100) 290);
+	--color-blue-950: lch(5% calc(6.703 + 100) 290);
 
 	/* tips */
-	--color-yellow-base: lch(80% calc(6.703 + 100) 100);
-	--color-yellow-100: lch(100% calc(6.703 + 100) 100);
-	--color-yellow-200: lch(95% calc(6.703 + 100) 100);
-	--color-yellow-300: lch(90% calc(6.703 + 100) 100);
-	--color-yellow-400: lch(85% calc(6.703 + 100) 100);
-	--color-yellow-500: var(--color-yellow-base);
-	--color-yellow-600: lch(75% calc(6.703 + 100) 100);
-	--color-yellow-700: lch(70% calc(6.703 + 100) 100);
-	--color-yellow-800: lch(65% calc(6.703 + 100) 100);
-	--color-yellow-900: lch(60% calc(6.703 + 100) 100);
+	--color-yellow-050: lch(97.5% calc(6.703 + 100) 100);
+	--color-yellow-100: lch(95% calc(6.703 + 100) 100);
+	--color-yellow-200: lch(90% calc(6.703 + 100) 100);
+	--color-yellow-300: lch(85% calc(6.703 + 100) 100);
+	--color-yellow-400: lch(80% calc(6.703 + 100) 100);
+	--color-yellow-500: lch(75% calc(6.703 + 100) 100);
+	--color-yellow-600: lch(70% calc(6.703 + 100) 100);
+	--color-yellow-700: lch(65% calc(6.703 + 100) 100);
+	--color-yellow-800: lch(60% calc(6.703 + 100) 100);
+	--color-yellow-900: lch(55% calc(6.703 + 100) 100);
+	--color-yellow-950: lch(52.5% calc(6.703 + 100) 100);
 
 	/* SEE https://caniuse.com/css-relative-colors */
 	/* SEE https://caniuse.com/mdn-css_types_color_color-contrast */
 	@supports (color: lch(from lch(0% 0 0) l c h)) {
 		/* background, foreground, border, shadow */
 		--color-neutral-base: lch(50% 6.703 240);
-		--color-neutral-100: lch(from var(--color-neutral-base) 90% c h);
-		--color-neutral-200: lch(from var(--color-neutral-base) 80% c h);
-		--color-neutral-300: lch(from var(--color-neutral-base) 70% c h);
-		--color-neutral-400: lch(from var(--color-neutral-base) 60% c h);
-		--color-neutral-500: var(--color-neutral-base);
-		--color-neutral-600: lch(from var(--color-neutral-base) 40% c h);
-		--color-neutral-700: lch(from var(--color-neutral-base) 30% c h);
-		--color-neutral-800: lch(from var(--color-neutral-base) 20% c h);
-		--color-neutral-900: lch(from var(--color-neutral-base) 10% c h);
+		--color-neutral-step: 10;
+		--color-neutral-050: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * 4.5)) c h);
+		--color-neutral-100: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * 4)) c h);
+		--color-neutral-200: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * 3)) c h);
+		--color-neutral-300: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * 2)) c h);
+		--color-neutral-400: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * 1)) c h);
+		--color-neutral-500: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * 0)) c h);
+		--color-neutral-600: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * -1)) c h);
+		--color-neutral-700: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * -2)) c h);
+		--color-neutral-800: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * -3)) c h);
+		--color-neutral-900: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * -4)) c h);
+		--color-neutral-950: lch(from var(--color-neutral-base) calc(l + (var(--color-neutral-step) * -4.5)) c h);
 
 		/* errors and warnings */
-		--color-red-base: lch(
-			from var(--color-neutral-base) l calc(c + 100) 30
-		);
-		--color-red-100: lch(from var(--color-red-base) 90% c h);
-		--color-red-200: lch(from var(--color-red-base) 80% c h);
-		--color-red-300: lch(from var(--color-red-base) 70% c h);
-		--color-red-400: lch(from var(--color-red-base) 60% c h);
-		--color-red-500: var(--color-red-base);
-		--color-red-600: lch(from var(--color-red-base) 40% c h);
-		--color-red-700: lch(from var(--color-red-base) 30% c h);
-		--color-red-800: lch(from var(--color-red-base) 20% c h);
-		--color-red-900: lch(from var(--color-red-base) 10% c h);
+		--color-red-base: lch(from var(--color-neutral-base) l calc(c + 100) 30);
+		--color-red-step: var(--color-neutral-step);
+		--color-red-050: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * 4.5)) c h);
+		--color-red-100: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * 4)) c h);
+		--color-red-200: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * 3)) c h);
+		--color-red-300: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * 2)) c h);
+		--color-red-400: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * 1)) c h);
+		--color-red-500: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * 0)) c h);
+		--color-red-600: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * -1)) c h);
+		--color-red-700: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * -2)) c h);
+		--color-red-800: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * -3)) c h);
+		--color-red-900: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * -4)) c h);
+		--color-red-950: lch(from var(--color-red-base) calc(l + (var(--color-red-step) * -4.5)) c h);
 
 		/* success */
-		--color-green-base: lch(
-			from var(--color-neutral-base) l calc(c + 100) 150
-		);
-		--color-green-100: lch(from var(--color-green-base) 90% c h);
-		--color-green-200: lch(from var(--color-green-base) 80% c h);
-		--color-green-300: lch(from var(--color-green-base) 70% c h);
-		--color-green-400: lch(from var(--color-green-base) 60% c h);
-		--color-green-500: var(--color-green-base);
-		--color-green-600: lch(from var(--color-green-base) 40% c h);
-		--color-green-700: lch(from var(--color-green-base) 30% c h);
-		--color-green-800: lch(from var(--color-green-base) 20% c h);
-		--color-green-900: lch(from var(--color-green-base) 10% c h);
+		--color-green-base: lch(from var(--color-neutral-base) l calc(c + 100) 150);
+		--color-green-step: var(--color-neutral-step);
+		--color-green-050: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * 4.5)) c h);
+		--color-green-100: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * 4)) c h);
+		--color-green-200: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * 3)) c h);
+		--color-green-300: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * 2)) c h);
+		--color-green-400: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * 1)) c h);
+		--color-green-500: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * 0)) c h);
+		--color-green-600: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * -1)) c h);
+		--color-green-700: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * -2)) c h);
+		--color-green-800: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * -3)) c h);
+		--color-green-900: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * -4)) c h);
+		--color-green-950: lch(from var(--color-green-base) calc(l + (var(--color-green-step) * -4.5)) c h);
 
 		/* information and feedback */
-		--color-blue-base: lch(
-			from var(--color-neutral-base) l calc(c + 100) 290
-		);
-		--color-blue-100: lch(from var(--color-blue-base) 90% c h);
-		--color-blue-200: lch(from var(--color-blue-base) 80% c h);
-		--color-blue-300: lch(from var(--color-blue-base) 70% c h);
-		--color-blue-400: lch(from var(--color-blue-base) 60% c h);
-		--color-blue-500: var(--color-blue-base);
-		--color-blue-600: lch(from var(--color-blue-base) 40% c h);
-		--color-blue-700: lch(from var(--color-blue-base) 30% c h);
-		--color-blue-800: lch(from var(--color-blue-base) 20% c h);
-		--color-blue-900: lch(from var(--color-blue-base) 10% c h);
+		--color-blue-base: lch(from var(--color-neutral-base) l calc(c + 100) 290);
+		--color-blue-step: var(--color-neutral-step);
+		--color-blue-050: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * 4.5)) c h);
+		--color-blue-100: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * 4)) c h);
+		--color-blue-200: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * 3)) c h);
+		--color-blue-300: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * 2)) c h);
+		--color-blue-400: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * 1)) c h);
+		--color-blue-500: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * 0)) c h);
+		--color-blue-600: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * -1)) c h);
+		--color-blue-700: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * -2)) c h);
+		--color-blue-800: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * -3)) c h);
+		--color-blue-900: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * -4)) c h);
+		--color-blue-950: lch(from var(--color-blue-base) calc(l + (var(--color-blue-step) * -4.5)) c h);
 
 		/* tips */
-		--color-yellow-base: lch(
-			from var(--color-neutral-base) 80% calc(c + 100) 100
-		);
-		--color-yellow-100: lch(from var(--color-yellow-base) 100% c h);
-		--color-yellow-200: lch(from var(--color-yellow-base) 95% c h);
-		--color-yellow-300: lch(from var(--color-yellow-base) 90% c h);
-		--color-yellow-400: lch(from var(--color-yellow-base) 85% c h);
-		--color-yellow-500: var(--color-yellow-base);
-		--color-yellow-600: lch(from var(--color-yellow-base) 75% c h);
-		--color-yellow-700: lch(from var(--color-yellow-base) 70% c h);
-		--color-yellow-800: lch(from var(--color-yellow-base) 65% c h);
-		--color-yellow-900: lch(from var(--color-yellow-base) 60% c h);
+		--color-yellow-base: lch(from var(--color-neutral-base) 75% calc(c + 100) 100);
+		--color-yellow-step: 5;
+		--color-yellow-050: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * 4.5)) c h);
+		--color-yellow-100: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * 4)) c h);
+		--color-yellow-200: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * 3)) c h);
+		--color-yellow-300: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * 2)) c h);
+		--color-yellow-400: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * 1)) c h);
+		--color-yellow-500: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * 0)) c h);
+		--color-yellow-600: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * -1)) c h);
+		--color-yellow-700: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * -2)) c h);
+		--color-yellow-800: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * -3)) c h);
+		--color-yellow-900: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * -4)) c h);
+		--color-yellow-950: lch(from var(--color-yellow-base) calc(l + (var(--color-yellow-step) * -4.5)) c h);
 	}
 }

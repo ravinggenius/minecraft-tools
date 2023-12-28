@@ -18,6 +18,10 @@
 	justify-self: end;
 	inline-size: fit-content;
 	z-index: 1;
+
+	&.toggle {
+		color: var(--color-special-coal);
+	}
 }
 
 .tree-root {
@@ -30,6 +34,7 @@
 	background-color: inherit;
 	block-size: 100vh;
 	display: flex;
+	flex-direction: column;
 	grid-area: tree;
 	justify-content: center;
 	inset-block-start: 0;
@@ -39,13 +44,12 @@
 }
 
 .deck {
-	align-items: center;
-	background-color: #ffffff;
+	align-items: start;
+	background-color: var(--color-special-snow);
 	column-gap: 20px;
 	display: grid;
 	grid-template-areas:
 		"header toggle"
-		"header auth"
 		"tree   tree";
 	margin-block-end: 6rem;
 }

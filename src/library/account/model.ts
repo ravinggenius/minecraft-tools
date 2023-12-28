@@ -1,21 +1,17 @@
 import bcrypt from "bcrypt";
+import { z } from "zod";
 
 import * as config from "../_/config.mjs";
-import { db, readQueries } from "../_/datastore";
+import { BOOLEAN_NAMED, pool, sql, VOID } from "../_/datastore";
 import CodedError, { ERROR_CODE } from "../_/errors/coded-error";
 import { Profile } from "../profile/schema";
 
-import { Account, ACCOUNT_CREATE_ATTRS, AccountCreateAttrs } from "./schema";
-
-const queries = readQueries("account", [
-	"create",
-	"getByEmail",
-	"getTokenNonceCount",
-	"isEmailVerified",
-	"markEmailAsVerified",
-	"updateVerificationNonce",
-	"validateUniqueEmail"
-]);
+import {
+	ACCOUNT,
+	Account,
+	ACCOUNT_CREATE_ATTRS,
+	AccountCreateAttrs
+} from "./schema";
 
 export const create = async (
 	attrs: AccountCreateAttrs,
@@ -34,12 +30,13 @@ export const create = async (
 
 	const hashword = await bcrypt.hash(password, config.passwordSaltRounds);
 
-	return db.tx(async (t) => {
-		const { alreadyExists } = await t.one<{ alreadyExists: boolean }>(
-			queries.validateUniqueEmail,
-			{
-				email: account.email
-			}
+	return (await pool).transaction(async (transaction) => {
+		const alreadyExists = await transaction.oneFirst(
+			sql.type(BOOLEAN_NAMED("alreadyExists"))`
+				SELECT count(id) > 0 AS "alreadyExists"
+				FROM accounts
+				WHERE email = ${account.email}
+			`
 		);
 
 		if (alreadyExists) {
@@ -48,21 +45,48 @@ export const create = async (
 			});
 		}
 
-		return t.one<Account>(queries.create, {
-			account: { ...account, hashword, tokenNonce },
-			profile
-		});
+		return transaction.one(
+			sql.type(
+				ACCOUNT.pick({
+					email: true,
+					tokenNonce: true
+				})
+			)`
+				WITH profile AS (
+					INSERT INTO profiles (name)
+					VALUES (${profile.name})
+					RETURNING id
+				)
+				INSERT INTO accounts (profile_id, email, hashword, token_nonce)
+				VALUES ((SELECT id FROM profile), ${account.email}, ${hashword}, ${tokenNonce})
+				RETURNING
+					email,
+					token_nonce AS "tokenNonce"
+			`
+		);
 	});
 };
 
 export const findByEmail = async (email: Account["email"]) => {
-	const maybeAccountPlusHashword = await db.oneOrNone<
-		Account & {
-			hashword: string;
-		}
-	>(queries.getByEmail, {
-		email
-	});
+	const maybeAccountPlusHashword = await (
+		await pool
+	).maybeOne(
+		sql.type(ACCOUNT.extend({ hashword: z.string() }))`
+			SELECT
+				id,
+				created_at AS "createdAt",
+				updated_at AS "updatedAt",
+				profile_id AS "profileId",
+				email,
+				email_verified_at AS "emailVerifiedAt",
+				hashword,
+				token_nonce AS "tokenNonce",
+				token_nonce_count AS "tokenNonceCount"
+			FROM accounts
+			WHERE email = ${email}::email
+			LIMIT 1
+		`
+	);
 
 	return maybeAccountPlusHashword || undefined;
 };
@@ -71,33 +95,66 @@ export const updateVerificationNonce = async (
 	profileId: Profile["id"],
 	tokenNonce: Account["tokenNonce"]
 ) =>
-	db.one<Account>(queries.updateVerificationNonce, {
-		profileId,
-		tokenNonce
-	});
-
-export const getTokenNonceCount = async (profileId: Profile["id"]) => {
-	const { tokenNonceCount } = await db.one<Pick<Account, "tokenNonceCount">>(
-		queries.getTokenNonceCount,
-		{
-			profileId
-		}
+	(await pool).one(
+		sql.type(
+			ACCOUNT.pick({
+				id: true,
+				profileId: true,
+				email: true,
+				tokenNonce: true
+			})
+		)`
+			UPDATE accounts
+			SET
+				token_nonce = ${tokenNonce},
+				token_nonce_count = token_nonce_count + 1,
+				updated_at = NOW()
+			WHERE profile_id = ${profileId}
+			RETURNING
+				id,
+				profile_id AS "profileId",
+				email,
+				token_nonce AS "tokenNonce"
+		`
 	);
 
-	return tokenNonceCount;
-};
+export const getTokenNonceCount = async (profileId: Profile["id"]) =>
+	(await pool).oneFirst(
+		sql.type(ACCOUNT.pick({ tokenNonceCount: true }))`
+			SELECT token_nonce_count AS "tokenNonceCount"
+			FROM accounts
+			WHERE profile_id = ${profileId}
+			LIMIT 1
+		`
+	);
 
 export const markEmailAsVerified = async (id: Account["id"]) => {
-	await db.none(queries.markEmailAsVerified, {
-		accountId: id
-	});
+	await (
+		await pool
+	).query(
+		sql.type(VOID)`
+			UPDATE accounts
+			SET
+				updated_at = NOW(),
+				email_verified_at = NOW(),
+				token_nonce = ''
+			WHERE id = ${id}
+		`
+	);
 };
 
 export const isEmailVerified = async (email: Account["email"]) => {
-	const result = await db.oneOrNone<{ isVerified: boolean }>(
-		queries.isEmailVerified,
-		{ email }
+	const result = await (
+		await pool
+	).maybeOneFirst(
+		sql.type(z.object({ isVerified: z.boolean() }))`
+			SELECT email_verified_at < now() AS "isVerified"
+			FROM accounts
+			WHERE email = ${email}::email
+			AND email_verified_at IS NOT NULL
+			LIMIT 1
+		`
 	);
 
-	return Boolean(result?.isVerified);
+	return Boolean(result);
 };

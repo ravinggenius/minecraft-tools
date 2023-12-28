@@ -2,19 +2,17 @@ import bcrypt from "bcrypt";
 import { add } from "date-fns";
 
 import * as config from "@/library/_/config.mjs";
-import { db, readQueries } from "@/library/_/datastore";
+import { pool, sql, VOID } from "@/library/_/datastore";
 import CodedError, { ERROR_CODE } from "@/library/_/errors/coded-error";
 import * as accountModel from "@/library/account/model";
-import { Account } from "@/library/account/schema";
+import { ACCOUNT } from "@/library/account/schema";
 
-import { Session, SESSION_CREDENTIALS, SessionCredentials } from "./schema";
-
-const queries = readQueries("session", [
-	"clearExpired",
-	"create",
-	"destroy",
-	"verify"
-]);
+import {
+	SESSION,
+	Session,
+	SESSION_CREDENTIALS,
+	SessionCredentials
+} from "./schema";
 
 export const create = async (attrs: SessionCredentials) => {
 	const { email, password } = await SESSION_CREDENTIALS.parseAsync(attrs);
@@ -28,21 +26,53 @@ export const create = async (attrs: SessionCredentials) => {
 	const { id: accountId, hashword } = maybeAccountPlusHashword;
 
 	if (await bcrypt.compare(password, hashword)) {
-		return db.one<Session>(queries.create, {
-			accountId,
-			expiresAt: add(new Date(), {
-				seconds: config.sessionMaxAgeSeconds
-			})
+		const expiresAt = add(new Date(), {
+			seconds: config.sessionMaxAgeSeconds
 		});
+
+		return (await pool).one(
+			sql.type(SESSION)`
+				INSERT INTO sessions (account_id, expires_at)
+				VALUES (${accountId}, ${expiresAt.toJSON()})
+				RETURNING
+					id,
+					created_at AS "createdAt",
+					updated_at AS "updatedAt",
+					expires_at AS "expiresAt",
+					account_id AS "accountId"
+			`
+		);
 	} else {
 		throw new CodedError(ERROR_CODE.CREDENTIALS_INVALID);
 	}
 };
 
-export const verify = (sessionId: Session["id"]) =>
-	db.oneOrNone<Account>(queries.verify, { sessionId });
+export const verify = async (sessionId: Session["id"]) =>
+	(await pool).maybeOne(
+		sql.type(ACCOUNT.pick({ profileId: true }))`
+			SELECT a.profile_id AS "profileId"
+			FROM accounts AS a
+			INNER JOIN sessions AS s ON a.id = s.account_id
+			WHERE s.id = ${sessionId}
+			AND s.expires_at > NOW()
+			LIMIT 1
+		`
+	);
 
-export const destroy = (sessionId: Session["id"]) =>
-	db.none(queries.destroy, { sessionId });
+export const destroy = async (sessionId: Session["id"]) => {
+	await (
+		await pool
+	).query(sql.type(VOID)`
+		DELETE FROM sessions
+		WHERE id = ${sessionId}
+	`);
+};
 
-export const clearExpired = () => db.none(queries.clearExpired);
+export const clearExpired = async () => {
+	await (
+		await pool
+	).query(sql.type(VOID)`
+		DELETE FROM sessions
+		WHERE expires_at <= NOW()
+	`);
+};

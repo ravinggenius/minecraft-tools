@@ -1,4 +1,3 @@
-import { parseJSON } from "date-fns";
 import validator from "validator";
 import { z } from "zod";
 
@@ -7,27 +6,11 @@ import { PROFILE, PROFILE_ATTRS } from "../profile/schema";
 
 export const ACCOUNT = z.object({
 	id: z.string().uuid(),
-	createdAt: z
-		.string()
-		.transform(parseJSON)
-		.refine(
-			(ts) => ts instanceof Date && ts.valueOf() > 0,
-			"must be a valid date"
-		),
-	updatedAt: z
-		.string()
-		.transform(parseJSON)
-		.refine(
-			(ts) => ts instanceof Date && ts.valueOf() > 0,
-			"must be a valid date"
-		),
+	createdAt: z.coerce.date(),
+	updatedAt: z.coerce.date(),
 	profileId: PROFILE.shape.id,
 	email: z.string().trim().email(),
-	emailVerifiedAt: z
-		.string()
-		.datetime()
-		.transform((eva) => (eva ? parseJSON(eva) : undefined))
-		.nullish(),
+	emailVerifiedAt: z.coerce.date().nullish(),
 	tokenNonce: z.string(),
 	tokenNonceCount: z.number().int().positive()
 });

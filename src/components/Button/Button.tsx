@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { ButtonHTMLAttributes } from "react";
+import { ButtonHTMLAttributes, ReactElement } from "react";
 
 import { Interactive } from "@/components/_/interactive/interactive";
 
@@ -13,7 +13,7 @@ export default function Button({
 	...buttonProps
 }: ButtonHTMLAttributes<HTMLButtonElement> &
 	Interactive & {
-		children: string;
+		children: string | ReactElement;
 		className?: string;
 	}) {
 	return (

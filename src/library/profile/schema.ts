@@ -1,22 +1,9 @@
-import { parseJSON } from "date-fns";
 import { z } from "zod";
 
 export const PROFILE = z.object({
 	id: z.string().uuid(),
-	createdAt: z
-		.string()
-		.transform(parseJSON)
-		.refine(
-			(ts) => ts instanceof Date && ts.valueOf() > 0,
-			"must be a valid date"
-		),
-	updatedAt: z
-		.string()
-		.transform(parseJSON)
-		.refine(
-			(ts) => ts instanceof Date && ts.valueOf() > 0,
-			"must be a valid date"
-		),
+	createdAt: z.coerce.date(),
+	updatedAt: z.coerce.date(),
 	name: z.string().trim().min(2),
 	isWelcomeNeeded: z.boolean()
 });

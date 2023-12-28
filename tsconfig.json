@@ -26,6 +26,7 @@
   "include": [
     "next-env.d.ts",
     "reset.d.ts",
+    "legacy.d.ts",
     "**/*.mjs",
     "**/*.ts",
     "**/*.tsx",

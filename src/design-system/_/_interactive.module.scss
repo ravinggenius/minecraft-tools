@@ -8,6 +8,7 @@
 	display: inline-block;
 	padding-block: calc(2rem - var(--border-width));
 	padding-inline: calc(4rem - var(--border-width));
+	text-align: center;
 	text-decoration: none;
 
 	&[data-variant="primary"] {

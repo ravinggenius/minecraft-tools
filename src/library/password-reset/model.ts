@@ -5,30 +5,42 @@ import { addMinutes } from "date-fns";
 
 import * as config from "@/library/_/config.mjs";
 
-import { db, readQueries } from "../_/datastore";
+import { pool, sql, VOID } from "../_/datastore";
 import CodedError, { ERROR_CODE } from "../_/errors/coded-error";
 
 import {
+	PASSWORD_RESET,
 	PASSWORD_RESET_RESET_ATTRS,
 	PasswordReset,
 	PasswordResetResetAttrs
 } from "./schema";
 
-const queries = readQueries("password-reset", [
-	"create",
-	"clear",
-	"clearExpired",
-	"resetPassword"
-]);
+export const create = async ({
+	email,
+	nonce
+}: Pick<PasswordReset, "email" | "nonce">) => {
+	const expiresAt = addMinutes(
+		new Date(),
+		config.sessionAssistancePasswordResetExpiryMinutes
+	);
 
-export const create = async (attrs: Pick<PasswordReset, "email" | "nonce">) =>
-	db.one<PasswordReset>(queries.create, {
-		...attrs,
-		expiresAt: addMinutes(
-			new Date(),
-			config.sessionAssistancePasswordResetExpiryMinutes
-		)
-	});
+	return (await pool).one(
+		sql.type(PASSWORD_RESET)`
+			INSERT INTO password_resets (email, nonce, expires_at)
+			VALUES (${email}, ${nonce}, ${expiresAt.toJSON()})
+			ON CONFLICT (email) DO UPDATE
+				SET nonce = EXCLUDED.nonce,
+					expires_at = EXCLUDED.expires_at
+			RETURNING
+				id,
+				created_at AS "createdAt",
+				updated_at AS "updatedAt",
+				expires_at AS "expiresAt",
+				email,
+				nonce
+		`
+	);
+};
 
 export const reset = async (attrs: PasswordResetResetAttrs) => {
 	const { email, nonce, password, passwordConfirmation } =
@@ -42,21 +54,42 @@ export const reset = async (attrs: PasswordResetResetAttrs) => {
 
 	const hashword = await bcrypt.hash(password, config.passwordSaltRounds);
 
-	return db.tx(async (t) => {
-		const { rowCount } = await t.result(queries.resetPassword, {
-			email,
-			nonce,
-			hashword
-		});
+	return (await pool).transaction(async (transaction) => {
+		const { rowCount } = await transaction.query(sql.type(VOID)`
+			WITH resettable_account AS (
+				SELECT a.id AS account_id
+				FROM accounts AS a
+				INNER JOIN password_resets AS pr on a.email = pr.email
+				WHERE a.email = ${email}::email
+				AND a.email_verified_at < now()
+				AND pr.nonce = ${nonce}
+				AND pr.expires_at > now()
+			)
+			UPDATE accounts
+			SET hashword = ${hashword}
+			FROM resettable_account
+			WHERE id = resettable_account.account_id
+		`);
 
 		const success = rowCount === 1;
 
 		if (success) {
-			await db.none(queries.clear, { email, nonce });
+			await transaction.query(sql.type(VOID)`
+				DELETE FROM password_resets
+				WHERE email = ${email}::email
+				AND nonce = ${nonce}
+			`);
 		}
 
 		return success;
 	});
 };
 
-export const clearExpired = () => db.none(queries.clearExpired);
+export const clearExpired = async () => {
+	await (
+		await pool
+	).query(sql.type(VOID)`
+		DELETE FROM password_resets
+		WHERE expires_at <= NOW()
+	`);
+};

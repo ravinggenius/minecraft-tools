@@ -14,11 +14,9 @@ export default function SwatchList({
 	return (
 		<ol className={classNames(styles.list, className)}>
 			{LIGHTNESSES.map((lightness) => (
-				<Swatch
-					{...{ hue, lightness }}
-					className={styles.item}
-					key={lightness}
-				/>
+				<li className={styles.item} key={lightness}>
+					<Swatch {...{ hue, lightness }} />
+				</li>
 			))}
 		</ol>
 	);

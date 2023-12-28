@@ -16,7 +16,7 @@ Tools and structured notes for keeping track of things while playing Minecraft.
   - rate limiting
   - disposable email detection
 - [ ] Logging
-- [ ] Background Jobs (session management at least)
+- [x] Background Jobs
 - [ ] Automated Test Suite
 - [ ] Legacy Profession Data
 - [ ] RELEASE

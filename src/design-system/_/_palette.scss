@@ -54,11 +54,11 @@
 	}
 
 	/* tips */
-	$yellow-step: 5;
+	$yellow-step: 6.5;
 
 	@each $lightness, $stop in $stops {
 		--color-yellow-#{$lightness}: lch(
-			#{75% + ($yellow-step * $stop)} calc(6.703 + 100) 100
+			#{70% + ($yellow-step * $stop)} calc(6.703 + 100) 100
 		);
 	}
 
@@ -125,7 +125,7 @@
 
 		/* tips */
 		--color-yellow-base: lch(
-			from var(--color-neutral-base) 75% calc(c + 100) 100
+			from var(--color-neutral-base) 70% calc(c + 100) 100
 		);
 		--color-yellow-step: #{$yellow-step};
 

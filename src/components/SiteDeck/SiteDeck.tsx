@@ -7,6 +7,7 @@ import { deleteSession } from "@/app/profile/actions";
 import ActionButton from "@/components/ActionButton/ActionButton";
 import Anchor from "@/components/Anchor/Anchor";
 import Button from "@/components/Button/Button";
+import Icon from "@/components/Icon/Icon";
 import NavigationTree from "@/components/NavigationTree/NavigationTree";
 import SiteMasthead from "@/components/SiteMasthead/SiteMasthead";
 import { useTranslation } from "@/i18n/client";
@@ -34,7 +35,24 @@ export default function SiteDeck({
 				title={t("branding.title")}
 			/>
 
-			<div className={styles.auth}>
+			<Button
+				aria-label={t("table-of-contents.label", {
+					context: show ? "opened" : "closed"
+				})}
+				className={styles.toggle}
+				onClick={() => {
+					setShow((prev) => !prev);
+				}}
+				type="button"
+				variant="inline"
+			>
+				<Icon code={show ? "cross" : "box"} />
+			</Button>
+
+			<div
+				className={styles.wrapper}
+				style={{ display: show ? undefined : "none" }}
+			>
 				{profile ? (
 					<>
 						<Anchor href="/profile" variant="inline">
@@ -59,28 +77,7 @@ export default function SiteDeck({
 						</Anchor>
 					</>
 				)}
-			</div>
 
-			<Button
-				aria-label={t("table-of-contents.label", {
-					context: show ? "opened" : "closed"
-				})}
-				className={styles.toggle}
-				onClick={() => {
-					setShow((prev) => !prev);
-				}}
-				type="button"
-				variant="secondary"
-			>
-				{t("table-of-contents.toggle", {
-					context: show ? "opened" : "closed"
-				})}
-			</Button>
-
-			<div
-				className={styles.wrapper}
-				style={{ display: show ? undefined : "none" }}
-			>
 				<NavigationTree
 					branches={BASE_RESOURCES}
 					className={styles["tree-root"]}

@@ -1,18 +1,19 @@
 @use "@/design-system/_/_typography.module.scss" as typography;
 
-.item {
-	@include typography.technical();
+.swatch {
+	--size: 48px;
 
-	align-items: center;
-	cursor: default;
-	display: flex;
-	inline-size: 100%;
-	justify-content: center;
-	list-style-type: none;
-	padding: 4rem;
+	block-size: var(--size);
+	inline-size: var(--size);
 }
 
-.item:focus,
-.item:hover {
-	transform: scale(1.05);
+.swatch:focus,
+.swatch:hover {
+	transform: scale(1.1);
+}
+
+.caption {
+	@include typography.technical();
+
+	text-align: end;
 }

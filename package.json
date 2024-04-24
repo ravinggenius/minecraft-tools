@@ -20,8 +20,6 @@
     "classnames": "^2.5.1",
     "cool-trim": "^1.1.1",
     "date-fns": "^3.3.1",
-    "eslint": "^8.56.0",
-    "eslint-config-next": "^14.1.0",
     "i18next": "^23.7.18",
     "i18next-browser-languagedetector": "^7.2.0",
     "i18next-resources-to-backend": "^1.2.0",
@@ -53,6 +51,8 @@
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
     "@types/validator": "^13.11.8",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.1.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.2.4",
     "sass": "^1.70.0"

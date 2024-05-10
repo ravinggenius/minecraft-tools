@@ -10,7 +10,8 @@
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
     "lint:check": "next lint",
-    "lint:fix": "next lint --fix"
+    "lint:fix": "next lint --fix",
+    "test": "playwright test"
   },
   "dependencies": {
     "@hapi/iron": "^7.0.1",
@@ -43,6 +44,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@playwright/test": "^1.44.0",
     "@total-typescript/ts-reset": "^0.5.1",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/bcrypt": "^5.0.2",

@@ -21,9 +21,9 @@ html {
 body {
 	@include typography.primary-body();
 
+	background-color: var(--color-neutral-050);
 	block-size: 100%;
-	color: var(--color-neutral-900);
-	/* min-block-size: 100%; */
+	color: var(--color-special-coal);
 }
 
 * {

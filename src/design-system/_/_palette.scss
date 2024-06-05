@@ -1,5 +1,6 @@
 :root {
-	$stops: (
+	$lightness-base: 70%;
+	$lightness-steps: (
 		"050": 4.5,
 		"100": 4,
 		"200": 3,
@@ -12,130 +13,78 @@
 		"900": -4,
 		"950": -4.5
 	);
+	$lightness-step-size: 6.5;
+
+	$chroma-base: 6.703;
+
+	$hue-neutral-value: 240;
+	$hue-names: (
+		// background, foreground, border, shadow
+		"neutral": $hue-neutral-value,
+		// errors, warnings
+		"red": 30,
+		// success
+		"green": 150,
+		// information, feedback
+		"blue": 290,
+		// tips
+		"yellow": 100
+	);
+
+	@function ternary($condition, $if-true, $if-false) {
+		@if $condition {
+			@return $if-true;
+		}
+
+		@return $if-false;
+	}
+
+	@function chroma-modifier($hue-name) {
+		@return ternary($hue-name == "neutral", 0, 100);
+	}
 
 	--color-special-coal: lch(0% 0 0);
 	--color-special-snow: lch(100% 0 0);
 	--color-special-glass: lch(100% 0 0 / 0%);
 
-	/* background, foreground, border, shadow */
-	$neutral-step: 10;
-
-	@each $lightness, $stop in $stops {
-		--color-neutral-#{$lightness}: lch(
-			#{50% + ($neutral-step * $stop)} 6.703 240
-		);
-	}
-
-	/* errors and warnings */
-	$red-step: $neutral-step;
-
-	@each $lightness, $stop in $stops {
-		--color-red-#{$lightness}: lch(
-			#{50% + ($red-step * $stop)} calc(6.703 + 100) 30
-		);
-	}
-
-	/* success */
-	$green-step: $neutral-step;
-
-	@each $lightness, $stop in $stops {
-		--color-green-#{$lightness}: lch(
-			#{50% + ($green-step * $stop)} calc(6.703 + 100) 150
-		);
-	}
-
-	/* information and feedback */
-	$blue-step: $neutral-step;
-
-	@each $lightness, $stop in $stops {
-		--color-blue-#{$lightness}: lch(
-			#{50% + ($blue-step * $stop)} calc(6.703 + 100) 290
-		);
-	}
-
-	/* tips */
-	$yellow-step: 6.5;
-
-	@each $lightness, $stop in $stops {
-		--color-yellow-#{$lightness}: lch(
-			#{70% + ($yellow-step * $stop)} calc(6.703 + 100) 100
-		);
+	@each $name, $hue in $hue-names {
+		@each $lightness-level, $step in $lightness-steps {
+			--color-#{$name}-#{$lightness-level}: lch(
+				#{$lightness-base +
+					($lightness-step-size * $step)}
+					#{$chroma-base +
+					chroma-modifier($name)}
+					#{$hue}
+			);
+		}
 	}
 
 	/* SEE https://caniuse.com/css-relative-colors */
 	/* SEE https://caniuse.com/mdn-css_types_color_color-contrast */
 	@supports (color: lch(from lch(0% 0 0) l c h)) {
-		/* background, foreground, border, shadow */
-		--color-neutral-base: lch(50% 6.703 240);
-		--color-neutral-step: #{$neutral-step};
+		--color-special-glass: lch(from var(--color-special-snow) l c h / 0%);
 
-		@each $lightness, $stop in $stops {
-			--color-neutral-#{$lightness}: lch(
-				from var(--color-neutral-base)
-					calc(l + (var(--color-neutral-step) * #{$stop}))
-					c
-					h
-			);
-		}
-
-		/* errors and warnings */
-		--color-red-base: lch(
-			from var(--color-neutral-base) l calc(c + 100) 30
+		--color-base: lch(
+			#{$lightness-base} #{$chroma-base} #{$hue-neutral-value}
 		);
-		--color-red-step: #{$red-step};
 
-		@each $lightness, $stop in $stops {
-			--color-red-#{$lightness}: lch(
-				from var(--color-red-base)
-					calc(l + (var(--color-red-step) * #{$stop}))
-					c
-					h
-			);
-		}
-
-		/* success */
-		--color-green-base: lch(
-			from var(--color-neutral-base) l calc(c + 100) 150
-		);
-		--color-green-step: #{$green-step};
-
-		@each $lightness, $stop in $stops {
-			--color-green-#{$lightness}: lch(
-				from var(--color-green-base)
-					calc(l + (var(--color-green-step) * #{$stop}))
-					c
-					h
-			);
-		}
-
-		/* information and feedback */
-		--color-blue-base: lch(
-			from var(--color-neutral-base) l calc(c + 100) 290
-		);
-		--color-blue-step: #{$blue-step};
-
-		@each $lightness, $stop in $stops {
-			--color-blue-#{$lightness}: lch(
-				from var(--color-blue-base)
-					calc(l + (var(--color-blue-step) * #{$stop}))
-					c
-					h
-			);
-		}
-
-		/* tips */
-		--color-yellow-base: lch(
-			from var(--color-neutral-base) 70% calc(c + 100) 100
-		);
-		--color-yellow-step: #{$yellow-step};
-
-		@each $lightness, $stop in $stops {
-			--color-yellow-#{$lightness}: lch(
-				from var(--color-yellow-base)
-					calc(l + (var(--color-yellow-step) * #{$stop}))
-					c
-					h
-			);
+		@each $name, $hue in $hue-names {
+			@each $lightness-level, $step in $lightness-steps {
+				--color-#{$name}-#{$lightness-level}: lch(
+					from var(--color-base)
+						#{ternary(
+							($lightness-step-size * $step) == 0,
+							l,
+							calc(l + #{$lightness-step-size * $step})
+						)}
+						#{ternary(
+							chroma-modifier($name) == 0,
+							c,
+							calc(c + chroma-modifier($name))
+						)}
+						#{ternary($hue == $hue-neutral-value, h, $hue)}
+				);
+			}
 		}
 	}
 }

@@ -1,7 +1,5 @@
 import { cookies } from "next/headers";
 
-import { Session } from "@/library/session/schema";
-
 import * as config from "./config-service.mjs";
 import * as secretService from "./secret-service";
 
@@ -15,7 +13,7 @@ export const read = async () => {
 	const token = cookies().get(config.sessionName)?.value;
 
 	return token
-		? await (secretService.decrypt(token) as Promise<Session["id"]>)
+		? await (secretService.decrypt(token) as Promise<string>)
 		: undefined;
 };
 

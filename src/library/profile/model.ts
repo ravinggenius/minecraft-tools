@@ -1,4 +1,4 @@
-import { BOOLEAN_NAMED, pool, sql, VOID } from "../_/datastore";
+import { BOOLEAN_NAMED, pool, sql, VOID } from "@/services/datastore-service";
 
 import { PROFILE, Profile, PUBLIC_PROFILE } from "./schema";
 

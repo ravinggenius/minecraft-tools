@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { loadPageTranslations } from "@/i18n/server";
-import { requireVerifiedProfile } from "@/library/_/session";
+import { requireVerifiedProfile } from "@/library/_/session-manager";
 
 import styles from "./page.module.scss";
 

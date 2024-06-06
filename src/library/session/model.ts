@@ -1,11 +1,11 @@
 import bcrypt from "bcrypt";
 import { add } from "date-fns";
 
-import * as config from "@/library/_/config.mjs";
-import { pool, sql, VOID } from "@/library/_/datastore";
 import CodedError, { ERROR_CODE } from "@/library/_/errors/coded-error";
 import * as accountModel from "@/library/account/model";
 import { ACCOUNT } from "@/library/account/schema";
+import * as config from "@/services/config-service.mjs";
+import { pool, sql, VOID } from "@/services/datastore-service";
 
 import {
 	SESSION,

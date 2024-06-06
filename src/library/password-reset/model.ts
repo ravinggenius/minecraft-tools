@@ -3,9 +3,9 @@
 import bcrypt from "bcrypt";
 import { addMinutes } from "date-fns";
 
-import * as config from "@/library/_/config.mjs";
+import * as config from "@/services/config-service.mjs";
+import { pool, sql, VOID } from "@/services/datastore-service";
 
-import { pool, sql, VOID } from "../_/datastore";
 import CodedError, { ERROR_CODE } from "../_/errors/coded-error";
 
 import {

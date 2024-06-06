@@ -5,16 +5,16 @@ import { redirect } from "next/navigation";
 import { ZodError } from "zod";
 
 import sendAddressVerification from "@/emails/address-verification";
-import * as config from "@/library/_/config.mjs";
 import CodedError from "@/library/_/errors/coded-error";
 import { normalizeFormData, ServerAction } from "@/library/_/server-action";
 import {
 	maybeProfileFromSession,
 	writeSessionCookie
-} from "@/library/_/session";
+} from "@/library/_/session-manager";
 import * as accountModel from "@/library/account/model";
 import { AccountCreateAttrs } from "@/library/account/schema";
 import * as sessionModel from "@/library/session/model";
+import * as config from "@/services/config-service.mjs";
 import * as secretService from "@/services/secret-service";
 
 export const createProfile: ServerAction = async (data) => {

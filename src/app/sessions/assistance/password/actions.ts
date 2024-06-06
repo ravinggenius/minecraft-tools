@@ -8,7 +8,7 @@ import { normalizeFormData, ServerAction } from "@/library/_/server-action";
 import {
 	maybeProfileFromSession,
 	writeSessionCookie
-} from "@/library/_/session";
+} from "@/library/_/session-manager";
 import * as passwordResetModel from "@/library/password-reset/model";
 import * as sessionModel from "@/library/session/model";
 import * as secretService from "@/services/secret-service";

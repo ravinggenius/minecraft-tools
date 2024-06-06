@@ -1,4 +1,4 @@
-import "./src/library/_/config.mjs";
+import "./src/services/config-service.mjs";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

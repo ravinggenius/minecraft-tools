@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 
 import { ServerAction } from "@/library/_/server-action";
-import { clearSessionCookie, readSessionCookie } from "@/library/_/session";
+import { clearSessionCookie, readSessionCookie } from "@/library/_/session-manager";
 import * as sessionModel from "@/library/session/model";
 
 export const deleteSession: ServerAction = async (data) => {

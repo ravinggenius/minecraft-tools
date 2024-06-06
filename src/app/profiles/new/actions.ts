@@ -10,7 +10,7 @@ import { normalizeFormData, ServerAction } from "@/library/_/server-action";
 import {
 	maybeProfileFromSession,
 	writeSessionCookie
-} from "@/library/_/session";
+} from "@/library/_/session-manager";
 import * as accountModel from "@/library/account/model";
 import { AccountCreateAttrs } from "@/library/account/schema";
 import * as sessionModel from "@/library/session/model";

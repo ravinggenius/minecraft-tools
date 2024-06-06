@@ -5,7 +5,7 @@ import { ZodError } from "zod";
 
 import CodedError, { ERROR_CODE } from "@/library/_/errors/coded-error";
 import { normalizeFormData, ServerAction } from "@/library/_/server-action";
-import { maybeProfileFromSession } from "@/library/_/session";
+import { maybeProfileFromSession } from "@/library/_/session-manager";
 import * as accountModel from "@/library/account/model";
 import * as secretService from "@/services/secret-service";
 

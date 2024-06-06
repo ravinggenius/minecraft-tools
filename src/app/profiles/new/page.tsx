@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 
 import Anchor from "@/components/Anchor/Anchor";
 import { loadPageTranslations } from "@/i18n/server";
-import { maybeProfileFromSession } from "@/library/_/session";
+import { maybeProfileFromSession } from "@/library/_/session-manager";
 
 import { createProfile } from "./actions";
 import CreateProfileForm from "./form";

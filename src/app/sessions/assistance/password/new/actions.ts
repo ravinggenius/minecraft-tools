@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 
 import sendForgotPassword from "@/emails/forgot-password";
 import { normalizeFormData, ServerAction } from "@/library/_/server-action";
-import { maybeProfileFromSession } from "@/library/_/session";
+import { maybeProfileFromSession } from "@/library/_/session-manager";
 import * as accountModel from "@/library/account/model";
 import { ACCOUNT } from "@/library/account/schema";
 import * as passwordResetModel from "@/library/password-reset/model";

@@ -1,9 +1,9 @@
 import bcrypt from "bcrypt";
 import { z } from "zod";
 
+import * as config from "@/services/config-service.mjs";
 import { BOOLEAN_NAMED, pool, sql, VOID } from "@/services/datastore-service";
 
-import * as config from "../_/config.mjs";
 import CodedError, { ERROR_CODE } from "../_/errors/coded-error";
 import { Profile } from "../profile/schema";
 

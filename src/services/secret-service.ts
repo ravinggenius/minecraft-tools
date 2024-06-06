@@ -1,7 +1,7 @@
 import Iron from "@hapi/iron";
 import crypto from "crypto";
 
-import * as config from "@/library/_/config.mjs";
+import * as config from "./config-service.mjs";
 
 export const encrypt = (payload: unknown) =>
 	Iron.seal(payload, config.encryptionSecret, Iron.defaults);

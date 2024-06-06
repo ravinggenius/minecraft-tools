@@ -3,10 +3,10 @@ import { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { loadPageTranslations } from "@/i18n/server";
-import * as config from "@/library/_/config.mjs";
 import { requireProfile } from "@/library/_/session";
 import * as accountModel from "@/library/account/model";
 import * as profileModel from "@/library/profile/model";
+import * as config from "@/services/config-service.mjs";
 
 import { resendEmailVerification } from "./actions";
 import VerifyEmailPromptForm from "./form";

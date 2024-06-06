@@ -1,8 +1,8 @@
 import { cookies } from "next/headers";
 
-import * as config from "@/library/_/config.mjs";
 import { Session } from "@/library/session/schema";
 
+import * as config from "./config-service.mjs";
 import * as secretService from "./secret-service";
 
 export const write = async (payload: string, expiresAt: Date) =>

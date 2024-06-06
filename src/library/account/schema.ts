@@ -1,7 +1,8 @@
 import validator from "validator";
 import { z } from "zod";
 
-import * as config from "../_/config-public.mjs";
+import * as config from "@/services/config-public-service.mjs";
+
 import { PROFILE, PROFILE_ATTRS } from "../profile/schema";
 
 export const ACCOUNT = z.object({

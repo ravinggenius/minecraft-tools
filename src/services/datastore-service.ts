@@ -4,7 +4,7 @@ import { createQueryLoggingInterceptor } from "slonik-interceptor-query-logging"
 import { createQueryNormalisationInterceptor } from "slonik-interceptor-query-normalisation";
 import { z } from "zod";
 
-import * as config from "@/library/_/config.mjs";
+import * as config from "./config-service.mjs";
 
 const createQueryTrimInterceptor = () =>
 	({

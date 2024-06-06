@@ -1,7 +1,7 @@
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
-export * from "./config-public.mjs";
+export * from "./config-public-service.mjs";
 
 const env = createEnv({
 	runtimeEnvStrict: {

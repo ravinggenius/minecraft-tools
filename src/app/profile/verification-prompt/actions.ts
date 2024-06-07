@@ -19,11 +19,9 @@ export const resendEmailVerification = async () => {
 			redirect("/profile");
 		}
 
-		const tokenNonce = secretService.nonce();
-
 		const account = await accountModel.updateVerificationNonce(
 			maybeProfile.id,
-			tokenNonce
+			secretService.nonce()
 		);
 
 		const token = await secretService.encrypt({

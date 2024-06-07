@@ -43,7 +43,7 @@ export default async function RootLayout({
 }: {
 	children: ReactNode;
 }) {
-	const locale = extractLocaleFromRequest();
+	const locale = await extractLocaleFromRequest();
 
 	const maybeProfile = await maybeProfileFromSession();
 

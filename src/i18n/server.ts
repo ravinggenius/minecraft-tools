@@ -38,7 +38,7 @@ const initI18next = async (
 	return i18nInstance;
 };
 
-export const extractLocaleFromRequest = () => {
+export const extractLocaleFromRequest = async () => {
 	const cookieLocale = cookies().get(cookieName)?.value;
 
 	if (SUPPORTED_LOCALES.includes(cookieLocale as SupportedLocale)) {
@@ -68,7 +68,7 @@ export const loadPageTranslations = async (
 	ns: string | Array<string>,
 	options: Options = {}
 ) => {
-	const locale = extractLocaleFromRequest();
+	const locale = await extractLocaleFromRequest();
 
 	const i18nextInstance = await initI18next(locale, ns);
 

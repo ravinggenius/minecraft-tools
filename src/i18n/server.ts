@@ -47,14 +47,14 @@ export const extractLocaleFromRequest = async () => {
 
 	const acceptLanguage = headers().get("Accept-Language");
 
-	const headerLocales = parseAcceptLanguage(acceptLanguage);
+	const acceptLanguageLocales = parseAcceptLanguage(acceptLanguage);
 
-	const [headerLocale] = availableLocales(headerLocales, [
+	const [acceptLanguageLocale] = availableLocales(acceptLanguageLocales, [
 		...SUPPORTED_LOCALES
 	]);
 
-	if (SUPPORTED_LOCALES.includes(headerLocale as SupportedLocale)) {
-		return headerLocale as SupportedLocale;
+	if (SUPPORTED_LOCALES.includes(acceptLanguageLocale as SupportedLocale)) {
+		return acceptLanguageLocale as SupportedLocale;
 	}
 
 	return FALLBACK_LOCALE;

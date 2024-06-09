@@ -12,13 +12,13 @@ import * as config from "@/services/config-service.mjs";
 import * as secretService from "@/services/secret-service";
 
 export const resendEmailVerification = async () => {
+	const maybeProfile = await maybeProfileFromSession();
+
+	if (!maybeProfile) {
+		redirect("/profile");
+	}
+
 	try {
-		const maybeProfile = await maybeProfileFromSession();
-
-		if (!maybeProfile) {
-			redirect("/profile");
-		}
-
 		const account = await accountModel.updateVerificationNonce(
 			maybeProfile.id,
 			secretService.nonce()
@@ -44,11 +44,6 @@ export const resendEmailVerification = async () => {
 		}).toString();
 
 		await sendAddressVerification(account.email, verificationUrl);
-
-		// hack to force the page to reload so the timer to show/hide
-		// the resubmit form is properly reset. simply doing nothing
-		// or redirecting to /profile/verification-prompt does not work
-		redirect("/profile", RedirectType.replace);
 	} catch (error: unknown) {
 		if (error instanceof CodedError) {
 			return error.toJson();
@@ -58,4 +53,9 @@ export const resendEmailVerification = async () => {
 			throw error;
 		}
 	}
+
+	// hack to force the page to reload so the timer to show/hide
+	// the resubmit form is properly reset. simply doing nothing
+	// or redirecting to /profile/verification-prompt does not work
+	redirect("/profile", RedirectType.replace);
 };

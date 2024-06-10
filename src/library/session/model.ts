@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import { add } from "date-fns";
+import "server-only";
 
 import CodedError, { ERROR_CODE } from "@/library/_/errors/coded-error";
 import * as accountModel from "@/library/account/model";

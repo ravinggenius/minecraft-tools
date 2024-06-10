@@ -1,11 +1,10 @@
-"use server";
-
 import { createInstance } from "i18next";
 import resourcesToBackend from "i18next-resources-to-backend";
 import { parseAcceptLanguage } from "intl-parse-accept-language";
 import { cookies, headers } from "next/headers";
 import { availableLocales } from "preferred-locale";
 import { initReactI18next } from "react-i18next/initReactI18next";
+import "server-only";
 
 import {
 	cookieName,
@@ -38,7 +37,7 @@ const initI18next = async (
 	return i18nInstance;
 };
 
-export const extractLocaleFromRequest = async () => {
+export const extractLocaleFromRequest = () => {
 	const cookieLocale = cookies().get(cookieName)?.value;
 
 	if (SUPPORTED_LOCALES.includes(cookieLocale as SupportedLocale)) {
@@ -47,14 +46,14 @@ export const extractLocaleFromRequest = async () => {
 
 	const acceptLanguage = headers().get("Accept-Language");
 
-	const headerLocales = parseAcceptLanguage(acceptLanguage);
+	const acceptLanguageLocales = parseAcceptLanguage(acceptLanguage);
 
-	const [headerLocale] = availableLocales(headerLocales, [
+	const [acceptLanguageLocale] = availableLocales(acceptLanguageLocales, [
 		...SUPPORTED_LOCALES
 	]);
 
-	if (SUPPORTED_LOCALES.includes(headerLocale as SupportedLocale)) {
-		return headerLocale as SupportedLocale;
+	if (SUPPORTED_LOCALES.includes(acceptLanguageLocale as SupportedLocale)) {
+		return acceptLanguageLocale as SupportedLocale;
 	}
 
 	return FALLBACK_LOCALE;
@@ -68,7 +67,7 @@ export const loadPageTranslations = async (
 	ns: string | Array<string>,
 	options: Options = {}
 ) => {
-	const locale = await extractLocaleFromRequest();
+	const locale = extractLocaleFromRequest();
 
 	const i18nextInstance = await initI18next(locale, ns);
 

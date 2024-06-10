@@ -1,4 +1,5 @@
 import bcrypt from "bcrypt";
+import "server-only";
 import { z } from "zod";
 
 import * as config from "@/services/config-service.mjs";

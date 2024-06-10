@@ -1,7 +1,6 @@
-"use server";
-
 import bcrypt from "bcrypt";
 import { addMinutes } from "date-fns";
+import "server-only";
 
 import * as config from "@/services/config-service.mjs";
 import { pool, sql, VOID } from "@/services/datastore-service";

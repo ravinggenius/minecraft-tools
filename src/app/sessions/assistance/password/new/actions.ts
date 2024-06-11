@@ -31,7 +31,7 @@ export const initiateForgotPasswordReset: ServerAction = async (data) => {
 		const token = await secretService.encrypt({
 			email: passwordReset.email,
 			nonce: passwordReset.nonce,
-			expiresAt: passwordReset.expiresAt.toJSON()
+			expiresAt: new Date(passwordReset.expiresAt).toJSON()
 		});
 
 		const passwordAssistanceUrl = new URL(

@@ -1,3 +1,13 @@
 {
-  "extends": ["next/core-web-vitals", "prettier"]
+  "extends": ["next/core-web-vitals", "prettier"],
+  "plugins": ["sql"],
+  "rules": {
+    "sql/format": ["warn"],
+    "sql/no-unsafe-query": [
+      "error",
+      {
+        "allowLiteral": false
+      }
+    ]
+  }
 }

@@ -1,4 +1,3 @@
-import bcrypt from "bcrypt";
 import { add } from "date-fns";
 import "server-only";
 
@@ -7,6 +6,7 @@ import * as accountModel from "@/library/account/model";
 import { ACCOUNT } from "@/library/account/schema";
 import * as config from "@/services/config-service.mjs";
 import { pool, sql, VOID } from "@/services/datastore-service";
+import * as secretService from "@/services/secret-service";
 
 import {
 	SESSION,
@@ -26,7 +26,7 @@ export const create = async (attrs: SessionCredentials) => {
 
 	const { id: accountId, hashword } = maybeAccountPlusHashword;
 
-	if (await bcrypt.compare(password, hashword)) {
+	if (await secretService.compare(password, hashword)) {
 		const expiresAt = add(new Date(), {
 			seconds: config.sessionMaxAgeSeconds
 		});

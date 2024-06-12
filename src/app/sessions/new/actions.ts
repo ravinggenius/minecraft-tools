@@ -13,13 +13,13 @@ import * as sessionModel from "@/library/session/model";
 import { SessionCredentials } from "@/library/session/schema";
 
 export const createSession: ServerAction = async (data) => {
+	const maybeProfile = await maybeProfileFromSession();
+
+	if (maybeProfile) {
+		redirect("/profile");
+	}
+
 	try {
-		const maybeProfile = await maybeProfileFromSession();
-
-		if (maybeProfile) {
-			redirect("/profile");
-		}
-
 		const session = await sessionModel.create(
 			normalizeFormData(data) as SessionCredentials
 		);

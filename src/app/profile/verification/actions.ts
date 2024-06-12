@@ -12,13 +12,13 @@ import * as secretService from "@/services/secret-service";
 import { DATA, TOKEN } from "./schema";
 
 export const markEmailAsVerified: ServerAction = async (data) => {
+	const maybeProfile = await maybeProfileFromSession();
+
+	if (!maybeProfile) {
+		redirect("/profile");
+	}
+
 	try {
-		const maybeProfile = await maybeProfileFromSession();
-
-		if (!maybeProfile) {
-			redirect("/profile");
-		}
-
 		const { email, token } = await DATA.parseAsync(normalizeFormData(data));
 
 		const account = await accountModel.findByEmail(email);
@@ -36,8 +36,6 @@ export const markEmailAsVerified: ServerAction = async (data) => {
 			decrypted.expiresAt > new Date()
 		) {
 			await accountModel.markEmailAsVerified(account.id);
-
-			redirect("/profile");
 		} else {
 			throw new CodedError(ERROR_CODE.CREDENTIALS_INVALID);
 		}
@@ -50,4 +48,6 @@ export const markEmailAsVerified: ServerAction = async (data) => {
 			throw error;
 		}
 	}
+
+	redirect("/profile");
 };

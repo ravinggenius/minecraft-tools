@@ -18,13 +18,13 @@ import * as config from "@/services/config-service.mjs";
 import * as secretService from "@/services/secret-service";
 
 export const createProfile: ServerAction = async (data) => {
+	const maybeProfile = await maybeProfileFromSession();
+
+	if (maybeProfile) {
+		redirect("/profile");
+	}
+
 	try {
-		const maybeProfile = await maybeProfileFromSession();
-
-		if (maybeProfile) {
-			redirect("/profile");
-		}
-
 		const attrs = normalizeFormData(data) as AccountCreateAttrs;
 
 		const account = await accountModel.create(attrs, secretService.nonce());

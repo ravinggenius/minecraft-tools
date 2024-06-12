@@ -56,12 +56,6 @@ export const nodeEnv = z
 	.enum(["development", "production", "test"])
 	.parse(process.env.NODE_ENV);
 
-export const passwordSaltRounds = z
-	.string()
-	.transform((n) => Number.parseInt(n, 10))
-	.pipe(z.number().positive())
-	.parse(process.env.PASSWORD_SALT_ROUNDS);
-
 export const sessionCookieOptions = {
 	httpOnly: true,
 	path: z

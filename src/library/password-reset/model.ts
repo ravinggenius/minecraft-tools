@@ -1,9 +1,9 @@
-import bcrypt from "bcrypt";
 import { addMinutes } from "date-fns";
 import "server-only";
 
 import * as config from "@/services/config-service.mjs";
 import { pool, sql, VOID } from "@/services/datastore-service";
+import * as secretService from "@/services/secret-service";
 
 import CodedError, { ERROR_CODE } from "../_/errors/coded-error";
 
@@ -51,7 +51,7 @@ export const reset = async (attrs: PasswordResetResetAttrs) => {
 		});
 	}
 
-	const hashword = await bcrypt.hash(password, config.passwordSaltRounds);
+	const hashword = await secretService.hash(password);
 
 	return (await pool).transaction(async (transaction) => {
 		const { rowCount } = await transaction.query(sql.type(VOID)`

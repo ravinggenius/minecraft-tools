@@ -1,9 +1,8 @@
-import bcrypt from "bcrypt";
 import "server-only";
 import { z } from "zod";
 
-import * as config from "@/services/config-service.mjs";
 import { BOOLEAN_NAMED, pool, sql, VOID } from "@/services/datastore-service";
+import * as secretService from "@/services/secret-service";
 
 import CodedError, { ERROR_CODE } from "../_/errors/coded-error";
 import { Profile } from "../profile/schema";
@@ -30,7 +29,7 @@ export const create = async (
 		});
 	}
 
-	const hashword = await bcrypt.hash(password, config.passwordSaltRounds);
+	const hashword = await secretService.hash(password);
 
 	return (await pool).transaction(async (transaction) => {
 		const alreadyExists = await transaction.oneFirst(

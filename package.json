@@ -16,7 +16,6 @@
   "dependencies": {
     "@hapi/iron": "^7.0.1",
     "@roarr/cli": "^5.12.4",
-    "bcrypt": "^5.1.1",
     "classnames": "^2.5.1",
     "cool-trim": "^1.1.1",
     "date-fns": "^3.6.0",
@@ -27,6 +26,7 @@
     "next": "^14.2.3",
     "node-pg-migrate": "^7.4.0",
     "nodemailer": "^6.9.13",
+    "oslo": "^1.2.0",
     "preferred-locale": "^2.0.2",
     "rambda": "^9.2.0",
     "react": "^18.3.1",
@@ -47,7 +47,6 @@
     "@playwright/test": "^1.44.1",
     "@total-typescript/ts-reset": "^0.5.1",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-    "@types/bcrypt": "^5.0.2",
     "@types/node": "^20.14.1",
     "@types/nodemailer": "^6.4.15",
     "@types/react": "^18.3.3",

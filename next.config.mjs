@@ -4,6 +4,11 @@ import "./src/services/config-service.mjs";
 const nextConfig = {
 	experimental: {
 		typedRoutes: true
+	},
+	webpack: (config) => {
+		config.externals.push("@node-rs/argon2", "@node-rs/bcrypt");
+
+		return config;
 	}
 };
 

@@ -1,6 +1,6 @@
 import Iron from "@hapi/iron";
-import bcrypt from "bcrypt";
-import crypto from "crypto";
+import { alphabet, generateRandomString } from "oslo/crypto";
+import { Argon2id } from "oslo/password";
 
 import * as config from "./config-service.mjs";
 
@@ -14,10 +14,17 @@ export const decrypt = (payloadRaw: string) =>
 		Iron.defaults
 	) as Promise<unknown>;
 
-export const nonce = () => crypto.randomBytes(16).toString("base64");
+export const nonce = () =>
+	generateRandomString(24, alphabet("a-z", "A-Z", "0-9"));
 
-export const hash = async (password: string) =>
-	bcrypt.hash(password, config.passwordSaltRounds);
+export const hash = async (password: string) => {
+	const argon = new Argon2id();
 
-export const compare = async (password: string, hashword: string) =>
-	bcrypt.compare(password, hashword);
+	return argon.hash(password);
+};
+
+export const compare = async (password: string, hashword: string) => {
+	const argon = new Argon2id();
+
+	return argon.verify(hashword, password);
+};

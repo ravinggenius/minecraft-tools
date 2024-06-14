@@ -1,9 +1,9 @@
 import { addMinutes } from "date-fns";
 import "server-only";
 
-import * as config from "@/services/config-service.mjs";
-import { pool, sql, VOID } from "@/services/datastore-service";
-import * as secretService from "@/services/secret-service";
+import * as config from "@/services/config-service/service.mjs";
+import { pool, sql, VOID } from "@/services/datastore-service/service";
+import * as secretService from "@/services/secret-service/service";
 
 import CodedError, { ERROR_CODE } from "../_/errors/coded-error";
 

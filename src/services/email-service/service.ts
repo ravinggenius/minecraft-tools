@@ -1,6 +1,6 @@
 import nodemailer, { SendMailOptions } from "nodemailer";
 
-import * as config from "./config-service.mjs";
+import * as config from "../config-service/service.mjs";
 
 const transporter = nodemailer.createTransport({
 	auth: {

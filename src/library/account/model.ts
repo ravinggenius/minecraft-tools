@@ -1,8 +1,13 @@
 import "server-only";
 import { z } from "zod";
 
-import { BOOLEAN_NAMED, pool, sql, VOID } from "@/services/datastore-service";
-import * as secretService from "@/services/secret-service";
+import {
+	BOOLEAN_NAMED,
+	pool,
+	sql,
+	VOID
+} from "@/services/datastore-service/service";
+import * as secretService from "@/services/secret-service/service";
 
 import CodedError, { ERROR_CODE } from "../_/errors/coded-error";
 import { Profile } from "../profile/schema";

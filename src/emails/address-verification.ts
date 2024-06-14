@@ -1,5 +1,5 @@
 import { loadPageTranslations } from "@/i18n/server";
-import * as emailService from "@/services/email-service";
+import * as emailService from "@/services/email-service/service";
 
 const sendAddressVerification = async (
 	to: Parameters<typeof emailService.send>[0],

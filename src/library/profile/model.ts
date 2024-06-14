@@ -1,6 +1,11 @@
 import "server-only";
 
-import { BOOLEAN_NAMED, pool, sql, VOID } from "@/services/datastore-service";
+import {
+	BOOLEAN_NAMED,
+	pool,
+	sql,
+	VOID
+} from "@/services/datastore-service/service";
 
 import { PROFILE, Profile, PUBLIC_PROFILE } from "./schema";
 

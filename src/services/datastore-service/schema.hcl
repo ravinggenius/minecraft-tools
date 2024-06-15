@@ -213,3 +213,224 @@ table "password_resets" {
     columns = [column.email]
   }
 }
+
+enum "edition" {
+  schema = schema.public
+  values = [
+    "bedrock",
+    "java"
+  ]
+}
+
+table "versions" {
+  schema = schema.public
+
+  column "id" {
+    null    = false
+    type    = uuid
+    default = sql("uuid_generate_v4()")
+  }
+
+  column "created_at" {
+    null    = false
+    type    = timestamptz
+    default = sql("now()")
+  }
+
+  column "updated_at" {
+    null    = false
+    type    = timestamptz
+    default = sql("now()")
+  }
+
+  column "edition" {
+    null = false
+    type = enum.edition
+  }
+
+  column "version" {
+    null = false
+    type = text
+  }
+
+  column "cycle" {
+    null = false
+    type = sql("integer ARRAY[2]")
+  }
+
+  column "released_on" {
+    null = false
+    type = date
+  }
+
+  column "release_notes_url" {
+    null = false
+    type = text
+  }
+
+  column "is_published" {
+    null    = false
+    type    = boolean
+    default = false
+  }
+
+  primary_key {
+    columns = [column.id]
+  }
+
+  unique "versions_edition_version_key" {
+    columns = [column.edition, column.version]
+  }
+}
+
+view "latest_versions" {
+  schema = schema.public
+  as     = <<-SQL
+    SELECT
+      *,
+      ROW_NUMBER() OVER (
+        PARTITION BY edition
+        ORDER BY released_on DESC
+      ) = 1 AS is_latest,
+      ROW_NUMBER() OVER (
+        PARTITION BY edition, cycle
+        ORDER BY released_on DESC
+      ) = 1 AS is_latest_in_cycle
+    FROM versions
+  SQL
+}
+
+enum "rarity" {
+  schema = schema.public
+  values = [
+    "common",
+    "uncommon",
+    "rare",
+    "epic"
+  ]
+}
+
+table "items" {
+  schema = schema.public
+
+  column "id" {
+    null    = false
+    type    = uuid
+    default = sql("uuid_generate_v4()")
+  }
+
+  column "created_at" {
+    null    = false
+    type    = timestamptz
+    default = sql("now()")
+  }
+
+  column "updated_at" {
+    null    = false
+    type    = timestamptz
+    default = sql("now()")
+  }
+
+  column "identifier" {
+    null = false
+    type = text
+  }
+
+  column "wiki_url" {
+    null = false
+    type = text
+  }
+
+  column "rarity" {
+    null    = false
+    type    = enum.rarity
+    default = "common"
+  }
+
+  column "stack_size" {
+    null    = false
+    type    = integer
+    default = 64
+  }
+
+  column "is_renewable" {
+    null = false
+    type = boolean
+  }
+
+  primary_key {
+    columns = [column.id]
+  }
+}
+
+table "item_versions" {
+  schema = schema.public
+
+  column "id" {
+    null    = false
+    type    = uuid
+    default = sql("uuid_generate_v4()")
+  }
+
+  column "item_id" {
+    null = false
+    type = uuid
+  }
+
+  column "version_id" {
+    null = false
+    type = uuid
+  }
+
+  column "created_at" {
+    null    = false
+    type    = timestamptz
+    default = sql("now()")
+  }
+
+  column "updated_at" {
+    null    = false
+    type    = timestamptz
+    default = sql("now()")
+  }
+
+  primary_key {
+    columns = [column.id]
+  }
+
+  foreign_key "item_versions_item_id_fkey" {
+    columns     = [column.item_id]
+    ref_columns = [table.items.column.id]
+    on_update   = CASCADE
+    on_delete   = CASCADE
+  }
+
+  foreign_key "item_versions_version_id_fkey" {
+    columns     = [column.version_id]
+    ref_columns = [table.versions.column.id]
+    on_update   = CASCADE
+    on_delete   = CASCADE
+  }
+
+  unique "item_versions_item_id_version_id_key" {
+    columns = [column.item_id, column.version_id]
+  }
+}
+
+view "versioned_items" {
+  schema     = schema.public
+  depends_on = [view.latest_versions]
+  as         = <<-SQL
+    SELECT
+      v.id AS version_id,
+      v.edition,
+      v.version,
+      v.cycle,
+      v.is_latest,
+      v.is_latest_in_cycle,
+      i.*
+    FROM items AS i
+      INNER JOIN item_versions AS iv ON i.id = iv.item_id
+      INNER JOIN latest_versions AS v ON iv.version_id = v.id
+  SQL
+}

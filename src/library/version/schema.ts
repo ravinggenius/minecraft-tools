@@ -11,7 +11,9 @@ export const VERSION = z.object({
 	cycle: z.tuple([z.number().nonnegative(), z.number().nonnegative()]),
 	releasedOn: z.coerce.date(),
 	releaseNotesUrl: z.string().url(),
-	isPublished: z.boolean().default(false).optional()
+	isPublished: z.boolean().default(false).optional(),
+	isLatest: z.boolean().readonly(),
+	isLatestInCycle: z.boolean().readonly()
 });
 
 export interface Version extends z.infer<typeof VERSION> {}
@@ -19,14 +21,9 @@ export interface Version extends z.infer<typeof VERSION> {}
 export const VERSION_ATTRS = VERSION.omit({
 	id: true,
 	createdAt: true,
-	updatedAt: true
+	updatedAt: true,
+	isLatest: true,
+	isLatestInCycle: true
 });
 
 export interface VersionAttrs extends z.infer<typeof VERSION_ATTRS> {}
-
-export const LATEST_VERSION = VERSION.extend({
-	isLatest: z.boolean(),
-	isLatestInCycle: z.boolean()
-});
-
-export interface LatestVersion extends z.infer<typeof LATEST_VERSION> {}

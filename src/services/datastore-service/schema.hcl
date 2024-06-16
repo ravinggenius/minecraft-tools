@@ -274,6 +274,18 @@ table "versions" {
     default = false
   }
 
+  column "is_latest" {
+    null    = false
+    type    = boolean
+    default = false
+  }
+
+  column "is_latest_in_cycle" {
+    null    = false
+    type    = boolean
+    default = false
+  }
+
   primary_key {
     columns = [column.id]
   }
@@ -283,21 +295,51 @@ table "versions" {
   }
 }
 
-view "latest_versions" {
+function "update_latest_version_flags" {
   schema = schema.public
+  lang   = PLpgSQL
+  return = trigger
   as     = <<-SQL
-    SELECT
-      *,
-      ROW_NUMBER() OVER (
-        PARTITION BY edition
-        ORDER BY released_on DESC
-      ) = 1 AS is_latest,
-      ROW_NUMBER() OVER (
-        PARTITION BY edition, cycle
-        ORDER BY released_on DESC
-      ) = 1 AS is_latest_in_cycle
-    FROM versions
+    BEGIN
+      IF pg_trigger_depth() = 1 THEN
+        WITH latest AS (
+          SELECT
+            id,
+            ROW_NUMBER() OVER (
+              PARTITION BY edition
+              ORDER BY released_on DESC
+            ) = 1 AS is_latest,
+            ROW_NUMBER() OVER (
+              PARTITION BY edition, cycle
+              ORDER BY released_on DESC
+            ) = 1 AS is_latest_in_cycle
+          FROM versions
+        )
+        UPDATE versions
+        SET
+          is_latest = latest.is_latest,
+          is_latest_in_cycle = latest.is_latest_in_cycle
+        FROM latest
+        WHERE versions.id = latest.id;
+      END IF;
+
+      RETURN NEW;
+    END
   SQL
+}
+
+trigger "trigger_update_latest_version_flags" {
+  on = table.versions
+
+  after {
+    insert = true
+    update = true
+    delete = true
+  }
+
+  execute {
+    function = function.update_latest_version_flags
+  }
 }
 
 enum "rarity" {
@@ -418,9 +460,8 @@ table "item_versions" {
 }
 
 view "versioned_items" {
-  schema     = schema.public
-  depends_on = [view.latest_versions]
-  as         = <<-SQL
+  schema = schema.public
+  as     = <<-SQL
     SELECT
       v.id AS version_id,
       v.edition,
@@ -431,6 +472,6 @@ view "versioned_items" {
       i.*
     FROM items AS i
       INNER JOIN item_versions AS iv ON i.id = iv.item_id
-      INNER JOIN latest_versions AS v ON iv.version_id = v.id
+      INNER JOIN versions AS v ON iv.version_id = v.id
   SQL
 }

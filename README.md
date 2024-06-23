@@ -47,6 +47,16 @@ While that's running, copy `.env` to `.env.local`. Fill in or adjust any values 
 cp .env .env.local
 ```
 
+You will also need [Atlas](https://atlasgo.io/) to manage database migrations. On macOS this can be installed with `homebrew`, but it is available for mutliple platforms. Some features that are used require a free account, so make sure you are logged in.
+
+To run migrations locally:
+
+```shell
+npm run migrate -- --url "postgresql://localhost/minecraft-tools?sslmode=disable"
+```
+
+`?sslmode=disable` is required if you aren't using a secure connection. This is the default for `Postgres.app` on macOS.
+
 Then run the development server:
 
 ```shell

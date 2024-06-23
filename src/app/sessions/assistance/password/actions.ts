@@ -11,7 +11,7 @@ import {
 } from "@/library/_/session-manager";
 import * as passwordResetModel from "@/library/password-reset/model";
 import * as sessionModel from "@/library/session/model";
-import * as secretService from "@/services/secret-service";
+import * as secretService from "@/services/secret-service/service";
 
 import { DATA, TOKEN } from "./schema";
 

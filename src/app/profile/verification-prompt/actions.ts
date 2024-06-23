@@ -8,8 +8,8 @@ import sendAddressVerification from "@/emails/address-verification";
 import CodedError from "@/library/_/errors/coded-error";
 import { maybeProfileFromSession } from "@/library/_/session-manager";
 import * as accountModel from "@/library/account/model";
-import * as config from "@/services/config-service.mjs";
-import * as secretService from "@/services/secret-service";
+import * as config from "@/services/config-service/service.mjs";
+import * as secretService from "@/services/secret-service/service";
 
 export const resendEmailVerification = async () => {
 	const maybeProfile = await maybeProfileFromSession();

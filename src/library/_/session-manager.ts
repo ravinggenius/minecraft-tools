@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import * as profileModel from "@/library/profile/model";
 import * as sessionModel from "@/library/session/model";
 import { Session } from "@/library/session/schema";
-import * as sessionCookieService from "@/services/session-cookie-service";
+import * as sessionCookieService from "@/services/session-cookie-service/service";
 
 export const writeSessionCookie = async (session: Session) =>
 	sessionCookieService.write(session.id, session.expiresAt);

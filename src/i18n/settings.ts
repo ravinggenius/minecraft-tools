@@ -1,6 +1,6 @@
 import { InitOptions } from "i18next";
 
-import * as config from "@/services/config-public-service.mjs";
+import * as config from "@/services/config-service/service-public.mjs";
 
 export const SUPPORTED_LOCALES = ["en-US"] as const;
 

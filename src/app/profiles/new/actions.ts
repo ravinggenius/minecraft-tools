@@ -14,8 +14,8 @@ import {
 import * as accountModel from "@/library/account/model";
 import { AccountCreateAttrs } from "@/library/account/schema";
 import * as sessionModel from "@/library/session/model";
-import * as config from "@/services/config-service.mjs";
-import * as secretService from "@/services/secret-service";
+import * as config from "@/services/config-service/service.mjs";
+import * as secretService from "@/services/secret-service/service";
 
 export const createProfile: ServerAction = async (data) => {
 	const maybeProfile = await maybeProfileFromSession();

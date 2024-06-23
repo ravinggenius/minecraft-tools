@@ -6,7 +6,7 @@ import { loadPageTranslations } from "@/i18n/server";
 import { requireProfile } from "@/library/_/session-manager";
 import * as accountModel from "@/library/account/model";
 import * as profileModel from "@/library/profile/model";
-import * as config from "@/services/config-service.mjs";
+import * as config from "@/services/config-service/service.mjs";
 
 import { resendEmailVerification } from "./actions";
 import VerifyEmailPromptForm from "./form";

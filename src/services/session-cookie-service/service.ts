@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 
-import * as config from "./config-service.mjs";
-import * as secretService from "./secret-service";
+import * as config from "../config-service/service.mjs";
+import * as secretService from "../secret-service/service";
 
 export const write = async (payload: string, expiresAt: Date) =>
 	cookies().set(config.sessionName, await secretService.encrypt(payload), {

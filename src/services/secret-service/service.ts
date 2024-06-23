@@ -2,7 +2,7 @@ import Iron from "@hapi/iron";
 import { alphabet, generateRandomString } from "oslo/crypto";
 import { Argon2id } from "oslo/password";
 
-import * as config from "./config-service.mjs";
+import * as config from "../config-service/service.mjs";
 
 export const encrypt = (payload: unknown) =>
 	Iron.seal(payload, config.encryptionSecret, Iron.defaults);

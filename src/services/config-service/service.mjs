@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export * from "./config-public-service.mjs";
+export * from "./service-public.mjs";
 
 export const isDevelopment = process.env.NODE_ENV === "development";
 

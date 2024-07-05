@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { VERSION } from "../version/schema";
+import { RELEASE } from "../release/schema";
 
 export const RARITY = z.enum(["common", "uncommon", "rare", "epic"]);
 
@@ -25,13 +25,13 @@ export const ITEM_ATTRS = ITEM.omit({
 
 export interface ItemAttrs extends z.infer<typeof ITEM_ATTRS> {}
 
-export const VERSIONED_ITEM = ITEM.and(
+export const RELEASED_ITEM = ITEM.and(
 	z.object({
-		versionId: VERSION.shape.id
+		releaseId: RELEASE.shape.id
 	})
 )
 	.and(
-		VERSION.pick({
+		RELEASE.pick({
 			edition: true,
 			version: true,
 			cycle: true,
@@ -41,4 +41,4 @@ export const VERSIONED_ITEM = ITEM.and(
 	)
 	.readonly();
 
-export interface VersionedItem extends z.infer<typeof VERSIONED_ITEM> {}
+export interface ReleasedItem extends z.infer<typeof RELEASED_ITEM> {}

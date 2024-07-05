@@ -222,7 +222,7 @@ enum "edition" {
   ]
 }
 
-table "versions" {
+table "releases" {
   schema = schema.public
 
   column "id" {
@@ -263,15 +263,9 @@ table "versions" {
     type = date
   }
 
-  column "release_notes_url" {
+  column "notes_url" {
     null = false
     type = text
-  }
-
-  column "is_published" {
-    null    = false
-    type    = boolean
-    default = false
   }
 
   column "is_latest" {
@@ -290,12 +284,12 @@ table "versions" {
     columns = [column.id]
   }
 
-  unique "versions_edition_version_key" {
+  unique "releases_edition_version_key" {
     columns = [column.edition, column.version]
   }
 }
 
-function "update_latest_version_flags" {
+function "update_latest_release_flags" {
   schema = schema.public
   lang   = PLpgSQL
   return = trigger
@@ -315,12 +309,12 @@ function "update_latest_version_flags" {
             ) = 1 AS is_latest_in_cycle
           FROM versions
         )
-        UPDATE versions
+        UPDATE releases
         SET
           is_latest = latest.is_latest,
           is_latest_in_cycle = latest.is_latest_in_cycle
         FROM latest
-        WHERE versions.id = latest.id;
+        WHERE releases.id = latest.id;
       END IF;
 
       RETURN NEW;
@@ -328,8 +322,8 @@ function "update_latest_version_flags" {
   SQL
 }
 
-trigger "trigger_update_latest_version_flags" {
-  on = table.versions
+trigger "trigger_update_latest_release_flags" {
+  on = table.releases
 
   after {
     insert = true
@@ -338,7 +332,7 @@ trigger "trigger_update_latest_version_flags" {
   }
 
   execute {
-    function = function.update_latest_version_flags
+    function = function.update_latest_release_flags
   }
 }
 
@@ -405,23 +399,13 @@ table "items" {
   }
 }
 
-table "item_versions" {
+table "item_releases" {
   schema = schema.public
 
   column "id" {
     null    = false
     type    = uuid
     default = sql("uuid_generate_v4()")
-  }
-
-  column "item_id" {
-    null = false
-    type = uuid
-  }
-
-  column "version_id" {
-    null = false
-    type = uuid
   }
 
   column "created_at" {
@@ -436,34 +420,44 @@ table "item_versions" {
     default = sql("now()")
   }
 
+  column "item_id" {
+    null = false
+    type = uuid
+  }
+
+  column "release_id" {
+    null = false
+    type = uuid
+  }
+
   primary_key {
     columns = [column.id]
   }
 
-  foreign_key "item_versions_item_id_fkey" {
+  foreign_key "item_releases_item_id_fkey" {
     columns     = [column.item_id]
     ref_columns = [table.items.column.id]
     on_update   = CASCADE
     on_delete   = CASCADE
   }
 
-  foreign_key "item_versions_version_id_fkey" {
-    columns     = [column.version_id]
-    ref_columns = [table.versions.column.id]
+  foreign_key "item_releases_release_id_fkey" {
+    columns     = [column.release_id]
+    ref_columns = [table.releases.column.id]
     on_update   = CASCADE
     on_delete   = CASCADE
   }
 
-  unique "item_versions_item_id_version_id_key" {
-    columns = [column.item_id, column.version_id]
+  unique "item_releases_item_id_release_id_key" {
+    columns = [column.item_id, column.release_id]
   }
 }
 
-view "versioned_items" {
+view "released_items" {
   schema = schema.public
   as     = <<-SQL
     SELECT
-      v.id AS version_id,
+      v.id AS release_id,
       v.edition,
       v.version,
       v.cycle,
@@ -471,7 +465,7 @@ view "versioned_items" {
       v.is_latest_in_cycle,
       i.*
     FROM items AS i
-      INNER JOIN item_versions AS iv ON i.id = iv.item_id
-      INNER JOIN versions AS v ON iv.version_id = v.id
+      INNER JOIN item_releases AS iv ON i.id = iv.item_id
+      INNER JOIN releases AS v ON iv.release_id = v.id
   SQL
 }

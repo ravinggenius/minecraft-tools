@@ -9,8 +9,8 @@ export const RELEASE = z.object({
 	edition: EDITION,
 	version: z.string(),
 	cycle: z.tuple([z.number().nonnegative(), z.number().nonnegative()]),
-	releasedOn: z.coerce.date(),
-	notesUrl: z.string().url(),
+	developmentReleasedOn: z.coerce.date().optional(),
+	notesUrl: z.string().url().optional(),
 	isLatest: z.boolean().readonly(),
 	isLatestInCycle: z.boolean().readonly()
 });

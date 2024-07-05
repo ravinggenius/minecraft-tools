@@ -214,6 +214,41 @@ table "password_resets" {
   }
 }
 
+table "platforms" {
+  schema = schema.public
+
+  column "id" {
+    null    = false
+    type    = uuid
+    default = sql("uuid_generate_v4()")
+  }
+
+  column "created_at" {
+    null    = false
+    type    = timestamptz
+    default = sql("now()")
+  }
+
+  column "updated_at" {
+    null    = false
+    type    = timestamptz
+    default = sql("now()")
+  }
+
+  column "name" {
+    null = false
+    type = text
+  }
+
+  primary_key {
+    columns = [column.id]
+  }
+
+  unique "platforms_name_key" {
+    columns = [column.name]
+  }
+}
+
 enum "edition" {
   schema = schema.public
   values = [
@@ -258,13 +293,13 @@ table "releases" {
     type = sql("integer ARRAY[2]")
   }
 
-  column "released_on" {
-    null = false
+  column "development_released_on" {
+    null = true
     type = date
   }
 
   column "notes_url" {
-    null = false
+    null = true
     type = text
   }
 
@@ -298,16 +333,18 @@ function "update_latest_release_flags" {
       IF pg_trigger_depth() = 1 THEN
         WITH latest AS (
           SELECT
-            id,
+            r.id,
             ROW_NUMBER() OVER (
-              PARTITION BY edition
-              ORDER BY released_on DESC
+              PARTITION BY r.edition
+              ORDER BY min(pr.released_on) DESC
             ) = 1 AS is_latest,
             ROW_NUMBER() OVER (
-              PARTITION BY edition, cycle
-              ORDER BY released_on DESC
+              PARTITION BY r.edition, r.cycle
+              ORDER BY min(pr.released_on) DESC
             ) = 1 AS is_latest_in_cycle
-          FROM versions
+          FROM releases AS r
+          INNER JOIN platform_releases AS pr ON r.id = pr.release_id
+          GROUP BY r.id
         )
         UPDATE releases
         SET
@@ -333,6 +370,65 @@ trigger "trigger_update_latest_release_flags" {
 
   execute {
     function = function.update_latest_release_flags
+  }
+}
+
+table "platform_releases" {
+  schema = schema.public
+
+  column "id" {
+    null    = false
+    type    = uuid
+    default = sql("uuid_generate_v4()")
+  }
+
+  column "created_at" {
+    null    = false
+    type    = timestamptz
+    default = sql("now()")
+  }
+
+  column "updated_at" {
+    null    = false
+    type    = timestamptz
+    default = sql("now()")
+  }
+
+  column "platform_id" {
+    null = false
+    type = uuid
+  }
+
+  column "release_id" {
+    null = false
+    type = uuid
+  }
+
+  column "released_on" {
+    null = false
+    type = date
+  }
+
+  primary_key {
+    columns = [column.id]
+  }
+
+  foreign_key "platform_releases_platform_id_fkey" {
+    columns     = [column.platform_id]
+    ref_columns = [table.platforms.column.id]
+    on_update   = CASCADE
+    on_delete   = CASCADE
+  }
+
+  foreign_key "platform_releases_release_id_fkey" {
+    columns     = [column.release_id]
+    ref_columns = [table.releases.column.id]
+    on_update   = CASCADE
+    on_delete   = CASCADE
+  }
+
+  unique "platform_releases_platform_id_release_id_key" {
+    columns = [column.platform_id, column.release_id]
   }
 }
 

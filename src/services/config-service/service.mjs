@@ -2,12 +2,6 @@ import { z } from "zod";
 
 export * from "./service-public.mjs";
 
-export const isDevelopment = process.env.NODE_ENV === "development";
-
-export const isProduction = process.env.NODE_ENV === "production";
-
-export const isTest = process.env.NODE_ENV === "test";
-
 /**
  * Postgres database connection URL. Can point to a connection pool
  */
@@ -54,7 +48,14 @@ export const hostUrl = z.string().url().parse(process.env.HOST_URL);
 
 export const nodeEnv = z
 	.enum(["development", "production", "test"])
+	.default("development")
 	.parse(process.env.NODE_ENV);
+
+export const isDevelopment = nodeEnv === "development";
+
+export const isProduction = nodeEnv === "production";
+
+export const isTest = nodeEnv === "test";
 
 export const sessionCookieOptions = {
 	httpOnly: true,

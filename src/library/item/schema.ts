@@ -35,8 +35,9 @@ export const RELEASED_ITEM = ITEM.and(
 			edition: true,
 			version: true,
 			cycle: true,
-			isLatest: true,
-			isLatestInCycle: true
+			isEarliestInCycle: true,
+			isLatestInCycle: true,
+			isLatest: true
 		})
 	)
 	.readonly();

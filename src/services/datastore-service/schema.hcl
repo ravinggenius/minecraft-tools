@@ -303,13 +303,19 @@ table "releases" {
     type = text
   }
 
-  column "is_latest" {
+  column "is_earliest_in_cycle" {
     null    = false
     type    = boolean
     default = false
   }
 
   column "is_latest_in_cycle" {
+    null    = false
+    type    = boolean
+    default = false
+  }
+
+  column "is_latest" {
     null    = false
     type    = boolean
     default = false
@@ -324,7 +330,7 @@ table "releases" {
   }
 }
 
-function "update_latest_release_flags" {
+function "update_release_flags" {
   schema = schema.public
   lang   = PLpgSQL
   return = trigger
@@ -335,21 +341,26 @@ function "update_latest_release_flags" {
           SELECT
             r.id,
             ROW_NUMBER() OVER (
-              PARTITION BY r.edition
-              ORDER BY min(pr.released_on) DESC
-            ) = 1 AS is_latest,
+              PARTITION BY r.edition, r.cycle
+              ORDER BY min(pr.released_on) ASC
+            ) = 1 AS is_earliest_in_cycle,
             ROW_NUMBER() OVER (
               PARTITION BY r.edition, r.cycle
               ORDER BY min(pr.released_on) DESC
-            ) = 1 AS is_latest_in_cycle
+            ) = 1 AS is_latest_in_cycle,
+            ROW_NUMBER() OVER (
+              PARTITION BY r.edition
+              ORDER BY min(pr.released_on) DESC
+            ) = 1 AS is_latest
           FROM releases AS r
           INNER JOIN platform_releases AS pr ON r.id = pr.release_id
           GROUP BY r.id
         )
         UPDATE releases
         SET
-          is_latest = latest.is_latest,
-          is_latest_in_cycle = latest.is_latest_in_cycle
+          is_earliest_in_cycle = latest.is_earliest_in_cycle,
+          is_latest_in_cycle = latest.is_latest_in_cycle,
+          is_latest = latest.is_latest
         FROM latest
         WHERE releases.id = latest.id;
       END IF;
@@ -359,7 +370,7 @@ function "update_latest_release_flags" {
   SQL
 }
 
-trigger "trigger_update_latest_release_flags" {
+trigger "trigger_update_release_flags" {
   on = table.releases
 
   after {
@@ -369,7 +380,7 @@ trigger "trigger_update_latest_release_flags" {
   }
 
   execute {
-    function = function.update_latest_release_flags
+    function = function.update_release_flags
   }
 }
 
@@ -557,8 +568,9 @@ view "released_items" {
       v.edition,
       v.version,
       v.cycle,
-      v.is_latest,
+      v.is_earliest_in_cycle,
       v.is_latest_in_cycle,
+      v.is_latest,
       i.*
     FROM items AS i
       INNER JOIN item_releases AS iv ON i.id = iv.item_id

@@ -28,3 +28,23 @@ export const RELEASE_ATTRS = RELEASE.omit({
 });
 
 export interface ReleaseAttrs extends z.infer<typeof RELEASE_ATTRS> {}
+
+export const UPCOMING = z.literal("upcoming");
+
+export const IMPORT_RELEASE = RELEASE.pick({
+	edition: true,
+	version: true,
+	developmentReleasedOn: true,
+	notesUrl: true
+}).extend({
+	platforms: z.record(
+		z.union([z.string().date(), UPCOMING]),
+		z.array(z.string())
+	)
+});
+
+export interface ImportRelease extends z.infer<typeof IMPORT_RELEASE> {}
+
+export const IMPORT_RELEASES = z.array(IMPORT_RELEASE);
+
+export interface ImportReleases extends z.infer<typeof IMPORT_RELEASES> {}

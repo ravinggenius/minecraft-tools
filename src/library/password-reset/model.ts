@@ -28,7 +28,8 @@ export const create = async ({
 			INSERT INTO password_resets (email, nonce, expires_at)
 			VALUES (${email}, ${nonce}, ${expiresAt.toJSON()})
 			ON CONFLICT (email) DO UPDATE
-				SET nonce = EXCLUDED.nonce,
+				SET updated_at = DEFAULT,
+					nonce = EXCLUDED.nonce,
 					expires_at = EXCLUDED.expires_at
 			RETURNING
 				id,

@@ -8,7 +8,7 @@ import BreadcrumbTrail from "@/components/BreadcrumbTrail/BreadcrumbTrail";
 import SiteDeck from "@/components/SiteDeck/SiteDeck";
 import SiteStern from "@/components/SiteStern/SiteStern";
 import { extractLocaleFromRequest, loadPageTranslations } from "@/i18n/server";
-import { maybeProfileFromSession } from "@/library/_/session-manager";
+import { maybeProfileFromSession } from "@/library/session-manager";
 
 import "./globals.scss";
 import styles from "./layout.module.scss";

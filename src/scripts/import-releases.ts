@@ -1,5 +1,5 @@
-import * as releaseModel from "@/library/release/model";
-import { IMPORT_RELEASES } from "@/library/release/schema";
+import * as releaseModel from "@/domains/release/model";
+import { IMPORT_RELEASES } from "@/domains/release/schema";
 import rawImportReleases from "@/services/datastore-service/fixtures/releases.json";
 
 export const execute = () =>

@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { loadPageTranslations } from "@/i18n/server";
-import { maybeProfileFromSession } from "@/library/_/session-manager";
+import { maybeProfileFromSession } from "@/library/session-manager";
 
 import { resetForgottenPassword } from "./actions";
 import SessionAssistancePasswordForm from "./form";

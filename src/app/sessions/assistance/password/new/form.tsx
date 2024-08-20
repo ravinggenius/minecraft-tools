@@ -2,9 +2,9 @@
 
 import Form, { useForm } from "@/components/Form/Form";
 import TextField, { useTextField } from "@/components/TextField/TextField";
+import { ACCOUNT } from "@/domains/account/schema";
 import { useTranslation } from "@/i18n/client";
-import { ServerAction } from "@/library/_/server-action";
-import { ACCOUNT } from "@/library/account/schema";
+import { ServerAction } from "@/library/server-action";
 
 export default function SessionsAssistancePasswordNewForm({
 	action,

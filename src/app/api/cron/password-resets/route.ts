@@ -1,6 +1,6 @@
 import { unstable_noStore } from "next/cache";
 
-import * as passwordReset from "@/library/password-reset/model";
+import * as passwordReset from "@/domains/password-reset/model";
 
 export const GET = async (request: Request) => {
 	unstable_noStore();

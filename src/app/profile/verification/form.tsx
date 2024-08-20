@@ -8,7 +8,7 @@ import { useEffect, useRef } from "react";
 import Form, { useForm } from "@/components/Form/Form";
 import { useTextField } from "@/components/TextField/TextField";
 import { useTranslation } from "@/i18n/client";
-import { ServerAction } from "@/library/_/server-action";
+import { ServerAction } from "@/library/server-action";
 
 import styles from "./form.module.scss";
 import { DATA } from "./schema";

@@ -1,6 +1,7 @@
 import "server-only";
 import { z } from "zod";
 
+import CodedError, { ERROR_CODE } from "@/library/coded-error";
 import {
 	BOOLEAN_NAMED,
 	pool,
@@ -9,7 +10,6 @@ import {
 } from "@/services/datastore-service/service";
 import * as secretService from "@/services/secret-service/service";
 
-import CodedError, { ERROR_CODE } from "../_/errors/coded-error";
 import { Profile } from "../profile/schema";
 
 import {

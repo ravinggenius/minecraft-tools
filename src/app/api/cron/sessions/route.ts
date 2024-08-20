@@ -1,6 +1,6 @@
 import { unstable_noStore } from "next/cache";
 
-import * as sessionModel from "@/library/session/model";
+import * as sessionModel from "@/domains/session/model";
 
 export const GET = async (request: Request) => {
 	unstable_noStore();

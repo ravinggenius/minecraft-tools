@@ -1,12 +1,13 @@
 import { add } from "date-fns";
 import "server-only";
 
-import CodedError, { ERROR_CODE } from "@/library/_/errors/coded-error";
-import * as accountModel from "@/library/account/model";
-import { ACCOUNT } from "@/library/account/schema";
+import CodedError, { ERROR_CODE } from "@/library/coded-error";
 import * as config from "@/services/config-service/service.mjs";
 import { pool, sql, VOID } from "@/services/datastore-service/service";
 import * as secretService from "@/services/secret-service/service";
+
+import * as accountModel from "../account/model";
+import { ACCOUNT } from "../account/schema";
 
 import {
 	SESSION,

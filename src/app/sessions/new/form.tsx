@@ -2,9 +2,9 @@
 
 import Form, { useForm } from "@/components/Form/Form";
 import TextField, { useTextField } from "@/components/TextField/TextField";
+import { SESSION_CREDENTIALS } from "@/domains/session/schema";
 import { useTranslation } from "@/i18n/client";
-import { ServerAction } from "@/library/_/server-action";
-import { SESSION_CREDENTIALS } from "@/library/session/schema";
+import { ServerAction } from "@/library/server-action";
 
 import styles from "./form.module.scss";
 

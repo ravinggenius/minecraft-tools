@@ -2,12 +2,12 @@
 
 import { redirect } from "next/navigation";
 
-import { ServerAction } from "@/library/_/server-action";
+import * as sessionModel from "@/domains/session/model";
+import { ServerAction } from "@/library/server-action";
 import {
 	clearSessionCookie,
 	readSessionCookie
-} from "@/library/_/session-manager";
-import * as sessionModel from "@/library/session/model";
+} from "@/library/session-manager";
 
 export const deleteSession: ServerAction = async (data) => {
 	const sessionId = await readSessionCookie();

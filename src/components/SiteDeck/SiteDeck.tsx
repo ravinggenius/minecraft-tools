@@ -10,8 +10,8 @@ import Button from "@/components/Button/Button";
 import Icon from "@/components/Icon/Icon";
 import NavigationTree from "@/components/NavigationTree/NavigationTree";
 import SiteMasthead from "@/components/SiteMasthead/SiteMasthead";
+import { Profile } from "@/domains/profile/schema";
 import { useTranslation } from "@/i18n/client";
-import { Profile } from "@/library/profile/schema";
 
 import { ALL as BASE_RESOURCES } from "./data";
 import styles from "./SiteDeck.module.scss";

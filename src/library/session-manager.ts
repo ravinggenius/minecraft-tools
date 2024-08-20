@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 
-import * as profileModel from "@/library/profile/model";
-import * as sessionModel from "@/library/session/model";
-import { Session } from "@/library/session/schema";
+import * as profileModel from "@/domains/profile/model";
+import * as sessionModel from "@/domains/session/model";
+import { Session } from "@/domains/session/schema";
 import * as sessionCookieService from "@/services/session-cookie-service/service";
 
 export const writeSessionCookie = async (session: Session) =>

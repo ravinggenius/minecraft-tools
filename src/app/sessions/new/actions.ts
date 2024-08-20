@@ -3,14 +3,14 @@
 import { redirect } from "next/navigation";
 import { ZodError } from "zod";
 
-import CodedError from "@/library/_/errors/coded-error";
-import { normalizeFormData, ServerAction } from "@/library/_/server-action";
+import * as sessionModel from "@/domains/session/model";
+import { SessionCredentials } from "@/domains/session/schema";
+import CodedError from "@/library/coded-error";
+import { normalizeFormData, ServerAction } from "@/library/server-action";
 import {
 	maybeProfileFromSession,
 	writeSessionCookie
-} from "@/library/_/session-manager";
-import * as sessionModel from "@/library/session/model";
-import { SessionCredentials } from "@/library/session/schema";
+} from "@/library/session-manager";
 
 export const createSession: ServerAction = async (data) => {
 	const maybeProfile = await maybeProfileFromSession();

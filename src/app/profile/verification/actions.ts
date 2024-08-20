@@ -3,10 +3,10 @@
 import { redirect } from "next/navigation";
 import { ZodError } from "zod";
 
-import CodedError, { ERROR_CODE } from "@/library/_/errors/coded-error";
-import { normalizeFormData, ServerAction } from "@/library/_/server-action";
-import { maybeProfileFromSession } from "@/library/_/session-manager";
-import * as accountModel from "@/library/account/model";
+import * as accountModel from "@/domains/account/model";
+import CodedError, { ERROR_CODE } from "@/library/coded-error";
+import { normalizeFormData, ServerAction } from "@/library/server-action";
+import { maybeProfileFromSession } from "@/library/session-manager";
 import * as secretService from "@/services/secret-service/service";
 
 import { DATA, TOKEN } from "./schema";

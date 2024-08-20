@@ -2,7 +2,7 @@ import classNames from "classnames";
 
 import Anchor from "@/components/Anchor/Anchor";
 import { loadPageTranslations } from "@/i18n/server";
-import { SOURCE_URL } from "@/library/_/constants";
+import { SOURCE_URL } from "@/library/constants";
 
 import styles from "./SiteStern.module.scss";
 

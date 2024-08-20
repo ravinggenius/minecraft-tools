@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { ACCOUNT } from "@/library/account/schema";
+import { ACCOUNT } from "@/domains/account/schema";
 
 export const QUERY = z.object({
 	email: ACCOUNT.shape.email

@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
+import * as profileModel from "@/domains/profile/model";
 import { loadPageTranslations } from "@/i18n/server";
-import { requireVerifiedProfile } from "@/library/_/session-manager";
-import * as profileModel from "@/library/profile/model";
+import { requireVerifiedProfile } from "@/library/session-manager";
 
 import styles from "./page.module.scss";
 

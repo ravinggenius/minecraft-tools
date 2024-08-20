@@ -2,12 +2,12 @@
 
 import { redirect } from "next/navigation";
 
+import * as accountModel from "@/domains/account/model";
+import { ACCOUNT } from "@/domains/account/schema";
+import * as passwordResetModel from "@/domains/password-reset/model";
 import sendForgotPassword from "@/emails/forgot-password";
-import { normalizeFormData, ServerAction } from "@/library/_/server-action";
-import { maybeProfileFromSession } from "@/library/_/session-manager";
-import * as accountModel from "@/library/account/model";
-import { ACCOUNT } from "@/library/account/schema";
-import * as passwordResetModel from "@/library/password-reset/model";
+import { normalizeFormData, ServerAction } from "@/library/server-action";
+import { maybeProfileFromSession } from "@/library/session-manager";
 import * as config from "@/services/config-service/service.mjs";
 import * as secretService from "@/services/secret-service/service";
 

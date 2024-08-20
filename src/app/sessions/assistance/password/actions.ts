@@ -3,14 +3,14 @@
 import { redirect } from "next/navigation";
 import { ZodError } from "zod";
 
-import CodedError from "@/library/_/errors/coded-error";
-import { normalizeFormData, ServerAction } from "@/library/_/server-action";
+import * as passwordResetModel from "@/domains/password-reset/model";
+import * as sessionModel from "@/domains/session/model";
+import CodedError from "@/library/coded-error";
+import { normalizeFormData, ServerAction } from "@/library/server-action";
 import {
 	maybeProfileFromSession,
 	writeSessionCookie
-} from "@/library/_/session-manager";
-import * as passwordResetModel from "@/library/password-reset/model";
-import * as sessionModel from "@/library/session/model";
+} from "@/library/session-manager";
 import * as secretService from "@/services/secret-service/service";
 
 import { DATA, TOKEN } from "./schema";

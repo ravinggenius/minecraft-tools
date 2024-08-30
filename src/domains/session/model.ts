@@ -3,7 +3,8 @@ import "server-only";
 
 import CodedError, { ERROR_CODE } from "@/library/coded-error";
 import * as config from "@/services/config-service/service.mjs";
-import { pool, sql, VOID } from "@/services/datastore-service/service";
+import { VOID } from "@/services/datastore-service/schema";
+import { pool, sql } from "@/services/datastore-service/service";
 import * as secretService from "@/services/secret-service/service";
 
 import * as accountModel from "../account/model";

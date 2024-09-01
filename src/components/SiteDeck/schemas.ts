@@ -1,13 +1,19 @@
+import { SupportedLocale } from "@/i18n/settings";
+
+interface PathParams {
+	locale: SupportedLocale;
+}
+
 interface ResourceWithChildren {
 	children: Array<Resource>;
-	href: string;
+	href: (pathParams: PathParams) => string;
 	title: string;
 	description?: string;
 }
 
 interface ResourceWithoutChildren {
 	children?: Array<never>;
-	href: string;
+	href: (pathParams: PathParams) => string;
 	title: string;
 	description?: string;
 }

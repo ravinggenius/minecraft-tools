@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import * as profileModel from "@/domains/profile/model";
 import * as sessionModel from "@/domains/session/model";
 import { Session } from "@/domains/session/schema";
+import { extractLocaleFromRequest } from "@/i18n/server";
 import * as sessionCookieService from "@/services/session-cookie-service/service";
 
 export const writeSessionCookie = async (session: Session) =>
@@ -32,7 +33,9 @@ export const requireProfile = async () => {
 	const maybeProfile = await maybeProfileFromSession();
 
 	if (!maybeProfile) {
-		redirect("/sessions/new");
+		const locale = extractLocaleFromRequest();
+
+		redirect(`/${locale}/sessions/new`);
 	}
 
 	return maybeProfile;
@@ -42,7 +45,9 @@ export const requireVerifiedProfile = async () => {
 	const profile = await requireProfile();
 
 	if (!(await profileModel.isEmailVerified(profile.id))) {
-		redirect("/profile/verification-prompt");
+		const locale = extractLocaleFromRequest();
+
+		redirect(`/${locale}/profile/verification-prompt`);
 	}
 
 	return profile;

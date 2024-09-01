@@ -64,11 +64,10 @@ interface Options {
 }
 
 export const loadPageTranslations = async (
+	locale: SupportedLocale,
 	ns: string | Array<string>,
 	options: Options = {}
 ) => {
-	const locale = extractLocaleFromRequest();
-
 	const i18nextInstance = await initI18next(locale, ns);
 
 	return {

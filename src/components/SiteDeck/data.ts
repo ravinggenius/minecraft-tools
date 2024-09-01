@@ -2,34 +2,34 @@ import { Resource } from "./schemas";
 
 export const compendium: Resource = {
 	title: "Compendium",
-	href: "/compendium",
+	href: ({ locale }) => `/${locale}/compendium`,
 	children: [
 		{
 			title: "Trades",
-			href: "/compendium/trades"
+			href: ({ locale }) => `/${locale}/compendium/trades`
 		}
 	]
 };
 
 export const legacy: Resource = {
 	title: "Legacy",
-	href: "/legacy",
+	href: ({ locale }) => `/${locale}/legacy`,
 	children: [
 		{
 			title: "Worlds",
-			href: "/legacy/worlds"
+			href: ({ locale }) => `/${locale}/legacy/worlds`
 		}
 	]
 };
 
 export const worlds: Resource = {
 	title: "Worlds",
-	href: "/worlds"
+	href: ({ locale }) => `/${locale}/worlds`
 };
 
 export const about: Resource = {
 	title: "About",
-	href: "/about"
+	href: ({ locale }) => `/${locale}/about`
 };
 
 export const ALL: Array<Resource> = [compendium, worlds, about, legacy];

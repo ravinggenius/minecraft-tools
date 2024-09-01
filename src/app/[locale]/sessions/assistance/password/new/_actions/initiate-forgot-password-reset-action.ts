@@ -12,7 +12,7 @@ import { maybeProfileFromSession } from "@/library/session-manager";
 import * as config from "@/services/config-service/service.mjs";
 import * as secretService from "@/services/secret-service/service";
 
-export const initiateForgotPasswordReset: ServerAction = async (data) => {
+const initiateForgotPasswordResetAction: ServerAction = async (data) => {
 	const maybeProfile = await maybeProfileFromSession();
 
 	const locale = extractLocaleFromRequest();
@@ -60,3 +60,5 @@ export const initiateForgotPasswordReset: ServerAction = async (data) => {
 
 	redirect(`/${locale}/sessions/assistance/password/prompt?${query}`);
 };
+
+export default initiateForgotPasswordResetAction;

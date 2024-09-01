@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { Noto_Sans, Noto_Sans_Mono } from "next/font/google";
 import { ReactNode } from "react";
 
+import deleteSessionAction from "@/app/[locale]/_actions/delete-session-action";
 import BreadcrumbTrail from "@/components/BreadcrumbTrail/BreadcrumbTrail";
 import SiteDeck from "@/components/SiteDeck/SiteDeck";
 import SiteStern from "@/components/SiteStern/SiteStern";
@@ -66,7 +67,10 @@ export default async function RootLayout({
 		>
 			<body>
 				<div className={styles["app-root"]}>
-					<SiteDeck {...{ locale }} profile={maybeProfile} />
+					<SiteDeck
+						{...{ deleteSessionAction, locale }}
+						profile={maybeProfile}
+					/>
 
 					<BreadcrumbTrail />
 

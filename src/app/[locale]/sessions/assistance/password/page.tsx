@@ -5,7 +5,7 @@ import { loadPageTranslations } from "@/i18n/server";
 import { SupportedLocale } from "@/i18n/settings";
 import { maybeProfileFromSession } from "@/library/session-manager";
 
-import { resetForgottenPassword } from "./actions";
+import resetForgottenPasswordAction from "./_actions/reset-forgotten-password-action";
 import SessionAssistancePasswordForm from "./form";
 import styles from "./page.module.scss";
 import { QUERY } from "./schema";
@@ -53,7 +53,7 @@ export default async function SessionAssistancePasswordPage({
 		<article className={styles.article}>
 			<SessionAssistancePasswordForm
 				{...query.data}
-				action={resetForgottenPassword}
+				action={resetForgottenPasswordAction}
 			/>
 		</article>
 	);

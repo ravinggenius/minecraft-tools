@@ -10,7 +10,7 @@ import {
 	readSessionCookie
 } from "@/library/session-manager";
 
-export const deleteSession: ServerAction = async (data) => {
+const deleteSessionAction: ServerAction = async (data) => {
 	const sessionId = await readSessionCookie();
 
 	if (sessionId) {
@@ -23,3 +23,5 @@ export const deleteSession: ServerAction = async (data) => {
 
 	redirect(`/${locale}`);
 };
+
+export default deleteSessionAction;

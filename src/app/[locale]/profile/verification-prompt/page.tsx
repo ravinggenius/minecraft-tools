@@ -9,7 +9,7 @@ import { SupportedLocale } from "@/i18n/settings";
 import { requireProfile } from "@/library/session-manager";
 import * as config from "@/services/config-service/service.mjs";
 
-import { resendEmailVerification } from "./actions";
+import resendEmailVerificationAction from "./_actions/resend-email-verification-action";
 import VerifyEmailPromptForm from "./form";
 import styles from "./page.module.scss";
 
@@ -57,7 +57,7 @@ export default async function ProfileVerificationPrompt({
 			<p className={styles.intructions}>{t("instructions")}</p>
 
 			<VerifyEmailPromptForm
-				action={resendEmailVerification}
+				action={resendEmailVerificationAction}
 				resendReminderExpiry={addMinutes(
 					new Date(),
 					config.emailResendExpiryMinutes *

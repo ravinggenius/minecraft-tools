@@ -6,7 +6,7 @@ import { loadPageTranslations } from "@/i18n/server";
 import { SupportedLocale } from "@/i18n/settings";
 import { maybeProfileFromSession } from "@/library/session-manager";
 
-import { createSession } from "./actions";
+import createSessionAction from "./_actions/create-session-action";
 import CreateSessionForm from "./form";
 import styles from "./page.module.scss";
 
@@ -41,7 +41,7 @@ export default async function SessionsNewPage({
 
 	return (
 		<article className={styles.article}>
-			<CreateSessionForm action={createSession} />
+			<CreateSessionForm action={createSessionAction} />
 
 			<Anchor href={`/${locale}/profiles/new`} variant="secondary">
 				{t("sign-up-cta")}

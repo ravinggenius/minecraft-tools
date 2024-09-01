@@ -14,9 +14,9 @@ import {
 } from "@/library/session-manager";
 import * as secretService from "@/services/secret-service/service";
 
-import { DATA, TOKEN } from "./schema";
+import { DATA, TOKEN } from "../schema";
 
-export const resetForgottenPassword: ServerAction = async (data) => {
+const resetForgottenPasswordAction: ServerAction = async (data) => {
 	const maybeProfile = await maybeProfileFromSession();
 
 	const locale = extractLocaleFromRequest();
@@ -62,3 +62,5 @@ export const resetForgottenPassword: ServerAction = async (data) => {
 
 	redirect(`/${locale}/profile`);
 };
+
+export default resetForgottenPasswordAction;

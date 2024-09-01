@@ -3,7 +3,6 @@
 import classNames from "classnames";
 import { useState } from "react";
 
-import { deleteSession } from "@/app/[locale]/profile/actions";
 import ActionButton from "@/components/ActionButton/ActionButton";
 import Anchor from "@/components/Anchor/Anchor";
 import Button from "@/components/Button/Button";
@@ -13,16 +12,19 @@ import SiteMasthead from "@/components/SiteMasthead/SiteMasthead";
 import { Profile } from "@/domains/profile/schema";
 import { useTranslation } from "@/i18n/client";
 import { SupportedLocale } from "@/i18n/settings";
+import { ServerAction } from "@/library/server-action";
 
 import { ALL as BASE_RESOURCES } from "./data";
 import styles from "./SiteDeck.module.scss";
 
 export default function SiteDeck({
 	className,
+	deleteSessionAction,
 	locale,
 	profile
 }: {
 	className?: string;
+	deleteSessionAction: ServerAction;
 	locale: SupportedLocale;
 	profile?: Pick<Profile, "name"> | undefined;
 }) {
@@ -66,7 +68,7 @@ export default function SiteDeck({
 						</Anchor>
 
 						<ActionButton
-							action={deleteSession}
+							action={deleteSessionAction}
 							label={t("authentication.log-out-cta")}
 						/>
 					</>

@@ -5,7 +5,7 @@ import { loadPageTranslations } from "@/i18n/server";
 import { SupportedLocale } from "@/i18n/settings";
 import { maybeProfileFromSession } from "@/library/session-manager";
 
-import { initiateForgotPasswordReset } from "./actions";
+import initiateForgotPasswordResetAction from "./_actions/initiate-forgot-password-reset-action";
 import SessionsAssistancePasswordNewForm from "./form";
 import styles from "./page.module.scss";
 
@@ -51,7 +51,7 @@ export default async function NewSessionAssistancePasswordPage({
 			<p>{t("instructions")}</p>
 
 			<SessionsAssistancePasswordNewForm
-				action={initiateForgotPasswordReset}
+				action={initiateForgotPasswordResetAction}
 			/>
 		</article>
 	);

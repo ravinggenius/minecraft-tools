@@ -13,7 +13,7 @@ import {
 	writeSessionCookie
 } from "@/library/session-manager";
 
-export const createSession: ServerAction = async (data) => {
+const createSessionAction: ServerAction = async (data) => {
 	const maybeProfile = await maybeProfileFromSession();
 
 	const locale = extractLocaleFromRequest();
@@ -40,3 +40,5 @@ export const createSession: ServerAction = async (data) => {
 
 	redirect(`/${locale}/profile`);
 };
+
+export default createSessionAction;

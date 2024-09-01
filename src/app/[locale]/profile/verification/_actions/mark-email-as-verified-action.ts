@@ -10,9 +10,9 @@ import { normalizeFormData, ServerAction } from "@/library/server-action";
 import { maybeProfileFromSession } from "@/library/session-manager";
 import * as secretService from "@/services/secret-service/service";
 
-import { DATA, TOKEN } from "./schema";
+import { DATA, TOKEN } from "../schema";
 
-export const markEmailAsVerified: ServerAction = async (data) => {
+const markEmailAsVerifiedAction: ServerAction = async (data) => {
 	const maybeProfile = await maybeProfileFromSession();
 
 	const locale = extractLocaleFromRequest();
@@ -54,3 +54,5 @@ export const markEmailAsVerified: ServerAction = async (data) => {
 
 	redirect(`/${locale}/profile`);
 };
+
+export default markEmailAsVerifiedAction;

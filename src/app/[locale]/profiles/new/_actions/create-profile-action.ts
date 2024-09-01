@@ -1,31 +1,36 @@
 "use server";
 
 import { addDays } from "date-fns";
-import { redirect, RedirectType } from "next/navigation";
+import { redirect } from "next/navigation";
 import { ZodError } from "zod";
 
 import * as accountModel from "@/domains/account/model";
+import { AccountCreateAttrs } from "@/domains/account/schema";
+import * as sessionModel from "@/domains/session/model";
 import sendAddressVerification from "@/emails/address-verification";
 import { extractLocaleFromRequest } from "@/i18n/server";
 import CodedError from "@/library/coded-error";
-import { maybeProfileFromSession } from "@/library/session-manager";
+import { normalizeFormData, ServerAction } from "@/library/server-action";
+import {
+	maybeProfileFromSession,
+	writeSessionCookie
+} from "@/library/session-manager";
 import * as config from "@/services/config-service/service.mjs";
 import * as secretService from "@/services/secret-service/service";
 
-export const resendEmailVerification = async () => {
+const createProfileAction: ServerAction = async (data) => {
 	const maybeProfile = await maybeProfileFromSession();
 
 	const locale = extractLocaleFromRequest();
 
-	if (!maybeProfile) {
+	if (maybeProfile) {
 		redirect(`/${locale}/profile`);
 	}
 
 	try {
-		const account = await accountModel.updateVerificationNonce(
-			maybeProfile.id,
-			secretService.nonce()
-		);
+		const attrs = normalizeFormData(data) as AccountCreateAttrs;
+
+		const account = await accountModel.create(attrs, secretService.nonce());
 
 		const token = await secretService.encrypt({
 			email: account.email,
@@ -51,6 +56,13 @@ export const resendEmailVerification = async () => {
 			account.email,
 			verificationUrl
 		);
+
+		const session = await sessionModel.create({
+			email: account.email,
+			password: data.get("account.password") as string
+		});
+
+		await writeSessionCookie(session);
 	} catch (error: unknown) {
 		if (error instanceof CodedError) {
 			return error.toJson();
@@ -61,8 +73,7 @@ export const resendEmailVerification = async () => {
 		}
 	}
 
-	// hack to force the page to reload so the timer to show/hide
-	// the resubmit form is properly reset. simply doing nothing
-	// or redirecting to /profile/verification-prompt does not work
-	redirect(`/${locale}/profile`, RedirectType.replace);
+	redirect(`/${locale}/profile`);
 };
+
+export default createProfileAction;

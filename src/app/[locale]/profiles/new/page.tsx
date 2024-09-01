@@ -6,7 +6,7 @@ import { loadPageTranslations } from "@/i18n/server";
 import { SupportedLocale } from "@/i18n/settings";
 import { maybeProfileFromSession } from "@/library/session-manager";
 
-import { createProfile } from "./actions";
+import createProfileAction from "./_actions/create-profile-action";
 import CreateProfileForm from "./form";
 import styles from "./page.module.scss";
 
@@ -41,7 +41,7 @@ export default async function ProfilesNewPage({
 
 	return (
 		<main className={styles.main}>
-			<CreateProfileForm action={createProfile} />
+			<CreateProfileForm action={createProfileAction} />
 
 			<Anchor href={`/${locale}/sessions/new`} variant="secondary">
 				{t("log-in-cta")}

@@ -1,12 +1,17 @@
 import { loadPageTranslations } from "@/i18n/server";
+import { SupportedLocale } from "@/i18n/settings";
 import * as emailService from "@/services/email-service/service";
 
 const sendAddressVerification = async (
+	locale: SupportedLocale,
 	to: Parameters<typeof emailService.send>[0],
 	verificationUrl: URL
 ) => {
-	const { t: tBranding } = await loadPageTranslations("branding");
-	const { t } = await loadPageTranslations("email-address-verification");
+	const { t: tBranding } = await loadPageTranslations(locale, "branding");
+	const { t } = await loadPageTranslations(
+		locale,
+		"email-address-verification"
+	);
 
 	const body = t("body.text", {
 		link: verificationUrl,

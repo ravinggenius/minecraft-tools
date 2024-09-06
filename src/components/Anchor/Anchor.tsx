@@ -13,16 +13,16 @@ export default function Anchor<HREF extends string>({
 	href,
 	variant
 }: AnchorHTMLAttributes<HTMLAnchorElement> & {
-	href: Route<HREF> | URL;
+	href: Route<HREF>;
 } & Interactive & {
 		children: string;
 		className?: string;
 	}) {
 	return (
 		<Link
-			{...{ href }}
 			className={classNames(styles.anchor, className)}
 			data-variant={variant}
+			href={href as Route<HREF>}
 		>
 			{children}
 		</Link>

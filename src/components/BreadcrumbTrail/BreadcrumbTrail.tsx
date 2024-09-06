@@ -64,33 +64,26 @@ function BreadcrumbSegment({
 const splitPath = (path: string): Array<string> =>
 	path.split("/").filter(Boolean);
 
-const buildBreadcrumbTrail = (
-	segmentNames: Array<string>,
-	segmentValues: Array<string>
-): Trail =>
-	[["home", ""], ...zip(segmentNames, segmentValues)]
-		.map(([segmentName, segmentValue], index) => ({
-			href: `/${segmentValues
-				.slice(0, index)
-				.join("/")}` as ComponentProps<typeof Anchor>["href"],
+export default function BreadcrumbTrail({ className }: { className?: string }) {
+	const segmentNames = ["locale", ...useSelectedLayoutSegments()];
+	const segmentValues = splitPath(usePathname());
+
+	const crumbs = zip(segmentNames, segmentValues).map(
+		([segmentName, segmentValue], index) => ({
+			href: `/${segmentValues.slice(0, index + 1).join("/")}` as Crumb["href"],
 			segmentName: segmentName.replace("[", "").replace("]", ""),
 			segmentValue
-		}))
-		.reduceRight((memo, crumb) => ({
-			child: memo,
-			...crumb
-		}));
+		})
+	);
 
-export default function BreadcrumbTrail({ className }: { className?: string }) {
-	const pathname = usePathname();
-	const segments = useSelectedLayoutSegments();
+	const nestedCrumbs = crumbs.reduceRight((memo, crumb) => ({
+		child: memo,
+		...crumb
+	}));
 
 	return (
 		<nav className={classNames(styles["breadcrumb-trail"], className)}>
-			<BreadcrumbSegment
-				{...buildBreadcrumbTrail(segments, splitPath(pathname))}
-				isRoot
-			/>
+			<BreadcrumbSegment {...nestedCrumbs} isRoot />
 		</nav>
 	);
 }

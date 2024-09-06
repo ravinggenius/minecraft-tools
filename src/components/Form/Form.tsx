@@ -7,8 +7,8 @@ import Debug from "@/components/Debug/Debug";
 import FeedbackList, { Feedback } from "@/components/FeedbackList/FeedbackList";
 import Field from "@/components/Field/Field";
 import SubmitButton from "@/components/SubmitButton/SubmitButton";
-import { CodedErrorAttrs } from "@/library/_/errors/coded-error";
-import { normalizeFormData, ServerAction } from "@/library/_/server-action";
+import { CodedErrorAttrs } from "@/library/coded-error";
+import { normalizeFormData, ServerAction } from "@/library/server-action";
 
 import styles from "./Form.module.scss";
 

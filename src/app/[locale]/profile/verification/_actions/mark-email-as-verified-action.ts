@@ -1,5 +1,3 @@
-"use server";
-
 import { redirect } from "next/navigation";
 
 import * as accountModel from "@/domains/account/model";
@@ -12,6 +10,8 @@ import * as secretService from "@/services/secret-service/service";
 import { DATA, TOKEN } from "../schema";
 
 const markEmailAsVerifiedAction: ServerAction = async (data) => {
+	"use server";
+
 	const maybeProfile = await maybeProfileFromSession();
 
 	const locale = extractLocaleFromRequest();

@@ -1,5 +1,3 @@
-"use server";
-
 import { redirect } from "next/navigation";
 
 import * as sessionModel from "@/domains/session/model";
@@ -11,6 +9,8 @@ import {
 } from "@/library/session-manager";
 
 const deleteSessionAction: ServerAction = async (data) => {
+	"use server";
+
 	const sessionId = await readSessionCookie();
 
 	if (sessionId) {

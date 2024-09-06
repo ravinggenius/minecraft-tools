@@ -1,5 +1,3 @@
-"use server";
-
 import { redirect } from "next/navigation";
 
 import * as accountModel from "@/domains/account/model";
@@ -13,6 +11,8 @@ import * as config from "@/services/config-service/service.mjs";
 import * as secretService from "@/services/secret-service/service";
 
 const initiateForgotPasswordResetAction: ServerAction = async (data) => {
+	"use server";
+
 	const maybeProfile = await maybeProfileFromSession();
 
 	const locale = extractLocaleFromRequest();

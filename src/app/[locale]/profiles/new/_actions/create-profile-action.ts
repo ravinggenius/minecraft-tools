@@ -1,5 +1,3 @@
-"use server";
-
 import { addDays } from "date-fns";
 import { redirect } from "next/navigation";
 import { ZodError } from "zod";
@@ -19,6 +17,8 @@ import * as config from "@/services/config-service/service.mjs";
 import * as secretService from "@/services/secret-service/service";
 
 const createProfileAction: ServerAction = async (data) => {
+	"use server";
+
 	const maybeProfile = await maybeProfileFromSession();
 
 	const locale = extractLocaleFromRequest();

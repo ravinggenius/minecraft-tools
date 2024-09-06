@@ -1,5 +1,3 @@
-"use server";
-
 import { redirect } from "next/navigation";
 import { ZodError } from "zod";
 
@@ -17,6 +15,8 @@ import * as secretService from "@/services/secret-service/service";
 import { DATA, TOKEN } from "../schema";
 
 const resetForgottenPasswordAction: ServerAction = async (data) => {
+	"use server";
+
 	const maybeProfile = await maybeProfileFromSession();
 
 	const locale = extractLocaleFromRequest();

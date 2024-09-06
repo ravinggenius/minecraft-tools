@@ -1,5 +1,3 @@
-"use server";
-
 import { redirect } from "next/navigation";
 import { ZodError } from "zod";
 
@@ -14,6 +12,8 @@ import {
 } from "@/library/session-manager";
 
 const createSessionAction: ServerAction = async (data) => {
+	"use server";
+
 	const maybeProfile = await maybeProfileFromSession();
 
 	const locale = extractLocaleFromRequest();

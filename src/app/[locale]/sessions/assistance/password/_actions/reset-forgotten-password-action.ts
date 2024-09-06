@@ -25,18 +25,30 @@ const resetForgottenPasswordAction: ServerAction = async (data) => {
 		redirect(`/${locale}/profile`);
 	}
 
-	try {
-		const { email, token, password, passwordConfirmation } =
-			await DATA.parseAsync(normalizeFormData(data));
+	const result = await normalizeFormData(DATA, data);
 
-		const decrypted = await TOKEN.parseAsync(
-			await secretService.decrypt(token)
-		);
+	if (!result.success) {
+		return { issues: result.error.issues };
+	}
 
-		if (decrypted.email === email && decrypted.expiresAt > new Date()) {
+	const { email, token, password, passwordConfirmation } = result.data;
+
+	const decrypted = await TOKEN.safeParseAsync(
+		await secretService.decrypt(token)
+	);
+
+	if (!decrypted.success) {
+		return { issues: decrypted.error.issues };
+	}
+
+	if (
+		decrypted.data.email === email &&
+		decrypted.data.expiresAt > new Date()
+	) {
+		try {
 			const isChanged = await passwordResetModel.reset({
-				email: decrypted.email,
-				nonce: decrypted.nonce,
+				email: decrypted.data.email,
+				nonce: decrypted.data.nonce,
 				password,
 				passwordConfirmation
 			});
@@ -49,14 +61,14 @@ const resetForgottenPasswordAction: ServerAction = async (data) => {
 
 				await writeSessionCookie(session);
 			}
-		}
-	} catch (error: unknown) {
-		if (error instanceof CodedError) {
-			return error.toJson();
-		} else if (error instanceof ZodError) {
-			return { issues: error.issues };
-		} else {
-			throw error;
+		} catch (error: unknown) {
+			if (error instanceof CodedError) {
+				return error.toJson();
+			} else if (error instanceof ZodError) {
+				return { issues: error.issues };
+			} else {
+				throw error;
+			}
 		}
 	}
 

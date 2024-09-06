@@ -1,7 +1,6 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { ZodError } from "zod";
 
 import * as accountModel from "@/domains/account/model";
 import { extractLocaleFromRequest } from "@/i18n/server";
@@ -21,35 +20,37 @@ const markEmailAsVerifiedAction: ServerAction = async (data) => {
 		redirect(`/${locale}/profile`);
 	}
 
-	try {
-		const { email, token } = await DATA.parseAsync(normalizeFormData(data));
+	const result = await normalizeFormData(DATA, data);
 
-		const account = await accountModel.findByEmail(email);
+	if (!result.success) {
+		return { issues: result.error.issues };
+	}
 
-		const decrypted = await TOKEN.parseAsync(
-			await secretService.decrypt(token)
-		);
+	const { email, token } = result.data;
 
-		if (
-			account &&
-			!account.emailVerifiedAt &&
-			account.tokenNonce &&
-			decrypted.email === account.email &&
-			decrypted.nonce === account.tokenNonce &&
-			decrypted.expiresAt > new Date()
-		) {
-			await accountModel.markEmailAsVerified(account.id);
-		} else {
-			throw new CodedError(ERROR_CODE.CREDENTIALS_INVALID);
-		}
-	} catch (error: unknown) {
-		if (error instanceof CodedError) {
-			return error.toJson();
-		} else if (error instanceof ZodError) {
-			return { issues: error.issues };
-		} else {
-			throw error;
-		}
+	const account = await accountModel.findByEmail(email);
+
+	const decrypted = await TOKEN.safeParseAsync(
+		await secretService.decrypt(token)
+	);
+
+	if (!decrypted.success) {
+		return { issues: decrypted.error.issues };
+	}
+
+	if (
+		account &&
+		!account.emailVerifiedAt &&
+		account.tokenNonce &&
+		decrypted.data.email === account.email &&
+		decrypted.data.nonce === account.tokenNonce &&
+		decrypted.data.expiresAt > new Date()
+	) {
+		await accountModel.markEmailAsVerified(account.id);
+	} else {
+		const error = new CodedError(ERROR_CODE.CREDENTIALS_INVALID);
+
+		return error.toJson();
 	}
 
 	redirect(`/${locale}/profile`);

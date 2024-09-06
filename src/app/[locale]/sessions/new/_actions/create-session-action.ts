@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { ZodError } from "zod";
 
 import * as sessionModel from "@/domains/session/model";
-import { SessionCredentials } from "@/domains/session/schema";
+import { SESSION_CREDENTIALS } from "@/domains/session/schema";
 import { extractLocaleFromRequest } from "@/i18n/server";
 import CodedError from "@/library/coded-error";
 import { normalizeFormData, ServerAction } from "@/library/server-action";
@@ -22,10 +22,14 @@ const createSessionAction: ServerAction = async (data) => {
 		redirect(`/${locale}/profile`);
 	}
 
+	const result = await normalizeFormData(SESSION_CREDENTIALS, data);
+
+	if (!result.success) {
+		return { issues: result.error.issues };
+	}
+
 	try {
-		const session = await sessionModel.create(
-			normalizeFormData(data) as SessionCredentials
-		);
+		const session = await sessionModel.create(result.data);
 
 		await writeSessionCookie(session);
 	} catch (error: unknown) {

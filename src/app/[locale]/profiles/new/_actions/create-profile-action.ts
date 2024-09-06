@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { ZodError } from "zod";
 
 import * as accountModel from "@/domains/account/model";
-import { AccountCreateAttrs } from "@/domains/account/schema";
+import { ACCOUNT_CREATE_ATTRS } from "@/domains/account/schema";
 import * as sessionModel from "@/domains/session/model";
 import sendAddressVerification from "@/emails/address-verification";
 import { extractLocaleFromRequest } from "@/i18n/server";
@@ -27,10 +27,17 @@ const createProfileAction: ServerAction = async (data) => {
 		redirect(`/${locale}/profile`);
 	}
 
-	try {
-		const attrs = normalizeFormData(data) as AccountCreateAttrs;
+	const accountAttrs = await normalizeFormData(ACCOUNT_CREATE_ATTRS, data);
 
-		const account = await accountModel.create(attrs, secretService.nonce());
+	if (!accountAttrs.success) {
+		return { issues: accountAttrs.error.issues };
+	}
+
+	try {
+		const account = await accountModel.create(
+			accountAttrs.data,
+			secretService.nonce()
+		);
 
 		const token = await secretService.encrypt({
 			email: account.email,
@@ -55,7 +62,7 @@ const createProfileAction: ServerAction = async (data) => {
 
 		const session = await sessionModel.create({
 			email: account.email,
-			password: data.get("account.password") as string
+			password: accountAttrs.data.account.password
 		});
 
 		await writeSessionCookie(session);

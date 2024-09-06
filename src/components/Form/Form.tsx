@@ -113,10 +113,10 @@ export const useForm = (
 
 	const clientServerAction: ServerAction = async (data) => {
 		if (schema) {
-			try {
-				await schema.parseAsync(normalizeFormData(data));
-			} catch (error: unknown) {
-				setFeedback(extractFeedbackFrom(error));
+			const result = await normalizeFormData(schema, data);
+
+			if (!result.success) {
+				setFeedback(extractFeedbackFrom(result.error));
 
 				return;
 			}

@@ -21,9 +21,18 @@ const initiateForgotPasswordResetAction: ServerAction = async (data) => {
 		redirect(`/${locale}/profile`);
 	}
 
-	const { email } = await ACCOUNT.pick({
-		email: true
-	}).parseAsync(normalizeFormData(data));
+	const result = await normalizeFormData(
+		ACCOUNT.pick({
+			email: true
+		}),
+		data
+	);
+
+	if (!result.success) {
+		return { issues: result.error.issues };
+	}
+
+	const { email } = result.data;
 
 	if (await accountModel.isEmailVerified(email)) {
 		const passwordReset = await passwordResetModel.create({

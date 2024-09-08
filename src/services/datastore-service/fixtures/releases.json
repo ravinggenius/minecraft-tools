@@ -1,10 +1,51 @@
 [
   {
     "edition": "bedrock",
+    "version": "1.21.40",
+    "developmentReleasedOn": "2024-09-04",
+    "platforms": {
+      "upcoming": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series X|S",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation VR",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
     "version": "1.21.30",
     "developmentReleasedOn": "2024-08-01",
     "platforms": {
       "upcoming": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series X|S",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation VR",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.23",
+    "platforms": {
+      "2024-09-03": [
         "ChromeOS",
         "Android",
         "iOS",

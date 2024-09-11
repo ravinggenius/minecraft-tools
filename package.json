@@ -13,7 +13,7 @@
     "lint:check": "next lint",
     "lint:fix": "next lint --fix",
     "load": "bun ./src/scripts/runner.ts",
-    "test": "playwright test"
+    "test": "NODE_ENV=test playwright test"
   },
   "dependencies": {
     "@hapi/iron": "^7.0.1",

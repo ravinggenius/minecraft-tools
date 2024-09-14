@@ -1,23 +1,19 @@
-"use client";
-
 import classNames from "classnames";
-import { useState } from "react";
 
 import ActionButton from "@/components/ActionButton/ActionButton";
 import Anchor from "@/components/Anchor/Anchor";
-import Button from "@/components/Button/Button";
 import Icon from "@/components/Icon/Icon";
 import NavigationTree from "@/components/NavigationTree/NavigationTree";
 import SiteMasthead from "@/components/SiteMasthead/SiteMasthead";
 import { Profile } from "@/domains/profile/schema";
-import { useTranslation } from "@/i18n/client";
+import { loadPageTranslations } from "@/i18n/server";
 import { SupportedLocale } from "@/i18n/settings";
 import { ServerAction } from "@/library/server-action";
 
 import { ALL as BASE_RESOURCES } from "./data";
 import styles from "./SiteDeck.module.scss";
 
-export default function SiteDeck({
+export default async function SiteDeck({
 	className,
 	deleteSessionAction,
 	locale,
@@ -28,9 +24,7 @@ export default function SiteDeck({
 	locale: SupportedLocale;
 	profile?: Pick<Profile, "name"> | undefined;
 }) {
-	const { t } = useTranslation("component-site-deck");
-
-	const [show, setShow] = useState(false);
+	const { t } = await loadPageTranslations(locale, "component-site-deck");
 
 	return (
 		<nav className={classNames(styles.deck, className)}>
@@ -41,24 +35,27 @@ export default function SiteDeck({
 				title={t("branding.title")}
 			/>
 
-			<Button
-				aria-label={t("table-of-contents.label", {
-					context: show ? "opened" : "closed"
-				})}
-				className={styles.toggle}
-				onClick={() => {
-					setShow((prev) => !prev);
-				}}
-				type="button"
-				variant="inline"
-			>
-				<Icon code={show ? "cross" : "box"} />
-			</Button>
+			<label className={styles.toggle}>
+				<input className={styles["toggle-state"]} type="checkbox" />
 
-			<div
-				className={styles.wrapper}
-				style={{ display: show ? undefined : "none" }}
-			>
+				<Icon
+					aria-label={t("table-of-contents.label", {
+						context: "opened"
+					})}
+					className={styles["toggle-label--opened"]}
+					code={"cross"}
+				/>
+
+				<Icon
+					aria-label={t("table-of-contents.label", {
+						context: "closed"
+					})}
+					className={styles["toggle-label--closed"]}
+					code={"box"}
+				/>
+			</label>
+
+			<div className={styles.wrapper}>
 				{profile ? (
 					<>
 						<Anchor href={`/${locale}/profile`} variant="inline">

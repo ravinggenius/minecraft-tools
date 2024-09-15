@@ -59,14 +59,14 @@ export const extractLocaleFromRequest = () => {
 	return FALLBACK_LOCALE;
 };
 
-interface Options {
+interface LoadPageTranslationsOptions {
 	keyPrefix?: string;
 }
 
 export const loadPageTranslations = async (
 	locale: SupportedLocale,
 	ns: string | Array<string>,
-	options: Options = {}
+	options: LoadPageTranslationsOptions = {}
 ) => {
 	const i18nextInstance = await initI18next(locale, ns);
 

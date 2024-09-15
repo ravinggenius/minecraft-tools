@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { extractLocaleFromRequest } from "./i18n/server";
-import { SUPPORTED_LOCALES } from "./i18n/settings";
+import { ensureLocalizedPathname } from "./i18n/server";
 
 const EXCLUDED_PATH_PREFIXES = [
 	"/_next",
@@ -22,20 +21,11 @@ export const middleware = (request: NextRequest) => {
 		return;
 	}
 
-	const firstSegment = pathname.split("/")[1];
+	const localizedPathname = ensureLocalizedPathname(pathname);
 
-	const hasSupportedLocale = SUPPORTED_LOCALES.some(
-		(locale) => locale === firstSegment
-	);
+	if (pathname !== localizedPathname) {
+		request.nextUrl.pathname = localizedPathname;
 
-	if (hasSupportedLocale) {
-		return;
+		return NextResponse.redirect(request.nextUrl);
 	}
-
-	const locale = extractLocaleFromRequest();
-
-	request.nextUrl.pathname =
-		pathname === "/" ? `/${locale}` : `/${locale}${pathname}`;
-
-	return NextResponse.redirect(request.nextUrl);
 };

@@ -71,11 +71,7 @@ export const loadPageTranslations = async (
 	const i18nextInstance = await initI18next(locale, ns);
 
 	return {
-		t: i18nextInstance.getFixedT(
-			locale,
-			Array.isArray(ns) ? ns[0] : ns,
-			options.keyPrefix
-		),
+		t: i18nextInstance.getFixedT(locale, ns, options.keyPrefix),
 		i18n: i18nextInstance
 	};
 };

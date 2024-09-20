@@ -4,6 +4,7 @@ export const ERROR_CODE = {
 	CONFIRMATION_MISMATCH: "confirmation-mismatch",
 	CREDENTIALS_INVALID: "credentials-invalid",
 	DUPLICATE_ENTRY: "duplicate-entry",
+	SEARCH_QUERY_INVALID: "invalid-search-query",
 	UNKNOWN: "unknown"
 } as const;
 
@@ -17,6 +18,7 @@ export type UniqueConstraint = [
 ];
 
 export interface CodedErrorOptions {
+	cause?: Error;
 	path?: Array<string | number>;
 }
 

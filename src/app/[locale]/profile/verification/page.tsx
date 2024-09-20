@@ -3,18 +3,20 @@ import { redirect } from "next/navigation";
 
 import * as profileModel from "@/domains/profile/model";
 import { loadPageTranslations } from "@/i18n/server";
-import { SupportedLocale } from "@/i18n/settings";
+import {
+	ensureParams,
+	PageProps,
+	LOCALE_PARAMS as PARAMS
+} from "@/library/route-meta";
 import { requireProfile } from "@/library/session-manager";
 
 import markEmailAsVerifiedAction from "./_actions/mark-email-as-verified-action";
 import VerifyEmailtForm from "./form";
 import styles from "./page.module.scss";
 
-export const generateMetadata = async ({
-	params: { locale }
-}: {
-	params: { locale: SupportedLocale };
-}) => {
+export const generateMetadata = async ({ params }: PageProps) => {
+	const { locale } = await ensureParams(PARAMS, params);
+
 	const { t } = await loadPageTranslations(
 		locale,
 		"page-profile-verification",
@@ -28,11 +30,9 @@ export const generateMetadata = async ({
 	} satisfies Metadata as Metadata;
 };
 
-export default async function ProfileVerification({
-	params: { locale }
-}: {
-	params: { locale: SupportedLocale };
-}) {
+export default async function ProfileVerification({ params }: PageProps) {
+	const { locale } = await ensureParams(PARAMS, params);
+
 	const { t } = await loadPageTranslations(
 		locale,
 		"page-profile-verification",

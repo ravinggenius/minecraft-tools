@@ -2,15 +2,17 @@ import { ComponentProps } from "react";
 
 import Anchor from "@/components/Anchor/Anchor";
 import { loadPageTranslations } from "@/i18n/server";
-import { SupportedLocale } from "@/i18n/settings";
+import {
+	ensureParams,
+	PageProps,
+	LOCALE_PARAMS as PARAMS
+} from "@/library/route-meta";
 
 import styles from "./page.module.scss";
 
-export const generateMetadata = async ({
-	params: { locale }
-}: {
-	params: { locale: SupportedLocale };
-}) => {
+export const generateMetadata = async ({ params }: PageProps) => {
+	const { locale } = await ensureParams(PARAMS, params);
+
 	const { t } = await loadPageTranslations(locale, "page-design-system", {
 		keyPrefix: "metadata"
 	});
@@ -20,11 +22,9 @@ export const generateMetadata = async ({
 	};
 };
 
-export default async function DesignSystemPage({
-	params: { locale }
-}: {
-	params: { locale: SupportedLocale };
-}) {
+export default async function DesignSystemPage({ params }: PageProps) {
+	const { locale } = await ensureParams(PARAMS, params);
+
 	const { t } = await loadPageTranslations(locale, "page-design-system", {
 		keyPrefix: "content"
 	});

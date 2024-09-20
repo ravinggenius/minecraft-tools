@@ -2,18 +2,20 @@ import { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { loadPageTranslations } from "@/i18n/server";
-import { SupportedLocale } from "@/i18n/settings";
+import {
+	ensureParams,
+	PageProps,
+	LOCALE_PARAMS as PARAMS
+} from "@/library/route-meta";
 import { maybeProfileFromSession } from "@/library/session-manager";
 
 import initiateForgotPasswordResetAction from "./_actions/initiate-forgot-password-reset-action";
 import SessionsAssistancePasswordNewForm from "./form";
 import styles from "./page.module.scss";
 
-export const generateMetadata = async ({
-	params: { locale }
-}: {
-	params: { locale: SupportedLocale };
-}) => {
+export const generateMetadata = async ({ params }: PageProps) => {
+	const { locale } = await ensureParams(PARAMS, params);
+
 	const { t } = await loadPageTranslations(
 		locale,
 		"page-sessions-assistance-password-new",
@@ -28,10 +30,10 @@ export const generateMetadata = async ({
 };
 
 export default async function NewSessionAssistancePasswordPage({
-	params: { locale }
-}: {
-	params: { locale: SupportedLocale };
-}) {
+	params
+}: PageProps) {
+	const { locale } = await ensureParams(PARAMS, params);
+
 	const maybeProfile = await maybeProfileFromSession();
 
 	if (maybeProfile) {

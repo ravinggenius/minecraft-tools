@@ -2,16 +2,18 @@ import { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { loadPageTranslations } from "@/i18n/server";
-import { SupportedLocale } from "@/i18n/settings";
+import {
+	ensureParams,
+	PageProps,
+	LOCALE_PARAMS as PARAMS
+} from "@/library/route-meta";
 import { requireVerifiedProfile } from "@/library/session-manager";
 
 import styles from "./page.module.scss";
 
-export const generateMetadata = async ({
-	params: { locale }
-}: {
-	params: { locale: SupportedLocale };
-}) => {
+export const generateMetadata = async ({ params }: PageProps) => {
+	const { locale } = await ensureParams(PARAMS, params);
+
 	const { t } = await loadPageTranslations(locale, "page-profile", {
 		keyPrefix: "metadata"
 	});
@@ -21,11 +23,9 @@ export const generateMetadata = async ({
 	} satisfies Metadata as Metadata;
 };
 
-export default async function ProfilePage({
-	params: { locale }
-}: {
-	params: { locale: SupportedLocale };
-}) {
+export default async function ProfilePage({ params }: PageProps) {
+	const { locale } = await ensureParams(PARAMS, params);
+
 	const { t } = await loadPageTranslations(locale, "page-profile", {
 		keyPrefix: "content"
 	});

@@ -46,11 +46,7 @@ const resendEmailVerificationAction = async () => {
 			token
 		}).toString();
 
-		await sendAddressVerification(
-			extractLocaleFromRequest(),
-			account.email,
-			verificationUrl
-		);
+		await sendAddressVerification(locale, account.email, verificationUrl);
 	} catch (error: unknown) {
 		if (error instanceof CodedError) {
 			return error.toJson();

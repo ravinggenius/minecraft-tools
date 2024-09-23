@@ -51,11 +51,7 @@ const createProfileAction: ServerAction = async (data) => {
 			token
 		}).toString();
 
-		await sendAddressVerification(
-			extractLocaleFromRequest(),
-			account.email,
-			verificationUrl
-		);
+		await sendAddressVerification(locale, account.email, verificationUrl);
 
 		const session = await sessionModel.create({
 			email: account.email,

@@ -53,7 +53,7 @@ export const generateStaticParams = () =>
 		locale
 	}));
 
-export default async function RootLayout({ children, params }: LayoutProps) {
+export default async function Layout({ children, params }: LayoutProps) {
 	const { locale } = await ensureParams(PARAMS, params);
 
 	const maybeProfile = await maybeProfileFromSession();

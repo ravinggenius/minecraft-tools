@@ -32,10 +32,7 @@ export const generateMetadata = async ({ params }: PageProps) => {
 	} satisfies Metadata as Metadata;
 };
 
-export default async function SessionAssistancePasswordPage({
-	params,
-	searchParams
-}: PageProps) {
+export default async function Page({ params, searchParams }: PageProps) {
 	const { locale } = await ensureParams(PARAMS, params);
 
 	const maybeProfile = await maybeProfileFromSession();

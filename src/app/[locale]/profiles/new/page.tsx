@@ -26,7 +26,7 @@ export const generateMetadata = async ({ params }: PageProps) => {
 	} satisfies Metadata as Metadata;
 };
 
-export default async function ProfilesNewPage({ params }: PageProps) {
+export default async function Page({ params }: PageProps) {
 	const { locale } = await ensureParams(PARAMS, params);
 
 	const { t } = await loadPageTranslations(locale, "page-profiles-new", {

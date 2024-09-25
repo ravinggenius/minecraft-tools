@@ -12,6 +12,6 @@ export const generateMetadata = async ({ params }: PageProps) => {
 	redirect(`/${locale}/profile`);
 };
 
-export default async function SessionsPage() {
+export default async function Page() {
 	return null;
 }

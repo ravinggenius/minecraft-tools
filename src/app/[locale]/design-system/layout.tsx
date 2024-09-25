@@ -7,10 +7,7 @@ import {
 
 import styles from "./layout.module.scss";
 
-export default async function DesignSystemLayout({
-	children,
-	params
-}: LayoutProps) {
+export default async function Layout({ children, params }: LayoutProps) {
 	const { locale } = await ensureParams(PARAMS, params);
 
 	const { t } = await loadPageTranslations(locale, "layout-design-system", {

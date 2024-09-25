@@ -26,7 +26,7 @@ export const generateMetadata = async ({ params }: PageProps) => {
 	};
 };
 
-export default async function DesignSystemInputPage({ params }: PageProps) {
+export default async function Page({ params }: PageProps) {
 	const { locale } = await ensureParams(PARAMS, params);
 
 	const { t } = await loadPageTranslations(

@@ -5,19 +5,21 @@ import { redirect } from "next/navigation";
 import * as accountModel from "@/domains/account/model";
 import * as profileModel from "@/domains/profile/model";
 import { loadPageTranslations } from "@/i18n/server";
-import { SupportedLocale } from "@/i18n/settings";
+import {
+	ensureParams,
+	PageProps,
+	LOCALE_PARAMS as PARAMS
+} from "@/library/route-meta";
 import { requireProfile } from "@/library/session-manager";
 import * as config from "@/services/config-service/service.mjs";
 
-import { resendEmailVerification } from "./actions";
+import resendEmailVerificationAction from "./_actions/resend-email-verification-action";
 import VerifyEmailPromptForm from "./form";
 import styles from "./page.module.scss";
 
-export const generateMetadata = async ({
-	params: { locale }
-}: {
-	params: { locale: SupportedLocale };
-}) => {
+export const generateMetadata = async ({ params }: PageProps) => {
+	const { locale } = await ensureParams(PARAMS, params);
+
 	const { t } = await loadPageTranslations(
 		locale,
 		"page-profile-verification-prompt",
@@ -31,11 +33,9 @@ export const generateMetadata = async ({
 	} satisfies Metadata as Metadata;
 };
 
-export default async function ProfileVerificationPrompt({
-	params: { locale }
-}: {
-	params: { locale: SupportedLocale };
-}) {
+export default async function Page({ params }: PageProps) {
+	const { locale } = await ensureParams(PARAMS, params);
+
 	const { t } = await loadPageTranslations(
 		locale,
 		"page-profile-verification-prompt",
@@ -57,7 +57,7 @@ export default async function ProfileVerificationPrompt({
 			<p className={styles.intructions}>{t("instructions")}</p>
 
 			<VerifyEmailPromptForm
-				action={resendEmailVerification}
+				action={resendEmailVerificationAction}
 				resendReminderExpiry={addMinutes(
 					new Date(),
 					config.emailResendExpiryMinutes *

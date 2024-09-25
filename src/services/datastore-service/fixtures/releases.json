@@ -1,8 +1,8 @@
 [
   {
     "edition": "bedrock",
-    "version": "1.21.30",
-    "developmentReleasedOn": "2024-08-01",
+    "version": "1.21.40",
+    "developmentReleasedOn": "2024-09-04",
     "platforms": {
       "upcoming": [
         "ChromeOS",
@@ -12,11 +12,46 @@
         "Fire",
         "Windows",
         "Xbox One",
-        "Xbox Series X|S",
         "Nintendo Switch",
         "PlayStation 4",
-        "PlayStation VR",
-        "PlayStation 5"
+        "PlayStation VR"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.30",
+    "developmentReleasedOn": "2024-08-01",
+    "platforms": {
+      "2024-09-17": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation VR"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.23",
+    "platforms": {
+      "2024-09-03": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation VR"
       ]
     }
   },
@@ -29,11 +64,9 @@
         "Android",
         "Windows",
         "Xbox One",
-        "Xbox Series X|S",
         "Nintendo Switch",
         "PlayStation 4",
-        "PlayStation VR",
-        "PlayStation 5"
+        "PlayStation VR"
       ],
       "2024-08-27": ["iOS", "iPadOS", "Fire"]
     }
@@ -49,10 +82,8 @@
         "iPadOS",
         "Fire",
         "Xbox One",
-        "Xbox Series X|S",
         "PlayStation 4",
-        "PlayStation VR",
-        "PlayStation 5"
+        "PlayStation VR"
       ],
       "2024-08-15": ["Windows"],
       "2024-08-20": ["Nintendo Switch"]
@@ -71,11 +102,9 @@
         "Fire",
         "Windows",
         "Xbox One",
-        "Xbox Series X|S",
         "Nintendo Switch",
         "PlayStation 4",
-        "PlayStation VR",
-        "PlayStation 5"
+        "PlayStation VR"
       ]
     }
   },
@@ -98,7 +127,6 @@
         "Fire",
         "Windows",
         "Xbox One",
-        "Xbox Series X|S",
         "Nintendo Switch",
         "PlayStation 4",
         "PlayStation VR"
@@ -117,7 +145,6 @@
         "Fire",
         "Windows",
         "Xbox One",
-        "Xbox Series X|S",
         "Nintendo Switch",
         "PlayStation 4",
         "PlayStation VR"
@@ -138,7 +165,6 @@
         "Fire",
         "Windows",
         "Xbox One",
-        "Xbox Series X|S",
         "Nintendo Switch",
         "PlayStation 4",
         "PlayStation VR"
@@ -157,7 +183,6 @@
         "Fire",
         "Windows",
         "Xbox One",
-        "Xbox Series X|S",
         "PlayStation 4",
         "PlayStation VR"
       ],
@@ -178,7 +203,6 @@
         "Fire",
         "Windows",
         "Xbox One",
-        "Xbox Series X|S",
         "Nintendo Switch",
         "PlayStation 4",
         "PlayStation VR"
@@ -215,7 +239,7 @@
         "PlayStation 4",
         "PlayStation VR"
       ],
-      "2024-03-22": ["Windows", "Xbox One", "Xbox Series X|S"]
+      "2024-03-22": ["Windows", "Xbox One"]
     }
   },
   {
@@ -230,7 +254,6 @@
         "Fire",
         "Windows",
         "Xbox One",
-        "Xbox Series X|S",
         "Nintendo Switch",
         "PlayStation 4",
         "PlayStation VR"
@@ -250,7 +273,6 @@
         "Fire",
         "Windows",
         "Xbox One",
-        "Xbox Series X|S",
         "Nintendo Switch",
         "PlayStation 4",
         "PlayStation VR"

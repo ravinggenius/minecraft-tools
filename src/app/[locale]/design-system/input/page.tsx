@@ -2,15 +2,17 @@ import Card from "@/components/Card/Card";
 import Field from "@/components/Field/Field";
 import TextField from "@/components/TextField/TextField";
 import { loadPageTranslations } from "@/i18n/server";
-import { SupportedLocale } from "@/i18n/settings";
+import {
+	ensureParams,
+	PageProps,
+	LOCALE_PARAMS as PARAMS
+} from "@/library/route-meta";
 
 import styles from "./page.module.scss";
 
-export const generateMetadata = async ({
-	params: { locale }
-}: {
-	params: { locale: SupportedLocale };
-}) => {
+export const generateMetadata = async ({ params }: PageProps) => {
+	const { locale } = await ensureParams(PARAMS, params);
+
 	const { t } = await loadPageTranslations(
 		locale,
 		"page-design-system-input",
@@ -24,11 +26,9 @@ export const generateMetadata = async ({
 	};
 };
 
-export default async function DesignSystemInputPage({
-	params: { locale }
-}: {
-	params: { locale: SupportedLocale };
-}) {
+export default async function Page({ params }: PageProps) {
+	const { locale } = await ensureParams(PARAMS, params);
+
 	const { t } = await loadPageTranslations(
 		locale,
 		"page-design-system-input",

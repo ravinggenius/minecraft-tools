@@ -13,15 +13,26 @@
 	z-index: 1;
 }
 
+.toggle-state {
+	display: none;
+}
+
+.toggle-label {
+	.toggle-state:not(:checked) ~ &--opened {
+		display: none;
+	}
+
+	.toggle-state:checked ~ &--closed {
+		display: none;
+	}
+}
+
 .toggle {
+	color: var(--color-special-coal);
 	grid-area: toggle;
 	justify-self: end;
 	inline-size: fit-content;
 	z-index: 1;
-
-	&.toggle {
-		color: var(--color-special-coal);
-	}
 }
 
 .tree-root {
@@ -33,7 +44,7 @@
 	align-items: center;
 	background-color: inherit;
 	block-size: 100vh;
-	display: flex;
+	display: none;
 	flex-direction: column;
 	grid-area: tree;
 	justify-content: center;
@@ -41,6 +52,10 @@
 	inset-inline: 0;
 	margin-inline: auto;
 	position: absolute;
+}
+
+.toggle:has(.toggle-state:checked) + .wrapper {
+	display: flex;
 }
 
 .deck {

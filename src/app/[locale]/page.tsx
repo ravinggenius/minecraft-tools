@@ -1,13 +1,15 @@
 import { loadPageTranslations } from "@/i18n/server";
-import { SupportedLocale } from "@/i18n/settings";
+import {
+	ensureParams,
+	PageProps,
+	LOCALE_PARAMS as PARAMS
+} from "@/library/route-meta";
 
 import styles from "./page.module.scss";
 
-export default async function HomePage({
-	params: { locale }
-}: {
-	params: { locale: SupportedLocale };
-}) {
+export default async function Page({ params }: PageProps) {
+	const { locale } = await ensureParams(PARAMS, params);
+
 	const { t } = await loadPageTranslations(locale, "page-home", {
 		keyPrefix: "content"
 	});

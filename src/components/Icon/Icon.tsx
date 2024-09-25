@@ -1,8 +1,18 @@
 import { always, cond, equals } from "rambda";
 
-export default function Icon({ code }: { code: "box" | "cross" }) {
+export default function Icon({
+	className,
+	code,
+	...props
+}: {
+	["aria-label"]?: string;
+	className: string;
+	code: "box" | "cross";
+}) {
 	return (
 		<svg
+			{...props}
+			{...{ className }}
 			xmlns="http://www.w3.org/2000/svg"
 			width="24"
 			height="24"

@@ -2,13 +2,19 @@ import classNames from "classnames";
 import { dir } from "i18next";
 import { Metadata } from "next";
 import { Noto_Sans, Noto_Sans_Mono } from "next/font/google";
-import { ReactNode } from "react";
 
+import deleteSessionAction from "@/app/[locale]/_actions/delete-session-action";
 import BreadcrumbTrail from "@/components/BreadcrumbTrail/BreadcrumbTrail";
 import SiteDeck from "@/components/SiteDeck/SiteDeck";
 import SiteStern from "@/components/SiteStern/SiteStern";
 import { loadPageTranslations } from "@/i18n/server";
-import { SUPPORTED_LOCALES, SupportedLocale } from "@/i18n/settings";
+import { SUPPORTED_LOCALES } from "@/i18n/settings";
+import {
+	ensureParams,
+	LayoutMetadataProps,
+	LayoutProps,
+	LOCALE_PARAMS as PARAMS
+} from "@/library/route-meta";
 import { maybeProfileFromSession } from "@/library/session-manager";
 
 import "../globals.scss";
@@ -26,11 +32,9 @@ const notoSansMono = Noto_Sans_Mono({
 	variable: "--font-mono"
 });
 
-export const generateMetadata = async ({
-	params: { locale }
-}: {
-	params: { locale: SupportedLocale };
-}) => {
+export const generateMetadata = async ({ params }: LayoutMetadataProps) => {
+	const { locale } = await ensureParams(PARAMS, params);
+
 	const { t } = await loadPageTranslations(locale, "layout-root", {
 		keyPrefix: "metadata"
 	});
@@ -49,13 +53,9 @@ export const generateStaticParams = () =>
 		locale
 	}));
 
-export default async function RootLayout({
-	children,
-	params: { locale }
-}: {
-	children: ReactNode;
-	params: { locale: SupportedLocale };
-}) {
+export default async function Layout({ children, params }: LayoutProps) {
+	const { locale } = await ensureParams(PARAMS, params);
+
 	const maybeProfile = await maybeProfileFromSession();
 
 	return (
@@ -66,7 +66,10 @@ export default async function RootLayout({
 		>
 			<body>
 				<div className={styles["app-root"]}>
-					<SiteDeck {...{ locale }} profile={maybeProfile} />
+					<SiteDeck
+						{...{ deleteSessionAction, locale }}
+						profile={maybeProfile}
+					/>
 
 					<BreadcrumbTrail />
 

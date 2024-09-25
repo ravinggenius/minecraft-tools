@@ -1,5 +1,3 @@
-"use server";
-
 import { redirect } from "next/navigation";
 import { ZodError } from "zod";
 
@@ -14,9 +12,11 @@ import {
 } from "@/library/session-manager";
 import * as secretService from "@/services/secret-service/service";
 
-import { DATA, TOKEN } from "./schema";
+import { DATA, TOKEN } from "../schema";
 
-export const resetForgottenPassword: ServerAction = async (data) => {
+const resetForgottenPasswordAction: ServerAction = async (data) => {
+	"use server";
+
 	const maybeProfile = await maybeProfileFromSession();
 
 	const locale = extractLocaleFromRequest();
@@ -25,18 +25,30 @@ export const resetForgottenPassword: ServerAction = async (data) => {
 		redirect(`/${locale}/profile`);
 	}
 
-	try {
-		const { email, token, password, passwordConfirmation } =
-			await DATA.parseAsync(normalizeFormData(data));
+	const result = await normalizeFormData(DATA, data);
 
-		const decrypted = await TOKEN.parseAsync(
-			await secretService.decrypt(token)
-		);
+	if (!result.success) {
+		return { issues: result.error.issues };
+	}
 
-		if (decrypted.email === email && decrypted.expiresAt > new Date()) {
+	const { email, token, password, passwordConfirmation } = result.data;
+
+	const decrypted = await TOKEN.safeParseAsync(
+		await secretService.decrypt(token)
+	);
+
+	if (!decrypted.success) {
+		return { issues: decrypted.error.issues };
+	}
+
+	if (
+		decrypted.data.email === email &&
+		decrypted.data.expiresAt > new Date()
+	) {
+		try {
 			const isChanged = await passwordResetModel.reset({
-				email: decrypted.email,
-				nonce: decrypted.nonce,
+				email: decrypted.data.email,
+				nonce: decrypted.data.nonce,
 				password,
 				passwordConfirmation
 			});
@@ -49,16 +61,18 @@ export const resetForgottenPassword: ServerAction = async (data) => {
 
 				await writeSessionCookie(session);
 			}
-		}
-	} catch (error: unknown) {
-		if (error instanceof CodedError) {
-			return error.toJson();
-		} else if (error instanceof ZodError) {
-			return { issues: error.issues };
-		} else {
-			throw error;
+		} catch (error: unknown) {
+			if (error instanceof CodedError) {
+				return error.toJson();
+			} else if (error instanceof ZodError) {
+				return { issues: error.issues };
+			} else {
+				throw error;
+			}
 		}
 	}
 
 	redirect(`/${locale}/profile`);
 };
+
+export default resetForgottenPasswordAction;

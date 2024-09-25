@@ -1,5 +1,3 @@
-"use server";
-
 import { redirect } from "next/navigation";
 
 import * as accountModel from "@/domains/account/model";
@@ -12,7 +10,9 @@ import { maybeProfileFromSession } from "@/library/session-manager";
 import * as config from "@/services/config-service/service.mjs";
 import * as secretService from "@/services/secret-service/service";
 
-export const initiateForgotPasswordReset: ServerAction = async (data) => {
+const initiateForgotPasswordResetAction: ServerAction = async (data) => {
+	"use server";
+
 	const maybeProfile = await maybeProfileFromSession();
 
 	const locale = extractLocaleFromRequest();
@@ -21,9 +21,18 @@ export const initiateForgotPasswordReset: ServerAction = async (data) => {
 		redirect(`/${locale}/profile`);
 	}
 
-	const { email } = await ACCOUNT.pick({
-		email: true
-	}).parseAsync(normalizeFormData(data));
+	const result = await normalizeFormData(
+		ACCOUNT.pick({
+			email: true
+		}),
+		data
+	);
+
+	if (!result.success) {
+		return { issues: result.error.issues };
+	}
+
+	const { email } = result.data;
 
 	if (await accountModel.isEmailVerified(email)) {
 		const passwordReset = await passwordResetModel.create({
@@ -60,3 +69,5 @@ export const initiateForgotPasswordReset: ServerAction = async (data) => {
 
 	redirect(`/${locale}/sessions/assistance/password/prompt?${query}`);
 };
+
+export default initiateForgotPasswordResetAction;

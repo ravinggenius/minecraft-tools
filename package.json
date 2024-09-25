@@ -13,7 +13,7 @@
     "lint:check": "next lint",
     "lint:fix": "next lint --fix",
     "load": "bun ./src/scripts/runner.ts",
-    "test": "playwright test"
+    "test": "NODE_ENV=test playwright test"
   },
   "dependencies": {
     "@hapi/iron": "^7.0.1",
@@ -45,6 +45,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@c-ehrlich/eslint-plugin-use-server": "^0.0.6",
     "@next/env": "^14.2.7",
     "@playwright/test": "^1.46.1",
     "@total-typescript/ts-reset": "^0.6.0",

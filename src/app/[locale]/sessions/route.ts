@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { NextRequest } from "next/server";
 
 import {
 	ensureParams,
@@ -6,12 +7,11 @@ import {
 	LOCALE_PARAMS as PARAMS
 } from "@/library/route-meta";
 
-export const generateMetadata = async ({ params }: PageProps) => {
+export const GET = async (
+	request: NextRequest,
+	{ params }: Pick<PageProps, "params">
+) => {
 	const { locale } = await ensureParams(PARAMS, params);
 
-	redirect(`/${locale}/sessions/new`);
+	redirect(`/${locale}/profile`);
 };
-
-export default async function Page() {
-	return null;
-}

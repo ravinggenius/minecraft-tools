@@ -1,6 +1,7 @@
 import { loadPageTranslations } from "@/i18n/server";
 import {
 	ensureParams,
+	PageGenerateMetadata,
 	PageProps,
 	LOCALE_PARAMS as PARAMS
 } from "@/library/route-meta";
@@ -9,7 +10,7 @@ import styles from "./page.module.scss";
 import Sample from "./Sample";
 import { NAMES } from "./schema";
 
-export const generateMetadata = async ({ params }: PageProps) => {
+export const generateMetadata: PageGenerateMetadata = async ({ params }) => {
 	const { locale } = await ensureParams(PARAMS, params);
 
 	const { t } = await loadPageTranslations(

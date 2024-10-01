@@ -1,16 +1,12 @@
 import { redirect } from "next/navigation";
-import { NextRequest } from "next/server";
 
 import {
 	ensureParams,
-	PageProps,
-	LOCALE_PARAMS as PARAMS
+	LOCALE_PARAMS as PARAMS,
+	RouteMethod
 } from "@/library/route-meta";
 
-export const GET = async (
-	request: NextRequest,
-	{ params }: Pick<PageProps, "params">
-) => {
+export const GET: RouteMethod = async (request, { params }) => {
 	const { locale } = await ensureParams(PARAMS, params);
 
 	redirect(`/${locale}/profile`);

@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import { dir } from "i18next";
-import { Metadata } from "next";
 import { Noto_Sans, Noto_Sans_Mono } from "next/font/google";
 
 import deleteSessionAction from "@/app/[locale]/_actions/delete-session-action";
@@ -11,7 +10,7 @@ import { loadPageTranslations } from "@/i18n/server";
 import { SUPPORTED_LOCALES } from "@/i18n/settings";
 import {
 	ensureParams,
-	LayoutMetadataProps,
+	LayoutGenerateMetadata,
 	LayoutProps,
 	LOCALE_PARAMS as PARAMS
 } from "@/library/route-meta";
@@ -32,7 +31,7 @@ const notoSansMono = Noto_Sans_Mono({
 	variable: "--font-mono"
 });
 
-export const generateMetadata = async ({ params }: LayoutMetadataProps) => {
+export const generateMetadata: LayoutGenerateMetadata = async ({ params }) => {
 	const { locale } = await ensureParams(PARAMS, params);
 
 	const { t } = await loadPageTranslations(locale, "layout-root", {
@@ -45,7 +44,7 @@ export const generateMetadata = async ({ params }: LayoutMetadataProps) => {
 			template: t("title.template")
 		},
 		description: t("description")
-	} satisfies Metadata as Metadata;
+	};
 };
 
 export const generateStaticParams = () =>

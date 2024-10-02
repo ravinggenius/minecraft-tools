@@ -20,6 +20,24 @@
   },
   {
     "edition": "bedrock",
+    "version": "1.21.31",
+    "platforms": {
+      "2024-09-30": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation VR"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
     "version": "1.21.30",
     "developmentReleasedOn": "2024-08-01",
     "platforms": {

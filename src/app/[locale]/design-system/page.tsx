@@ -30,59 +30,47 @@ export default async function Page({ params }: PageProps) {
 		keyPrefix: "content"
 	});
 
+	type InternalLink = ComponentProps<typeof Anchor>["href"];
+
 	const designElements: Array<{
 		href: ComponentProps<typeof Anchor>["href"];
 		text: ComponentProps<typeof Anchor>["children"];
 	}> = [
 		{
-			href: `/${locale}/design-system/palette` as ComponentProps<
-				typeof Anchor
-			>["href"],
+			href: `/${locale}/design-system/palette` as InternalLink,
 			text: t("table-of-contents.palette")
 		},
 		{
-			href: `/${locale}/design-system/elevation` as ComponentProps<
-				typeof Anchor
-			>["href"],
+			href: `/${locale}/design-system/elevation` as InternalLink,
 			text: t("table-of-contents.elevation")
 		},
 		{
-			href: `/${locale}/design-system/typography` as ComponentProps<
-				typeof Anchor
-			>["href"],
+			href: `/${locale}/design-system/typography` as InternalLink,
 			text: t("table-of-contents.typography")
 		},
 		{
-			href: `/${locale}/design-system/cards` as ComponentProps<
-				typeof Anchor
-			>["href"],
+			href: `/${locale}/design-system/cards` as InternalLink,
 			text: t("table-of-contents.cards")
 		},
 		{
-			href: `/${locale}/design-system/interactive` as ComponentProps<
-				typeof Anchor
-			>["href"],
+			href: `/${locale}/design-system/interactive` as InternalLink,
 			text: t("table-of-contents.interactive")
 		},
 		{
-			href: `/${locale}/design-system/input` as ComponentProps<
-				typeof Anchor
-			>["href"],
+			href: `/${locale}/design-system/input` as InternalLink,
 			text: t("table-of-contents.input")
 		},
 		{
-			href: `/${locale}/design-system/table` as ComponentProps<
-				typeof Anchor
-			>["href"],
+			href: `/${locale}/design-system/table` as InternalLink,
 			text: t("table-of-contents.table")
 		}
 	];
 
 	return (
-		<nav>
-			<ol>
+		<nav className={styles.root}>
+			<ol className={styles.list}>
 				{designElements.map(({ href, text }) => (
-					<li key={href}>
+					<li className={styles.item} key={href}>
 						<Anchor {...{ href }} variant="inline">
 							{text}
 						</Anchor>

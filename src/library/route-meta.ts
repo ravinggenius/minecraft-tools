@@ -8,7 +8,7 @@ import { SUPPORTED_LOCALES } from "@/i18n/settings";
 
 import CodedError, { ERROR_CODE } from "./coded-error";
 
-type Params = Record<string, string | Array<string>>;
+type Params = { [key: string]: string | Array<string> };
 
 export interface DefaultProps {
 	params?: Params;
@@ -30,7 +30,7 @@ export type LayoutGenerateMetadata = (
 
 export interface PageProps {
 	params?: Params;
-	searchParams?: Record<string, string | Array<string> | undefined>;
+	searchParams?: { [key: string]: string | Array<string> | undefined };
 }
 
 export type PageGenerateMetadata = (

@@ -1,0 +1,12 @@
+{
+  "metadata": {
+    "title": "Compendium"
+  },
+
+  "content": {
+    "description": "Structured technical data covering nearly everything in Minecraft.",
+    "table-of-contents": {
+      "releases": "Releases"
+    }
+  }
+}

@@ -2,12 +2,8 @@ import Card from "@/components/Card/Card";
 import Field from "@/components/Field/Field";
 import TextField from "@/components/TextField/TextField";
 import { loadPageTranslations } from "@/i18n/server";
-import {
-	ensureParams,
-	PageGenerateMetadata,
-	PageProps,
-	LOCALE_PARAMS as PARAMS
-} from "@/library/route-meta";
+import { ensureParams, LOCALE_PARAMS as PARAMS } from "@/library/route-meta";
+import { PageGenerateMetadata, PageProps } from "@/library/route-meta.schema";
 
 import styles from "./page.module.scss";
 

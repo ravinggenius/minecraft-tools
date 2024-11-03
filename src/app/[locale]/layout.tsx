@@ -8,12 +8,11 @@ import SiteDeck from "@/components/SiteDeck/SiteDeck";
 import SiteStern from "@/components/SiteStern/SiteStern";
 import { loadPageTranslations } from "@/i18n/server";
 import { SUPPORTED_LOCALES } from "@/i18n/settings";
+import { ensureParams, LOCALE_PARAMS as PARAMS } from "@/library/route-meta";
 import {
-	ensureParams,
 	LayoutGenerateMetadata,
-	LayoutProps,
-	LOCALE_PARAMS as PARAMS
-} from "@/library/route-meta";
+	LayoutProps
+} from "@/library/route-meta.schema";
 import { maybeProfileFromSession } from "@/library/session-manager";
 
 import "../globals.scss";

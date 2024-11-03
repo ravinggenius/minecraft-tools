@@ -1,7 +1,7 @@
 import { unstable_noStore } from "next/cache";
 
 import * as sessionModel from "@/domains/session/model";
-import { RouteMethod } from "@/library/route-meta";
+import { RouteMethod } from "@/library/route-meta.schema";
 
 export const GET: RouteMethod = async (request, { params }) => {
 	unstable_noStore();

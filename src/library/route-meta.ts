@@ -1,54 +1,10 @@
-import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { NextRequest } from "next/server";
-import { ReactNode } from "react";
 import { z, ZodSchema } from "zod";
 
 import { SUPPORTED_LOCALES } from "@/i18n/settings";
 
 import CodedError, { ERROR_CODE } from "./coded-error";
-
-type Params = { [key: string]: string | Array<string> };
-
-export interface DefaultProps {
-	params?: Params;
-}
-
-export interface ErrorProps {
-	error: Error & { digest?: string };
-	reset: () => void;
-}
-
-export interface LayoutProps {
-	children: ReactNode;
-	params?: Params;
-}
-
-export type LayoutGenerateMetadata = (
-	props: Pick<LayoutProps, "params">
-) => Metadata | Promise<Metadata>;
-
-export interface PageProps {
-	params?: Params;
-	searchParams?: { [key: string]: string | Array<string> | undefined };
-}
-
-export type PageGenerateMetadata = (
-	props: PageProps
-) => Metadata | Promise<Metadata>;
-
-interface RouteContext {
-	params: Params;
-}
-
-export type RouteMethod = (
-	request: NextRequest,
-	{ params }: RouteContext
-) => Promise<Response>;
-
-export interface TemplateProps {
-	children: ReactNode;
-}
+import { PageProps } from "./route-meta.schema";
 
 export const ensureParams = async <T>(
 	schema: ZodSchema<T>,

@@ -2,12 +2,8 @@ import { redirect } from "next/navigation";
 
 import * as profileModel from "@/domains/profile/model";
 import { loadPageTranslations } from "@/i18n/server";
-import {
-	ensureParams,
-	PageGenerateMetadata,
-	PageProps,
-	LOCALE_PARAMS as PARAMS
-} from "@/library/route-meta";
+import { ensureParams, LOCALE_PARAMS as PARAMS } from "@/library/route-meta";
+import { PageGenerateMetadata, PageProps } from "@/library/route-meta.schema";
 import { requireProfile } from "@/library/session-manager";
 
 import markEmailAsVerifiedAction from "./_actions/mark-email-as-verified-action";

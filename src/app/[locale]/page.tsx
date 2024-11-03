@@ -1,9 +1,6 @@
 import { loadPageTranslations } from "@/i18n/server";
-import {
-	ensureParams,
-	PageProps,
-	LOCALE_PARAMS as PARAMS
-} from "@/library/route-meta";
+import { ensureParams, LOCALE_PARAMS as PARAMS } from "@/library/route-meta";
+import { PageProps } from "@/library/route-meta.schema";
 
 import styles from "./page.module.scss";
 

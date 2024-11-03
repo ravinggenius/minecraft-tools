@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { z, ZodSchema } from "zod";
+import { z, ZodSchema, ZodTransformer, ZodTypeAny } from "zod";
 
 import { SUPPORTED_LOCALES } from "@/i18n/settings";
 
@@ -7,7 +7,7 @@ import CodedError, { ERROR_CODE } from "./coded-error";
 import { PageProps } from "./route-meta.schema";
 
 export const ensureParams = async <T>(
-	schema: ZodSchema<T>,
+	schema: ZodSchema<T> | ZodTransformer<ZodTypeAny, T>,
 	rawParams: PageProps["params"]
 ) => {
 	const reply = await schema.safeParseAsync(rawParams);
@@ -20,7 +20,7 @@ export const ensureParams = async <T>(
 };
 
 export const ensureSearchParams = async <T>(
-	schema: ZodSchema<T>,
+	schema: ZodSchema<T> | ZodTransformer<ZodTypeAny, T>,
 	rawSearchParams: PageProps["searchParams"]
 ) => {
 	const reply = await schema.safeParseAsync(rawSearchParams);

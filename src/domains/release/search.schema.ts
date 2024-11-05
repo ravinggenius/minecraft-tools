@@ -1,0 +1,19 @@
+import { z } from "zod";
+
+import {
+	OPTIONAL_BOOLEAN,
+	OPTIONAL_CYCLE_RANGE,
+	OPTIONAL_STRING_ARRAY
+} from "@/library/search";
+
+export const INCLUDE = z.object({
+	text: OPTIONAL_STRING_ARRAY,
+	edition: OPTIONAL_STRING_ARRAY,
+	version: OPTIONAL_STRING_ARRAY,
+	cycle: OPTIONAL_CYCLE_RANGE,
+	isEarliestInCycle: OPTIONAL_BOOLEAN,
+	isLatestInCycle: OPTIONAL_BOOLEAN,
+	isLatest: OPTIONAL_BOOLEAN
+});
+
+export interface Include extends z.infer<typeof INCLUDE> {}

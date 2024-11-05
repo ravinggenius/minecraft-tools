@@ -35,6 +35,7 @@
     "react-i18next": "^15.0.2",
     "react-timer-hook": "^3.0.7",
     "roarr": "^7.21.1",
+    "search-query-parser": "^1.6.0",
     "server-only": "^0.0.1",
     "slonik": "^46.1.0",
     "slonik-interceptor-query-logging": "^46.1.0",

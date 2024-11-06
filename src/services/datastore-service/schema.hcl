@@ -237,7 +237,7 @@ table "platforms" {
 
   column "name" {
     null = false
-    type = text
+    type = citext
   }
 
   primary_key {

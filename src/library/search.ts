@@ -56,3 +56,12 @@ export const SEARCH_PARAMS = <TInclude>(
 export type SearchParams<TInclude> = z.infer<
 	ReturnType<typeof SEARCH_PARAMS<TInclude>>
 >;
+
+export const COUNT = z.object({
+	count: z.bigint().nonnegative()
+});
+
+export interface SearchResults<TRecord> {
+	count: z.infer<typeof COUNT.shape.count>;
+	data: Readonly<Array<TRecord>>;
+}

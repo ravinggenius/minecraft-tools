@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { SearchParams } from "@/library/search";
+import { COUNT, SearchParams, SearchResults } from "@/library/search";
 import { pool, sql } from "@/services/datastore-service/service";
 
 import { PLATFORM_RELEASE } from "../platform-release/schema";
@@ -68,7 +68,35 @@ export const search = async ({
 			: sql.fragment`(r.is_latest = ${include.isLatest})`
 	].filter(Boolean);
 
-	const query = expand
+	const countQuery = expand
+		? sql.type(COUNT)`
+			SELECT count(*) AS count
+			FROM releases AS r
+			RIGHT OUTER JOIN platform_releases AS pr ON r.id = pr.release_id
+			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
+			${
+				whereClauses.length
+					? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+					: sql.fragment``
+			}
+		`
+		: sql.type(COUNT)`
+			SELECT count(*) AS count
+			FROM (
+				SELECT count(*)
+				FROM releases AS r
+				INNER JOIN platform_releases AS pr ON r.id = pr.release_id
+				INNER JOIN platforms AS p ON pr.platform_id = p.id
+				${
+					whereClauses.length
+						? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+						: sql.fragment``
+				}
+				GROUP BY r.id
+			)
+		`;
+
+	const dataQuery = expand
 		? sql.type(EXTENDED_RELEASE)`
 			SELECT
 				pr.id,
@@ -127,7 +155,13 @@ export const search = async ({
 			LIMIT ${limit} OFFSET ${offset}
 		`;
 
-	return (await pool).any(query);
+	return (await pool).transaction(
+		async (tx) =>
+			({
+				count: await tx.oneFirst(countQuery),
+				data: await tx.any(dataQuery)
+			}) satisfies SearchResults<ExtendedRelease>
+	);
 };
 
 export const doImport = async (release: ImportRelease) => {

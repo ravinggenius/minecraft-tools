@@ -47,9 +47,13 @@ export default async function Page({ params, searchParams }: PageProps) {
 		<div className={styles.root}>
 			<SearchForm {...{ query }} />
 
-			<PageSearchResults {...{ locale, releases }} view={query.view} />
+			<PageSearchResults
+				{...{ locale }}
+				releases={releases.data}
+				view={query.view}
+			/>
 
-			<p>pagination</p>
+			<p>found {releases.count.toString()} total records</p>
 		</div>
 	);
 }

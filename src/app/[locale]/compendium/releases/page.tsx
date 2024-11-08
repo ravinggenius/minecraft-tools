@@ -1,3 +1,4 @@
+import { Pagination } from "@/components/Pagination/Pagination";
 import SearchForm from "@/components/SearchForm/SearchForm";
 import * as releaseModel from "@/domains/release/model";
 import { loadPageTranslations } from "@/i18n/server";
@@ -53,7 +54,11 @@ export default async function Page({ params, searchParams }: PageProps) {
 				view={query.view}
 			/>
 
-			<p>found {releases.count.toString()} total records</p>
+			<Pagination
+				{...{ locale, query }}
+				count={releases.data.length}
+				totalMatchingCount={releases.count}
+			/>
 		</div>
 	);
 }

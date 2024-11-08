@@ -91,6 +91,7 @@ export const nextSearchParams = <
 
 	const offset = limit * (pageNumber - 1);
 
+	// TODO extract default values from RAW_SEACH_QUERY and compare with those instead
 	const pageParams = {
 		q: query.query === "" ? undefined : query.query,
 		o: offset === 0 ? undefined : offset.toString(),

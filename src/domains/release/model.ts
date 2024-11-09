@@ -65,7 +65,19 @@ export const search = async ({
 			: sql.fragment`(r.is_latest_in_cycle = ${include.isLatestInCycle})`,
 		include.isLatest === undefined
 			? undefined
-			: sql.fragment`(r.is_latest = ${include.isLatest})`
+			: sql.fragment`(r.is_latest = ${include.isLatest})`,
+		include.platform
+			? sql.fragment`(p.name LIKE ANY(${sql.array(
+					include.platform.map((platform) => `%${platform}%`),
+					"text"
+				)}))`
+			: undefined,
+		include.releasedOn?.from
+			? sql.fragment`(pr.released_on >= ${sql.date(include.releasedOn.from)})`
+			: undefined,
+		include.releasedOn?.to
+			? sql.fragment`(pr.released_on <= ${sql.date(include.releasedOn.to)})`
+			: undefined
 	].filter(Boolean);
 
 	const countQuery = expand

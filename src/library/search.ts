@@ -1,3 +1,4 @@
+import { parse } from "date-fns";
 import { z, ZodSchema, ZodTransformer, ZodTypeAny } from "zod";
 
 export const OPTIONAL_STRING_ARRAY = z.array(z.string()).optional();
@@ -13,6 +14,21 @@ const CYCLE_TUPLE = z.tuple([
 	z.union([z.literal(0), z.literal(1)]),
 	z.number().nonnegative().int()
 ]);
+
+export const OPTIONAL_DATE_RANGE = OPTIONAL_RANGE.transform((range) =>
+	range
+		? {
+				from: z.coerce
+					.date()
+					.parse(parse(range.from, "yyyyMMdd", new Date())),
+				to: range.to
+					? z.coerce
+							.date()
+							.parse(parse(range.to, "yyyyMMdd", new Date()))
+					: undefined
+			}
+		: undefined
+);
 
 export const OPTIONAL_CYCLE_RANGE = OPTIONAL_RANGE.transform((range) =>
 	range

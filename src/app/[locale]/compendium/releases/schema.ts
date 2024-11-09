@@ -11,9 +11,10 @@ export const QUERY = SEACH_QUERY(
 		"version",
 		"is-earliest-in-cycle",
 		"is-latest-in-cycle",
-		"is-latest"
+		"is-latest",
+		"platform"
 	] as const,
-	["cycle"] as const,
+	["cycle", "released-on"] as const,
 	(rawQuery) =>
 		({
 			text: rawQuery.text,
@@ -32,6 +33,8 @@ export const QUERY = SEACH_QUERY(
 			),
 			isLatest: BOOL.parse(
 				rawQuery["is-latest"]?.[rawQuery["is-latest"].length - 1]
-			)
+			),
+			platform: rawQuery.platform,
+			releasedOn: INCLUDE.shape.releasedOn.parse(rawQuery["released-on"])
 		}) satisfies Include
 );

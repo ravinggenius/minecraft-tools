@@ -59,7 +59,7 @@ export async function Pagination<
 		{ interiorSpread: 2 }
 	);
 
-	return (
+	return totalMatchingCount === BigInt(0) ? null : (
 		<nav className={classNames(styles.root, className)}>
 			{currentPageNumber > firstPageNumber ? (
 				<Anchor

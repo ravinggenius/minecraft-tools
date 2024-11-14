@@ -32,16 +32,34 @@ export default async function Page({ params }: PageProps) {
 
 	return (
 		<section className={styles.examples}>
-			<Card className={styles.example} variant="flat">
+			<Card {...{ locale }} className={styles.example} variant="flat">
 				<pre>{'variant="flat"'}</pre>
 			</Card>
 
-			<Card className={styles.example} variant="low">
+			<Card {...{ locale }} className={styles.example} variant="low">
 				<pre>{'variant="low"'}</pre>
 			</Card>
 
-			<Card className={styles.example} variant="high">
+			<Card {...{ locale }} className={styles.example} variant="high">
 				<pre>{'variant="high"'}</pre>
+			</Card>
+
+			<Card
+				{...{ locale }}
+				className={styles.example}
+				edition="bedrock"
+				variant="flat"
+			>
+				<pre>{'edition="bedrock" variant="flat"'}</pre>
+			</Card>
+
+			<Card
+				{...{ locale }}
+				className={styles.example}
+				edition="java"
+				variant="flat"
+			>
+				<pre>{'edition="java" variant="flat"'}</pre>
 			</Card>
 		</section>
 	);

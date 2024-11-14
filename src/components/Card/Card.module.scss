@@ -1,3 +1,21 @@
+.edition {
+	border-end-end-radius: var(--radius-sharp);
+	inline-size: min-content;
+	margin-block-start: -3rem;
+	margin-block-end: 3rem;
+	margin-inline: -3rem;
+	padding-block: 0.5rem;
+	padding-inline: 3rem;
+}
+
+.edition[data-edition="bedrock"] {
+	background-color: var(--color-green-200);
+}
+
+.edition[data-edition="java"] {
+	background-color: var(--color-red-200);
+}
+
 .card {
 	border: var(--border-thin);
 	border-radius: var(--radius-sharp);

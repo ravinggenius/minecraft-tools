@@ -36,7 +36,7 @@ export default async function Page({ params }: PageProps) {
 
 	return (
 		<>
-			<Card variant="flat">
+			<Card {...{ locale }} variant="flat">
 				<p>{t("field.explanation")}</p>
 
 				<Field
@@ -51,7 +51,7 @@ export default async function Page({ params }: PageProps) {
 				</Field>
 			</Card>
 
-			<Card variant="flat">
+			<Card {...{ locale }} variant="flat">
 				<p>{t("text-field.explanation")}</p>
 
 				<TextField

@@ -37,14 +37,14 @@ const initI18next = async (
 	return i18nInstance;
 };
 
-export const extractLocaleFromRequest = () => {
-	const cookieLocale = cookies().get(cookieName)?.value;
+export const extractLocaleFromRequest = async () => {
+	const cookieLocale = (await cookies()).get(cookieName)?.value;
 
 	if (SUPPORTED_LOCALES.includes(cookieLocale as SupportedLocale)) {
 		return cookieLocale as SupportedLocale;
 	}
 
-	const acceptLanguage = headers().get("Accept-Language");
+	const acceptLanguage = (await headers()).get("Accept-Language");
 
 	const acceptLanguageLocales = parseAcceptLanguage(acceptLanguage);
 
@@ -61,7 +61,7 @@ export const extractLocaleFromRequest = () => {
 
 const LOCALE_PATTERN = /^[a-z]{2}(?:[-_][A-Z]{2})?$/i;
 
-export const ensureLocalizedPathname = (pathname: string) => {
+export const ensureLocalizedPathname = async (pathname: string) => {
 	const pathnameSegments = pathname
 		.replace(/^\//, "")
 		.split("/")
@@ -82,7 +82,7 @@ export const ensureLocalizedPathname = (pathname: string) => {
 
 	const [preferredLocale] = mergeUserLocales(
 		availableLocales(
-			[pathnameLocale, extractLocaleFromRequest()].filter(Boolean),
+			[pathnameLocale, await extractLocaleFromRequest()].filter(Boolean),
 			[...SUPPORTED_LOCALES]
 		)
 	);

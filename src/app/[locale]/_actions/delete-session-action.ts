@@ -17,9 +17,9 @@ const deleteSessionAction: ServerAction = async (data) => {
 		await sessionModel.destroy(sessionId);
 	}
 
-	clearSessionCookie();
+	await clearSessionCookie();
 
-	const locale = extractLocaleFromRequest();
+	const locale = await extractLocaleFromRequest();
 
 	redirect(`/${locale}`);
 };

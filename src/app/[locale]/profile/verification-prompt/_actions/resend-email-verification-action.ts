@@ -15,7 +15,7 @@ const resendEmailVerificationAction = async () => {
 
 	const maybeProfile = await maybeProfileFromSession();
 
-	const locale = extractLocaleFromRequest();
+	const locale = await extractLocaleFromRequest();
 
 	if (!maybeProfile) {
 		redirect(`/${locale}/profile`);

@@ -10,7 +10,7 @@ export const ensureParams = async <T>(
 	schema: ZodSchema<T> | ZodTransformer<ZodTypeAny, T>,
 	rawParams: PageProps["params"]
 ) => {
-	const reply = await schema.safeParseAsync(rawParams);
+	const reply = await schema.safeParseAsync(await rawParams);
 
 	if (reply.success) {
 		return reply.data;
@@ -23,7 +23,7 @@ export const ensureSearchParams = async <T>(
 	schema: ZodSchema<T> | ZodTransformer<ZodTypeAny, T>,
 	rawSearchParams: PageProps["searchParams"]
 ) => {
-	const reply = await schema.safeParseAsync(rawSearchParams);
+	const reply = await schema.safeParseAsync(await rawSearchParams);
 
 	if (reply.success) {
 		return reply.data;

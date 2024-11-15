@@ -4,12 +4,8 @@ import { Interactive } from "@/components/_/interactive/interactive";
 import Anchor from "@/components/Anchor/Anchor";
 import Button from "@/components/Button/Button";
 import { loadPageTranslations } from "@/i18n/server";
-import {
-	ensureParams,
-	PageGenerateMetadata,
-	PageProps,
-	LOCALE_PARAMS as PARAMS
-} from "@/library/route-meta";
+import { ensureParams, LOCALE_PARAMS as PARAMS } from "@/library/route-meta";
+import { PageGenerateMetadata, PageProps } from "@/library/route-meta.schema";
 
 import styles from "./page.module.scss";
 

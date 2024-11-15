@@ -1,10 +1,54 @@
 [
   {
     "edition": "bedrock",
-    "version": "1.21.40",
-    "developmentReleasedOn": "2024-09-04",
+    "version": "1.21.44",
     "platforms": {
-      "upcoming": [
+      "2024-10-31": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "PlayStation 4",
+        "PlayStation VR",
+        "PlayStation 5"
+      ],
+      "2024-11-05": ["Nintendo Switch"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.43",
+    "platforms": {
+      "2024-10-25": ["PlayStation 5"],
+      "2024-10-28": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "PlayStation 4",
+        "PlayStation VR"
+      ],
+      "2024-10-30": ["Nintendo Switch"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.42",
+    "platforms": {
+      "2024-10-23": ["PlayStation 5"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.41",
+    "platforms": {
+      "2024-10-22": [
         "ChromeOS",
         "Android",
         "iOS",
@@ -14,7 +58,29 @@
         "Xbox One",
         "Nintendo Switch",
         "PlayStation 4",
-        "PlayStation VR"
+        "PlayStation VR",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.40",
+    "name": "Bundles Of Bravery",
+    "developmentReleasedOn": "2024-09-04",
+    "platforms": {
+      "2024-10-22": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation VR",
+        "PlayStation 5"
       ]
     }
   },
@@ -34,7 +100,8 @@
         "PlayStation 4",
         "PlayStation VR"
       ]
-    }
+    },
+    "2024-10-22": ["PlayStation 5"]
   },
   {
     "edition": "bedrock",
@@ -2830,11 +2897,19 @@
   },
   {
     "edition": "java",
+    "version": "1.21.3",
+    "name": "Bundles Of Bravery",
+    "platforms": {
+      "2024-10-23": ["Linux", "macOS", "Windows"]
+    }
+  },
+  {
+    "edition": "java",
     "version": "1.21.2",
-    "name": "Tricky Trials",
+    "name": "Bundles Of Bravery",
     "developmentReleasedOn": "2024-08-15",
     "platforms": {
-      "upcoming": ["Linux", "macOS", "Windows"]
+      "2024-10-22": ["Linux", "macOS", "Windows"]
     }
   },
   {

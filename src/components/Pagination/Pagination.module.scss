@@ -1,0 +1,46 @@
+.previous {
+	display: inline-block;
+	grid-area: previous;
+	text-align: center;
+}
+
+.next {
+	display: inline-block;
+	grid-area: next;
+	text-align: center;
+}
+
+.current {
+	display: inline-block;
+	padding-block: 2rem;
+	padding-inline: 4rem;
+}
+
+.glue {
+	display: inline-block;
+	padding-block: 2rem;
+	padding-inline: 4rem;
+}
+
+.list {
+	display: flex;
+	flex-direction: row;
+	grid-area: list;
+	justify-content: space-evenly;
+	list-style: none;
+}
+
+.summary {
+	grid-area: summary;
+	text-align: center;
+}
+
+.root {
+	align-items: center;
+	display: grid;
+	grid-template-areas:
+		"previous summary next"
+		"list     list    list";
+	grid-template-columns: repeat(3, 1fr);
+	justify-content: center;
+}

@@ -1,10 +1,11 @@
 .example {
-	inline-size: 50%;
+	min-inline-size: 50%;
 	text-align: center;
 }
 
 .examples {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	gap: 3rem;
 }

@@ -1,0 +1,13 @@
+{
+  "previous": "Previous",
+  "next": "Next",
+
+  "glue": "...",
+
+  "page-number": "{{pageNumber}}",
+
+  "summary": {
+    "display": "{{countStart}} - {{countEnd}} / {{totalMatchingCount}}",
+    "reader": "results {{countStart}} through {{countEnd}} of {{totalMatchingCount}} total"
+  }
+}

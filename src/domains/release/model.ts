@@ -1,8 +1,180 @@
+import { z } from "zod";
+
+import { COUNT, SearchParams, SearchResults } from "@/library/search";
 import { pool, sql } from "@/services/datastore-service/service";
 
 import { PLATFORM_RELEASE } from "../platform-release/schema";
+import { PLATFORM } from "../platform/schema";
 
-import { ImportRelease, UPCOMING } from "./schema";
+import { ImportRelease, RELEASE, UPCOMING } from "./schema";
+import { Include } from "./search.schema";
+
+export const EXTENDED_RELEASE = RELEASE.omit({
+	createdAt: true,
+	updatedAt: true
+}).extend({
+	productionReleasedOn: z.coerce.date(),
+	platformReleases: z.array(
+		z.object({
+			id: PLATFORM.shape.id,
+			name: PLATFORM.shape.name,
+			releasedOn: PLATFORM_RELEASE.shape.releasedOn
+		})
+	)
+});
+
+export interface ExtendedRelease extends z.infer<typeof EXTENDED_RELEASE> {}
+
+export const search = async ({
+	conditions: { include, exclude },
+	expand,
+	pagination: { limit, offset }
+}: SearchParams<Include>) => {
+	const includeText = include.text?.map((text) => `%${text}%`);
+
+	const whereClauses = [
+		includeText
+			? sql.fragment`(
+				(r.edition::text LIKE ANY(${sql.array(includeText, "text")}))
+				OR
+				(r.version LIKE ANY(${sql.array(includeText, "text")}))
+				OR
+				(p.name LIKE ANY(${sql.array(includeText, "text")}))
+			)`
+			: undefined,
+		include.edition
+			? sql.fragment`(r.edition = ANY(${sql.array(include.edition, "edition")}))`
+			: undefined,
+		include.version
+			? sql.fragment`(r.version LIKE ANY(${sql.array(
+					include.version.map((version) => `${version}%`),
+					"text"
+				)}))`
+			: undefined,
+		include.cycle?.from
+			? sql.fragment`(r.cycle >= ${sql.array(include.cycle.from, "int4")})`
+			: undefined,
+		include.cycle?.to
+			? sql.fragment`(r.cycle <= ${sql.array(include.cycle.to, "int4")})`
+			: undefined,
+		include.isEarliestInCycle === undefined
+			? undefined
+			: sql.fragment`(r.is_earliest_in_cycle = ${include.isEarliestInCycle})`,
+		include.isLatestInCycle === undefined
+			? undefined
+			: sql.fragment`(r.is_latest_in_cycle = ${include.isLatestInCycle})`,
+		include.isLatest === undefined
+			? undefined
+			: sql.fragment`(r.is_latest = ${include.isLatest})`,
+		include.platform
+			? sql.fragment`(p.name LIKE ANY(${sql.array(
+					include.platform.map((platform) => `%${platform}%`),
+					"text"
+				)}))`
+			: undefined,
+		include.releasedOn?.from
+			? sql.fragment`(pr.released_on >= ${sql.date(include.releasedOn.from)})`
+			: undefined,
+		include.releasedOn?.to
+			? sql.fragment`(pr.released_on <= ${sql.date(include.releasedOn.to)})`
+			: undefined
+	].filter(Boolean);
+
+	const countQuery = expand
+		? sql.type(COUNT)`
+			SELECT count(*) AS count
+			FROM releases AS r
+			RIGHT OUTER JOIN platform_releases AS pr ON r.id = pr.release_id
+			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
+			${
+				whereClauses.length
+					? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+					: sql.fragment``
+			}
+		`
+		: sql.type(COUNT)`
+			SELECT count(*) AS count
+			FROM (
+				SELECT count(*)
+				FROM releases AS r
+				INNER JOIN platform_releases AS pr ON r.id = pr.release_id
+				INNER JOIN platforms AS p ON pr.platform_id = p.id
+				${
+					whereClauses.length
+						? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+						: sql.fragment``
+				}
+				GROUP BY r.id
+			)
+		`;
+
+	const dataQuery = expand
+		? sql.type(EXTENDED_RELEASE)`
+			SELECT
+				pr.id,
+				r.edition,
+				r.version,
+				r.cycle,
+				r.development_released_on AS "developementReleasedOn",
+				pr.released_on AS "productionReleasedOn",
+				r.notes_url AS "notesUrl",
+				r.is_earliest_in_cycle AS "isEarliestInCycle",
+				r.is_latest_in_cycle AS "isLatestInCycle",
+				r.is_latest AS "isLatest",
+				jsonb_build_array(jsonb_build_object(
+					'id', p.id,
+					'name', p.name,
+					'releasedOn', pr.released_on
+				)) AS "platformReleases"
+			FROM releases AS r
+			RIGHT OUTER JOIN platform_releases AS pr ON r.id = pr.release_id
+			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
+			${
+				whereClauses.length
+					? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+					: sql.fragment``
+			}
+			ORDER BY r.cycle DESC, r.edition ASC, "productionReleasedOn" DESC, r.version ASC, p.name ASC
+			LIMIT ${limit} OFFSET ${offset}
+		`
+		: sql.type(EXTENDED_RELEASE)`
+			SELECT
+				r.id,
+				r.edition,
+				r.version,
+				r.cycle,
+				r.development_released_on AS "developementReleasedOn",
+				min(pr.released_on) AS "productionReleasedOn",
+				r.notes_url AS "notesUrl",
+				r.is_earliest_in_cycle AS "isEarliestInCycle",
+				r.is_latest_in_cycle AS "isLatestInCycle",
+				r.is_latest AS "isLatest",
+				COALESCE(jsonb_agg(jsonb_build_object(
+					'id', p.id,
+					'name', p.name,
+					'releasedOn', pr.released_on
+				)), '[]') AS "platformReleases"
+			FROM releases AS r
+			INNER JOIN platform_releases AS pr ON r.id = pr.release_id
+			INNER JOIN platforms AS p ON pr.platform_id = p.id
+			${
+				whereClauses.length
+					? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+					: sql.fragment``
+			}
+			GROUP BY r.id
+			ORDER BY r.cycle DESC, r.edition ASC, "productionReleasedOn" DESC, r.version ASC
+			LIMIT ${limit} OFFSET ${offset}
+		`;
+
+	return (await pool).transaction(
+		async (tx) =>
+			({
+				count: await tx.oneFirst(countQuery),
+				data: await tx.any(dataQuery)
+			}) satisfies SearchResults<ExtendedRelease>
+	);
+};
 
 export const doImport = async (release: ImportRelease) => {
 	const cycle = release.version

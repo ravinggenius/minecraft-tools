@@ -1,0 +1,57 @@
+{
+  "list": {},
+
+  "table": {
+    "caption": "One release listed",
+    "caption_other": "{{count}} releases listed"
+  },
+
+  "edition": {
+    "label": "Edition",
+    "value_bedrock": "Bedrock",
+    "value_java": "Java"
+  },
+
+  "cycle": {
+    "label": "Cycle",
+    "value": "{{major}}.{{minor}}"
+  },
+
+  "version": {
+    "label": "Version",
+    "value": "{{version}}"
+  },
+
+  "development-released-on": {
+    "label": "Development Released",
+    "value": "{{developmentReleasedOn, dateTime(year: numeric; month: short; day: numeric)}}",
+    "value_unknown": "unknown"
+  },
+
+  "production-released-on": {
+    "label": "Production Released",
+    "value": "{{productionReleasedOn, dateTime(year: numeric; month: short; day: numeric)}}"
+  },
+
+  "is-earliest-in-cycle": {
+    "label": "Earliest In Cycle?",
+    "value_yes": "Y",
+    "value_no": "N"
+  },
+
+  "is-latest-in-cycle": {
+    "label": "Latest In Cycle?",
+    "value_yes": "Y",
+    "value_no": "N"
+  },
+
+  "is-latest": {
+    "label": "Latest?",
+    "value_yes": "Y",
+    "value_no": "N"
+  },
+
+  "platform-releases": {
+    "label": "Platforms"
+  }
+}

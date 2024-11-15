@@ -27,6 +27,9 @@
       "secondary-body": {
         "description": ""
       },
+      "label": {
+        "description": ""
+      },
       "fine": {
         "description": ""
       }

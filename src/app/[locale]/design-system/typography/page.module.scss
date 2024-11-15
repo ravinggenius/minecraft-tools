@@ -28,6 +28,10 @@
 	@include typography.secondary-body();
 }
 
+.label {
+	@include typography.label();
+}
+
 .fine {
 	@include typography.fine();
 }

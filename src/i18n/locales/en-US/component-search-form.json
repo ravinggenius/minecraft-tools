@@ -1,0 +1,25 @@
+{
+  "query": {
+    "label": "Query"
+  },
+
+  "view": {
+    "label": "View",
+    "options": {
+      "list": "List",
+      "table": "Table"
+    }
+  },
+
+  "expand": {
+    "label": "Expand?"
+  },
+
+  "submit": {
+    "label": "Search"
+  },
+
+  "reset": {
+    "label": "Reset"
+  }
+}

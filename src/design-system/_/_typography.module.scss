@@ -45,6 +45,12 @@
 	line-height: 5rem;
 }
 
+@mixin label {
+	font-family: var(--font-sans);
+	font-size: 3.5rem;
+	line-height: 4rem;
+}
+
 @mixin fine {
 	font-family: var(--font-mono);
 	font-size: 3rem;

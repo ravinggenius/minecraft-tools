@@ -5,10 +5,9 @@ import CodedError, { ERROR_CODE } from "@/library/coded-error";
 import {
 	ensureParams,
 	ensureSearchParams,
-	PageGenerateMetadata,
-	PageProps,
 	LOCALE_PARAMS as PARAMS
 } from "@/library/route-meta";
+import { PageGenerateMetadata, PageProps } from "@/library/route-meta.schema";
 import { maybeProfileFromSession } from "@/library/session-manager";
 
 import styles from "./page.module.scss";

@@ -43,48 +43,31 @@
 		@return ternary($hue-name == "neutral", 0, 100);
 	}
 
+	/* SEE https://caniuse.com/mdn-css_types_color_color-contrast */
+
 	--color-special-coal: lch(0% 0 0);
 	--color-special-snow: lch(100% 0 0);
-	--color-special-glass: lch(100% 0 0 / 0%);
+
+	--color-special-glass: lch(from var(--color-special-snow) l c h / 0%);
+
+	--color-base: lch(#{$lightness-base} #{$chroma-base} #{$hue-neutral-value});
 
 	@each $name, $hue in $hue-names {
 		@each $lightness-level, $step in $lightness-steps {
 			--color-#{$name}-#{$lightness-level}: lch(
-				#{$lightness-base +
-					($lightness-step-size * $step)}
-					#{$chroma-base +
-					chroma-modifier($name)}
-					#{$hue}
+				from var(--color-base)
+					#{ternary(
+						($lightness-step-size * $step) == 0,
+						l,
+						calc(l + #{$lightness-step-size * $step})
+					)}
+					#{ternary(
+						chroma-modifier($name) == 0,
+						c,
+						calc(c + chroma-modifier($name))
+					)}
+					#{ternary($hue == $hue-neutral-value, h, $hue)}
 			);
-		}
-	}
-
-	/* SEE https://caniuse.com/css-relative-colors */
-	/* SEE https://caniuse.com/mdn-css_types_color_color-contrast */
-	@supports (color: lch(from lch(0% 0 0) l c h)) {
-		--color-special-glass: lch(from var(--color-special-snow) l c h / 0%);
-
-		--color-base: lch(
-			#{$lightness-base} #{$chroma-base} #{$hue-neutral-value}
-		);
-
-		@each $name, $hue in $hue-names {
-			@each $lightness-level, $step in $lightness-steps {
-				--color-#{$name}-#{$lightness-level}: lch(
-					from var(--color-base)
-						#{ternary(
-							($lightness-step-size * $step) == 0,
-							l,
-							calc(l + #{$lightness-step-size * $step})
-						)}
-						#{ternary(
-							chroma-modifier($name) == 0,
-							c,
-							calc(c + chroma-modifier($name))
-						)}
-						#{ternary($hue == $hue-neutral-value, h, $hue)}
-				);
-			}
 		}
 	}
 }

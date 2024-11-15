@@ -1,0 +1,12 @@
+@use "@/design-system/_/_typography.module.scss" as typography;
+
+.root {
+	@include typography.secondary-body();
+
+	background-color: var(--color-neutral-200);
+	// border: var(--border-thin);
+	border-radius: var(--radius-dull);
+	display: inline-block;
+	padding-block: 1rem;
+	padding-inline: 2rem;
+}

@@ -48,9 +48,13 @@ export default async function SearchResults<TRecord extends Identity>({
 	return (
 		<>
 			{records.length === 0 ? (
-				<p className={classNames(styles.root, styles.empty, className)}>
-					{t("empty-results")}
-				</p>
+				<div
+					className={classNames(styles.root, styles.empty, className)}
+				>
+					<p className={styles["empty-message"]}>
+						{t("empty-results")}
+					</p>
+				</div>
 			) : null}
 
 			{records.length && view === "list" ? (

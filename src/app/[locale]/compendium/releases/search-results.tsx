@@ -1,14 +1,11 @@
-import classNames from "classnames";
 import { ComponentProps } from "react";
 
-import Card from "@/components/Card/Card";
 import { Field } from "@/components/DataTable/DataTable";
+import KeyValueCard from "@/components/Pagination/KeyValueCard/KeyValueCard";
 import SearchResults from "@/components/SearchResults/SearchResults";
 import { ExtendedRelease } from "@/domains/release/model";
 import { loadPageTranslations } from "@/i18n/server";
 import { SupportedLocale } from "@/i18n/settings";
-
-import styles from "./search-results.module.scss";
 
 export default async function PageSearchResults({
 	className,
@@ -27,109 +24,99 @@ export default async function PageSearchResults({
 	);
 
 	return (
-		<SearchResults
-			{...{ locale, view }}
-			className={classNames(styles.root, className)}
-			records={releases}
-		>
-			<SearchResults.List className={styles.list}>
+		<SearchResults {...{ className, locale, view }} records={releases}>
+			<SearchResults.List>
 				{(release: ExtendedRelease) => (
-					<Card
-						{...{ locale }}
+					<KeyValueCard
+						{...{ locale, release }}
 						edition={release.edition}
-						variant="flat"
-					>
-						<span>
-							<span>{t("version.label")}</span>
-							{release.notesUrl ? (
-								<a href={release.notesUrl}>
-									{t("version.value", {
-										version: release.version
-									})}
-								</a>
-							) : (
-								t("version.value", { version: release.version })
-							)}
-						</span>
-
-						<span>
-							<span>{t("cycle.label")}</span>
-							<pre>
-								{t("cycle.value", {
+						pairs={[
+							{
+								key: t("cycle.label"),
+								value: t("cycle.value", {
 									major: release.cycle[0],
 									minor: release.cycle[1]
-								})}
-							</pre>
-						</span>
-
-						<span>
-							<span>{t("development-released-on.label")}</span>
-							<pre>
-								{release.developmentReleasedOn
-									? t("development-released-on.value", {
-											developmentReleasedOn: new Date(
-												release.developmentReleasedOn
+								})
+							},
+							...(release.developmentReleasedOn
+								? [
+										{
+											key: t(
+												"development-released-on.label"
+											),
+											value: t(
+												"development-released-on.value",
+												{
+													developmentReleasedOn:
+														new Date(
+															release.developmentReleasedOn
+														)
+												}
+											)
+										}
+									]
+								: []),
+							{
+								key: t("production-released-on.label"),
+								value: release.notesUrl
+									? {
+											href: release.notesUrl,
+											text: t(
+												"production-released-on.value",
+												{
+													productionReleasedOn:
+														new Date(
+															release.productionReleasedOn
+														)
+												}
+											),
+											isExternal: true
+										}
+									: t("production-released-on.value", {
+											productionReleasedOn: new Date(
+												release.productionReleasedOn
 											)
 										})
-									: t("development-released-on.value", {
-											context: "unknown"
-										})}
-							</pre>
-						</span>
-
-						<span>
-							<span>{t("production-released-on.label")}</span>
-							<pre>
-								{t("production-released-on.value", {
-									productionReleasedOn: new Date(
-										release.productionReleasedOn
-									)
-								})}
-							</pre>
-						</span>
-
-						<span>
-							<span>{t("is-earliest-in-cycle.label")}</span>
-							<span>
-								{t("is-earliest-in-cycle.value", {
+							},
+							{
+								key: t("is-earliest-in-cycle.label"),
+								value: t("is-earliest-in-cycle.value", {
 									context: release.isEarliestInCycle
 										? "yes"
 										: "no"
-								})}
-							</span>
-						</span>
-
-						<span>
-							<span>{t("is-latest-in-cycle.label")}</span>
-							<span>
-								{t("is-latest-in-cycle.value", {
+								})
+							},
+							{
+								key: t("is-latest-in-cycle.label"),
+								value: t("is-latest-in-cycle.value", {
 									context: release.isLatestInCycle
 										? "yes"
 										: "no"
-								})}
-							</span>
-						</span>
-
-						<span>
-							<span>{t("is-latest.label")}</span>
-							<span>
-								{t("is-latest.value", {
+								})
+							},
+							{
+								key: t("is-latest.label"),
+								value: t("is-latest.value", {
 									context: release.isLatest ? "yes" : "no"
-								})}
-							</span>
-						</span>
-
-						<span>
-							<span>{t("platform-releases.label")}</span>
-							<span>{release.platformReleases.length}</span>
-						</span>
-					</Card>
+								}),
+								isHighlighted: release.isLatest || undefined
+							},
+							{
+								key: t("platform-releases.label"),
+								value: release.platformReleases.map(
+									({ name }) => name
+								),
+								isLarge: true
+							}
+						]}
+						title={t("version.value", { version: release.version })}
+						variant="flat"
+					/>
 				)}
 			</SearchResults.List>
 
 			<SearchResults.Table
 				caption={t("table.caption", { count: releases.length })}
-				className={styles.table}
 			>
 				<Field fieldPath="edition" label={t("edition.label")}>
 					{({ edition }: ExtendedRelease) =>

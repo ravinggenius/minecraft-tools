@@ -46,16 +46,18 @@ export default async function Page({ params, searchParams }: PageProps) {
 
 	return (
 		<div className={styles.root}>
-			<SearchForm {...{ query }} />
+			<SearchForm {...{ query }} className={styles.form} />
 
 			<PageSearchResults
 				{...{ locale }}
+				className={styles.results}
 				releases={releases.data}
 				view={query.view}
 			/>
 
 			<Pagination
 				{...{ locale, query }}
+				className={styles.pagination}
 				count={releases.data.length}
 				totalMatchingCount={releases.count}
 			/>

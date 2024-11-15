@@ -1,0 +1,50 @@
+@use "@/design-system/_/_typography.module.scss" as typography;
+
+.key {
+	@include typography.label();
+
+	margin-block-end: 1rem;
+}
+
+.value {
+	&:not([data-multiple]) {
+		@include typography.hero();
+	}
+
+	&[data-multiple] {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 2rem;
+	}
+}
+
+.pair {
+	background-color: var(--color-neutral-100);
+	border-radius: var(--radius-sharp);
+	padding: 3rem;
+
+	&[data-highlight] {
+		background-color: var(--color-blue-050);
+	}
+
+	&[data-size="large"] {
+		grid-column: 1 / -1;
+	}
+}
+
+.list {
+	--columns: 1;
+
+	display: grid;
+	gap: 3rem;
+	grid-template-columns: repeat(var(--columns), 1fr);
+
+	@container (min-inline-size: 360px) {
+		--columns: 2;
+	}
+}
+
+.root {
+	container-type: inline-size;
+}

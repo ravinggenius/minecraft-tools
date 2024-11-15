@@ -1,4 +1,11 @@
+.empty-message {
+}
+
 .empty {
+	align-items: center;
+	block-size: 50rem;
+	display: flex;
+	justify-content: center;
 }
 
 .list {
@@ -8,10 +15,4 @@
 }
 
 .root {
-	&:has(.empty) {
-		align-items: center;
-		block-size: 50vh;
-		display: flex;
-		justify-content: center;
-	}
 }

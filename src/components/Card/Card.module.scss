@@ -1,24 +1,37 @@
+@use "@/design-system/_/_typography.module.scss" as typography;
+
+.title {
+	@include typography.secondary-title();
+}
+
+.header {
+	padding-block-end: 3rem;
+}
+
 .edition {
-	border-end-end-radius: var(--radius-sharp);
+	border-start-end-radius: calc(var(--radius-sharp) - 1px);
+	border-end-start-radius: var(--radius-sharp);
 	inline-size: min-content;
-	margin-block-start: -3rem;
-	margin-block-end: 3rem;
-	margin-inline: -3rem;
+	inset-block-start: 0;
+	inset-inline-end: 0;
 	padding-block: 0.5rem;
 	padding-inline: 3rem;
+	position: absolute;
 }
 
 .edition[data-edition="bedrock"] {
-	background-color: var(--color-green-200);
+	background-color: var(--color-green-100);
 }
 
 .edition[data-edition="java"] {
-	background-color: var(--color-red-200);
+	background-color: var(--color-red-100);
 }
 
 .card {
+	background-color: var(--color-special-snow);
 	border: var(--border-thin);
 	border-radius: var(--radius-sharp);
+	position: relative;
 	padding: 3rem;
 }
 

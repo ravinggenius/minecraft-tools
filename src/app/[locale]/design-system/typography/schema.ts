@@ -6,6 +6,7 @@ export const NAMES = [
 	"technical",
 	"primary-body",
 	"secondary-body",
+	"label",
 	"fine"
 ] as const;
 export type Name = (typeof NAMES)[number];

@@ -1,4 +1,8 @@
+@use "@/design-system/_/_typography.module.scss" as typography;
+
 .label {
+	@include typography.label();
+
 	align-items: flex-start;
 	display: flex;
 	flex-direction: row;

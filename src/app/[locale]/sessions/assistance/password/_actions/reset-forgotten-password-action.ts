@@ -19,7 +19,7 @@ const resetForgottenPasswordAction: ServerAction = async (data) => {
 
 	const maybeProfile = await maybeProfileFromSession();
 
-	const locale = extractLocaleFromRequest();
+	const locale = await extractLocaleFromRequest();
 
 	if (maybeProfile) {
 		redirect(`/${locale}/profile`);

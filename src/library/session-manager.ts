@@ -33,7 +33,7 @@ export const requireProfile = async () => {
 	const maybeProfile = await maybeProfileFromSession();
 
 	if (!maybeProfile) {
-		const locale = extractLocaleFromRequest();
+		const locale = await extractLocaleFromRequest();
 
 		redirect(`/${locale}/sessions/new`);
 	}
@@ -45,7 +45,7 @@ export const requireVerifiedProfile = async () => {
 	const profile = await requireProfile();
 
 	if (!(await profileModel.isEmailVerified(profile.id))) {
-		const locale = extractLocaleFromRequest();
+		const locale = await extractLocaleFromRequest();
 
 		redirect(`/${locale}/profile/verification-prompt`);
 	}

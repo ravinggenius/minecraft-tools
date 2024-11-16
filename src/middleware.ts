@@ -10,7 +10,7 @@ const EXCLUDED_PATH_PREFIXES = [
 	"/sitemap.xml"
 ];
 
-export const middleware = (request: NextRequest) => {
+export const middleware = async (request: NextRequest) => {
 	const { pathname } = request.nextUrl;
 
 	const isPathExcluded = EXCLUDED_PATH_PREFIXES.some((pathPrefix) =>
@@ -21,7 +21,7 @@ export const middleware = (request: NextRequest) => {
 		return;
 	}
 
-	const localizedPathname = ensureLocalizedPathname(pathname);
+	const localizedPathname = await ensureLocalizedPathname(pathname);
 
 	if (pathname !== localizedPathname) {
 		request.nextUrl.pathname = localizedPathname;

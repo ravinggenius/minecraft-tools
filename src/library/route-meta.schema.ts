@@ -1,12 +1,11 @@
 import { Metadata } from "next";
+import { Params } from "next/dist/server/request/params";
+import { SearchParams } from "next/dist/server/request/search-params";
 import { NextRequest } from "next/server";
 import { ReactNode } from "react";
 
-type Params = { [key: string]: string | Array<string> };
-type SearchParams = { [key: string]: string | Array<string> | undefined };
-
 export interface DefaultProps {
-	params?: Params;
+	params?: Promise<Params>;
 }
 
 export interface ErrorProps {
@@ -16,7 +15,7 @@ export interface ErrorProps {
 
 export interface LayoutProps {
 	children: ReactNode;
-	params?: Params;
+	params?: Promise<Params>;
 }
 
 export type LayoutGenerateMetadata = (
@@ -24,8 +23,8 @@ export type LayoutGenerateMetadata = (
 ) => Metadata | Promise<Metadata>;
 
 export interface PageProps {
-	params?: Params;
-	searchParams?: SearchParams;
+	params?: Promise<Params>;
+	searchParams?: Promise<SearchParams>;
 }
 
 export type PageGenerateMetadata = (
@@ -33,7 +32,7 @@ export type PageGenerateMetadata = (
 ) => Metadata | Promise<Metadata>;
 
 interface RouteContext {
-	params: Params;
+	params: Promise<Params>;
 }
 
 export type RouteMethod = (

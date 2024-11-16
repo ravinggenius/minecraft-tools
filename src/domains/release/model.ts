@@ -35,7 +35,7 @@ export const search = async ({
 	const whereClauses = [
 		includeText
 			? sql.fragment`(
-				(r.edition::text LIKE ANY(${sql.array(includeText, "text")}))
+				(r.edition::citext LIKE ANY(${sql.array(includeText, "text")}))
 				OR
 				(r.version LIKE ANY(${sql.array(includeText, "text")}))
 				OR

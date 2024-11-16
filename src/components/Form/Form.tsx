@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import NextForm from "next/form";
 import { omit } from "rambda";
 import { ComponentProps, forwardRef, ReactElement, Ref, useState } from "react";
 import { ZodError, ZodSchema } from "zod";
@@ -12,7 +13,7 @@ import { normalizeFormData, ServerAction } from "@/library/server-action";
 
 import styles from "./Form.module.scss";
 
-export default forwardRef(function Form(
+export default forwardRef(function ActionForm(
 	{
 		action,
 		children,
@@ -35,7 +36,7 @@ export default forwardRef(function Form(
 	ref: Ref<HTMLFormElement>
 ) {
 	return (
-		<form
+		<NextForm
 			{...{ action, ref }}
 			className={classNames(styles.form, className)}
 		>
@@ -46,7 +47,7 @@ export default forwardRef(function Form(
 			<SubmitButton label={submitLabel} variant={submitVariant} />
 
 			{debug ? <Debug value={{ feedback }} /> : null}
-		</form>
+		</NextForm>
 	);
 });
 

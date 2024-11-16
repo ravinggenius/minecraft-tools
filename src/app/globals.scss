@@ -1,7 +1,7 @@
 @use "@/design-system/_/_typography.module.scss" as typography;
 
-@import "@/design-system/_/_elevation.scss";
-@import "@/design-system/_/_palette.scss";
+@forward "@/design-system/_/_elevation.scss";
+@forward "@/design-system/_/_palette.scss";
 
 :root {
 	--base-size-unit: 4px;

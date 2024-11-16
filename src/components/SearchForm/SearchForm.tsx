@@ -1,6 +1,8 @@
 "use client";
 
 import classNames from "classnames";
+import { Route } from "next";
+import NextForm from "next/form";
 import { usePathname } from "next/navigation";
 
 import { useTranslation } from "@/i18n/client";
@@ -34,7 +36,10 @@ export default function SearchForm<
 	const e = useCheckboxField({ fieldFeedback: {} }, "e", query.expand);
 
 	return (
-		<form className={classNames(styles.form, className)} method="GET">
+		<NextForm
+			action={"" as Route}
+			className={classNames(styles.form, className)}
+		>
 			<TextField
 				{...q}
 				className={styles.query}
@@ -72,6 +77,6 @@ export default function SearchForm<
 			>
 				{t("reset.label")}
 			</Button>
-		</form>
+		</NextForm>
 	);
 }

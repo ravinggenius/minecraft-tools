@@ -1,7 +1,8 @@
+import type { NextConfig } from "next";
+
 import "./src/services/config-service/service.mjs";
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+export default {
 	experimental: {
 		typedRoutes: true
 	},
@@ -13,6 +14,4 @@ const nextConfig = {
 
 		return config;
 	}
-};
-
-export default nextConfig;
+} satisfies NextConfig;

@@ -237,7 +237,7 @@ table "platforms" {
 
   column "name" {
     null = false
-    type = citext
+    type = sql("citext")
   }
 
   primary_key {

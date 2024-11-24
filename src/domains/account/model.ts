@@ -56,25 +56,34 @@ export const create = async (
 				tokenNonce: true
 			})
 		)`
-			WITH
-				profile AS (
-					INSERT INTO
-						profiles (name)
+			WITH profile AS (
+				INSERT INTO
+					profiles (name)
+				VALUES
+					(${profile.name})
+				RETURNING
+					id
+			),
+			permission AS (
+				INSERT INTO
+					permissions (profile_id, action, scope, subject)
+				SELECT id, action, scope, subject
+				FROM profile
+				CROSS JOIN (
 					VALUES
-						(${profile.name})
-					RETURNING
-						id
-				)
+						('update'::permission_action, 'own'::permission_scope, 'profile'::permission_subject),
+						('create'::permission_action, 'new'::permission_scope, 'world'::permission_subject),
+						('read'::permission_action, 'own'::permission_scope, 'world'::permission_subject),
+						('share'::permission_action, 'own'::permission_scope, 'world'::permission_subject),
+						('update'::permission_action, 'own'::permission_scope, 'world'::permission_subject),
+						('destroy'::permission_action, 'own'::permission_scope, 'world'::permission_subject)
+				) AS assertions(action, scope, subject)
+			)
 			INSERT INTO
 				accounts (profile_id, email, hashword, token_nonce)
 			VALUES
 				(
-					(
-						SELECT
-							id
-						FROM
-							profile
-					),
+					(SELECT id FROM profile),
 					${account.email},
 					${hashword},
 					${tokenNonce}

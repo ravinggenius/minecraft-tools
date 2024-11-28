@@ -2,13 +2,18 @@ import { z } from "zod";
 
 export const EDITION = z.enum(["bedrock", "java"]);
 
+export type Edition = z.infer<typeof EDITION>;
+
 export const RELEASE = z.object({
 	id: z.string().uuid(),
 	createdAt: z.coerce.date(),
 	updatedAt: z.coerce.date(),
 	edition: EDITION,
 	version: z.string(),
-	cycle: z.tuple([z.number().nonnegative(), z.number().nonnegative()]),
+	cycle: z.tuple([
+		z.number().nonnegative().int(),
+		z.number().nonnegative().int()
+	]),
 	developmentReleasedOn: z.coerce.date().optional(),
 	notesUrl: z.string().url().optional(),
 	isEarliestInCycle: z.boolean().readonly(),

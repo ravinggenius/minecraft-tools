@@ -33,6 +33,12 @@
     "value": "{{productionReleasedOn, dateTime(year: numeric; month: short; day: numeric)}}"
   },
 
+  "is-available-for-tools": {
+    "label": "Available For Tools?",
+    "value_yes": "Y",
+    "value_no": "N"
+  },
+
   "is-earliest-in-cycle": {
     "label": "Earliest In Cycle?",
     "value_yes": "Y",

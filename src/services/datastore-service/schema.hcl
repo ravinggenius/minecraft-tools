@@ -303,6 +303,12 @@ table "releases" {
     type = text
   }
 
+  column "is_available_for_tools" {
+    null    = false
+    type    = boolean
+    default = false
+  }
+
   column "is_earliest_in_cycle" {
     null    = false
     type    = boolean

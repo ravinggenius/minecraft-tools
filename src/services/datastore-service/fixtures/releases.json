@@ -1,6 +1,42 @@
 [
   {
     "edition": "bedrock",
+    "version": "1.21.51",
+    "platforms": {
+      "2024-12-09": ["ChromeOS", "Android"],
+      "2024-12-10": ["iOS", "iPadOS", "Fire"],
+      "2024-12-11": [
+        "Windows",
+        "Xbox One",
+        "PlayStation 4",
+        "PlayStation VR",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.50",
+    "name": "The Garden Awakens",
+    "developmentReleasedOn": "2024-10-09",
+    "platforms": {
+      "2024-12-03": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation VR",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
     "version": "1.21.44",
     "platforms": {
       "2024-10-31": [
@@ -2893,6 +2929,15 @@
         "Windows Phone 8.1",
         "Windows 10"
       ]
+    }
+  },
+  {
+    "edition": "java",
+    "version": "1.21.4",
+    "name": "The Garden Awakens",
+    "developmentReleasedOn": "2024-10-30",
+    "platforms": {
+      "2024-12-03": ["Linux", "macOS", "Windows"]
     }
   },
   {

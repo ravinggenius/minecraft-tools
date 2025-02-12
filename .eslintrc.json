@@ -3,7 +3,14 @@
   "plugins": ["@c-ehrlich/eslint-plugin-use-server", "sql"],
   "rules": {
     "@c-ehrlich/use-server/no-top-level-use-server": ["error"],
-    "sql/format": ["warn"],
+    "sql/format": [
+      "off",
+      {},
+      {
+        "language": "postgresql",
+        "useTabs": true
+      }
+    ],
     "sql/no-unsafe-query": [
       "error",
       {

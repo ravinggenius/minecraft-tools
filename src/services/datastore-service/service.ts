@@ -1,4 +1,4 @@
-import trim from "cool-trim";
+import dedent from "dedent";
 import { createPool, Interceptor, sql } from "slonik";
 import { createQueryLoggingInterceptor } from "slonik-interceptor-query-logging";
 import { createQueryNormalisationInterceptor } from "slonik-interceptor-query-normalisation";
@@ -9,7 +9,7 @@ const createQueryTrimInterceptor = () =>
 	({
 		transformQuery: (_context, query) => ({
 			...query,
-			sql: trim(query.sql)
+			sql: dedent(query.sql)
 		})
 	}) satisfies Interceptor;
 

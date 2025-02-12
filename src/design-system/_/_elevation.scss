@@ -27,10 +27,12 @@
 
 :root {
 	--shadow-high-color: var(--color-neutral-300);
-	--shadow-high: var(--shadow-color, var(--shadow-high-color)) 0 0 3px,
+	--shadow-high:
+		var(--shadow-color, var(--shadow-high-color)) 0 0 3px,
 		var(--shadow-color, var(--shadow-high-color)) 4px 4px 6px;
 
 	--shadow-low-color: var(--color-neutral-500);
-	--shadow-low: var(--shadow-color, var(--shadow-low-color)) 0 0 1px,
+	--shadow-low:
+		var(--shadow-color, var(--shadow-low-color)) 0 0 1px,
 		var(--shadow-color, var(--shadow-low-color)) 2px 2px 3px;
 }

@@ -33,41 +33,47 @@ export const create = async (attrs: SessionCredentials) => {
 			seconds: config.sessionMaxAgeSeconds
 		});
 
-		return (await pool).one(
-			sql.type(SESSION)`
-				INSERT INTO sessions (account_id, expires_at)
-				VALUES (${accountId}, ${expiresAt.toJSON()})
-				RETURNING
-					id,
-					created_at AS "createdAt",
-					updated_at AS "updatedAt",
-					expires_at AS "expiresAt",
-					account_id AS "accountId"
-			`
-		);
+		return (await pool).one(sql.type(SESSION)`
+			INSERT INTO
+				sessions (account_id, expires_at)
+			VALUES
+				(
+					${accountId},
+					${expiresAt.toJSON()}
+				)
+			RETURNING
+				id,
+				created_at AS "createdAt",
+				updated_at AS "updatedAt",
+				expires_at AS "expiresAt",
+				account_id AS "accountId"
+		`);
 	} else {
 		throw new CodedError(ERROR_CODE.CREDENTIALS_INVALID);
 	}
 };
 
 export const verify = async (sessionId: Session["id"]) =>
-	(await pool).maybeOne(
-		sql.type(ACCOUNT.pick({ profileId: true }))`
-			SELECT a.profile_id AS "profileId"
-			FROM accounts AS a
+	(await pool).maybeOne(sql.type(ACCOUNT.pick({ profileId: true }))`
+		SELECT
+			a.profile_id AS "profileId"
+		FROM
+			accounts AS a
 			INNER JOIN sessions AS s ON a.id = s.account_id
-			WHERE s.id = ${sessionId}
+		WHERE
+			s.id = ${sessionId}
 			AND s.expires_at > NOW()
-			LIMIT 1
-		`
-	);
+		LIMIT
+			1
+	`);
 
 export const destroy = async (sessionId: Session["id"]) => {
 	await (
 		await pool
 	).query(sql.type(VOID)`
 		DELETE FROM sessions
-		WHERE id = ${sessionId}
+		WHERE
+			id = ${sessionId}
 	`);
 };
 
@@ -76,6 +82,7 @@ export const clearExpired = async () => {
 		await pool
 	).query(sql.type(VOID)`
 		DELETE FROM sessions
-		WHERE expires_at <= NOW()
+		WHERE
+			expires_at <= NOW()
 	`);
 };

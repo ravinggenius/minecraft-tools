@@ -2,7 +2,11 @@
  * @type {import("prettier").Config}
  */
 const core = {
-	plugins: ["@trivago/prettier-plugin-sort-imports"],
+	plugins: [
+		"@trivago/prettier-plugin-sort-imports",
+		"prettier-plugin-embed",
+		"prettier-plugin-sql"
+	],
 	quoteProps: "consistent",
 	semi: true,
 	tabWidth: 4,
@@ -29,7 +33,24 @@ const importOrder = {
 	importOrderSortSpecifiers: true
 };
 
+/**
+ * @type {import("prettier-plugin-embed").PluginEmbedOptions}
+ */
+const embed = {
+	embeddedSqlTags: ["sql.type"]
+};
+
+/**
+ * @type {import("prettier-plugin-sql").SqlBaseOptions}
+ */
+const sql = {
+	keywordCase: "upper",
+	language: "postgresql"
+};
+
 export default {
 	...core,
-	...importOrder
+	...importOrder,
+	...embed,
+	...sql
 };

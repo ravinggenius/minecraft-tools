@@ -62,6 +62,8 @@
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-sql": "^3.2.1",
     "prettier": "^3.5.0",
+    "prettier-plugin-embed": "^0.4.15",
+    "prettier-plugin-sql": "^0.18.1",
     "sass": "^1.84.0"
   }
 }

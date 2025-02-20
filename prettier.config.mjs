@@ -29,7 +29,25 @@ const importOrder = {
 	importOrderSortSpecifiers: true
 };
 
+/**
+ * @type {import("prettier-plugin-embed").PluginEmbedOptions}
+ */
+const embed = {
+	// embeddedSqlTags: ["sql.type"]
+	embeddedSqlTags: ["sql.fragment", "sql.type"]
+};
+
+/**
+ * @type {import("prettier-plugin-sql").SqlBaseOptions}
+ */
+const sql = {
+	keywordCase: "upper",
+	language: "postgresql"
+};
+
 export default {
 	...core,
-	...importOrder
+	...importOrder,
+	...embed,
+	...sql
 };

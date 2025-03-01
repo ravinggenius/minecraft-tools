@@ -82,90 +82,116 @@ export const search = async ({
 
 	const countQuery = expand
 		? sql.type(COUNT)`
-			SELECT count(*) AS count
-			FROM releases AS r
-			RIGHT OUTER JOIN platform_releases AS pr ON r.id = pr.release_id
-			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
-			${
-				whereClauses.length
+				SELECT
+					count(*) AS count
+				FROM
+					releases AS r
+					RIGHT OUTER JOIN platform_releases AS pr ON r.id = pr.release_id
+					LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id ${whereClauses.length
 					? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-					: sql.fragment``
-			}
-		`
+					: sql.fragment``}
+			`
 		: sql.type(COUNT)`
-			SELECT count(*) AS count
-			FROM (
-				SELECT count(*)
-				FROM releases AS r
-				INNER JOIN platform_releases AS pr ON r.id = pr.release_id
-				INNER JOIN platforms AS p ON pr.platform_id = p.id
-				${
-					whereClauses.length
-						? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-						: sql.fragment``
-				}
-				GROUP BY r.id
-			)
-		`;
+				SELECT
+					count(*) AS count
+				FROM
+					(
+						SELECT
+							count(*)
+						FROM
+							releases AS r
+							INNER JOIN platform_releases AS pr ON r.id = pr.release_id
+							INNER JOIN platforms AS p ON pr.platform_id = p.id ${whereClauses.length
+					? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+					: sql.fragment``}
+						GROUP BY
+							r.id
+					)
+			`;
 
 	const dataQuery = expand
 		? sql.type(EXTENDED_RELEASE)`
-			SELECT
-				pr.id,
-				r.edition,
-				r.version,
-				r.cycle,
-				r.development_released_on AS "developementReleasedOn",
-				pr.released_on AS "productionReleasedOn",
-				r.notes_url AS "notesUrl",
-				r.is_earliest_in_cycle AS "isEarliestInCycle",
-				r.is_latest_in_cycle AS "isLatestInCycle",
-				r.is_latest AS "isLatest",
-				jsonb_build_array(jsonb_build_object(
-					'id', p.id,
-					'name', p.name,
-					'releasedOn', pr.released_on
-				)) AS "platformReleases"
-			FROM releases AS r
-			RIGHT OUTER JOIN platform_releases AS pr ON r.id = pr.release_id
-			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
-			${
-				whereClauses.length
+				SELECT
+					pr.id,
+					r.edition,
+					r.version,
+					r.cycle,
+					r.development_released_on AS "developementReleasedOn",
+					pr.released_on AS "productionReleasedOn",
+					r.notes_url AS "notesUrl",
+					r.is_earliest_in_cycle AS "isEarliestInCycle",
+					r.is_latest_in_cycle AS "isLatestInCycle",
+					r.is_latest AS "isLatest",
+					jsonb_build_array(
+						jsonb_build_object(
+							'id',
+							p.id,
+							'name',
+							p.name,
+							'releasedOn',
+							pr.released_on
+						)
+					) AS "platformReleases"
+				FROM
+					releases AS r
+					RIGHT OUTER JOIN platform_releases AS pr ON r.id = pr.release_id
+					LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id ${whereClauses.length
 					? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-					: sql.fragment``
-			}
-			ORDER BY r.cycle DESC, r.edition ASC, "productionReleasedOn" DESC, r.version ASC, p.name ASC
-			LIMIT ${limit} OFFSET ${offset}
-		`
+					: sql.fragment``}
+				ORDER BY
+					r.cycle DESC,
+					r.edition ASC,
+					"productionReleasedOn" DESC,
+					r.version ASC,
+					p.name ASC
+				LIMIT
+					${limit}
+				OFFSET
+					${offset}
+			`
 		: sql.type(EXTENDED_RELEASE)`
-			SELECT
-				r.id,
-				r.edition,
-				r.version,
-				r.cycle,
-				r.development_released_on AS "developementReleasedOn",
-				min(pr.released_on) AS "productionReleasedOn",
-				r.notes_url AS "notesUrl",
-				r.is_earliest_in_cycle AS "isEarliestInCycle",
-				r.is_latest_in_cycle AS "isLatestInCycle",
-				r.is_latest AS "isLatest",
-				COALESCE(jsonb_agg(jsonb_build_object(
-					'id', p.id,
-					'name', p.name,
-					'releasedOn', pr.released_on
-				)), '[]') AS "platformReleases"
-			FROM releases AS r
-			INNER JOIN platform_releases AS pr ON r.id = pr.release_id
-			INNER JOIN platforms AS p ON pr.platform_id = p.id
-			${
-				whereClauses.length
+				SELECT
+					r.id,
+					r.edition,
+					r.version,
+					r.cycle,
+					r.development_released_on AS "developementReleasedOn",
+					min(pr.released_on) AS "productionReleasedOn",
+					r.notes_url AS "notesUrl",
+					r.is_earliest_in_cycle AS "isEarliestInCycle",
+					r.is_latest_in_cycle AS "isLatestInCycle",
+					r.is_latest AS "isLatest",
+					COALESCE(
+						jsonb_agg(
+							jsonb_build_object(
+								'id',
+								p.id,
+								'name',
+								p.name,
+								'releasedOn',
+								pr.released_on
+							)
+						),
+						'[]'
+					) AS "platformReleases"
+				FROM
+					releases AS r
+					INNER JOIN platform_releases AS pr ON r.id = pr.release_id
+					INNER JOIN platforms AS p ON pr.platform_id = p.id ${whereClauses.length
 					? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-					: sql.fragment``
-			}
-			GROUP BY r.id
-			ORDER BY r.cycle DESC, r.edition ASC, "productionReleasedOn" DESC, r.version ASC
-			LIMIT ${limit} OFFSET ${offset}
-		`;
+					: sql.fragment``}
+				GROUP BY
+					r.id
+				ORDER BY
+					r.cycle DESC,
+					r.edition ASC,
+					"productionReleasedOn" DESC,
+					r.version ASC
+				LIMIT
+					${limit}
+				OFFSET
+					${offset}
+			`;
 
 	return (await pool).transaction(
 		async (tx) =>
@@ -197,34 +223,44 @@ export const doImport = async (release: ImportRelease) => {
 			)`
 				WITH
 					the_platforms AS (
-						INSERT INTO platforms (name)
-						SELECT ${sql.unnest(
-							names.map((name) => [name]),
-							["text"]
-						)}
+						INSERT INTO
+							platforms (name)
+						SELECT
+							${sql.unnest(
+					names.map((name) => [name]),
+					["text"]
+				)}
 						ON CONFLICT (name) DO UPDATE
-							SET updated_at = DEFAULT
-						RETURNING id, name
+						SET
+							updated_at = DEFAULT
+						RETURNING
+							id,
+							name
 					),
 					the_release AS (
-						INSERT INTO releases (
-							edition,
-							version,
-							cycle,
-							development_released_on,
-							notes_url
-						)
-						VALUES (
-							${release.edition},
-							${release.version},
-							${sql.array(cycle, sql.fragment`integer[]`)},
-							${release.developmentReleasedOn ? sql.date(release.developmentReleasedOn) : null},
-							${release.notesUrl ?? null}
-						)
+						INSERT INTO
+							releases (
+								edition,
+								version,
+								cycle,
+								development_released_on,
+								notes_url
+							)
+						VALUES
+							(
+								${release.edition},
+								${release.version},
+								${sql.array(cycle, sql.fragment`integer[]`)},
+								${release.developmentReleasedOn
+					? sql.date(release.developmentReleasedOn)
+					: null},
+								${release.notesUrl ?? null}
+							)
 						ON CONFLICT (edition, version) DO UPDATE
-							SET updated_at = DEFAULT,
-								development_released_on = EXCLUDED.development_released_on,
-								notes_url = EXCLUDED.notes_url
+						SET
+							updated_at = DEFAULT,
+							development_released_on = EXCLUDED.development_released_on,
+							notes_url = EXCLUDED.notes_url
 						RETURNING
 							id,
 							created_at,
@@ -238,12 +274,19 @@ export const doImport = async (release: ImportRelease) => {
 							is_latest_in_cycle,
 							is_latest
 					)
-				INSERT INTO platform_releases (platform_id, release_id, released_on)
-				SELECT p.id, r.id, ${sql.date(new Date(releasedOn))}
-				FROM the_platforms AS p, the_release AS r
+				INSERT INTO
+					platform_releases (platform_id, release_id, released_on)
+				SELECT
+					p.id,
+					r.id,
+					${sql.date(new Date(releasedOn))}
+				FROM
+					the_platforms AS p,
+					the_release AS r
 				ON CONFLICT (platform_id, release_id) DO UPDATE
-					SET updated_at = DEFAULT,
-						released_on = ${sql.date(new Date(releasedOn))}
+				SET
+					updated_at = DEFAULT,
+					released_on = ${sql.date(new Date(releasedOn))}
 				RETURNING
 					id,
 					platform_id AS "platformId",

@@ -23,23 +23,28 @@ export const create = async ({
 		config.sessionAssistancePasswordResetExpiryMinutes
 	);
 
-	return (await pool).one(
-		sql.type(PASSWORD_RESET)`
-			INSERT INTO password_resets (email, nonce, expires_at)
-			VALUES (${email}, ${nonce}, ${expiresAt.toJSON()})
-			ON CONFLICT (email) DO UPDATE
-				SET updated_at = DEFAULT,
-					nonce = EXCLUDED.nonce,
-					expires_at = EXCLUDED.expires_at
-			RETURNING
-				id,
-				created_at AS "createdAt",
-				updated_at AS "updatedAt",
-				expires_at AS "expiresAt",
-				email,
-				nonce
-		`
-	);
+	return (await pool).one(sql.type(PASSWORD_RESET)`
+		INSERT INTO
+			password_resets (email, nonce, expires_at)
+		VALUES
+			(
+				${email},
+				${nonce},
+				${expiresAt.toJSON()}
+			)
+		ON CONFLICT (email) DO UPDATE
+		SET
+			updated_at = DEFAULT,
+			nonce = EXCLUDED.nonce,
+			expires_at = EXCLUDED.expires_at
+		RETURNING
+			id,
+			created_at AS "createdAt",
+			updated_at AS "updatedAt",
+			expires_at AS "expiresAt",
+			email,
+			nonce
+	`);
 };
 
 export const reset = async (attrs: PasswordResetResetAttrs) => {
@@ -56,19 +61,26 @@ export const reset = async (attrs: PasswordResetResetAttrs) => {
 
 	return (await pool).transaction(async (transaction) => {
 		const { rowCount } = await transaction.query(sql.type(VOID)`
-			WITH resettable_account AS (
-				SELECT a.id AS account_id
-				FROM accounts AS a
-				INNER JOIN password_resets AS pr on a.email = pr.email
-				WHERE a.email = ${email}::email
-				AND a.email_verified_at < now()
-				AND pr.nonce = ${nonce}
-				AND pr.expires_at > now()
-			)
+			WITH
+				resettable_account AS (
+					SELECT
+						a.id AS account_id
+					FROM
+						accounts AS a
+						INNER JOIN password_resets AS pr ON a.email = pr.email
+					WHERE
+						a.email = ${email}::email
+						AND a.email_verified_at < now()
+						AND pr.nonce = ${nonce}
+						AND pr.expires_at > now()
+				)
 			UPDATE accounts
-			SET hashword = ${hashword}
-			FROM resettable_account
-			WHERE id = resettable_account.account_id
+			SET
+				hashword = ${hashword}
+			FROM
+				resettable_account
+			WHERE
+				id = resettable_account.account_id
 		`);
 
 		const success = rowCount === 1;
@@ -76,8 +88,9 @@ export const reset = async (attrs: PasswordResetResetAttrs) => {
 		if (success) {
 			await transaction.query(sql.type(VOID)`
 				DELETE FROM password_resets
-				WHERE email = ${email}::email
-				AND nonce = ${nonce}
+				WHERE
+					email = ${email}::email
+					AND nonce = ${nonce}
 			`);
 		}
 
@@ -90,6 +103,7 @@ export const clearExpired = async () => {
 		await pool
 	).query(sql.type(VOID)`
 		DELETE FROM password_resets
-		WHERE expires_at <= NOW()
+		WHERE
+			expires_at <= NOW()
 	`);
 };

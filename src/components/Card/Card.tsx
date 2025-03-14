@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import Link, { LinkProps } from "next/link";
 import { ReactNode } from "react";
 
 import { loadPageTranslations } from "@/i18n/server";
@@ -6,10 +7,11 @@ import { SupportedLocale } from "@/i18n/settings";
 
 import styles from "./Card.module.scss";
 
-export default async function Card({
+export default async function Card<HREF extends string>({
 	children,
 	className,
 	edition,
+	href,
 	locale,
 	title,
 	variant
@@ -17,6 +19,7 @@ export default async function Card({
 	children: ReactNode;
 	className?: string;
 	edition?: "bedrock" | "java";
+	href?: LinkProps<HREF>["href"];
 	locale: SupportedLocale;
 	title?: string;
 	variant: "flat" | "low" | "high";
@@ -30,7 +33,9 @@ export default async function Card({
 		>
 			{title ? (
 				<header className={styles.header}>
-					<h3 className={styles.title}>{title}</h3>
+					<h3 className={styles.title}>
+						{href ? <Link {...{ href }}>{title}</Link> : title}
+					</h3>
 				</header>
 			) : null}
 

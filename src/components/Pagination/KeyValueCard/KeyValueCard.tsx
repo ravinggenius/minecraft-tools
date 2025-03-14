@@ -44,7 +44,7 @@ export default function KeyValueCard({
 	...cardProps
 }: Pick<
 	ComponentProps<typeof Card>,
-	"edition" | "locale" | "title" | "variant"
+	"edition" | "href" | "locale" | "title" | "variant"
 > & {
 	className?: string;
 	pairs: Array<KeyValuePair>;

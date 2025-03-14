@@ -34,7 +34,6 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-i18next": "^15.4.1",
-    "react-timer-hook": "^4.0.1",
     "roarr": "^7.21.1",
     "search-query-parser": "^1.6.0",
     "server-only": "^0.0.1",

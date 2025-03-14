@@ -87,9 +87,12 @@ export const search = async ({
 				FROM
 					releases AS r
 					RIGHT OUTER JOIN platform_releases AS pr ON r.id = pr.release_id
-					LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id ${whereClauses.length
-					? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-					: sql.fragment``}
+					LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
+					${
+						whereClauses.length
+							? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+							: sql.fragment``
+					}
 			`
 		: sql.type(COUNT)`
 				SELECT
@@ -101,9 +104,12 @@ export const search = async ({
 						FROM
 							releases AS r
 							INNER JOIN platform_releases AS pr ON r.id = pr.release_id
-							INNER JOIN platforms AS p ON pr.platform_id = p.id ${whereClauses.length
-					? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-					: sql.fragment``}
+							INNER JOIN platforms AS p ON pr.platform_id = p.id
+							${
+								whereClauses.length
+									? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+									: sql.fragment``
+							}
 						GROUP BY
 							r.id
 					)
@@ -135,9 +141,12 @@ export const search = async ({
 				FROM
 					releases AS r
 					RIGHT OUTER JOIN platform_releases AS pr ON r.id = pr.release_id
-					LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id ${whereClauses.length
-					? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-					: sql.fragment``}
+					LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
+					${
+						whereClauses.length
+							? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+							: sql.fragment``
+					}
 				ORDER BY
 					r.cycle DESC,
 					r.edition ASC,
@@ -177,9 +186,12 @@ export const search = async ({
 				FROM
 					releases AS r
 					INNER JOIN platform_releases AS pr ON r.id = pr.release_id
-					INNER JOIN platforms AS p ON pr.platform_id = p.id ${whereClauses.length
-					? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-					: sql.fragment``}
+					INNER JOIN platforms AS p ON pr.platform_id = p.id
+					${
+						whereClauses.length
+							? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+							: sql.fragment``
+					}
 				GROUP BY
 					r.id
 				ORDER BY
@@ -227,9 +239,9 @@ export const doImport = async (release: ImportRelease) => {
 							platforms (name)
 						SELECT
 							${sql.unnest(
-					names.map((name) => [name]),
-					["text"]
-				)}
+								names.map((name) => [name]),
+								["text"]
+							)}
 						ON CONFLICT (name) DO UPDATE
 						SET
 							updated_at = DEFAULT
@@ -251,9 +263,13 @@ export const doImport = async (release: ImportRelease) => {
 								${release.edition},
 								${release.version},
 								${sql.array(cycle, sql.fragment`integer[]`)},
-								${release.developmentReleasedOn
-					? sql.date(release.developmentReleasedOn)
-					: null},
+								${
+									release.developmentReleasedOn
+										? sql.date(
+												release.developmentReleasedOn
+											)
+										: null
+								},
 								${release.notesUrl ?? null}
 							)
 						ON CONFLICT (edition, version) DO UPDATE

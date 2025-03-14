@@ -1,6 +1,26 @@
 [
   {
     "edition": "bedrock",
+    "version": "1.21.80",
+    "developmentReleasedOn": "2025-03-11",
+    "platforms": {
+      "upcoming": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation VR",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
     "version": "1.21.70",
     "developmentReleasedOn": "2025-01-30",
     "platforms": {
@@ -3007,6 +3027,14 @@
         "Windows Phone 8.1",
         "Windows 10"
       ]
+    }
+  },
+  {
+    "edition": "java",
+    "version": "1.21.5",
+    "developmentReleasedOn": "2025-01-08",
+    "platforms": {
+      "upcoming": ["Linux", "macOS", "Windows"]
     }
   },
   {

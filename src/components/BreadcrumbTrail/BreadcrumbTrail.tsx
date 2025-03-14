@@ -61,11 +61,16 @@ function BreadcrumbSegment({
 	);
 }
 
+const isPathnameSegment = (name: string) =>
+	!name.startsWith("(") && !name.endsWith(")");
+
 const splitPath = (path: string): Array<string> =>
 	path.split("/").filter(Boolean);
 
 export default function BreadcrumbTrail({ className }: { className?: string }) {
-	const segmentNames = ["locale", ...useSelectedLayoutSegments()];
+	const segmentNames = ["locale", ...useSelectedLayoutSegments()].filter(
+		isPathnameSegment
+	);
 	const segmentValues = splitPath(usePathname());
 
 	const crumbs = zip(segmentNames, segmentValues).map(

@@ -1,37 +1,35 @@
-"use client";
-
 import classNames from "classnames";
-import {
-	ChangeEventHandler,
-	ComponentProps,
-	SelectHTMLAttributes,
-	useId,
-	useState
-} from "react";
+import { ComponentProps, useId, useState } from "react";
 
 import Field, { FieldMeta } from "@/components/Field/Field";
 import { useForm } from "@/components/Form/Form";
-import { Identity } from "@/services/datastore-service/schema";
+import ObjectSelect, { Option } from "@/components/ObjectSelect/ObjectSelect";
 
 import styles from "./SelectField.module.scss";
 
-export default function SelectField<TOption extends Identity>({
+export default function SelectField<TOption extends Option>({
+	children,
 	className,
 	debug = false,
 	description,
-	feedback = [],
+	examples = [],
+	feedback,
 	id,
+	includeBlank = false,
 	label,
 	meta,
 	name,
+	onChange,
 	options,
 	required = false,
-	...selectProps
+	serialize,
+	value
 }: Pick<
 	ComponentProps<typeof Field>,
 	| "className"
 	| "debug"
 	| "description"
+	| "examples"
 	| "feedback"
 	| "id"
 	| "label"
@@ -39,14 +37,22 @@ export default function SelectField<TOption extends Identity>({
 	| "name"
 	| "required"
 > &
-	SelectHTMLAttributes<HTMLSelectElement> & {
-		options: Array<TOption>;
-	}) {
+	Pick<
+		ComponentProps<typeof ObjectSelect<TOption>>,
+		| "children"
+		| "includeBlank"
+		| "name"
+		| "onChange"
+		| "options"
+		| "serialize"
+		| "value"
+	>) {
 	return (
 		<Field
 			{...{
 				debug,
 				description,
+				examples,
 				feedback,
 				id,
 				label,
@@ -54,24 +60,26 @@ export default function SelectField<TOption extends Identity>({
 				name,
 				required
 			}}
-			className={classNames(styles["select-field"], className)}
+			className={classNames(styles.field, className)}
 		>
-			<select
-				{...selectProps}
-				{...{ id, name, required }}
-				className={styles.select}
+			<ObjectSelect
+				{...{ name, onChange, options, serialize, value }}
+				includeBlank={
+					(includeBlank && !required) ||
+					(includeBlank && required && !value)
+				}
 			>
-				<option value="list">List</option>
-				<option value="table">Table</option>
-			</select>
+				{children}
+			</ObjectSelect>
 		</Field>
 	);
 }
 
-export const useSelectField = (
+export const useSelectField = <TOption extends Option>(
 	{ fieldFeedback }: Pick<ReturnType<typeof useForm>, "fieldFeedback">,
 	name: string,
-	initialValue: string = ""
+	options: Array<TOption>,
+	initialValue?: TOption
 ) => {
 	const id = useId();
 
@@ -80,9 +88,9 @@ export const useSelectField = (
 	const [dirty, setDirty] = useState(false);
 	const [focus, setFocus] = useState(false);
 
-	const handleChange: ChangeEventHandler<HTMLSelectElement> = ({
-		target: { value: newValue }
-	}) => {
+	const handleChange: ComponentProps<
+		typeof ObjectSelect<TOption>
+	>["onChange"] = (newValue) => {
 		setDirty(true);
 
 		setValue(newValue);
@@ -107,6 +115,7 @@ export const useSelectField = (
 		onChange: handleChange,
 		onFocus: handleFocus,
 		onBlur: handleBlur,
+		options,
 		value
 	};
 };

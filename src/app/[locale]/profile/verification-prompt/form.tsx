@@ -1,7 +1,8 @@
 "use client";
 
 import classNames from "classnames";
-import { useTimer } from "react-timer-hook";
+import { differenceInMilliseconds } from "date-fns";
+import { useEffect, useState } from "react";
 
 import Form, { useForm } from "@/components/Form/Form";
 import { useTranslation } from "@/i18n/client";
@@ -22,13 +23,22 @@ export default function VerifyEmailPromptForm({
 		"page-component-profile-verify-email-prompt-form"
 	);
 
-	const timer = useTimer({
-		expiryTimestamp: resendReminderExpiry
-	});
+	const [show, setShow] = useState(false);
+
+	useEffect(() => {
+		const timerId = setTimeout(
+			() => setShow(true),
+			differenceInMilliseconds(resendReminderExpiry, new Date())
+		);
+
+		return () => {
+			clearTimeout(timerId);
+		};
+	}, [resendReminderExpiry]);
 
 	const form = useForm(resendVerification);
 
-	return timer.isRunning ? null : (
+	return show ? (
 		<Form
 			{...form}
 			className={classNames(styles.form, className)}
@@ -36,5 +46,5 @@ export default function VerifyEmailPromptForm({
 		>
 			<p>{t("instructions")}</p>
 		</Form>
-	);
+	) : null;
 }

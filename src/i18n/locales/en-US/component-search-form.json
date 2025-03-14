@@ -6,8 +6,8 @@
   "view": {
     "label": "View",
     "options": {
-      "list": "List",
-      "table": "Table"
+      "label_list": "List",
+      "label_table": "Table"
     }
   },
 

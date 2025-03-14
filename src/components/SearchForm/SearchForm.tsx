@@ -18,9 +18,7 @@ import TextField, { useTextField } from "../TextField/TextField";
 import styles from "./SearchForm.module.scss";
 import { Include, Keywords, Query, Ranges } from "./SearchForm.schema";
 
-interface ViewOption extends Option {
-	label: string;
-}
+type ViewOption = Option;
 
 export default function SearchForm<
 	TKeywords extends Keywords = Keywords,
@@ -36,10 +34,7 @@ export default function SearchForm<
 
 	const pathname = usePathname();
 
-	const viewOptions: Array<ViewOption> = [
-		{ id: "list", label: t("view.options.list") },
-		{ id: "table", label: t("view.options.table") }
-	];
+	const viewOptions: Array<ViewOption> = [{ id: "list" }, { id: "table" }];
 
 	const keyedViewOptions = viewOptions.reduce<
 		Record<ViewOption["id"], ViewOption>
@@ -78,7 +73,7 @@ export default function SearchForm<
 				label={t("view.label")}
 				serialize={(option) => option.id}
 			>
-				{(option) => option.label}
+				{(option) => t("view.options.label", { context: option.id })}
 			</SelectField>
 
 			<CheckboxField

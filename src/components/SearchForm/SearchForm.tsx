@@ -11,11 +11,16 @@ import Button from "../Button/Button";
 import CheckboxField, {
 	useCheckboxField
 } from "../CheckboxField/CheckboxField";
+import { Option } from "../ObjectSelect/ObjectSelect";
 import SelectField, { useSelectField } from "../SelectField/SelectField";
 import TextField, { useTextField } from "../TextField/TextField";
 
 import styles from "./SearchForm.module.scss";
 import { Include, Keywords, Query, Ranges } from "./SearchForm.schema";
+
+interface ViewOption extends Option {
+	label: string;
+}
 
 export default function SearchForm<
 	TKeywords extends Keywords = Keywords,
@@ -31,8 +36,28 @@ export default function SearchForm<
 
 	const pathname = usePathname();
 
+	const viewOptions: Array<ViewOption> = [
+		{ id: "list", label: t("view.options.list") },
+		{ id: "table", label: t("view.options.table") }
+	];
+
+	const keyedViewOptions = viewOptions.reduce<
+		Record<ViewOption["id"], ViewOption>
+	>(
+		(memo, option) => ({
+			...memo,
+			[option.id]: option
+		}),
+		{}
+	);
+
 	const q = useTextField({ fieldFeedback: {} }, "q", query.query);
-	const v = useSelectField({ fieldFeedback: {} }, "v", query.view);
+	const v = useSelectField(
+		{ fieldFeedback: {} },
+		"v",
+		viewOptions,
+		keyedViewOptions[query.view]
+	);
 	const e = useCheckboxField({ fieldFeedback: {} }, "e", query.expand);
 
 	return (
@@ -51,11 +76,10 @@ export default function SearchForm<
 				{...v}
 				className={styles.view}
 				label={t("view.label")}
-				options={[
-					{ id: "list", label: t("view.options.list") },
-					{ id: "table", label: t("view.options.table") }
-				]}
-			/>
+				serialize={(option) => option.id}
+			>
+				{(option) => option.label}
+			</SelectField>
 
 			<CheckboxField
 				{...e}

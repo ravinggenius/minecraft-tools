@@ -21,10 +21,29 @@
   },
   {
     "edition": "bedrock",
+    "version": "1.21.71",
+    "platforms": {
+      "2025-03-28": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Windows",
+        "Xbox One",
+        "PlayStation 4",
+        "PlayStation VR",
+        "PlayStation 5"
+      ],
+      "2025-03-31": ["Fire", "Nintendo Switch"]
+    }
+  },
+  {
+    "edition": "bedrock",
     "version": "1.21.70",
+    "name": "Spring To Life",
     "developmentReleasedOn": "2025-01-30",
     "platforms": {
-      "upcoming": [
+      "2025-03-25": [
         "ChromeOS",
         "Android",
         "iOS",
@@ -54,7 +73,8 @@
         "PlayStation 4",
         "PlayStation VR",
         "PlayStation 5"
-      ]
+      ],
+      "2025-02-26": ["Nintendo Switch"]
     }
   },
   {
@@ -3032,9 +3052,10 @@
   {
     "edition": "java",
     "version": "1.21.5",
+    "name": "Spring To Life",
     "developmentReleasedOn": "2025-01-08",
     "platforms": {
-      "upcoming": ["Linux", "macOS", "Windows"]
+      "2025-03-25": ["Linux", "macOS", "Windows"]
     }
   },
   {

@@ -1,4 +1,4 @@
-import { usePathname, useSelectedLayoutSegments } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { zip } from "rambda";
 import { ComponentProps } from "react";
 
@@ -17,18 +17,22 @@ export interface NestedCrumb extends Crumb {
 	child: Crumb | NestedCrumb;
 }
 
-const isPathnameSegment = (name: string) =>
-	!name.startsWith("(") && !name.endsWith(")");
-
 const splitPath = (path: string) => path.split("/").filter(Boolean);
 
 const useBreadcrumbTrail = () => {
 	const { t } = useTranslation("component-breadcrumb-trail");
 
-	const segmentNames = ["locale", ...useSelectedLayoutSegments()].filter(
-		isPathnameSegment
+	const pathname = usePathname();
+
+	const segmentNames = splitPath(
+		Object.entries(useParams() as Record<string, string>).reduce(
+			(path, [paramName, paramValue]) =>
+				path.replace(paramValue, paramName),
+			pathname
+		)
 	);
-	const segmentValues = splitPath(usePathname());
+
+	const segmentValues = splitPath(pathname);
 
 	return zip(segmentNames, segmentValues).map(
 		([name, value], index) =>

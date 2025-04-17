@@ -1,7 +1,9 @@
 import { redirect } from "next/navigation";
 
+import BreadcrumbTrailPortal from "@/components/BreadcrumbTrail/BreadcrumbTrailPortal";
 import * as profileModel from "@/domains/profile/model";
 import { loadPageTranslations } from "@/i18n/server";
+import { buildBreadcrumbsWithPrefix } from "@/library/breadcrumbs";
 import { ensureParams, LOCALE_PARAMS as PARAMS } from "@/library/route-meta";
 import { PageGenerateMetadata, PageProps } from "@/library/route-meta.schema";
 import { requireProfile } from "@/library/session-manager";
@@ -29,6 +31,17 @@ export const generateMetadata: PageGenerateMetadata = async ({ params }) => {
 export default async function Page({ params }: PageProps) {
 	const { locale } = await ensureParams(PARAMS, params);
 
+	const profile = await requireProfile();
+
+	if (await profileModel.isEmailVerified(profile.id)) {
+		redirect(`/${locale}/profile`);
+	}
+
+	const crumbs = await buildBreadcrumbsWithPrefix(locale, [
+		{ name: "profile" },
+		{ name: "verification" }
+	]);
+
 	const { t } = await loadPageTranslations(
 		locale,
 		"page-profile-verification",
@@ -37,17 +50,15 @@ export default async function Page({ params }: PageProps) {
 		}
 	);
 
-	const profile = await requireProfile();
-
-	if (await profileModel.isEmailVerified(profile.id)) {
-		redirect(`/${locale}/profile`);
-	}
-
 	return (
-		<article className={styles.article}>
-			<p className={styles.intructions}>{t("instructions")}</p>
+		<>
+			<BreadcrumbTrailPortal {...{ crumbs }} />
 
-			<VerifyEmailtForm action={markEmailAsVerifiedAction} />
-		</article>
+			<article className={styles.article}>
+				<p className={styles.intructions}>{t("instructions")}</p>
+
+				<VerifyEmailtForm action={markEmailAsVerifiedAction} />
+			</article>
+		</>
 	);
 }

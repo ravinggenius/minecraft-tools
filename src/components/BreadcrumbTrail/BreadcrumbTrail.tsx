@@ -1,11 +1,9 @@
-"use client";
-
 import classNames from "classnames";
 
 import Anchor from "@/components/Anchor/Anchor";
+import { Crumb, NestedCrumb } from "@/library/breadcrumbs";
 
 import styles from "./BreadcrumbTrail.module.scss";
-import useBreadcrumbTrail, { Crumb, NestedCrumb } from "./use-breadcrumb-trail";
 
 function BreadcrumbSegment({
 	child,
@@ -47,9 +45,13 @@ function BreadcrumbSegment({
 	);
 }
 
-export default function BreadcrumbTrail({ className }: { className?: string }) {
-	const crumbs = useBreadcrumbTrail();
-
+export default function BreadcrumbTrail({
+	className,
+	crumbs
+}: {
+	className?: string;
+	crumbs: Array<Crumb>;
+}) {
 	if (crumbs.length < 1) {
 		return null;
 	}

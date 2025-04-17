@@ -1,6 +1,8 @@
 import { redirect } from "next/navigation";
 
+import BreadcrumbTrailPortal from "@/components/BreadcrumbTrail/BreadcrumbTrailPortal";
 import { loadPageTranslations } from "@/i18n/server";
+import { buildBreadcrumbsWithPrefix } from "@/library/breadcrumbs";
 import { ensureParams, LOCALE_PARAMS as PARAMS } from "@/library/route-meta";
 import { PageGenerateMetadata, PageProps } from "@/library/route-meta.schema";
 import { maybeProfileFromSession } from "@/library/session-manager";
@@ -34,6 +36,13 @@ export default async function Page({ params }: PageProps) {
 		redirect(`/${locale}/profile`);
 	}
 
+	const crumbs = await buildBreadcrumbsWithPrefix(locale, [
+		{ name: "sessions" },
+		{ name: "assistance" },
+		{ name: "password" },
+		{ name: "new" }
+	]);
+
 	const { t } = await loadPageTranslations(
 		locale,
 		"page-sessions-assistance-password-new",
@@ -43,12 +52,16 @@ export default async function Page({ params }: PageProps) {
 	);
 
 	return (
-		<article className={styles.article}>
-			<p>{t("instructions")}</p>
+		<>
+			<BreadcrumbTrailPortal {...{ crumbs }} />
 
-			<SessionsAssistancePasswordNewForm
-				action={initiateForgotPasswordResetAction}
-			/>
-		</article>
+			<article className={styles.article}>
+				<p>{t("instructions")}</p>
+
+				<SessionsAssistancePasswordNewForm
+					action={initiateForgotPasswordResetAction}
+				/>
+			</article>
+		</>
 	);
 }

@@ -1,6 +1,8 @@
 import { redirect } from "next/navigation";
 
+import BreadcrumbTrailPortal from "@/components/BreadcrumbTrail/BreadcrumbTrailPortal";
 import { loadPageTranslations } from "@/i18n/server";
+import { buildBreadcrumbsWithPrefix } from "@/library/breadcrumbs";
 import CodedError, { ERROR_CODE } from "@/library/coded-error";
 import {
 	ensureParams,
@@ -43,13 +45,23 @@ export default async function Page({ params, searchParams }: PageProps) {
 	try {
 		const query = await ensureSearchParams(QUERY, searchParams);
 
+		const crumbs = await buildBreadcrumbsWithPrefix(locale, [
+			{ name: "sessions" },
+			{ name: "assistance" },
+			{ name: "password" }
+		]);
+
 		return (
-			<article className={styles.article}>
-				<SessionAssistancePasswordForm
-					{...query}
-					action={resetForgottenPasswordAction}
-				/>
-			</article>
+			<>
+				<BreadcrumbTrailPortal {...{ crumbs }} />
+
+				<article className={styles.article}>
+					<SessionAssistancePasswordForm
+						{...query}
+						action={resetForgottenPasswordAction}
+					/>
+				</article>
+			</>
 		);
 	} catch (error: unknown) {
 		if (

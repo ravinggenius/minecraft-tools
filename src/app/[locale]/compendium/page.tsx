@@ -1,5 +1,7 @@
 import Anchor, { AnchorProps, InternalHref } from "@/components/Anchor/Anchor";
+import BreadcrumbTrailPortal from "@/components/BreadcrumbTrail/BreadcrumbTrailPortal";
 import { loadPageTranslations } from "@/i18n/server";
+import { buildBreadcrumbsWithPrefix } from "@/library/breadcrumbs";
 import { ensureParams, LOCALE_PARAMS as PARAMS } from "@/library/route-meta";
 import { PageGenerateMetadata, PageProps } from "@/library/route-meta.schema";
 
@@ -20,6 +22,10 @@ export const generateMetadata: PageGenerateMetadata = async ({ params }) => {
 export default async function Page({ params }: PageProps) {
 	const { locale } = await ensureParams(PARAMS, params);
 
+	const crumbs = await buildBreadcrumbsWithPrefix(locale, [
+		{ name: "compendium" }
+	]);
+
 	const { t } = await loadPageTranslations(locale, "page-compendium", {
 		keyPrefix: "content"
 	});
@@ -35,18 +41,22 @@ export default async function Page({ params }: PageProps) {
 	];
 
 	return (
-		<nav className={styles.root}>
-			<p>{t("description")}</p>
+		<>
+			<BreadcrumbTrailPortal {...{ crumbs }} />
 
-			<ol className={styles.list}>
-				{compendiumEntries.map(({ href, text }) => (
-					<li className={styles.item} key={href}>
-						<Anchor {...{ href }} variant="inline">
-							{text}
-						</Anchor>
-					</li>
-				))}
-			</ol>
-		</nav>
+			<nav className={styles.root}>
+				<p>{t("description")}</p>
+
+				<ol className={styles.list}>
+					{compendiumEntries.map(({ href, text }) => (
+						<li className={styles.item} key={href}>
+							<Anchor {...{ href }} variant="inline">
+								{text}
+							</Anchor>
+						</li>
+					))}
+				</ol>
+			</nav>
+		</>
 	);
 }

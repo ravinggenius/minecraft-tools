@@ -1,0 +1,44 @@
+import { usePathname, useSelectedLayoutSegments } from "next/navigation";
+import { zip } from "rambda";
+import { ComponentProps } from "react";
+
+import { useTranslation } from "@/i18n/client";
+
+import Anchor from "../Anchor/Anchor";
+
+export interface Crumb {
+	href: ComponentProps<typeof Anchor>["href"];
+	label: string;
+	name: string;
+	value: string;
+}
+
+export interface NestedCrumb extends Crumb {
+	child: Crumb | NestedCrumb;
+}
+
+const isPathnameSegment = (name: string) =>
+	!name.startsWith("(") && !name.endsWith(")");
+
+const splitPath = (path: string) => path.split("/").filter(Boolean);
+
+const useBreadcrumbTrail = () => {
+	const { t } = useTranslation("component-breadcrumb-trail");
+
+	const segmentNames = ["locale", ...useSelectedLayoutSegments()].filter(
+		isPathnameSegment
+	);
+	const segmentValues = splitPath(usePathname());
+
+	return zip(segmentNames, segmentValues).map(
+		([name, value], index) =>
+			({
+				href: `/${segmentValues.slice(0, index + 1).join("/")}` as Crumb["href"],
+				label: t(`segment-labels.${name}`),
+				name: name.replace("[", "").replace("]", ""),
+				value
+			}) satisfies Crumb as Crumb
+	);
+};
+
+export default useBreadcrumbTrail;

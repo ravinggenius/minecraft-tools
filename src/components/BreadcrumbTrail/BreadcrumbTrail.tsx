@@ -12,8 +12,9 @@ import styles from "./BreadcrumbTrail.module.scss";
 
 interface Crumb {
 	href: ComponentProps<typeof Anchor>["href"];
-	segmentName: string;
-	segmentValue: string;
+	label: string;
+	name: string;
+	value: string;
 }
 
 interface NestedCrumb extends Crumb {
@@ -27,20 +28,21 @@ function BreadcrumbSegment({
 	className,
 	href,
 	isRoot = false,
-	segmentName,
-	segmentValue: _segmentValue
+	label,
+	name,
+	value: _value
 }: Crumb & {
 	className?: string;
 	child?: NestedCrumb["child"];
 	isRoot?: boolean;
 }) {
-	const { t } = useTranslation("component-breadcrumb-trail");
-
-	const label = t(`segment-labels.${segmentName}`);
-
 	return (
 		<ol className={classNames(styles["breadcrumb-list"], className)}>
-			<li className={styles["breadcrumb-list-item"]} data-root={isRoot}>
+			<li
+				className={styles["breadcrumb-list-item"]}
+				data-name={name}
+				data-root={isRoot}
+			>
 				{child ? (
 					<Anchor
 						{...{ href }}
@@ -68,17 +70,21 @@ const splitPath = (path: string): Array<string> =>
 	path.split("/").filter(Boolean);
 
 export default function BreadcrumbTrail({ className }: { className?: string }) {
+	const { t } = useTranslation("component-breadcrumb-trail");
+
 	const segmentNames = ["locale", ...useSelectedLayoutSegments()].filter(
 		isPathnameSegment
 	);
 	const segmentValues = splitPath(usePathname());
 
 	const crumbs = zip(segmentNames, segmentValues).map(
-		([segmentName, segmentValue], index) => ({
-			href: `/${segmentValues.slice(0, index + 1).join("/")}` as Crumb["href"],
-			segmentName: segmentName.replace("[", "").replace("]", ""),
-			segmentValue
-		})
+		([name, value], index) =>
+			({
+				href: `/${segmentValues.slice(0, index + 1).join("/")}` as Crumb["href"],
+				label: t(`segment-labels.${name}`),
+				name: name.replace("[", "").replace("]", ""),
+				value
+			}) satisfies Crumb as Crumb
 	);
 
 	const nestedCrumbs = crumbs.reduceRight((memo, crumb) => ({

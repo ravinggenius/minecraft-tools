@@ -1,7 +1,9 @@
+import BreadcrumbTrailPortal from "@/components/BreadcrumbTrail/BreadcrumbTrailPortal";
 import { Pagination } from "@/components/Pagination/Pagination";
 import SearchForm from "@/components/SearchForm/SearchForm";
 import * as releaseModel from "@/domains/release/model";
 import { loadPageTranslations } from "@/i18n/server";
+import { buildBreadcrumbsWithPrefix } from "@/library/breadcrumbs";
 import {
 	ensureParams,
 	ensureSearchParams,
@@ -32,35 +34,36 @@ export const generateMetadata: PageGenerateMetadata = async ({ params }) => {
 export default async function Page({ params, searchParams }: PageProps) {
 	const { locale } = await ensureParams(PARAMS, params);
 
-	const query = await ensureSearchParams(QUERY, searchParams);
+	const crumbs = await buildBreadcrumbsWithPrefix(locale, [
+		{ name: "compendium" },
+		{ name: "releases" }
+	]);
 
-	const { t } = await loadPageTranslations(
-		locale,
-		"page-compendium-releases",
-		{
-			keyPrefix: "content"
-		}
-	);
+	const query = await ensureSearchParams(QUERY, searchParams);
 
 	const releases = await releaseModel.search(query);
 
 	return (
-		<div className={styles.root}>
-			<SearchForm {...{ query }} className={styles.form} />
+		<>
+			<BreadcrumbTrailPortal {...{ crumbs }} />
 
-			<PageSearchResults
-				{...{ locale }}
-				className={styles.results}
-				releases={releases.data}
-				view={query.view}
-			/>
+			<div className={styles.root}>
+				<SearchForm {...{ query }} className={styles.form} />
 
-			<Pagination
-				{...{ locale, query }}
-				className={styles.pagination}
-				count={releases.data.length}
-				totalMatchingCount={releases.count}
-			/>
-		</div>
+				<PageSearchResults
+					{...{ locale }}
+					className={styles.results}
+					releases={releases.data}
+					view={query.view}
+				/>
+
+				<Pagination
+					{...{ locale, query }}
+					className={styles.pagination}
+					count={releases.data.length}
+					totalMatchingCount={releases.count}
+				/>
+			</div>
+		</>
 	);
 }

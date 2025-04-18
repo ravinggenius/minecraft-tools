@@ -1,3 +1,4 @@
+import BreadcrumbTrailPortal from "@/components/BreadcrumbTrail/BreadcrumbTrailPortal";
 import Table, {
 	Caption,
 	TBody,
@@ -8,6 +9,7 @@ import Table, {
 	TR
 } from "@/components/Table/Table";
 import { loadPageTranslations } from "@/i18n/server";
+import { buildBreadcrumbsWithPrefix } from "@/library/breadcrumbs";
 import { ensureParams, LOCALE_PARAMS as PARAMS } from "@/library/route-meta";
 import { PageGenerateMetadata, PageProps } from "@/library/route-meta.schema";
 
@@ -32,6 +34,11 @@ export const generateMetadata: PageGenerateMetadata = async ({ params }) => {
 export default async function Page({ params }: PageProps) {
 	const { locale } = await ensureParams(PARAMS, params);
 
+	const crumbs = await buildBreadcrumbsWithPrefix(locale, [
+		{ name: "design-system" },
+		{ name: "table" }
+	]);
+
 	const { t } = await loadPageTranslations(
 		locale,
 		"page-design-system-table",
@@ -41,38 +48,42 @@ export default async function Page({ params }: PageProps) {
 	);
 
 	return (
-		<section>
-			<Table>
-				<Caption>{t("table.caption")}</Caption>
+		<>
+			<BreadcrumbTrailPortal {...{ crumbs }} />
 
-				<THead>
-					<TR>
-						<TH>{t("table.headers.scientific")}</TH>
-						<TH>{t("table.headers.common")}</TH>
-					</TR>
-				</THead>
+			<section>
+				<Table>
+					<Caption>{t("table.caption")}</Caption>
 
-				<TFoot>
-					<TR>
-						<TD colSpan={2}>{t("table.footer")}</TD>
-					</TR>
-				</TFoot>
+					<THead>
+						<TR>
+							<TH>{t("table.headers.scientific")}</TH>
+							<TH>{t("table.headers.common")}</TH>
+						</TR>
+					</THead>
 
-				<TBody>
-					{["bowfin", "eel", "mammal", "stork", "shark"].map(
-						(code) => (
-							<TR key={code}>
-								<TD>
-									<em>
-										{t(`table.body.${code}.scientific`)}
-									</em>
-								</TD>
-								<TD>{t(`table.body.${code}.common`)}</TD>
-							</TR>
-						)
-					)}
-				</TBody>
-			</Table>
-		</section>
+					<TFoot>
+						<TR>
+							<TD colSpan={2}>{t("table.footer")}</TD>
+						</TR>
+					</TFoot>
+
+					<TBody>
+						{["bowfin", "eel", "mammal", "stork", "shark"].map(
+							(code) => (
+								<TR key={code}>
+									<TD>
+										<em>
+											{t(`table.body.${code}.scientific`)}
+										</em>
+									</TD>
+									<TD>{t(`table.body.${code}.common`)}</TD>
+								</TR>
+							)
+						)}
+					</TBody>
+				</Table>
+			</section>
+		</>
 	);
 }

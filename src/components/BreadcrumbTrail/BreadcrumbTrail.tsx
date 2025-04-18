@@ -1,46 +1,30 @@
-"use client";
-
 import classNames from "classnames";
-import { usePathname, useSelectedLayoutSegments } from "next/navigation";
-import { zip } from "rambda";
-import { ComponentProps } from "react";
 
 import Anchor from "@/components/Anchor/Anchor";
-import { useTranslation } from "@/i18n/client";
+import { Crumb, NestedCrumb } from "@/library/breadcrumbs";
 
 import styles from "./BreadcrumbTrail.module.scss";
-
-interface Crumb {
-	href: ComponentProps<typeof Anchor>["href"];
-	segmentName: string;
-	segmentValue: string;
-}
-
-interface NestedCrumb extends Crumb {
-	child: Trail;
-}
-
-type Trail = Crumb | NestedCrumb;
 
 function BreadcrumbSegment({
 	child,
 	className,
 	href,
 	isRoot = false,
-	segmentName,
-	segmentValue: _segmentValue
+	label,
+	name,
+	value: _value
 }: Crumb & {
 	className?: string;
 	child?: NestedCrumb["child"];
 	isRoot?: boolean;
 }) {
-	const { t } = useTranslation("component-breadcrumb-trail");
-
-	const label = t(`segment-labels.${segmentName}`);
-
 	return (
 		<ol className={classNames(styles["breadcrumb-list"], className)}>
-			<li className={styles["breadcrumb-list-item"]} data-root={isRoot}>
+			<li
+				className={styles["breadcrumb-list-item"]}
+				data-name={name}
+				data-root={isRoot}
+			>
 				{child ? (
 					<Anchor
 						{...{ href }}
@@ -61,25 +45,16 @@ function BreadcrumbSegment({
 	);
 }
 
-const isPathnameSegment = (name: string) =>
-	!name.startsWith("(") && !name.endsWith(")");
-
-const splitPath = (path: string): Array<string> =>
-	path.split("/").filter(Boolean);
-
-export default function BreadcrumbTrail({ className }: { className?: string }) {
-	const segmentNames = ["locale", ...useSelectedLayoutSegments()].filter(
-		isPathnameSegment
-	);
-	const segmentValues = splitPath(usePathname());
-
-	const crumbs = zip(segmentNames, segmentValues).map(
-		([segmentName, segmentValue], index) => ({
-			href: `/${segmentValues.slice(0, index + 1).join("/")}` as Crumb["href"],
-			segmentName: segmentName.replace("[", "").replace("]", ""),
-			segmentValue
-		})
-	);
+export default function BreadcrumbTrail({
+	className,
+	crumbs
+}: {
+	className?: string;
+	crumbs: Array<Crumb>;
+}) {
+	if (crumbs.length < 1) {
+		return null;
+	}
 
 	const nestedCrumbs = crumbs.reduceRight((memo, crumb) => ({
 		child: memo,

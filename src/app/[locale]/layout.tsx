@@ -3,7 +3,7 @@ import { dir } from "i18next";
 import { Noto_Sans, Noto_Sans_Mono } from "next/font/google";
 
 import deleteSessionAction from "@/app/[locale]/(auth)/sessions/_actions/delete-session-action";
-import BreadcrumbTrail from "@/components/BreadcrumbTrail/BreadcrumbTrail";
+import { BREADCRUMB_TRAIL_ROOT_ID } from "@/components/BreadcrumbTrail/BreadcrumbTrailPortal";
 import SiteDeck from "@/components/SiteDeck/SiteDeck";
 import SiteStern from "@/components/SiteStern/SiteStern";
 import { loadPageTranslations } from "@/i18n/server";
@@ -69,7 +69,7 @@ export default async function Layout({ children, params }: LayoutProps) {
 						profile={maybeProfile}
 					/>
 
-					<BreadcrumbTrail />
+					<div id={BREADCRUMB_TRAIL_ROOT_ID} />
 
 					<main className={styles.main}>{children}</main>
 

@@ -1,4 +1,6 @@
+import BreadcrumbTrailPortal from "@/components/BreadcrumbTrail/BreadcrumbTrailPortal";
 import { loadPageTranslations } from "@/i18n/server";
+import { buildBreadcrumbsWithPrefix } from "@/library/breadcrumbs";
 import { ensureParams, LOCALE_PARAMS as PARAMS } from "@/library/route-meta";
 import { PageProps } from "@/library/route-meta.schema";
 
@@ -7,15 +9,21 @@ import styles from "./page.module.scss";
 export default async function Page({ params }: PageProps) {
 	const { locale } = await ensureParams(PARAMS, params);
 
+	const crumbs = await buildBreadcrumbsWithPrefix(locale, []);
+
 	const { t } = await loadPageTranslations(locale, "page-home", {
 		keyPrefix: "content"
 	});
 
 	return (
-		<article className={styles.description}>
-			<p className={styles.introduction}>{t("intro")}</p>
+		<>
+			<BreadcrumbTrailPortal {...{ crumbs }} />
 
-			<p className={styles.explore}>{t("explore")}</p>
-		</article>
+			<article className={styles.description}>
+				<p className={styles.introduction}>{t("intro")}</p>
+
+				<p className={styles.explore}>{t("explore")}</p>
+			</article>
+		</>
 	);
 }

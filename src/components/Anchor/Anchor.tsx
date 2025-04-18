@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import type { Route } from "next";
 import Link from "next/link";
-import { AnchorHTMLAttributes } from "react";
+import { AnchorHTMLAttributes, ComponentProps } from "react";
 
 import { Interactive } from "@/components/_/interactive/interactive";
 
@@ -28,3 +28,6 @@ export default function Anchor<HREF extends string>({
 		</Link>
 	);
 }
+
+export type AnchorProps = ComponentProps<typeof Anchor>;
+export type InternalHref = AnchorProps["href"];

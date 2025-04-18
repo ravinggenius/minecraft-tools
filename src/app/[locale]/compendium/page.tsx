@@ -1,6 +1,4 @@
-import { ComponentProps } from "react";
-
-import Anchor from "@/components/Anchor/Anchor";
+import Anchor, { AnchorProps, InternalHref } from "@/components/Anchor/Anchor";
 import { loadPageTranslations } from "@/i18n/server";
 import { ensureParams, LOCALE_PARAMS as PARAMS } from "@/library/route-meta";
 import { PageGenerateMetadata, PageProps } from "@/library/route-meta.schema";
@@ -26,14 +24,12 @@ export default async function Page({ params }: PageProps) {
 		keyPrefix: "content"
 	});
 
-	type InternalLink = ComponentProps<typeof Anchor>["href"];
-
 	const compendiumEntries: Array<{
-		href: ComponentProps<typeof Anchor>["href"];
-		text: ComponentProps<typeof Anchor>["children"];
+		href: InternalHref;
+		text: AnchorProps["children"];
 	}> = [
 		{
-			href: `/${locale}/compendium/releases` as InternalLink,
+			href: `/${locale}/compendium/releases` as InternalHref,
 			text: t("table-of-contents.releases")
 		}
 	];

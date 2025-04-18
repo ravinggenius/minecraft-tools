@@ -1,6 +1,4 @@
-import { ComponentProps } from "react";
-
-import Anchor from "@/components/Anchor/Anchor";
+import Anchor, { AnchorProps, InternalHref } from "@/components/Anchor/Anchor";
 import { loadPageTranslations } from "@/i18n/server";
 import { ensureParams, LOCALE_PARAMS as PARAMS } from "@/library/route-meta";
 import { PageGenerateMetadata, PageProps } from "@/library/route-meta.schema";
@@ -26,38 +24,36 @@ export default async function Page({ params }: PageProps) {
 		keyPrefix: "content"
 	});
 
-	type InternalLink = ComponentProps<typeof Anchor>["href"];
-
 	const designElements: Array<{
-		href: ComponentProps<typeof Anchor>["href"];
-		text: ComponentProps<typeof Anchor>["children"];
+		href: InternalHref;
+		text: AnchorProps["children"];
 	}> = [
 		{
-			href: `/${locale}/design-system/palette` as InternalLink,
+			href: `/${locale}/design-system/palette` as InternalHref,
 			text: t("table-of-contents.palette")
 		},
 		{
-			href: `/${locale}/design-system/elevation` as InternalLink,
+			href: `/${locale}/design-system/elevation` as InternalHref,
 			text: t("table-of-contents.elevation")
 		},
 		{
-			href: `/${locale}/design-system/typography` as InternalLink,
+			href: `/${locale}/design-system/typography` as InternalHref,
 			text: t("table-of-contents.typography")
 		},
 		{
-			href: `/${locale}/design-system/cards` as InternalLink,
+			href: `/${locale}/design-system/cards` as InternalHref,
 			text: t("table-of-contents.cards")
 		},
 		{
-			href: `/${locale}/design-system/interactive` as InternalLink,
+			href: `/${locale}/design-system/interactive` as InternalHref,
 			text: t("table-of-contents.interactive")
 		},
 		{
-			href: `/${locale}/design-system/input` as InternalLink,
+			href: `/${locale}/design-system/input` as InternalHref,
 			text: t("table-of-contents.input")
 		},
 		{
-			href: `/${locale}/design-system/table` as InternalLink,
+			href: `/${locale}/design-system/table` as InternalHref,
 			text: t("table-of-contents.table")
 		}
 	];

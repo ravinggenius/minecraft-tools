@@ -6,6 +6,10 @@ import { ASSERTION, AssertionTuple } from "@/domains/permission/schema";
 
 import { maybeProfileFromSession } from "./session-manager";
 
+if (process.env.NEXT_RUNTIME === "nodejs") {
+	await import("server-only");
+}
+
 const ASSERTIONS = z.array(ASSERTION).min(1);
 
 export const confirmAuthorization = async (

@@ -4,7 +4,6 @@ import { parseAcceptLanguage } from "intl-parse-accept-language";
 import { cookies, headers } from "next/headers";
 import { availableLocales, mergeUserLocales } from "preferred-locale";
 import { initReactI18next } from "react-i18next/initReactI18next";
-import "server-only";
 
 import {
 	cookieName,
@@ -13,6 +12,10 @@ import {
 	SUPPORTED_LOCALES,
 	SupportedLocale
 } from "./settings";
+
+if (process.env.NEXT_RUNTIME === "nodejs") {
+	await import("server-only");
+}
 
 const initI18next = async (
 	locale: SupportedLocale,

@@ -6,6 +6,10 @@ import { Session } from "@/domains/session/schema";
 import { extractLocaleFromRequest } from "@/i18n/server";
 import * as sessionCookieService from "@/services/session-cookie-service/service";
 
+if (process.env.NEXT_RUNTIME === "nodejs") {
+	await import("server-only");
+}
+
 export const writeSessionCookie = async (session: Session) =>
 	sessionCookieService.write(session.id, session.expiresAt);
 

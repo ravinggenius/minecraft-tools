@@ -1,4 +1,3 @@
-import "server-only";
 import { z } from "zod";
 
 import CodedError, { ERROR_CODE } from "@/library/coded-error";
@@ -14,6 +13,10 @@ import {
 	ACCOUNT_CREATE_ATTRS,
 	AccountCreateAttrs
 } from "./schema";
+
+if (process.env.NEXT_RUNTIME === "nodejs") {
+	await import("server-only");
+}
 
 export const create = async (
 	attrs: AccountCreateAttrs,

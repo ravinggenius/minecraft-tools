@@ -4,6 +4,10 @@ import { Argon2id } from "oslo/password";
 
 import * as config from "../config-service/service.mjs";
 
+if (process.env.NEXT_RUNTIME === "nodejs") {
+	await import("server-only");
+}
+
 export const encrypt = (payload: unknown) =>
 	Iron.seal(payload, config.encryptionSecret, Iron.defaults);
 

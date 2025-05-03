@@ -1,5 +1,4 @@
 import { addMinutes } from "date-fns";
-import "server-only";
 
 import CodedError, { ERROR_CODE } from "@/library/coded-error";
 import * as config from "@/services/config-service/service.mjs";
@@ -13,6 +12,10 @@ import {
 	PasswordReset,
 	PasswordResetResetAttrs
 } from "./schema";
+
+if (process.env.NEXT_RUNTIME === "nodejs") {
+	await import("server-only");
+}
 
 export const create = async ({
 	email,

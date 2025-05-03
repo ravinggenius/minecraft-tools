@@ -5,6 +5,10 @@ import { Profile } from "../profile/schema";
 
 import { Assertion } from "./schema";
 
+if (process.env.NEXT_RUNTIME === "nodejs") {
+	await import("server-only");
+}
+
 const SUBJECT_TABLES = {
 	profile: sql.identifier(["profiles"]),
 	world: sql.identifier(["worlds"])

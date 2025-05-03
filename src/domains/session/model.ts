@@ -1,5 +1,4 @@
 import { add } from "date-fns";
-import "server-only";
 
 import CodedError, { ERROR_CODE } from "@/library/coded-error";
 import * as config from "@/services/config-service/service.mjs";
@@ -16,6 +15,10 @@ import {
 	SESSION_CREDENTIALS,
 	SessionCredentials
 } from "./schema";
+
+if (process.env.NEXT_RUNTIME === "nodejs") {
+	await import("server-only");
+}
 
 export const create = async (attrs: SessionCredentials) => {
 	const { email, password } = await SESSION_CREDENTIALS.parseAsync(attrs);

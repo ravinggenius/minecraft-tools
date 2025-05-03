@@ -3,6 +3,10 @@ import { cookies } from "next/headers";
 import * as config from "../config-service/service.mjs";
 import * as secretService from "../secret-service/service";
 
+if (process.env.NEXT_RUNTIME === "nodejs") {
+	await import("server-only");
+}
+
 export const write = async (payload: string, expiresAt: Date) =>
 	(await cookies()).set(
 		config.sessionName,

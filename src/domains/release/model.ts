@@ -10,6 +10,10 @@ import { PLATFORM } from "../platform/schema";
 import { ImportRelease, RELEASE, UPCOMING } from "./schema";
 import { Include } from "./search.schema";
 
+if (process.env.NEXT_RUNTIME === "nodejs") {
+	await import("server-only");
+}
+
 export const EXTENDED_RELEASE = RELEASE.omit({
 	createdAt: true,
 	updatedAt: true

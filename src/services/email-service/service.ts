@@ -2,6 +2,10 @@ import nodemailer, { SendMailOptions } from "nodemailer";
 
 import * as config from "../config-service/service.mjs";
 
+if (process.env.NEXT_RUNTIME === "nodejs") {
+	await import("server-only");
+}
+
 const transporter = nodemailer.createTransport({
 	auth: {
 		user: config.email.auth.username,

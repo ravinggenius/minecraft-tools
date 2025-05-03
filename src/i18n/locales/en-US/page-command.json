@@ -1,0 +1,12 @@
+{
+  "metadata": {
+    "title": "Command"
+  },
+
+  "content": {
+    "description": "Admin area",
+    "menu": {
+      "releases": "Releases"
+    }
+  }
+}

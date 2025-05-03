@@ -22,6 +22,10 @@ export type LayoutGenerateMetadata = (
 	props: Pick<LayoutProps, "params">
 ) => Metadata | Promise<Metadata>;
 
+export interface TemplateProps {
+	children: ReactNode;
+}
+
 export interface PageProps {
 	params?: Promise<Params>;
 	searchParams?: Promise<SearchParams>;
@@ -31,15 +35,11 @@ export type PageGenerateMetadata = (
 	props: PageProps
 ) => Metadata | Promise<Metadata>;
 
-interface RouteContext {
+export interface RouteContext {
 	params: Promise<Params>;
 }
 
 export type RouteMethod = (
 	request: NextRequest,
-	{ params }: RouteContext
-) => Promise<Response>;
-
-export interface TemplateProps {
-	children: ReactNode;
-}
+	context: RouteContext
+) => Response | Promise<Response>;

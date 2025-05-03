@@ -4,6 +4,7 @@ import "./src/services/config-service/service.mjs";
 
 export default {
 	experimental: {
+		authInterrupts: true,
 		typedRoutes: true
 	},
 	webpack: (config) => {

@@ -16,6 +16,7 @@ export const RELEASE = z.object({
 	]),
 	developmentReleasedOn: z.coerce.date().optional(),
 	notesUrl: z.string().url().optional(),
+	isAvailableForTools: z.coerce.boolean(),
 	isEarliestInCycle: z.boolean().readonly(),
 	isLatestInCycle: z.boolean().readonly(),
 	isLatest: z.boolean().readonly()

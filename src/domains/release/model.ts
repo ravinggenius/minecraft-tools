@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+import { confirmAuthorization } from "@/library/authorization";
 import { COUNT, SearchParams, SearchResults } from "@/library/search";
 import { pool, sql } from "@/services/datastore-service/service";
 
@@ -30,9 +31,17 @@ export const search = async ({
 	expand,
 	pagination: { limit, offset }
 }: SearchParams<Include>) => {
+	const mayReadAny = await confirmAuthorization(["read", "any", "release"]);
+
 	const includeText = include.text?.map((text) => `%${text}%`);
 
 	const whereClauses = [
+		mayReadAny && include.isAvailableForTools !== undefined
+			? sql.fragment`(r.is_available_for_tools = ${include.isAvailableForTools})`
+			: undefined,
+		mayReadAny
+			? undefined
+			: sql.fragment`r.is_available_for_tools = ${true}`,
 		includeText
 			? sql.fragment`(
 				(r.edition::citext LIKE ANY(${sql.array(includeText, "text")}))

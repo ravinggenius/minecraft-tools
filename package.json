@@ -19,6 +19,8 @@
   "dependencies": {
     "@hapi/iron": "^7.0.1",
     "@roarr/cli": "^5.12.4",
+    "@tanstack/react-form": "^1.11.3",
+    "@tanstack/zod-form-adapter": "^0.42.1",
     "classnames": "^2.5.1",
     "date-fns": "^4.1.0",
     "dedent": "^1.6.0",

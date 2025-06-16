@@ -7,6 +7,7 @@ import * as config from "../config-service/service.mjs";
 
 const createQueryTrimInterceptor = () =>
 	({
+		name: "app-query-trim-interceptor",
 		transformQuery: (_context, query) => ({
 			...query,
 			sql: dedent(query.sql)

@@ -1,6 +1,12 @@
 import { Dictionary, filter, isNotNil } from "rambda";
 
-import { DEFAULT_EXPAND_VERSIONS, DEFAULT_PAGE_SIZE } from "@/library/search";
+import {
+	DEFAULT_EXPAND_VERSIONS,
+	DEFAULT_OFFSET,
+	DEFAULT_PAGE_SIZE,
+	DEFAULT_QUERY,
+	DEFAULT_VIEW
+} from "@/library/search";
 
 import {
 	Include,
@@ -93,14 +99,14 @@ export const nextSearchParams = <
 
 	// TODO extract default values from RAW_SEACH_QUERY and compare with those instead
 	const pageParams = {
-		q: query.query === "" ? undefined : query.query,
-		o: offset === 0 ? undefined : offset.toString(),
+		q: query.query === DEFAULT_QUERY ? undefined : query.query,
+		o: offset === DEFAULT_OFFSET ? undefined : offset.toString(),
 		l: limit === DEFAULT_PAGE_SIZE ? undefined : limit.toString(),
 		e:
 			query.expand === DEFAULT_EXPAND_VERSIONS
 				? undefined
 				: query.expand.toString(),
-		v: query.view === "list" ? undefined : query.view
+		v: query.view === DEFAULT_VIEW ? undefined : query.view
 	};
 
 	return filter(isNotNil, pageParams) as Dictionary<string> as Record<

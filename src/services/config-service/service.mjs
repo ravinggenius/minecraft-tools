@@ -37,6 +37,7 @@ export const emailResendExpiryMinutes = z
 export const emailVerificationExpiryDays = z
 	.string()
 	.transform((n) => Number.parseInt(n, 10))
+	.pipe(z.int().positive())
 	.parse(process.env.EMAIL_VERIFICATION_EXPIRY_DAYS);
 
 export const encryptionSecret = z

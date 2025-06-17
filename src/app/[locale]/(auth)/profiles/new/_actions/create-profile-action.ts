@@ -1,6 +1,6 @@
 import { addDays } from "date-fns";
 import { redirect } from "next/navigation";
-import { ZodError } from "zod";
+import { ZodError } from "zod/v4";
 
 import * as accountModel from "@/domains/account/model";
 import { ACCOUNT_CREATE_ATTRS } from "@/domains/account/schema";

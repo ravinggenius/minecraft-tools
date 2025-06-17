@@ -1,5 +1,5 @@
 import parser, { SearchParserResult } from "search-query-parser";
-import { z } from "zod";
+import { z } from "zod/v4";
 
 import {
 	DEFAULT_EXPAND_VERSIONS,

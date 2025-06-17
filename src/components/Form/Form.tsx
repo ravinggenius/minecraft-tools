@@ -2,7 +2,7 @@ import classNames from "classnames";
 import NextForm from "next/form";
 import { omit } from "rambda";
 import { ComponentProps, forwardRef, ReactElement, Ref, useState } from "react";
-import { ZodError, ZodSchema } from "zod";
+import { ZodError, ZodType } from "zod/v4";
 
 import Debug from "@/components/Debug/Debug";
 import FeedbackList, { Feedback } from "@/components/FeedbackList/FeedbackList";
@@ -102,13 +102,13 @@ const extractFeedbackFrom = (error: unknown) => {
 	}
 };
 
-interface UseFormOptions {
-	schema?: ZodSchema;
+interface UseFormOptions<T> {
+	schema?: ZodType<T>;
 }
 
-export const useForm = (
+export const useForm = <T extends unknown>(
 	serverAction: ServerAction,
-	{ schema }: UseFormOptions = {}
+	{ schema }: UseFormOptions<T> = {}
 ) => {
 	const [feedback, setFeedback] = useState<FormFeedback>({});
 

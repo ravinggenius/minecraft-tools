@@ -1,5 +1,5 @@
 import { parse } from "date-fns";
-import { z, ZodSchema, ZodTransformer, ZodTypeAny } from "zod";
+import { z, ZodTransform, ZodType, ZodTypeAny } from "zod/v4";
 
 export const OPTIONAL_STRING_ARRAY = z.array(z.string()).optional();
 
@@ -60,9 +60,7 @@ export const DEFAULT_EXPAND_VERSIONS = false;
 
 export const DEFAULT_VIEW = "list";
 
-export const SEARCH_PARAMS = <TInclude>(
-	include: ZodSchema<TInclude> | ZodTransformer<ZodTypeAny, TInclude>
-) =>
+export const SEARCH_PARAMS = <TInclude>(include: ZodType<TInclude>) =>
 	z.object({
 		conditions: z.object({
 			include,

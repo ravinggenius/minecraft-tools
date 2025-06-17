@@ -1,5 +1,5 @@
 import { forbidden } from "next/navigation";
-import { z } from "zod";
+import { z } from "zod/v4";
 
 import * as permissionModel from "@/domains/permission/model";
 import { ASSERTION, AssertionTuple } from "@/domains/permission/schema";

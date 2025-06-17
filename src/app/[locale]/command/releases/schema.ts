@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "zod/v4";
 
 import { SEACH_QUERY } from "@/components/SearchForm/SearchForm.schema";
 import { INCLUDE, Include } from "@/domains/release/search.schema";

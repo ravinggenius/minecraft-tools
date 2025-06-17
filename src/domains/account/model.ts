@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "zod/v4";
 
 import CodedError, { ERROR_CODE } from "@/library/coded-error";
 import { BOOLEAN_NAMED, VOID } from "@/services/datastore-service/schema";

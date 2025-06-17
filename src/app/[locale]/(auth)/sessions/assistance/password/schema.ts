@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "zod/v4";
 
 import { ACCOUNT, ACCOUNT_PASSWORD_ATTRS } from "@/domains/account/schema";
 

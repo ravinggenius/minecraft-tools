@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "zod/v4";
 
 import { confirmAuthorization } from "@/library/authorization";
 import { COUNT, SearchParams, SearchResults } from "@/library/search";

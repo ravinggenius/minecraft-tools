@@ -1,4 +1,5 @@
-import { BOOLEAN_NAMED } from "@/services/datastore-service/schema";
+import { z } from "zod/v4";
+
 import { pool, sql } from "@/services/datastore-service/service";
 
 import { Profile } from "../profile/schema";
@@ -66,7 +67,11 @@ export const mayContinue = async (
 		}
 	});
 
-	return (await pool).oneFirst(sql.type(BOOLEAN_NAMED("mayContinue"))`
+	return (await pool).oneFirst(sql.type(
+		z.object({
+			mayContinue: z.boolean()
+		})
+	)`
 		SELECT sum(matching_permissions) > 0 AS "mayContinue"
 		FROM (
 			${sql.join(

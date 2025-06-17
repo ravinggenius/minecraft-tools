@@ -6,9 +6,4 @@ export const IDENTITY = z.object({
 
 export interface Identity extends z.infer<typeof IDENTITY> {}
 
-export const BOOLEAN_NAMED = (name: string) =>
-	z.object({
-		[name]: z.boolean()
-	});
-
-export const VOID = z.object({}).strict();
+export const VOID = z.strictObject({});

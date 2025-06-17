@@ -41,9 +41,8 @@ class CodedError extends Error {
 		return this.message as ErrorCode;
 	}
 
-	toJson(): CodedErrorAttrs {
-		// @ts-ignore not a real error
-		return pick(["code", "name", "path"], this);
+	toJson() {
+		return pick(["code", "name", "path"])(this);
 	}
 }
 

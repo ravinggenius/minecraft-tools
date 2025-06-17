@@ -43,9 +43,9 @@ export default function VerifyEmailtForm({
 			ref={formElement}
 			submitLabel={t("submit")}
 		>
-			<input {...pick(["name", "value"], email)} type="hidden" />
+			<input {...pick(["name", "value"])(email)} type="hidden" />
 
-			<input {...pick(["name", "value"], token)} type="hidden" />
+			<input {...pick(["name", "value"])(token)} type="hidden" />
 		</Form>
 	);
 }

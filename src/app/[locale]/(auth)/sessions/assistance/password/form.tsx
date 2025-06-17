@@ -42,9 +42,9 @@ export default function SessionAssistancePasswordForm({
 			className={classNames(styles.form, className)}
 			submitLabel={t("submit")}
 		>
-			<input {...pick(["name", "value"], emailField)} type="hidden" />
+			<input {...pick(["name", "value"])(emailField)} type="hidden" />
 
-			<input {...pick(["name", "value"], tokenField)} type="hidden" />
+			<input {...pick(["name", "value"])(tokenField)} type="hidden" />
 
 			<TextField
 				{...password}

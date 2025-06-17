@@ -133,6 +133,6 @@ export const useForm = <T extends unknown>(
 	return {
 		action: clientServerAction,
 		feedback: feedback._,
-		fieldFeedback: omit(["_"], feedback)
+		fieldFeedback: omit(["_"])(feedback)
 	};
 };

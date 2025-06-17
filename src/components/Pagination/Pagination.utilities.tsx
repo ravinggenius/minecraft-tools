@@ -1,5 +1,3 @@
-import { Dictionary, filter, isNotNil } from "rambda";
-
 import {
 	DEFAULT_EXPAND_VERSIONS,
 	DEFAULT_OFFSET,
@@ -109,8 +107,9 @@ export const nextSearchParams = <
 		v: query.view === DEFAULT_VIEW ? undefined : query.view
 	};
 
-	return filter(isNotNil, pageParams) as Dictionary<string> as Record<
-		string,
-		string
-	>;
+	return Object.fromEntries(
+		Object.entries(pageParams).filter((pair): pair is [string, string] =>
+			Boolean(pair[1])
+		)
+	);
 };

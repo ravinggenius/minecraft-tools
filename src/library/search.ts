@@ -12,7 +12,7 @@ export const OPTIONAL_RANGE = z
 
 const CYCLE_TUPLE = z.tuple([
 	z.union([z.literal(0), z.literal(1)]),
-	z.number().nonnegative().int()
+	z.int().nonnegative()
 ]);
 
 export const OPTIONAL_DATE_RANGE = OPTIONAL_RANGE.transform((range) =>
@@ -68,8 +68,8 @@ export const SEARCH_PARAMS = <TInclude>(include: ZodType<TInclude>) =>
 		}),
 		expand: z.boolean(),
 		pagination: z.object({
-			limit: z.number().nonnegative().int().max(MAX_PAGE_SIZE),
-			offset: z.number().nonnegative().int()
+			limit: z.int().nonnegative().max(MAX_PAGE_SIZE),
+			offset: z.int().nonnegative()
 		})
 	});
 

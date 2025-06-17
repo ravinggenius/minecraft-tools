@@ -11,5 +11,5 @@ export const i18nName = z.string().parse(process.env.NEXT_PUBLIC_I18N_NAME);
 export const passwordMinLength = z
 	.string()
 	.transform((n) => Number.parseInt(n, 10))
-	.pipe(z.number().positive())
+	.pipe(z.int().positive())
 	.parse(process.env.NEXT_PUBLIC_PASSWORD_MIN_LENGTH);

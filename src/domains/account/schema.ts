@@ -13,7 +13,7 @@ export const ACCOUNT = z.object({
 	email: z.string().trim().email(),
 	emailVerifiedAt: z.coerce.date().nullish(),
 	tokenNonce: z.string(),
-	tokenNonceCount: z.number().int().positive()
+	tokenNonceCount: z.int().positive()
 });
 
 export interface Account extends z.infer<typeof ACCOUNT> {}

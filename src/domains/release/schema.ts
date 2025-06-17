@@ -10,10 +10,7 @@ export const RELEASE = z.object({
 	updatedAt: z.coerce.date(),
 	edition: EDITION,
 	version: z.string(),
-	cycle: z.tuple([
-		z.number().nonnegative().int(),
-		z.number().nonnegative().int()
-	]),
+	cycle: z.tuple([z.int().nonnegative(), z.int().nonnegative()]),
 	developmentReleasedOn: z.coerce.date().optional(),
 	notesUrl: z.string().url().optional(),
 	isAvailableForTools: z.coerce.boolean(),

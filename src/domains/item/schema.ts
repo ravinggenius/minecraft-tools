@@ -11,7 +11,7 @@ export const ITEM = z.object({
 	identity: z.string(),
 	wikiUrl: z.string().url(),
 	rarity: RARITY.default("common").optional(),
-	stackSize: z.number().positive().default(64).optional(),
+	stackSize: z.int().positive().default(64).optional(),
 	isRenewable: z.boolean()
 });
 

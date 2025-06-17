@@ -19,7 +19,7 @@ export const email = {
 	port: z
 		.string()
 		.transform((n) => Number.parseInt(n, 10))
-		.pipe(z.number().min(1).max(65535))
+		.pipe(z.int().min(1).max(65535))
 		.parse(process.env.EMAIL_PORT),
 	secure: z
 		.string()
@@ -31,7 +31,7 @@ export const email = {
 export const emailResendExpiryMinutes = z
 	.string()
 	.transform((n) => Number.parseInt(n, 10))
-	.pipe(z.number().positive())
+	.pipe(z.int().positive())
 	.parse(process.env.EMAIL_RESEND_EXPIRY_MINUTES);
 
 export const emailVerificationExpiryDays = z
@@ -72,7 +72,7 @@ export const sessionCookieOptions = {
 export const sessionMaxAgeSeconds = z
 	.string()
 	.transform((n) => Number.parseInt(n, 10))
-	.pipe(z.number().positive())
+	.pipe(z.int().positive())
 	.parse(process.env.SESSION_MAX_AGE_SECONDS);
 
 export const sessionName = z.string().parse(process.env.SESSION_NAME);
@@ -80,5 +80,5 @@ export const sessionName = z.string().parse(process.env.SESSION_NAME);
 export const sessionAssistancePasswordResetExpiryMinutes = z
 	.string()
 	.transform((n) => Number.parseInt(n, 10))
-	.pipe(z.number().positive())
+	.pipe(z.int().positive())
 	.parse(process.env.SESSION_ASSISTANCE_PASSWORD_RESET_EXPIRY_MINUTES);

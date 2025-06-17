@@ -4,7 +4,7 @@ import { PLATFORM } from "../platform/schema";
 import { RELEASE } from "../release/schema";
 
 export const PLATFORM_RELEASE = z.object({
-	id: z.string().uuid(),
+	id: z.uuid(),
 	createdAt: z.coerce.date(),
 	updatedAt: z.coerce.date(),
 	platformId: PLATFORM.shape.id,

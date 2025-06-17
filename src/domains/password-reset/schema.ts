@@ -3,7 +3,7 @@ import { z } from "zod/v4";
 import { ACCOUNT, ACCOUNT_PASSWORD_ATTRS } from "../account/schema";
 
 export const PASSWORD_RESET = z.object({
-	id: z.string().uuid(),
+	id: z.uuid(),
 	createdAt: z.coerce.date(),
 	updatedAt: z.coerce.date(),
 	expiresAt: z.coerce.date(),

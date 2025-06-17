@@ -5,7 +5,7 @@ export * from "./service-public.mjs";
 /**
  * Postgres database connection URL. Can point to a connection pool
  */
-export const databaseUrl = z.string().url().parse(process.env.DATABASE_URL);
+export const databaseUrl = z.url().parse(process.env.DATABASE_URL);
 
 export const email = {
 	auth: {
@@ -13,7 +13,7 @@ export const email = {
 		password: z.string().parse(process.env.EMAIL_AUTH_PASSWORD)
 	},
 	from: {
-		address: z.string().email().parse(process.env.EMAIL_FROM_ADDRESS)
+		address: z.email().parse(process.env.EMAIL_FROM_ADDRESS)
 	},
 	host: z.string().parse(process.env.EMAIL_HOST),
 	port: z
@@ -45,7 +45,7 @@ export const encryptionSecret = z
 	.min(32)
 	.parse(process.env.ENCRYPTION_SECRET);
 
-export const hostUrl = z.string().url().parse(process.env.HOST_URL);
+export const hostUrl = z.url().parse(process.env.HOST_URL);
 
 export const nodeEnv = z
 	.enum(["development", "production", "test"])

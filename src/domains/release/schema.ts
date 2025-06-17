@@ -5,14 +5,14 @@ export const EDITION = z.enum(["bedrock", "java"]);
 export type Edition = z.infer<typeof EDITION>;
 
 export const RELEASE = z.object({
-	id: z.string().uuid(),
+	id: z.uuid(),
 	createdAt: z.coerce.date(),
 	updatedAt: z.coerce.date(),
 	edition: EDITION,
 	version: z.string(),
 	cycle: z.tuple([z.int().nonnegative(), z.int().nonnegative()]),
 	developmentReleasedOn: z.coerce.date().optional(),
-	notesUrl: z.string().url().optional(),
+	notesUrl: z.url().optional(),
 	isAvailableForTools: z.coerce.boolean(),
 	isEarliestInCycle: z.boolean().readonly(),
 	isLatestInCycle: z.boolean().readonly(),
@@ -40,10 +40,7 @@ export const IMPORT_RELEASE = RELEASE.pick({
 	developmentReleasedOn: true,
 	notesUrl: true
 }).extend({
-	platforms: z.record(
-		z.union([z.string().date(), UPCOMING]),
-		z.array(z.string())
-	)
+	platforms: z.record(z.union([z.iso.date(), UPCOMING]), z.array(z.string()))
 });
 
 export interface ImportRelease extends z.infer<typeof IMPORT_RELEASE> {}

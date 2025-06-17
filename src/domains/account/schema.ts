@@ -6,11 +6,11 @@ import * as config from "@/services/config-service/service-public.mjs";
 import { PROFILE, PROFILE_ATTRS } from "../profile/schema";
 
 export const ACCOUNT = z.object({
-	id: z.string().uuid(),
+	id: z.uuid(),
 	createdAt: z.coerce.date(),
 	updatedAt: z.coerce.date(),
 	profileId: PROFILE.shape.id,
-	email: z.string().trim().email(),
+	email: z.email().trim(),
 	emailVerifiedAt: z.coerce.date().nullish(),
 	tokenNonce: z.string(),
 	tokenNonceCount: z.int().positive()

@@ -1,4 +1,6 @@
-import { BOOLEAN_NAMED, VOID } from "@/services/datastore-service/schema";
+import { z } from "zod/v4";
+
+import { VOID } from "@/services/datastore-service/schema";
 import { pool, sql } from "@/services/datastore-service/service";
 
 import { PROFILE, Profile, PUBLIC_PROFILE } from "./schema";
@@ -33,7 +35,11 @@ export const getPublic = async (profileId: Profile["id"]) =>
 	`);
 
 export const isEmailVerified = async (profileId: Profile["id"]) =>
-	(await pool).oneFirst(sql.type(BOOLEAN_NAMED("emailVerified"))`
+	(await pool).oneFirst(sql.type(
+		z.object({
+			emailVerified: z.boolean()
+		})
+	)`
 		SELECT
 			(
 				a.email_verified_at IS NOT NULL

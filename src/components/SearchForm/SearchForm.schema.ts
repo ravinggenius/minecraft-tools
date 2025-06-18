@@ -1,9 +1,12 @@
 import parser, { SearchParserResult } from "search-query-parser";
-import { z } from "zod";
+import { z } from "zod/v4";
 
 import {
 	DEFAULT_EXPAND_VERSIONS,
+	DEFAULT_OFFSET,
 	DEFAULT_PAGE_SIZE,
+	DEFAULT_QUERY,
+	DEFAULT_VIEW,
 	MAX_PAGE_SIZE
 } from "@/library/search";
 
@@ -33,8 +36,14 @@ export type Include = {
 };
 
 export const RAW_SEACH_QUERY = z.object({
-	q: z.string().optional().default("").catch(""),
-	o: z.coerce.number().nonnegative().int().optional().default(0).catch(0),
+	q: z.string().optional().default(DEFAULT_QUERY).catch(DEFAULT_QUERY),
+	o: z.coerce
+		.number()
+		.nonnegative()
+		.int()
+		.optional()
+		.default(DEFAULT_OFFSET)
+		.catch(DEFAULT_OFFSET),
 	l: z.coerce
 		.number()
 		.nonnegative()
@@ -48,7 +57,11 @@ export const RAW_SEACH_QUERY = z.object({
 		.optional()
 		.default(DEFAULT_EXPAND_VERSIONS)
 		.catch(DEFAULT_EXPAND_VERSIONS),
-	v: z.enum(["list", "table"]).optional().default("list").catch("list")
+	v: z
+		.enum(["list", "table"])
+		.optional()
+		.default(DEFAULT_VIEW)
+		.catch(DEFAULT_VIEW)
 });
 
 export interface RawSearchQuery extends z.infer<typeof RAW_SEACH_QUERY> {}

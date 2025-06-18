@@ -84,7 +84,10 @@ export default async function DataTable<TRecord extends Identity>({
 								<Cell key={field.props.fieldPath}>
 									{field.props.children
 										? field.props.children(record)
-										: path(field.props.fieldPath, record)}
+										: path(
+												// @ts-expect-error
+												field.props.fieldPath
+											)(record)}
 								</Cell>
 							);
 						})}

@@ -1,17 +1,17 @@
-import { z } from "zod";
+import { z } from "zod/v4";
 
 import { RELEASE } from "../release/schema";
 
 export const RARITY = z.enum(["common", "uncommon", "rare", "epic"]);
 
 export const ITEM = z.object({
-	id: z.string().uuid(),
+	id: z.uuid(),
 	createdAt: z.coerce.date(),
 	updatedAt: z.coerce.date(),
 	identity: z.string(),
-	wikiUrl: z.string().url(),
+	wikiUrl: z.url(),
 	rarity: RARITY.default("common").optional(),
-	stackSize: z.number().positive().default(64).optional(),
+	stackSize: z.int().positive().default(64).optional(),
 	isRenewable: z.boolean()
 });
 

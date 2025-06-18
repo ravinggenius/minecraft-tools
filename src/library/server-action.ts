@@ -1,12 +1,7 @@
-import { lensPath, set } from "rambda";
-import { ZodSchema } from "zod";
+import { zfd } from "zod-form-data";
+import { ZodType } from "zod/v4";
 
 export type ServerAction = (formData: FormData) => Promise<unknown>;
 
-export const normalizeFormData = <T>(schema: ZodSchema<T>, data: FormData) =>
-	schema.safeParseAsync(
-		[...data.entries()].reduce(
-			(memo, [path, value]) => set(lensPath(path), value, memo),
-			{}
-		)
-	);
+export const normalizeFormData = <T>(schema: ZodType<T>, data: FormData) =>
+	zfd.formData(schema).safeParseAsync(data);

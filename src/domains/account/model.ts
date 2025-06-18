@@ -1,7 +1,7 @@
-import { z } from "zod";
+import { z } from "zod/v4";
 
 import CodedError, { ERROR_CODE } from "@/library/coded-error";
-import { BOOLEAN_NAMED, VOID } from "@/services/datastore-service/schema";
+import { VOID } from "@/services/datastore-service/schema";
 import { pool, sql } from "@/services/datastore-service/service";
 import * as secretService from "@/services/secret-service/service";
 
@@ -37,7 +37,9 @@ export const create = async (
 
 	return (await pool).transaction(async (transaction) => {
 		const alreadyExists = await transaction.oneFirst(sql.type(
-			BOOLEAN_NAMED("alreadyExists")
+			z.object({
+				alreadyExists: z.boolean()
+			})
 		)`
 			SELECT
 				count(id) > 0 AS "alreadyExists"

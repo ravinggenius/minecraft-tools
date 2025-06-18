@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "zod/v4";
 
 import { ACCOUNT, ACCOUNT_PASSWORD_ATTRS } from "@/domains/account/schema";
 
@@ -12,7 +12,7 @@ export interface Query extends z.infer<typeof QUERY> {}
 export const DATA = QUERY.merge(ACCOUNT_PASSWORD_ATTRS);
 
 export const TOKEN = z.object({
-	email: z.string().email(),
+	email: z.email(),
 	nonce: z.string(),
 	expiresAt: z.coerce.date()
 });

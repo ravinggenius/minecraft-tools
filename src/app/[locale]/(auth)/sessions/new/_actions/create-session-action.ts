@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { ZodError } from "zod";
+import { ZodError } from "zod/v4";
 
 import * as sessionModel from "@/domains/session/model";
 import { SESSION_CREDENTIALS } from "@/domains/session/schema";

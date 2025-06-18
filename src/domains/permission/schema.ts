@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "zod/v4";
 
 import { PROFILE } from "../profile/schema";
 
@@ -19,7 +19,7 @@ const SUBJECT_RELEASE = z.literal("release");
 const SUBJECT_WORLD = z.literal("world");
 
 const COMMON = z.object({
-	id: z.string().uuid(),
+	id: z.uuid(),
 	createdAt: z.coerce.date(),
 	updatedAt: z.coerce.date(),
 	profileId: PROFILE.shape.id
@@ -114,7 +114,7 @@ export const ASSERTION_WORLD_GUEST = z
 		SCOPE_ONE,
 		SUBJECT_WORLD,
 		z.object({
-			worldId: z.string().uuid()
+			worldId: z.uuid()
 		})
 	])
 	.transform(([action, scope, subject, auxiliary]) => ({

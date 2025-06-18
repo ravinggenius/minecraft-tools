@@ -1,11 +1,11 @@
-import { z } from "zod";
+import { z } from "zod/v4";
 
 export * from "./service-public.mjs";
 
 /**
  * Postgres database connection URL. Can point to a connection pool
  */
-export const databaseUrl = z.string().url().parse(process.env.DATABASE_URL);
+export const databaseUrl = z.url().parse(process.env.DATABASE_URL);
 
 export const email = {
 	auth: {
@@ -13,13 +13,13 @@ export const email = {
 		password: z.string().parse(process.env.EMAIL_AUTH_PASSWORD)
 	},
 	from: {
-		address: z.string().email().parse(process.env.EMAIL_FROM_ADDRESS)
+		address: z.email().parse(process.env.EMAIL_FROM_ADDRESS)
 	},
 	host: z.string().parse(process.env.EMAIL_HOST),
 	port: z
 		.string()
 		.transform((n) => Number.parseInt(n, 10))
-		.pipe(z.number().min(1).max(65535))
+		.pipe(z.int().min(1).max(65535))
 		.parse(process.env.EMAIL_PORT),
 	secure: z
 		.string()
@@ -31,12 +31,13 @@ export const email = {
 export const emailResendExpiryMinutes = z
 	.string()
 	.transform((n) => Number.parseInt(n, 10))
-	.pipe(z.number().positive())
+	.pipe(z.int().positive())
 	.parse(process.env.EMAIL_RESEND_EXPIRY_MINUTES);
 
 export const emailVerificationExpiryDays = z
 	.string()
 	.transform((n) => Number.parseInt(n, 10))
+	.pipe(z.int().positive())
 	.parse(process.env.EMAIL_VERIFICATION_EXPIRY_DAYS);
 
 export const encryptionSecret = z
@@ -44,7 +45,7 @@ export const encryptionSecret = z
 	.min(32)
 	.parse(process.env.ENCRYPTION_SECRET);
 
-export const hostUrl = z.string().url().parse(process.env.HOST_URL);
+export const hostUrl = z.url().parse(process.env.HOST_URL);
 
 export const nodeEnv = z
 	.enum(["development", "production", "test"])
@@ -72,7 +73,7 @@ export const sessionCookieOptions = {
 export const sessionMaxAgeSeconds = z
 	.string()
 	.transform((n) => Number.parseInt(n, 10))
-	.pipe(z.number().positive())
+	.pipe(z.int().positive())
 	.parse(process.env.SESSION_MAX_AGE_SECONDS);
 
 export const sessionName = z.string().parse(process.env.SESSION_NAME);
@@ -80,5 +81,5 @@ export const sessionName = z.string().parse(process.env.SESSION_NAME);
 export const sessionAssistancePasswordResetExpiryMinutes = z
 	.string()
 	.transform((n) => Number.parseInt(n, 10))
-	.pipe(z.number().positive())
+	.pipe(z.int().positive())
 	.parse(process.env.SESSION_ASSISTANCE_PASSWORD_RESET_EXPIRY_MINUTES);

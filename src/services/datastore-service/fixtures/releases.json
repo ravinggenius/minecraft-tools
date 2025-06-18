@@ -2,9 +2,10 @@
   {
     "edition": "bedrock",
     "version": "1.21.90",
+    "name": "Chase The Skies",
     "developmentReleasedOn": "2025-04-22",
     "platforms": {
-      "upcoming": [
+      "2025-06-17": [
         "ChromeOS",
         "Android",
         "iOS",
@@ -12,11 +13,43 @@
         "Fire",
         "Windows",
         "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
         "Nintendo Switch",
         "PlayStation 4",
-        "PlayStation VR",
         "PlayStation 5"
       ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.84",
+    "platforms": {
+      "2025-06-05": ["Xbox One"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.82",
+    "platforms": {
+      "2025-05-19": ["Windows"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.81",
+    "platforms": {
+      "2025-05-14": [
+        "ChromeOS",
+        "Android",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "PlayStation 4",
+        "PlayStation 5"
+      ],
+      "2025-05-15": ["iOS", "iPadOS"],
+      "2025-05-16": ["Nintendo Switch"]
     }
   },
   {
@@ -24,7 +57,7 @@
     "version": "1.21.80",
     "developmentReleasedOn": "2025-03-11",
     "platforms": {
-      "upcoming": [
+      "2025-05-06": [
         "ChromeOS",
         "Android",
         "iOS",
@@ -34,7 +67,6 @@
         "Xbox One",
         "Nintendo Switch",
         "PlayStation 4",
-        "PlayStation VR",
         "PlayStation 5"
       ]
     }
@@ -60,7 +92,6 @@
         "Xbox One",
         "Nintendo Switch",
         "PlayStation 4",
-        "PlayStation VR",
         "PlayStation 5"
       ]
     }
@@ -77,7 +108,6 @@
         "Windows",
         "Xbox One",
         "PlayStation 4",
-        "PlayStation VR",
         "PlayStation 5"
       ],
       "2025-03-31": ["Fire", "Nintendo Switch"]
@@ -99,7 +129,6 @@
         "Xbox One",
         "Nintendo Switch",
         "PlayStation 4",
-        "PlayStation VR",
         "PlayStation 5"
       ]
     }
@@ -117,7 +146,6 @@
         "Windows",
         "Xbox One",
         "PlayStation 4",
-        "PlayStation VR",
         "PlayStation 5"
       ],
       "2025-02-26": ["Nintendo Switch"]
@@ -136,7 +164,6 @@
         "Windows",
         "Xbox One",
         "PlayStation 4",
-        "PlayStation VR",
         "PlayStation 5"
       ],
       "2025-02-20": ["Nintendo Switch"]
@@ -157,7 +184,6 @@
         "Xbox One",
         "Nintendo Switch",
         "PlayStation 4",
-        "PlayStation VR",
         "PlayStation 5"
       ]
     }
@@ -168,13 +194,7 @@
     "platforms": {
       "2024-12-09": ["ChromeOS", "Android"],
       "2024-12-10": ["iOS", "iPadOS", "Fire"],
-      "2024-12-11": [
-        "Windows",
-        "Xbox One",
-        "PlayStation 4",
-        "PlayStation VR",
-        "PlayStation 5"
-      ],
+      "2024-12-11": ["Windows", "Xbox One", "PlayStation 4", "PlayStation 5"],
       "2024-12-16": ["Nintendo Switch"]
     }
   },
@@ -194,7 +214,6 @@
         "Xbox One",
         "Nintendo Switch",
         "PlayStation 4",
-        "PlayStation VR",
         "PlayStation 5"
       ]
     }
@@ -212,7 +231,6 @@
         "Windows",
         "Xbox One",
         "PlayStation 4",
-        "PlayStation VR",
         "PlayStation 5"
       ],
       "2024-11-05": ["Nintendo Switch"]
@@ -258,7 +276,6 @@
         "Xbox One",
         "Nintendo Switch",
         "PlayStation 4",
-        "PlayStation VR",
         "PlayStation 5"
       ]
     }
@@ -279,7 +296,6 @@
         "Xbox One",
         "Nintendo Switch",
         "PlayStation 4",
-        "PlayStation VR",
         "PlayStation 5"
       ]
     }
@@ -3098,9 +3114,10 @@
   {
     "edition": "java",
     "version": "1.21.6",
+    "name": "Chase The Skies",
     "developmentReleasedOn": "2025-04-08",
     "platforms": {
-      "upcoming": ["Linux", "macOS", "Windows"]
+      "2025-06-17": ["Linux", "macOS", "Windows"]
     }
   },
   {

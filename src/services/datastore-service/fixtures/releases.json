@@ -1,6 +1,91 @@
 [
   {
     "edition": "bedrock",
+    "version": "1.21.100",
+    "developmentReleasedOn": "2025-06-10",
+    "platforms": {
+      "upcoming": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.94",
+    "platforms": {
+      "2025-07-14": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.93",
+    "platforms": {
+      "2025-07-03": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.92",
+    "platforms": {
+      "2025-06-19": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Windows",
+        "PlayStation 4",
+        "PlayStation 5"
+      ],
+      "2025-06-20": ["Fire", "Xbox One", "Xbox Series S", "Xbox Series X"],
+      "2025-06-24": ["Nintendo Switch"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.91",
+    "platforms": {
+      "2025-06-18": ["Xbox One", "Xbox Series S", "Xbox Series X"]
+    }
+  },
+  {
+    "edition": "bedrock",
     "version": "1.21.90",
     "name": "Chase The Skies",
     "developmentReleasedOn": "2025-04-22",
@@ -3109,6 +3194,24 @@
         "Windows Phone 8.1",
         "Windows 10"
       ]
+    }
+  },
+  {
+    "edition": "java",
+    "version": "1.21.8",
+    "name": "Chase The Skies",
+    "developmentReleasedOn": "2025-07-15",
+    "platforms": {
+      "upcoming": ["Linux", "macOS", "Windows"]
+    }
+  },
+  {
+    "edition": "java",
+    "version": "1.21.7",
+    "name": "Chase The Skies",
+    "developmentReleasedOn": "2025-06-25",
+    "platforms": {
+      "2025-06-30": ["Linux", "macOS", "Windows"]
     }
   },
   {

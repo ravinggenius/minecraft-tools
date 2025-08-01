@@ -1,7 +1,6 @@
 "use client";
 
-import { useForm } from "@tanstack/form";
-import { zodValidator } from "@tanstack/zod-form-adapter";
+import { useForm } from "@tanstack/react-form";
 import { z } from "zod/v4";
 
 import Form from "@/components/Form/Form";
@@ -30,21 +29,15 @@ export default function CreateProfileForm({
 				passwordConfirmation: ""
 			}
 		},
-		validatorAdapter: zodValidator,
 		validators: {
 			onSubmit: ACCOUNT_CREATE_ATTRS
 		}
 	});
 
-	// Create a wrapper action that uses the form state
+	// Create a wrapper action that works with the existing Form component
 	const handleSubmit: ServerAction = async (data) => {
-		// Use the form state values instead of the data parameter
-		const formData = form.state.values;
-		const result = await form.validate();
-		if (!result.success) {
-			return { issues: result.error.issues };
-		}
-		return await createProfile(formData);
+		// The data is already FormData, so we can pass it directly
+		return await createProfile(data);
 	};
 
 	return (
@@ -52,16 +45,7 @@ export default function CreateProfileForm({
 			action={handleSubmit}
 			className={styles.form}
 			submitLabel={t("submit")}
-			feedback={
-				form.state.submitFailure?.message
-					? [
-							{
-								type: "error",
-								message: form.state.submitFailure.message
-							}
-						]
-					: []
-			}
+			feedback={[]}
 		>
 			<TextField
 				name="profile.name"
@@ -69,12 +53,16 @@ export default function CreateProfileForm({
 				onChange={(e) =>
 					form.setFieldValue("profile.name", e.target.value)
 				}
-				onBlur={() => form.validateField("profile.name")}
 				label={t("name.label")}
 				required
+				id="profile-name"
+				meta={{ dirty: false, focus: false }}
 				feedback={
 					form.state.fieldMeta.profile?.name?.errors?.map(
-						(error) => ({ type: "error", message: error })
+						(error) => ({
+							type: "negative" as const,
+							message: error
+						})
 					) || []
 				}
 			/>
@@ -85,13 +73,17 @@ export default function CreateProfileForm({
 				onChange={(e) =>
 					form.setFieldValue("account.email", e.target.value)
 				}
-				onBlur={() => form.validateField("account.email")}
 				label={t("email.label")}
 				required
 				type="email"
+				id="account-email"
+				meta={{ dirty: false, focus: false }}
 				feedback={
 					form.state.fieldMeta.account?.email?.errors?.map(
-						(error) => ({ type: "error", message: error })
+						(error) => ({
+							type: "negative" as const,
+							message: error
+						})
 					) || []
 				}
 			/>
@@ -102,13 +94,17 @@ export default function CreateProfileForm({
 				onChange={(e) =>
 					form.setFieldValue("account.password", e.target.value)
 				}
-				onBlur={() => form.validateField("account.password")}
 				label={t("password.label")}
 				required
 				type="password"
+				id="account-password"
+				meta={{ dirty: false, focus: false }}
 				feedback={
 					form.state.fieldMeta.account?.password?.errors?.map(
-						(error) => ({ type: "error", message: error })
+						(error) => ({
+							type: "negative" as const,
+							message: error
+						})
 					) || []
 				}
 			/>
@@ -122,15 +118,17 @@ export default function CreateProfileForm({
 						e.target.value
 					)
 				}
-				onBlur={() =>
-					form.validateField("account.passwordConfirmation")
-				}
 				label={t("password-confirmation.label")}
 				required
 				type="password"
+				id="account-password-confirmation"
+				meta={{ dirty: false, focus: false }}
 				feedback={
 					form.state.fieldMeta.account?.passwordConfirmation?.errors?.map(
-						(error) => ({ type: "error", message: error })
+						(error) => ({
+							type: "negative" as const,
+							message: error
+						})
 					) || []
 				}
 			/>

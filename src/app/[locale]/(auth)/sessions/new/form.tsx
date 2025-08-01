@@ -1,7 +1,6 @@
 "use client";
 
-import { useForm } from "@tanstack/form";
-import { zodValidator } from "@tanstack/zod-form-adapter";
+import { useForm } from "@tanstack/react-form";
 import { z } from "zod/v4";
 
 import Form from "@/components/Form/Form";
@@ -24,21 +23,15 @@ export default function CreateSessionForm({
 			email: "",
 			password: ""
 		},
-		validatorAdapter: zodValidator,
 		validators: {
 			onSubmit: SESSION_CREDENTIALS
 		}
 	});
 
-	// Create a wrapper action that uses the form state
+	// Create a wrapper action that works with the existing Form component
 	const handleSubmit: ServerAction = async (data) => {
-		// Use the form state values instead of the data parameter
-		const formData = form.state.values;
-		const result = await form.validate();
-		if (!result.success) {
-			return { issues: result.error.issues };
-		}
-		return await createSession(formData);
+		// The data is already FormData, so we can pass it directly
+		return await createSession(data);
 	};
 
 	return (
@@ -46,28 +39,20 @@ export default function CreateSessionForm({
 			action={handleSubmit}
 			className={styles.form}
 			submitLabel={t("submit")}
-			feedback={
-				form.state.submitFailure?.message
-					? [
-							{
-								type: "error",
-								message: form.state.submitFailure.message
-							}
-						]
-					: []
-			}
+			feedback={[]}
 		>
 			<TextField
 				name="email"
 				value={form.state.values.email}
 				onChange={(e) => form.setFieldValue("email", e.target.value)}
-				onBlur={() => form.validateField("email")}
 				label={t("email.label")}
 				required
 				type="email"
+				id="email"
+				meta={{ dirty: false, focus: false }}
 				feedback={
 					form.state.fieldMeta.email?.errors?.map((error) => ({
-						type: "error",
+						type: "negative" as const,
 						message: error
 					})) || []
 				}
@@ -77,13 +62,14 @@ export default function CreateSessionForm({
 				name="password"
 				value={form.state.values.password}
 				onChange={(e) => form.setFieldValue("password", e.target.value)}
-				onBlur={() => form.validateField("password")}
 				label={t("password.label")}
 				required
 				type="password"
+				id="password"
+				meta={{ dirty: false, focus: false }}
 				feedback={
 					form.state.fieldMeta.password?.errors?.map((error) => ({
-						type: "error",
+						type: "negative" as const,
 						message: error
 					})) || []
 				}

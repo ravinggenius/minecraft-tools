@@ -1,7 +1,6 @@
 "use client";
 
 import { useForm } from "@tanstack/react-form";
-import { z } from "zod/v4";
 
 import Form from "@/components/Form/Form";
 import TextField from "@/components/TextField/TextField";
@@ -57,14 +56,14 @@ export default function CreateProfileForm({
 				required
 				id="profile-name"
 				meta={{ dirty: false, focus: false }}
-				feedback={
-					form.state.fieldMeta.profile?.name?.errors?.map(
-						(error) => ({
-							type: "negative" as const,
-							message: error
-						})
-					) || []
-				}
+				// feedback={
+				// 	form.state.fieldMeta.profile?.name?.errors?.map(
+				// 		(error) => ({
+				// 			type: "negative" as const,
+				// 			message: error
+				// 		})
+				// 	) || []
+				// }
 			/>
 
 			<TextField
@@ -78,14 +77,14 @@ export default function CreateProfileForm({
 				type="email"
 				id="account-email"
 				meta={{ dirty: false, focus: false }}
-				feedback={
-					form.state.fieldMeta.account?.email?.errors?.map(
-						(error) => ({
-							type: "negative" as const,
-							message: error
-						})
-					) || []
-				}
+				// feedback={
+				// 	form.state.fieldMeta.account?.email?.errors?.map(
+				// 		(error) => ({
+				// 			type: "negative" as const,
+				// 			message: error
+				// 		})
+				// 	) || []
+				// }
 			/>
 
 			<TextField
@@ -99,14 +98,14 @@ export default function CreateProfileForm({
 				type="password"
 				id="account-password"
 				meta={{ dirty: false, focus: false }}
-				feedback={
-					form.state.fieldMeta.account?.password?.errors?.map(
-						(error) => ({
-							type: "negative" as const,
-							message: error
-						})
-					) || []
-				}
+				// feedback={
+				// 	form.state.fieldMeta.account?.password?.errors?.map(
+				// 		(error) => ({
+				// 			type: "negative" as const,
+				// 			message: error
+				// 		})
+				// 	) || []
+				// }
 			/>
 
 			<TextField
@@ -123,14 +122,14 @@ export default function CreateProfileForm({
 				type="password"
 				id="account-password-confirmation"
 				meta={{ dirty: false, focus: false }}
-				feedback={
-					form.state.fieldMeta.account?.passwordConfirmation?.errors?.map(
-						(error) => ({
-							type: "negative" as const,
-							message: error
-						})
-					) || []
-				}
+				// feedback={
+				// 	form.state.fieldMeta.account?.passwordConfirmation?.errors?.map(
+				// 		(error) => ({
+				// 			type: "negative" as const,
+				// 			message: error
+				// 		})
+				// 	) || []
+				// }
 			/>
 		</Form>
 	);

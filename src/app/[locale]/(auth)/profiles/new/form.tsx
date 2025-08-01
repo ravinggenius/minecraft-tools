@@ -49,9 +49,10 @@ export default function CreateProfileForm({
 			<TextField
 				name="profile.name"
 				value={form.state.values.profile.name}
-				onChange={(e) =>
-					form.setFieldValue("profile.name", e.target.value)
-				}
+				onChange={(e) => {
+					console.log("Profile Name Change", e.target.value);
+					form.setFieldValue("profile.name", e.target.value);
+				}}
 				label={t("name.label")}
 				required
 				id="profile-name"
@@ -65,6 +66,8 @@ export default function CreateProfileForm({
 				// 	) || []
 				// }
 			/>
+
+			<pre>form.state = {JSON.stringify(form.state, null, 2)}</pre>
 
 			<TextField
 				name="account.email"

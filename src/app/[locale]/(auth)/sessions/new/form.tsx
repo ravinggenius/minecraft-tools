@@ -40,39 +40,62 @@ export default function CreateSessionForm({
 			submitLabel={t("submit")}
 			feedback={[]}
 		>
-			<TextField
+			<form.Field
 				name="email"
-				value={form.state.values.email}
-				onChange={(e) => form.setFieldValue("email", e.target.value)}
-				label={t("email.label")}
-				required
-				type="email"
-				id="email"
-				meta={{ dirty: false, focus: false }}
-				feedback={
-					form.state.fieldMeta.email?.errors?.map((error) => ({
-						type: "negative" as const,
-						message: error
-					})) || []
-				}
-			/>
+				validators={{
+					onChange: SESSION_CREDENTIALS.shape.email
+				}}
+			>
+				{(field) => (
+					<TextField
+						name={field.name}
+						value={field.state.value}
+						onChange={(e) => field.handleChange(e.target.value)}
+						label={t("email.label")}
+						required
+						type="email"
+						id="email"
+						meta={{ dirty: field.state.meta.isDirty, focus: false }}
+						feedback={
+							field.state.meta.errors
+								?.map((error) => ({
+									type: "negative" as const,
+									message: error?.message || "Invalid email"
+								}))
+								.filter(Boolean) || []
+						}
+					/>
+				)}
+			</form.Field>
 
-			<TextField
+			<form.Field
 				name="password"
-				value={form.state.values.password}
-				onChange={(e) => form.setFieldValue("password", e.target.value)}
-				label={t("password.label")}
-				required
-				type="password"
-				id="password"
-				meta={{ dirty: false, focus: false }}
-				feedback={
-					form.state.fieldMeta.password?.errors?.map((error) => ({
-						type: "negative" as const,
-						message: error
-					})) || []
-				}
-			/>
+				validators={{
+					onChange: SESSION_CREDENTIALS.shape.password
+				}}
+			>
+				{(field) => (
+					<TextField
+						name={field.name}
+						value={field.state.value}
+						onChange={(e) => field.handleChange(e.target.value)}
+						label={t("password.label")}
+						required
+						type="password"
+						id="password"
+						meta={{ dirty: field.state.meta.isDirty, focus: false }}
+						feedback={
+							field.state.meta.errors
+								?.map((error) => ({
+									type: "negative" as const,
+									message:
+										error?.message || "Invalid password"
+								}))
+								.filter(Boolean) || []
+						}
+					/>
+				)}
+			</form.Field>
 		</Form>
 	);
 }

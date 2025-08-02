@@ -46,94 +46,121 @@ export default function CreateProfileForm({
 			submitLabel={t("submit")}
 			feedback={[]}
 		>
-			<TextField
+			<form.Field
 				name="profile.name"
-				value={form.state.values.profile.name}
-				onChange={(e) => {
-					console.log("Profile Name Change", e.target.value);
-					form.setFieldValue("profile.name", e.target.value);
+				validators={{
+					onChange: ACCOUNT_CREATE_ATTRS.shape.profile.shape.name
 				}}
-				label={t("name.label")}
-				required
-				id="profile-name"
-				meta={{ dirty: false, focus: false }}
-				// feedback={
-				// 	form.state.fieldMeta.profile?.name?.errors?.map(
-				// 		(error) => ({
-				// 			type: "negative" as const,
-				// 			message: error
-				// 		})
-				// 	) || []
-				// }
-			/>
+			>
+				{(field) => (
+					<TextField
+						name={field.name}
+						value={field.state.value}
+						onChange={(e) => field.handleChange(e.target.value)}
+						label={t("name.label")}
+						required
+						id="profile-name"
+						meta={{ dirty: field.state.meta.isDirty, focus: false }}
+						feedback={
+							field.state.meta.errors
+								?.map((error) => ({
+									type: "negative" as const,
+									message: error?.message || "Invalid name"
+								}))
+								.filter(Boolean) || []
+						}
+					/>
+				)}
+			</form.Field>
 
-			<pre>form.state = {JSON.stringify(form.state, null, 2)}</pre>
-
-			<TextField
+			<form.Field
 				name="account.email"
-				value={form.state.values.account.email}
-				onChange={(e) =>
-					form.setFieldValue("account.email", e.target.value)
-				}
-				label={t("email.label")}
-				required
-				type="email"
-				id="account-email"
-				meta={{ dirty: false, focus: false }}
-				// feedback={
-				// 	form.state.fieldMeta.account?.email?.errors?.map(
-				// 		(error) => ({
-				// 			type: "negative" as const,
-				// 			message: error
-				// 		})
-				// 	) || []
-				// }
-			/>
+				validators={{
+					onChange: ACCOUNT_CREATE_ATTRS.shape.account.shape.email
+				}}
+			>
+				{(field) => (
+					<TextField
+						name={field.name}
+						value={field.state.value}
+						onChange={(e) => field.handleChange(e.target.value)}
+						label={t("email.label")}
+						required
+						type="email"
+						id="account-email"
+						meta={{ dirty: field.state.meta.isDirty, focus: false }}
+						feedback={
+							field.state.meta.errors
+								?.map((error) => ({
+									type: "negative" as const,
+									message: error?.message || "Invalid email"
+								}))
+								.filter(Boolean) || []
+						}
+					/>
+				)}
+			</form.Field>
 
-			<TextField
+			<form.Field
 				name="account.password"
-				value={form.state.values.account.password}
-				onChange={(e) =>
-					form.setFieldValue("account.password", e.target.value)
-				}
-				label={t("password.label")}
-				required
-				type="password"
-				id="account-password"
-				meta={{ dirty: false, focus: false }}
-				// feedback={
-				// 	form.state.fieldMeta.account?.password?.errors?.map(
-				// 		(error) => ({
-				// 			type: "negative" as const,
-				// 			message: error
-				// 		})
-				// 	) || []
-				// }
-			/>
+				validators={{
+					onChange: ACCOUNT_CREATE_ATTRS.shape.account.shape.password
+				}}
+			>
+				{(field) => (
+					<TextField
+						name={field.name}
+						value={field.state.value}
+						onChange={(e) => field.handleChange(e.target.value)}
+						label={t("password.label")}
+						required
+						type="password"
+						id="account-password"
+						meta={{ dirty: field.state.meta.isDirty, focus: false }}
+						feedback={
+							field.state.meta.errors
+								?.map((error) => ({
+									type: "negative" as const,
+									message:
+										error?.message || "Invalid password"
+								}))
+								.filter(Boolean) || []
+						}
+					/>
+				)}
+			</form.Field>
 
-			<TextField
+			<form.Field
 				name="account.passwordConfirmation"
-				value={form.state.values.account.passwordConfirmation}
-				onChange={(e) =>
-					form.setFieldValue(
-						"account.passwordConfirmation",
-						e.target.value
-					)
-				}
-				label={t("password-confirmation.label")}
-				required
-				type="password"
-				id="account-password-confirmation"
-				meta={{ dirty: false, focus: false }}
-				// feedback={
-				// 	form.state.fieldMeta.account?.passwordConfirmation?.errors?.map(
-				// 		(error) => ({
-				// 			type: "negative" as const,
-				// 			message: error
-				// 		})
-				// 	) || []
-				// }
-			/>
+				validators={{
+					onChange:
+						ACCOUNT_CREATE_ATTRS.shape.account.shape
+							.passwordConfirmation
+				}}
+			>
+				{(field) => (
+					<TextField
+						name={field.name}
+						value={field.state.value}
+						onChange={(e) => field.handleChange(e.target.value)}
+						label={t("password-confirmation.label")}
+						required
+						type="password"
+						id="account-password-confirmation"
+						meta={{ dirty: field.state.meta.isDirty, focus: false }}
+						feedback={
+							field.state.meta.errors
+								?.map((error) => ({
+									type: "negative" as const,
+									message:
+										error?.message ||
+										"Invalid password confirmation"
+								}))
+								.filter(Boolean) || []
+						}
+					/>
+				)}
+			</form.Field>
 		</Form>
 	);
 }

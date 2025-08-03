@@ -1,11 +1,8 @@
 "use client";
 
-import { useForm } from "@tanstack/react-form";
-
 import Form from "@/components/Form/Form";
-import TextField from "@/components/TextField/TextField";
 import { ACCOUNT_CREATE_ATTRS } from "@/domains/account/schema";
-import useFocusBlur from "@/hooks/use-focus-blur";
+import { useAppForm } from "@/hooks/app-form";
 import { useTranslation } from "@/i18n/client";
 import { ServerAction } from "@/library/server-action";
 
@@ -18,7 +15,7 @@ export default function CreateProfileForm({
 }) {
 	const { t } = useTranslation("page-component-new-profile-form");
 
-	const form = useForm({
+	const form = useAppForm({
 		defaultValues: {
 			profile: {
 				name: ""
@@ -34,11 +31,6 @@ export default function CreateProfileForm({
 		}
 	});
 
-	const profileNameFocus = useFocusBlur();
-	const accountEmailFocus = useFocusBlur();
-	const accountPasswordFocus = useFocusBlur();
-	const accountPasswordConfirmationFocus = useFocusBlur();
-
 	return (
 		<Form
 			action={createProfile}
@@ -46,106 +38,48 @@ export default function CreateProfileForm({
 			submitLabel={t("submit")}
 			feedback={[]}
 		>
-			<form.Field
+			<form.AppField
 				name="profile.name"
 				validators={{
 					onChange: ACCOUNT_CREATE_ATTRS.shape.profile.shape.name
 				}}
 			>
 				{(field) => (
-					<TextField
-						name={field.name}
-						value={field.state.value}
-						onChange={(e) => field.handleChange(e.target.value)}
-						onFocus={profileNameFocus.handleFocus}
-						onBlur={profileNameFocus.makeHandleBlur(field)}
-						label={t("name.label")}
-						required
-						id="profile-name"
-						meta={{
-							...field.state.meta,
-							isFocused: profileNameFocus.isFocused
-						}}
-						feedback={
-							field.state.meta.errors
-								?.map((error) => ({
-									type: "negative" as const,
-									message: error?.message || "Invalid name"
-								}))
-								.filter(Boolean) || []
-						}
-					/>
+					<field.TextField label={t("name.label")} required />
 				)}
-			</form.Field>
+			</form.AppField>
 
-			<form.Field
+			<form.AppField
 				name="account.email"
 				validators={{
 					onChange: ACCOUNT_CREATE_ATTRS.shape.account.shape.email
 				}}
 			>
 				{(field) => (
-					<TextField
-						name={field.name}
-						value={field.state.value}
-						onChange={(e) => field.handleChange(e.target.value)}
-						onFocus={accountEmailFocus.handleFocus}
-						onBlur={accountEmailFocus.makeHandleBlur(field)}
+					<field.TextField
 						label={t("email.label")}
 						required
 						type="email"
-						id="account-email"
-						meta={{
-							...field.state.meta,
-							isFocused: accountEmailFocus.isFocused
-						}}
-						feedback={
-							field.state.meta.errors
-								?.map((error) => ({
-									type: "negative" as const,
-									message: error?.message || "Invalid email"
-								}))
-								.filter(Boolean) || []
-						}
 					/>
 				)}
-			</form.Field>
+			</form.AppField>
 
-			<form.Field
+			<form.AppField
 				name="account.password"
 				validators={{
 					onChange: ACCOUNT_CREATE_ATTRS.shape.account.shape.password
 				}}
 			>
 				{(field) => (
-					<TextField
-						name={field.name}
-						value={field.state.value}
-						onChange={(e) => field.handleChange(e.target.value)}
-						onFocus={accountPasswordFocus.handleFocus}
-						onBlur={accountPasswordFocus.makeHandleBlur(field)}
+					<field.TextField
 						label={t("password.label")}
 						required
 						type="password"
-						id="account-password"
-						meta={{
-							...field.state.meta,
-							isFocused: accountPasswordFocus.isFocused
-						}}
-						feedback={
-							field.state.meta.errors
-								?.map((error) => ({
-									type: "negative" as const,
-									message:
-										error?.message || "Invalid password"
-								}))
-								.filter(Boolean) || []
-						}
 					/>
 				)}
-			</form.Field>
+			</form.AppField>
 
-			<form.Field
+			<form.AppField
 				name="account.passwordConfirmation"
 				validators={{
 					onChange:
@@ -154,36 +88,13 @@ export default function CreateProfileForm({
 				}}
 			>
 				{(field) => (
-					<TextField
-						name={field.name}
-						value={field.state.value}
-						onChange={(e) => field.handleChange(e.target.value)}
-						onFocus={accountPasswordConfirmationFocus.handleFocus}
-						onBlur={accountPasswordConfirmationFocus.makeHandleBlur(
-							field
-						)}
+					<field.TextField
 						label={t("password-confirmation.label")}
 						required
 						type="password"
-						id="account-password-confirmation"
-						meta={{
-							...field.state.meta,
-							isFocused:
-								accountPasswordConfirmationFocus.isFocused
-						}}
-						feedback={
-							field.state.meta.errors
-								?.map((error) => ({
-									type: "negative" as const,
-									message:
-										error?.message ||
-										"Invalid password confirmation"
-								}))
-								.filter(Boolean) || []
-						}
 					/>
 				)}
-			</form.Field>
+			</form.AppField>
 		</Form>
 	);
 }

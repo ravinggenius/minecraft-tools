@@ -1,11 +1,8 @@
 "use client";
 
-import { useForm } from "@tanstack/react-form";
-
 import Form from "@/components/Form/Form";
-import TextField from "@/components/TextField/TextField";
 import { SESSION_CREDENTIALS } from "@/domains/session/schema";
-import useFocusBlur from "@/hooks/use-focus-blur";
+import { useAppForm } from "@/hooks/app-form";
 import { useTranslation } from "@/i18n/client";
 import { ServerAction } from "@/library/server-action";
 
@@ -18,7 +15,7 @@ export default function CreateSessionForm({
 }) {
 	const { t } = useTranslation("page-component-new-session-form");
 
-	const form = useForm({
+	const form = useAppForm({
 		defaultValues: {
 			email: "",
 			password: ""
@@ -28,9 +25,6 @@ export default function CreateSessionForm({
 		}
 	});
 
-	const emailFocus = useFocusBlur();
-	const passwordFocus = useFocusBlur();
-
 	return (
 		<Form
 			action={createSession}
@@ -38,72 +32,31 @@ export default function CreateSessionForm({
 			submitLabel={t("submit")}
 			feedback={[]}
 		>
-			<form.Field
+			<form.AppField
 				name="email"
-				validators={{
-					onChange: SESSION_CREDENTIALS.shape.email
-				}}
+				validators={{ onChange: SESSION_CREDENTIALS.shape.email }}
 			>
 				{(field) => (
-					<TextField
-						name={field.name}
-						value={field.state.value}
-						onChange={(e) => field.handleChange(e.target.value)}
-						onFocus={emailFocus.handleFocus}
-						onBlur={emailFocus.makeHandleBlur(field)}
+					<field.TextField
 						label={t("email.label")}
 						required
 						type="email"
-						id="email"
-						meta={{
-							...field.state.meta,
-							isFocused: emailFocus.isFocused
-						}}
-						feedback={
-							field.state.meta.errors
-								?.map((error) => ({
-									type: "negative" as const,
-									message: error?.message || "Invalid email"
-								}))
-								.filter(Boolean) || []
-						}
 					/>
 				)}
-			</form.Field>
+			</form.AppField>
 
-			<form.Field
+			<form.AppField
 				name="password"
-				validators={{
-					onChange: SESSION_CREDENTIALS.shape.password
-				}}
+				validators={{ onChange: SESSION_CREDENTIALS.shape.password }}
 			>
 				{(field) => (
-					<TextField
-						name={field.name}
-						value={field.state.value}
-						onChange={(e) => field.handleChange(e.target.value)}
-						onFocus={passwordFocus.handleFocus}
-						onBlur={passwordFocus.makeHandleBlur(field)}
+					<field.TextField
 						label={t("password.label")}
 						required
 						type="password"
-						id="password"
-						meta={{
-							...field.state.meta,
-							isFocused: passwordFocus.isFocused
-						}}
-						feedback={
-							field.state.meta.errors
-								?.map((error) => ({
-									type: "negative" as const,
-									message:
-										error?.message || "Invalid password"
-								}))
-								.filter(Boolean) || []
-						}
 					/>
 				)}
-			</form.Field>
+			</form.AppField>
 		</Form>
 	);
 }

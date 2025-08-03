@@ -31,15 +31,9 @@ export default function CreateSessionForm({
 	const emailFocus = useFocusBlur();
 	const passwordFocus = useFocusBlur();
 
-	// Create a wrapper action that works with the existing Form component
-	const handleSubmit: ServerAction = async (data) => {
-		// The data is already FormData, so we can pass it directly
-		return await createSession(data);
-	};
-
 	return (
 		<Form
-			action={handleSubmit}
+			action={createSession}
 			className={styles.form}
 			submitLabel={t("submit")}
 			feedback={[]}

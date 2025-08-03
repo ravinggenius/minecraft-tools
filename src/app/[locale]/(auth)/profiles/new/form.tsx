@@ -39,15 +39,9 @@ export default function CreateProfileForm({
 	const accountPasswordFocus = useFocusBlur();
 	const accountPasswordConfirmationFocus = useFocusBlur();
 
-	// Create a wrapper action that works with the existing Form component
-	const handleSubmit: ServerAction = async (data) => {
-		// The data is already FormData, so we can pass it directly
-		return await createProfile(data);
-	};
-
 	return (
 		<Form
-			action={handleSubmit}
+			action={createProfile}
 			className={styles.form}
 			submitLabel={t("submit")}
 			feedback={[]}

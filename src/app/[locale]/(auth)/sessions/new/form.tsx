@@ -5,6 +5,7 @@ import { useForm } from "@tanstack/react-form";
 import Form from "@/components/Form/Form";
 import TextField from "@/components/TextField/TextField";
 import { SESSION_CREDENTIALS } from "@/domains/session/schema";
+import useFocusBlur from "@/hooks/use-focus-blur";
 import { useTranslation } from "@/i18n/client";
 import { ServerAction } from "@/library/server-action";
 
@@ -26,6 +27,9 @@ export default function CreateSessionForm({
 			onSubmit: SESSION_CREDENTIALS
 		}
 	});
+
+	const emailFocus = useFocusBlur();
+	const passwordFocus = useFocusBlur();
 
 	// Create a wrapper action that works with the existing Form component
 	const handleSubmit: ServerAction = async (data) => {
@@ -51,11 +55,16 @@ export default function CreateSessionForm({
 						name={field.name}
 						value={field.state.value}
 						onChange={(e) => field.handleChange(e.target.value)}
+						onFocus={emailFocus.handleFocus}
+						onBlur={emailFocus.makeHandleBlur(field)}
 						label={t("email.label")}
 						required
 						type="email"
 						id="email"
-						meta={{ dirty: field.state.meta.isDirty, focus: false }}
+						meta={{
+							dirty: field.state.meta.isDirty,
+							focus: emailFocus.isFocused
+						}}
 						feedback={
 							field.state.meta.errors
 								?.map((error) => ({
@@ -79,11 +88,16 @@ export default function CreateSessionForm({
 						name={field.name}
 						value={field.state.value}
 						onChange={(e) => field.handleChange(e.target.value)}
+						onFocus={passwordFocus.handleFocus}
+						onBlur={passwordFocus.makeHandleBlur(field)}
 						label={t("password.label")}
 						required
 						type="password"
 						id="password"
-						meta={{ dirty: field.state.meta.isDirty, focus: false }}
+						meta={{
+							dirty: field.state.meta.isDirty,
+							focus: passwordFocus.isFocused
+						}}
 						feedback={
 							field.state.meta.errors
 								?.map((error) => ({

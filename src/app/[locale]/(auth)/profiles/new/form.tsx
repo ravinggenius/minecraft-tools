@@ -5,6 +5,7 @@ import { useForm } from "@tanstack/react-form";
 import Form from "@/components/Form/Form";
 import TextField from "@/components/TextField/TextField";
 import { ACCOUNT_CREATE_ATTRS } from "@/domains/account/schema";
+import useFocusBlur from "@/hooks/use-focus-blur";
 import { useTranslation } from "@/i18n/client";
 import { ServerAction } from "@/library/server-action";
 
@@ -33,6 +34,11 @@ export default function CreateProfileForm({
 		}
 	});
 
+	const profileNameFocus = useFocusBlur();
+	const accountEmailFocus = useFocusBlur();
+	const accountPasswordFocus = useFocusBlur();
+	const accountPasswordConfirmationFocus = useFocusBlur();
+
 	// Create a wrapper action that works with the existing Form component
 	const handleSubmit: ServerAction = async (data) => {
 		// The data is already FormData, so we can pass it directly
@@ -57,10 +63,15 @@ export default function CreateProfileForm({
 						name={field.name}
 						value={field.state.value}
 						onChange={(e) => field.handleChange(e.target.value)}
+						onFocus={profileNameFocus.handleFocus}
+						onBlur={profileNameFocus.makeHandleBlur(field)}
 						label={t("name.label")}
 						required
 						id="profile-name"
-						meta={{ dirty: field.state.meta.isDirty, focus: false }}
+						meta={{
+							dirty: field.state.meta.isDirty,
+							focus: profileNameFocus.isFocused
+						}}
 						feedback={
 							field.state.meta.errors
 								?.map((error) => ({
@@ -84,11 +95,16 @@ export default function CreateProfileForm({
 						name={field.name}
 						value={field.state.value}
 						onChange={(e) => field.handleChange(e.target.value)}
+						onFocus={accountEmailFocus.handleFocus}
+						onBlur={accountEmailFocus.makeHandleBlur(field)}
 						label={t("email.label")}
 						required
 						type="email"
 						id="account-email"
-						meta={{ dirty: field.state.meta.isDirty, focus: false }}
+						meta={{
+							dirty: field.state.meta.isDirty,
+							focus: accountEmailFocus.isFocused
+						}}
 						feedback={
 							field.state.meta.errors
 								?.map((error) => ({
@@ -112,11 +128,16 @@ export default function CreateProfileForm({
 						name={field.name}
 						value={field.state.value}
 						onChange={(e) => field.handleChange(e.target.value)}
+						onFocus={accountPasswordFocus.handleFocus}
+						onBlur={accountPasswordFocus.makeHandleBlur(field)}
 						label={t("password.label")}
 						required
 						type="password"
 						id="account-password"
-						meta={{ dirty: field.state.meta.isDirty, focus: false }}
+						meta={{
+							dirty: field.state.meta.isDirty,
+							focus: accountPasswordFocus.isFocused
+						}}
 						feedback={
 							field.state.meta.errors
 								?.map((error) => ({
@@ -143,11 +164,18 @@ export default function CreateProfileForm({
 						name={field.name}
 						value={field.state.value}
 						onChange={(e) => field.handleChange(e.target.value)}
+						onFocus={accountPasswordConfirmationFocus.handleFocus}
+						onBlur={accountPasswordConfirmationFocus.makeHandleBlur(
+							field
+						)}
 						label={t("password-confirmation.label")}
 						required
 						type="password"
 						id="account-password-confirmation"
-						meta={{ dirty: field.state.meta.isDirty, focus: false }}
+						meta={{
+							dirty: field.state.meta.isDirty,
+							focus: accountPasswordConfirmationFocus.isFocused
+						}}
 						feedback={
 							field.state.meta.errors
 								?.map((error) => ({

@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { differenceInMilliseconds } from "date-fns";
 import { useEffect, useState } from "react";
 
-import Form, { useForm } from "@/components/Form/Form";
+import Form from "@/components/Form/Form";
 import { useTranslation } from "@/i18n/client";
 import { ServerAction } from "@/library/server-action";
 
@@ -36,13 +36,12 @@ export default function VerifyEmailPromptForm({
 		};
 	}, [resendReminderExpiry]);
 
-	const form = useForm(resendVerification);
-
 	return show ? (
 		<Form
-			{...form}
+			action={resendVerification}
 			className={classNames(styles.form, className)}
 			submitLabel={t("submit")}
+			feedback={[]}
 		>
 			<p>{t("instructions")}</p>
 		</Form>

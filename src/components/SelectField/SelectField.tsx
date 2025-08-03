@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { ComponentProps, useId, useState } from "react";
+import { ComponentProps, FocusEventHandler, useId, useState } from "react";
 
 import Field, { FieldMeta } from "@/components/Field/Field";
 import { useForm } from "@/components/Form/Form";
@@ -85,31 +85,37 @@ export const useSelectField = <TOption extends Option>(
 
 	const [value, setValue] = useState(initialValue);
 
-	const [dirty, setDirty] = useState(false);
-	const [focus, setFocus] = useState(false);
+	const [isFocused, setIsFocused] = useState(false);
+	const [isPristine, setIsPristine] = useState(true);
+	const [isTouched, setIsTouched] = useState(false);
 
 	const handleChange: ComponentProps<
 		typeof ObjectSelect<TOption>
 	>["onChange"] = (newValue) => {
-		setDirty(true);
+		setIsPristine(true);
+		setIsTouched(true);
 
 		setValue(newValue);
 	};
 
-	const handleFocus = () => {
-		setFocus(true);
+	const handleFocus: FocusEventHandler<HTMLInputElement> = () => {
+		setIsFocused(true);
 	};
 
-	const handleBlur = () => {
-		setFocus(false);
+	const handleBlur: FocusEventHandler<HTMLInputElement> = () => {
+		setIsFocused(false);
+		setIsTouched(true);
 	};
 
 	return {
 		feedback: fieldFeedback[name],
 		id,
 		meta: {
-			dirty,
-			focus
+			isDirty: !isPristine,
+			isFocused,
+			isPristine,
+			isTouched,
+			isValid: true
 		} satisfies FieldMeta as FieldMeta,
 		name,
 		onChange: handleChange,

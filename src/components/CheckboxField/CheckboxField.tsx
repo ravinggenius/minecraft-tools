@@ -4,6 +4,7 @@ import classNames from "classnames";
 import {
 	ChangeEventHandler,
 	ComponentProps,
+	FocusEventHandler,
 	InputHTMLAttributes,
 	useId,
 	useState
@@ -75,31 +76,37 @@ export const useCheckboxField = (
 
 	const [checked, setChecked] = useState(initialChecked);
 
-	const [dirty, setDirty] = useState(false);
-	const [focus, setFocus] = useState(false);
+	const [isFocused, setIsFocused] = useState(false);
+	const [isPristine, setIsPristine] = useState(false);
+	const [isTouched, setIsTouched] = useState(false);
 
 	const handleChange: ChangeEventHandler<HTMLInputElement> = ({
 		target: { checked }
 	}) => {
-		setDirty(true);
+		setIsPristine(true);
+		setIsTouched(true);
 
 		setChecked(checked);
 	};
 
-	const handleFocus = () => {
-		setFocus(true);
+	const handleFocus: FocusEventHandler<HTMLInputElement> = () => {
+		setIsFocused(true);
 	};
 
-	const handleBlur = () => {
-		setFocus(false);
+	const handleBlur: FocusEventHandler<HTMLInputElement> = () => {
+		setIsFocused(false);
+		setIsTouched(true);
 	};
 
 	return {
 		feedback: fieldFeedback[name],
 		id,
 		meta: {
-			dirty,
-			focus
+			isDirty: !isPristine,
+			isFocused,
+			isPristine,
+			isTouched,
+			isValid: true
 		} satisfies FieldMeta as FieldMeta,
 		name,
 		onChange: handleChange,

@@ -70,8 +70,8 @@ export default function SessionAssistancePasswordForm({
 						type="password"
 						id="password"
 						meta={{
-							dirty: field.state.meta.isDirty,
-							focus: passwordFocus.isFocused
+							...field.state.meta,
+							isFocused: passwordFocus.isFocused
 						}}
 						feedback={
 							field.state.meta.errors
@@ -104,8 +104,8 @@ export default function SessionAssistancePasswordForm({
 						type="password"
 						id="password-confirmation"
 						meta={{
-							dirty: field.state.meta.isDirty,
-							focus: passwordConfirmationFocus.isFocused
+							...field.state.meta,
+							isFocused: passwordConfirmationFocus.isFocused
 						}}
 						feedback={
 							field.state.meta.errors

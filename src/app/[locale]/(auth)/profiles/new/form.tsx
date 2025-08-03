@@ -63,8 +63,8 @@ export default function CreateProfileForm({
 						required
 						id="profile-name"
 						meta={{
-							dirty: field.state.meta.isDirty,
-							focus: profileNameFocus.isFocused
+							...field.state.meta,
+							isFocused: profileNameFocus.isFocused
 						}}
 						feedback={
 							field.state.meta.errors
@@ -96,8 +96,8 @@ export default function CreateProfileForm({
 						type="email"
 						id="account-email"
 						meta={{
-							dirty: field.state.meta.isDirty,
-							focus: accountEmailFocus.isFocused
+							...field.state.meta,
+							isFocused: accountEmailFocus.isFocused
 						}}
 						feedback={
 							field.state.meta.errors
@@ -129,8 +129,8 @@ export default function CreateProfileForm({
 						type="password"
 						id="account-password"
 						meta={{
-							dirty: field.state.meta.isDirty,
-							focus: accountPasswordFocus.isFocused
+							...field.state.meta,
+							isFocused: accountPasswordFocus.isFocused
 						}}
 						feedback={
 							field.state.meta.errors
@@ -167,8 +167,9 @@ export default function CreateProfileForm({
 						type="password"
 						id="account-password-confirmation"
 						meta={{
-							dirty: field.state.meta.isDirty,
-							focus: accountPasswordConfirmationFocus.isFocused
+							...field.state.meta,
+							isFocused:
+								accountPasswordConfirmationFocus.isFocused
 						}}
 						feedback={
 							field.state.meta.errors

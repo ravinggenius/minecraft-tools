@@ -56,8 +56,8 @@ export default function CreateSessionForm({
 						type="email"
 						id="email"
 						meta={{
-							dirty: field.state.meta.isDirty,
-							focus: emailFocus.isFocused
+							...field.state.meta,
+							isFocused: emailFocus.isFocused
 						}}
 						feedback={
 							field.state.meta.errors
@@ -89,8 +89,8 @@ export default function CreateSessionForm({
 						type="password"
 						id="password"
 						meta={{
-							dirty: field.state.meta.isDirty,
-							focus: passwordFocus.isFocused
+							...field.state.meta,
+							isFocused: passwordFocus.isFocused
 						}}
 						feedback={
 							field.state.meta.errors

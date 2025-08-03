@@ -53,7 +53,14 @@ export default async function Page({ params }: PageProps) {
 					label={t("field.label")}
 					id={"some-unique-id"}
 					name="foo"
-					meta={{ dirty: false, focus: false }}
+					meta={{
+						isDefaultValue: true,
+						isDirty: false,
+						isFocused: false,
+						isPristine: true,
+						isTouched: false,
+						isValid: true
+					}}
 					required
 				>
 					<pre>{t("field.input-here")}</pre>
@@ -88,7 +95,14 @@ export default async function Page({ params }: PageProps) {
 					label={t("text-field.label")}
 					id={"some-unique-id"}
 					name="color"
-					meta={{ dirty: false, focus: false }}
+					meta={{
+						isDefaultValue: true,
+						isDirty: false,
+						isFocused: false,
+						isPristine: true,
+						isTouched: false,
+						isValid: true
+					}}
 					placeholder={t("text-field.placeholder")}
 				/>
 			</Card>

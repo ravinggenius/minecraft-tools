@@ -60,8 +60,8 @@ export default function SessionsAssistancePasswordNewForm({
 						type="email"
 						id="email"
 						meta={{
-							dirty: field.state.meta.isDirty,
-							focus: emailFocus.isFocused
+							...field.state.meta,
+							isFocused: emailFocus.isFocused
 						}}
 						feedback={
 							field.state.meta.errors

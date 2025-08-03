@@ -1,5 +1,6 @@
 "use client";
 
+import { AnyFieldMeta } from "@tanstack/form-core";
 import classNames from "classnames";
 import { ReactNode } from "react";
 
@@ -10,10 +11,17 @@ import { useTranslation } from "@/i18n/client";
 
 import styles from "./Field.module.scss";
 
-export interface FieldMeta {
-	dirty: boolean;
-	focus: boolean;
-}
+type BooleanFieldMeta = BooleanOnly<AnyFieldMeta>;
+type OptionalFieldMetaProperties =
+	| "isBlurred"
+	| "isDefaultValue"
+	| "isValidating";
+export type FieldMeta = Prettify<
+	Omit<BooleanFieldMeta, OptionalFieldMetaProperties> &
+		Partial<Pick<BooleanFieldMeta, OptionalFieldMetaProperties>> & {
+			isFocused: boolean;
+		}
+>;
 
 export default function Field({
 	children,

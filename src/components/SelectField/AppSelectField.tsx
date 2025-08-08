@@ -8,6 +8,8 @@ import type { Option } from "@/components/ObjectSelect/ObjectSelect";
 import SelectField from "@/components/SelectField/SelectField";
 import { useFieldContext } from "@/hooks/app-form";
 
+import { FieldMeta } from "../Field/Field";
+
 export default function AppSelectField<TOption extends Option>(
 	props: Omit<
 		ComponentProps<typeof SelectField<TOption>>,
@@ -29,13 +31,15 @@ export default function AppSelectField<TOption extends Option>(
 					type: "negative"
 				}))}
 			id={props.id ?? id}
-			meta={{
-				...omit(["errors", "errorMap", "errorSourceMap"])(
-					field.state.meta
-				),
-				// focus/blur flow for ObjectSelect is internal
-				isFocused: false
-			}}
+			meta={
+				{
+					...omit(["errors", "errorMap", "errorSourceMap"])(
+						field.state.meta
+					),
+					// focus/blur flow for ObjectSelect is internal
+					isFocused: false
+				} satisfies FieldMeta as FieldMeta
+			}
 			name={field.name}
 			onChange={(next) => {
 				field.handleChange(next);

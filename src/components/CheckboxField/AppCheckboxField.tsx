@@ -13,6 +13,8 @@ import CheckboxField from "@/components/CheckboxField/CheckboxField";
 import { Feedback } from "@/components/FeedbackList/FeedbackList";
 import { useFieldContext } from "@/hooks/app-form";
 
+import { FieldMeta } from "../Field/Field";
+
 export default function AppCheckboxField(
 	props: Omit<
 		ComponentProps<typeof CheckboxField>,
@@ -57,12 +59,14 @@ export default function AppCheckboxField(
 					type: "negative"
 				}))}
 			id={props.id ?? id}
-			meta={{
-				...omit(["errors", "errorMap", "errorSourceMap"])(
-					field.state.meta
-				),
-				isFocused
-			}}
+			meta={
+				{
+					...omit(["errors", "errorMap", "errorSourceMap"])(
+						field.state.meta
+					),
+					isFocused
+				} satisfies FieldMeta as FieldMeta
+			}
 			name={field.name}
 			onChange={handleChange}
 			onFocus={handleFocus}

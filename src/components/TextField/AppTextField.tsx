@@ -13,6 +13,7 @@ import TextField from "@/components/TextField/TextField";
 import { useFieldContext } from "@/hooks/app-form";
 
 import { Feedback } from "../FeedbackList/FeedbackList";
+import { FieldMeta } from "../Field/Field";
 
 export default function AppTextField(
 	props: Omit<
@@ -57,12 +58,14 @@ export default function AppTextField(
 					type: "negative"
 				}))}
 			id={props.id ?? id}
-			meta={{
-				...omit(["errors", "errorMap", "errorSourceMap"])(
-					field.state.meta
-				),
-				isFocused
-			}}
+			meta={
+				{
+					...omit(["errors", "errorMap", "errorSourceMap"])(
+						field.state.meta
+					),
+					isFocused
+				} satisfies FieldMeta as FieldMeta
+			}
 			name={field.name}
 			onChange={handleChange}
 			onFocus={handleFocus}

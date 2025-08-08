@@ -15,7 +15,8 @@ export default function ObjectSelect<TOption extends Option>({
 	onChange,
 	options,
 	serialize,
-	value
+	value,
+	...selectProps
 }: {
 	children: (option: TOption) => ReactNode;
 	className?: string;
@@ -25,7 +26,10 @@ export default function ObjectSelect<TOption extends Option>({
 	options: Array<TOption>;
 	serialize: (option: TOption) => TOption["id"];
 	value: TOption | undefined;
-}) {
+} & Omit<
+	SelectHTMLAttributes<HTMLSelectElement>,
+	"children" | "name" | "onChange" | "value"
+>) {
 	const keyedOptions = options.reduce(
 		(memo, option) => ({
 			...memo,
@@ -44,6 +48,7 @@ export default function ObjectSelect<TOption extends Option>({
 
 	return (
 		<select
+			{...selectProps}
 			{...{ name }}
 			className={classNames(styles.select, className)}
 			onChange={handleChange}

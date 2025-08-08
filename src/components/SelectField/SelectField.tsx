@@ -20,6 +20,8 @@ export default function SelectField<TOption extends Option>({
 	meta,
 	name,
 	onChange,
+	onFocus,
+	onBlur,
 	options,
 	required = false,
 	serialize,
@@ -42,7 +44,9 @@ export default function SelectField<TOption extends Option>({
 		| "children"
 		| "includeBlank"
 		| "name"
+		| "onBlur"
 		| "onChange"
+		| "onFocus"
 		| "options"
 		| "serialize"
 		| "value"
@@ -63,7 +67,15 @@ export default function SelectField<TOption extends Option>({
 			className={classNames(styles.field, className)}
 		>
 			<ObjectSelect
-				{...{ name, onChange, options, serialize, value }}
+				{...{
+					name,
+					onChange,
+					onFocus,
+					onBlur,
+					options,
+					serialize,
+					value
+				}}
 				includeBlank={
 					(includeBlank && !required) ||
 					(includeBlank && required && !value)
@@ -98,11 +110,11 @@ export const useSelectField = <TOption extends Option>(
 		setValue(newValue);
 	};
 
-	const handleFocus: FocusEventHandler<HTMLInputElement> = () => {
+	const handleFocus: FocusEventHandler<HTMLSelectElement> = () => {
 		setIsFocused(true);
 	};
 
-	const handleBlur: FocusEventHandler<HTMLInputElement> = () => {
+	const handleBlur: FocusEventHandler<HTMLSelectElement> = () => {
 		setIsFocused(false);
 		setIsTouched(true);
 	};

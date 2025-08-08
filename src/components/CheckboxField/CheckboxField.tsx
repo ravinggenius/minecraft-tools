@@ -1,17 +1,9 @@
 "use client";
 
 import classNames from "classnames";
-import {
-	ChangeEventHandler,
-	ComponentProps,
-	FocusEventHandler,
-	InputHTMLAttributes,
-	useId,
-	useState
-} from "react";
+import { ComponentProps, InputHTMLAttributes } from "react";
 
-import Field, { FieldMeta } from "@/components/Field/Field";
-import { useForm } from "@/components/Form/Form";
+import Field from "@/components/Field/Field";
 
 import styles from "./CheckboxField.module.scss";
 
@@ -66,52 +58,3 @@ export default function CheckboxField({
 		</Field>
 	);
 }
-
-export const useCheckboxField = (
-	{ fieldFeedback }: Pick<ReturnType<typeof useForm>, "fieldFeedback">,
-	name: ComponentProps<typeof CheckboxField>["name"],
-	initialChecked: ComponentProps<typeof CheckboxField>["checked"] = undefined
-) => {
-	const id = useId();
-
-	const [checked, setChecked] = useState(initialChecked);
-
-	const [isFocused, setIsFocused] = useState(false);
-	const [isPristine, setIsPristine] = useState(false);
-	const [isTouched, setIsTouched] = useState(false);
-
-	const handleChange: ChangeEventHandler<HTMLInputElement> = ({
-		target: { checked }
-	}) => {
-		setIsPristine(true);
-		setIsTouched(true);
-
-		setChecked(checked);
-	};
-
-	const handleFocus: FocusEventHandler<HTMLInputElement> = () => {
-		setIsFocused(true);
-	};
-
-	const handleBlur: FocusEventHandler<HTMLInputElement> = () => {
-		setIsFocused(false);
-		setIsTouched(true);
-	};
-
-	return {
-		feedback: fieldFeedback[name],
-		id,
-		meta: {
-			isDirty: !isPristine,
-			isFocused,
-			isPristine,
-			isTouched,
-			isValid: true
-		} satisfies FieldMeta as FieldMeta,
-		name,
-		onChange: handleChange,
-		onFocus: handleFocus,
-		onBlur: handleBlur,
-		checked
-	};
-};

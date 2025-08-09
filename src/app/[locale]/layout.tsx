@@ -69,7 +69,10 @@ export default async function Layout({ children, params }: LayoutProps) {
 						profile={maybeProfile}
 					/>
 
-					<div id={BREADCRUMB_TRAIL_ROOT_ID} />
+					<div
+						className={styles.breadcrumbs}
+						id={BREADCRUMB_TRAIL_ROOT_ID}
+					/>
 
 					<main className={styles.main}>{children}</main>
 

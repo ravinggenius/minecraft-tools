@@ -1,10 +1,9 @@
 "use client";
 
 import classNames from "classnames";
-import { pick } from "rambda";
 
-import Form, { useForm } from "@/components/Form/Form";
-import TextField, { useTextField } from "@/components/TextField/TextField";
+import Form from "@/components/Form/Form";
+import { useAppForm } from "@/hooks/app-form";
 import { useTranslation } from "@/i18n/client";
 import { ServerAction } from "@/library/server-action";
 
@@ -26,39 +25,57 @@ export default function SessionAssistancePasswordForm({
 		"page-component-session-assistance-password-form"
 	);
 
-	const form = useForm(verifyEmail, { schema: DATA });
-
-	const emailField = useTextField(form, "email", email);
-
-	const tokenField = useTextField(form, "token", token);
-
-	const password = useTextField(form, "password", "");
-
-	const passwordConfirmation = useTextField(form, "passwordConfirmation", "");
+	const form = useAppForm({
+		defaultValues: {
+			email,
+			token,
+			password: "",
+			passwordConfirmation: ""
+		},
+		validators: {
+			onSubmit: DATA
+		}
+	});
 
 	return (
 		<Form
-			{...form}
+			action={verifyEmail}
 			className={classNames(styles.form, className)}
 			submitLabel={t("submit")}
+			feedback={[]}
 		>
-			<input {...pick(["name", "value"])(emailField)} type="hidden" />
+			<input name="email" value={form.state.values.email} type="hidden" />
+			<input name="token" value={form.state.values.token} type="hidden" />
 
-			<input {...pick(["name", "value"])(tokenField)} type="hidden" />
+			<form.AppField
+				name="password"
+				validators={{
+					onChange: DATA.shape.password
+				}}
+			>
+				{(field) => (
+					<field.TextField
+						label={t("password.label")}
+						required
+						type="password"
+					/>
+				)}
+			</form.AppField>
 
-			<TextField
-				{...password}
-				label={t("password.label")}
-				required
-				type="password"
-			/>
-
-			<TextField
-				{...passwordConfirmation}
-				label={t("password-confirmation.label")}
-				required
-				type="password"
-			/>
+			<form.AppField
+				name="passwordConfirmation"
+				validators={{
+					onChange: DATA.shape.passwordConfirmation
+				}}
+			>
+				{(field) => (
+					<field.TextField
+						label={t("password-confirmation.label")}
+						required
+						type="password"
+					/>
+				)}
+			</form.AppField>
 		</Form>
 	);
 }

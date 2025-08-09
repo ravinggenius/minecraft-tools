@@ -1,8 +1,8 @@
 "use client";
 
-import Form, { useForm } from "@/components/Form/Form";
-import TextField, { useTextField } from "@/components/TextField/TextField";
+import Form from "@/components/Form/Form";
 import { ACCOUNT_CREATE_ATTRS } from "@/domains/account/schema";
+import { useAppForm } from "@/hooks/app-form";
 import { useTranslation } from "@/i18n/client";
 import { ServerAction } from "@/library/server-action";
 
@@ -15,44 +15,86 @@ export default function CreateProfileForm({
 }) {
 	const { t } = useTranslation("page-component-new-profile-form");
 
-	const form = useForm(createProfile, { schema: ACCOUNT_CREATE_ATTRS });
-
-	const name = useTextField(form, "profile.name", "");
-
-	const email = useTextField(form, "account.email", "");
-
-	const password = useTextField(form, "account.password", "");
-
-	const passwordConfirmation = useTextField(
-		form,
-		"account.passwordConfirmation",
-		""
-	);
+	const form = useAppForm({
+		defaultValues: {
+			profile: {
+				name: ""
+			},
+			account: {
+				email: "",
+				password: "",
+				passwordConfirmation: ""
+			}
+		},
+		validators: {
+			onSubmit: ACCOUNT_CREATE_ATTRS
+		}
+	});
 
 	return (
-		<Form {...form} className={styles.form} submitLabel={t("submit")}>
-			<TextField {...name} label={t("name.label")} required />
+		<Form
+			action={createProfile}
+			className={styles.form}
+			submitLabel={t("submit")}
+			feedback={[]}
+		>
+			<form.AppField
+				name="profile.name"
+				validators={{
+					onChange: ACCOUNT_CREATE_ATTRS.shape.profile.shape.name
+				}}
+			>
+				{(field) => (
+					<field.TextField label={t("name.label")} required />
+				)}
+			</form.AppField>
 
-			<TextField
-				{...email}
-				label={t("email.label")}
-				required
-				type="email"
-			/>
+			<form.AppField
+				name="account.email"
+				validators={{
+					onChange: ACCOUNT_CREATE_ATTRS.shape.account.shape.email
+				}}
+			>
+				{(field) => (
+					<field.TextField
+						label={t("email.label")}
+						required
+						type="email"
+					/>
+				)}
+			</form.AppField>
 
-			<TextField
-				{...password}
-				label={t("password.label")}
-				required
-				type="password"
-			/>
+			<form.AppField
+				name="account.password"
+				validators={{
+					onChange: ACCOUNT_CREATE_ATTRS.shape.account.shape.password
+				}}
+			>
+				{(field) => (
+					<field.TextField
+						label={t("password.label")}
+						required
+						type="password"
+					/>
+				)}
+			</form.AppField>
 
-			<TextField
-				{...passwordConfirmation}
-				label={t("password-confirmation.label")}
-				required
-				type="password"
-			/>
+			<form.AppField
+				name="account.passwordConfirmation"
+				validators={{
+					onChange:
+						ACCOUNT_CREATE_ATTRS.shape.account.shape
+							.passwordConfirmation
+				}}
+			>
+				{(field) => (
+					<field.TextField
+						label={t("password-confirmation.label")}
+						required
+						type="password"
+					/>
+				)}
+			</form.AppField>
 		</Form>
 	);
 }

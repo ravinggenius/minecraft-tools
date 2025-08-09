@@ -1,12 +1,11 @@
 "use client";
 
+import { useForm } from "@tanstack/react-form";
 import classNames from "classnames";
 import { useSearchParams } from "next/navigation";
-import { pick } from "rambda";
 import { useEffect, useRef } from "react";
 
-import Form, { useForm } from "@/components/Form/Form";
-import { useTextField } from "@/components/TextField/TextField";
+import Form from "@/components/Form/Form";
 import { useTranslation } from "@/i18n/client";
 import { ServerAction } from "@/library/server-action";
 
@@ -26,11 +25,15 @@ export default function VerifyEmailtForm({
 
 	const formElement = useRef<HTMLFormElement>(null);
 
-	const form = useForm(verifyEmail, { schema: DATA });
-
-	const email = useTextField(form, "email", query.get("email") ?? "");
-
-	const token = useTextField(form, "token", query.get("token") ?? "");
+	const form = useForm({
+		defaultValues: {
+			email: query.get("email") ?? "",
+			token: query.get("token") ?? ""
+		},
+		validators: {
+			onSubmit: DATA
+		}
+	});
 
 	useEffect(() => {
 		formElement.current?.requestSubmit();
@@ -38,14 +41,15 @@ export default function VerifyEmailtForm({
 
 	return (
 		<Form
-			{...form}
+			action={verifyEmail}
 			className={classNames(styles.form, className)}
 			ref={formElement}
 			submitLabel={t("submit")}
+			feedback={[]}
 		>
-			<input {...pick(["name", "value"])(email)} type="hidden" />
+			<input name="email" value={form.state.values.email} type="hidden" />
 
-			<input {...pick(["name", "value"])(token)} type="hidden" />
+			<input name="token" value={form.state.values.token} type="hidden" />
 		</Form>
 	);
 }

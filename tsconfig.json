@@ -28,6 +28,7 @@
     "next-env.d.ts",
     "reset.d.ts",
     "legacy.d.ts",
+    "missing-globals.d.ts",
     "server-only.d.ts",
     "**/*.mjs",
     "**/*.ts",

@@ -5,15 +5,11 @@ import { Route } from "next";
 import NextForm from "next/form";
 import { usePathname } from "next/navigation";
 
+import { useAppForm } from "@/hooks/app-form";
 import { useTranslation } from "@/i18n/client";
 
 import Button from "../Button/Button";
-import CheckboxField, {
-	useCheckboxField
-} from "../CheckboxField/CheckboxField";
 import { Option } from "../ObjectSelect/ObjectSelect";
-import SelectField, { useSelectField } from "../SelectField/SelectField";
-import TextField, { useTextField } from "../TextField/TextField";
 
 import styles from "./SearchForm.module.scss";
 import { Include, Keywords, Query, Ranges } from "./SearchForm.schema";
@@ -46,41 +42,52 @@ export default function SearchForm<
 		{}
 	);
 
-	const q = useTextField({ fieldFeedback: {} }, "q", query.query);
-	const v = useSelectField(
-		{ fieldFeedback: {} },
-		"v",
-		viewOptions,
-		keyedViewOptions[query.view]
-	);
-	const e = useCheckboxField({ fieldFeedback: {} }, "e", query.expand);
+	const form = useAppForm({
+		defaultValues: {
+			q: query.query,
+			v: keyedViewOptions[query.view],
+			e: query.expand
+		}
+	});
 
 	return (
 		<NextForm
 			action={"" as Route}
 			className={classNames(styles.form, className)}
 		>
-			<TextField
-				{...q}
-				className={styles.query}
-				label={t("query.label")}
-				type="search"
-			/>
+			<form.AppField name="q">
+				{(field) => (
+					<field.TextField
+						className={styles.query}
+						label={t("query.label")}
+						type="search"
+					/>
+				)}
+			</form.AppField>
 
-			<SelectField
-				{...v}
-				className={styles.view}
-				label={t("view.label")}
-				serialize={(option) => option.id}
-			>
-				{(option) => t("view.options.label", { context: option.id })}
-			</SelectField>
+			<form.AppField name="v">
+				{(field) => (
+					<field.SelectField
+						className={styles.view}
+						label={t("view.label")}
+						options={viewOptions}
+						serialize={(option) => option.id}
+					>
+						{(option) =>
+							t("view.options.label", { context: option.id })
+						}
+					</field.SelectField>
+				)}
+			</form.AppField>
 
-			<CheckboxField
-				{...e}
-				className={styles.expand}
-				label={t("expand.label")}
-			/>
+			<form.AppField name="e">
+				{(field) => (
+					<field.CheckboxField
+						className={styles.expand}
+						label={t("expand.label")}
+					/>
+				)}
+			</form.AppField>
 
 			<Button className={styles.submit} type="submit" variant="primary">
 				{t("submit.label")}

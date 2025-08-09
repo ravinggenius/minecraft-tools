@@ -1,10 +1,31 @@
 [
   {
     "edition": "bedrock",
-    "version": "1.21.100",
+    "version": "1.21.110",
     "developmentReleasedOn": "2025-06-10",
     "platforms": {
       "upcoming": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.100",
+    "developmentReleasedOn": "2025-06-10",
+    "platforms": {
+      "2025-08-05": [
         "ChromeOS",
         "Android",
         "iOS",
@@ -3200,9 +3221,18 @@
     "edition": "java",
     "version": "1.21.8",
     "name": "Chase The Skies",
-    "developmentReleasedOn": "2025-07-15",
+    "developmentReleasedOn": "2025-07-29",
     "platforms": {
       "upcoming": ["Linux", "macOS", "Windows"]
+    }
+  },
+  {
+    "edition": "java",
+    "version": "1.21.8",
+    "name": "Chase The Skies",
+    "developmentReleasedOn": "2025-07-15",
+    "platforms": {
+      "2025-07-17": ["Linux", "macOS", "Windows"]
     }
   },
   {

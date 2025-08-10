@@ -387,9 +387,9 @@ table "releases" {
     type = text
   }
 
-  column "cycle" {
-    null = false
-    type = sql("integer ARRAY[2]")
+  column "name" {
+    null = true
+    type = sql("citext")
   }
 
   column "development_released_on" {
@@ -403,18 +403,6 @@ table "releases" {
   }
 
   column "is_available_for_tools" {
-    null    = false
-    type    = boolean
-    default = false
-  }
-
-  column "is_earliest_in_cycle" {
-    null    = false
-    type    = boolean
-    default = false
-  }
-
-  column "is_latest_in_cycle" {
     null    = false
     type    = boolean
     default = false
@@ -446,16 +434,8 @@ function "update_release_flags" {
           SELECT
             r.id,
             ROW_NUMBER() OVER (
-              PARTITION BY r.edition, r.cycle
-              ORDER BY min(pr.released_on) ASC
-            ) = 1 AS is_earliest_in_cycle,
-            ROW_NUMBER() OVER (
-              PARTITION BY r.edition, r.cycle
-              ORDER BY min(pr.released_on) DESC
-            ) = 1 AS is_latest_in_cycle,
-            ROW_NUMBER() OVER (
               PARTITION BY r.edition
-              ORDER BY min(pr.released_on) DESC
+              ORDER BY min(pr.production_released_on) DESC
             ) = 1 AS is_latest
           FROM releases AS r
           INNER JOIN platform_releases AS pr ON r.id = pr.release_id
@@ -463,8 +443,6 @@ function "update_release_flags" {
         )
         UPDATE releases
         SET
-          is_earliest_in_cycle = latest.is_earliest_in_cycle,
-          is_latest_in_cycle = latest.is_latest_in_cycle,
           is_latest = latest.is_latest
         FROM latest
         WHERE releases.id = latest.id;
@@ -520,7 +498,7 @@ table "platform_releases" {
     type = uuid
   }
 
-  column "released_on" {
+  column "production_released_on" {
     null = false
     type = date
   }
@@ -672,9 +650,6 @@ view "released_items" {
       v.id AS release_id,
       v.edition,
       v.version,
-      v.cycle,
-      v.is_earliest_in_cycle,
-      v.is_latest_in_cycle,
       v.is_latest,
       i.*
     FROM items AS i

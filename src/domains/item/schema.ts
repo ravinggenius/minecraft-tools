@@ -34,9 +34,6 @@ export const RELEASED_ITEM = ITEM.and(
 		RELEASE.pick({
 			edition: true,
 			version: true,
-			cycle: true,
-			isEarliestInCycle: true,
-			isLatestInCycle: true,
 			isLatest: true
 		})
 	)

@@ -10,11 +10,6 @@ export const OPTIONAL_RANGE = z
 	})
 	.optional();
 
-const CYCLE_TUPLE = z.tuple([
-	z.union([z.literal(0), z.literal(1)]),
-	z.int().nonnegative()
-]);
-
 export const OPTIONAL_DATE_RANGE = OPTIONAL_RANGE.transform((range) =>
 	range
 		? {
@@ -25,23 +20,6 @@ export const OPTIONAL_DATE_RANGE = OPTIONAL_RANGE.transform((range) =>
 					? z.coerce
 							.date()
 							.parse(parse(range.to, "yyyyMMdd", new Date()))
-					: undefined
-			}
-		: undefined
-);
-
-export const OPTIONAL_CYCLE_RANGE = OPTIONAL_RANGE.transform((range) =>
-	range
-		? {
-				from: CYCLE_TUPLE.parse(
-					range.from.split(".").map((n) => Number.parseInt(n, 10))
-				),
-				to: range.to
-					? CYCLE_TUPLE.parse(
-							range.to
-								.split(".")
-								.map((n) => Number.parseInt(n, 10))
-						)
 					: undefined
 			}
 		: undefined

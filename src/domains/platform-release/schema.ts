@@ -9,7 +9,7 @@ export const PLATFORM_RELEASE = z.object({
 	updatedAt: z.coerce.date(),
 	platformId: PLATFORM.shape.id,
 	releaseId: RELEASE.shape.id,
-	releasedOn: z.coerce.date()
+	productionReleasedOn: z.coerce.date()
 });
 
 export interface PlatformRelease extends z.infer<typeof PLATFORM_RELEASE> {}

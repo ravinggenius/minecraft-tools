@@ -310,6 +310,7 @@ table "permissions" {
 		  column.scope,
 		  column.auxiliary
     ]
+    nulls_distinct = false
   }
 }
 

@@ -27,6 +27,11 @@
     "value": "{{name}}"
   },
 
+  "notes-url": {
+    "label": "Notes URL",
+    "value": "{{notesUrl}}"
+  },
+
   "development-released-on": {
     "label": "Development Released",
     "value": "{{developmentReleasedOn, dateTime(year: numeric; month: short; day: numeric)}}"

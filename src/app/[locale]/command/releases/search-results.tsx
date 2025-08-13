@@ -28,7 +28,7 @@ export default async function PageSearchResults({
 			<SearchResults.List>
 				{(release: ExtendedRelease) => (
 					<KeyValueCard
-						{...{ locale, release }}
+						{...{ locale }}
 						edition={release.edition}
 						pairs={[
 							...(release.developmentReleasedOn

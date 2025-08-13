@@ -6,35 +6,20 @@ import { INCLUDE, Include } from "@/domains/release/search.schema";
 const BOOL = z.coerce.boolean().optional();
 
 export const QUERY = SEACH_QUERY(
-	[
-		"edition",
-		"version",
-		"is-earliest-in-cycle",
-		"is-latest-in-cycle",
-		"is-latest",
-		"platform"
-	] as const,
-	["cycle", "released-on"] as const,
+	["edition", "version", "name", "is-latest", "platform"] as const,
+	["production-released-on"] as const,
 	(rawQuery) =>
 		({
 			text: rawQuery.text,
 			edition: rawQuery.edition,
 			version: rawQuery.version,
-			cycle: INCLUDE.shape.cycle.parse(rawQuery.cycle),
-			isEarliestInCycle: BOOL.parse(
-				rawQuery["is-earliest-in-cycle"]?.[
-					rawQuery["is-earliest-in-cycle"].length - 1
-				]
-			),
-			isLatestInCycle: BOOL.parse(
-				rawQuery["is-latest-in-cycle"]?.[
-					rawQuery["is-latest-in-cycle"].length - 1
-				]
-			),
+			name: rawQuery.name,
 			isLatest: BOOL.parse(
 				rawQuery["is-latest"]?.[rawQuery["is-latest"].length - 1]
 			),
 			platform: rawQuery.platform,
-			releasedOn: INCLUDE.shape.releasedOn.parse(rawQuery["released-on"])
+			productionReleasedOn: INCLUDE.shape.productionReleasedOn.parse(
+				rawQuery["production-released-on"]
+			)
 		}) satisfies Include
 );

@@ -23,7 +23,7 @@ export const EXTENDED_RELEASE = RELEASE.omit({
 		z.object({
 			id: PLATFORM.shape.id,
 			name: PLATFORM.shape.name,
-			releasedOn: PLATFORM_RELEASE.shape.releasedOn
+			productionReleasedOn: PLATFORM_RELEASE.shape.productionReleasedOn
 		})
 	)
 });
@@ -52,6 +52,8 @@ export const search = async ({
 				OR
 				(r.version LIKE ANY(${sql.array(includeText, "text")}))
 				OR
+				(r.name LIKE ANY(${sql.array(includeText, "text")}))
+				OR
 				(p.name LIKE ANY(${sql.array(includeText, "text")}))
 			)`
 			: undefined,
@@ -64,18 +66,12 @@ export const search = async ({
 					"text"
 				)}))`
 			: undefined,
-		include.cycle?.from
-			? sql.fragment`(r.cycle >= ${sql.array(include.cycle.from, "int4")})`
+		include.name
+			? sql.fragment`(r.name LIKE ANY(${sql.array(
+					include.name.map((name) => `%${name}%`),
+					"text"
+				)}))`
 			: undefined,
-		include.cycle?.to
-			? sql.fragment`(r.cycle <= ${sql.array(include.cycle.to, "int4")})`
-			: undefined,
-		include.isEarliestInCycle === undefined
-			? undefined
-			: sql.fragment`(r.is_earliest_in_cycle = ${include.isEarliestInCycle})`,
-		include.isLatestInCycle === undefined
-			? undefined
-			: sql.fragment`(r.is_latest_in_cycle = ${include.isLatestInCycle})`,
 		include.isLatest === undefined
 			? undefined
 			: sql.fragment`(r.is_latest = ${include.isLatest})`,
@@ -85,11 +81,11 @@ export const search = async ({
 					"text"
 				)}))`
 			: undefined,
-		include.releasedOn?.from
-			? sql.fragment`(pr.released_on >= ${sql.date(include.releasedOn.from)})`
+		include.productionReleasedOn?.from
+			? sql.fragment`(pr.production_released_on >= ${sql.date(include.productionReleasedOn.from)})`
 			: undefined,
-		include.releasedOn?.to
-			? sql.fragment`(pr.released_on <= ${sql.date(include.releasedOn.to)})`
+		include.productionReleasedOn?.to
+			? sql.fragment`(pr.production_released_on <= ${sql.date(include.productionReleasedOn.to)})`
 			: undefined
 	].filter(Boolean);
 
@@ -134,12 +130,10 @@ export const search = async ({
 					pr.id,
 					r.edition,
 					r.version,
-					r.cycle,
-					r.development_released_on AS "developementReleasedOn",
-					pr.released_on AS "productionReleasedOn",
-					r.notes_url AS "notesUrl",
-					r.is_earliest_in_cycle AS "isEarliestInCycle",
-					r.is_latest_in_cycle AS "isLatestInCycle",
+					r.name,
+					r.development_released_on AS "developmentReleasedOn",
+					pr.production_released_on AS "productionReleasedOn",
+					r.changelog AS "changelog",
 					r.is_latest AS "isLatest",
 					jsonb_build_array(
 						jsonb_build_object(
@@ -147,8 +141,8 @@ export const search = async ({
 							p.id,
 							'name',
 							p.name,
-							'releasedOn',
-							pr.released_on
+							'productionReleasedOn',
+							pr.production_released_on
 						)
 					) AS "platformReleases"
 				FROM
@@ -161,7 +155,6 @@ export const search = async ({
 							: sql.fragment``
 					}
 				ORDER BY
-					r.cycle DESC,
 					r.edition ASC,
 					"productionReleasedOn" DESC,
 					r.version ASC,
@@ -176,12 +169,10 @@ export const search = async ({
 					r.id,
 					r.edition,
 					r.version,
-					r.cycle,
-					r.development_released_on AS "developementReleasedOn",
-					min(pr.released_on) AS "productionReleasedOn",
-					r.notes_url AS "notesUrl",
-					r.is_earliest_in_cycle AS "isEarliestInCycle",
-					r.is_latest_in_cycle AS "isLatestInCycle",
+					r.name,
+					r.development_released_on AS "developmentReleasedOn",
+					min(pr.production_released_on) AS "productionReleasedOn",
+					r.changelog AS "changelog",
 					r.is_latest AS "isLatest",
 					COALESCE(
 						jsonb_agg(
@@ -190,8 +181,8 @@ export const search = async ({
 								p.id,
 								'name',
 								p.name,
-								'releasedOn',
-								pr.released_on
+								'productionReleasedOn',
+								pr.production_released_on
 							)
 						),
 						'[]'
@@ -208,7 +199,6 @@ export const search = async ({
 				GROUP BY
 					r.id
 				ORDER BY
-					r.cycle DESC,
 					r.edition ASC,
 					"productionReleasedOn" DESC,
 					r.version ASC
@@ -228,14 +218,9 @@ export const search = async ({
 };
 
 export const doImport = async (release: ImportRelease) => {
-	const cycle = release.version
-		.split(".")
-		.slice(0, 2)
-		.map((part) => Number.parseInt(part, 10));
-
 	const rainbow = Object.entries(release.platforms).map(
-		async ([releasedOn, names]) => {
-			if (releasedOn === UPCOMING.value) {
+		async ([productionReleasedOn, names]) => {
+			if (productionReleasedOn === UPCOMING.value) {
 				return;
 			}
 
@@ -267,15 +252,15 @@ export const doImport = async (release: ImportRelease) => {
 							releases (
 								edition,
 								version,
-								cycle,
+								name,
 								development_released_on,
-								notes_url
+								changelog
 							)
 						VALUES
 							(
 								${release.edition},
 								${release.version},
-								${sql.array(cycle, sql.fragment`integer[]`)},
+								${release.name ?? null},
 								${
 									release.developmentReleasedOn
 										? sql.date(
@@ -283,39 +268,37 @@ export const doImport = async (release: ImportRelease) => {
 											)
 										: null
 								},
-								${release.notesUrl ?? null}
+								${release.changelog ?? null}
 							)
 						ON CONFLICT (edition, version) DO UPDATE
 						SET
 							updated_at = DEFAULT,
 							development_released_on = EXCLUDED.development_released_on,
-							notes_url = EXCLUDED.notes_url
+							changelog = EXCLUDED.changelog
 						RETURNING
 							id,
 							created_at,
 							updated_at,
 							edition,
 							version,
-							cycle,
+							name,
 							development_released_on,
-							notes_url,
-							is_earliest_in_cycle,
-							is_latest_in_cycle,
+							changelog,
 							is_latest
 					)
 				INSERT INTO
-					platform_releases (platform_id, release_id, released_on)
+					platform_releases (platform_id, release_id, production_released_on)
 				SELECT
 					p.id,
 					r.id,
-					${sql.date(new Date(releasedOn))}
+					${sql.date(new Date(productionReleasedOn))}
 				FROM
 					the_platforms AS p,
 					the_release AS r
 				ON CONFLICT (platform_id, release_id) DO UPDATE
 				SET
 					updated_at = DEFAULT,
-					released_on = ${sql.date(new Date(releasedOn))}
+					production_released_on = ${sql.date(new Date(productionReleasedOn))}
 				RETURNING
 					id,
 					platform_id AS "platformId",

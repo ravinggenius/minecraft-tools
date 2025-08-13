@@ -28,16 +28,9 @@ export default async function PageSearchResults({
 			<SearchResults.List>
 				{(release: ExtendedRelease) => (
 					<KeyValueCard
-						{...{ locale, release }}
+						{...{ locale }}
 						edition={release.edition}
 						pairs={[
-							{
-								key: t("cycle.label"),
-								value: t("cycle.value", {
-									major: release.cycle[0],
-									minor: release.cycle[1]
-								})
-							},
 							...(release.developmentReleasedOn
 								? [
 										{
@@ -58,9 +51,9 @@ export default async function PageSearchResults({
 								: []),
 							{
 								key: t("production-released-on.label"),
-								value: release.notesUrl
+								value: release.changelog
 									? {
-											href: release.notesUrl,
+											href: release.changelog,
 											text: t(
 												"production-released-on.value",
 												{
@@ -79,22 +72,6 @@ export default async function PageSearchResults({
 										})
 							},
 							{
-								key: t("is-earliest-in-cycle.label"),
-								value: t("is-earliest-in-cycle.value", {
-									context: release.isEarliestInCycle
-										? "yes"
-										: "no"
-								})
-							},
-							{
-								key: t("is-latest-in-cycle.label"),
-								value: t("is-latest-in-cycle.value", {
-									context: release.isLatestInCycle
-										? "yes"
-										: "no"
-								})
-							},
-							{
 								key: t("is-latest.label"),
 								value: t("is-latest.value", {
 									context: release.isLatest ? "yes" : "no"
@@ -109,7 +86,11 @@ export default async function PageSearchResults({
 								isLarge: true
 							}
 						]}
-						title={t("version.value", { version: release.version })}
+						title={t("list.card.title", {
+							context: release.name ? "named" : undefined,
+							version: release.version,
+							name: release.name
+						})}
 						variant="flat"
 					/>
 				)}
@@ -124,22 +105,20 @@ export default async function PageSearchResults({
 					}
 				</Field>
 
-				<Field fieldPath="cycle" label={t("cycle.label")}>
-					{({ cycle: [major, minor] }: ExtendedRelease) =>
-						t("cycle.value", { major, minor })
-					}
-				</Field>
-
 				<Field fieldPath="version" label={t("version.label")}>
-					{({ notesUrl, version }: ExtendedRelease) =>
-						notesUrl ? (
-							<a href={notesUrl} rel="noreferrer">
+					{({ changelog, version }: ExtendedRelease) =>
+						changelog ? (
+							<a href={changelog} rel="noreferrer">
 								{t("version.value", { version })}
 							</a>
 						) : (
 							t("version.value", { version })
 						)
 					}
+				</Field>
+
+				<Field fieldPath="name" label={t("name.label")}>
+					{({ name }: ExtendedRelease) => t("name.value", { name })}
 				</Field>
 
 				<Field
@@ -153,9 +132,7 @@ export default async function PageSearchResults({
 										developmentReleasedOn
 									)
 								})
-							: t("development-released-on.value", {
-									context: "unknown"
-								})
+							: null
 					}
 				</Field>
 
@@ -166,28 +143,6 @@ export default async function PageSearchResults({
 					{({ productionReleasedOn }: ExtendedRelease) =>
 						t("production-released-on.value", {
 							productionReleasedOn: new Date(productionReleasedOn)
-						})
-					}
-				</Field>
-
-				<Field
-					fieldPath="isEarliestInCycle"
-					label={t("is-earliest-in-cycle.label")}
-				>
-					{({ isEarliestInCycle }: ExtendedRelease) =>
-						t("is-earliest-in-cycle.value", {
-							context: isEarliestInCycle ? "yes" : "no"
-						})
-					}
-				</Field>
-
-				<Field
-					fieldPath="isLatestInCycle"
-					label={t("is-latest-in-cycle.label")}
-				>
-					{({ isLatestInCycle }: ExtendedRelease) =>
-						t("is-latest-in-cycle.value", {
-							context: isLatestInCycle ? "yes" : "no"
 						})
 					}
 				</Field>
@@ -211,7 +166,7 @@ export default async function PageSearchResults({
 									<span>{pr.name}</span>
 									<span>
 										{new Date(
-											pr.releasedOn
+											pr.productionReleasedOn
 										).toLocaleDateString()}
 									</span>
 								</li>

@@ -1,5 +1,10 @@
 {
-  "list": {},
+  "list": {
+    "card": {
+      "title": "{{version}}",
+      "title_named": "{{version}} - {{name}}"
+    }
+  },
 
   "table": {
     "caption": "One release listed",
@@ -12,20 +17,24 @@
     "value_java": "Java"
   },
 
-  "cycle": {
-    "label": "Cycle",
-    "value": "{{major}}.{{minor}}"
-  },
-
   "version": {
     "label": "Version",
     "value": "{{version}}"
   },
 
+  "name": {
+    "label": "Name",
+    "value": "{{name}}"
+  },
+
+  "changelog": {
+    "label": "Changelog",
+    "value": "{{changelog}}"
+  },
+
   "development-released-on": {
     "label": "Development Released",
-    "value": "{{developmentReleasedOn, dateTime(year: numeric; month: short; day: numeric)}}",
-    "value_unknown": "unknown"
+    "value": "{{developmentReleasedOn, dateTime(year: numeric; month: short; day: numeric)}}"
   },
 
   "production-released-on": {
@@ -35,18 +44,6 @@
 
   "is-available-for-tools": {
     "label": "Available For Tools?",
-    "value_yes": "Y",
-    "value_no": "N"
-  },
-
-  "is-earliest-in-cycle": {
-    "label": "Earliest In Cycle?",
-    "value_yes": "Y",
-    "value_no": "N"
-  },
-
-  "is-latest-in-cycle": {
-    "label": "Latest In Cycle?",
     "value_yes": "Y",
     "value_no": "N"
   },

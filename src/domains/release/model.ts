@@ -133,7 +133,7 @@ export const search = async ({
 					r.name,
 					r.development_released_on AS "developmentReleasedOn",
 					pr.production_released_on AS "productionReleasedOn",
-					r.changelog AS "changelog",
+					r.changelog,
 					r.is_latest AS "isLatest",
 					jsonb_build_array(
 						jsonb_build_object(
@@ -172,7 +172,7 @@ export const search = async ({
 					r.name,
 					r.development_released_on AS "developmentReleasedOn",
 					min(pr.production_released_on) AS "productionReleasedOn",
-					r.changelog AS "changelog",
+					r.changelog,
 					r.is_latest AS "isLatest",
 					COALESCE(
 						jsonb_agg(

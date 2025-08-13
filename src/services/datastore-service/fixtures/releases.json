@@ -35,6 +35,7 @@
     "edition": "bedrock",
     "version": "1.21.100",
     "name": "Chase The Skies",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/38581287884557-Minecraft-1-21-100-Bedrock",
     "developmentReleasedOn": "2025-06-10",
     "platformsCondensed": {
       "2025-08-05": [
@@ -147,6 +148,7 @@
     "edition": "bedrock",
     "version": "1.21.84",
     "name": "Spring To Life",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/38129892058893-Minecraft-Java-Edition-1-21-8",
     "platformsCondensed": {
       "2025-06-05": ["Xbox One"]
     }
@@ -735,6 +737,7 @@
     "edition": "bedrock",
     "version": "1.20.62",
     "name": "Bats And Pots",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/24148434660237-Minecraft-1-20-62-Bedrock",
     "platformsCondensed": {
       "2024-02-15": [
         "ChromeOS",
@@ -3499,6 +3502,7 @@
     "edition": "java",
     "version": "1.20.5",
     "name": "Armored Paws",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/26136167989005-Minecraft-Java-Edition-1-20-5-Armored-Paws",
     "developmentReleasedOn": "2023-12-18",
     "platformsCondensed": {
       "2024-04-23": ["Linux", "macOS", "Windows"]

@@ -398,7 +398,7 @@ table "releases" {
     type = date
   }
 
-  column "notes_url" {
+  column "changelog" {
     null = true
     type = text
   }

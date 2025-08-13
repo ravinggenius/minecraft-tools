@@ -27,9 +27,9 @@
     "value": "{{name}}"
   },
 
-  "notes-url": {
-    "label": "Notes URL",
-    "value": "{{notesUrl}}"
+  "changelog": {
+    "label": "Changelog",
+    "value": "{{changelog}}"
   },
 
   "development-released-on": {

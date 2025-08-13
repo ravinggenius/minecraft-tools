@@ -51,9 +51,9 @@ export default async function PageSearchResults({
 								: []),
 							{
 								key: t("production-released-on.label"),
-								value: release.notesUrl
+								value: release.changelog
 									? {
-											href: release.notesUrl,
+											href: release.changelog,
 											text: t(
 												"production-released-on.value",
 												{
@@ -106,9 +106,9 @@ export default async function PageSearchResults({
 				</Field>
 
 				<Field fieldPath="version" label={t("version.label")}>
-					{({ notesUrl, version }: ExtendedRelease) =>
-						notesUrl ? (
-							<a href={notesUrl} rel="noreferrer">
+					{({ changelog, version }: ExtendedRelease) =>
+						changelog ? (
+							<a href={changelog} rel="noreferrer">
 								{t("version.value", { version })}
 							</a>
 						) : (

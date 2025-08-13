@@ -133,7 +133,7 @@ export const search = async ({
 					r.name,
 					r.development_released_on AS "developmentReleasedOn",
 					pr.production_released_on AS "productionReleasedOn",
-					r.notes_url AS "notesUrl",
+					r.changelog AS "changelog",
 					r.is_latest AS "isLatest",
 					jsonb_build_array(
 						jsonb_build_object(
@@ -172,7 +172,7 @@ export const search = async ({
 					r.name,
 					r.development_released_on AS "developmentReleasedOn",
 					min(pr.production_released_on) AS "productionReleasedOn",
-					r.notes_url AS "notesUrl",
+					r.changelog AS "changelog",
 					r.is_latest AS "isLatest",
 					COALESCE(
 						jsonb_agg(
@@ -254,7 +254,7 @@ export const doImport = async (release: ImportRelease) => {
 								version,
 								name,
 								development_released_on,
-								notes_url
+								changelog
 							)
 						VALUES
 							(
@@ -268,13 +268,13 @@ export const doImport = async (release: ImportRelease) => {
 											)
 										: null
 								},
-								${release.notesUrl ?? null}
+								${release.changelog ?? null}
 							)
 						ON CONFLICT (edition, version) DO UPDATE
 						SET
 							updated_at = DEFAULT,
 							development_released_on = EXCLUDED.development_released_on,
-							notes_url = EXCLUDED.notes_url
+							changelog = EXCLUDED.changelog
 						RETURNING
 							id,
 							created_at,
@@ -283,7 +283,7 @@ export const doImport = async (release: ImportRelease) => {
 							version,
 							name,
 							development_released_on,
-							notes_url,
+							changelog,
 							is_latest
 					)
 				INSERT INTO

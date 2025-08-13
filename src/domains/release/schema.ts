@@ -14,7 +14,7 @@ export const RELEASE = z.object({
 	version: z.string(),
 	name: z.string().optional(),
 	developmentReleasedOn: z.coerce.date().optional(),
-	notesUrl: z.url().optional(),
+	changelog: z.url().optional(),
 	isAvailableForTools: z.coerce.boolean(),
 	isLatest: z.boolean().readonly()
 });
@@ -37,7 +37,7 @@ export const IMPORT_RELEASE = RELEASE.pick({
 	version: true,
 	name: true,
 	developmentReleasedOn: true,
-	notesUrl: true
+	changelog: true
 }).extend({
 	platforms: z.record(
 		z.union([z.iso.date(), UPCOMING]),

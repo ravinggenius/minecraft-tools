@@ -144,9 +144,7 @@ export default async function PageSearchResults({
 										developmentReleasedOn
 									)
 								})
-							: t("development-released-on.value", {
-									context: "unknown"
-								})
+							: null
 					}
 				</Field>
 

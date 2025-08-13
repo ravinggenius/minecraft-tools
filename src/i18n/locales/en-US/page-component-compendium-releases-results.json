@@ -29,8 +29,7 @@
 
   "development-released-on": {
     "label": "Development Released",
-    "value": "{{developmentReleasedOn, dateTime(year: numeric; month: short; day: numeric)}}",
-    "value_unknown": "unknown"
+    "value": "{{developmentReleasedOn, dateTime(year: numeric; month: short; day: numeric)}}"
   },
 
   "production-released-on": {

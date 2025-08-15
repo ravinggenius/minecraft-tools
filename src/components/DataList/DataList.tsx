@@ -16,8 +16,8 @@ export default function DataList<TRecord extends Identity>({
 }) {
 	return (
 		<ol className={classNames(styles.root, className)}>
-			{records.map((record) => (
-				<li className={styles.item} key={record.id}>
+			{records.map((record, index) => (
+				<li className={styles.item} key={`${record.id}-${index}`}>
 					{children(record)}
 				</li>
 			))}

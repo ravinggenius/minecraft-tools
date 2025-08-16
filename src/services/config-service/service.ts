@@ -1,5 +1,7 @@
 import { z } from "zod/v4";
 
+import FLEXIBLE_BOOL from "@/library/utility-schemas/flexible-boolean";
+
 export * from "./service-public";
 
 /**
@@ -21,11 +23,7 @@ export const email = {
 		.transform((n) => Number.parseInt(n, 10))
 		.pipe(z.int().min(1).max(65535))
 		.parse(process.env.EMAIL_PORT),
-	secure: z
-		.string()
-		.refine((s) => s === "true" || s === "false")
-		.transform((s) => s === "true")
-		.parse(process.env.EMAIL_SECURE)
+	secure: FLEXIBLE_BOOL.parse(process.env.EMAIL_SECURE)
 };
 
 export const emailResendExpiryMinutes = z

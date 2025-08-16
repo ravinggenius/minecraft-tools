@@ -15,6 +15,7 @@ const SCOPE_ONE = z.literal("one");
 
 const SUBJECT_COMPENDIUM = z.literal("compendium");
 const SUBJECT_PROFILE = z.literal("profile");
+const SUBJECT_PLATFORM = z.literal("platform");
 const SUBJECT_RELEASE = z.literal("release");
 const SUBJECT_WORLD = z.literal("world");
 
@@ -43,7 +44,11 @@ export interface AssertionCompendiumRead
 
 // admin user allowed to create compendium entries
 export const ASSERTION_COMPENDIUM_CREATE = z
-	.tuple([ACTION_CREATE, SCOPE_NEW, SUBJECT_RELEASE])
+	.tuple([
+		ACTION_CREATE,
+		SCOPE_NEW,
+		z.union([SUBJECT_PLATFORM, SUBJECT_RELEASE])
+	])
 	.transform(([action, scope, subject]) => ({ action, scope, subject }));
 
 export type AssertionCompendiumCreateTuple = z.input<
@@ -58,7 +63,7 @@ export const ASSERTION_COMPENDIUM_MANAGE = z
 	.tuple([
 		z.union([ACTION_READ, ACTION_UPDATE, ACTION_DESTROY]),
 		SCOPE_ANY,
-		SUBJECT_RELEASE
+		z.union([SUBJECT_PLATFORM, SUBJECT_RELEASE])
 	])
 	.transform(([action, scope, subject]) => ({ action, scope, subject }));
 

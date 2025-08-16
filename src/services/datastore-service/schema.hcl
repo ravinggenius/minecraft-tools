@@ -240,6 +240,7 @@ enum "permission_subject" {
   values = [
     "compendium",
     "profile",
+    "platform",
     "release",
     "world"
   ]

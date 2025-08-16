@@ -1,0 +1,35 @@
+{
+  "list": {
+    "card": {
+      "title": "{{name}}"
+    }
+  },
+
+  "table": {
+    "caption": "One platform listed",
+    "caption_other": "{{count}} platforms listed"
+  },
+
+  "name": {
+    "label": "Name",
+    "value": "{{name}}"
+  },
+
+  "releases-count": {
+    "label": "Releases",
+    "value": "{{count}} release",
+    "value_other": "{{count}} releases"
+  },
+
+  "editions": {
+    "label": "Editions",
+    "value_bedrock": "Bedrock",
+    "value_java": "Java"
+  },
+
+  "is-available-for-tools": {
+    "label": "Available For Tools?",
+    "value_yes": "Y",
+    "value_no": "N"
+  }
+}

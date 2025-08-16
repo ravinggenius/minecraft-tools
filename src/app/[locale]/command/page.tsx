@@ -46,6 +46,15 @@ export default async function Page({ params }: PageProps<"/[locale]/command">) {
 				<ol>
 					<li>
 						<Anchor
+							href={`/${locale}/command/platforms`}
+							variant="inline"
+						>
+							{t("menu.platforms")}
+						</Anchor>
+					</li>
+
+					<li>
+						<Anchor
 							href={`/${locale}/command/releases`}
 							variant="inline"
 						>

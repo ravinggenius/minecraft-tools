@@ -7,7 +7,7 @@ import sendForgotPassword from "@/emails/forgot-password";
 import { extractLocaleFromRequest } from "@/i18n/server";
 import { normalizeFormData, ServerAction } from "@/library/server-action";
 import { maybeProfileFromSession } from "@/library/session-manager";
-import * as config from "@/services/config-service/service.mjs";
+import * as config from "@/services/config-service/service";
 import * as secretService from "@/services/secret-service/service";
 
 const initiateForgotPasswordResetAction: ServerAction = async (data) => {

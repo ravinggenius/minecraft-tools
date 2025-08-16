@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 
-import * as config from "../config-service/service.mjs";
+import * as config from "../config-service/service";
 import * as secretService from "../secret-service/service";
 
 if (process.env.NEXT_RUNTIME === "nodejs") {

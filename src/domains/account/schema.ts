@@ -1,7 +1,7 @@
 import validator from "validator";
 import { z } from "zod/v4";
 
-import * as config from "@/services/config-service/service-public.mjs";
+import * as config from "@/services/config-service/service-public";
 
 import { PROFILE, PROFILE_ATTRS } from "../profile/schema";
 

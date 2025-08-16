@@ -1,6 +1,6 @@
 import { z } from "zod/v4";
 
-export * from "./service-public.mjs";
+export * from "./service-public";
 
 /**
  * Postgres database connection URL. Can point to a connection pool

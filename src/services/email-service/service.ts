@@ -1,6 +1,6 @@
 import nodemailer, { SendMailOptions } from "nodemailer";
 
-import * as config from "../config-service/service.mjs";
+import * as config from "../config-service/service";
 
 if (process.env.NEXT_RUNTIME === "nodejs") {
 	await import("server-only");

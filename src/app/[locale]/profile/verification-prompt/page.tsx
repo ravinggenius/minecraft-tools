@@ -9,7 +9,7 @@ import { loadPageTranslations } from "@/i18n/server";
 import { buildBreadcrumbsWithPrefix } from "@/library/breadcrumbs";
 import { ensureParams, LOCALE_PARAMS as PARAMS } from "@/library/route-meta";
 import { requireProfile } from "@/library/session-manager";
-import * as config from "@/services/config-service/service.mjs";
+import * as config from "@/services/config-service/service";
 
 import resendEmailVerificationAction from "./_actions/resend-email-verification-action";
 import VerifyEmailPromptForm from "./form";

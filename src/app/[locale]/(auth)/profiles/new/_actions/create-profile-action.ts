@@ -13,7 +13,7 @@ import {
 	maybeProfileFromSession,
 	writeSessionCookie
 } from "@/library/session-manager";
-import * as config from "@/services/config-service/service.mjs";
+import * as config from "@/services/config-service/service";
 import * as secretService from "@/services/secret-service/service";
 
 const createProfileAction: ServerAction = async (data) => {

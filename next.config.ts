@@ -1,7 +1,5 @@
 import type { NextConfig } from "next";
 
-import "./src/services/config-service/service.mjs";
-
 export default {
 	experimental: {
 		authInterrupts: true

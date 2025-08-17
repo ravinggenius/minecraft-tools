@@ -17,6 +17,23 @@ if (process.env.NEXT_RUNTIME === "nodejs") {
 	await import("server-only");
 }
 
+export const create = async (attrs: PlatformAttrs) => {
+	await enforceAuthorization(["create", "new", "platform"]);
+
+	return (await pool).one(sql.type(PLATFORM)`
+		INSERT INTO platforms (name)
+		VALUES (${attrs.name})
+		ON CONFLICT (name) DO UPDATE
+		SET
+			updated_at = DEFAULT
+		RETURNING
+			id,
+			created_at AS "createdAt",
+			updated_at AS "updatedAt",
+			name
+	`);
+};
+
 export const get = async (platformId: Platform["id"]) => {
 	await enforceAuthorization(["read", "any", "platform"]);
 

@@ -1,17 +1,78 @@
 import { z } from "zod/v4";
 
-import { confirmAuthorization } from "@/library/authorization";
+import {
+	confirmAuthorization,
+	enforceAuthorization
+} from "@/library/authorization";
+import CodedError, { ERROR_CODE } from "@/library/coded-error";
 import { COUNT, SearchParams, SearchResults } from "@/library/search";
 import { pool, sql } from "@/services/datastore-service/service";
 
 import { EDITION } from "../release/schema";
 
-import { PLATFORM } from "./schema";
+import { Platform, PLATFORM, PlatformAttrs } from "./schema";
 import { Include } from "./search.schema";
 
 if (process.env.NEXT_RUNTIME === "nodejs") {
 	await import("server-only");
 }
+
+export const get = async (platformId: Platform["id"]) => {
+	await enforceAuthorization(["read", "any", "platform"]);
+
+	return (await pool).one(sql.type(PLATFORM)`
+		SELECT
+			p.id,
+			p.created_at AS "createdAt",
+			p.updated_at AS "updatedAt",
+			p.name
+		FROM
+			platforms AS p
+		WHERE
+			p.id = ${platformId}
+	`);
+};
+
+export const update = async (
+	platformId: Platform["id"],
+	attrs: PlatformAttrs
+) => {
+	await enforceAuthorization(["update", "any", "platform"]);
+
+	return (await pool).transaction(async (transaction) => {
+		const alreadyExists = await transaction.oneFirst(sql.type(
+			z.object({
+				alreadyExists: z.boolean()
+			})
+		)`
+			SELECT
+				count(id) > 0 AS "alreadyExists"
+			FROM
+				platforms
+			WHERE
+				name = ${attrs.name}
+		`);
+
+		if (alreadyExists) {
+			throw new CodedError(ERROR_CODE.DUPLICATE_ENTRY, {
+				path: ["name"]
+			});
+		}
+
+		return transaction.one(sql.type(PLATFORM)`
+			UPDATE platforms
+			SET
+				updated_at = DEFAULT,
+				name = ${attrs.name}
+			WHERE id = ${platformId}
+			RETURNING
+				id,
+				created_at AS "createdAt",
+				updated_at AS "updatedAt",
+				name
+		`);
+	});
+};
 
 export const EXTENDED_PLATFORM = PLATFORM.omit({
 	createdAt: true,

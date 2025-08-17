@@ -1,5 +1,6 @@
 import { ComponentProps } from "react";
 
+import Anchor, { InternalHref } from "@/components/Anchor/Anchor";
 import { Field } from "@/components/DataTable/DataTable";
 import KeyValueCard from "@/components/Pagination/KeyValueCard/KeyValueCard";
 import SearchResults from "@/components/SearchResults/SearchResults";
@@ -29,6 +30,9 @@ export default async function PageSearchResults({
 				{(platform: ExtendedPlatform) => (
 					<KeyValueCard
 						{...{ locale }}
+						href={
+							`/${locale}/command/platforms/${platform.id}` as InternalHref
+						}
 						pairs={[
 							{
 								key: t("releases-count.label"),
@@ -56,7 +60,14 @@ export default async function PageSearchResults({
 				caption={t("table.caption", { count: platforms.length })}
 			>
 				<Field fieldPath="name" label={t("name.label")}>
-					{({ name }: ExtendedPlatform) => t("name.value", { name })}
+					{({ id, name }: ExtendedPlatform) => (
+						<Anchor
+							href={`/${locale}/command/platforms/${id}`}
+							variant="inline"
+						>
+							{t("name.value", { name })}
+						</Anchor>
+					)}
 				</Field>
 
 				<Field

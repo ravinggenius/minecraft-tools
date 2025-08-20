@@ -5,15 +5,17 @@ import {
 	ChangeEventHandler,
 	ComponentProps,
 	FocusEventHandler,
+	useContext,
 	useId,
 	useState
 } from "react";
 
 import CheckboxField from "@/components/CheckboxField/CheckboxField";
-import { Feedback } from "@/components/FeedbackList/FeedbackList";
 import { useFieldContext } from "@/hooks/app-form";
 
+import { Feedback } from "../FeedbackList/FeedbackList";
 import { FieldMeta } from "../Field/Field";
+import { FormServerFeedbackContext } from "../Form/Form";
 
 export default function AppCheckboxField(
 	props: Omit<
@@ -29,6 +31,8 @@ export default function AppCheckboxField(
 	> &
 		Partial<Pick<ComponentProps<typeof CheckboxField>, "id">>
 ) {
+	const serverFeedback = useContext(FormServerFeedbackContext);
+
 	const id = useId();
 
 	const field = useFieldContext<boolean>();
@@ -52,12 +56,15 @@ export default function AppCheckboxField(
 		<CheckboxField
 			{...props}
 			checked={Boolean(field.state.value)}
-			feedback={field.state.meta.errors
-				.filter(Boolean)
-				.map<Feedback>((error) => ({
-					message: error.message,
-					type: "negative"
-				}))}
+			feedback={[
+				...(serverFeedback[field.name] ?? []),
+				...field.state.meta.errors
+					.filter(Boolean)
+					.map<Feedback>((error) => ({
+						message: error.message,
+						type: "negative"
+					}))
+			]}
 			id={props.id ?? id}
 			meta={
 				{

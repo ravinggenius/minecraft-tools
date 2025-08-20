@@ -1,55 +1,19 @@
 import classNames from "classnames";
 import NextForm from "next/form";
-import { omit } from "rambda";
 import { ComponentProps, forwardRef, ReactElement, Ref, useState } from "react";
-import { ZodError, ZodType } from "zod/v4";
+import { createContext } from "react";
+import { ZodError } from "zod/v4";
 
 import Debug from "@/components/Debug/Debug";
 import FeedbackList, { Feedback } from "@/components/FeedbackList/FeedbackList";
 import Field from "@/components/Field/Field";
 import SubmitButton from "@/components/SubmitButton/SubmitButton";
 import { CodedErrorAttrs } from "@/library/coded-error";
-import { normalizeFormData, ServerAction } from "@/library/server-action";
+import { ServerAction } from "@/library/server-action";
 
 import styles from "./Form.module.scss";
 
-export default forwardRef(function ActionForm(
-	{
-		action,
-		children,
-		className,
-		debug = false,
-		feedback = [],
-		submitLabel,
-		submitVariant
-	}: {
-		action: ServerAction;
-		children?:
-			| ReactElement<ComponentProps<typeof Field>>
-			| Array<ReactElement<ComponentProps<typeof Field>>>;
-		className?: string;
-		debug?: boolean;
-		feedback?: Array<Feedback>;
-		submitLabel: ComponentProps<typeof SubmitButton>["label"];
-		submitVariant?: ComponentProps<typeof SubmitButton>["variant"];
-	},
-	ref: Ref<HTMLFormElement>
-) {
-	return (
-		<NextForm
-			{...{ action, ref }}
-			className={classNames(styles.form, className)}
-		>
-			<FeedbackList {...{ feedback }} />
-
-			{children}
-
-			<SubmitButton label={submitLabel} variant={submitVariant} />
-
-			{debug ? <Debug value={{ feedback }} /> : null}
-		</NextForm>
-	);
-});
+export const FormServerFeedbackContext = createContext<FormFeedback>({});
 
 interface FormFeedback {
 	_?: Array<Feedback> | undefined;
@@ -102,37 +66,53 @@ const extractFeedbackFrom = (error: unknown) => {
 	}
 };
 
-interface UseFormOptions<T> {
-	schema?: ZodType<T>;
-}
+export default forwardRef(function ActionForm(
+	{
+		action: serverAction,
+		children,
+		className,
+		debug = false,
+		submitLabel,
+		submitVariant
+	}: {
+		action: ServerAction;
+		children?:
+			| ReactElement<ComponentProps<typeof Field>>
+			| Array<ReactElement<ComponentProps<typeof Field>>>;
+		className?: string;
+		debug?: boolean;
+		submitLabel: ComponentProps<typeof SubmitButton>["label"];
+		submitVariant?: ComponentProps<typeof SubmitButton>["variant"];
+	},
+	ref: Ref<HTMLFormElement>
+) {
+	const [serverFeedback, setServerFeedback] = useState<FormFeedback>({});
 
-export const useForm = <T extends unknown>(
-	serverAction: ServerAction,
-	{ schema }: UseFormOptions<T> = {}
-) => {
-	const [feedback, setFeedback] = useState<FormFeedback>({});
+	const feedback = serverFeedback._ ?? [];
 
 	const clientServerAction: ServerAction = async (data) => {
-		if (schema) {
-			const result = await normalizeFormData(schema, data);
-
-			if (!result.success) {
-				setFeedback(extractFeedbackFrom(result.error));
-
-				return;
-			}
-		}
-
 		const reply = await serverAction(data);
 
 		if (reply) {
-			setFeedback(extractFeedbackFrom(reply));
+			setServerFeedback(extractFeedbackFrom(reply));
 		}
 	};
 
-	return {
-		action: clientServerAction,
-		feedback: feedback._,
-		fieldFeedback: omit(["_"])(feedback)
-	};
-};
+	return (
+		<NextForm
+			{...{ ref }}
+			action={clientServerAction}
+			className={classNames(styles.form, className)}
+		>
+			<FeedbackList {...{ feedback }} />
+
+			<FormServerFeedbackContext value={serverFeedback}>
+				{children}
+			</FormServerFeedbackContext>
+
+			<SubmitButton label={submitLabel} variant={submitVariant} />
+
+			{debug ? <Debug value={{ feedback }} /> : null}
+		</NextForm>
+	);
+});

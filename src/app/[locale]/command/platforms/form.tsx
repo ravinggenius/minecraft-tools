@@ -11,7 +11,7 @@ import { ServerAction } from "@/library/server-action";
 import styles from "./form.module.scss";
 
 export default function PlatformForm({
-	action: handleSubmit,
+	action,
 	attrs,
 	className
 }: {
@@ -30,9 +30,8 @@ export default function PlatformForm({
 
 	return (
 		<Form
-			{...{ form }}
+			{...{ action }}
 			className={classNames(styles.form, className)}
-			action={handleSubmit}
 			submitLabel={t("submit")}
 		>
 			<form.AppField

@@ -11,8 +11,8 @@
     "migrate": "atlas schema apply --to file://src/services/datastore-service/schema.hcl",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
-    "lint:check": "next lint",
-    "lint:fix": "next lint --fix",
+    "lint:check": "eslint . --ignore-pattern '.next/*' --ignore-pattern 'node_modules/*'",
+    "lint:fix": "npm run lint:check --fix",
     "load": "bun ./src/scripts/runner.ts",
     "test": "NODE_ENV=test playwright test"
   },
@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@c-ehrlich/eslint-plugin-use-server": "^0.0.6",
+    "@eslint/eslintrc": "^3.3.1",
     "@next/env": "^15.5.0",
     "@playwright/test": "^1.55.0",
     "@total-typescript/ts-reset": "^0.6.1",

@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { dir } from "i18next";
+import { Metadata } from "next";
 import { Noto_Sans, Noto_Sans_Mono } from "next/font/google";
 
 import deleteSessionAction from "@/app/[locale]/(auth)/sessions/_actions/delete-session-action";
@@ -9,10 +10,6 @@ import SiteStern from "@/components/SiteStern/SiteStern";
 import { loadPageTranslations } from "@/i18n/server";
 import { SUPPORTED_LOCALES } from "@/i18n/settings";
 import { ensureParams, LOCALE_PARAMS as PARAMS } from "@/library/route-meta";
-import {
-	LayoutGenerateMetadata,
-	LayoutProps
-} from "@/library/route-meta.schema";
 import { maybeProfileFromSession } from "@/library/session-manager";
 
 import "../globals.scss";
@@ -30,7 +27,9 @@ const notoSansMono = Noto_Sans_Mono({
 	variable: "--font-mono"
 });
 
-export const generateMetadata: LayoutGenerateMetadata = async ({ params }) => {
+export const generateMetadata = async ({
+	params
+}: LayoutProps<"/[locale]">) => {
 	const { locale } = await ensureParams(PARAMS, params);
 
 	const { t } = await loadPageTranslations(locale, "layout-root", {
@@ -43,7 +42,7 @@ export const generateMetadata: LayoutGenerateMetadata = async ({ params }) => {
 			template: t("title.template")
 		},
 		description: t("description")
-	};
+	} satisfies Metadata as Metadata;
 };
 
 export const generateStaticParams = () =>
@@ -51,7 +50,10 @@ export const generateStaticParams = () =>
 		locale
 	}));
 
-export default async function Layout({ children, params }: LayoutProps) {
+export default async function Layout({
+	children,
+	params
+}: LayoutProps<"/[locale]">) {
 	const { locale } = await ensureParams(PARAMS, params);
 
 	const maybeProfile = await maybeProfileFromSession();

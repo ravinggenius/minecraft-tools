@@ -1,7 +1,11 @@
-import * as passwordReset from "@/domains/password-reset/model";
-import { RouteMethod } from "@/library/route-meta.schema";
+import { NextRequest } from "next/server";
 
-export const GET: RouteMethod = async (request, { params }) => {
+import * as passwordReset from "@/domains/password-reset/model";
+
+export const GET = async (
+	request: NextRequest,
+	{ params }: RouteContext<"/api/cron/password-resets">
+) => {
 	await passwordReset.clearExpired();
 
 	return new Response(undefined, {

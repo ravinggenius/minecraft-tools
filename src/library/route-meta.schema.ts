@@ -1,7 +1,4 @@
-import { Metadata } from "next";
 import { Params } from "next/dist/server/request/params";
-import { SearchParams } from "next/dist/server/request/search-params";
-import { NextRequest } from "next/server";
 import { ReactNode } from "react";
 
 export interface DefaultProps {
@@ -13,33 +10,6 @@ export interface ErrorProps {
 	reset: () => void;
 }
 
-export interface LayoutProps {
-	children: ReactNode;
-	params?: Promise<Params>;
-}
-
-export type LayoutGenerateMetadata = (
-	props: Pick<LayoutProps, "params">
-) => Metadata | Promise<Metadata>;
-
 export interface TemplateProps {
 	children: ReactNode;
 }
-
-export interface PageProps {
-	params?: Promise<Params>;
-	searchParams?: Promise<SearchParams>;
-}
-
-export type PageGenerateMetadata = (
-	props: PageProps
-) => Metadata | Promise<Metadata>;
-
-export interface RouteContext {
-	params: Promise<Params>;
-}
-
-export type RouteMethod = (
-	request: NextRequest,
-	context: RouteContext
-) => Response | Promise<Response>;

@@ -1,7 +1,11 @@
-import * as sessionModel from "@/domains/session/model";
-import { RouteMethod } from "@/library/route-meta.schema";
+import { NextRequest } from "next/server";
 
-export const GET: RouteMethod = async (request, { params }) => {
+import * as sessionModel from "@/domains/session/model";
+
+export const GET = async (
+	request: NextRequest,
+	{ params }: RouteContext<"/api/cron/sessions">
+) => {
 	await sessionModel.clearExpired();
 
 	return new Response(undefined, {

@@ -1,14 +1,15 @@
+import { Params } from "next/dist/server/request/params";
+import { SearchParams } from "next/dist/server/request/search-params";
 import { notFound } from "next/navigation";
 import { z, ZodType } from "zod/v4";
 
 import { SUPPORTED_LOCALES } from "@/i18n/settings";
 
 import CodedError, { ERROR_CODE } from "./coded-error";
-import { PageProps } from "./route-meta.schema";
 
 export const ensureParams = async <T>(
 	schema: ZodType<T>,
-	rawParams: PageProps["params"]
+	rawParams: Promise<Params> | undefined
 ) => {
 	const reply = await schema.safeParseAsync(await rawParams);
 
@@ -21,7 +22,7 @@ export const ensureParams = async <T>(
 
 export const ensureSearchParams = async <T>(
 	schema: ZodType<T>,
-	rawSearchParams: PageProps["searchParams"]
+	rawSearchParams: Promise<SearchParams> | undefined
 ) => {
 	const reply = await schema.safeParseAsync(await rawSearchParams);
 

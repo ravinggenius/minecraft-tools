@@ -1,9 +1,7 @@
 [
   {
     "edition": "bedrock",
-    "version": "1.21.110",
-    "name": "unknown",
-    "developmentReleasedOn": "2025-06-10",
+    "version": "1.21.120",
     "platforms": {
       "upcoming": [
         "ChromeOS",
@@ -15,6 +13,47 @@
         "Xbox One",
         "Xbox Series S",
         "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.110",
+    "developmentReleasedOn": "2025-07-22",
+    "platforms": {
+      "upcoming": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.101",
+    "name": "Chase The Skies",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/38783390143885-Minecraft-1-21-101-Bedrock",
+    "platforms": {
+      "2025-08-13": ["Xbox One", "Xbox Series S", "Xbox Series X"],
+      "2025-08-15": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
         "Nintendo Switch",
         "PlayStation 4",
         "PlayStation 5"
@@ -3393,7 +3432,6 @@
   {
     "edition": "java",
     "version": "1.21.9",
-    "name": "unknown",
     "developmentReleasedOn": "2025-07-29",
     "platforms": {
       "upcoming": ["Linux", "macOS", "Windows"]

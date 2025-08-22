@@ -1,14 +1,21 @@
 "use client";
 
 import { omit } from "rambda";
-import { ComponentProps, FocusEventHandler, useId, useState } from "react";
+import {
+	ComponentProps,
+	FocusEventHandler,
+	useContext,
+	useId,
+	useState
+} from "react";
 
-import { Feedback } from "@/components/FeedbackList/FeedbackList";
 import type { Option } from "@/components/ObjectSelect/ObjectSelect";
 import SelectField from "@/components/SelectField/SelectField";
 import { useFieldContext } from "@/hooks/app-form";
 
+import { Feedback } from "../FeedbackList/FeedbackList";
 import { FieldMeta } from "../Field/Field";
+import { FormServerFeedbackContext } from "../Form/Form";
 
 export default function AppSelectField<TOption extends Option>(
 	props: Omit<
@@ -24,6 +31,8 @@ export default function AppSelectField<TOption extends Option>(
 	> &
 		Partial<Pick<ComponentProps<typeof SelectField<TOption>>, "id">>
 ) {
+	const serverFeedback = useContext(FormServerFeedbackContext);
+
 	const id = useId();
 
 	const field = useFieldContext<TOption | undefined>();
@@ -42,12 +51,15 @@ export default function AppSelectField<TOption extends Option>(
 	return (
 		<SelectField<TOption>
 			{...props}
-			feedback={field.state.meta.errors
-				.filter(Boolean)
-				.map<Feedback>((error) => ({
-					message: error.message,
-					type: "negative"
-				}))}
+			feedback={[
+				...(serverFeedback[field.name] ?? []),
+				...field.state.meta.errors
+					.filter(Boolean)
+					.map<Feedback>((error) => ({
+						message: error.message,
+						type: "negative"
+					}))
+			]}
 			id={props.id ?? id}
 			meta={
 				{

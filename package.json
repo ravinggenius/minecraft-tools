@@ -12,7 +12,7 @@
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
     "lint:check": "eslint . --ignore-pattern '.next/*' --ignore-pattern 'node_modules/*'",
-    "lint:fix": "npm run lint:check --fix",
+    "lint:fix": "npm run lint:check -- --fix",
     "load": "bun ./src/scripts/runner.ts",
     "test": "NODE_ENV=test playwright test"
   },

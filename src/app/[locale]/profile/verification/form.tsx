@@ -1,6 +1,5 @@
 "use client";
 
-import { useForm } from "@tanstack/react-form";
 import classNames from "classnames";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef } from "react";
@@ -10,10 +9,9 @@ import { useTranslation } from "@/i18n/client";
 import { ServerAction } from "@/library/server-action";
 
 import styles from "./form.module.scss";
-import { DATA } from "./schema";
 
 export default function VerifyEmailtForm({
-	action: verifyEmail,
+	action,
 	className
 }: {
 	action: ServerAction;
@@ -25,31 +23,28 @@ export default function VerifyEmailtForm({
 
 	const formElement = useRef<HTMLFormElement>(null);
 
-	const form = useForm({
-		defaultValues: {
-			email: query.get("email") ?? "",
-			token: query.get("token") ?? ""
-		},
-		validators: {
-			onSubmit: DATA
-		}
-	});
-
 	useEffect(() => {
 		formElement.current?.requestSubmit();
 	});
 
 	return (
 		<Form
-			action={verifyEmail}
+			{...{ action }}
 			className={classNames(styles.form, className)}
 			ref={formElement}
 			submitLabel={t("submit")}
-			feedback={[]}
 		>
-			<input name="email" value={form.state.values.email} type="hidden" />
+			<input
+				name="email"
+				type="hidden"
+				value={query.get("email") ?? ""}
+			/>
 
-			<input name="token" value={form.state.values.token} type="hidden" />
+			<input
+				name="token"
+				type="hidden"
+				value={query.get("token") ?? ""}
+			/>
 		</Form>
 	);
 }

@@ -75,8 +75,8 @@ export default async function DataTable<TRecord extends Identity>({
 			</TFoot>
 
 			<TBody>
-				{records.map((record) => (
-					<TR key={record.id}>
+				{records.map((record, index) => (
+					<TR key={`${record.id}-${index}`}>
 						{Children.map(fields, (field) => {
 							const Cell = field.props.header ? TH : TD;
 

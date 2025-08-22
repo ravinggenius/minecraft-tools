@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
+import { cache } from "react";
 
-import * as config from "../config-service/service.mjs";
+import * as config from "../config-service/service";
 import * as secretService from "../secret-service/service";
 
 if (process.env.NEXT_RUNTIME === "nodejs") {
@@ -17,12 +18,12 @@ export const write = async (payload: string, expiresAt: Date) =>
 		}
 	);
 
-export const read = async () => {
+export const read = cache(async () => {
 	const token = (await cookies()).get(config.sessionName)?.value;
 
 	return token
 		? await (secretService.decrypt(token) as Promise<string>)
 		: undefined;
-};
+});
 
 export const clear = async () => (await cookies()).delete(config.sessionName);

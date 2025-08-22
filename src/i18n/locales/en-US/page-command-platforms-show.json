@@ -1,0 +1,12 @@
+{
+  "metadata": {
+    "title": "Platform"
+  },
+
+  "content": {
+    "breadcrumb": {
+      "platform-short-name": "{{name}}"
+    },
+    "description": "Platform"
+  }
+}

@@ -7,7 +7,7 @@ import { normalizeFormData, ServerAction } from "@/library/server-action";
 import { maybeProfileFromSession } from "@/library/session-manager";
 import * as secretService from "@/services/secret-service/service";
 
-import { DATA, TOKEN } from "../schema";
+import { DATA, TOKEN } from "./mark-email-as-verified-action.schema";
 
 const markEmailAsVerifiedAction: ServerAction = async (data) => {
 	"use server";

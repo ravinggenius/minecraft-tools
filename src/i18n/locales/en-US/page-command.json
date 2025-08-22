@@ -6,6 +6,7 @@
   "content": {
     "description": "Admin area",
     "menu": {
+      "platforms": "Platforms",
       "releases": "Releases"
     }
   }

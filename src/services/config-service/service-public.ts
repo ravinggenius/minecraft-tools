@@ -1,10 +1,10 @@
 import { z } from "zod/v4";
 
-export const debugI18n = z
-	.string()
-	.refine((s) => s === "true" || s === "false")
-	.transform((s) => s === "true")
-	.parse(process.env.NEXT_PUBLIC_DEBUG_I18N);
+import FLEXIBLE_BOOL from "@/library/utility-schemas/flexible-boolean";
+
+export const debugI18n = FLEXIBLE_BOOL.parse(
+	process.env.NEXT_PUBLIC_DEBUG_I18N
+);
 
 export const i18nName = z.string().parse(process.env.NEXT_PUBLIC_I18N_NAME);
 

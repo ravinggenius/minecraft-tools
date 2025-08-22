@@ -1,4 +1,5 @@
 import { forbidden } from "next/navigation";
+import { cache } from "react";
 import { z } from "zod/v4";
 
 import * as permissionModel from "@/domains/permission/model";
@@ -12,27 +13,27 @@ if (process.env.NEXT_RUNTIME === "nodejs") {
 
 const ASSERTIONS = z.array(ASSERTION).min(1);
 
-export const confirmAuthorization = async (
-	...assertions: [AssertionTuple, ...Array<AssertionTuple>]
-) => {
-	const profile = await maybeProfileFromSession();
+export const confirmAuthorization = cache(
+	async (...assertions: [AssertionTuple, ...Array<AssertionTuple>]) => {
+		const profile = await maybeProfileFromSession();
 
-	if (!profile) {
-		return false;
+		if (!profile) {
+			return false;
+		}
+
+		return permissionModel.mayContinue(
+			profile.id,
+			ASSERTIONS.parse(assertions)
+		);
 	}
+);
 
-	return permissionModel.mayContinue(
-		profile.id,
-		ASSERTIONS.parse(assertions)
-	);
-};
+export const enforceAuthorization = cache(
+	async (...assertions: [AssertionTuple, ...Array<AssertionTuple>]) => {
+		const mayContinue = await confirmAuthorization(...assertions);
 
-export const enforceAuthorization = async (
-	...assertions: [AssertionTuple, ...Array<AssertionTuple>]
-) => {
-	const mayContinue = await confirmAuthorization(...assertions);
-
-	if (!mayContinue) {
-		forbidden();
+		if (!mayContinue) {
+			forbidden();
+		}
 	}
-};
+);

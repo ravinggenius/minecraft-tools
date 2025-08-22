@@ -9,7 +9,7 @@ import { ServerAction } from "@/library/server-action";
 import styles from "./form.module.scss";
 
 export default function CreateSessionForm({
-	action: createSession
+	action
 }: {
 	action: ServerAction;
 }) {
@@ -26,12 +26,7 @@ export default function CreateSessionForm({
 	});
 
 	return (
-		<Form
-			action={createSession}
-			className={styles.form}
-			submitLabel={t("submit")}
-			feedback={[]}
-		>
+		<Form {...{ action }} className={styles.form} submitLabel={t("submit")}>
 			<form.AppField
 				name="email"
 				validators={{ onChange: SESSION_CREDENTIALS.shape.email }}

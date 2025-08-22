@@ -3,7 +3,7 @@ import { createPool, Interceptor, sql } from "slonik";
 import { createQueryLoggingInterceptor } from "slonik-interceptor-query-logging";
 import { createQueryNormalisationInterceptor } from "slonik-interceptor-query-normalisation";
 
-import * as config from "../config-service/service.mjs";
+import * as config from "../config-service/service";
 
 const createQueryTrimInterceptor = () =>
 	({

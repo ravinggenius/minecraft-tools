@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { cache } from "react";
 
 import * as profileModel from "@/domains/profile/model";
 import * as sessionModel from "@/domains/session/model";
@@ -17,23 +18,23 @@ export const readSessionCookie = () => sessionCookieService.read();
 
 export const clearSessionCookie = () => sessionCookieService.clear();
 
-const maybeAccountFromSession = async () => {
+const maybeAccountFromSession = cache(async () => {
 	const maybeSessionId = await readSessionCookie();
 
 	return maybeSessionId
 		? await sessionModel.verify(maybeSessionId)
 		: undefined;
-};
+});
 
-export const maybeProfileFromSession = async () => {
+export const maybeProfileFromSession = cache(async () => {
 	const maybeAccount = await maybeAccountFromSession();
 
 	return maybeAccount
 		? await profileModel.get(maybeAccount.profileId)
 		: undefined;
-};
+});
 
-export const requireProfile = async () => {
+export const requireProfile = cache(async () => {
 	const maybeProfile = await maybeProfileFromSession();
 
 	if (!maybeProfile) {
@@ -43,9 +44,9 @@ export const requireProfile = async () => {
 	}
 
 	return maybeProfile;
-};
+});
 
-export const requireVerifiedProfile = async () => {
+export const requireVerifiedProfile = cache(async () => {
 	const profile = await requireProfile();
 
 	if (!(await profileModel.isEmailVerified(profile.id))) {
@@ -55,4 +56,4 @@ export const requireVerifiedProfile = async () => {
 	}
 
 	return profile;
-};
+});

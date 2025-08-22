@@ -7,7 +7,7 @@ import sendAddressVerification from "@/emails/address-verification";
 import { extractLocaleFromRequest } from "@/i18n/server";
 import CodedError from "@/library/coded-error";
 import { maybeProfileFromSession } from "@/library/session-manager";
-import * as config from "@/services/config-service/service.mjs";
+import * as config from "@/services/config-service/service";
 import * as secretService from "@/services/secret-service/service";
 
 const resendEmailVerificationAction = async () => {

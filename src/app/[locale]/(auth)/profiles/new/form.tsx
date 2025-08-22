@@ -9,7 +9,7 @@ import { ServerAction } from "@/library/server-action";
 import styles from "./form.module.scss";
 
 export default function CreateProfileForm({
-	action: createProfile
+	action
 }: {
 	action: ServerAction;
 }) {
@@ -32,12 +32,7 @@ export default function CreateProfileForm({
 	});
 
 	return (
-		<Form
-			action={createProfile}
-			className={styles.form}
-			submitLabel={t("submit")}
-			feedback={[]}
-		>
+		<Form {...{ action }} className={styles.form} submitLabel={t("submit")}>
 			<form.AppField
 				name="profile.name"
 				validators={{

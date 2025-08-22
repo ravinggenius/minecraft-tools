@@ -127,7 +127,7 @@ export default async function PageSearchResults({
 					{({ changelog }: ExtendedRelease) =>
 						changelog ? (
 							<a href={changelog} rel="noreferrer">
-								{changelog.slice(0, 16)}
+								{changelog}
 							</a>
 						) : null
 					}

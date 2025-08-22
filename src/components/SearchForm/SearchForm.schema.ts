@@ -12,7 +12,7 @@ import {
 
 export type Keywords = readonly [string, ...Array<string>];
 
-export type Ranges = readonly [string, ...Array<string>];
+export type Ranges = Readonly<Array<string>>;
 
 type RawQuery<
 	TKeywords extends Keywords = Keywords,

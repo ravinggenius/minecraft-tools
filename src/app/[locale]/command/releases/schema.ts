@@ -1,9 +1,6 @@
-import { z } from "zod/v4";
-
 import { SEACH_QUERY } from "@/components/SearchForm/SearchForm.schema";
 import { INCLUDE, Include } from "@/domains/release/search.schema";
-
-const BOOL = z.coerce.boolean().optional();
+import FLEXIBLE_BOOL from "@/library/utility-schemas/flexible-boolean";
 
 export const QUERY = SEACH_QUERY(
 	[
@@ -21,12 +18,12 @@ export const QUERY = SEACH_QUERY(
 			edition: rawQuery.edition,
 			version: rawQuery.version,
 			name: rawQuery.name,
-			isAvailableForTools: BOOL.parse(
+			isAvailableForTools: FLEXIBLE_BOOL.optional().parse(
 				rawQuery["is-available-for-tools"]?.[
 					rawQuery["is-available-for-tools"].length - 1
 				]
 			),
-			isLatest: BOOL.parse(
+			isLatest: FLEXIBLE_BOOL.optional().parse(
 				rawQuery["is-latest"]?.[rawQuery["is-latest"].length - 1]
 			),
 			platform: rawQuery.platform,

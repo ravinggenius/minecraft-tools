@@ -3,7 +3,7 @@
 import classNames from "classnames";
 import { ComponentProps } from "react";
 
-import Form, { useForm } from "../Form/Form";
+import Form from "../Form/Form";
 
 import styles from "./ActionButton.module.scss";
 
@@ -16,11 +16,9 @@ export default function ActionButton({
 	label: ComponentProps<typeof Form>["submitLabel"];
 	variant?: ComponentProps<typeof Form>["submitVariant"];
 }) {
-	const form = useForm(action);
-
 	return (
 		<Form
-			{...form}
+			{...{ action }}
 			className={classNames(styles.form, className)}
 			submitLabel={label}
 			submitVariant={variant}

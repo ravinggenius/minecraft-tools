@@ -11,7 +11,7 @@ import { ServerAction } from "@/library/server-action";
 import styles from "./form.module.scss";
 
 export default function VerifyEmailPromptForm({
-	action: resendVerification,
+	action,
 	className,
 	resendReminderExpiry
 }: {
@@ -38,10 +38,9 @@ export default function VerifyEmailPromptForm({
 
 	return show ? (
 		<Form
-			action={resendVerification}
+			{...{ action }}
 			className={classNames(styles.form, className)}
 			submitLabel={t("submit")}
-			feedback={[]}
 		>
 			<p>{t("instructions")}</p>
 		</Form>

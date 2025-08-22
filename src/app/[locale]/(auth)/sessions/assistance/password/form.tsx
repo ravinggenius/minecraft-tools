@@ -11,7 +11,7 @@ import styles from "./form.module.scss";
 import { DATA, Query } from "./schema";
 
 export default function SessionAssistancePasswordForm({
-	action: verifyEmail,
+	action,
 	className,
 	email,
 	token
@@ -39,10 +39,9 @@ export default function SessionAssistancePasswordForm({
 
 	return (
 		<Form
-			action={verifyEmail}
+			{...{ action }}
 			className={classNames(styles.form, className)}
 			submitLabel={t("submit")}
-			feedback={[]}
 		>
 			<input name="email" value={form.state.values.email} type="hidden" />
 			<input name="token" value={form.state.values.token} type="hidden" />

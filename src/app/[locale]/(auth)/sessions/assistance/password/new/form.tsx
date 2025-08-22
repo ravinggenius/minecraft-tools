@@ -29,12 +29,7 @@ export default function SessionsAssistancePasswordNewForm({
 	});
 
 	return (
-		<Form
-			action={action}
-			{...{ className }}
-			submitLabel={t("submit")}
-			feedback={[]}
-		>
+		<Form {...{ action, className }} submitLabel={t("submit")}>
 			<form.AppField
 				name="email"
 				validators={{

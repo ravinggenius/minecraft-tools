@@ -3,11 +3,12 @@
 import classNames from "classnames";
 import { ComponentProps, InputHTMLAttributes } from "react";
 
-import Field from "@/components/Field/Field";
+import Field, { FieldMeta } from "@/components/Field/Field";
 
 import styles from "./CheckboxField.module.scss";
 
 export default function CheckboxField({
+	checked,
 	className,
 	debug = false,
 	description,
@@ -22,21 +23,20 @@ export default function CheckboxField({
 }: Pick<
 	ComponentProps<typeof Field>,
 	| "className"
-	| "debug"
 	| "description"
 	| "examples"
 	| "feedback"
 	| "id"
 	| "label"
-	| "meta"
-	| "name"
 	| "required"
-> &
-	Omit<InputHTMLAttributes<HTMLInputElement>, "value">) {
+> & {
+	debug?: boolean;
+	meta: FieldMeta;
+	name: string;
+} & Omit<InputHTMLAttributes<HTMLInputElement>, "value">) {
 	return (
 		<Field
 			{...{
-				debug,
 				description,
 				examples,
 				feedback,
@@ -47,10 +47,24 @@ export default function CheckboxField({
 				required
 			}}
 			className={classNames(styles["checkbox-field"], className)}
+			debugValue={
+				debug
+					? {
+							id,
+							name,
+							required,
+							checked: checked ?? "<undefined>",
+							description,
+							examples,
+							feedback,
+							meta
+						}
+					: undefined
+			}
 		>
 			<input
 				{...inputProps}
-				{...{ id, name, required }}
+				{...{ checked, id, name, required }}
 				className={styles.input}
 				type="checkbox"
 				value="true"

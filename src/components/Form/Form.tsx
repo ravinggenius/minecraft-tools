@@ -1,3 +1,4 @@
+import { AnyFormApi } from "@tanstack/react-form";
 import classNames from "classnames";
 import NextForm from "next/form";
 import { ComponentProps, forwardRef, ReactElement, Ref, useState } from "react";
@@ -72,6 +73,7 @@ export default forwardRef(function ActionForm(
 		children,
 		className,
 		debug = false,
+		form,
 		submitLabel,
 		submitVariant
 	}: {
@@ -81,6 +83,7 @@ export default forwardRef(function ActionForm(
 			| Array<ReactElement<ComponentProps<typeof Field>>>;
 		className?: string;
 		debug?: boolean;
+		form?: AnyFormApi;
 		submitLabel: ComponentProps<typeof SubmitButton>["label"];
 		submitVariant?: ComponentProps<typeof SubmitButton>["variant"];
 	},
@@ -112,7 +115,16 @@ export default forwardRef(function ActionForm(
 
 			<SubmitButton label={submitLabel} variant={submitVariant} />
 
-			{debug ? <Debug value={{ feedback }} /> : null}
+			{debug ? (
+				<Debug
+					value={{
+						formId: form?.formId ?? "<undefined>",
+						defaultValues:
+							form?.options.defaultValues ?? "<undefined>",
+						feedback
+					}}
+				/>
+			) : null}
 		</NextForm>
 	);
 });

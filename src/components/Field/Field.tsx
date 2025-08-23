@@ -26,26 +26,22 @@ export type FieldMeta = Prettify<
 export default function Field({
 	children,
 	className,
-	debug = false,
+	debugValue,
 	description,
 	examples = [],
 	feedback = [],
 	id,
 	label,
-	meta,
-	name,
 	required = false
 }: {
 	children: ReactNode;
 	className?: string;
-	debug?: boolean;
+	debugValue?: Record<string, unknown>;
 	description?: string;
 	examples?: Array<Example>;
 	feedback?: Array<Feedback>;
 	id: string;
 	label: string;
-	meta: FieldMeta;
-	name: string;
 	required?: boolean;
 }) {
 	const { t } = useTranslation("component-field");
@@ -72,18 +68,7 @@ export default function Field({
 
 			<ExampleList {...{ examples }} />
 
-			{debug ? (
-				<Debug
-					value={{
-						name,
-						required,
-						meta,
-						description,
-						examples,
-						feedback
-					}}
-				/>
-			) : null}
+			{debugValue ? <Debug value={debugValue} /> : null}
 		</div>
 	);
 }

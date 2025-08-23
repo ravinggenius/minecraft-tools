@@ -54,18 +54,13 @@ export default async function Page({
 				<p>{t("field.explanation")}</p>
 
 				<Field
+					debugValue={{
+						debug: true,
+						answer: 42
+					}}
 					description={t("field.description")}
 					label={t("field.label")}
 					id={"some-unique-id"}
-					name="foo"
-					meta={{
-						isDefaultValue: true,
-						isDirty: false,
-						isFocused: false,
-						isPristine: true,
-						isTouched: false,
-						isValid: true
-					}}
 					required
 				>
 					<pre>{t("field.input-here")}</pre>
@@ -109,6 +104,7 @@ export default async function Page({
 						isValid: true
 					}}
 					placeholder={t("text-field.placeholder")}
+					value=""
 				/>
 			</Card>
 		</>

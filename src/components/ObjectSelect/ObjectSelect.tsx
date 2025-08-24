@@ -11,57 +11,39 @@ export default function ObjectSelect<TOption extends Option>({
 	children,
 	className,
 	includeBlank = false,
-	name,
 	onChange,
 	options,
 	serialize,
-	value,
 	...selectProps
 }: {
 	children: (option: TOption) => ReactNode;
 	className?: string;
 	includeBlank?: boolean;
 	name: NonNullable<SelectHTMLAttributes<HTMLSelectElement>["name"]>;
-	onChange: (option: TOption | undefined) => void;
-	options: Array<TOption>;
+	onChange: (optionId: TOption["id"] | undefined) => void;
+	options: ReadonlyArray<TOption>;
 	serialize: (option: TOption) => TOption["id"];
-	value: TOption | undefined;
+	value: TOption["id"] | undefined;
 } & Omit<
 	SelectHTMLAttributes<HTMLSelectElement>,
 	"children" | "name" | "onChange" | "value"
 >) {
-	const keyedOptions = options.reduce(
-		(memo, option) => ({
-			...memo,
-			[serialize(option)]: option
-		}),
-		{} as Record<TOption["id"], TOption>
-	);
-
 	const handleChange = ({
 		target: { value: optionId }
 	}: ChangeEvent<HTMLSelectElement>) => {
-		onChange(
-			optionId ? keyedOptions[optionId as TOption["id"]] : undefined
-		);
+		onChange(optionId);
 	};
 
 	return (
 		<select
 			{...selectProps}
-			{...{ name }}
 			className={classNames(styles.select, className)}
 			onChange={handleChange}
-			value={value ? serialize(value) : ""}
 		>
 			{includeBlank ? <option /> : null}
 
-			{(
-				Object.entries(keyedOptions) satisfies Array<
-					[TOption["id"], TOption]
-				>
-			).map(([optionId, option]) => (
-				<option key={optionId} value={optionId}>
+			{options.map((option) => (
+				<option key={serialize(option)} value={serialize(option)}>
 					{children(option)}
 				</option>
 			))}

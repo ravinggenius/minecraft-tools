@@ -36,7 +36,7 @@ export default function AppSelectField<TOption extends Option>(
 
 	const id = useId();
 
-	const field = useFieldContext<TOption | undefined>();
+	const field = useFieldContext<TOption["id"] | undefined>();
 
 	const [isFocused, setIsFocused] = useState(false);
 

@@ -4,6 +4,7 @@ import BreadcrumbTrailPortal from "@/components/BreadcrumbTrail/BreadcrumbTrailP
 import { Pagination } from "@/components/Pagination/Pagination";
 import SearchForm from "@/components/SearchForm/SearchForm";
 import * as releaseModel from "@/domains/release/model";
+import { Release, SpecificRelease } from "@/domains/release/schema";
 import { loadPageTranslations } from "@/i18n/server";
 import { buildBreadcrumbsWithPrefix } from "@/library/breadcrumbs";
 import {
@@ -15,6 +16,7 @@ import {
 import styles from "./page.module.scss";
 import { QUERY } from "./schema";
 import PageSearchResults from "./search-results";
+import PageSearchResultsExpanded from "./search-results-expanded";
 
 export const generateMetadata = async ({
 	params
@@ -47,7 +49,9 @@ export default async function Page({
 
 	const query = await ensureSearchParams(QUERY, searchParams);
 
-	const releases = await releaseModel.search(query);
+	const releases = query.expand
+		? await releaseModel.searchExpanded(query)
+		: await releaseModel.search(query);
 
 	return (
 		<>
@@ -56,12 +60,21 @@ export default async function Page({
 			<div className={styles.root}>
 				<SearchForm {...{ query }} className={styles.form} />
 
-				<PageSearchResults
-					{...{ locale }}
-					className={styles.results}
-					releases={releases.data}
-					view={query.view}
-				/>
+				{query.expand ? (
+					<PageSearchResultsExpanded
+						{...{ locale }}
+						className={styles.results}
+						releases={releases.data as Array<SpecificRelease>}
+						view={query.view}
+					/>
+				) : (
+					<PageSearchResults
+						{...{ locale }}
+						className={styles.results}
+						releases={releases.data as Array<Release>}
+						view={query.view}
+					/>
+				)}
 
 				<Pagination
 					{...{ locale, query }}

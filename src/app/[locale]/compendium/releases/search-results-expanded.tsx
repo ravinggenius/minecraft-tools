@@ -3,11 +3,12 @@ import { ComponentProps } from "react";
 import { Field } from "@/components/DataTable/DataTable";
 import KeyValueCard from "@/components/Pagination/KeyValueCard/KeyValueCard";
 import SearchResults from "@/components/SearchResults/SearchResults";
-import { ExtendedRelease } from "@/domains/release/model";
+import { SpecificRelease } from "@/domains/release/schema";
 import { loadPageTranslations } from "@/i18n/server";
 import { SupportedLocale } from "@/i18n/settings";
+import { confirmAuthorization } from "@/library/authorization";
 
-export default async function PageSearchResults({
+export default async function PageSearchResultsExpanded({
 	className,
 	locale,
 	releases,
@@ -15,7 +16,7 @@ export default async function PageSearchResults({
 }: {
 	className?: string;
 	locale: SupportedLocale;
-	releases: Readonly<Array<ExtendedRelease>>;
+	releases: Readonly<Array<SpecificRelease>>;
 	view: ComponentProps<typeof SearchResults>["view"];
 }) {
 	const { t } = await loadPageTranslations(
@@ -23,32 +24,33 @@ export default async function PageSearchResults({
 		"page-component-compendium-releases-results"
 	);
 
+	const mayEditReleases = await confirmAuthorization([
+		"update",
+		"any",
+		"release"
+	]);
+
 	return (
 		<SearchResults {...{ className, locale, view }} records={releases}>
 			<SearchResults.List>
-				{(release: ExtendedRelease) => (
+				{(release: SpecificRelease) => (
 					<KeyValueCard
 						{...{ locale }}
 						edition={release.edition}
 						pairs={[
-							...(release.developmentReleasedOn
-								? [
-										{
-											key: t(
-												"development-released-on.label"
-											),
-											value: t(
-												"development-released-on.value",
-												{
-													developmentReleasedOn:
-														new Date(
-															release.developmentReleasedOn
-														)
-												}
-											)
-										}
-									]
-								: []),
+							release.developmentReleasedOn
+								? {
+										key: t("development-released-on.label"),
+										value: t(
+											"development-released-on.value",
+											{
+												developmentReleasedOn: new Date(
+													release.developmentReleasedOn
+												)
+											}
+										)
+									}
+								: undefined,
 							{
 								key: t("production-released-on.label"),
 								value: release.changelog
@@ -71,14 +73,20 @@ export default async function PageSearchResults({
 											)
 										})
 							},
-							{
-								key: t("is-available-for-tools.label"),
-								value: t("is-available-for-tools.value", {
-									context: release.isAvailableForTools
-										? "yes"
-										: "no"
-								})
-							},
+							mayEditReleases
+								? {
+										key: t("is-available-for-tools.label"),
+										value: t(
+											"is-available-for-tools.value",
+											{
+												context:
+													release.isAvailableForTools
+														? "yes"
+														: "no"
+											}
+										)
+									}
+								: undefined,
 							{
 								key: t("is-latest.label"),
 								value: t("is-latest.value", {
@@ -87,11 +95,8 @@ export default async function PageSearchResults({
 								isHighlighted: release.isLatest || undefined
 							},
 							{
-								key: t("platform-releases.label"),
-								value: release.platformReleases.map(
-									({ name }) => name
-								),
-								isLarge: true
+								key: t("platform-name.label"),
+								value: release.platformName
 							}
 						]}
 						title={t("list.card.title", {
@@ -108,23 +113,23 @@ export default async function PageSearchResults({
 				caption={t("table.caption", { count: releases.length })}
 			>
 				<Field fieldPath="edition" label={t("edition.label")}>
-					{({ edition }: ExtendedRelease) =>
+					{({ edition }: SpecificRelease) =>
 						t("edition.value", { context: edition })
 					}
 				</Field>
 
 				<Field fieldPath="version" label={t("version.label")}>
-					{({ version }: ExtendedRelease) =>
+					{({ version }: SpecificRelease) =>
 						t("version.value", { version })
 					}
 				</Field>
 
 				<Field fieldPath="name" label={t("name.label")}>
-					{({ name }: ExtendedRelease) => t("name.value", { name })}
+					{({ name }: SpecificRelease) => t("name.value", { name })}
 				</Field>
 
 				<Field fieldPath="changelog" label={t("changelog.label")}>
-					{({ changelog }: ExtendedRelease) =>
+					{({ changelog }: SpecificRelease) =>
 						changelog ? (
 							<a href={changelog} rel="noreferrer">
 								{changelog}
@@ -137,7 +142,7 @@ export default async function PageSearchResults({
 					fieldPath="developmentReleasedOn"
 					label={t("development-released-on.label")}
 				>
-					{({ developmentReleasedOn }: ExtendedRelease) =>
+					{({ developmentReleasedOn }: SpecificRelease) =>
 						developmentReleasedOn
 							? t("development-released-on.value", {
 									developmentReleasedOn: new Date(
@@ -152,26 +157,28 @@ export default async function PageSearchResults({
 					fieldPath="productionReleasedOn"
 					label={t("production-released-on.label")}
 				>
-					{({ productionReleasedOn }: ExtendedRelease) =>
+					{({ productionReleasedOn }: SpecificRelease) =>
 						t("production-released-on.value", {
 							productionReleasedOn: new Date(productionReleasedOn)
 						})
 					}
 				</Field>
 
-				<Field
-					fieldPath="isAvailableForTools"
-					label={t("is-available-for-tools.label")}
-				>
-					{({ isAvailableForTools }: ExtendedRelease) =>
-						t("is-available-for-tools.value", {
-							context: isAvailableForTools ? "yes" : "no"
-						})
-					}
-				</Field>
+				{mayEditReleases ? (
+					<Field
+						fieldPath="isAvailableForTools"
+						label={t("is-available-for-tools.label")}
+					>
+						{({ isAvailableForTools }: SpecificRelease) =>
+							t("is-available-for-tools.value", {
+								context: isAvailableForTools ? "yes" : "no"
+							})
+						}
+					</Field>
+				) : null}
 
 				<Field fieldPath="isLatest" label={t("is-latest.label")}>
-					{({ isLatest }: ExtendedRelease) =>
+					{({ isLatest }: SpecificRelease) =>
 						t("is-latest.value", {
 							context: isLatest ? "yes" : "no"
 						})
@@ -179,23 +186,10 @@ export default async function PageSearchResults({
 				</Field>
 
 				<Field
-					fieldPath="platformReleases"
-					label={t("platform-releases.label")}
+					fieldPath="platformName"
+					label={t("platform-name.label")}
 				>
-					{({ platformReleases }: ExtendedRelease) => (
-						<ol>
-							{platformReleases.map((pr) => (
-								<li key={pr.id}>
-									<span>{pr.name}</span>
-									<span>
-										{new Date(
-											pr.productionReleasedOn
-										).toLocaleDateString()}
-									</span>
-								</li>
-							))}
-						</ol>
-					)}
+					{({ platformName }: SpecificRelease) => platformName}
 				</Field>
 			</SearchResults.Table>
 		</SearchResults>

@@ -7,6 +7,7 @@ import SearchResults from "@/components/SearchResults/SearchResults";
 import { ExtendedPlatform } from "@/domains/platform/model";
 import { loadPageTranslations } from "@/i18n/server";
 import { SupportedLocale } from "@/i18n/settings";
+import { confirmAuthorization } from "@/library/authorization";
 
 export default async function PageSearchResults({
 	className,
@@ -24,6 +25,12 @@ export default async function PageSearchResults({
 		"page-component-compendium-platforms-results"
 	);
 
+	const mayEditPlatform = await confirmAuthorization([
+		"update",
+		"any",
+		"platform"
+	]);
+
 	return (
 		<SearchResults {...{ className, locale, view }} records={platforms}>
 			<SearchResults.List>
@@ -31,7 +38,9 @@ export default async function PageSearchResults({
 					<KeyValueCard
 						{...{ locale }}
 						href={
-							`/${locale}/command/platforms/${platform.id}` as InternalHref
+							mayEditPlatform
+								? (`/${locale}/command/platforms/${platform.id}` as InternalHref)
+								: undefined
 						}
 						pairs={[
 							{
@@ -60,14 +69,18 @@ export default async function PageSearchResults({
 				caption={t("table.caption", { count: platforms.length })}
 			>
 				<Field fieldPath="name" label={t("name.label")}>
-					{({ id, name }: ExtendedPlatform) => (
-						<Anchor
-							href={`/${locale}/command/platforms/${id}`}
-							variant="inline"
-						>
-							{t("name.value", { name })}
-						</Anchor>
-					)}
+					{({ id, name }: ExtendedPlatform) =>
+						mayEditPlatform ? (
+							<Anchor
+								href={`/${locale}/command/platforms/${id}`}
+								variant="inline"
+							>
+								{t("name.value", { name })}
+							</Anchor>
+						) : (
+							t("name.value", { name })
+						)
+					}
 				</Field>
 
 				<Field

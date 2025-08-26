@@ -47,13 +47,13 @@ export default function KeyValueCard({
 	"edition" | "href" | "locale" | "title" | "variant"
 > & {
 	className?: string;
-	pairs: Array<KeyValuePair>;
+	pairs: Array<KeyValuePair | null | undefined>;
 }) {
 	return (
 		<Card {...cardProps} className={classNames(styles.root, className)}>
 			{pairs.length ? (
 				<dl className={styles.list}>
-					{pairs.map((pair) => (
+					{pairs.filter(Boolean).map((pair) => (
 						<div
 							className={styles.pair}
 							data-highlight={pair.isHighlighted}

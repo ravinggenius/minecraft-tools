@@ -1,45 +1,32 @@
-import { z } from "zod/v4";
-
 import { confirmAuthorization } from "@/library/authorization";
 import { COUNT, SearchParams, SearchResults } from "@/library/search";
 import { pool, sql } from "@/services/datastore-service/service";
 
 import { PLATFORM_RELEASE } from "../platform-release/schema";
-import { PLATFORM } from "../platform/schema";
 
-import { ImportRelease, RELEASE, UPCOMING } from "./schema";
+import {
+	ImportRelease,
+	Release,
+	RELEASE,
+	SPECIFIC_RELEASE,
+	SpecificRelease,
+	UPCOMING
+} from "./schema";
 import { Include } from "./search.schema";
 
 if (process.env.NEXT_RUNTIME === "nodejs") {
 	await import("server-only");
 }
 
-export const EXTENDED_RELEASE = RELEASE.omit({
-	createdAt: true,
-	updatedAt: true
-}).extend({
-	productionReleasedOn: z.coerce.date(),
-	platformReleases: z.array(
-		z.object({
-			id: PLATFORM.shape.id,
-			name: PLATFORM.shape.name,
-			productionReleasedOn: PLATFORM_RELEASE.shape.productionReleasedOn
-		})
-	)
-});
-
-export interface ExtendedRelease extends z.infer<typeof EXTENDED_RELEASE> {}
-
-export const search = async ({
-	conditions: { include, exclude },
-	expand,
-	pagination: { limit, offset }
-}: SearchParams<Include>) => {
+const searchConditions = async ({
+	include,
+	exclude
+}: SearchParams<Include>["conditions"]) => {
 	const mayReadAny = await confirmAuthorization(["read", "any", "release"]);
 
 	const includeText = include.text?.map((text) => `%${text}%`);
 
-	const whereClauses = [
+	return [
 		mayReadAny && include.isAvailableForTools !== undefined
 			? sql.fragment`(r.is_available_for_tools = ${include.isAvailableForTools})`
 			: undefined,
@@ -88,137 +75,142 @@ export const search = async ({
 			? sql.fragment`(pr.production_released_on <= ${sql.date(include.productionReleasedOn.to)})`
 			: undefined
 	].filter(Boolean);
+};
 
-	const countQuery = expand
-		? sql.type(COUNT)`
-				SELECT
-					count(*) AS count
-				FROM
-					releases AS r
-					RIGHT OUTER JOIN platform_releases AS pr ON r.id = pr.release_id
-					LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
-					${
-						whereClauses.length
-							? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-							: sql.fragment``
-					}
-			`
-		: sql.type(COUNT)`
-				SELECT
-					count(*) AS count
-				FROM
-					(
-						SELECT
-							count(*)
-						FROM
-							releases AS r
-							INNER JOIN platform_releases AS pr ON r.id = pr.release_id
-							INNER JOIN platforms AS p ON pr.platform_id = p.id
-							${
-								whereClauses.length
-									? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-									: sql.fragment``
-							}
-						GROUP BY
-							r.id
-					)
-			`;
+export const searchExpanded = async ({
+	conditions,
+	expand,
+	pagination: { limit, offset }
+}: SearchParams<Include>) => {
+	const whereClauses = await searchConditions(conditions);
 
-	const dataQuery = expand
-		? sql.type(EXTENDED_RELEASE)`
-				SELECT
-					pr.id,
-					r.edition,
-					r.version,
-					r.name,
-					r.development_released_on AS "developmentReleasedOn",
-					pr.production_released_on AS "productionReleasedOn",
-					r.changelog,
-					r.is_latest AS "isLatest",
-					jsonb_build_array(
-						jsonb_build_object(
-							'id',
-							p.id,
-							'name',
-							p.name,
-							'productionReleasedOn',
-							pr.production_released_on
-						)
-					) AS "platformReleases"
-				FROM
-					releases AS r
-					RIGHT OUTER JOIN platform_releases AS pr ON r.id = pr.release_id
-					LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
-					${
-						whereClauses.length
-							? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-							: sql.fragment``
-					}
-				ORDER BY
-					r.edition ASC,
-					"productionReleasedOn" DESC,
-					r.version ASC,
-					p.name ASC
-				LIMIT
-					${limit}
-				OFFSET
-					${offset}
-			`
-		: sql.type(EXTENDED_RELEASE)`
-				SELECT
-					r.id,
-					r.edition,
-					r.version,
-					r.name,
-					r.development_released_on AS "developmentReleasedOn",
-					min(pr.production_released_on) AS "productionReleasedOn",
-					r.changelog,
-					r.is_latest AS "isLatest",
-					COALESCE(
-						jsonb_agg(
-							jsonb_build_object(
-								'id',
-								p.id,
-								'name',
-								p.name,
-								'productionReleasedOn',
-								pr.production_released_on
-							)
-						),
-						'[]'
-					) AS "platformReleases"
-				FROM
-					releases AS r
-					INNER JOIN platform_releases AS pr ON r.id = pr.release_id
-					INNER JOIN platforms AS p ON pr.platform_id = p.id
-					${
-						whereClauses.length
-							? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-							: sql.fragment``
-					}
-				GROUP BY
-					r.id
-				ORDER BY
-					r.edition ASC,
-					"productionReleasedOn" DESC,
-					r.version ASC
-				LIMIT
-					${limit}
-				OFFSET
-					${offset}
-			`;
+	const countQuery = sql.type(COUNT)`
+		SELECT
+			count(pr.id) AS count
+		FROM
+			platform_releases AS pr
+			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
+			LEFT OUTER JOIN releases AS r ON pr.release_id = r.id
+		${
+			whereClauses.length
+				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+				: sql.fragment``
+		}
+	`;
+
+	const dataQuery = sql.type(SPECIFIC_RELEASE)`
+		SELECT
+			pr.id,
+			r.id AS "releaseId",
+			p.name AS "platformName",
+			r.edition,
+			r.version,
+			r.name,
+			r.development_released_on AS "developmentReleasedOn",
+			pr.production_released_on AS "productionReleasedOn",
+			r.changelog,
+			r.is_latest AS "isLatest",
+			r.is_available_for_tools AS "isAvailableForTools"
+		FROM
+			platform_releases AS pr
+			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
+			LEFT OUTER JOIN releases AS r ON pr.release_id = r.id
+		${
+			whereClauses.length
+				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+				: sql.fragment``
+		}
+		ORDER BY
+			pr.production_released_on DESC,
+			r.edition ASC,
+			r.version ASC,
+			p.name ASC
+		LIMIT
+			${limit}
+		OFFSET
+			${offset}
+	`;
 
 	return (await pool).transaction(
 		async (tx) =>
 			({
 				count: await tx.oneFirst(countQuery),
 				data: await tx.any(dataQuery)
-			}) satisfies SearchResults<ExtendedRelease>
+			}) satisfies SearchResults<SpecificRelease> as SearchResults<SpecificRelease>
+	);
+};
+
+export const search = async ({
+	conditions,
+	expand,
+	pagination: { limit, offset }
+}: SearchParams<Include>) => {
+	const whereClauses = await searchConditions(conditions);
+
+	const countQuery = sql.type(COUNT)`
+		SELECT
+			count(*) AS count
+		FROM (
+			SELECT
+				r.id
+			FROM
+				platform_releases AS pr
+				LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
+				LEFT OUTER JOIN releases AS r ON pr.release_id = r.id
+			${
+				whereClauses.length
+					? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+					: sql.fragment``
+			}
+			GROUP BY
+				r.id
+		)
+	`;
+
+	const dataQuery = sql.type(RELEASE)`
+		SELECT
+			r.id,
+			r.edition,
+			r.version,
+			r.name,
+			r.development_released_on AS "developmentReleasedOn",
+			min(pr.production_released_on) AS "firstProductionReleasedOn",
+			r.changelog,
+			r.is_latest AS "isLatest",
+			r.is_available_for_tools AS "isAvailableForTools",
+			jsonb_agg(jsonb_build_object('platformId', p.id, 'name', p.name, 'productionReleasedOn', pr.production_released_on)) AS platforms
+		FROM
+			platform_releases AS pr
+			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
+			LEFT OUTER JOIN releases AS r ON pr.release_id = r.id
+		${
+			whereClauses.length
+				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+				: sql.fragment``
+		}
+		GROUP BY
+			r.id
+		ORDER BY
+			"firstProductionReleasedOn" DESC,
+			r.edition ASC,
+			r.version ASC
+		LIMIT
+			${limit}
+		OFFSET
+			${offset}
+	`;
+
+	return (await pool).transaction(
+		async (tx) =>
+			({
+				count: await tx.oneFirst(countQuery),
+				data: await tx.any(dataQuery)
+			}) satisfies SearchResults<Release> as SearchResults<Release>
 	);
 };
 
 export const doImport = async (release: ImportRelease) => {
-	const rainbow = Object.entries(release.platforms).map(
+	const rainbow = Object.entries(release.platformsCondensed).map(
 		async ([productionReleasedOn, names]) => {
 			if (productionReleasedOn === UPCOMING.value) {
 				return;

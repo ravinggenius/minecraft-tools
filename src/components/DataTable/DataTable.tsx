@@ -47,7 +47,7 @@ export default async function DataTable<TRecord extends Identity>({
 	caption: ReactNode;
 	children:
 		| ReactElement<FieldProps<TRecord>>
-		| Array<ReactElement<FieldProps<TRecord>>>;
+		| Array<ReactElement<FieldProps<TRecord>> | null>;
 	className?: string;
 	locale: SupportedLocale;
 	records: Readonly<Array<TRecord>>;
@@ -60,9 +60,11 @@ export default async function DataTable<TRecord extends Identity>({
 
 			<THead>
 				<TR>
-					{Children.map(fields, (field) => (
-						<TH key={field.key}>{field.props.label}</TH>
-					))}
+					{Children.map(fields, (field) =>
+						field ? (
+							<TH key={field.key}>{field.props.label}</TH>
+						) : null
+					)}
 				</TR>
 			</THead>
 
@@ -78,6 +80,10 @@ export default async function DataTable<TRecord extends Identity>({
 				{records.map((record, index) => (
 					<TR key={`${record.id}-${index}`}>
 						{Children.map(fields, (field) => {
+							if (!field) {
+								return null;
+							}
+
 							const Cell = field.props.header ? TH : TD;
 
 							return (

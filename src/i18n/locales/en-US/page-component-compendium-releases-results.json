@@ -33,13 +33,18 @@
   },
 
   "development-released-on": {
-    "label": "Development Released",
+    "label": "Development Release",
     "value": "{{developmentReleasedOn, dateTime(year: numeric; month: short; day: numeric)}}"
   },
 
   "production-released-on": {
-    "label": "Production Released",
+    "label": "Production Release",
     "value": "{{productionReleasedOn, dateTime(year: numeric; month: short; day: numeric)}}"
+  },
+
+  "first-production-released-on": {
+    "label": "First Production Release",
+    "value": "{{firstProductionReleasedOn, dateTime(year: numeric; month: short; day: numeric)}}"
   },
 
   "is-available-for-tools": {
@@ -56,5 +61,9 @@
 
   "platform-releases": {
     "label": "Platforms"
+  },
+
+  "platform-name": {
+    "label": "Platform"
   }
 }

@@ -1,6 +1,6 @@
 import { ComponentProps } from "react";
 
-import Anchor, { InternalHref } from "@/components/Anchor/Anchor";
+import Anchor from "@/components/Anchor/Anchor";
 import { Field } from "@/components/DataTable/DataTable";
 import KeyValueCard from "@/components/Pagination/KeyValueCard/KeyValueCard";
 import SearchResults from "@/components/SearchResults/SearchResults";
@@ -39,7 +39,7 @@ export default async function PageSearchResults({
 						{...{ locale }}
 						href={
 							mayEditPlatform
-								? (`/${locale}/command/platforms/${platform.id}` as InternalHref)
+								? `/${locale}/command/platforms/${platform.id}`
 								: undefined
 						}
 						pairs={[

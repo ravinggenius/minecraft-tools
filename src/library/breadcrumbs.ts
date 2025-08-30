@@ -1,9 +1,9 @@
-import { InternalHref } from "@/components/Anchor/Anchor";
+import { AnchorHref } from "@/components/Anchor/Anchor";
 import { loadPageTranslations } from "@/i18n/server";
 import { SupportedLocale } from "@/i18n/settings";
 
 export interface Crumb {
-	href: InternalHref;
+	href: AnchorHref<unknown>;
 	label: string;
 	name: string;
 	value: string;

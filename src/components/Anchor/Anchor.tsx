@@ -1,33 +1,31 @@
 import classNames from "classnames";
-import type { Route } from "next";
-import Link from "next/link";
-import { AnchorHTMLAttributes, ComponentProps } from "react";
+import Link, { LinkProps } from "next/link";
+import { ComponentProps } from "react";
 
 import { Interactive } from "@/components/_/interactive/interactive";
 
 import styles from "./Anchor.module.scss";
 
-export default function Anchor<HREF extends string>({
+export default function Anchor<HREF>({
 	children,
 	className,
-	href,
-	variant
-}: AnchorHTMLAttributes<HTMLAnchorElement> & {
-	href: Route<HREF>;
-} & Interactive & {
+	variant,
+	...linkProps
+}: LinkProps<HREF> &
+	Interactive & {
 		children: string;
 		className?: string;
 	}) {
 	return (
 		<Link
+			{...linkProps}
 			className={classNames(styles.anchor, className)}
 			data-variant={variant}
-			href={href as Route<HREF>}
 		>
 			{children}
 		</Link>
 	);
 }
 
-export type AnchorProps = ComponentProps<typeof Anchor>;
-export type InternalHref = AnchorProps["href"];
+export type AnchorProps<HREF> = ComponentProps<typeof Anchor<HREF>>;
+export type AnchorHref<HREF> = AnchorProps<HREF>["href"];

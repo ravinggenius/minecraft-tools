@@ -38,19 +38,22 @@ function ValueDisplay({ value }: { value: KeyValuePair["value"] }) {
 	}
 }
 
-export default function KeyValueCard({
+export default function KeyValueCard<HREF>({
 	className,
 	pairs,
 	...cardProps
 }: Pick<
-	ComponentProps<typeof Card>,
+	ComponentProps<typeof Card<HREF>>,
 	"edition" | "href" | "locale" | "title" | "variant"
 > & {
 	className?: string;
 	pairs: Array<KeyValuePair | null | undefined>;
 }) {
 	return (
-		<Card {...cardProps} className={classNames(styles.root, className)}>
+		<Card<HREF>
+			{...cardProps}
+			className={classNames(styles.root, className)}
+		>
 			{pairs.length ? (
 				<dl className={styles.list}>
 					{pairs.filter(Boolean).map((pair) => (
@@ -77,3 +80,6 @@ export default function KeyValueCard({
 		</Card>
 	);
 }
+
+export type KeyValueCardProps<HREF> = ComponentProps<typeof KeyValueCard<HREF>>;
+export type KeyValueCardHref<HREF> = KeyValueCardProps<HREF>["href"];

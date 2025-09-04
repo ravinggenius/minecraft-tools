@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import Anchor, { AnchorProps, InternalHref } from "@/components/Anchor/Anchor";
+import Anchor, { AnchorHref, AnchorProps } from "@/components/Anchor/Anchor";
 import BreadcrumbTrailPortal from "@/components/BreadcrumbTrail/BreadcrumbTrailPortal";
 import { loadPageTranslations } from "@/i18n/server";
 import { buildBreadcrumbsWithPrefix } from "@/library/breadcrumbs";
@@ -36,11 +36,11 @@ export default async function Page({
 	});
 
 	const compendiumEntries: Array<{
-		href: InternalHref;
-		text: AnchorProps["children"];
+		href: AnchorHref<typeof locale>;
+		text: AnchorProps<typeof locale>["children"];
 	}> = [
 		{
-			href: `/${locale}/compendium/releases` as InternalHref,
+			href: `/${locale}/compendium/releases` as AnchorHref<typeof locale>,
 			text: t("table-of-contents.releases")
 		}
 	];
@@ -54,7 +54,7 @@ export default async function Page({
 
 				<ol className={styles.list}>
 					{compendiumEntries.map(({ href, text }) => (
-						<li className={styles.item} key={href}>
+						<li className={styles.item} key={href.toString()}>
 							<Anchor {...{ href }} variant="inline">
 								{text}
 							</Anchor>

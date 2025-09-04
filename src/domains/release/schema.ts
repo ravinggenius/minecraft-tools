@@ -6,6 +6,8 @@ export const EDITION = z.enum(["bedrock", "java"]);
 
 export type Edition = z.infer<typeof EDITION>;
 
+export const UPCOMING = z.literal("upcoming");
+
 export const RELEASE = z.object({
 	id: z.uuid(),
 	createdAt: z.coerce.date(),
@@ -14,23 +16,34 @@ export const RELEASE = z.object({
 	version: z.string(),
 	name: z.string().optional(),
 	developmentReleasedOn: z.coerce.date().optional(),
+	firstProductionReleasedOn: z.iso.date(),
 	changelog: z.url().optional(),
 	isAvailableForTools: z.coerce.boolean(),
-	isLatest: z.boolean().readonly()
+	isLatest: z.boolean().readonly(),
+	platforms: z.array(
+		PLATFORM.omit({
+			id: true,
+			createdAt: true,
+			updatedAt: true
+		}).extend({
+			platformId: PLATFORM.shape.id,
+			productionReleasedOn: z.iso.date()
+		})
+	)
 });
 
 export interface Release extends z.infer<typeof RELEASE> {}
 
-export const RELEASE_ATTRS = RELEASE.omit({
-	id: true,
-	createdAt: true,
-	updatedAt: true,
-	isLatest: true
+export const SPECIFIC_RELEASE = RELEASE.omit({
+	firstProductionReleasedOn: true,
+	platforms: true
+}).extend({
+	releaseId: RELEASE.shape.id,
+	productionReleasedOn: RELEASE.shape.firstProductionReleasedOn,
+	platformName: z.string()
 });
 
-export interface ReleaseAttrs extends z.infer<typeof RELEASE_ATTRS> {}
-
-export const UPCOMING = z.literal("upcoming");
+export interface SpecificRelease extends z.infer<typeof SPECIFIC_RELEASE> {}
 
 export const IMPORT_RELEASE = RELEASE.pick({
 	edition: true,
@@ -39,10 +52,7 @@ export const IMPORT_RELEASE = RELEASE.pick({
 	developmentReleasedOn: true,
 	changelog: true
 }).extend({
-	platforms: z.record(
-		z.union([z.iso.date(), UPCOMING]),
-		z.array(PLATFORM.shape.name)
-	)
+	platformsCondensed: z.record(z.iso.date(), z.array(PLATFORM.shape.name))
 });
 
 export interface ImportRelease extends z.infer<typeof IMPORT_RELEASE> {}

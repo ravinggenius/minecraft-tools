@@ -26,7 +26,11 @@ export default function CreateSessionForm({
 	});
 
 	return (
-		<Form {...{ action }} className={styles.form} submitLabel={t("submit")}>
+		<Form
+			{...{ action, form }}
+			className={styles.form}
+			submitLabel={t("submit")}
+		>
 			<form.AppField
 				name="email"
 				validators={{ onChange: SESSION_CREDENTIALS.shape.email }}

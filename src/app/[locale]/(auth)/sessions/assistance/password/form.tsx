@@ -39,7 +39,7 @@ export default function SessionAssistancePasswordForm({
 
 	return (
 		<Form
-			{...{ action }}
+			{...{ action, form }}
 			className={classNames(styles.form, className)}
 			submitLabel={t("submit")}
 		>

@@ -32,7 +32,11 @@ export default function CreateProfileForm({
 	});
 
 	return (
-		<Form {...{ action }} className={styles.form} submitLabel={t("submit")}>
+		<Form
+			{...{ action, form }}
+			className={styles.form}
+			submitLabel={t("submit")}
+		>
 			<form.AppField
 				name="profile.name"
 				validators={{

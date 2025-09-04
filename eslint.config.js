@@ -27,6 +27,12 @@ export default [
 		rules: {
 			"@c-ehrlich/use-server/no-top-level-use-server": ["error"],
 			"import/no-anonymous-default-export": ["off"],
+			"react/jsx-no-leaked-render": [
+				"error",
+				{
+					validStrategies: ["ternary"]
+				}
+			],
 			"sql/format": [
 				"off",
 				{},

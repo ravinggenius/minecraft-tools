@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { ComponentProps } from "react";
 
-import Field from "@/components/Field/Field";
+import Field, { FieldMeta } from "@/components/Field/Field";
 import ObjectSelect, { Option } from "@/components/ObjectSelect/ObjectSelect";
 
 import styles from "./SelectField.module.scss";
@@ -28,17 +28,17 @@ export default function SelectField<TOption extends Option>({
 }: Pick<
 	ComponentProps<typeof Field>,
 	| "className"
-	| "debug"
 	| "description"
 	| "examples"
 	| "feedback"
 	| "id"
 	| "label"
-	| "meta"
-	| "name"
 	| "required"
-> &
-	Pick<
+> & {
+	debug?: boolean;
+	meta: FieldMeta;
+	name: string;
+} & Pick<
 		ComponentProps<typeof ObjectSelect<TOption>>,
 		| "children"
 		| "includeBlank"
@@ -53,7 +53,6 @@ export default function SelectField<TOption extends Option>({
 	return (
 		<Field
 			{...{
-				debug,
 				description,
 				examples,
 				feedback,
@@ -64,6 +63,22 @@ export default function SelectField<TOption extends Option>({
 				required
 			}}
 			className={classNames(styles.field, className)}
+			debugValue={
+				debug
+					? {
+							id,
+							name,
+							includeBlank,
+							required,
+							value: value ?? "<undefined>",
+							options,
+							description,
+							examples,
+							feedback,
+							meta
+						}
+					: undefined
+			}
 		>
 			<ObjectSelect
 				{...{

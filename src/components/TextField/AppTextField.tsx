@@ -10,12 +10,13 @@ import {
 	useState
 } from "react";
 
-import TextField from "@/components/TextField/TextField";
 import { useFieldContext } from "@/hooks/app-form";
 
 import { Feedback } from "../FeedbackList/FeedbackList";
 import { FieldMeta } from "../Field/Field";
 import { FormServerFeedbackContext } from "../Form/Form";
+
+import TextField from "./TextField";
 
 export default function AppTextField(
 	props: Omit<
@@ -35,7 +36,7 @@ export default function AppTextField(
 
 	const id = useId();
 
-	const field = useFieldContext<string>();
+	const field = useFieldContext<string | undefined>();
 
 	const [isFocused, setIsFocused] = useState(false);
 
@@ -77,7 +78,7 @@ export default function AppTextField(
 			onChange={handleChange}
 			onFocus={handleFocus}
 			onBlur={handleBlur}
-			value={field.state.value}
+			value={field.state.value ?? ""}
 		/>
 	);
 }

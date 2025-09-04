@@ -10,12 +10,13 @@ import {
 } from "react";
 
 import type { Option } from "@/components/ObjectSelect/ObjectSelect";
-import SelectField from "@/components/SelectField/SelectField";
 import { useFieldContext } from "@/hooks/app-form";
 
 import { Feedback } from "../FeedbackList/FeedbackList";
 import { FieldMeta } from "../Field/Field";
 import { FormServerFeedbackContext } from "../Form/Form";
+
+import SelectField from "./SelectField";
 
 export default function AppSelectField<TOption extends Option>(
 	props: Omit<
@@ -35,7 +36,7 @@ export default function AppSelectField<TOption extends Option>(
 
 	const id = useId();
 
-	const field = useFieldContext<TOption | undefined>();
+	const field = useFieldContext<TOption["id"] | undefined>();
 
 	const [isFocused, setIsFocused] = useState(false);
 

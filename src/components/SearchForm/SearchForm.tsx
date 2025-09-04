@@ -32,20 +32,10 @@ export default function SearchForm<
 
 	const viewOptions: Array<ViewOption> = [{ id: "list" }, { id: "table" }];
 
-	const keyedViewOptions = viewOptions.reduce<
-		Record<ViewOption["id"], ViewOption>
-	>(
-		(memo, option) => ({
-			...memo,
-			[option.id]: option
-		}),
-		{}
-	);
-
 	const form = useAppForm({
 		defaultValues: {
 			q: query.query,
-			v: keyedViewOptions[query.view],
+			v: query.view,
 			e: query.expand
 		}
 	});

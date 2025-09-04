@@ -10,12 +10,13 @@ import {
 	useState
 } from "react";
 
-import CheckboxField from "@/components/CheckboxField/CheckboxField";
 import { useFieldContext } from "@/hooks/app-form";
 
 import { Feedback } from "../FeedbackList/FeedbackList";
 import { FieldMeta } from "../Field/Field";
 import { FormServerFeedbackContext } from "../Form/Form";
+
+import CheckboxField from "./CheckboxField";
 
 export default function AppCheckboxField(
 	props: Omit<

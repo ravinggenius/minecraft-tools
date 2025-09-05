@@ -5,11 +5,11 @@ import { RELEASE } from "../release/schema";
 
 export const PLATFORM_RELEASE = z.object({
 	id: z.uuid(),
-	createdAt: z.coerce.date(),
-	updatedAt: z.coerce.date(),
+	createdAt: z.iso.date(),
+	updatedAt: z.iso.date(),
 	platformId: PLATFORM.shape.id,
 	releaseId: RELEASE.shape.id,
-	productionReleasedOn: z.coerce.date()
+	productionReleasedOn: z.iso.date()
 });
 
 export type PlatformRelease = z.infer<typeof PLATFORM_RELEASE>;

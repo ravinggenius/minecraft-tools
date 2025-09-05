@@ -10,12 +10,12 @@ export const UPCOMING = z.literal("upcoming");
 
 export const RELEASE = z.object({
 	id: z.uuid(),
-	createdAt: z.coerce.date(),
-	updatedAt: z.coerce.date(),
+	createdAt: z.iso.date(),
+	updatedAt: z.iso.date(),
 	edition: EDITION,
 	version: z.string(),
 	name: z.string().optional(),
-	developmentReleasedOn: z.coerce.date().optional(),
+	developmentReleasedOn: z.iso.date().optional(),
 	firstProductionReleasedOn: z.iso.date().optional(),
 	changelog: z.url().optional(),
 	isAvailableForTools: z.coerce.boolean(),

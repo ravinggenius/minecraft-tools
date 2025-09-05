@@ -12,7 +12,7 @@ if (process.env.NEXT_RUNTIME === "nodejs") {
 }
 
 export const writeSessionCookie = async (session: Session) =>
-	sessionCookieService.write(session.id, session.expiresAt);
+	sessionCookieService.write(session.id, new Date(session.expiresAt));
 
 export const readSessionCookie = () => sessionCookieService.read();
 

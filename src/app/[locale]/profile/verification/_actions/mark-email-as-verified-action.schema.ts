@@ -8,5 +8,5 @@ export const DATA = z.object({
 export const TOKEN = z.object({
 	email: z.email(),
 	nonce: z.string(),
-	expiresAt: z.coerce.date()
+	expiresAt: z.iso.date()
 });

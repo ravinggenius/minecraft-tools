@@ -21,8 +21,8 @@ const SUBJECT_WORLD = z.literal("world");
 
 const COMMON = z.object({
 	id: z.uuid(),
-	createdAt: z.coerce.date(),
-	updatedAt: z.coerce.date(),
+	createdAt: z.iso.date(),
+	updatedAt: z.iso.date(),
 	profileId: PROFILE.shape.id
 });
 

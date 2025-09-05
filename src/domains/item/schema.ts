@@ -6,8 +6,8 @@ export const RARITY = z.enum(["common", "uncommon", "rare", "epic"]);
 
 export const ITEM = z.object({
 	id: z.uuid(),
-	createdAt: z.coerce.date(),
-	updatedAt: z.coerce.date(),
+	createdAt: z.iso.date(),
+	updatedAt: z.iso.date(),
 	identity: z.string(),
 	wikiUrl: z.url(),
 	rarity: RARITY.default("common").optional(),

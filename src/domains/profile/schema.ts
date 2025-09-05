@@ -2,8 +2,8 @@ import { z } from "zod/v4";
 
 export const PROFILE = z.object({
 	id: z.uuid(),
-	createdAt: z.coerce.date(),
-	updatedAt: z.coerce.date(),
+	createdAt: z.iso.date(),
+	updatedAt: z.iso.date(),
 	name: z.string().trim().min(2),
 	isWelcomeNeeded: z.boolean()
 });

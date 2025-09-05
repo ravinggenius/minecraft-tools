@@ -7,11 +7,11 @@ import { PROFILE, PROFILE_ATTRS } from "../profile/schema";
 
 export const ACCOUNT = z.object({
 	id: z.uuid(),
-	createdAt: z.coerce.date(),
-	updatedAt: z.coerce.date(),
+	createdAt: z.iso.date(),
+	updatedAt: z.iso.date(),
 	profileId: PROFILE.shape.id,
 	email: z.email().trim(),
-	emailVerifiedAt: z.coerce.date().nullish(),
+	emailVerifiedAt: z.iso.date().nullish(),
 	tokenNonce: z.string(),
 	tokenNonceCount: z.int().positive()
 });

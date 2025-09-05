@@ -44,7 +44,7 @@ const markEmailAsVerifiedAction: ServerAction = async (data) => {
 		account.tokenNonce &&
 		decrypted.data.email === account.email &&
 		decrypted.data.nonce === account.tokenNonce &&
-		decrypted.data.expiresAt > new Date()
+		new Date(decrypted.data.expiresAt) > new Date()
 	) {
 		await accountModel.markEmailAsVerified(account.id);
 	} else {

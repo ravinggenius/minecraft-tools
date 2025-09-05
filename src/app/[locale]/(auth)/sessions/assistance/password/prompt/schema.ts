@@ -6,4 +6,4 @@ export const QUERY = z.object({
 	email: ACCOUNT.shape.email
 });
 
-export interface Query extends z.infer<typeof QUERY> {}
+export type Query = z.infer<typeof QUERY>;

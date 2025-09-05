@@ -8,7 +8,7 @@ export const PROFILE = z.object({
 	isWelcomeNeeded: z.boolean()
 });
 
-export interface Profile extends z.infer<typeof PROFILE> {}
+export type Profile = z.infer<typeof PROFILE>;
 
 export const PROFILE_ATTRS = PROFILE.omit({
 	id: true,
@@ -17,7 +17,7 @@ export const PROFILE_ATTRS = PROFILE.omit({
 	isWelcomeNeeded: true
 });
 
-export interface ProfileAttrs extends z.infer<typeof PROFILE_ATTRS> {}
+export type ProfileAttrs = z.infer<typeof PROFILE_ATTRS>;
 
 export const PUBLIC_PROFILE = PROFILE.omit({
 	createdAt: true,
@@ -25,4 +25,4 @@ export const PUBLIC_PROFILE = PROFILE.omit({
 	isWelcomeNeeded: true
 });
 
-export interface PublicProfile extends z.infer<typeof PUBLIC_PROFILE> {}
+export type PublicProfile = z.infer<typeof PUBLIC_PROFILE>;

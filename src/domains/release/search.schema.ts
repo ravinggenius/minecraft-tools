@@ -17,4 +17,4 @@ export const INCLUDE = z.object({
 	productionReleasedOn: OPTIONAL_DATE_RANGE
 });
 
-export interface Include extends z.infer<typeof INCLUDE> {}
+export type Include = z.infer<typeof INCLUDE>;

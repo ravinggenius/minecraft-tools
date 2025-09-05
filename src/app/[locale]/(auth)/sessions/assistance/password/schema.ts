@@ -7,7 +7,7 @@ export const QUERY = z.object({
 	token: z.string()
 });
 
-export interface Query extends z.infer<typeof QUERY> {}
+export type Query = z.infer<typeof QUERY>;
 
 export const DATA = QUERY.merge(ACCOUNT_PASSWORD_ATTRS);
 

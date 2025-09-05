@@ -12,7 +12,7 @@ export const PLATFORM_RELEASE = z.object({
 	productionReleasedOn: z.coerce.date()
 });
 
-export interface PlatformRelease extends z.infer<typeof PLATFORM_RELEASE> {}
+export type PlatformRelease = z.infer<typeof PLATFORM_RELEASE>;
 
 export const PLATFORM_RELEASE_ATTRS = PLATFORM_RELEASE.omit({
 	id: true,
@@ -20,5 +20,4 @@ export const PLATFORM_RELEASE_ATTRS = PLATFORM_RELEASE.omit({
 	updatedAt: true
 });
 
-export interface PlatformReleaseAttrs
-	extends z.infer<typeof PLATFORM_RELEASE_ATTRS> {}
+export type PlatformReleaseAttrs = z.infer<typeof PLATFORM_RELEASE_ATTRS>;

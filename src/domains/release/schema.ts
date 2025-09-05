@@ -32,7 +32,7 @@ export const RELEASE = z.object({
 	)
 });
 
-export interface Release extends z.infer<typeof RELEASE> {}
+export type Release = z.infer<typeof RELEASE>;
 
 export const SPECIFIC_RELEASE = RELEASE.omit({
 	firstProductionReleasedOn: true,
@@ -43,7 +43,7 @@ export const SPECIFIC_RELEASE = RELEASE.omit({
 	platformName: z.string()
 });
 
-export interface SpecificRelease extends z.infer<typeof SPECIFIC_RELEASE> {}
+export type SpecificRelease = z.infer<typeof SPECIFIC_RELEASE>;
 
 export const IMPORT_RELEASE = RELEASE.pick({
 	edition: true,
@@ -55,8 +55,8 @@ export const IMPORT_RELEASE = RELEASE.pick({
 	platformsCondensed: z.record(z.iso.date(), z.array(PLATFORM.shape.name))
 });
 
-export interface ImportRelease extends z.infer<typeof IMPORT_RELEASE> {}
+export type ImportRelease = z.infer<typeof IMPORT_RELEASE>;
 
 export const IMPORT_RELEASES = z.array(IMPORT_RELEASE);
 
-export interface ImportReleases extends z.infer<typeof IMPORT_RELEASES> {}
+export type ImportReleases = z.infer<typeof IMPORT_RELEASES>;

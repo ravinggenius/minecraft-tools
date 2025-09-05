@@ -10,7 +10,7 @@ export const SESSION = z.object({
 	accountId: ACCOUNT.shape.id
 });
 
-export interface Session extends z.infer<typeof SESSION> {}
+export type Session = z.infer<typeof SESSION>;
 
 export const SESSION_CREDENTIALS = ACCOUNT.pick({
 	email: true
@@ -18,5 +18,4 @@ export const SESSION_CREDENTIALS = ACCOUNT.pick({
 	password: z.string().min(1)
 });
 
-export interface SessionCredentials
-	extends z.infer<typeof SESSION_CREDENTIALS> {}
+export type SessionCredentials = z.infer<typeof SESSION_CREDENTIALS>;

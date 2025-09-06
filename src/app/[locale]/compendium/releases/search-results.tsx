@@ -1,3 +1,4 @@
+import { parseISO } from "date-fns";
 import { ComponentProps } from "react";
 
 import { Field } from "@/components/DataTable/DataTable";
@@ -44,7 +45,7 @@ export default async function PageSearchResults({
 										value: t(
 											"development-released-on.value",
 											{
-												developmentReleasedOn: new Date(
+												developmentReleasedOn: parseISO(
 													release.developmentReleasedOn
 												)
 											}
@@ -59,18 +60,31 @@ export default async function PageSearchResults({
 											text: t(
 												"first-production-released-on.value",
 												{
+													context:
+														release.firstProductionReleasedOn
+															? undefined
+															: "upcoming",
 													firstProductionReleasedOn:
-														new Date(
-															release.firstProductionReleasedOn
-														)
+														release.firstProductionReleasedOn
+															? parseISO(
+																	release.firstProductionReleasedOn
+																)
+															: undefined
 												}
 											),
 											isExternal: true
 										}
 									: t("first-production-released-on.value", {
-											firstProductionReleasedOn: new Date(
+											context:
 												release.firstProductionReleasedOn
-											)
+													? undefined
+													: "upcoming",
+											firstProductionReleasedOn:
+												release.firstProductionReleasedOn
+													? parseISO(
+															release.firstProductionReleasedOn
+														)
+													: undefined
 										})
 							},
 							mayEditReleases
@@ -94,13 +108,18 @@ export default async function PageSearchResults({
 								}),
 								isHighlighted: release.isLatest || undefined
 							},
-							{
-								key: t("platform-releases.label"),
-								value: release.platforms.map(
-									({ name }) => name
-								),
-								isLarge: true
-							}
+							release.platforms.length
+								? {
+										key: t("platform-releases.label"),
+										value: release.platforms.map(
+											({ name }) =>
+												t("platform-name.value", {
+													platformName: name
+												})
+										),
+										isLarge: true
+									}
+								: undefined
 						]}
 						title={t("list.card.title", {
 							context: release.name ? "named" : undefined,
@@ -146,7 +165,7 @@ export default async function PageSearchResults({
 					{({ developmentReleasedOn }: Release) =>
 						developmentReleasedOn
 							? t("development-released-on.value", {
-									developmentReleasedOn: new Date(
+									developmentReleasedOn: parseISO(
 										developmentReleasedOn
 									)
 								})
@@ -159,11 +178,13 @@ export default async function PageSearchResults({
 					label={t("first-production-released-on.label")}
 				>
 					{({ firstProductionReleasedOn }: Release) =>
-						t("first-production-released-on.value", {
-							firstProductionReleasedOn: new Date(
-								firstProductionReleasedOn
-							)
-						})
+						firstProductionReleasedOn
+							? t("first-production-released-on.value", {
+									firstProductionReleasedOn: parseISO(
+										firstProductionReleasedOn
+									)
+								})
+							: null
 					}
 				</Field>
 
@@ -192,20 +213,28 @@ export default async function PageSearchResults({
 					fieldPath="platforms"
 					label={t("platform-releases.label")}
 				>
-					{({ platforms }: Release) => (
-						<ol>
-							{platforms.map((p) => (
-								<li key={p.platformId}>
-									<span>{p.name}</span>
-									<span>
-										{new Date(
-											p.productionReleasedOn
-										).toLocaleDateString()}
-									</span>
-								</li>
-							))}
-						</ol>
-					)}
+					{({ platforms }: Release) =>
+						platforms.length ? (
+							<ol>
+								{platforms.map((p) => (
+									<li key={p.platformId}>
+										<span>
+											{t("platform-name.value", {
+												platformName: p.name
+											})}
+										</span>
+										<span>
+											{t("production-released-on.value", {
+												productionReleasedOn: parseISO(
+													p.productionReleasedOn
+												)
+											})}
+										</span>
+									</li>
+								))}
+							</ol>
+						) : null
+					}
 				</Field>
 			</SearchResults.Table>
 		</SearchResults>

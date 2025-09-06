@@ -1,8 +1,7 @@
 import { confirmAuthorization } from "@/library/authorization";
 import { COUNT, SearchParams, SearchResults } from "@/library/search";
+import { VOID } from "@/services/datastore-service/schema";
 import { pool, sql } from "@/services/datastore-service/service";
-
-import { PLATFORM_RELEASE } from "../platform-release/schema";
 
 import {
 	ImportRelease,
@@ -86,11 +85,11 @@ export const searchExpanded = async ({
 
 	const countQuery = sql.type(COUNT)`
 		SELECT
-			count(pr.id) AS count
+			count(r.id) AS count
 		FROM
 			platform_releases AS pr
 			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
-			LEFT OUTER JOIN releases AS r ON pr.release_id = r.id
+			RIGHT OUTER JOIN releases AS r ON pr.release_id = r.id
 		${
 			whereClauses.length
 				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
@@ -100,7 +99,7 @@ export const searchExpanded = async ({
 
 	const dataQuery = sql.type(SPECIFIC_RELEASE)`
 		SELECT
-			pr.id,
+			COALESCE(pr.id, r.id) AS id,
 			r.id AS "releaseId",
 			p.name AS "platformName",
 			r.edition,
@@ -114,7 +113,7 @@ export const searchExpanded = async ({
 		FROM
 			platform_releases AS pr
 			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
-			LEFT OUTER JOIN releases AS r ON pr.release_id = r.id
+			RIGHT OUTER JOIN releases AS r ON pr.release_id = r.id
 		${
 			whereClauses.length
 				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
@@ -156,7 +155,7 @@ export const search = async ({
 			FROM
 				platform_releases AS pr
 				LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
-				LEFT OUTER JOIN releases AS r ON pr.release_id = r.id
+				RIGHT OUTER JOIN releases AS r ON pr.release_id = r.id
 			${
 				whereClauses.length
 					? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
@@ -178,11 +177,17 @@ export const search = async ({
 			r.changelog,
 			r.is_latest AS "isLatest",
 			r.is_available_for_tools AS "isAvailableForTools",
-			jsonb_agg(jsonb_build_object('platformId', p.id, 'name', p.name, 'productionReleasedOn', pr.production_released_on)) AS platforms
+			COALESCE(
+				jsonb_agg(jsonb_build_object('platformId', p.id, 'name', p.name, 'productionReleasedOn', pr.production_released_on)) FILTER (
+					WHERE
+						p.id IS NOT NULL
+				),
+				'[]'::jsonb
+			) AS platforms
 		FROM
 			platform_releases AS pr
 			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
-			LEFT OUTER JOIN releases AS r ON pr.release_id = r.id
+			RIGHT OUTER JOIN releases AS r ON pr.release_id = r.id
 		${
 			whereClauses.length
 				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
@@ -210,94 +215,78 @@ export const search = async ({
 };
 
 export const doImport = async (release: ImportRelease) => {
-	const rainbow = Object.entries(release.platformsCondensed).map(
-		async ([productionReleasedOn, names]) => {
-			if (productionReleasedOn === UPCOMING.value) {
-				return;
+	return (await pool).transaction(async (tx) => {
+		const releaseId = await tx.oneFirst(sql.type(
+			RELEASE.pick({ id: true })
+		)`
+			INSERT INTO
+				releases (
+					edition,
+					version,
+					name,
+					development_released_on,
+					changelog
+				)
+			VALUES
+				(
+					${release.edition},
+					${release.version},
+					${release.name ?? null},
+					${
+						release.developmentReleasedOn
+							? sql.date(new Date(release.developmentReleasedOn))
+							: null
+					},
+					${release.changelog ?? null}
+				)
+			ON CONFLICT (edition, version) DO UPDATE
+			SET
+				updated_at = DEFAULT,
+				name = EXCLUDED.name,
+				development_released_on = EXCLUDED.development_released_on,
+				changelog = EXCLUDED.changelog
+			RETURNING
+				id
+		`);
+
+		const rainbow = Object.entries(release.platformsCondensed).map(
+			async ([productionReleasedOn, names]) => {
+				if (productionReleasedOn === UPCOMING.value) {
+					return;
+				}
+
+				return tx.one(sql.type(VOID)`
+					WITH
+						the_platforms AS (
+							INSERT INTO
+								platforms (name)
+							SELECT
+								${sql.unnest(
+									names.map((name) => [name]),
+									["text"]
+								)}
+							ON CONFLICT (name) DO UPDATE
+							SET
+								updated_at = DEFAULT
+							RETURNING
+								id
+						)
+					INSERT INTO
+						platform_releases (release_id, platform_id, production_released_on)
+					SELECT
+						${releaseId},
+						p.id,
+						${sql.date(new Date(productionReleasedOn))}
+					FROM
+						the_platforms AS p
+					ON CONFLICT (release_id, platform_id) DO UPDATE
+					SET
+						updated_at = DEFAULT,
+						production_released_on = ${sql.date(new Date(productionReleasedOn))}
+				`);
 			}
+		);
 
-			return (await pool).one(sql.type(
-				PLATFORM_RELEASE.pick({
-					id: true,
-					platformId: true,
-					releaseId: true
-				})
-			)`
-				WITH
-					the_platforms AS (
-						INSERT INTO
-							platforms (name)
-						SELECT
-							${sql.unnest(
-								names.map((name) => [name]),
-								["text"]
-							)}
-						ON CONFLICT (name) DO UPDATE
-						SET
-							updated_at = DEFAULT
-						RETURNING
-							id,
-							name
-					),
-					the_release AS (
-						INSERT INTO
-							releases (
-								edition,
-								version,
-								name,
-								development_released_on,
-								changelog
-							)
-						VALUES
-							(
-								${release.edition},
-								${release.version},
-								${release.name ?? null},
-								${
-									release.developmentReleasedOn
-										? sql.date(
-												release.developmentReleasedOn
-											)
-										: null
-								},
-								${release.changelog ?? null}
-							)
-						ON CONFLICT (edition, version) DO UPDATE
-						SET
-							updated_at = DEFAULT,
-							development_released_on = EXCLUDED.development_released_on,
-							changelog = EXCLUDED.changelog
-						RETURNING
-							id,
-							created_at,
-							updated_at,
-							edition,
-							version,
-							name,
-							development_released_on,
-							changelog,
-							is_latest
-					)
-				INSERT INTO
-					platform_releases (platform_id, release_id, production_released_on)
-				SELECT
-					p.id,
-					r.id,
-					${sql.date(new Date(productionReleasedOn))}
-				FROM
-					the_platforms AS p,
-					the_release AS r
-				ON CONFLICT (platform_id, release_id) DO UPDATE
-				SET
-					updated_at = DEFAULT,
-					production_released_on = ${sql.date(new Date(productionReleasedOn))}
-				RETURNING
-					id,
-					platform_id AS "platformId",
-					release_id AS "releaseId"
-			`);
-		}
-	);
-
-	return Promise.allSettled(rainbow);
+		return Promise.allSettled(rainbow);
+	});
 };

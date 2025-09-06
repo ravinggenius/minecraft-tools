@@ -1,3 +1,4 @@
+import { parseISO } from "date-fns";
 import { ComponentProps } from "react";
 
 import { Field } from "@/components/DataTable/DataTable";
@@ -44,7 +45,7 @@ export default async function PageSearchResultsExpanded({
 										value: t(
 											"development-released-on.value",
 											{
-												developmentReleasedOn: new Date(
+												developmentReleasedOn: parseISO(
 													release.developmentReleasedOn
 												)
 											}
@@ -59,18 +60,31 @@ export default async function PageSearchResultsExpanded({
 											text: t(
 												"production-released-on.value",
 												{
+													context:
+														release.productionReleasedOn
+															? undefined
+															: "upcoming",
 													productionReleasedOn:
-														new Date(
-															release.productionReleasedOn
-														)
+														release.productionReleasedOn
+															? parseISO(
+																	release.productionReleasedOn
+																)
+															: undefined
 												}
 											),
 											isExternal: true
 										}
 									: t("production-released-on.value", {
-											productionReleasedOn: new Date(
+											context:
 												release.productionReleasedOn
-											)
+													? undefined
+													: "upcoming",
+											productionReleasedOn:
+												release.productionReleasedOn
+													? parseISO(
+															release.productionReleasedOn
+														)
+													: undefined
 										})
 							},
 							mayEditReleases
@@ -96,7 +110,12 @@ export default async function PageSearchResultsExpanded({
 							},
 							{
 								key: t("platform-name.label"),
-								value: release.platformName
+								value: t("platform-name.value", {
+									context: release.platformName
+										? undefined
+										: "upcoming",
+									platformName: release.platformName
+								})
 							}
 						]}
 						title={t("list.card.title", {
@@ -145,7 +164,7 @@ export default async function PageSearchResultsExpanded({
 					{({ developmentReleasedOn }: SpecificRelease) =>
 						developmentReleasedOn
 							? t("development-released-on.value", {
-									developmentReleasedOn: new Date(
+									developmentReleasedOn: parseISO(
 										developmentReleasedOn
 									)
 								})
@@ -158,9 +177,13 @@ export default async function PageSearchResultsExpanded({
 					label={t("production-released-on.label")}
 				>
 					{({ productionReleasedOn }: SpecificRelease) =>
-						t("production-released-on.value", {
-							productionReleasedOn: new Date(productionReleasedOn)
-						})
+						productionReleasedOn
+							? t("production-released-on.value", {
+									productionReleasedOn: productionReleasedOn
+										? parseISO(productionReleasedOn)
+										: undefined
+								})
+							: null
 					}
 				</Field>
 
@@ -189,7 +212,13 @@ export default async function PageSearchResultsExpanded({
 					fieldPath="platformName"
 					label={t("platform-name.label")}
 				>
-					{({ platformName }: SpecificRelease) => platformName}
+					{({ platformName }: SpecificRelease) =>
+						platformName
+							? t("platform-name.value", {
+									platformName
+								})
+							: null
+					}
 				</Field>
 			</SearchResults.Table>
 		</SearchResults>

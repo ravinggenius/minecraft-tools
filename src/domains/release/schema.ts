@@ -16,7 +16,7 @@ export const RELEASE = z.object({
 	version: z.string(),
 	name: z.string().optional(),
 	developmentReleasedOn: z.coerce.date().optional(),
-	firstProductionReleasedOn: z.iso.date(),
+	firstProductionReleasedOn: z.iso.date().optional(),
 	changelog: z.url().optional(),
 	isAvailableForTools: z.coerce.boolean(),
 	isLatest: z.boolean().readonly(),
@@ -37,11 +37,23 @@ export type Release = z.infer<typeof RELEASE>;
 export const SPECIFIC_RELEASE = RELEASE.omit({
 	firstProductionReleasedOn: true,
 	platforms: true
-}).extend({
-	releaseId: RELEASE.shape.id,
-	productionReleasedOn: RELEASE.shape.firstProductionReleasedOn,
-	platformName: z.string()
-});
+})
+	.extend({
+		releaseId: RELEASE.shape.id
+	})
+	.and(
+		z.union([
+			z.object({
+				productionReleasedOn:
+					RELEASE.shape.firstProductionReleasedOn.nonoptional(),
+				platformName: PLATFORM.shape.name
+			}),
+			z.object({
+				productionReleasedOn: z.never().optional(),
+				platformName: z.never().optional()
+			})
+		])
+	);
 
 export type SpecificRelease = z.infer<typeof SPECIFIC_RELEASE>;
 
@@ -52,7 +64,13 @@ export const IMPORT_RELEASE = RELEASE.pick({
 	developmentReleasedOn: true,
 	changelog: true
 }).extend({
-	platformsCondensed: z.record(z.iso.date(), z.array(PLATFORM.shape.name))
+	platformsCondensed: z.record(
+		z.union([
+			UPCOMING,
+			RELEASE.shape.firstProductionReleasedOn.nonoptional()
+		]),
+		z.array(PLATFORM.shape.name)
+	)
 });
 
 export type ImportRelease = z.infer<typeof IMPORT_RELEASE>;

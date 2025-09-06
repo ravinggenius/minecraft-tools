@@ -39,12 +39,14 @@
 
   "production-released-on": {
     "label": "Production Release",
-    "value": "{{productionReleasedOn, dateTime(year: numeric; month: short; day: numeric)}}"
+    "value": "{{productionReleasedOn, dateTime(year: numeric; month: short; day: numeric)}}",
+    "value_upcoming": "UPCOMING"
   },
 
   "first-production-released-on": {
     "label": "First Production Release",
-    "value": "{{firstProductionReleasedOn, dateTime(year: numeric; month: short; day: numeric)}}"
+    "value": "{{firstProductionReleasedOn, dateTime(year: numeric; month: short; day: numeric)}}",
+    "value_upcoming": "UPCOMING"
   },
 
   "is-available-for-tools": {
@@ -64,6 +66,8 @@
   },
 
   "platform-name": {
-    "label": "Platform"
+    "label": "Platform",
+    "value": "{{platformName}}",
+    "value_upcoming": "UPCOMING"
   }
 }

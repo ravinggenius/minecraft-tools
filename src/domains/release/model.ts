@@ -51,6 +51,64 @@ export const get = async (id: Release["id"]) => {
 	`);
 };
 
+export const mostRecentName = async () =>
+	(await pool).maybeOneFirst(sql.type(RELEASE.pick({ name: true }))`
+		SELECT
+			name
+		FROM
+			releases
+		ORDER BY
+			created_at DESC
+		LIMIT
+			1
+	`);
+
+export const create = async (attrs: ReleaseAttrs) => {
+	await enforceAuthorization(["create", "new", "release"]);
+
+	return (await pool).any(sql.type(VOID)`
+		WITH
+			the_release AS (
+				INSERT INTO
+					releases (edition, version, name, development_released_on, changelog, is_available_for_tools)
+				VALUES
+					(
+						${attrs.edition},
+						${attrs.version},
+						${attrs.name ?? null},
+						${attrs.developmentReleasedOn ? sql.date(new Date(attrs.developmentReleasedOn)) : null},
+						${attrs.changelog ?? null},
+						${attrs.isAvailableForTools}
+					)
+				ON CONFLICT (edition, version) DO UPDATE
+				SET
+					updated_at = DEFAULT,
+					edition = ${attrs.edition},
+					version = ${attrs.version},
+					name = ${attrs.name ?? null},
+					development_released_on = ${attrs.developmentReleasedOn ? sql.date(new Date(attrs.developmentReleasedOn)) : null},
+					changelog = ${attrs.changelog ?? null},
+					is_available_for_tools = ${attrs.isAvailableForTools}
+				RETURNING
+					id
+			)
+		INSERT INTO
+			platform_releases (release_id, platform_id, production_released_on)
+		SELECT
+			r.id AS release_id,
+			dates.platform_id,
+			dates.production_released_on
+		FROM
+			the_release AS r,
+			jsonb_to_recordset(${sql.jsonb(
+				attrs.platforms.map(({ platformId, productionReleasedOn }) => ({
+					platform_id: platformId,
+					production_released_on: productionReleasedOn
+				}))
+			)}) AS dates(platform_id uuid, production_released_on date)
+	`);
+};
+
 export const update = async (releaseId: Release["id"], attrs: ReleaseAttrs) => {
 	await enforceAuthorization(["update", "any", "release"]);
 

@@ -1,6 +1,7 @@
 import { parseISO } from "date-fns";
 import { ComponentProps } from "react";
 
+import Anchor from "@/components/Anchor/Anchor";
 import { Field } from "@/components/DataTable/DataTable";
 import KeyValueCard from "@/components/Pagination/KeyValueCard/KeyValueCard";
 import SearchResults from "@/components/SearchResults/SearchResults";
@@ -38,6 +39,11 @@ export default async function PageSearchResultsExpanded({
 					<KeyValueCard
 						{...{ locale }}
 						edition={release.edition}
+						href={
+							mayEditReleases
+								? `/${locale}/command/releases/${release.releaseId}`
+								: undefined
+						}
 						pairs={[
 							release.developmentReleasedOn
 								? {
@@ -138,8 +144,17 @@ export default async function PageSearchResultsExpanded({
 				</Field>
 
 				<Field fieldPath="version" label={t("version.label")}>
-					{({ version }: SpecificRelease) =>
-						t("version.value", { version })
+					{({ releaseId, version }: SpecificRelease) =>
+						mayEditReleases ? (
+							<Anchor
+								href={`/${locale}/command/releases/${releaseId}`}
+								variant="inline"
+							>
+								{t("version.value", { version })}
+							</Anchor>
+						) : (
+							t("version.value", { version })
+						)
 					}
 				</Field>
 

@@ -1,0 +1,12 @@
+{
+  "metadata": {
+    "title": "Release"
+  },
+
+  "content": {
+    "breadcrumb": {
+      "release-short-name": "{{version}} ($t(domains:release.edition.name, { \"context\": \"{{edition}}\" }))"
+    },
+    "description": "Release"
+  }
+}

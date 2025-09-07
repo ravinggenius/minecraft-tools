@@ -1,4 +1,7 @@
-import { confirmAuthorization } from "@/library/authorization";
+import {
+	confirmAuthorization,
+	enforceAuthorization
+} from "@/library/authorization";
 import { COUNT, SearchParams, SearchResults } from "@/library/search";
 import { VOID } from "@/services/datastore-service/schema";
 import { pool, sql } from "@/services/datastore-service/service";
@@ -7,6 +10,7 @@ import {
 	ImportRelease,
 	Release,
 	RELEASE,
+	ReleaseAttrs,
 	SPECIFIC_RELEASE,
 	SpecificRelease,
 	UPCOMING
@@ -16,6 +20,84 @@ import { Include } from "./search.schema";
 if (process.env.NEXT_RUNTIME === "nodejs") {
 	await import("server-only");
 }
+
+export const get = async (id: Release["id"]) => {
+	return (await pool).maybeOne(sql.type(RELEASE)`
+		SELECT
+			r.id,
+			r.edition,
+			r.version,
+			r.name,
+			r.development_released_on AS "developmentReleasedOn",
+			min(pr.production_released_on) AS "firstProductionReleasedOn",
+			r.changelog,
+			r.is_latest AS "isLatest",
+			r.is_available_for_tools AS "isAvailableForTools",
+			COALESCE(
+				jsonb_agg(jsonb_build_object('platformId', p.id, 'name', p.name, 'productionReleasedOn', pr.production_released_on)) FILTER (
+					WHERE
+						p.id IS NOT NULL
+				),
+				'[]'::jsonb
+			) AS platforms
+		FROM
+			platform_releases AS pr
+			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
+			RIGHT OUTER JOIN releases AS r ON pr.release_id = r.id
+		WHERE
+			r.id = ${id}
+		GROUP BY
+			r.id
+	`);
+};
+
+export const update = async (releaseId: Release["id"], attrs: ReleaseAttrs) => {
+	await enforceAuthorization(["update", "any", "release"]);
+
+	return (await pool).any(sql.type(VOID)`
+		WITH
+			the_release AS (
+				UPDATE releases
+				SET
+					updated_at = DEFAULT,
+					edition = ${attrs.edition},
+					version = ${attrs.version},
+					name = ${attrs.name ?? null},
+					development_released_on = ${attrs.developmentReleasedOn ? sql.date(new Date(attrs.developmentReleasedOn)) : null},
+					changelog = ${attrs.changelog ?? null},
+					is_available_for_tools = ${attrs.isAvailableForTools}
+				WHERE id = ${releaseId}
+				RETURNING
+					id
+			)
+		MERGE INTO platform_releases AS target
+		USING (
+			SELECT
+				r.id AS release_id,
+				dates.platform_id,
+				dates.production_released_on
+			FROM
+				the_release AS r,
+				jsonb_to_recordset(${sql.jsonb(
+					attrs.platforms.map(
+						({ platformId, productionReleasedOn }) => ({
+							platform_id: platformId,
+							production_released_on: productionReleasedOn
+						})
+					)
+				)}) AS dates(platform_id uuid, production_released_on date)
+		) AS source
+		ON target.release_id = source.release_id AND target.platform_id = source.platform_id
+		WHEN MATCHED THEN
+			UPDATE SET
+				updated_at = DEFAULT,
+				production_released_on = source.production_released_on
+		WHEN NOT MATCHED BY SOURCE AND target.release_id = ${releaseId} THEN DELETE
+		WHEN NOT MATCHED THEN
+			INSERT (release_id, platform_id, production_released_on)
+			VALUES (source.release_id, source.platform_id, source.production_released_on)
+	`);
+};
 
 const searchConditions = async ({
 	include,

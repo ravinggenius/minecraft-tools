@@ -17,6 +17,19 @@ if (process.env.NEXT_RUNTIME === "nodejs") {
 	await import("server-only");
 }
 
+export const listAll = async () =>
+	(await pool).any(sql.type(PLATFORM)`
+		SELECT
+			p.id,
+			p.created_at AS "createdAt",
+			p.updated_at AS "updatedAt",
+			p.name
+		FROM
+			platforms AS p
+		ORDER BY
+			p.name ASC
+	`);
+
 export const create = async (attrs: PlatformAttrs) => {
 	await enforceAuthorization(["create", "new", "platform"]);
 

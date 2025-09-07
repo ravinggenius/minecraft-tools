@@ -13,7 +13,7 @@ export const RELEASE = z.object({
 	createdAt: z.iso.date(),
 	updatedAt: z.iso.date(),
 	edition: EDITION,
-	version: z.string(),
+	version: z.string().regex(/\d+(?:\.\d+){1,3}/),
 	name: z.string().optional(),
 	developmentReleasedOn: z.iso.date().optional(),
 	firstProductionReleasedOn: z.iso.date().optional(),
@@ -56,6 +56,31 @@ export const SPECIFIC_RELEASE = RELEASE.omit({
 	);
 
 export type SpecificRelease = z.infer<typeof SPECIFIC_RELEASE>;
+
+export const RELEASE_ATTRS = RELEASE.omit({
+	id: true,
+	createdAt: true,
+	updatedAt: true,
+	firstProductionReleasedOn: true,
+	isLatest: true,
+	platforms: true
+}).extend({
+	platforms: z
+		.array(
+			PLATFORM.omit({
+				id: true,
+				createdAt: true,
+				updatedAt: true,
+				name: true
+			}).extend({
+				platformId: PLATFORM.shape.id,
+				productionReleasedOn: z.iso.date()
+			})
+		)
+		.default([])
+});
+
+export type ReleaseAttrs = z.infer<typeof RELEASE_ATTRS>;
 
 export const IMPORT_RELEASE = RELEASE.pick({
 	edition: true,

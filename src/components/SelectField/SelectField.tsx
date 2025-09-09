@@ -87,6 +87,7 @@ export default function SelectField<TOption extends Option>({
 					onFocus,
 					onBlur,
 					options,
+					required,
 					serialize,
 					value
 				}}

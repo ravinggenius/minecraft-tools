@@ -14,7 +14,7 @@ export const RELEASE = z.object({
 	updatedAt: z.iso.date(),
 	edition: EDITION,
 	version: z.string().regex(/\d+(?:\.\d+){1,3}/),
-	name: z.string().optional(),
+	name: z.string(),
 	developmentReleasedOn: z.iso.date().optional(),
 	firstProductionReleasedOn: z.iso.date().optional(),
 	changelog: z.url().optional(),

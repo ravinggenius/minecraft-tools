@@ -128,7 +128,9 @@ export default async function PageSearchResults({
 								: undefined
 						]}
 						title={t("list.card.title", {
-							context: release.name ? "named" : undefined,
+							context: release.version.startsWith(release.name)
+								? undefined
+								: "named",
 							version: release.version,
 							name: release.name
 						})}

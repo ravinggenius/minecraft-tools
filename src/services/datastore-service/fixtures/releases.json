@@ -2,12 +2,14 @@
   {
     "edition": "bedrock",
     "version": "1.21.120",
+    "name": "The Copper Age",
     "developmentReleasedOn": "2025-09-03",
     "platformsCondensed": {}
   },
   {
     "edition": "bedrock",
     "version": "1.21.110",
+    "name": "The Copper Age",
     "developmentReleasedOn": "2025-07-22",
     "platformsCondensed": {}
   },
@@ -2174,6 +2176,7 @@
   {
     "edition": "bedrock",
     "version": "1.13.3",
+    "name": "1.13",
     "platformsCondensed": {
       "2019-11-20": ["iOS", "iPadOS"]
     }
@@ -2181,6 +2184,7 @@
   {
     "edition": "bedrock",
     "version": "1.13.2",
+    "name": "1.13",
     "platformsCondensed": {
       "2019-11-14": ["iOS", "iPadOS"]
     }
@@ -2188,6 +2192,7 @@
   {
     "edition": "bedrock",
     "version": "1.13.1",
+    "name": "1.13",
     "platformsCondensed": {
       "2019-11-12": [
         "Android",
@@ -2207,6 +2212,7 @@
   {
     "edition": "bedrock",
     "version": "1.13.0",
+    "name": "1.13",
     "developmentReleasedOn": "2019-06-27",
     "platformsCondensed": {
       "2019-10-29": [
@@ -2227,6 +2233,7 @@
   {
     "edition": "bedrock",
     "version": "1.12.1",
+    "name": "1.12",
     "platformsCondensed": {
       "2019-09-02": ["Android"],
       "2019-09-03": [
@@ -2246,6 +2253,7 @@
   {
     "edition": "bedrock",
     "version": "1.12.0",
+    "name": "1.12",
     "developmentReleasedOn": "2019-04-17",
     "platformsCondensed": {
       "2019-07-10": ["Android"],
@@ -2377,6 +2385,7 @@
   {
     "edition": "bedrock",
     "version": "1.9.0",
+    "name": "1.9",
     "developmentReleasedOn": "2018-11-15",
     "platformsCondensed": {
       "2019-02-05": [
@@ -2396,6 +2405,7 @@
   {
     "edition": "bedrock",
     "version": "1.8.1",
+    "name": "1.8",
     "platformsCondensed": {
       "2019-01-08": [
         "Android",
@@ -2414,6 +2424,7 @@
   {
     "edition": "bedrock",
     "version": "1.8.0",
+    "name": "1.8",
     "developmentReleasedOn": "2018-10-10",
     "platformsCondensed": {
       "2018-12-11": [
@@ -2433,6 +2444,7 @@
   {
     "edition": "bedrock",
     "version": "1.7.1",
+    "name": "1.7",
     "platformsCondensed": {
       "2018-11-07": ["Windows 10", "Xbox One"]
     }
@@ -2440,6 +2452,7 @@
   {
     "edition": "bedrock",
     "version": "1.7.0",
+    "name": "1.7",
     "developmentReleasedOn": "2018-08-23",
     "platformsCondensed": {
       "2018-10-16": [
@@ -2459,6 +2472,7 @@
   {
     "edition": "bedrock",
     "version": "1.6.2",
+    "name": "1.6",
     "platformsCondensed": {
       "2018-10-01": ["iOS"]
     }
@@ -2466,6 +2480,7 @@
   {
     "edition": "bedrock",
     "version": "1.6.1",
+    "name": "1.6",
     "platformsCondensed": {
       "2018-09-17": [
         "Android",
@@ -2484,6 +2499,7 @@
   {
     "edition": "bedrock",
     "version": "1.6.0",
+    "name": "1.6",
     "developmentReleasedOn": "2018-06-14",
     "platformsCondensed": {
       "2018-08-28": [
@@ -3406,6 +3422,7 @@
   {
     "edition": "java",
     "version": "1.21.9",
+    "name": "The Copper Age",
     "developmentReleasedOn": "2025-07-29",
     "platformsCondensed": {}
   },
@@ -4169,6 +4186,7 @@
   {
     "edition": "java",
     "version": "1.3.2",
+    "name": "1.3",
     "developmentReleasedOn": "2012-08-14",
     "platformsCondensed": {
       "2012-08-16": ["Linux", "macOS", "Windows"]
@@ -4177,6 +4195,7 @@
   {
     "edition": "java",
     "version": "1.3.1",
+    "name": "1.3",
     "developmentReleasedOn": "2012-04-12",
     "platformsCondensed": {
       "2012-08-01": ["Linux", "macOS", "Windows"]
@@ -4185,6 +4204,7 @@
   {
     "edition": "java",
     "version": "1.2.5",
+    "name": "1.2",
     "developmentReleasedOn": "2012-03-30",
     "platformsCondensed": {
       "2012-04-04": ["Linux", "macOS", "Windows"]
@@ -4193,6 +4213,7 @@
   {
     "edition": "java",
     "version": "1.2.4",
+    "name": "1.2",
     "platformsCondensed": {
       "2012-03-22": ["Linux", "macOS", "Windows"]
     }
@@ -4200,6 +4221,7 @@
   {
     "edition": "java",
     "version": "1.2.3",
+    "name": "1.2",
     "platformsCondensed": {
       "2012-03-02": ["Linux", "macOS", "Windows"]
     }
@@ -4207,6 +4229,7 @@
   {
     "edition": "java",
     "version": "1.2.2",
+    "name": "1.2",
     "platformsCondensed": {
       "2012-03-01": ["Linux", "macOS", "Windows"]
     }
@@ -4214,6 +4237,7 @@
   {
     "edition": "java",
     "version": "1.2.1",
+    "name": "1.2",
     "developmentReleasedOn": "2012-01-19",
     "platformsCondensed": {
       "2012-03-01": ["Linux", "macOS", "Windows"]
@@ -4222,6 +4246,7 @@
   {
     "edition": "java",
     "version": "1.1",
+    "name": "1.1",
     "developmentReleasedOn": "2011-11-24",
     "platformsCondensed": {
       "2012-01-12": ["Linux", "macOS", "Windows"]

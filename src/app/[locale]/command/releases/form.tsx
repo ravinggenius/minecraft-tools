@@ -32,7 +32,7 @@ export default function ReleaseForm({
 		defaultValues: {
 			edition: attrs.edition,
 			version: attrs.version,
-			name: attrs.name ?? "",
+			name: attrs.name,
 			developmentReleasedOn: attrs.developmentReleasedOn,
 			changelog: attrs.changelog ?? "",
 			isAvailableForTools: attrs.isAvailableForTools,
@@ -85,7 +85,9 @@ export default function ReleaseForm({
 					}
 				}
 			>
-				{(field) => <field.TextField label={t("name.label")} />}
+				{(field) => (
+					<field.TextField label={t("name.label")} required />
+				)}
 			</form.AppField>
 
 			<form.AppField

@@ -7,6 +7,9 @@
     "breadcrumb": {
       "release-short-name": "{{version}} ($t(domains:release.edition.name, { \"context\": \"{{edition}}\" }))"
     },
-    "description": "Release"
+    "description": "Release",
+    "delete-cta": {
+      "label": "Delete Release"
+    }
   }
 }

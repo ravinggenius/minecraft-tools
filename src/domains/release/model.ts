@@ -157,6 +157,15 @@ export const update = async (releaseId: Release["id"], attrs: ReleaseAttrs) => {
 	`);
 };
 
+export const destroy = async (releaseId: Release["id"]) => {
+	await enforceAuthorization(["destroy", "any", "release"]);
+
+	(await pool).any(sql.type(VOID)`
+		DELETE FROM releases
+		WHERE id = ${releaseId}
+	`);
+};
+
 const searchConditions = async ({
 	include,
 	exclude

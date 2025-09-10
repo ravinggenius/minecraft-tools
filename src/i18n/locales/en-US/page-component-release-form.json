@@ -1,0 +1,34 @@
+{
+  "edition": {
+    "label": "Edition",
+    "name": "$t(domains:release.edition.name, { \"context\": \"{{edition}}\" }) Edition"
+  },
+  "version": {
+    "label": "Version",
+    "placeholder": "1.22.0"
+  },
+  "name": {
+    "label": "Name"
+  },
+  "changelog": {
+    "label": "Changelog"
+  },
+  "is-available-for-tools": {
+    "label": "Available For Tools?"
+  },
+  "development-released-on": {
+    "label": "Development Release Date"
+  },
+  "platform-releases": {
+    "legend": "Platform Releases",
+    "platform": {
+      "label": "Platform"
+    },
+    "production-released-on": {
+      "label": "Production Release Date"
+    },
+    "add-button": "Add Platform"
+  },
+  "submit_edit": "Update Release",
+  "submit_new": "Create Release"
+}

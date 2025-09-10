@@ -1,0 +1,9 @@
+.removeButton {
+	place-self: center;
+}
+
+.platformRelease {
+	display: grid;
+	gap: 3ch;
+	grid-template-columns: max-content 1fr max-content;
+}

@@ -1,0 +1,8 @@
+{
+  "release": {
+    "edition": {
+      "name_bedrock": "Bedrock",
+      "name_java": "Java"
+    }
+  }
+}

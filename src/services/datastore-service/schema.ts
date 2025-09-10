@@ -4,6 +4,6 @@ export const IDENTITY = z.object({
 	id: z.uuid()
 });
 
-export interface Identity extends z.infer<typeof IDENTITY> {}
+export type Identity = z.infer<typeof IDENTITY>;
 
 export const VOID = z.strictObject({});

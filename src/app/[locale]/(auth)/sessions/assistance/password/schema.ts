@@ -7,12 +7,12 @@ export const QUERY = z.object({
 	token: z.string()
 });
 
-export interface Query extends z.infer<typeof QUERY> {}
+export type Query = z.infer<typeof QUERY>;
 
 export const DATA = QUERY.merge(ACCOUNT_PASSWORD_ATTRS);
 
 export const TOKEN = z.object({
 	email: z.email(),
 	nonce: z.string(),
-	expiresAt: z.coerce.date()
+	expiresAt: z.iso.date()
 });

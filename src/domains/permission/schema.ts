@@ -21,12 +21,12 @@ const SUBJECT_WORLD = z.literal("world");
 
 const COMMON = z.object({
 	id: z.uuid(),
-	createdAt: z.coerce.date(),
-	updatedAt: z.coerce.date(),
+	createdAt: z.iso.date(),
+	updatedAt: z.iso.date(),
 	profileId: PROFILE.shape.id
 });
 
-interface Common extends z.infer<typeof COMMON> {}
+type Common = z.infer<typeof COMMON>;
 
 ////
 
@@ -39,8 +39,9 @@ export type AssertionCompendiumReadTuple = z.input<
 	typeof ASSERTION_COMPENDIUM_READ
 >;
 
-export interface AssertionCompendiumRead
-	extends z.output<typeof ASSERTION_COMPENDIUM_READ> {}
+export type AssertionCompendiumRead = z.output<
+	typeof ASSERTION_COMPENDIUM_READ
+>;
 
 // admin user allowed to create compendium entries
 export const ASSERTION_COMPENDIUM_CREATE = z
@@ -55,8 +56,9 @@ export type AssertionCompendiumCreateTuple = z.input<
 	typeof ASSERTION_COMPENDIUM_CREATE
 >;
 
-export interface AssertionCompendiumCreate
-	extends z.output<typeof ASSERTION_COMPENDIUM_CREATE> {}
+export type AssertionCompendiumCreate = z.output<
+	typeof ASSERTION_COMPENDIUM_CREATE
+>;
 
 // admin user allowed to manage compendium entries
 export const ASSERTION_COMPENDIUM_MANAGE = z
@@ -71,8 +73,9 @@ export type AssertionCompendiumManageTuple = z.input<
 	typeof ASSERTION_COMPENDIUM_MANAGE
 >;
 
-export interface AssertionCompendiumManage
-	extends z.output<typeof ASSERTION_COMPENDIUM_MANAGE> {}
+export type AssertionCompendiumManage = z.output<
+	typeof ASSERTION_COMPENDIUM_MANAGE
+>;
 
 // any authenticated user should be able to manage their own profile
 export const ASSERTION_PROFILE_MANAGE = z
@@ -83,8 +86,7 @@ export type AssertionProfileManageTuple = z.input<
 	typeof ASSERTION_PROFILE_MANAGE
 >;
 
-export interface AssertionProfileManage
-	extends z.output<typeof ASSERTION_PROFILE_MANAGE> {}
+export type AssertionProfileManage = z.output<typeof ASSERTION_PROFILE_MANAGE>;
 
 // any authenticated user should be able to create a world
 // checked explicitly in case revocation is needed (in case of abuse)
@@ -94,8 +96,7 @@ export const ASSERTION_WORLD_CREATE = z
 
 export type AssertionWorldCreateTuple = z.input<typeof ASSERTION_WORLD_CREATE>;
 
-export interface AssertionWorldCreate
-	extends z.output<typeof ASSERTION_WORLD_CREATE> {}
+export type AssertionWorldCreate = z.output<typeof ASSERTION_WORLD_CREATE>;
 
 // any authenticated user is allowed to share their own worlds
 // including ability to assign read/update permissions to other users
@@ -109,8 +110,7 @@ export const ASSERTION_WORLD_MANAGE = z
 
 export type AssertionWorldManageTuple = z.input<typeof ASSERTION_WORLD_MANAGE>;
 
-export interface AssertionWorldManage
-	extends z.output<typeof ASSERTION_WORLD_MANAGE> {}
+export type AssertionWorldManage = z.output<typeof ASSERTION_WORLD_MANAGE>;
 
 // authenticated user allowed read/update shared world
 export const ASSERTION_WORLD_GUEST = z
@@ -131,8 +131,7 @@ export const ASSERTION_WORLD_GUEST = z
 
 export type AssertionWorldGuestTuple = z.input<typeof ASSERTION_WORLD_GUEST>;
 
-export interface AssertionWorldGuest
-	extends z.output<typeof ASSERTION_WORLD_GUEST> {}
+export type AssertionWorldGuest = z.output<typeof ASSERTION_WORLD_GUEST>;
 
 ////
 

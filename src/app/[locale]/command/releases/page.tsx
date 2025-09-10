@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 
+import Anchor from "@/components/Anchor/Anchor";
 import BreadcrumbTrailPortal from "@/components/BreadcrumbTrail/BreadcrumbTrailPortal";
 import { Pagination } from "@/components/Pagination/Pagination";
 import SearchForm from "@/components/SearchForm/SearchForm";
@@ -63,6 +64,13 @@ export default async function Page({
 
 			<article className={styles.root}>
 				<p>{t("description")}</p>
+
+				<Anchor
+					href={`/${locale}/command/releases/new`}
+					variant="primary"
+				>
+					{t("new-cta")}
+				</Anchor>
 
 				<SearchForm {...{ query }} className={styles.form} />
 

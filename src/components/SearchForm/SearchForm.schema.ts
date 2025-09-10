@@ -64,7 +64,7 @@ export const RAW_SEACH_QUERY = z.object({
 		.catch(DEFAULT_VIEW)
 });
 
-export interface RawSearchQuery extends z.infer<typeof RAW_SEACH_QUERY> {}
+export type RawSearchQuery = z.infer<typeof RAW_SEACH_QUERY>;
 
 export const SEACH_QUERY = <
 	TKeywords extends Keywords = Keywords,
@@ -102,10 +102,8 @@ export const SEACH_QUERY = <
 		};
 	});
 
-export interface Query<
+export type Query<
 	TKeywords extends Keywords = Keywords,
 	TRanges extends Ranges = Ranges,
 	TInclude extends Include = Include
-> extends z.infer<
-		ReturnType<typeof SEACH_QUERY<TKeywords, TRanges, TInclude>>
-	> {}
+> = z.infer<ReturnType<typeof SEACH_QUERY<TKeywords, TRanges, TInclude>>>;

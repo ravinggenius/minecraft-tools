@@ -14,6 +14,9 @@ export const getOptions = () =>
 	({
 		debug: config.debugI18n,
 		fallbackLng: FALLBACK_LOCALE,
+		interpolation: {
+			escapeValue: false
+		},
 		load: "currentOnly",
 		supportedLngs: SUPPORTED_LOCALES
 	}) satisfies InitOptions as InitOptions;

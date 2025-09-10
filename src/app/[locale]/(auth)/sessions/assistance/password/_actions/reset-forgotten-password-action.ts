@@ -43,7 +43,7 @@ const resetForgottenPasswordAction: ServerAction = async (data) => {
 
 	if (
 		decrypted.data.email === email &&
-		decrypted.data.expiresAt > new Date()
+		new Date(decrypted.data.expiresAt) > new Date()
 	) {
 		try {
 			const isChanged = await passwordResetModel.reset({

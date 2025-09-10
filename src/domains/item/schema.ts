@@ -6,8 +6,8 @@ export const RARITY = z.enum(["common", "uncommon", "rare", "epic"]);
 
 export const ITEM = z.object({
 	id: z.uuid(),
-	createdAt: z.coerce.date(),
-	updatedAt: z.coerce.date(),
+	createdAt: z.iso.date(),
+	updatedAt: z.iso.date(),
 	identity: z.string(),
 	wikiUrl: z.url(),
 	rarity: RARITY.default("common").optional(),
@@ -15,7 +15,7 @@ export const ITEM = z.object({
 	isRenewable: z.boolean()
 });
 
-export interface Item extends z.infer<typeof ITEM> {}
+export type Item = z.infer<typeof ITEM>;
 
 export const ITEM_ATTRS = ITEM.omit({
 	id: true,
@@ -23,7 +23,7 @@ export const ITEM_ATTRS = ITEM.omit({
 	updatedAt: true
 });
 
-export interface ItemAttrs extends z.infer<typeof ITEM_ATTRS> {}
+export type ItemAttrs = z.infer<typeof ITEM_ATTRS>;
 
 export const RELEASED_ITEM = ITEM.and(
 	z.object({
@@ -39,4 +39,4 @@ export const RELEASED_ITEM = ITEM.and(
 	)
 	.readonly();
 
-export interface ReleasedItem extends z.infer<typeof RELEASED_ITEM> {}
+export type ReleasedItem = z.infer<typeof RELEASED_ITEM>;

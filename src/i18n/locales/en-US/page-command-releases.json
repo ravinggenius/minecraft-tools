@@ -4,6 +4,7 @@
   },
 
   "content": {
+    "new-cta": "Add Release",
     "description": "Releases",
     "empty-list": "No releases have been entered."
   }

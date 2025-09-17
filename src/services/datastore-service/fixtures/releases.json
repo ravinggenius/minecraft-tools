@@ -2,21 +2,21 @@
   {
     "edition": "bedrock",
     "version": "1.21.120",
-    "name": "The Copper Age",
+    "cycleName": "The Copper Age",
     "developmentReleasedOn": "2025-09-03",
     "platformsCondensed": {}
   },
   {
     "edition": "bedrock",
     "version": "1.21.110",
-    "name": "The Copper Age",
+    "cycleName": "The Copper Age",
     "developmentReleasedOn": "2025-07-22",
     "platformsCondensed": {}
   },
   {
     "edition": "bedrock",
     "version": "1.21.101",
-    "name": "Chase The Skies",
+    "cycleName": "Chase The Skies",
     "changelog": "https://feedback.minecraft.net/hc/en-us/articles/38783390143885-Minecraft-1-21-101-Bedrock",
     "platformsCondensed": {
       "2025-08-13": ["Xbox One", "Xbox Series S", "Xbox Series X"],
@@ -36,7 +36,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.100",
-    "name": "Chase The Skies",
+    "cycleName": "Chase The Skies",
     "changelog": "https://feedback.minecraft.net/hc/en-us/articles/38581287884557-Minecraft-1-21-100-Bedrock",
     "developmentReleasedOn": "2025-06-10",
     "platformsCondensed": {
@@ -59,7 +59,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.94",
-    "name": "Chase The Skies",
+    "cycleName": "Chase The Skies",
     "platformsCondensed": {
       "2025-07-14": [
         "ChromeOS",
@@ -80,7 +80,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.93",
-    "name": "Chase The Skies",
+    "cycleName": "Chase The Skies",
     "platformsCondensed": {
       "2025-07-03": [
         "ChromeOS",
@@ -101,7 +101,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.92",
-    "name": "Chase The Skies",
+    "cycleName": "Chase The Skies",
     "platformsCondensed": {
       "2025-06-19": [
         "ChromeOS",
@@ -119,7 +119,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.91",
-    "name": "Chase The Skies",
+    "cycleName": "Chase The Skies",
     "platformsCondensed": {
       "2025-06-18": ["Xbox One", "Xbox Series S", "Xbox Series X"]
     }
@@ -127,7 +127,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.90",
-    "name": "Chase The Skies",
+    "cycleName": "Chase The Skies",
     "developmentReleasedOn": "2025-04-22",
     "platformsCondensed": {
       "2025-06-17": [
@@ -149,7 +149,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.84",
-    "name": "Spring To Life",
+    "cycleName": "Spring To Life",
     "changelog": "https://feedback.minecraft.net/hc/en-us/articles/38129892058893-Minecraft-Java-Edition-1-21-8",
     "platformsCondensed": {
       "2025-06-05": ["Xbox One"]
@@ -158,7 +158,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.82",
-    "name": "Spring To Life",
+    "cycleName": "Spring To Life",
     "platformsCondensed": {
       "2025-05-19": ["Windows"]
     }
@@ -166,7 +166,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.81",
-    "name": "Spring To Life",
+    "cycleName": "Spring To Life",
     "platformsCondensed": {
       "2025-05-14": [
         "ChromeOS",
@@ -184,7 +184,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.80",
-    "name": "Spring To Life",
+    "cycleName": "Spring To Life",
     "developmentReleasedOn": "2025-03-11",
     "platformsCondensed": {
       "2025-05-06": [
@@ -204,7 +204,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.73",
-    "name": "Spring To Life",
+    "cycleName": "Spring To Life",
     "platformsCondensed": {
       "2025-04-11": ["Windows"]
     }
@@ -212,7 +212,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.72",
-    "name": "Spring To Life",
+    "cycleName": "Spring To Life",
     "platformsCondensed": {
       "2025-04-08": [
         "ChromeOS",
@@ -231,7 +231,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.71",
-    "name": "Spring To Life",
+    "cycleName": "Spring To Life",
     "platformsCondensed": {
       "2025-03-28": [
         "ChromeOS",
@@ -249,7 +249,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.70",
-    "name": "Spring To Life",
+    "cycleName": "Spring To Life",
     "developmentReleasedOn": "2025-01-30",
     "platformsCondensed": {
       "2025-03-25": [
@@ -269,7 +269,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.62",
-    "name": "The Garden Awakens",
+    "cycleName": "The Garden Awakens",
     "platformsCondensed": {
       "2025-02-25": [
         "ChromeOS",
@@ -288,7 +288,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.61",
-    "name": "The Garden Awakens",
+    "cycleName": "The Garden Awakens",
     "platformsCondensed": {
       "2025-02-19": [
         "ChromeOS",
@@ -307,7 +307,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.60",
-    "name": "The Garden Awakens",
+    "cycleName": "The Garden Awakens",
     "developmentReleasedOn": "2024-11-20",
     "platformsCondensed": {
       "2025-02-11": [
@@ -327,7 +327,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.51",
-    "name": "The Garden Awakens",
+    "cycleName": "The Garden Awakens",
     "platformsCondensed": {
       "2024-12-09": ["ChromeOS", "Android"],
       "2024-12-10": ["iOS", "iPadOS", "Fire"],
@@ -338,7 +338,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.50",
-    "name": "The Garden Awakens",
+    "cycleName": "The Garden Awakens",
     "developmentReleasedOn": "2024-10-09",
     "platformsCondensed": {
       "2024-12-03": [
@@ -358,7 +358,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.44",
-    "name": "Bundles Of Bravery",
+    "cycleName": "Bundles Of Bravery",
     "platformsCondensed": {
       "2024-10-31": [
         "ChromeOS",
@@ -377,7 +377,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.43",
-    "name": "Bundles Of Bravery",
+    "cycleName": "Bundles Of Bravery",
     "platformsCondensed": {
       "2024-10-25": ["PlayStation 5"],
       "2024-10-28": [
@@ -397,7 +397,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.42",
-    "name": "Bundles Of Bravery",
+    "cycleName": "Bundles Of Bravery",
     "platformsCondensed": {
       "2024-10-23": ["PlayStation 5"]
     }
@@ -405,7 +405,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.41",
-    "name": "Bundles Of Bravery",
+    "cycleName": "Bundles Of Bravery",
     "platformsCondensed": {
       "2024-10-22": [
         "ChromeOS",
@@ -424,7 +424,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.40",
-    "name": "Bundles Of Bravery",
+    "cycleName": "Bundles Of Bravery",
     "developmentReleasedOn": "2024-09-04",
     "platformsCondensed": {
       "2024-10-22": [
@@ -444,7 +444,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.31",
-    "name": "Tricky Trials",
+    "cycleName": "Tricky Trials",
     "platformsCondensed": {
       "2024-09-30": [
         "ChromeOS",
@@ -464,7 +464,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.30",
-    "name": "Tricky Trials",
+    "cycleName": "Tricky Trials",
     "developmentReleasedOn": "2024-08-01",
     "platformsCondensed": {
       "2024-09-17": [
@@ -484,7 +484,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.23",
-    "name": "Tricky Trials",
+    "cycleName": "Tricky Trials",
     "platformsCondensed": {
       "2024-09-03": [
         "ChromeOS",
@@ -503,7 +503,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.22",
-    "name": "Tricky Trials",
+    "cycleName": "Tricky Trials",
     "platformsCondensed": {
       "2024-08-26": [
         "ChromeOS",
@@ -520,7 +520,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.21",
-    "name": "Tricky Trials",
+    "cycleName": "Tricky Trials",
     "platformsCondensed": {
       "2024-08-14": [
         "ChromeOS",
@@ -539,7 +539,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.20",
-    "name": "Tricky Trials",
+    "cycleName": "Tricky Trials",
     "developmentReleasedOn": "2024-05-22",
     "platformsCondensed": {
       "2024-08-13": [
@@ -559,7 +559,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.3",
-    "name": "Tricky Trials",
+    "cycleName": "Tricky Trials",
     "platformsCondensed": {
       "2024-07-15": ["PlayStation 4", "PlayStation VR"]
     }
@@ -567,7 +567,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.2",
-    "name": "Tricky Trials",
+    "cycleName": "Tricky Trials",
     "platformsCondensed": {
       "2024-07-09": [
         "ChromeOS",
@@ -586,7 +586,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.1",
-    "name": "Tricky Trials",
+    "cycleName": "Tricky Trials",
     "platformsCondensed": {
       "2024-06-20": [
         "ChromeOS",
@@ -605,7 +605,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.0",
-    "name": "Tricky Trials",
+    "cycleName": "Tricky Trials",
     "developmentReleasedOn": "2024-04-03",
     "platformsCondensed": {
       "2024-06-13": [
@@ -625,7 +625,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.81",
-    "name": "Armored Paws",
+    "cycleName": "Armored Paws",
     "platformsCondensed": {
       "2024-04-29": [
         "ChromeOS",
@@ -644,7 +644,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.80",
-    "name": "Armored Paws",
+    "cycleName": "Armored Paws",
     "developmentReleasedOn": "2024-02-29",
     "platformsCondensed": {
       "2024-04-23": [
@@ -664,7 +664,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.73",
-    "name": "Bats And Pots",
+    "cycleName": "Bats And Pots",
     "platformsCondensed": {
       "2024-04-01": [
         "ChromeOS",
@@ -681,7 +681,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.72",
-    "name": "Bats And Pots",
+    "cycleName": "Bats And Pots",
     "platformsCondensed": {
       "2024-03-19": [
         "ChromeOS",
@@ -699,7 +699,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.71",
-    "name": "Bats And Pots",
+    "cycleName": "Bats And Pots",
     "platformsCondensed": {
       "2024-03-12": [
         "ChromeOS",
@@ -718,7 +718,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.70",
-    "name": "Bats And Pots",
+    "cycleName": "Bats And Pots",
     "developmentReleasedOn": "2024-01-24",
     "platformsCondensed": {
       "2024-03-12": [
@@ -738,7 +738,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.62",
-    "name": "Bats And Pots",
+    "cycleName": "Bats And Pots",
     "changelog": "https://feedback.minecraft.net/hc/en-us/articles/24148434660237-Minecraft-1-20-62-Bedrock",
     "platformsCondensed": {
       "2024-02-15": [
@@ -758,7 +758,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.60",
-    "name": "Bats And Pots",
+    "cycleName": "Bats And Pots",
     "developmentReleasedOn": "2023-11-15",
     "platformsCondensed": {
       "2024-02-06": [
@@ -778,7 +778,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.51",
-    "name": "Bats And Pots",
+    "cycleName": "Bats And Pots",
     "platformsCondensed": {
       "2023-12-14": [
         "ChromeOS",
@@ -797,7 +797,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.50",
-    "name": "Bats And Pots",
+    "cycleName": "Bats And Pots",
     "developmentReleasedOn": "2023-10-11",
     "platformsCondensed": {
       "2023-12-05": [
@@ -817,7 +817,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.41",
-    "name": "Trails & Tales",
+    "cycleName": "Trails & Tales",
     "platformsCondensed": {
       "2023-11-02": [
         "ChromeOS",
@@ -836,7 +836,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.40",
-    "name": "Trails & Tales",
+    "cycleName": "Trails & Tales",
     "developmentReleasedOn": "2023-09-07",
     "platformsCondensed": {
       "2023-10-24": [
@@ -856,7 +856,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.32",
-    "name": "Trails & Tales",
+    "cycleName": "Trails & Tales",
     "platformsCondensed": {
       "2023-10-05": [
         "ChromeOS",
@@ -875,7 +875,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.31",
-    "name": "Trails & Tales",
+    "cycleName": "Trails & Tales",
     "platformsCondensed": {
       "2023-09-26": [
         "ChromeOS",
@@ -894,7 +894,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.30",
-    "name": "Trails & Tales",
+    "cycleName": "Trails & Tales",
     "developmentReleasedOn": "2023-06-28",
     "platformsCondensed": {
       "2023-09-19": [
@@ -914,7 +914,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.15",
-    "name": "Trails & Tales",
+    "cycleName": "Trails & Tales",
     "platformsCondensed": {
       "2023-08-16": [
         "ChromeOS",
@@ -930,7 +930,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.14",
-    "name": "Trails & Tales",
+    "cycleName": "Trails & Tales",
     "platformsCondensed": {
       "2023-08-08": ["PlayStation 4", "PlayStation VR"]
     }
@@ -938,7 +938,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.13",
-    "name": "Trails & Tales",
+    "cycleName": "Trails & Tales",
     "platformsCondensed": {
       "2023-07-24": ["iOS", "iPadOS"]
     }
@@ -946,7 +946,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.12",
-    "name": "Trails & Tales",
+    "cycleName": "Trails & Tales",
     "platformsCondensed": {
       "2023-07-18": [
         "ChromeOS",
@@ -965,7 +965,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.10",
-    "name": "Trails & Tales",
+    "cycleName": "Trails & Tales",
     "developmentReleasedOn": "2023-05-25",
     "platformsCondensed": {
       "2023-07-11": [
@@ -985,7 +985,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.1",
-    "name": "Trails & Tales",
+    "cycleName": "Trails & Tales",
     "platformsCondensed": {
       "2023-06-21": [
         "ChromeOS",
@@ -1004,7 +1004,7 @@
   {
     "edition": "bedrock",
     "version": "1.20.0",
-    "name": "Trails & Tales",
+    "cycleName": "Trails & Tales",
     "developmentReleasedOn": "2023-04-12",
     "platformsCondensed": {
       "2023-06-07": [
@@ -1024,7 +1024,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.83",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "platformsCondensed": {
       "2023-05-17": [
         "Android",
@@ -1042,7 +1042,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.81",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "platformsCondensed": {
       "2023-04-27": [
         "Android",
@@ -1059,7 +1059,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.80",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "developmentReleasedOn": "2023-03-08",
     "platformsCondensed": {
       "2023-04-26": [
@@ -1078,7 +1078,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.73",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "platformsCondensed": {
       "2023-03-29": [
         "Android",
@@ -1096,7 +1096,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.72",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "platformsCondensed": {
       "2023-03-20": ["PlayStation 4", "PlayStation VR"]
     }
@@ -1104,7 +1104,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.71",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "platformsCondensed": {
       "2023-03-17": [
         "Android",
@@ -1122,7 +1122,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.70",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "developmentReleasedOn": "2023-01-26",
     "platformsCondensed": {
       "2023-03-14": [
@@ -1141,7 +1141,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.63",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "platformsCondensed": {
       "2023-02-24": [
         "Android",
@@ -1159,7 +1159,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.62",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "platformsCondensed": {
       "2023-02-18": ["Android"],
       "2023-02-16": [
@@ -1177,7 +1177,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.60",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "developmentReleasedOn": "2022-11-23",
     "platformsCondensed": {
       "2023-02-07": [
@@ -1196,7 +1196,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.51",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "platformsCondensed": {
       "2022-12-13": [
         "Android",
@@ -1214,7 +1214,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.50",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "developmentReleasedOn": "2022-10-13",
     "platformsCondensed": {
       "2022-11-29": [
@@ -1233,7 +1233,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.41",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "platformsCondensed": {
       "2022-11-03": [
         "Android",
@@ -1251,7 +1251,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.40",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "developmentReleasedOn": "2022-09-08",
     "platformsCondensed": {
       "2022-10-25": [
@@ -1270,7 +1270,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.31",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "platformsCondensed": {
       "2022-10-04": [
         "Android",
@@ -1288,7 +1288,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.30",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "developmentReleasedOn": "2022-08-04",
     "platformsCondensed": {
       "2022-09-20": [
@@ -1307,7 +1307,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.22",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "platformsCondensed": {
       "2022-09-01": [
         "Android",
@@ -1325,7 +1325,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.21",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "platformsCondensed": {
       "2022-08-23": [
         "Android",
@@ -1343,7 +1343,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.20",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "developmentReleasedOn": "2022-06-29",
     "platformsCondensed": {
       "2022-08-09": [
@@ -1362,7 +1362,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.11",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "platformsCondensed": {
       "2022-07-26": [
         "Android",
@@ -1380,7 +1380,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.10",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "developmentReleasedOn": "2022-05-25",
     "platformsCondensed": {
       "2022-07-12": [
@@ -1399,7 +1399,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.2",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "platformsCondensed": {
       "2022-06-22": [
         "Android",
@@ -1417,7 +1417,7 @@
   {
     "edition": "bedrock",
     "version": "1.19.0",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "developmentReleasedOn": "2022-04-06",
     "platformsCondensed": {
       "2022-06-07": [
@@ -1436,7 +1436,7 @@
   {
     "edition": "bedrock",
     "version": "1.18.33",
-    "name": "Caves & Cliffs: Part II",
+    "cycleName": "Caves & Cliffs: Part II",
     "platformsCondensed": {
       "2022-05-13": ["Nintendo Switch"]
     }
@@ -1444,7 +1444,7 @@
   {
     "edition": "bedrock",
     "version": "1.18.32",
-    "name": "Caves & Cliffs: Part II",
+    "cycleName": "Caves & Cliffs: Part II",
     "platformsCondensed": {
       "2022-05-05": ["Android"],
       "2022-05-06": ["Fire", "Nintendo Switch"]
@@ -1453,7 +1453,7 @@
   {
     "edition": "bedrock",
     "version": "1.18.31",
-    "name": "Caves & Cliffs: Part II",
+    "cycleName": "Caves & Cliffs: Part II",
     "platformsCondensed": {
       "2022-04-27": [
         "Android",
@@ -1471,7 +1471,7 @@
   {
     "edition": "bedrock",
     "version": "1.18.30",
-    "name": "Caves & Cliffs: Part II",
+    "cycleName": "Caves & Cliffs: Part II",
     "developmentReleasedOn": "2022-01-27",
     "platformsCondensed": {
       "2022-04-19": [
@@ -1490,7 +1490,7 @@
   {
     "edition": "bedrock",
     "version": "1.18.12",
-    "name": "Caves & Cliffs: Part II",
+    "cycleName": "Caves & Cliffs: Part II",
     "platformsCondensed": {
       "2022-02-16": [
         "Android",
@@ -1508,7 +1508,7 @@
   {
     "edition": "bedrock",
     "version": "1.18.11",
-    "name": "Caves & Cliffs: Part II",
+    "cycleName": "Caves & Cliffs: Part II",
     "platformsCondensed": {
       "2022-02-11": ["Nintendo Switch"]
     }
@@ -1516,7 +1516,7 @@
   {
     "edition": "bedrock",
     "version": "1.18.10",
-    "name": "Caves & Cliffs: Part II",
+    "cycleName": "Caves & Cliffs: Part II",
     "developmentReleasedOn": "2021-11-18",
     "platformsCondensed": {
       "2022-02-08": [
@@ -1535,7 +1535,7 @@
   {
     "edition": "bedrock",
     "version": "1.18.2",
-    "name": "Caves & Cliffs: Part II",
+    "cycleName": "Caves & Cliffs: Part II",
     "platformsCondensed": {
       "2021-12-09": [
         "Android",
@@ -1553,7 +1553,7 @@
   {
     "edition": "bedrock",
     "version": "1.18.1",
-    "name": "Caves & Cliffs: Part II",
+    "cycleName": "Caves & Cliffs: Part II",
     "platformsCondensed": {
       "2021-12-06": ["Android", "iOS", "iPadOS", "Fire", "Windows", "Xbox One"],
       "2021-12-02": ["PlayStation 4", "PlayStation VR"]
@@ -1562,7 +1562,7 @@
   {
     "edition": "bedrock",
     "version": "1.18.0",
-    "name": "Caves & Cliffs: Part II",
+    "cycleName": "Caves & Cliffs: Part II",
     "developmentReleasedOn": "2021-10-06",
     "platformsCondensed": {
       "2021-11-30": [
@@ -1581,7 +1581,7 @@
   {
     "edition": "bedrock",
     "version": "1.17.41",
-    "name": "Caves & Cliffs: Part I",
+    "cycleName": "Caves & Cliffs: Part I",
     "platformsCondensed": {
       "2021-10-27": [
         "Android",
@@ -1599,7 +1599,7 @@
   {
     "edition": "bedrock",
     "version": "1.17.40",
-    "name": "Caves & Cliffs: Part I",
+    "cycleName": "Caves & Cliffs: Part I",
     "developmentReleasedOn": "2021-09-15",
     "platformsCondensed": {
       "2021-10-19": [
@@ -1618,7 +1618,7 @@
   {
     "edition": "bedrock",
     "version": "1.17.34",
-    "name": "Caves & Cliffs: Part I",
+    "cycleName": "Caves & Cliffs: Part I",
     "platformsCondensed": {
       "2021-10-05": ["Android", "iOS", "iPadOS"],
       "2021-10-07": ["Fire"],
@@ -1634,7 +1634,7 @@
   {
     "edition": "bedrock",
     "version": "1.17.33",
-    "name": "Caves & Cliffs: Part I",
+    "cycleName": "Caves & Cliffs: Part I",
     "platformsCondensed": {
       "2021-10-04": ["Fire"]
     }
@@ -1642,7 +1642,7 @@
   {
     "edition": "bedrock",
     "version": "1.17.32",
-    "name": "Caves & Cliffs: Part I",
+    "cycleName": "Caves & Cliffs: Part I",
     "platformsCondensed": {
       "2021-09-30": [
         "Android",
@@ -1660,7 +1660,7 @@
   {
     "edition": "bedrock",
     "version": "1.17.30",
-    "name": "Caves & Cliffs: Part I",
+    "cycleName": "Caves & Cliffs: Part I",
     "developmentReleasedOn": "2021-06-23",
     "platformsCondensed": {
       "2021-09-21": [
@@ -1679,7 +1679,7 @@
   {
     "edition": "bedrock",
     "version": "1.17.11",
-    "name": "Caves & Cliffs: Part I",
+    "cycleName": "Caves & Cliffs: Part I",
     "platformsCondensed": {
       "2021-08-09": [
         "Android",
@@ -1697,7 +1697,7 @@
   {
     "edition": "bedrock",
     "version": "1.17.10",
-    "name": "Caves & Cliffs: Part I",
+    "cycleName": "Caves & Cliffs: Part I",
     "developmentReleasedOn": "2021-05-26",
     "platformsCondensed": {
       "2021-07-13": [
@@ -1716,7 +1716,7 @@
   {
     "edition": "bedrock",
     "version": "1.17.2",
-    "name": "Caves & Cliffs: Part I",
+    "cycleName": "Caves & Cliffs: Part I",
     "platformsCondensed": {
       "2021-06-22": [
         "Android",
@@ -1734,7 +1734,7 @@
   {
     "edition": "bedrock",
     "version": "1.17.1",
-    "name": "Caves & Cliffs: Part I",
+    "cycleName": "Caves & Cliffs: Part I",
     "platformsCondensed": {
       "2021-06-14": ["Nintendo Switch"]
     }
@@ -1742,7 +1742,7 @@
   {
     "edition": "bedrock",
     "version": "1.17.0",
-    "name": "Caves & Cliffs: Part I",
+    "cycleName": "Caves & Cliffs: Part I",
     "developmentReleasedOn": "2021-03-25",
     "platformsCondensed": {
       "2021-06-08": [
@@ -1761,7 +1761,7 @@
   {
     "edition": "bedrock",
     "version": "1.16.221",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "platformsCondensed": {
       "2021-04-22": [
         "Android",
@@ -1780,7 +1780,7 @@
   {
     "edition": "bedrock",
     "version": "1.16.220",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "developmentReleasedOn": "2021-03-04",
     "platformsCondensed": {
       "2021-04-06": [
@@ -1800,7 +1800,7 @@
   {
     "edition": "bedrock",
     "version": "1.16.210",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "developmentReleasedOn": "2020-12-02",
     "platformsCondensed": {
       "2021-03-09": [
@@ -1820,7 +1820,7 @@
   {
     "edition": "bedrock",
     "version": "1.16.201",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "platformsCondensed": {
       "2020-12-15": [
         "Android",
@@ -1840,7 +1840,7 @@
   {
     "edition": "bedrock",
     "version": "1.16.200",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "developmentReleasedOn": "2020-10-22",
     "platformsCondensed": {
       "2020-12-08": [
@@ -1861,7 +1861,7 @@
   {
     "edition": "bedrock",
     "version": "1.16.101",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "platformsCondensed": {
       "2020-11-23": [
         "Android",
@@ -1877,7 +1877,7 @@
   {
     "edition": "bedrock",
     "version": "1.16.100",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "developmentReleasedOn": "2020-07-30",
     "platformsCondensed": {
       "2020-11-17": [
@@ -1898,7 +1898,7 @@
   {
     "edition": "bedrock",
     "version": "1.16.61",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "platformsCondensed": {
       "2020-09-25": ["PlayStation 4", "PlayStation VR"]
     }
@@ -1906,7 +1906,7 @@
   {
     "edition": "bedrock",
     "version": "1.16.60",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "platformsCondensed": {
       "2020-09-23": ["PlayStation 4", "PlayStation VR"]
     }
@@ -1914,7 +1914,7 @@
   {
     "edition": "bedrock",
     "version": "1.16.50",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "platformsCondensed": {
       "2020-09-22": ["iOS", "iPadOS"]
     }
@@ -1922,7 +1922,7 @@
   {
     "edition": "bedrock",
     "version": "1.16.42",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "platformsCondensed": {
       "2020-09-22": ["PlayStation 4", "PlayStation VR"]
     }
@@ -1930,7 +1930,7 @@
   {
     "edition": "bedrock",
     "version": "1.16.40",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "platformsCondensed": {
       "2020-09-03": [
         "Android",
@@ -1949,7 +1949,7 @@
   {
     "edition": "bedrock",
     "version": "1.16.21",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "platformsCondensed": {
       "2020-08-20": ["Nintendo Switch"]
     }
@@ -1957,7 +1957,7 @@
   {
     "edition": "bedrock",
     "version": "1.16.20",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "developmentReleasedOn": "2020-06-25",
     "platformsCondensed": {
       "2020-08-11": [
@@ -1979,7 +1979,7 @@
   {
     "edition": "bedrock",
     "version": "1.16.10",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "platformsCondensed": {
       "2020-07-21": [
         "Android",
@@ -1994,7 +1994,7 @@
   {
     "edition": "bedrock",
     "version": "1.16.1.04",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "platformsCondensed": {
       "2020-07-16": ["PlayStation 4"]
     }
@@ -2002,7 +2002,7 @@
   {
     "edition": "bedrock",
     "version": "1.16.1.03",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "platformsCondensed": {
       "2020-07-08": ["PlayStation 4"]
     }
@@ -2010,7 +2010,7 @@
   {
     "edition": "bedrock",
     "version": "1.16.1",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "platformsCondensed": {
       "2020-06-29": ["Android", "Windows 10", "Windows 10 Mobile", "Gear VR"],
       "2020-07-06": ["iOS", "iPadOS"],
@@ -2022,7 +2022,7 @@
   {
     "edition": "bedrock",
     "version": "1.16.0",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "developmentReleasedOn": "2020-02-12",
     "platformsCondensed": {
       "2020-06-23": [
@@ -2044,7 +2044,7 @@
   {
     "edition": "bedrock",
     "version": "1.14.60",
-    "name": "Buzzy Bees",
+    "cycleName": "Buzzy Bees",
     "platformsCondensed": {
       "2020-04-15": [
         "Android",
@@ -2065,7 +2065,7 @@
   {
     "edition": "bedrock",
     "version": "1.14.41",
-    "name": "Buzzy Bees",
+    "cycleName": "Buzzy Bees",
     "platformsCondensed": {
       "2020-03-03": ["PlayStation 4"]
     }
@@ -2073,7 +2073,7 @@
   {
     "edition": "bedrock",
     "version": "1.14.30",
-    "name": "Buzzy Bees",
+    "cycleName": "Buzzy Bees",
     "developmentReleasedOn": "2020-01-29",
     "platformsCondensed": {
       "2020-02-11": [
@@ -2095,7 +2095,7 @@
   {
     "edition": "bedrock",
     "version": "1.14.21",
-    "name": "Buzzy Bees",
+    "cycleName": "Buzzy Bees",
     "platformsCondensed": {
       "2020-01-31": ["Fire", "Fire Phone"]
     }
@@ -2103,7 +2103,7 @@
   {
     "edition": "bedrock",
     "version": "1.14.20",
-    "name": "Buzzy Bees",
+    "cycleName": "Buzzy Bees",
     "developmentReleasedOn": "2019-12-18",
     "platformsCondensed": {
       "2020-01-28": [
@@ -2125,7 +2125,7 @@
   {
     "edition": "bedrock",
     "version": "1.14.1",
-    "name": "Buzzy Bees",
+    "cycleName": "Buzzy Bees",
     "developmentReleasedOn": "2019-11-13",
     "platformsCondensed": {
       "2019-12-18": [
@@ -2146,7 +2146,7 @@
   {
     "edition": "bedrock",
     "version": "1.14.0.12",
-    "name": "Buzzy Bees",
+    "cycleName": "Buzzy Bees",
     "platformsCondensed": {
       "2019-12-13": ["PlayStation 4"]
     }
@@ -2154,7 +2154,7 @@
   {
     "edition": "bedrock",
     "version": "1.14.0",
-    "name": "Buzzy Bees",
+    "cycleName": "Buzzy Bees",
     "developmentReleasedOn": "2019-10-09",
     "platformsCondensed": {
       "2019-12-10": [
@@ -2176,7 +2176,7 @@
   {
     "edition": "bedrock",
     "version": "1.13.3",
-    "name": "1.13",
+    "cycleName": "1.13",
     "platformsCondensed": {
       "2019-11-20": ["iOS", "iPadOS"]
     }
@@ -2184,7 +2184,7 @@
   {
     "edition": "bedrock",
     "version": "1.13.2",
-    "name": "1.13",
+    "cycleName": "1.13",
     "platformsCondensed": {
       "2019-11-14": ["iOS", "iPadOS"]
     }
@@ -2192,7 +2192,7 @@
   {
     "edition": "bedrock",
     "version": "1.13.1",
-    "name": "1.13",
+    "cycleName": "1.13",
     "platformsCondensed": {
       "2019-11-12": [
         "Android",
@@ -2212,7 +2212,7 @@
   {
     "edition": "bedrock",
     "version": "1.13.0",
-    "name": "1.13",
+    "cycleName": "1.13",
     "developmentReleasedOn": "2019-06-27",
     "platformsCondensed": {
       "2019-10-29": [
@@ -2233,7 +2233,7 @@
   {
     "edition": "bedrock",
     "version": "1.12.1",
-    "name": "1.12",
+    "cycleName": "1.12",
     "platformsCondensed": {
       "2019-09-02": ["Android"],
       "2019-09-03": [
@@ -2253,7 +2253,7 @@
   {
     "edition": "bedrock",
     "version": "1.12.0",
-    "name": "1.12",
+    "cycleName": "1.12",
     "developmentReleasedOn": "2019-04-17",
     "platformsCondensed": {
       "2019-07-10": ["Android"],
@@ -2273,7 +2273,7 @@
   {
     "edition": "bedrock",
     "version": "1.11.4",
-    "name": "Village & Pillage",
+    "cycleName": "Village & Pillage",
     "platformsCondensed": {
       "2019-05-23": [
         "Android",
@@ -2292,7 +2292,7 @@
   {
     "edition": "bedrock",
     "version": "1.11.3",
-    "name": "Village & Pillage",
+    "cycleName": "Village & Pillage",
     "platformsCondensed": {
       "2019-05-17": [
         "Android",
@@ -2310,7 +2310,7 @@
   {
     "edition": "bedrock",
     "version": "1.11.2",
-    "name": "Village & Pillage",
+    "cycleName": "Village & Pillage",
     "platformsCondensed": {
       "2019-05-02": ["Xbox One"]
     }
@@ -2318,7 +2318,7 @@
   {
     "edition": "bedrock",
     "version": "1.11.1",
-    "name": "Village & Pillage",
+    "cycleName": "Village & Pillage",
     "platformsCondensed": {
       "2019-04-26": [
         "Android",
@@ -2337,7 +2337,7 @@
   {
     "edition": "bedrock",
     "version": "1.11.0",
-    "name": "Village & Pillage",
+    "cycleName": "Village & Pillage",
     "developmentReleasedOn": "2019-02-21",
     "platformsCondensed": {
       "2019-04-23": [
@@ -2357,7 +2357,7 @@
   {
     "edition": "bedrock",
     "version": "1.10.1",
-    "name": "Texture Update",
+    "cycleName": "Texture Update",
     "platformsCondensed": {
       "2019-03-27": ["Windows 10"]
     }
@@ -2365,7 +2365,7 @@
   {
     "edition": "bedrock",
     "version": "1.10.0",
-    "name": "Texture Update",
+    "cycleName": "Texture Update",
     "developmentReleasedOn": "2019-01-30",
     "platformsCondensed": {
       "2019-03-19": [
@@ -2385,7 +2385,7 @@
   {
     "edition": "bedrock",
     "version": "1.9.0",
-    "name": "1.9",
+    "cycleName": "1.9",
     "developmentReleasedOn": "2018-11-15",
     "platformsCondensed": {
       "2019-02-05": [
@@ -2405,7 +2405,7 @@
   {
     "edition": "bedrock",
     "version": "1.8.1",
-    "name": "1.8",
+    "cycleName": "1.8",
     "platformsCondensed": {
       "2019-01-08": [
         "Android",
@@ -2424,7 +2424,7 @@
   {
     "edition": "bedrock",
     "version": "1.8.0",
-    "name": "1.8",
+    "cycleName": "1.8",
     "developmentReleasedOn": "2018-10-10",
     "platformsCondensed": {
       "2018-12-11": [
@@ -2444,7 +2444,7 @@
   {
     "edition": "bedrock",
     "version": "1.7.1",
-    "name": "1.7",
+    "cycleName": "1.7",
     "platformsCondensed": {
       "2018-11-07": ["Windows 10", "Xbox One"]
     }
@@ -2452,7 +2452,7 @@
   {
     "edition": "bedrock",
     "version": "1.7.0",
-    "name": "1.7",
+    "cycleName": "1.7",
     "developmentReleasedOn": "2018-08-23",
     "platformsCondensed": {
       "2018-10-16": [
@@ -2472,7 +2472,7 @@
   {
     "edition": "bedrock",
     "version": "1.6.2",
-    "name": "1.6",
+    "cycleName": "1.6",
     "platformsCondensed": {
       "2018-10-01": ["iOS"]
     }
@@ -2480,7 +2480,7 @@
   {
     "edition": "bedrock",
     "version": "1.6.1",
-    "name": "1.6",
+    "cycleName": "1.6",
     "platformsCondensed": {
       "2018-09-17": [
         "Android",
@@ -2499,7 +2499,7 @@
   {
     "edition": "bedrock",
     "version": "1.6.0",
-    "name": "1.6",
+    "cycleName": "1.6",
     "developmentReleasedOn": "2018-06-14",
     "platformsCondensed": {
       "2018-08-28": [
@@ -2519,7 +2519,7 @@
   {
     "edition": "bedrock",
     "version": "1.5.3",
-    "name": "Update Aquatic (Phase Two)",
+    "cycleName": "Update Aquatic (Phase Two)",
     "platformsCondensed": {
       "2018-08-07": [
         "Android",
@@ -2538,7 +2538,7 @@
   {
     "edition": "bedrock",
     "version": "1.5.2",
-    "name": "Update Aquatic (Phase Two)",
+    "cycleName": "Update Aquatic (Phase Two)",
     "platformsCondensed": {
       "2018-07-24": [
         "Android",
@@ -2554,7 +2554,7 @@
   {
     "edition": "bedrock",
     "version": "1.5.1",
-    "name": "Update Aquatic (Phase Two)",
+    "cycleName": "Update Aquatic (Phase Two)",
     "platformsCondensed": {
       "2018-07-20": [
         "Android",
@@ -2573,7 +2573,7 @@
   {
     "edition": "bedrock",
     "version": "1.5.0",
-    "name": "Update Aquatic (Phase Two)",
+    "cycleName": "Update Aquatic (Phase Two)",
     "developmentReleasedOn": "2018-04-25",
     "platformsCondensed": {
       "2018-07-10": [
@@ -2593,7 +2593,7 @@
   {
     "edition": "bedrock",
     "version": "1.4.4",
-    "name": "Update Aquatic (Phase One)",
+    "cycleName": "Update Aquatic (Phase One)",
     "platformsCondensed": {
       "2018-06-07": ["Android", "Fire", "Fire Phone", "Fire TV"]
     }
@@ -2601,7 +2601,7 @@
   {
     "edition": "bedrock",
     "version": "1.4.3",
-    "name": "Update Aquatic (Phase One)",
+    "cycleName": "Update Aquatic (Phase One)",
     "platformsCondensed": {
       "2018-06-05": ["iOS"]
     }
@@ -2609,7 +2609,7 @@
   {
     "edition": "bedrock",
     "version": "1.4.2",
-    "name": "Update Aquatic (Phase One)",
+    "cycleName": "Update Aquatic (Phase One)",
     "platformsCondensed": {
       "2018-05-23": [
         "Android",
@@ -2627,7 +2627,7 @@
   {
     "edition": "bedrock",
     "version": "1.4.1",
-    "name": "Update Aquatic (Phase One)",
+    "cycleName": "Update Aquatic (Phase One)",
     "platformsCondensed": {
       "2018-05-17": ["Android", "Fire", "Fire Phone", "Fire TV"],
       "2018-06-21": ["Nintendo Switch"]
@@ -2636,7 +2636,7 @@
   {
     "edition": "bedrock",
     "version": "1.4.0",
-    "name": "Update Aquatic (Phase One)",
+    "cycleName": "Update Aquatic (Phase One)",
     "developmentReleasedOn": "2018-03-16",
     "platformsCondensed": {
       "2018-05-16": [
@@ -2655,7 +2655,7 @@
   {
     "edition": "bedrock",
     "version": "1.2.13.60",
-    "name": "Better Together Update",
+    "cycleName": "Better Together Update",
     "platformsCondensed": {
       "2018-04-20": [
         "Android",
@@ -2672,7 +2672,7 @@
   {
     "edition": "bedrock",
     "version": "1.2.16",
-    "name": "Better Together Update",
+    "cycleName": "Better Together Update",
     "platformsCondensed": {
       "2018-04-20": ["iOS"]
     }
@@ -2680,7 +2680,7 @@
   {
     "edition": "bedrock",
     "version": "1.2.15",
-    "name": "Better Together Update",
+    "cycleName": "Better Together Update",
     "platformsCondensed": {
       "2018-04-12": ["iOS"]
     }
@@ -2688,7 +2688,7 @@
   {
     "edition": "bedrock",
     "version": "1.2.14",
-    "name": "Better Together Update",
+    "cycleName": "Better Together Update",
     "platformsCondensed": {
       "2018-04-04": ["iOS"]
     }
@@ -2696,7 +2696,7 @@
   {
     "edition": "bedrock",
     "version": "1.2.13",
-    "name": "Better Together Update",
+    "cycleName": "Better Together Update",
     "developmentReleasedOn": "2018-03-02",
     "platformsCondensed": {
       "2018-04-03": [
@@ -2715,7 +2715,7 @@
   {
     "edition": "bedrock",
     "version": "1.2.11",
-    "name": "Better Together Update",
+    "cycleName": "Better Together Update",
     "platformsCondensed": {
       "2018-03-09": ["Android", "iOS"],
       "2018-03-08": [
@@ -2732,7 +2732,7 @@
   {
     "edition": "bedrock",
     "version": "1.2.10",
-    "name": "Better Together Update",
+    "cycleName": "Better Together Update",
     "developmentReleasedOn": "2018-01-24",
     "platformsCondensed": {
       "2018-02-07": [
@@ -2751,7 +2751,7 @@
   {
     "edition": "bedrock",
     "version": "1.2.9",
-    "name": "Better Together Update",
+    "cycleName": "Better Together Update",
     "platformsCondensed": {
       "2018-01-16": [
         "Android",
@@ -2769,7 +2769,7 @@
   {
     "edition": "bedrock",
     "version": "1.2.8",
-    "name": "Better Together Update",
+    "cycleName": "Better Together Update",
     "platformsCondensed": {
       "2017-12-18": ["Android", "iOS", "Gear VR"],
       "2017-12-19": [
@@ -2785,7 +2785,7 @@
   {
     "edition": "bedrock",
     "version": "1.2.7",
-    "name": "Better Together Update",
+    "cycleName": "Better Together Update",
     "platformsCondensed": {
       "2017-12-14": [
         "Android",
@@ -2803,7 +2803,7 @@
   {
     "edition": "bedrock",
     "version": "1.2.6.1",
-    "name": "Better Together Update",
+    "cycleName": "Better Together Update",
     "platformsCondensed": {
       "2017-12-07": ["Android"]
     }
@@ -2811,7 +2811,7 @@
   {
     "edition": "bedrock",
     "version": "1.2.6",
-    "name": "Better Together Update",
+    "cycleName": "Better Together Update",
     "developmentReleasedOn": "2017-11-08",
     "platformsCondensed": {
       "2017-12-06": [
@@ -2830,7 +2830,7 @@
   {
     "edition": "bedrock",
     "version": "1.2.5",
-    "name": "Better Together Update",
+    "cycleName": "Better Together Update",
     "developmentReleasedOn": "2017-10-13",
     "platformsCondensed": {
       "2017-11-21": [
@@ -2849,7 +2849,7 @@
   {
     "edition": "bedrock",
     "version": "1.2.3",
-    "name": "Better Together Update",
+    "cycleName": "Better Together Update",
     "developmentReleasedOn": "2017-10-04",
     "platformsCondensed": {
       "2017-10-18": [
@@ -2868,7 +2868,7 @@
   {
     "edition": "bedrock",
     "version": "1.2.2",
-    "name": "Better Together Update",
+    "cycleName": "Better Together Update",
     "platformsCondensed": {
       "2017-10-04": [
         "Android",
@@ -2886,7 +2886,7 @@
   {
     "edition": "bedrock",
     "version": "1.2.1",
-    "name": "Better Together Update",
+    "cycleName": "Better Together Update",
     "platformsCondensed": {
       "2017-09-26": [
         "Android",
@@ -2904,7 +2904,7 @@
   {
     "edition": "bedrock",
     "version": "1.2.0",
-    "name": "Better Together Update",
+    "cycleName": "Better Together Update",
     "developmentReleasedOn": "2017-07-31",
     "platformsCondensed": {
       "2017-09-20": [
@@ -2923,7 +2923,7 @@
   {
     "edition": "bedrock",
     "version": "1.1.7",
-    "name": "Discovery Update",
+    "cycleName": "Discovery Update",
     "platformsCondensed": {
       "2017-09-15": ["iOS"]
     }
@@ -2931,7 +2931,7 @@
   {
     "edition": "bedrock",
     "version": "1.1.5",
-    "name": "Discovery Update",
+    "cycleName": "Discovery Update",
     "platformsCondensed": {
       "2017-08-03": [
         "Android",
@@ -2948,7 +2948,7 @@
   {
     "edition": "bedrock",
     "version": "1.1.4",
-    "name": "Discovery Update",
+    "cycleName": "Discovery Update",
     "platformsCondensed": {
       "2017-07-19": [
         "Android",
@@ -2966,7 +2966,7 @@
   {
     "edition": "bedrock",
     "version": "1.1.3",
-    "name": "Discovery Update",
+    "cycleName": "Discovery Update",
     "developmentReleasedOn": "2017-06-23",
     "platformsCondensed": {
       "2017-07-06": [
@@ -2985,7 +2985,7 @@
   {
     "edition": "bedrock",
     "version": "1.1.2",
-    "name": "Discovery Update",
+    "cycleName": "Discovery Update",
     "platformsCondensed": {
       "2017-06-23": [
         "Android",
@@ -3003,7 +3003,7 @@
   {
     "edition": "bedrock",
     "version": "1.1.1",
-    "name": "Discovery Update",
+    "cycleName": "Discovery Update",
     "developmentReleasedOn": "2017-06-13",
     "platformsCondensed": {
       "2017-06-20": [
@@ -3022,7 +3022,7 @@
   {
     "edition": "bedrock",
     "version": "1.1.0",
-    "name": "Discovery Update",
+    "cycleName": "Discovery Update",
     "developmentReleasedOn": "2017-03-31",
     "platformsCondensed": {
       "2017-06-01": [
@@ -3041,7 +3041,7 @@
   {
     "edition": "bedrock",
     "version": "1.0.9",
-    "name": "Ender Update",
+    "cycleName": "Ender Update",
     "platformsCondensed": {
       "2017-05-18": [
         "Android",
@@ -3059,7 +3059,7 @@
   {
     "edition": "bedrock",
     "version": "1.0.8",
-    "name": "Ender Update",
+    "cycleName": "Ender Update",
     "platformsCondensed": {
       "2017-05-04": [
         "Android",
@@ -3077,7 +3077,7 @@
   {
     "edition": "bedrock",
     "version": "1.0.7",
-    "name": "Ender Update",
+    "cycleName": "Ender Update",
     "platformsCondensed": {
       "2017-04-20": [
         "Android",
@@ -3095,7 +3095,7 @@
   {
     "edition": "bedrock",
     "version": "1.0.6",
-    "name": "Ender Update",
+    "cycleName": "Ender Update",
     "developmentReleasedOn": "2017-03-24",
     "platformsCondensed": {
       "2017-04-11": [
@@ -3114,7 +3114,7 @@
   {
     "edition": "bedrock",
     "version": "1.0.5",
-    "name": "Ender Update",
+    "cycleName": "Ender Update",
     "developmentReleasedOn": "2017-03-10",
     "platformsCondensed": {
       "2017-03-28": [
@@ -3133,7 +3133,7 @@
   {
     "edition": "bedrock",
     "version": "1.0.4",
-    "name": "Ender Update",
+    "cycleName": "Ender Update",
     "developmentReleasedOn": "2017-02-14",
     "platformsCondensed": {
       "2017-03-09": [
@@ -3152,7 +3152,7 @@
   {
     "edition": "bedrock",
     "version": "1.0.3",
-    "name": "Ender Update",
+    "cycleName": "Ender Update",
     "developmentReleasedOn": "2017-02-01",
     "platformsCondensed": {
       "2017-02-08": ["Android"],
@@ -3164,7 +3164,7 @@
   {
     "edition": "bedrock",
     "version": "1.0.2",
-    "name": "Ender Update",
+    "cycleName": "Ender Update",
     "platformsCondensed": {
       "2017-01-19": [
         "Android",
@@ -3180,7 +3180,7 @@
   {
     "edition": "bedrock",
     "version": "1.0.1",
-    "name": "Ender Update",
+    "cycleName": "Ender Update",
     "platformsCondensed": {
       "2017-01-06": ["iOS"]
     }
@@ -3188,7 +3188,7 @@
   {
     "edition": "bedrock",
     "version": "1.0.0",
-    "name": "Ender Update",
+    "cycleName": "Ender Update",
     "developmentReleasedOn": "2016-11-11",
     "platformsCondensed": {
       "2016-12-19": [
@@ -3206,7 +3206,7 @@
   {
     "edition": "bedrock",
     "version": "0.16.2",
-    "name": "Boss Update",
+    "cycleName": "Boss Update",
     "platformsCondensed": {
       "2016-11-17": ["Android"],
       "2016-11-18": [
@@ -3221,7 +3221,7 @@
   {
     "edition": "bedrock",
     "version": "0.16.1",
-    "name": "Boss Update",
+    "cycleName": "Boss Update",
     "platformsCondensed": {
       "2016-11-04": [
         "Android",
@@ -3236,7 +3236,7 @@
   {
     "edition": "bedrock",
     "version": "0.16.0",
-    "name": "Boss Update",
+    "cycleName": "Boss Update",
     "developmentReleasedOn": "2016-08-29",
     "platformsCondensed": {
       "2016-10-21": [
@@ -3252,7 +3252,7 @@
   {
     "edition": "bedrock",
     "version": "0.15.10",
-    "name": "Friendly Update",
+    "cycleName": "Friendly Update",
     "platformsCondensed": {
       "2016-10-03": ["Android"],
       "2016-10-04": [
@@ -3267,7 +3267,7 @@
   {
     "edition": "bedrock",
     "version": "0.15.9",
-    "name": "Friendly Update",
+    "cycleName": "Friendly Update",
     "platformsCondensed": {
       "2016-09-22": ["Android", "iOS", "Fire OS", "Windows 10", "Gear VR"],
       "2016-09-23": ["Windows Phone 8.1"]
@@ -3276,7 +3276,7 @@
   {
     "edition": "bedrock",
     "version": "0.15.8",
-    "name": "Friendly Update",
+    "cycleName": "Friendly Update",
     "platformsCondensed": {
       "2016-09-15": [
         "Android",
@@ -3291,7 +3291,7 @@
   {
     "edition": "bedrock",
     "version": "0.15.7",
-    "name": "Friendly Update",
+    "cycleName": "Friendly Update",
     "platformsCondensed": {
       "2016-08-31": [
         "Android",
@@ -3306,7 +3306,7 @@
   {
     "edition": "bedrock",
     "version": "0.15.6",
-    "name": "Friendly Update",
+    "cycleName": "Friendly Update",
     "platformsCondensed": {
       "2016-08-10": ["Android", "iOS", "Fire OS", "Gear VR"],
       "2016-08-11": ["Windows Phone 8.1", "Windows 10"]
@@ -3315,7 +3315,7 @@
   {
     "edition": "bedrock",
     "version": "0.15.4",
-    "name": "Friendly Update",
+    "cycleName": "Friendly Update",
     "platformsCondensed": {
       "2016-07-28": ["Android", "iOS", "Fire OS", "Gear VR"],
       "2016-07-29": ["Windows Phone 8.1", "Windows 10"]
@@ -3324,7 +3324,7 @@
   {
     "edition": "bedrock",
     "version": "0.15.3",
-    "name": "Friendly Update",
+    "cycleName": "Friendly Update",
     "platformsCondensed": {
       "2016-07-19": ["Android"]
     }
@@ -3332,7 +3332,7 @@
   {
     "edition": "bedrock",
     "version": "0.15.2",
-    "name": "Friendly Update",
+    "cycleName": "Friendly Update",
     "platformsCondensed": {
       "2016-07-07": ["Android", "iOS"],
       "2016-07-08": ["Fire OS", "Windows Phone 8.1", "Windows 10", "Gear VR"]
@@ -3341,7 +3341,7 @@
   {
     "edition": "bedrock",
     "version": "0.15.1",
-    "name": "Friendly Update",
+    "cycleName": "Friendly Update",
     "developmentReleasedOn": "2016-06-14",
     "platformsCondensed": {
       "2016-06-26": ["Android"],
@@ -3351,7 +3351,7 @@
   {
     "edition": "bedrock",
     "version": "0.15.0",
-    "name": "Friendly Update",
+    "cycleName": "Friendly Update",
     "developmentReleasedOn": "2016-06-03",
     "platformsCondensed": {
       "2016-06-10": ["Android"],
@@ -3367,7 +3367,7 @@
   {
     "edition": "bedrock",
     "version": "0.14.3",
-    "name": "Overworld Update",
+    "cycleName": "Overworld Update",
     "platformsCondensed": {
       "2016-05-18": ["Android"],
       "2016-05-19": [
@@ -3382,7 +3382,7 @@
   {
     "edition": "bedrock",
     "version": "0.14.2",
-    "name": "Overworld Update",
+    "cycleName": "Overworld Update",
     "platformsCondensed": {
       "2016-04-26": ["Android"],
       "2016-04-27": [
@@ -3397,7 +3397,7 @@
   {
     "edition": "bedrock",
     "version": "0.14.1",
-    "name": "Overworld Update",
+    "cycleName": "Overworld Update",
     "platformsCondensed": {
       "2016-04-05": ["Android", "Windows 10"],
       "2016-04-06": ["iOS", "Fire OS"],
@@ -3407,7 +3407,7 @@
   {
     "edition": "bedrock",
     "version": "0.14.0",
-    "name": "Overworld Update",
+    "cycleName": "Overworld Update",
     "developmentReleasedOn": "2016-01-25",
     "platformsCondensed": {
       "2016-02-18": [
@@ -3422,14 +3422,14 @@
   {
     "edition": "java",
     "version": "1.21.9",
-    "name": "The Copper Age",
+    "cycleName": "The Copper Age",
     "developmentReleasedOn": "2025-07-29",
     "platformsCondensed": {}
   },
   {
     "edition": "java",
     "version": "1.21.8",
-    "name": "Chase The Skies",
+    "cycleName": "Chase The Skies",
     "developmentReleasedOn": "2025-07-15",
     "platformsCondensed": {
       "2025-07-17": ["Linux", "macOS", "Windows"]
@@ -3438,7 +3438,7 @@
   {
     "edition": "java",
     "version": "1.21.7",
-    "name": "Chase The Skies",
+    "cycleName": "Chase The Skies",
     "developmentReleasedOn": "2025-06-25",
     "platformsCondensed": {
       "2025-06-30": ["Linux", "macOS", "Windows"]
@@ -3447,7 +3447,7 @@
   {
     "edition": "java",
     "version": "1.21.6",
-    "name": "Chase The Skies",
+    "cycleName": "Chase The Skies",
     "developmentReleasedOn": "2025-04-08",
     "platformsCondensed": {
       "2025-06-17": ["Linux", "macOS", "Windows"]
@@ -3456,7 +3456,7 @@
   {
     "edition": "java",
     "version": "1.21.5",
-    "name": "Spring To Life",
+    "cycleName": "Spring To Life",
     "developmentReleasedOn": "2025-01-08",
     "platformsCondensed": {
       "2025-03-25": ["Linux", "macOS", "Windows"]
@@ -3465,7 +3465,7 @@
   {
     "edition": "java",
     "version": "1.21.4",
-    "name": "The Garden Awakens",
+    "cycleName": "The Garden Awakens",
     "developmentReleasedOn": "2024-10-30",
     "platformsCondensed": {
       "2024-12-03": ["Linux", "macOS", "Windows"]
@@ -3474,7 +3474,7 @@
   {
     "edition": "java",
     "version": "1.21.3",
-    "name": "Bundles Of Bravery",
+    "cycleName": "Bundles Of Bravery",
     "platformsCondensed": {
       "2024-10-23": ["Linux", "macOS", "Windows"]
     }
@@ -3482,7 +3482,7 @@
   {
     "edition": "java",
     "version": "1.21.2",
-    "name": "Bundles Of Bravery",
+    "cycleName": "Bundles Of Bravery",
     "developmentReleasedOn": "2024-08-15",
     "platformsCondensed": {
       "2024-10-22": ["Linux", "macOS", "Windows"]
@@ -3491,7 +3491,7 @@
   {
     "edition": "java",
     "version": "1.21.1",
-    "name": "Tricky Trials",
+    "cycleName": "Tricky Trials",
     "developmentReleasedOn": "2024-08-07",
     "platformsCondensed": {
       "2024-08-08": ["Linux", "macOS", "Windows"]
@@ -3500,7 +3500,7 @@
   {
     "edition": "java",
     "version": "1.21",
-    "name": "Tricky Trials",
+    "cycleName": "Tricky Trials",
     "developmentReleasedOn": "2024-05-03",
     "platformsCondensed": {
       "2024-06-13": ["Linux", "macOS", "Windows"]
@@ -3509,7 +3509,7 @@
   {
     "edition": "java",
     "version": "1.20.6",
-    "name": "Armored Paws",
+    "cycleName": "Armored Paws",
     "developmentReleasedOn": "2024-04-26",
     "platformsCondensed": {
       "2024-04-29": ["Linux", "macOS", "Windows"]
@@ -3518,7 +3518,7 @@
   {
     "edition": "java",
     "version": "1.20.5",
-    "name": "Armored Paws",
+    "cycleName": "Armored Paws",
     "changelog": "https://feedback.minecraft.net/hc/en-us/articles/26136167989005-Minecraft-Java-Edition-1-20-5-Armored-Paws",
     "developmentReleasedOn": "2023-12-18",
     "platformsCondensed": {
@@ -3528,7 +3528,7 @@
   {
     "edition": "java",
     "version": "1.20.4",
-    "name": "Bats And Pots",
+    "cycleName": "Bats And Pots",
     "developmentReleasedOn": "2023-12-06",
     "platformsCondensed": {
       "2023-12-07": ["Linux", "macOS", "Windows"]
@@ -3537,7 +3537,7 @@
   {
     "edition": "java",
     "version": "1.20.3",
-    "name": "Bats And Pots",
+    "cycleName": "Bats And Pots",
     "developmentReleasedOn": "2023-10-04",
     "platformsCondensed": {
       "2023-12-05": ["Linux", "macOS", "Windows"]
@@ -3546,7 +3546,7 @@
   {
     "edition": "java",
     "version": "1.20.2",
-    "name": "Trails & Tales",
+    "cycleName": "Trails & Tales",
     "developmentReleasedOn": "2023-08-02",
     "platformsCondensed": {
       "2023-09-21": ["Linux", "macOS", "Windows"]
@@ -3555,7 +3555,7 @@
   {
     "edition": "java",
     "version": "1.20.1",
-    "name": "Trails & Tales",
+    "cycleName": "Trails & Tales",
     "developmentReleasedOn": "2023-06-09",
     "platformsCondensed": {
       "2023-06-12": ["Linux", "macOS", "Windows"]
@@ -3564,7 +3564,7 @@
   {
     "edition": "java",
     "version": "1.20",
-    "name": "Trails & Tales",
+    "cycleName": "Trails & Tales",
     "developmentReleasedOn": "2023-03-22",
     "platformsCondensed": {
       "2023-06-07": ["Linux", "macOS", "Windows"]
@@ -3573,7 +3573,7 @@
   {
     "edition": "java",
     "version": "1.19.4",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "developmentReleasedOn": "2023-01-18",
     "platformsCondensed": {
       "2023-03-14": ["Linux", "macOS", "Windows"]
@@ -3582,7 +3582,7 @@
   {
     "edition": "java",
     "version": "1.19.3",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "developmentReleasedOn": "2022-10-19",
     "platformsCondensed": {
       "2022-12-07": ["Linux", "macOS", "Windows"]
@@ -3591,7 +3591,7 @@
   {
     "edition": "java",
     "version": "1.19.2",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "developmentReleasedOn": "2022-08-04",
     "platformsCondensed": {
       "2022-08-05": ["Linux", "macOS", "Windows"]
@@ -3600,7 +3600,7 @@
   {
     "edition": "java",
     "version": "1.19.1",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "developmentReleasedOn": "2022-06-15",
     "platformsCondensed": {
       "2022-07-27": ["Linux", "macOS", "Windows"]
@@ -3609,7 +3609,7 @@
   {
     "edition": "java",
     "version": "1.19",
-    "name": "The Wild Update",
+    "cycleName": "The Wild Update",
     "developmentReleasedOn": "2022-02-17",
     "platformsCondensed": {
       "2022-06-07": ["Linux", "macOS", "Windows"]
@@ -3618,7 +3618,7 @@
   {
     "edition": "java",
     "version": "1.18.2",
-    "name": "Caves & Cliffs: Part II",
+    "cycleName": "Caves & Cliffs: Part II",
     "developmentReleasedOn": "2022-01-19",
     "platformsCondensed": {
       "2022-02-28": ["Linux", "macOS", "Windows"]
@@ -3627,7 +3627,7 @@
   {
     "edition": "java",
     "version": "1.18.1",
-    "name": "Caves & Cliffs: Part II",
+    "cycleName": "Caves & Cliffs: Part II",
     "developmentReleasedOn": "2021-12-03",
     "platformsCondensed": {
       "2021-12-10": ["Linux", "macOS", "Windows"]
@@ -3636,7 +3636,7 @@
   {
     "edition": "java",
     "version": "1.18",
-    "name": "Caves & Cliffs: Part II",
+    "cycleName": "Caves & Cliffs: Part II",
     "developmentReleasedOn": "2021-07-13",
     "platformsCondensed": {
       "2021-11-30": ["Linux", "macOS", "Windows"]
@@ -3645,7 +3645,7 @@
   {
     "edition": "java",
     "version": "1.17.1",
-    "name": "Caves & Cliffs: Part I",
+    "cycleName": "Caves & Cliffs: Part I",
     "developmentReleasedOn": "2021-06-18",
     "platformsCondensed": {
       "2021-07-06": ["Linux", "macOS", "Windows"]
@@ -3654,7 +3654,7 @@
   {
     "edition": "java",
     "version": "1.17",
-    "name": "Caves & Cliffs: Part I",
+    "cycleName": "Caves & Cliffs: Part I",
     "developmentReleasedOn": "2020-11-04",
     "platformsCondensed": {
       "2021-06-08": ["Linux", "macOS", "Windows"]
@@ -3663,7 +3663,7 @@
   {
     "edition": "java",
     "version": "1.16.5",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "developmentReleasedOn": "2021-01-13",
     "platformsCondensed": {
       "2021-01-15": ["Linux", "macOS", "Windows"]
@@ -3672,7 +3672,7 @@
   {
     "edition": "java",
     "version": "1.16.4",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "developmentReleasedOn": "2020-10-15",
     "platformsCondensed": {
       "2020-11-02": ["Linux", "macOS", "Windows"]
@@ -3681,7 +3681,7 @@
   {
     "edition": "java",
     "version": "1.16.3",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "developmentReleasedOn": "2020-09-07",
     "platformsCondensed": {
       "2020-09-10": ["Linux", "macOS", "Windows"]
@@ -3690,7 +3690,7 @@
   {
     "edition": "java",
     "version": "1.16.2",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "developmentReleasedOn": "2020-07-01",
     "platformsCondensed": {
       "2020-08-11": ["Linux", "macOS", "Windows"]
@@ -3699,7 +3699,7 @@
   {
     "edition": "java",
     "version": "1.16.1",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "platformsCondensed": {
       "2020-06-24": ["Linux", "macOS", "Windows"]
     }
@@ -3707,7 +3707,7 @@
   {
     "edition": "java",
     "version": "1.16",
-    "name": "Nether Update",
+    "cycleName": "Nether Update",
     "developmentReleasedOn": "2020-02-05",
     "platformsCondensed": {
       "2020-06-23": ["Linux", "macOS", "Windows"]
@@ -3716,7 +3716,7 @@
   {
     "edition": "java",
     "version": "1.15.2",
-    "name": "Buzzy Bees",
+    "cycleName": "Buzzy Bees",
     "developmentReleasedOn": "2020-01-14",
     "platformsCondensed": {
       "2020-01-21": ["Linux", "macOS", "Windows"]
@@ -3725,7 +3725,7 @@
   {
     "edition": "java",
     "version": "1.15.1",
-    "name": "Buzzy Bees",
+    "cycleName": "Buzzy Bees",
     "developmentReleasedOn": "2019-12-12",
     "platformsCondensed": {
       "2019-12-17": ["Linux", "macOS", "Windows"]
@@ -3734,7 +3734,7 @@
   {
     "edition": "java",
     "version": "1.15",
-    "name": "Buzzy Bees",
+    "cycleName": "Buzzy Bees",
     "developmentReleasedOn": "2019-08-22",
     "platformsCondensed": {
       "2019-12-10": ["Linux", "macOS", "Windows"]
@@ -3743,7 +3743,7 @@
   {
     "edition": "java",
     "version": "1.14.4",
-    "name": "Village & Pillage",
+    "cycleName": "Village & Pillage",
     "developmentReleasedOn": "2019-07-03",
     "platformsCondensed": {
       "2019-07-19": ["Linux", "macOS", "Windows"]
@@ -3752,7 +3752,7 @@
   {
     "edition": "java",
     "version": "1.14.3",
-    "name": "Village & Pillage",
+    "cycleName": "Village & Pillage",
     "developmentReleasedOn": "2019-06-03",
     "platformsCondensed": {
       "2019-06-24": ["Linux", "macOS", "Windows"]
@@ -3761,7 +3761,7 @@
   {
     "edition": "java",
     "version": "1.14.2",
-    "name": "Village & Pillage",
+    "cycleName": "Village & Pillage",
     "developmentReleasedOn": "2019-05-16",
     "platformsCondensed": {
       "2019-05-27": ["Linux", "macOS", "Windows"]
@@ -3770,7 +3770,7 @@
   {
     "edition": "java",
     "version": "1.14.1",
-    "name": "Village & Pillage",
+    "cycleName": "Village & Pillage",
     "developmentReleasedOn": "2019-05-07",
     "platformsCondensed": {
       "2019-05-13": ["Linux", "macOS", "Windows"]
@@ -3779,7 +3779,7 @@
   {
     "edition": "java",
     "version": "1.14",
-    "name": "Village & Pillage",
+    "cycleName": "Village & Pillage",
     "developmentReleasedOn": "2018-10-24",
     "platformsCondensed": {
       "2019-04-23": ["Linux", "macOS", "Windows"]
@@ -3788,7 +3788,7 @@
   {
     "edition": "java",
     "version": "1.13.2",
-    "name": "Update Aquatic",
+    "cycleName": "Update Aquatic",
     "developmentReleasedOn": "2018-10-16",
     "platformsCondensed": {
       "2018-10-22": ["Linux", "macOS", "Windows"]
@@ -3797,7 +3797,7 @@
   {
     "edition": "java",
     "version": "1.13.1",
-    "name": "Update Aquatic",
+    "cycleName": "Update Aquatic",
     "developmentReleasedOn": "2018-07-25",
     "platformsCondensed": {
       "2018-08-22": ["Linux", "macOS", "Windows"]
@@ -3806,7 +3806,7 @@
   {
     "edition": "java",
     "version": "1.13",
-    "name": "Update Aquatic",
+    "cycleName": "Update Aquatic",
     "developmentReleasedOn": "2017-10-25",
     "platformsCondensed": {
       "2018-07-18": ["Linux", "macOS", "Windows"]
@@ -3815,7 +3815,7 @@
   {
     "edition": "java",
     "version": "1.12.2",
-    "name": "World of Color Update",
+    "cycleName": "World of Color Update",
     "developmentReleasedOn": "2017-09-13",
     "platformsCondensed": {
       "2017-09-18": ["Linux", "macOS", "Windows"]
@@ -3824,7 +3824,7 @@
   {
     "edition": "java",
     "version": "1.12.1",
-    "name": "World of Color Update",
+    "cycleName": "World of Color Update",
     "developmentReleasedOn": "2017-08-01",
     "platformsCondensed": {
       "2017-08-03": ["Linux", "macOS", "Windows"]
@@ -3833,7 +3833,7 @@
   {
     "edition": "java",
     "version": "1.12",
-    "name": "World of Color Update",
+    "cycleName": "World of Color Update",
     "developmentReleasedOn": "2017-02-08",
     "platformsCondensed": {
       "2017-06-07": ["Linux", "macOS", "Windows"]
@@ -3842,7 +3842,7 @@
   {
     "edition": "java",
     "version": "1.11.2",
-    "name": "Exploration Update",
+    "cycleName": "Exploration Update",
     "platformsCondensed": {
       "2016-12-21": ["Linux", "macOS", "Windows"]
     }
@@ -3850,7 +3850,7 @@
   {
     "edition": "java",
     "version": "1.11.1",
-    "name": "Exploration Update",
+    "cycleName": "Exploration Update",
     "developmentReleasedOn": "2016-12-15",
     "platformsCondensed": {
       "2016-12-20": ["Linux", "macOS", "Windows"]
@@ -3859,7 +3859,7 @@
   {
     "edition": "java",
     "version": "1.11",
-    "name": "Exploration Update",
+    "cycleName": "Exploration Update",
     "developmentReleasedOn": "2016-08-10",
     "platformsCondensed": {
       "2016-11-14": ["Linux", "macOS", "Windows"]
@@ -3868,7 +3868,7 @@
   {
     "edition": "java",
     "version": "1.10.2",
-    "name": "Frostburn Update",
+    "cycleName": "Frostburn Update",
     "platformsCondensed": {
       "2016-06-23": ["Linux", "macOS", "Windows"]
     }
@@ -3876,7 +3876,7 @@
   {
     "edition": "java",
     "version": "1.10.1",
-    "name": "Frostburn Update",
+    "cycleName": "Frostburn Update",
     "platformsCondensed": {
       "2016-06-22": ["Linux", "macOS", "Windows"]
     }
@@ -3884,7 +3884,7 @@
   {
     "edition": "java",
     "version": "1.10",
-    "name": "Frostburn Update",
+    "cycleName": "Frostburn Update",
     "developmentReleasedOn": "2016-05-18",
     "platformsCondensed": {
       "2016-06-08": ["Linux", "macOS", "Windows"]
@@ -3893,7 +3893,7 @@
   {
     "edition": "java",
     "version": "1.9.4",
-    "name": "Combat Update",
+    "cycleName": "Combat Update",
     "platformsCondensed": {
       "2016-05-10": ["Linux", "macOS", "Windows"]
     }
@@ -3901,7 +3901,7 @@
   {
     "edition": "java",
     "version": "1.9.3",
-    "name": "Combat Update",
+    "cycleName": "Combat Update",
     "developmentReleasedOn": "2016-04-07",
     "platformsCondensed": {
       "2016-05-10": ["Linux", "macOS", "Windows"]
@@ -3910,7 +3910,7 @@
   {
     "edition": "java",
     "version": "1.9.2",
-    "name": "Combat Update",
+    "cycleName": "Combat Update",
     "platformsCondensed": {
       "2016-03-30": ["Linux", "macOS", "Windows"]
     }
@@ -3918,7 +3918,7 @@
   {
     "edition": "java",
     "version": "1.9.1",
-    "name": "Combat Update",
+    "cycleName": "Combat Update",
     "developmentReleasedOn": "2016-03-09",
     "platformsCondensed": {
       "2016-03-30": ["Linux", "macOS", "Windows"]
@@ -3927,7 +3927,7 @@
   {
     "edition": "java",
     "version": "1.9",
-    "name": "Combat Update",
+    "cycleName": "Combat Update",
     "developmentReleasedOn": "2015-07-29",
     "platformsCondensed": {
       "2016-02-29": ["Linux", "macOS", "Windows"]
@@ -3936,7 +3936,7 @@
   {
     "edition": "java",
     "version": "1.8.9",
-    "name": "Bountiful Update",
+    "cycleName": "Bountiful Update",
     "platformsCondensed": {
       "2015-12-09": ["Linux", "macOS", "Windows"]
     }
@@ -3944,7 +3944,7 @@
   {
     "edition": "java",
     "version": "1.8.8",
-    "name": "Bountiful Update",
+    "cycleName": "Bountiful Update",
     "developmentReleasedOn": "2015-07-27",
     "platformsCondensed": {
       "2015-07-28": ["Linux", "macOS", "Windows"]
@@ -3953,7 +3953,7 @@
   {
     "edition": "java",
     "version": "1.8.7",
-    "name": "Bountiful Update",
+    "cycleName": "Bountiful Update",
     "platformsCondensed": {
       "2015-06-05": ["Linux", "macOS", "Windows"]
     }
@@ -3961,7 +3961,7 @@
   {
     "edition": "java",
     "version": "1.8.6",
-    "name": "Bountiful Update",
+    "cycleName": "Bountiful Update",
     "platformsCondensed": {
       "2015-05-25": ["Linux", "macOS", "Windows"]
     }
@@ -3969,7 +3969,7 @@
   {
     "edition": "java",
     "version": "1.8.5",
-    "name": "Bountiful Update",
+    "cycleName": "Bountiful Update",
     "platformsCondensed": {
       "2015-05-22": ["Linux", "macOS", "Windows"]
     }
@@ -3977,7 +3977,7 @@
   {
     "edition": "java",
     "version": "1.8.4",
-    "name": "Bountiful Update",
+    "cycleName": "Bountiful Update",
     "platformsCondensed": {
       "2015-04-17": ["Linux", "macOS", "Windows"]
     }
@@ -3985,7 +3985,7 @@
   {
     "edition": "java",
     "version": "1.8.3",
-    "name": "Bountiful Update",
+    "cycleName": "Bountiful Update",
     "platformsCondensed": {
       "2015-02-20": ["Linux", "macOS", "Windows"]
     }
@@ -3993,7 +3993,7 @@
   {
     "edition": "java",
     "version": "1.8.2",
-    "name": "Bountiful Update",
+    "cycleName": "Bountiful Update",
     "developmentReleasedOn": "2014-12-18",
     "platformsCondensed": {
       "2015-02-19": ["Linux", "macOS", "Windows"]
@@ -4002,7 +4002,7 @@
   {
     "edition": "java",
     "version": "1.8.1",
-    "name": "Bountiful Update",
+    "cycleName": "Bountiful Update",
     "developmentReleasedOn": "2014-10-15",
     "platformsCondensed": {
       "2014-11-24": ["Linux", "macOS", "Windows"]
@@ -4011,7 +4011,7 @@
   {
     "edition": "java",
     "version": "1.8",
-    "name": "Bountiful Update",
+    "cycleName": "Bountiful Update",
     "developmentReleasedOn": "2014-01-09",
     "platformsCondensed": {
       "2014-09-02": ["Linux", "macOS", "Windows"]
@@ -4020,7 +4020,7 @@
   {
     "edition": "java",
     "version": "1.7.10",
-    "name": "The Update that Changed the World",
+    "cycleName": "The Update that Changed the World",
     "developmentReleasedOn": "2014-06-03",
     "platformsCondensed": {
       "2014-06-26": ["Linux", "macOS", "Windows"]
@@ -4029,7 +4029,7 @@
   {
     "edition": "java",
     "version": "1.7.9",
-    "name": "The Update that Changed the World",
+    "cycleName": "The Update that Changed the World",
     "platformsCondensed": {
       "2014-04-14": ["Linux", "macOS", "Windows"]
     }
@@ -4037,7 +4037,7 @@
   {
     "edition": "java",
     "version": "1.7.8",
-    "name": "The Update that Changed the World",
+    "cycleName": "The Update that Changed the World",
     "platformsCondensed": {
       "2014-04-11": ["Linux", "macOS", "Windows"]
     }
@@ -4045,7 +4045,7 @@
   {
     "edition": "java",
     "version": "1.7.7",
-    "name": "The Update that Changed the World",
+    "cycleName": "The Update that Changed the World",
     "platformsCondensed": {
       "2014-04-09": ["Linux", "macOS", "Windows"]
     }
@@ -4053,7 +4053,7 @@
   {
     "edition": "java",
     "version": "1.7.6",
-    "name": "The Update that Changed the World",
+    "cycleName": "The Update that Changed the World",
     "developmentReleasedOn": "2014-04-03",
     "platformsCondensed": {
       "2014-04-09": ["Linux", "macOS", "Windows"]
@@ -4062,7 +4062,7 @@
   {
     "edition": "java",
     "version": "1.7.5",
-    "name": "The Update that Changed the World",
+    "cycleName": "The Update that Changed the World",
     "platformsCondensed": {
       "2014-02-26": ["Linux", "macOS", "Windows"]
     }
@@ -4070,7 +4070,7 @@
   {
     "edition": "java",
     "version": "1.7.4",
-    "name": "The Update that Changed the World",
+    "cycleName": "The Update that Changed the World",
     "developmentReleasedOn": "2013-11-21",
     "platformsCondensed": {
       "2013-12-10": ["Linux", "macOS", "Windows"]
@@ -4079,7 +4079,7 @@
   {
     "edition": "java",
     "version": "1.7.2",
-    "name": "The Update that Changed the World",
+    "cycleName": "The Update that Changed the World",
     "developmentReleasedOn": "2013-09-05",
     "platformsCondensed": {
       "2013-10-25": ["Linux", "macOS", "Windows"]
@@ -4088,7 +4088,7 @@
   {
     "edition": "java",
     "version": "1.6.4",
-    "name": "Horse Update",
+    "cycleName": "Horse Update",
     "developmentReleasedOn": "2013-09-13",
     "platformsCondensed": {
       "2013-09-19": ["Linux", "macOS", "Windows"]
@@ -4097,7 +4097,7 @@
   {
     "edition": "java",
     "version": "1.6.2",
-    "name": "Horse Update",
+    "cycleName": "Horse Update",
     "platformsCondensed": {
       "2013-07-08": ["Linux", "macOS", "Windows"]
     }
@@ -4105,7 +4105,7 @@
   {
     "edition": "java",
     "version": "1.6.1",
-    "name": "Horse Update",
+    "cycleName": "Horse Update",
     "developmentReleasedOn": "2013-04-18",
     "platformsCondensed": {
       "2013-07-01": ["Linux", "macOS", "Windows"]
@@ -4114,7 +4114,7 @@
   {
     "edition": "java",
     "version": "1.5.2",
-    "name": "Redstone Update",
+    "cycleName": "Redstone Update",
     "developmentReleasedOn": "2013-04-25",
     "platformsCondensed": {
       "2013-05-02": ["Linux", "macOS", "Windows"]
@@ -4123,7 +4123,7 @@
   {
     "edition": "java",
     "version": "1.5.1",
-    "name": "Redstone Update",
+    "cycleName": "Redstone Update",
     "developmentReleasedOn": "2013-03-14",
     "platformsCondensed": {
       "2013-03-21": ["Linux", "macOS", "Windows"]
@@ -4132,7 +4132,7 @@
   {
     "edition": "java",
     "version": "1.5",
-    "name": "Redstone Update",
+    "cycleName": "Redstone Update",
     "developmentReleasedOn": "2013-01-03",
     "platformsCondensed": {
       "2013-03-13": ["Linux", "macOS", "Windows"]
@@ -4141,7 +4141,7 @@
   {
     "edition": "java",
     "version": "1.4.7",
-    "name": "Pretty Scary Update",
+    "cycleName": "Pretty Scary Update",
     "developmentReleasedOn": "2012-12-28",
     "platformsCondensed": {
       "2013-01-09": ["Linux", "macOS", "Windows"]
@@ -4150,7 +4150,7 @@
   {
     "edition": "java",
     "version": "1.4.6",
-    "name": "Pretty Scary Update",
+    "cycleName": "Pretty Scary Update",
     "developmentReleasedOn": "2012-12-07",
     "platformsCondensed": {
       "2012-12-20": ["Linux", "macOS", "Windows"]
@@ -4159,7 +4159,7 @@
   {
     "edition": "java",
     "version": "1.4.5",
-    "name": "Pretty Scary Update",
+    "cycleName": "Pretty Scary Update",
     "developmentReleasedOn": "2012-11-16",
     "platformsCondensed": {
       "2012-11-19": ["Linux", "macOS", "Windows"]
@@ -4168,7 +4168,7 @@
   {
     "edition": "java",
     "version": "1.4.4",
-    "name": "Pretty Scary Update",
+    "cycleName": "Pretty Scary Update",
     "developmentReleasedOn": "2012-11-01",
     "platformsCondensed": {
       "2012-11-14": ["Linux", "macOS", "Windows"]
@@ -4177,7 +4177,7 @@
   {
     "edition": "java",
     "version": "1.4.2",
-    "name": "Pretty Scary Update",
+    "cycleName": "Pretty Scary Update",
     "developmentReleasedOn": "2012-08-09",
     "platformsCondensed": {
       "2012-10-25": ["Linux", "macOS", "Windows"]
@@ -4186,7 +4186,7 @@
   {
     "edition": "java",
     "version": "1.3.2",
-    "name": "1.3",
+    "cycleName": "1.3",
     "developmentReleasedOn": "2012-08-14",
     "platformsCondensed": {
       "2012-08-16": ["Linux", "macOS", "Windows"]
@@ -4195,7 +4195,7 @@
   {
     "edition": "java",
     "version": "1.3.1",
-    "name": "1.3",
+    "cycleName": "1.3",
     "developmentReleasedOn": "2012-04-12",
     "platformsCondensed": {
       "2012-08-01": ["Linux", "macOS", "Windows"]
@@ -4204,7 +4204,7 @@
   {
     "edition": "java",
     "version": "1.2.5",
-    "name": "1.2",
+    "cycleName": "1.2",
     "developmentReleasedOn": "2012-03-30",
     "platformsCondensed": {
       "2012-04-04": ["Linux", "macOS", "Windows"]
@@ -4213,7 +4213,7 @@
   {
     "edition": "java",
     "version": "1.2.4",
-    "name": "1.2",
+    "cycleName": "1.2",
     "platformsCondensed": {
       "2012-03-22": ["Linux", "macOS", "Windows"]
     }
@@ -4221,7 +4221,7 @@
   {
     "edition": "java",
     "version": "1.2.3",
-    "name": "1.2",
+    "cycleName": "1.2",
     "platformsCondensed": {
       "2012-03-02": ["Linux", "macOS", "Windows"]
     }
@@ -4229,7 +4229,7 @@
   {
     "edition": "java",
     "version": "1.2.2",
-    "name": "1.2",
+    "cycleName": "1.2",
     "platformsCondensed": {
       "2012-03-01": ["Linux", "macOS", "Windows"]
     }
@@ -4237,7 +4237,7 @@
   {
     "edition": "java",
     "version": "1.2.1",
-    "name": "1.2",
+    "cycleName": "1.2",
     "developmentReleasedOn": "2012-01-19",
     "platformsCondensed": {
       "2012-03-01": ["Linux", "macOS", "Windows"]
@@ -4246,7 +4246,7 @@
   {
     "edition": "java",
     "version": "1.1",
-    "name": "1.1",
+    "cycleName": "1.1",
     "developmentReleasedOn": "2011-11-24",
     "platformsCondensed": {
       "2012-01-12": ["Linux", "macOS", "Windows"]
@@ -4255,7 +4255,7 @@
   {
     "edition": "java",
     "version": "1.0.1",
-    "name": "Adventure Update (Part 2)",
+    "cycleName": "Adventure Update (Part 2)",
     "platformsCondensed": {
       "2011-11-24": ["Linux", "macOS", "Windows"]
     }
@@ -4263,7 +4263,7 @@
   {
     "edition": "java",
     "version": "1.0.0",
-    "name": "Adventure Update (Part 2)",
+    "cycleName": "Adventure Update (Part 2)",
     "developmentReleasedOn": "2011-09-22",
     "platformsCondensed": {
       "2011-11-18": ["Linux", "macOS", "Windows"]

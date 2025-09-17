@@ -6,6 +6,7 @@ import { formatISO } from "date-fns";
 import Button from "@/components/Button/Button";
 import Form from "@/components/Form/Form";
 import { Platform } from "@/domains/platform/schema";
+import { ReleaseCycle } from "@/domains/release-cycle/schema";
 import { EDITION, RELEASE_ATTRS, ReleaseAttrs } from "@/domains/release/schema";
 import { useAppForm } from "@/hooks/app-form";
 import { useTranslation } from "@/i18n/client";
@@ -17,12 +18,14 @@ export default function ReleaseForm({
 	action,
 	attrs,
 	className,
+	cycles,
 	isNew = false,
 	platforms
 }: {
 	action: ServerAction;
 	attrs: ReleaseAttrs;
 	className?: string;
+	cycles: ReadonlyArray<ReleaseCycle>;
 	isNew?: boolean;
 	platforms: ReadonlyArray<Platform>;
 }) {
@@ -32,7 +35,7 @@ export default function ReleaseForm({
 		defaultValues: {
 			edition: attrs.edition,
 			version: attrs.version,
-			name: attrs.name,
+			cycleName: attrs.cycleName,
 			developmentReleasedOn: attrs.developmentReleasedOn,
 			changelog: attrs.changelog ?? "",
 			isAvailableForTools: attrs.isAvailableForTools,
@@ -78,15 +81,20 @@ export default function ReleaseForm({
 			</form.AppField>
 
 			<form.AppField
-				name="name"
-				validators={
-					{
-						// onChange: RELEASE_ATTRS.shape.name
-					}
-				}
+				name="cycleName"
+				validators={{
+					onChange: RELEASE_ATTRS.shape.cycleName
+				}}
 			>
 				{(field) => (
-					<field.TextField label={t("name.label")} required />
+					<field.SelectField
+						includeBlank
+						label={t("cycle-name.label")}
+						options={cycles}
+						serialize={({ id }) => id}
+					>
+						{({ name }) => name}
+					</field.SelectField>
 				)}
 			</form.AppField>
 

@@ -125,11 +125,13 @@ export default async function PageSearchResultsExpanded({
 							}
 						]}
 						title={t("list.card.title", {
-							context: release.version.startsWith(release.name)
-								? undefined
-								: "named",
+							context:
+								release.cycleName &&
+								!release.version.startsWith(release.cycleName)
+									? "named"
+									: undefined,
 							version: release.version,
-							name: release.name
+							name: release.cycleName
 						})}
 						variant="flat"
 					/>
@@ -160,8 +162,10 @@ export default async function PageSearchResultsExpanded({
 					}
 				</Field>
 
-				<Field fieldPath="name" label={t("name.label")}>
-					{({ name }: SpecificRelease) => t("name.value", { name })}
+				<Field fieldPath="cycleName" label={t("cycle-name.label")}>
+					{({ cycleName: name }: SpecificRelease) =>
+						t("cycle-name.value", { name })
+					}
 				</Field>
 
 				<Field fieldPath="changelog" label={t("changelog.label")}>

@@ -27,7 +27,7 @@ export const get = async (id: Release["id"]) => {
 			r.id,
 			r.edition,
 			r.version,
-			r.name,
+			rc.name AS "cycleName",
 			r.development_released_on AS "developmentReleasedOn",
 			min(pr.production_released_on) AS "firstProductionReleasedOn",
 			r.changelog,
@@ -44,19 +44,22 @@ export const get = async (id: Release["id"]) => {
 			platform_releases AS pr
 			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
 			RIGHT OUTER JOIN releases AS r ON pr.release_id = r.id
+			LEFT OUTER JOIN release_cycle_releases AS rcr ON rcr.release_id = r.id
+			LEFT OUTER JOIN release_cycles AS rc ON rcr.release_cycle_id = rc.id
 		WHERE
 			r.id = ${id}
 		GROUP BY
-			r.id
+			r.id,
+			rc.id
 	`);
 };
 
 export const mostRecentName = async () =>
-	(await pool).maybeOneFirst(sql.type(RELEASE.pick({ name: true }))`
+	(await pool).oneFirst(sql.type(RELEASE.pick({ cycleName: true }))`
 		SELECT
 			name
 		FROM
-			releases
+			release_cycles
 		ORDER BY
 			created_at DESC
 		LIMIT
@@ -70,12 +73,11 @@ export const create = async (attrs: ReleaseAttrs) => {
 		WITH
 			the_release AS (
 				INSERT INTO
-					releases (edition, version, name, development_released_on, changelog, is_available_for_tools)
+					releases (edition, version, development_released_on, changelog, is_available_for_tools)
 				VALUES
 					(
 						${attrs.edition},
 						${attrs.version},
-						${attrs.name ?? null},
 						${attrs.developmentReleasedOn ? sql.date(new Date(attrs.developmentReleasedOn)) : null},
 						${attrs.changelog ?? null},
 						${attrs.isAvailableForTools}
@@ -85,7 +87,7 @@ export const create = async (attrs: ReleaseAttrs) => {
 					updated_at = DEFAULT,
 					edition = ${attrs.edition},
 					version = ${attrs.version},
-					name = ${attrs.name ?? null},
+					name = ${attrs.cycleName ?? null},
 					development_released_on = ${attrs.developmentReleasedOn ? sql.date(new Date(attrs.developmentReleasedOn)) : null},
 					changelog = ${attrs.changelog ?? null},
 					is_available_for_tools = ${attrs.isAvailableForTools}
@@ -120,7 +122,6 @@ export const update = async (releaseId: Release["id"], attrs: ReleaseAttrs) => {
 					updated_at = DEFAULT,
 					edition = ${attrs.edition},
 					version = ${attrs.version},
-					name = ${attrs.name ?? null},
 					development_released_on = ${attrs.developmentReleasedOn ? sql.date(new Date(attrs.developmentReleasedOn)) : null},
 					changelog = ${attrs.changelog ?? null},
 					is_available_for_tools = ${attrs.isAvailableForTools}
@@ -187,7 +188,7 @@ const searchConditions = async ({
 				OR
 				(r.version LIKE ANY(${sql.array(includeText, "text")}))
 				OR
-				(r.name LIKE ANY(${sql.array(includeText, "text")}))
+				(rc.name LIKE ANY(${sql.array(includeText, "text")}))
 				OR
 				(p.name LIKE ANY(${sql.array(includeText, "text")}))
 			)`
@@ -201,9 +202,9 @@ const searchConditions = async ({
 					"text"
 				)}))`
 			: undefined,
-		include.name
-			? sql.fragment`(r.name LIKE ANY(${sql.array(
-					include.name.map((name) => `%${name}%`),
+		include.cycleName
+			? sql.fragment`(rc.name LIKE ANY(${sql.array(
+					include.cycleName.map((name) => `%${name}%`),
 					"text"
 				)}))`
 			: undefined,
@@ -239,6 +240,8 @@ export const searchExpanded = async ({
 			platform_releases AS pr
 			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
 			RIGHT OUTER JOIN releases AS r ON pr.release_id = r.id
+			LEFT OUTER JOIN release_cycle_releases AS rcr ON rcr.release_id = r.id
+			LEFT OUTER JOIN release_cycles AS rc ON rcr.release_cycle_id = rc.id
 		${
 			whereClauses.length
 				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
@@ -253,7 +256,7 @@ export const searchExpanded = async ({
 			p.name AS "platformName",
 			r.edition,
 			r.version,
-			r.name,
+			rc.name AS "cycleName",
 			r.development_released_on AS "developmentReleasedOn",
 			pr.production_released_on AS "productionReleasedOn",
 			r.changelog,
@@ -263,6 +266,8 @@ export const searchExpanded = async ({
 			platform_releases AS pr
 			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
 			RIGHT OUTER JOIN releases AS r ON pr.release_id = r.id
+			LEFT OUTER JOIN release_cycle_releases AS rcr ON rcr.release_id = r.id
+			LEFT OUTER JOIN release_cycles AS rc ON rcr.release_cycle_id = rc.id
 		${
 			whereClauses.length
 				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
@@ -305,13 +310,16 @@ export const search = async ({
 				platform_releases AS pr
 				LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
 				RIGHT OUTER JOIN releases AS r ON pr.release_id = r.id
+				LEFT OUTER JOIN release_cycle_releases AS rcr ON rcr.release_id = r.id
+				LEFT OUTER JOIN release_cycles AS rc ON rcr.release_cycle_id = rc.id
 			${
 				whereClauses.length
 					? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
 					: sql.fragment``
 			}
 			GROUP BY
-				r.id
+				r.id,
+				rc.id
 		)
 	`;
 
@@ -320,7 +328,7 @@ export const search = async ({
 			r.id,
 			r.edition,
 			r.version,
-			r.name,
+			rc.name AS "cycleName",
 			r.development_released_on AS "developmentReleasedOn",
 			min(pr.production_released_on) AS "firstProductionReleasedOn",
 			r.changelog,
@@ -337,13 +345,16 @@ export const search = async ({
 			platform_releases AS pr
 			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
 			RIGHT OUTER JOIN releases AS r ON pr.release_id = r.id
+			LEFT OUTER JOIN release_cycle_releases AS rcr ON rcr.release_id = r.id
+			LEFT OUTER JOIN release_cycles AS rc ON rcr.release_cycle_id = rc.id
 		${
 			whereClauses.length
 				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
 				: sql.fragment``
 		}
 		GROUP BY
-			r.id
+			r.id,
+			rc.id
 		ORDER BY
 			"firstProductionReleasedOn" DESC,
 			r.edition ASC,
@@ -368,34 +379,60 @@ export const doImport = async (release: ImportRelease) => {
 		const releaseId = await tx.oneFirst(sql.type(
 			RELEASE.pick({ id: true })
 		)`
+			WITH
+				the_release AS (
+					INSERT INTO
+						releases (
+							edition,
+							version,
+							development_released_on,
+							changelog
+						)
+					VALUES
+						(
+							${release.edition},
+							${release.version},
+							${
+								release.developmentReleasedOn
+									? sql.date(
+											new Date(
+												release.developmentReleasedOn
+											)
+										)
+									: null
+							},
+							${release.changelog ?? null}
+						)
+					ON CONFLICT (edition, version) DO UPDATE
+					SET
+						updated_at = DEFAULT,
+						development_released_on = EXCLUDED.development_released_on,
+						changelog = EXCLUDED.changelog
+					RETURNING
+						id
+				),
+				the_cycle AS (
+					INSERT INTO
+						release_cycles (name)
+					VALUES
+						(${release.cycleName})
+					ON CONFLICT (name) DO UPDATE
+					SET
+						updated_at = DEFAULT
+					RETURNING
+						id
+				)
 			INSERT INTO
-				releases (
-					edition,
-					version,
-					name,
-					development_released_on,
-					changelog
-				)
-			VALUES
-				(
-					${release.edition},
-					${release.version},
-					${release.name ?? null},
-					${
-						release.developmentReleasedOn
-							? sql.date(new Date(release.developmentReleasedOn))
-							: null
-					},
-					${release.changelog ?? null}
-				)
-			ON CONFLICT (edition, version) DO UPDATE
+				release_cycle_releases (release_id, release_cycle_id)
+			SELECT r.id, c.id
+			FROM
+				the_release AS r,
+				the_cycle AS c
+			ON CONFLICT (release_id, release_cycle_id) DO UPDATE
 			SET
-				updated_at = DEFAULT,
-				name = EXCLUDED.name,
-				development_released_on = EXCLUDED.development_released_on,
-				changelog = EXCLUDED.changelog
+				updated_at = DEFAULT
 			RETURNING
-				id
+				release_id
 		`);
 
 		const rainbow = Object.entries(release.platformsCondensed).map(

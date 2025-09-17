@@ -14,7 +14,7 @@ export const RELEASE = z.object({
 	updatedAt: z.iso.date(),
 	edition: EDITION,
 	version: z.string().regex(/\d+(?:\.\d+){1,3}/),
-	name: z.string(),
+	cycleName: z.string().optional(),
 	developmentReleasedOn: z.iso.date().optional(),
 	firstProductionReleasedOn: z.iso.date().optional(),
 	changelog: z.url().optional(),
@@ -85,10 +85,10 @@ export type ReleaseAttrs = z.infer<typeof RELEASE_ATTRS>;
 export const IMPORT_RELEASE = RELEASE.pick({
 	edition: true,
 	version: true,
-	name: true,
 	developmentReleasedOn: true,
 	changelog: true
 }).extend({
+	cycleName: z.string(),
 	platformsCondensed: z.record(
 		z.union([
 			UPCOMING,

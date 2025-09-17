@@ -1,0 +1,12 @@
+{
+  "metadata": {
+    "title": "Release Cycle"
+  },
+
+  "content": {
+    "breadcrumb": {
+      "short-name": "{{name}}"
+    },
+    "description": "Release Cycle"
+  }
+}

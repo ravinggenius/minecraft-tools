@@ -242,6 +242,7 @@ enum "permission_subject" {
     "profile",
     "platform",
     "release",
+    "release-cycle",
     "world"
   ]
 }

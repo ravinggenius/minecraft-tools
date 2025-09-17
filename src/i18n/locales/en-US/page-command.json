@@ -7,7 +7,8 @@
     "description": "Admin area",
     "menu": {
       "platforms": "Platforms",
-      "releases": "Releases"
+      "releases": "Releases",
+      "release-cycles": "Release Cycles"
     }
   }
 }

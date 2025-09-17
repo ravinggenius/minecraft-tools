@@ -8,3 +8,11 @@ export const RELEASE_CYCLE = z.object({
 });
 
 export type ReleaseCycle = z.infer<typeof RELEASE_CYCLE>;
+
+export const RELEASE_CYCLE_ATTRS = RELEASE_CYCLE.omit({
+	id: true,
+	createdAt: true,
+	updatedAt: true
+});
+
+export type ReleaseCycleAttrs = z.infer<typeof RELEASE_CYCLE_ATTRS>;

@@ -17,6 +17,7 @@ const SUBJECT_COMPENDIUM = z.literal("compendium");
 const SUBJECT_PROFILE = z.literal("profile");
 const SUBJECT_PLATFORM = z.literal("platform");
 const SUBJECT_RELEASE = z.literal("release");
+const SUBJECT_RELEASE_CYCLE = z.literal("release-cycle");
 const SUBJECT_WORLD = z.literal("world");
 
 const COMMON = z.object({
@@ -48,7 +49,7 @@ export const ASSERTION_COMPENDIUM_CREATE = z
 	.tuple([
 		ACTION_CREATE,
 		SCOPE_NEW,
-		z.union([SUBJECT_PLATFORM, SUBJECT_RELEASE])
+		z.union([SUBJECT_PLATFORM, SUBJECT_RELEASE, SUBJECT_RELEASE_CYCLE])
 	])
 	.transform(([action, scope, subject]) => ({ action, scope, subject }));
 
@@ -65,7 +66,7 @@ export const ASSERTION_COMPENDIUM_MANAGE = z
 	.tuple([
 		z.union([ACTION_READ, ACTION_UPDATE, ACTION_DESTROY]),
 		SCOPE_ANY,
-		z.union([SUBJECT_PLATFORM, SUBJECT_RELEASE])
+		z.union([SUBJECT_PLATFORM, SUBJECT_RELEASE, SUBJECT_RELEASE_CYCLE])
 	])
 	.transform(([action, scope, subject]) => ({ action, scope, subject }));
 

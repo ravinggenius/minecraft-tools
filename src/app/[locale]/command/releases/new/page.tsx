@@ -2,6 +2,7 @@ import { Metadata } from "next";
 
 import BreadcrumbTrailPortal from "@/components/BreadcrumbTrail/BreadcrumbTrailPortal";
 import * as platformModel from "@/domains/platform/model";
+import * as releaseCycleModel from "@/domains/release-cycle/model";
 import * as releaseModel from "@/domains/release/model";
 import { ReleaseAttrs } from "@/domains/release/schema";
 import { loadPageTranslations } from "@/i18n/server";
@@ -45,7 +46,7 @@ export default async function Page({
 		{ name: "new" }
 	]);
 
-	const mostRecentName = await releaseModel.mostRecentName();
+	const cycleName = await releaseModel.mostRecentName();
 
 	return (
 		<>
@@ -57,12 +58,13 @@ export default async function Page({
 					attrs={{
 						edition: "" as ReleaseAttrs["edition"],
 						version: "",
-						name: mostRecentName ?? "",
+						cycleName,
 						developmentReleasedOn: undefined,
 						changelog: "",
 						isAvailableForTools: false,
 						platforms: []
 					}}
+					cycles={await releaseCycleModel.listAll()}
 					isNew
 					platforms={await platformModel.listAll()}
 				/>

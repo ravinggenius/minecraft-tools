@@ -61,6 +61,15 @@ export default async function Page({ params }: PageProps<"/[locale]/command">) {
 							{t("menu.releases")}
 						</Anchor>
 					</li>
+
+					<li>
+						<Anchor
+							href={`/${locale}/command/release-cycles`}
+							variant="inline"
+						>
+							{t("menu.release-cycles")}
+						</Anchor>
+					</li>
 				</ol>
 			</article>
 		</>

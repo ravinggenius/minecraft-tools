@@ -6,7 +6,7 @@ export const QUERY = SEACH_QUERY(
 	[
 		"edition",
 		"version",
-		"name",
+		"cycle",
 		"is-available-for-tools",
 		"is-latest",
 		"platform"
@@ -17,7 +17,7 @@ export const QUERY = SEACH_QUERY(
 			text: rawQuery.text,
 			edition: rawQuery.edition,
 			version: rawQuery.version,
-			name: rawQuery.name,
+			cycleName: rawQuery.cycle,
 			isAvailableForTools: FLEXIBLE_BOOL.optional().parse(
 				rawQuery["is-available-for-tools"]?.[
 					rawQuery["is-available-for-tools"].length - 1

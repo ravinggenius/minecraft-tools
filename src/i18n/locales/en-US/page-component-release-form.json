@@ -7,8 +7,8 @@
     "label": "Version",
     "placeholder": "1.22.0"
   },
-  "name": {
-    "label": "Name"
+  "cycle-name": {
+    "label": "Cycle"
   },
   "changelog": {
     "label": "Changelog"

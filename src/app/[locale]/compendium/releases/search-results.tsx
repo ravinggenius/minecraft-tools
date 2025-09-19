@@ -128,9 +128,13 @@ export default async function PageSearchResults({
 								: undefined
 						]}
 						title={t("list.card.title", {
-							context: release.name ? "named" : undefined,
+							context:
+								release.cycleName &&
+								!release.version.startsWith(release.cycleName)
+									? "named"
+									: undefined,
 							version: release.version,
-							name: release.name
+							name: release.cycleName
 						})}
 						variant="flat"
 					/>
@@ -161,8 +165,10 @@ export default async function PageSearchResults({
 					}
 				</Field>
 
-				<Field fieldPath="name" label={t("name.label")}>
-					{({ name }: Release) => t("name.value", { name })}
+				<Field fieldPath="cycleName" label={t("cycle-name.label")}>
+					{({ cycleName: name }: Release) =>
+						t("cycle-name.value", { name })
+					}
 				</Field>
 
 				<Field fieldPath="changelog" label={t("changelog.label")}>

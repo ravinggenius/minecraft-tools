@@ -10,7 +10,7 @@ export const INCLUDE = z.object({
 	text: OPTIONAL_STRING_ARRAY,
 	edition: OPTIONAL_STRING_ARRAY,
 	version: OPTIONAL_STRING_ARRAY,
-	name: OPTIONAL_STRING_ARRAY,
+	cycleName: OPTIONAL_STRING_ARRAY,
 	isAvailableForTools: OPTIONAL_BOOLEAN,
 	isLatest: OPTIONAL_BOOLEAN,
 	platform: OPTIONAL_STRING_ARRAY,

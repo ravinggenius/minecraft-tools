@@ -22,8 +22,8 @@
     "value": "{{version}}"
   },
 
-  "name": {
-    "label": "Name",
+  "cycle-name": {
+    "label": "Cycle",
     "value": "{{name}}"
   },
 

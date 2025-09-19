@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import ActionButton from "@/components/ActionButton/ActionButton";
 import BreadcrumbTrailPortal from "@/components/BreadcrumbTrail/BreadcrumbTrailPortal";
 import * as platformModel from "@/domains/platform/model";
+import * as releaseCycleModel from "@/domains/release-cycle/model";
 import * as releaseModel from "@/domains/release/model";
 import { RELEASE } from "@/domains/release/schema";
 import { loadPageTranslations } from "@/i18n/server";
@@ -81,6 +82,7 @@ export default async function Page({
 				<ReleaseForm
 					action={updateRelease(releaseId)}
 					attrs={release}
+					cycles={await releaseCycleModel.listAll()}
 					platforms={await platformModel.listAll()}
 				/>
 

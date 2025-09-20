@@ -2,6 +2,7 @@
 
 import classNames from "classnames";
 import { formatISO } from "date-fns";
+import { z } from "zod/v4";
 
 import Button from "@/components/Button/Button";
 import Form from "@/components/Form/Form";
@@ -35,7 +36,9 @@ export default function ReleaseForm({
 		defaultValues: {
 			edition: attrs.edition,
 			version: attrs.version,
-			cycleName: attrs.cycleName,
+			cycle: {
+				id: attrs.cycle.id ?? ""
+			},
 			developmentReleasedOn: attrs.developmentReleasedOn,
 			changelog: attrs.changelog ?? "",
 			isAvailableForTools: attrs.isAvailableForTools,
@@ -81,15 +84,18 @@ export default function ReleaseForm({
 			</form.AppField>
 
 			<form.AppField
-				name="cycleName"
+				name="cycle.id"
 				validators={{
-					onChange: RELEASE_ATTRS.shape.cycleName
+					onChange: z.union([
+						RELEASE_ATTRS.shape.cycle.shape.id.unwrap(),
+						z.literal("")
+					])
 				}}
 			>
 				{(field) => (
 					<field.SelectField
 						includeBlank
-						label={t("cycle-name.label")}
+						label={t("cycle-id.label")}
 						options={cycles}
 						serialize={({ id }) => id}
 					>

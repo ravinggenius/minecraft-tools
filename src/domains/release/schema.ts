@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 
 import { PLATFORM } from "../platform/schema";
+import { RELEASE_CYCLE } from "../release-cycle/schema";
 
 export const EDITION = z.enum(["bedrock", "java"]);
 
@@ -14,7 +15,10 @@ export const RELEASE = z.object({
 	updatedAt: z.iso.date(),
 	edition: EDITION,
 	version: z.string().regex(/\d+(?:\.\d+){1,3}/),
-	cycleName: z.string().optional(),
+	cycle: RELEASE_CYCLE.omit({
+		createdAt: true,
+		updatedAt: true
+	}).optional(),
 	developmentReleasedOn: z.iso.date().optional(),
 	firstProductionReleasedOn: z.iso.date().optional(),
 	changelog: z.url().optional(),
@@ -61,10 +65,14 @@ export const RELEASE_ATTRS = RELEASE.omit({
 	id: true,
 	createdAt: true,
 	updatedAt: true,
+	cycle: true,
 	firstProductionReleasedOn: true,
 	isLatest: true,
 	platforms: true
 }).extend({
+	cycle: z.object({
+		id: RELEASE_CYCLE.shape.id.optional()
+	}),
 	platforms: z
 		.array(
 			PLATFORM.omit({
@@ -88,7 +96,7 @@ export const IMPORT_RELEASE = RELEASE.pick({
 	developmentReleasedOn: true,
 	changelog: true
 }).extend({
-	cycleName: z.string(),
+	cycleName: RELEASE_CYCLE.shape.name,
 	platformsCondensed: z.record(
 		z.union([
 			UPCOMING,

@@ -27,6 +27,11 @@ table "releases" {
     default = sql("now()")
   }
 
+  column "release_cycle_id" {
+    null = true
+    type = uuid
+  }
+
   column "edition" {
     null = false
     type = enum.edition
@@ -61,6 +66,13 @@ table "releases" {
 
   primary_key {
     columns = [column.id]
+  }
+
+  foreign_key "releases_release_cycle_id_fkey" {
+    columns     = [column.release_cycle_id]
+    ref_columns = [table.release_cycles.column.id]
+    on_update   = CASCADE
+    on_delete   = SET_NULL
   }
 
   unique "releases_edition_version_key" {

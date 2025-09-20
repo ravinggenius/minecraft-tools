@@ -14,8 +14,9 @@ view "released_items" {
       i.rarity,
       i.stack_size,
       i.is_renewable
-    FROM public.items i
-      JOIN public.item_releases iv ON i.id = iv.item_id
-      JOIN public.releases v ON iv.release_id = v.id;
+    FROM public.items AS i
+      JOIN public.item_releases AS iv ON i.id = iv.item_id
+      JOIN public.releases AS v ON iv.release_id = v.id;
   SQL
+  depends_on = [table.items, table.item_releases, table.releases]
 }

@@ -4,7 +4,7 @@ table "profiles" {
   column "id" {
     null    = false
     type    = uuid
-    default = sql("uuid_generate_v4()")
+    default = sql("public.uuid_generate_v4()")
   }
 
   column "created_at" {

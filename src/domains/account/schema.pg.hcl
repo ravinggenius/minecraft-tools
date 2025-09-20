@@ -1,10 +1,10 @@
 domain "email" {
   schema = schema.public
   null   = true
-  type   = sql("citext")
+  type   = sql("public.citext")
 
   check "valid_email_check" {
-    expr = "VALUE ~ '^[a-zA-Z0-9.!#$%&''*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$'"
+    expr = "(VALUE OPERATOR(public.~) '^[a-zA-Z0-9.!#$%&''*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$')"
   }
 }
 
@@ -14,7 +14,7 @@ table "accounts" {
   column "id" {
     null    = false
     type    = uuid
-    default = sql("uuid_generate_v4()")
+    default = sql("public.uuid_generate_v4()")
   }
 
   column "created_at" {

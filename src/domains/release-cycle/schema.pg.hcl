@@ -4,7 +4,7 @@ table "release_cycles" {
   column "id" {
     null    = false
     type    = uuid
-    default = sql("uuid_generate_v4()")
+    default = sql("public.uuid_generate_v4()")
   }
 
   column "created_at" {
@@ -39,7 +39,7 @@ table "release_cycle_releases" {
   column "id" {
     null    = false
     type    = uuid
-    default = sql("uuid_generate_v4()")
+    default = sql("public.uuid_generate_v4()")
   }
 
   column "created_at" {

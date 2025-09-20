@@ -14,7 +14,7 @@ table "items" {
   column "id" {
     null    = false
     type    = uuid
-    default = sql("uuid_generate_v4()")
+    default = sql("public.uuid_generate_v4()")
   }
 
   column "created_at" {
@@ -67,7 +67,7 @@ table "item_releases" {
   column "id" {
     null    = false
     type    = uuid
-    default = sql("uuid_generate_v4()")
+    default = sql("public.uuid_generate_v4()")
   }
 
   column "created_at" {
@@ -123,9 +123,16 @@ view "released_items" {
       v.edition,
       v.version,
       v.is_latest,
-      i.*
-    FROM items AS i
-      INNER JOIN item_releases AS iv ON i.id = iv.item_id
-      INNER JOIN releases AS v ON iv.release_id = v.id
+      i.id,
+      i.created_at,
+      i.updated_at,
+      i.identifier,
+      i.wiki_url,
+      i.rarity,
+      i.stack_size,
+      i.is_renewable
+    FROM public.items i
+      JOIN public.item_releases iv ON i.id = iv.item_id
+      JOIN public.releases v ON iv.release_id = v.id;
   SQL
 }

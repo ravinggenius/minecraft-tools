@@ -46,7 +46,7 @@ export const get = async (id: Release["id"]) => {
 			platform_releases AS pr
 			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
 			RIGHT OUTER JOIN releases AS r ON pr.release_id = r.id
-			LEFT OUTER JOIN release_cycles AS rc ON r.release_cycle_id = rc.id
+			LEFT OUTER JOIN release_cycles AS rc ON r.cycle_id = rc.id
 		WHERE
 			r.id = ${id}
 		GROUP BY
@@ -61,7 +61,7 @@ export const mostRecentCycleId = async () =>
 			rc.id
 		FROM
 			release_cycles AS rc
-			RIGHT OUTER JOIN releases AS r ON r.release_cycle_id = rc.id
+			RIGHT OUTER JOIN releases AS r ON r.cycle_id = rc.id
 		ORDER BY
 			r.created_at DESC
 		LIMIT
@@ -75,7 +75,7 @@ export const create = async (attrs: ReleaseAttrs) => {
 		WITH
 			the_release AS (
 				INSERT INTO
-					releases (edition, version, release_cycle_id, development_released_on, changelog, is_available_for_tools)
+					releases (edition, version, cycle_id, development_released_on, changelog, is_available_for_tools)
 				VALUES
 					(
 						${attrs.edition},
@@ -90,7 +90,7 @@ export const create = async (attrs: ReleaseAttrs) => {
 					updated_at = DEFAULT,
 					edition = ${attrs.edition},
 					version = ${attrs.version},
-					release_cycle_id = ${attrs.cycle?.id ?? null},
+					cycle_id = ${attrs.cycle?.id ?? null},
 					development_released_on = ${attrs.developmentReleasedOn ? sql.date(new Date(attrs.developmentReleasedOn)) : null},
 					changelog = ${attrs.changelog ?? null},
 					is_available_for_tools = ${attrs.isAvailableForTools}
@@ -125,7 +125,7 @@ export const update = async (releaseId: Release["id"], attrs: ReleaseAttrs) => {
 					updated_at = DEFAULT,
 					edition = ${attrs.edition},
 					version = ${attrs.version},
-					release_cycle_id = ${attrs.cycle?.id ?? null},
+					cycle_id = ${attrs.cycle?.id ?? null},
 					development_released_on = ${attrs.developmentReleasedOn ? sql.date(new Date(attrs.developmentReleasedOn)) : null},
 					changelog = ${attrs.changelog ?? null},
 					is_available_for_tools = ${attrs.isAvailableForTools}
@@ -244,7 +244,7 @@ export const searchExpanded = async ({
 			platform_releases AS pr
 			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
 			RIGHT OUTER JOIN releases AS r ON pr.release_id = r.id
-			LEFT OUTER JOIN release_cycles AS rc ON r.release_cycle_id = rc.id
+			LEFT OUTER JOIN release_cycles AS rc ON r.cycle_id = rc.id
 		${
 			whereClauses.length
 				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
@@ -269,7 +269,7 @@ export const searchExpanded = async ({
 			platform_releases AS pr
 			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
 			RIGHT OUTER JOIN releases AS r ON pr.release_id = r.id
-			LEFT OUTER JOIN release_cycles AS rc ON r.release_cycle_id = rc.id
+			LEFT OUTER JOIN release_cycles AS rc ON r.cycle_id = rc.id
 		${
 			whereClauses.length
 				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
@@ -312,7 +312,7 @@ export const search = async ({
 				platform_releases AS pr
 				LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
 				RIGHT OUTER JOIN releases AS r ON pr.release_id = r.id
-				LEFT OUTER JOIN release_cycles AS rc ON r.release_cycle_id = rc.id
+				LEFT OUTER JOIN release_cycles AS rc ON r.cycle_id = rc.id
 			${
 				whereClauses.length
 					? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
@@ -346,7 +346,7 @@ export const search = async ({
 			platform_releases AS pr
 			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
 			RIGHT OUTER JOIN releases AS r ON pr.release_id = r.id
-			LEFT OUTER JOIN release_cycles AS rc ON r.release_cycle_id = rc.id
+			LEFT OUTER JOIN release_cycles AS rc ON r.cycle_id = rc.id
 		${
 			whereClauses.length
 				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
@@ -393,7 +393,7 @@ export const doImport = async (release: ImportRelease) => {
 				)
 			INSERT INTO
 				releases (
-					release_cycle_id,
+					cycle_id,
 					edition,
 					version,
 					development_released_on,
@@ -414,7 +414,7 @@ export const doImport = async (release: ImportRelease) => {
 			ON CONFLICT (edition, version) DO UPDATE
 			SET
 				updated_at = DEFAULT,
-				release_cycle_id = EXCLUDED.release_cycle_id,
+				cycle_id = EXCLUDED.cycle_id,
 				development_released_on = EXCLUDED.development_released_on,
 				changelog = EXCLUDED.changelog
 			RETURNING

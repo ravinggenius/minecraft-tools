@@ -27,7 +27,7 @@ table "releases" {
     default = sql("now()")
   }
 
-  column "release_cycle_id" {
+  column "cycle_id" {
     null = true
     type = uuid
   }
@@ -68,8 +68,8 @@ table "releases" {
     columns = [column.id]
   }
 
-  foreign_key "releases_release_cycle_id_fkey" {
-    columns     = [column.release_cycle_id]
+  foreign_key "releases_cycle_id_fkey" {
+    columns     = [column.cycle_id]
     ref_columns = [table.release_cycles.column.id]
     on_update   = CASCADE
     on_delete   = SET_NULL

@@ -162,7 +162,7 @@ export const search = async ({
 							count(*) AS count
 						FROM
 							release_cycles AS rc
-							LEFT OUTER JOIN releases AS r ON r.release_cycle_id = rc.id
+							LEFT OUTER JOIN releases AS r ON r.cycle_id = rc.id
 						${
 							whereClauses.length
 								? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
@@ -182,7 +182,7 @@ export const search = async ({
 							count(*)
 						FROM
 							release_cycles AS rc
-							LEFT OUTER JOIN releases AS r ON r.release_cycle_id = rc.id
+							LEFT OUTER JOIN releases AS r ON r.cycle_id = rc.id
 						${
 							whereClauses.length
 								? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
@@ -212,7 +212,7 @@ export const search = async ({
 					) AS editions
 				FROM
 					release_cycles AS rc
-					LEFT OUTER JOIN releases AS r ON r.release_cycle_id = rc.id
+					LEFT OUTER JOIN releases AS r ON r.cycle_id = rc.id
 				${
 					whereClauses.length
 						? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
@@ -246,7 +246,7 @@ export const search = async ({
 					) AS editions
 				FROM
 					release_cycles AS rc
-					LEFT OUTER JOIN releases AS r ON r.release_cycle_id = rc.id
+					LEFT OUTER JOIN releases AS r ON r.cycle_id = rc.id
 				${
 					whereClauses.length
 						? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`

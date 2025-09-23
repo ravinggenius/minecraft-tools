@@ -3,14 +3,27 @@ import { z } from "zod/v4";
 import { PLATFORM } from "../platform/schema";
 import { RELEASE_CYCLE } from "../release-cycle/schema";
 
+const RELEASE_ID = z.uuid();
+
 export const EDITION = z.enum(["bedrock", "java"]);
 
 export type Edition = z.infer<typeof EDITION>;
 
 export const UPCOMING = z.literal("upcoming");
 
-export const RELEASE = z.object({
+export const PLATFORM_RELEASE = z.object({
 	id: z.uuid(),
+	createdAt: z.iso.date(),
+	updatedAt: z.iso.date(),
+	platformId: PLATFORM.shape.id,
+	releaseId: RELEASE_ID,
+	productionReleasedOn: z.iso.date()
+});
+
+export type PlatformRelease = z.infer<typeof PLATFORM_RELEASE>;
+
+export const RELEASE = z.object({
+	id: RELEASE_ID,
 	createdAt: z.iso.date(),
 	updatedAt: z.iso.date(),
 	edition: EDITION,
@@ -20,7 +33,8 @@ export const RELEASE = z.object({
 		updatedAt: true
 	}).optional(),
 	developmentReleasedOn: z.iso.date().optional(),
-	firstProductionReleasedOn: z.iso.date().optional(),
+	firstProductionReleasedOn:
+		PLATFORM_RELEASE.shape.productionReleasedOn.optional(),
 	changelog: z.url().optional(),
 	isAvailableForTools: z.coerce.boolean(),
 	isLatest: z.boolean().readonly(),
@@ -31,7 +45,7 @@ export const RELEASE = z.object({
 			updatedAt: true
 		}).extend({
 			platformId: PLATFORM.shape.id,
-			productionReleasedOn: z.iso.date()
+			productionReleasedOn: PLATFORM_RELEASE.shape.productionReleasedOn
 		})
 	)
 });
@@ -82,7 +96,8 @@ export const RELEASE_ATTRS = RELEASE.omit({
 				name: true
 			}).extend({
 				platformId: PLATFORM.shape.id,
-				productionReleasedOn: z.iso.date()
+				productionReleasedOn:
+					PLATFORM_RELEASE.shape.productionReleasedOn
 			})
 		)
 		.default([])

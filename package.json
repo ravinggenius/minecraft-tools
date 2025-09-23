@@ -20,6 +20,7 @@
     "@hapi/iron": "^7.0.1",
     "@roarr/cli": "^5.12.4",
     "@tanstack/react-form": "^1.19.2",
+    "camelcase": "^8.0.0",
     "classnames": "^2.5.1",
     "date-fns": "^4.1.0",
     "dedent": "^1.6.0",

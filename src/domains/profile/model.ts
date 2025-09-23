@@ -16,7 +16,7 @@ export const get = async (profileId: Profile["id"]) =>
 		SELECT
 			id,
 			name,
-			is_welcome_needed AS "isWelcomeNeeded"
+			is_welcome_needed
 		FROM
 			profiles
 		WHERE
@@ -44,7 +44,7 @@ export const isEmailVerified = async (profileId: Profile["id"]) =>
 			(
 				a.email_verified_at IS NOT NULL
 				AND a.email_verified_at <= NOW()
-			) AS "emailVerified"
+			) AS "email_verified"
 		FROM
 			profiles AS p
 			INNER JOIN accounts AS a ON p.id = a.profile_id

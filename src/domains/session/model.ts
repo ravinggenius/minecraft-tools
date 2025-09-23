@@ -46,10 +46,10 @@ export const create = async (attrs: SessionCredentials) => {
 				)
 			RETURNING
 				id,
-				created_at AS "createdAt",
-				updated_at AS "updatedAt",
-				expires_at AS "expiresAt",
-				account_id AS "accountId"
+				created_at,
+				updated_at,
+				expires_at,
+				account_id
 		`);
 	} else {
 		throw new CodedError(ERROR_CODE.CREDENTIALS_INVALID);
@@ -59,7 +59,7 @@ export const create = async (attrs: SessionCredentials) => {
 export const verify = async (sessionId: Session["id"]) =>
 	(await pool).maybeOne(sql.type(ACCOUNT.pick({ profileId: true }))`
 		SELECT
-			a.profile_id AS "profileId"
+			a.profile_id
 		FROM
 			accounts AS a
 			INNER JOIN sessions AS s ON a.id = s.account_id

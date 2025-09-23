@@ -42,9 +42,9 @@ export const create = async ({
 			expires_at = EXCLUDED.expires_at
 		RETURNING
 			id,
-			created_at AS "createdAt",
-			updated_at AS "updatedAt",
-			expires_at AS "expiresAt",
+			created_at,
+			updated_at,
+			expires_at,
 			email,
 			nonce
 	`);

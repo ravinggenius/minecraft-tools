@@ -72,7 +72,7 @@ export const mayContinue = async (
 			mayContinue: z.boolean()
 		})
 	)`
-		SELECT sum(matching_permissions) > 0 AS "mayContinue"
+		SELECT sum(matching_permissions) > 0 AS "may_continue"
 		FROM (
 			${sql.join(
 				subSelects,

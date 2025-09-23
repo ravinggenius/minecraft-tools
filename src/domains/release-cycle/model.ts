@@ -21,8 +21,8 @@ export const listAll = async () =>
 	(await pool).any(sql.type(RELEASE_CYCLE)`
 		SELECT
 			rc.id,
-			rc.created_at AS "createdAt",
-			rc.updated_at AS "updatedAt",
+			rc.created_at,
+			rc.updated_at,
 			rc.name
 		FROM
 			release_cycles AS rc
@@ -41,8 +41,8 @@ export const create = async (attrs: ReleaseCycleAttrs) => {
 			updated_at = DEFAULT
 		RETURNING
 			id,
-			created_at AS "createdAt",
-			updated_at AS "updatedAt",
+			created_at,
+			updated_at,
 			name
 	`);
 };
@@ -53,8 +53,8 @@ export const get = async (releaseCycleId: ReleaseCycle["id"]) => {
 	return (await pool).maybeOne(sql.type(RELEASE_CYCLE)`
 		SELECT
 			rc.id,
-			rc.created_at AS "createdAt",
-			rc.updated_at AS "updatedAt",
+			rc.created_at,
+			rc.updated_at,
 			rc.name
 		FROM
 			release_cycles AS rc
@@ -76,7 +76,7 @@ export const update = async (
 			})
 		)`
 			SELECT
-				count(id) > 0 AS "alreadyExists"
+				count(id) > 0 AS "already_exists"
 			FROM
 				release_cycles
 			WHERE
@@ -97,8 +97,8 @@ export const update = async (
 			WHERE id = ${releaseCycleId}
 			RETURNING
 				id,
-				created_at AS "createdAt",
-				updated_at AS "updatedAt",
+				created_at,
+				updated_at,
 				name
 		`);
 	});
@@ -198,7 +198,7 @@ export const search = async ({
 				SELECT
 					rc.id,
 					rc.name,
-					count(r.id)::int AS "releasesCount",
+					count(r.id)::int AS "releases_count",
 					COALESCE(
 						json_agg(
 							DISTINCT r.edition
@@ -232,7 +232,7 @@ export const search = async ({
 				SELECT
 					rc.id,
 					rc.name,
-					count(r.id)::int AS "releasesCount",
+					count(r.id)::int AS "releases_count",
 					COALESCE(
 						json_agg(
 							DISTINCT r.edition

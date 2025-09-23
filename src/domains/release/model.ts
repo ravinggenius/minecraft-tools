@@ -30,13 +30,13 @@ export const get = async (id: Release["id"]) => {
 			r.edition,
 			r.version,
 			jsonb_build_object('id', rc.id, 'name', rc.name) AS cycle,
-			r.development_released_on AS "developmentReleasedOn",
-			min(pr.production_released_on) AS "firstProductionReleasedOn",
+			r.development_released_on,
+			min(pr.production_released_on) AS "first_production_released_on",
 			r.changelog,
-			r.is_latest AS "isLatest",
-			r.is_available_for_tools AS "isAvailableForTools",
+			r.is_latest,
+			r.is_available_for_tools,
 			COALESCE(
-				jsonb_agg(jsonb_build_object('platformId', p.id, 'name', p.name, 'productionReleasedOn', pr.production_released_on)) FILTER (
+				jsonb_agg(jsonb_build_object('platform_id', p.id, 'name', p.name, 'production_released_on', pr.production_released_on)) FILTER (
 					WHERE
 						p.id IS NOT NULL
 				),
@@ -255,16 +255,16 @@ export const searchExpanded = async ({
 	const dataQuery = sql.type(SPECIFIC_RELEASE)`
 		SELECT
 			COALESCE(pr.id, r.id) AS id,
-			r.id AS "releaseId",
-			p.name AS "platformName",
+			r.id AS "release_id",
+			p.name AS "platform_name",
 			r.edition,
 			r.version,
 			jsonb_build_object('id', rc.id, 'name', rc.name) AS cycle,
-			r.development_released_on AS "developmentReleasedOn",
-			pr.production_released_on AS "productionReleasedOn",
+			r.development_released_on,
+			pr.production_released_on,
 			r.changelog,
-			r.is_latest AS "isLatest",
-			r.is_available_for_tools AS "isAvailableForTools"
+			r.is_latest,
+			r.is_available_for_tools
 		FROM
 			platform_releases AS pr
 			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
@@ -330,13 +330,13 @@ export const search = async ({
 			r.edition,
 			r.version,
 			jsonb_build_object('id', rc.id, 'name', rc.name) AS cycle,
-			r.development_released_on AS "developmentReleasedOn",
-			min(pr.production_released_on) AS "firstProductionReleasedOn",
+			r.development_released_on,
+			min(pr.production_released_on) AS "first_production_released_on",
 			r.changelog,
-			r.is_latest AS "isLatest",
-			r.is_available_for_tools AS "isAvailableForTools",
+			r.is_latest,
+			r.is_available_for_tools,
 			COALESCE(
-				jsonb_agg(jsonb_build_object('platformId', p.id, 'name', p.name, 'productionReleasedOn', pr.production_released_on)) FILTER (
+				jsonb_agg(jsonb_build_object('platform_id', p.id, 'name', p.name, 'production_released_on', pr.production_released_on)) FILTER (
 					WHERE
 						p.id IS NOT NULL
 				),
@@ -356,7 +356,7 @@ export const search = async ({
 			r.id,
 			rc.id
 		ORDER BY
-			"firstProductionReleasedOn" DESC,
+			"first_production_released_on" DESC,
 			r.edition ASC,
 			r.version ASC
 		LIMIT

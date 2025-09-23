@@ -21,8 +21,8 @@ export const listAll = async () =>
 	(await pool).any(sql.type(PLATFORM)`
 		SELECT
 			p.id,
-			p.created_at AS "createdAt",
-			p.updated_at AS "updatedAt",
+			p.created_at,
+			p.updated_at,
 			p.name
 		FROM
 			platforms AS p
@@ -41,8 +41,8 @@ export const create = async (attrs: PlatformAttrs) => {
 			updated_at = DEFAULT
 		RETURNING
 			id,
-			created_at AS "createdAt",
-			updated_at AS "updatedAt",
+			created_at,
+			updated_at,
 			name
 	`);
 };
@@ -53,8 +53,8 @@ export const get = async (platformId: Platform["id"]) => {
 	return (await pool).one(sql.type(PLATFORM)`
 		SELECT
 			p.id,
-			p.created_at AS "createdAt",
-			p.updated_at AS "updatedAt",
+			p.created_at,
+			p.updated_at,
 			p.name
 		FROM
 			platforms AS p
@@ -76,7 +76,7 @@ export const update = async (
 			})
 		)`
 			SELECT
-				count(id) > 0 AS "alreadyExists"
+				count(id) > 0 AS "already_exists"
 			FROM
 				platforms
 			WHERE
@@ -97,8 +97,8 @@ export const update = async (
 			WHERE id = ${platformId}
 			RETURNING
 				id,
-				created_at AS "createdAt",
-				updated_at AS "updatedAt",
+				created_at,
+				updated_at,
 				name
 		`);
 	});
@@ -194,7 +194,7 @@ export const search = async ({
 				SELECT
 					p.id,
 					p.name,
-					count(r.id)::int AS "releasesCount",
+					count(r.id)::int AS "releases_count",
 					COALESCE(
 						json_agg(
 							DISTINCT r.edition
@@ -229,7 +229,7 @@ export const search = async ({
 				SELECT
 					p.id,
 					p.name,
-					count(r.id)::int AS "releasesCount",
+					count(r.id)::int AS "releases_count",
 					COALESCE(
 						json_agg(
 							DISTINCT r.edition

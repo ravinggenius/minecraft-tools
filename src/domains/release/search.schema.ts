@@ -13,8 +13,8 @@ export const INCLUDE = z.object({
 	cycleName: OPTIONAL_STRING_ARRAY,
 	isAvailableForTools: OPTIONAL_BOOLEAN,
 	isLatest: OPTIONAL_BOOLEAN,
-	platform: OPTIONAL_STRING_ARRAY,
-	productionReleasedOn: OPTIONAL_DATE_RANGE
+	platformName: OPTIONAL_STRING_ARRAY,
+	firstProductionReleasedOn: OPTIONAL_DATE_RANGE
 });
 
 export type Include = z.infer<typeof INCLUDE>;

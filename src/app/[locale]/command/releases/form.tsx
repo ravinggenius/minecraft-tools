@@ -2,7 +2,6 @@
 
 import classNames from "classnames";
 import { formatISO } from "date-fns";
-import { z } from "zod/v4";
 
 import Button from "@/components/Button/Button";
 import Form from "@/components/Form/Form";
@@ -57,7 +56,11 @@ export default function ReleaseForm({
 		>
 			<form.AppField
 				name="edition"
-				validators={{ onChange: RELEASE_ATTRS.shape.edition }}
+				validators={
+					{
+						// onChange: RELEASE_ATTRS.shape.edition
+					}
+				}
 			>
 				{(field) => (
 					<field.SelectField
@@ -74,9 +77,11 @@ export default function ReleaseForm({
 
 			<form.AppField
 				name="version"
-				validators={{
-					onChange: RELEASE_ATTRS.shape.version
-				}}
+				validators={
+					{
+						// onChange: RELEASE_ATTRS.shape.version
+					}
+				}
 			>
 				{(field) => (
 					<field.TextField label={t("version.label")} required />
@@ -85,12 +90,11 @@ export default function ReleaseForm({
 
 			<form.AppField
 				name="cycle.id"
-				validators={{
-					onChange: z.union([
-						RELEASE_ATTRS.shape.cycle.shape.id.unwrap(),
-						z.literal("")
-					])
-				}}
+				validators={
+					{
+						// onChange: RELEASE_ATTRS.shape.cycle.shape.id
+					}
+				}
 			>
 				{(field) => (
 					<field.SelectField
@@ -152,11 +156,11 @@ export default function ReleaseForm({
 						{field.state.value.map((_, index) => (
 							<div className={styles.platformRelease} key={index}>
 								<form.AppField
-									name={`platforms[${index}].platformId`}
+									name={`platforms[${index}].id`}
 									validators={{
 										onChange: RELEASE_ATTRS.shape.platforms
 											.unwrap()
-											.unwrap().shape.platformId
+											.unwrap().shape.id
 									}}
 								>
 									{(subField) => (
@@ -208,7 +212,7 @@ export default function ReleaseForm({
 							className={styles.addButton}
 							onClick={() =>
 								field.pushValue({
-									platformId: "",
+									id: "",
 									productionReleasedOn: formatISO(
 										new Date(),
 										{ representation: "date" }

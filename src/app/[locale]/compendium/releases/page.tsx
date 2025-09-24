@@ -4,7 +4,7 @@ import BreadcrumbTrailPortal from "@/components/BreadcrumbTrail/BreadcrumbTrailP
 import { Pagination } from "@/components/Pagination/Pagination";
 import SearchForm from "@/components/SearchForm/SearchForm";
 import * as releaseModel from "@/domains/release/model";
-import { Release, SpecificRelease } from "@/domains/release/schema";
+import { FlattenedRelease, NormalizedRelease } from "@/domains/release/schema";
 import { loadPageTranslations } from "@/i18n/server";
 import { buildBreadcrumbsWithPrefix } from "@/library/breadcrumbs";
 import {
@@ -13,10 +13,11 @@ import {
 	LOCALE_PARAMS as PARAMS
 } from "@/library/route-meta";
 
+import PageSearchResultsFlattened from "../../command/releases/search-results-flattened";
+import PageSearchResultsNormalized from "../../command/releases/search-results-normalized";
+
 import styles from "./page.module.scss";
 import { QUERY } from "./schema";
-import PageSearchResults from "./search-results";
-import PageSearchResultsExpanded from "./search-results-expanded";
 
 export const generateMetadata = async ({
 	params
@@ -50,8 +51,8 @@ export default async function Page({
 	const query = await ensureSearchParams(QUERY, searchParams);
 
 	const releases = query.expand
-		? await releaseModel.searchExpanded(query)
-		: await releaseModel.search(query);
+		? await releaseModel.searchFlattened(query)
+		: await releaseModel.searchNormalized(query);
 
 	return (
 		<>
@@ -61,17 +62,17 @@ export default async function Page({
 				<SearchForm {...{ query }} className={styles.form} />
 
 				{query.expand ? (
-					<PageSearchResultsExpanded
+					<PageSearchResultsFlattened
 						{...{ locale }}
 						className={styles.results}
-						releases={releases.data as Array<SpecificRelease>}
+						releases={releases.data as Array<FlattenedRelease>}
 						view={query.view}
 					/>
 				) : (
-					<PageSearchResults
+					<PageSearchResultsNormalized
 						{...{ locale }}
 						className={styles.results}
-						releases={releases.data as Array<Release>}
+						releases={releases.data as Array<NormalizedRelease>}
 						view={query.view}
 					/>
 				)}

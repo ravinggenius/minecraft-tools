@@ -5,12 +5,12 @@ import Anchor from "@/components/Anchor/Anchor";
 import { Field } from "@/components/DataTable/DataTable";
 import KeyValueCard from "@/components/Pagination/KeyValueCard/KeyValueCard";
 import SearchResults from "@/components/SearchResults/SearchResults";
-import { SpecificRelease } from "@/domains/release/schema";
+import { FlattenedRelease } from "@/domains/release/schema";
 import { loadPageTranslations } from "@/i18n/server";
 import { SupportedLocale } from "@/i18n/settings";
 import { confirmAuthorization } from "@/library/authorization";
 
-export default async function PageSearchResultsExpanded({
+export default async function PageSearchResultsFlattened({
 	className,
 	locale,
 	releases,
@@ -18,7 +18,7 @@ export default async function PageSearchResultsExpanded({
 }: {
 	className?: string;
 	locale: SupportedLocale;
-	releases: Readonly<Array<SpecificRelease>>;
+	releases: Readonly<Array<FlattenedRelease>>;
 	view: ComponentProps<typeof SearchResults>["view"];
 }) {
 	const { t } = await loadPageTranslations(
@@ -35,7 +35,7 @@ export default async function PageSearchResultsExpanded({
 	return (
 		<SearchResults {...{ className, locale, view }} records={releases}>
 			<SearchResults.List>
-				{(release: SpecificRelease) => (
+				{(release: FlattenedRelease) => (
 					<KeyValueCard
 						{...{ locale }}
 						edition={release.edition}
@@ -66,14 +66,17 @@ export default async function PageSearchResultsExpanded({
 											text: t(
 												"production-released-on.value",
 												{
-													context:
-														release.productionReleasedOn
-															? undefined
-															: "upcoming",
+													context: release.platform
+														?.productionReleasedOn
+														? undefined
+														: "upcoming",
 													productionReleasedOn:
-														release.productionReleasedOn
+														release.platform
+															?.productionReleasedOn
 															? parseISO(
-																	release.productionReleasedOn
+																	release
+																		.platform
+																		.productionReleasedOn
 																)
 															: undefined
 												}
@@ -81,16 +84,17 @@ export default async function PageSearchResultsExpanded({
 											isExternal: true
 										}
 									: t("production-released-on.value", {
-											context:
-												release.productionReleasedOn
-													? undefined
-													: "upcoming",
-											productionReleasedOn:
-												release.productionReleasedOn
-													? parseISO(
-															release.productionReleasedOn
-														)
-													: undefined
+											context: release.platform
+												?.productionReleasedOn
+												? undefined
+												: "upcoming",
+											productionReleasedOn: release
+												.platform?.productionReleasedOn
+												? parseISO(
+														release.platform
+															.productionReleasedOn
+													)
+												: undefined
 										})
 							},
 							mayEditReleases
@@ -117,10 +121,10 @@ export default async function PageSearchResultsExpanded({
 							{
 								key: t("platform-name.label"),
 								value: t("platform-name.value", {
-									context: release.platformName
+									context: release.platform?.name
 										? undefined
 										: "upcoming",
-									platformName: release.platformName
+									platformName: release.platform?.name
 								})
 							}
 						]}
@@ -142,13 +146,13 @@ export default async function PageSearchResultsExpanded({
 				caption={t("table.caption", { count: releases.length })}
 			>
 				<Field fieldPath="edition" label={t("edition.label")}>
-					{({ edition }: SpecificRelease) =>
+					{({ edition }: FlattenedRelease) =>
 						t("edition.value", { context: edition })
 					}
 				</Field>
 
 				<Field fieldPath="version" label={t("version.label")}>
-					{({ releaseId, version }: SpecificRelease) =>
+					{({ releaseId, version }: FlattenedRelease) =>
 						mayEditReleases ? (
 							<Anchor
 								href={`/${locale}/command/releases/${releaseId}`}
@@ -163,13 +167,13 @@ export default async function PageSearchResultsExpanded({
 				</Field>
 
 				<Field fieldPath="cycle.name" label={t("cycle-name.label")}>
-					{({ cycle }: SpecificRelease) =>
+					{({ cycle }: FlattenedRelease) =>
 						t("cycle-name.value", { name: cycle?.name })
 					}
 				</Field>
 
 				<Field fieldPath="changelog" label={t("changelog.label")}>
-					{({ changelog }: SpecificRelease) =>
+					{({ changelog }: FlattenedRelease) =>
 						changelog ? (
 							<a href={changelog} rel="noreferrer">
 								{changelog}
@@ -182,7 +186,7 @@ export default async function PageSearchResultsExpanded({
 					fieldPath="developmentReleasedOn"
 					label={t("development-released-on.label")}
 				>
-					{({ developmentReleasedOn }: SpecificRelease) =>
+					{({ developmentReleasedOn }: FlattenedRelease) =>
 						developmentReleasedOn
 							? t("development-released-on.value", {
 									developmentReleasedOn: parseISO(
@@ -194,15 +198,15 @@ export default async function PageSearchResultsExpanded({
 				</Field>
 
 				<Field
-					fieldPath="productionReleasedOn"
+					fieldPath="platform.productionReleasedOn"
 					label={t("production-released-on.label")}
 				>
-					{({ productionReleasedOn }: SpecificRelease) =>
-						productionReleasedOn
+					{({ platform }: FlattenedRelease) =>
+						platform
 							? t("production-released-on.value", {
-									productionReleasedOn: productionReleasedOn
-										? parseISO(productionReleasedOn)
-										: undefined
+									productionReleasedOn: parseISO(
+										platform.productionReleasedOn
+									)
 								})
 							: null
 					}
@@ -213,7 +217,7 @@ export default async function PageSearchResultsExpanded({
 						fieldPath="isAvailableForTools"
 						label={t("is-available-for-tools.label")}
 					>
-						{({ isAvailableForTools }: SpecificRelease) =>
+						{({ isAvailableForTools }: FlattenedRelease) =>
 							t("is-available-for-tools.value", {
 								context: isAvailableForTools ? "yes" : "no"
 							})
@@ -222,7 +226,7 @@ export default async function PageSearchResultsExpanded({
 				) : null}
 
 				<Field fieldPath="isLatest" label={t("is-latest.label")}>
-					{({ isLatest }: SpecificRelease) =>
+					{({ isLatest }: FlattenedRelease) =>
 						t("is-latest.value", {
 							context: isLatest ? "yes" : "no"
 						})
@@ -230,13 +234,13 @@ export default async function PageSearchResultsExpanded({
 				</Field>
 
 				<Field
-					fieldPath="platformName"
+					fieldPath="platform.name"
 					label={t("platform-name.label")}
 				>
-					{({ platformName }: SpecificRelease) =>
-						platformName
+					{({ platform }: FlattenedRelease) =>
+						platform
 							? t("platform-name.value", {
-									platformName
+									platformName: platform.name
 								})
 							: null
 					}

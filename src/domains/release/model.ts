@@ -9,12 +9,14 @@ import { pool, sql } from "@/services/datastore-service/service";
 import { RELEASE_CYCLE } from "../release-cycle/schema";
 
 import {
+	FLATTENED_RELEASE,
+	FlattenedRelease,
 	ImportRelease,
+	NORMALIZED_RELEASE,
+	NormalizedRelease,
 	Release,
 	RELEASE,
 	ReleaseAttrs,
-	SPECIFIC_RELEASE,
-	SpecificRelease,
 	UPCOMING
 } from "./schema";
 import { Include } from "./search.schema";
@@ -23,37 +25,24 @@ if (process.env.NEXT_RUNTIME === "nodejs") {
 	await import("server-only");
 }
 
-export const get = async (id: Release["id"]) => {
-	return (await pool).maybeOne(sql.type(RELEASE)`
+export const get = async (releaseId: Release["id"]) =>
+	(await pool).maybeOne(sql.type(NORMALIZED_RELEASE)`
 		SELECT
-			r.id,
-			r.edition,
-			r.version,
-			jsonb_build_object('id', rc.id, 'name', rc.name) AS cycle,
-			r.development_released_on,
-			min(pr.production_released_on) AS "first_production_released_on",
-			r.changelog,
-			r.is_latest,
-			r.is_available_for_tools,
-			COALESCE(
-				jsonb_agg(jsonb_build_object('platform_id', p.id, 'name', p.name, 'production_released_on', pr.production_released_on)) FILTER (
-					WHERE
-						p.id IS NOT NULL
-				),
-				'[]'::jsonb
-			) AS platforms
+			id,
+			edition,
+			version,
+			cycle,
+			development_released_on,
+			first_production_released_on,
+			changelog,
+			is_latest,
+			is_available_for_tools,
+			platforms
 		FROM
-			platform_releases AS pr
-			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
-			RIGHT OUTER JOIN releases AS r ON pr.release_id = r.id
-			LEFT OUTER JOIN release_cycles AS rc ON r.cycle_id = rc.id
+			normalized_releases
 		WHERE
-			r.id = ${id}
-		GROUP BY
-			r.id,
-			rc.id
+			id = ${releaseId}
 	`);
-};
 
 export const mostRecentCycleId = async () =>
 	(await pool).oneFirst(sql.type(RELEASE_CYCLE.pick({ id: true }).partial())`
@@ -106,8 +95,8 @@ export const create = async (attrs: ReleaseAttrs) => {
 		FROM
 			the_release AS r,
 			jsonb_to_recordset(${sql.jsonb(
-				attrs.platforms.map(({ platformId, productionReleasedOn }) => ({
-					platform_id: platformId,
+				attrs.platforms.map(({ id, productionReleasedOn }) => ({
+					platform_id: id,
 					production_released_on: productionReleasedOn
 				}))
 			)}) AS dates(platform_id uuid, production_released_on date)
@@ -142,12 +131,10 @@ export const update = async (releaseId: Release["id"], attrs: ReleaseAttrs) => {
 			FROM
 				the_release AS r,
 				jsonb_to_recordset(${sql.jsonb(
-					attrs.platforms.map(
-						({ platformId, productionReleasedOn }) => ({
-							platform_id: platformId,
-							production_released_on: productionReleasedOn
-						})
-					)
+					attrs.platforms.map(({ id, productionReleasedOn }) => ({
+						platform_id: id,
+						production_released_on: productionReleasedOn
+					}))
 				)}) AS dates(platform_id uuid, production_released_on date)
 		) AS source
 		ON target.release_id = source.release_id AND target.platform_id = source.platform_id
@@ -171,194 +158,108 @@ export const destroy = async (releaseId: Release["id"]) => {
 	`);
 };
 
-const searchConditions = async ({
+const commonSearchConditions = async ({
 	include,
 	exclude
 }: SearchParams<Include>["conditions"]) => {
 	const mayReadAny = await confirmAuthorization(["read", "any", "release"]);
 
-	const includeText = include.text?.map((text) => `%${text}%`);
-
 	return [
 		mayReadAny && include.isAvailableForTools !== undefined
-			? sql.fragment`(r.is_available_for_tools = ${include.isAvailableForTools})`
+			? sql.fragment`(is_available_for_tools = ${include.isAvailableForTools})`
 			: undefined,
-		mayReadAny
-			? undefined
-			: sql.fragment`r.is_available_for_tools = ${true}`,
-		includeText
-			? sql.fragment`(
-				(r.edition::citext LIKE ANY(${sql.array(includeText, "text")}))
-				OR
-				(r.version LIKE ANY(${sql.array(includeText, "text")}))
-				OR
-				(rc.name LIKE ANY(${sql.array(includeText, "text")}))
-				OR
-				(p.name LIKE ANY(${sql.array(includeText, "text")}))
-			)`
-			: undefined,
+		mayReadAny ? undefined : sql.fragment`is_available_for_tools = ${true}`,
 		include.edition
-			? sql.fragment`(r.edition = ANY(${sql.array(include.edition, "edition")}))`
+			? sql.fragment`(edition = ANY(${sql.array(include.edition, "edition")}))`
 			: undefined,
 		include.version
-			? sql.fragment`(r.version LIKE ANY(${sql.array(
+			? sql.fragment`(version LIKE ANY(${sql.array(
 					include.version.map((version) => `${version}%`),
-					"text"
+					"citext"
 				)}))`
 			: undefined,
 		include.cycleName
-			? sql.fragment`(rc.name LIKE ANY(${sql.array(
+			? sql.fragment`((cycle ->> 'name')::citext LIKE ANY(${sql.array(
 					include.cycleName.map((name) => `%${name}%`),
-					"text"
+					"citext"
 				)}))`
 			: undefined,
 		include.isLatest === undefined
 			? undefined
-			: sql.fragment`(r.is_latest = ${include.isLatest})`,
-		include.platform
-			? sql.fragment`(p.name LIKE ANY(${sql.array(
-					include.platform.map((platform) => `%${platform}%`),
-					"text"
-				)}))`
+			: sql.fragment`(is_latest = ${include.isLatest})`,
+		include.firstProductionReleasedOn?.from
+			? sql.fragment`(first_production_released_on >= ${sql.date(include.firstProductionReleasedOn.from)})`
 			: undefined,
-		include.productionReleasedOn?.from
-			? sql.fragment`(pr.production_released_on >= ${sql.date(include.productionReleasedOn.from)})`
-			: undefined,
-		include.productionReleasedOn?.to
-			? sql.fragment`(pr.production_released_on <= ${sql.date(include.productionReleasedOn.to)})`
+		include.firstProductionReleasedOn?.to
+			? sql.fragment`(first_production_released_on <= ${sql.date(include.firstProductionReleasedOn.to)})`
 			: undefined
 	].filter(Boolean);
 };
 
-export const searchExpanded = async ({
-	conditions,
+export const searchFlattened = async ({
+	conditions: { include, exclude },
 	expand,
 	pagination: { limit, offset }
 }: SearchParams<Include>) => {
-	const whereClauses = await searchConditions(conditions);
+	const includeText = include.text?.map((text) => `%${text}%`);
 
-	const countQuery = sql.type(COUNT)`
-		SELECT
-			count(r.id) AS count
-		FROM
-			platform_releases AS pr
-			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
-			RIGHT OUTER JOIN releases AS r ON pr.release_id = r.id
-			LEFT OUTER JOIN release_cycles AS rc ON r.cycle_id = rc.id
-		${
-			whereClauses.length
-				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-				: sql.fragment``
-		}
-	`;
-
-	const dataQuery = sql.type(SPECIFIC_RELEASE)`
-		SELECT
-			COALESCE(pr.id, r.id) AS id,
-			r.id AS "release_id",
-			p.name AS "platform_name",
-			r.edition,
-			r.version,
-			jsonb_build_object('id', rc.id, 'name', rc.name) AS cycle,
-			r.development_released_on,
-			pr.production_released_on,
-			r.changelog,
-			r.is_latest,
-			r.is_available_for_tools
-		FROM
-			platform_releases AS pr
-			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
-			RIGHT OUTER JOIN releases AS r ON pr.release_id = r.id
-			LEFT OUTER JOIN release_cycles AS rc ON r.cycle_id = rc.id
-		${
-			whereClauses.length
-				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-				: sql.fragment``
-		}
-		ORDER BY
-			pr.production_released_on DESC,
-			r.edition ASC,
-			r.version ASC,
-			p.name ASC
-		LIMIT
-			${limit}
-		OFFSET
-			${offset}
-	`;
-
-	return (await pool).transaction(
-		async (tx) =>
-			({
-				count: await tx.oneFirst(countQuery),
-				data: await tx.any(dataQuery)
-			}) satisfies SearchResults<SpecificRelease> as SearchResults<SpecificRelease>
-	);
-};
-
-export const search = async ({
-	conditions,
-	expand,
-	pagination: { limit, offset }
-}: SearchParams<Include>) => {
-	const whereClauses = await searchConditions(conditions);
+	const whereClauses = [
+		...(await commonSearchConditions({ include, exclude })),
+		includeText
+			? sql.fragment`(
+				(edition::citext LIKE ANY(${sql.array(includeText, "citext")}))
+				OR
+				(version LIKE ANY(${sql.array(includeText, "citext")}))
+				OR
+				((cycle ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")}))
+				OR
+				((platform ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")}))
+			)`
+			: undefined,
+		include.platformName
+			? sql.fragment`((platform ->> 'name')::citext LIKE ANY(${sql.array(
+					include.platformName.map((platform) => `%${platform}%`),
+					"citext"
+				)}))`
+			: undefined
+	].filter(Boolean);
 
 	const countQuery = sql.type(COUNT)`
 		SELECT
 			count(*) AS count
-		FROM (
-			SELECT
-				r.id
-			FROM
-				platform_releases AS pr
-				LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
-				RIGHT OUTER JOIN releases AS r ON pr.release_id = r.id
-				LEFT OUTER JOIN release_cycles AS rc ON r.cycle_id = rc.id
-			${
-				whereClauses.length
-					? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-					: sql.fragment``
-			}
-			GROUP BY
-				r.id,
-				rc.id
-		)
-	`;
-
-	const dataQuery = sql.type(RELEASE)`
-		SELECT
-			r.id,
-			r.edition,
-			r.version,
-			jsonb_build_object('id', rc.id, 'name', rc.name) AS cycle,
-			r.development_released_on,
-			min(pr.production_released_on) AS "first_production_released_on",
-			r.changelog,
-			r.is_latest,
-			r.is_available_for_tools,
-			COALESCE(
-				jsonb_agg(jsonb_build_object('platform_id', p.id, 'name', p.name, 'production_released_on', pr.production_released_on)) FILTER (
-					WHERE
-						p.id IS NOT NULL
-				),
-				'[]'::jsonb
-			) AS platforms
 		FROM
-			platform_releases AS pr
-			LEFT OUTER JOIN platforms AS p ON pr.platform_id = p.id
-			RIGHT OUTER JOIN releases AS r ON pr.release_id = r.id
-			LEFT OUTER JOIN release_cycles AS rc ON r.cycle_id = rc.id
+			flattened_releases
 		${
 			whereClauses.length
 				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
 				: sql.fragment``
 		}
-		GROUP BY
-			r.id,
-			rc.id
+	`;
+
+	const dataQuery = sql.type(FLATTENED_RELEASE)`
+		SELECT
+			id,
+			release_id,
+			edition,
+			version,
+			cycle,
+			development_released_on,
+			changelog,
+			is_latest,
+			is_available_for_tools,
+			platform
+		FROM
+			flattened_releases
+		${
+			whereClauses.length
+				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+				: sql.fragment``
+		}
 		ORDER BY
-			"first_production_released_on" DESC,
-			r.edition ASC,
-			r.version ASC
+			platform ->> 'production_released_on' DESC,
+			edition ASC,
+			"version" ASC,
+			platform ->> 'name' ASC
 		LIMIT
 			${limit}
 		OFFSET
@@ -370,7 +271,97 @@ export const search = async ({
 			({
 				count: await tx.oneFirst(countQuery),
 				data: await tx.any(dataQuery)
-			}) satisfies SearchResults<Release> as SearchResults<Release>
+			}) satisfies SearchResults<FlattenedRelease> as SearchResults<FlattenedRelease>
+	);
+};
+
+export const searchNormalized = async ({
+	conditions: { include, exclude },
+	expand,
+	pagination: { limit, offset }
+}: SearchParams<Include>) => {
+	const includeText = include.text?.map((text) => `%${text}%`);
+
+	const whereClauses = [
+		...(await commonSearchConditions({ include, exclude })),
+		includeText
+			? sql.fragment`(
+				(edition::citext LIKE ANY(${sql.array(includeText, "citext")}))
+				OR
+				(version LIKE ANY(${sql.array(includeText, "citext")}))
+				OR
+				((cycle ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")}))
+				OR
+				(
+					EXISTS (
+						SELECT TRUE
+						FROM jsonb_array_elements(platforms) AS platform
+						WHERE (platform ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")})
+					)
+				)
+			)`
+			: undefined,
+		include.platformName
+			? sql.fragment`(
+				EXISTS (
+					SELECT TRUE
+					FROM jsonb_array_elements(platforms) AS platform
+					WHERE (platform ->> 'name')::citext LIKE ANY(${sql.array(
+						include.platformName.map((platform) => `%${platform}%`),
+						"citext"
+					)})
+				)
+			)`
+			: undefined
+	].filter(Boolean);
+
+	const countQuery = sql.type(COUNT)`
+		SELECT
+			count(*) AS count
+		FROM
+			normalized_releases
+		${
+			whereClauses.length
+				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+				: sql.fragment``
+		}
+	`;
+
+	const dataQuery = sql.type(NORMALIZED_RELEASE)`
+		SELECT
+			id,
+			edition,
+			version,
+			cycle,
+			development_released_on,
+			first_production_released_on,
+			changelog,
+			is_latest,
+			is_available_for_tools,
+			platforms
+		FROM
+			normalized_releases
+		${
+			whereClauses.length
+				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+				: sql.fragment``
+		}
+		ORDER BY
+			first_production_released_on DESC,
+			edition ASC,
+			"version" DESC
+		LIMIT
+			${limit}
+		OFFSET
+			${offset}
+	`;
+
+	return (await pool).transaction(
+		async (tx) =>
+			({
+				count: await tx.oneFirst(countQuery),
+				data: await tx.any(dataQuery)
+			}) satisfies SearchResults<NormalizedRelease> as SearchResults<NormalizedRelease>
 	);
 };
 

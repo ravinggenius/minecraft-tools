@@ -5,12 +5,12 @@ import Anchor from "@/components/Anchor/Anchor";
 import { Field } from "@/components/DataTable/DataTable";
 import KeyValueCard from "@/components/Pagination/KeyValueCard/KeyValueCard";
 import SearchResults from "@/components/SearchResults/SearchResults";
-import { Release } from "@/domains/release/schema";
+import { NormalizedRelease } from "@/domains/release/schema";
 import { loadPageTranslations } from "@/i18n/server";
 import { SupportedLocale } from "@/i18n/settings";
 import { confirmAuthorization } from "@/library/authorization";
 
-export default async function PageSearchResults({
+export default async function PageSearchResultsNormalized({
 	className,
 	locale,
 	releases,
@@ -18,7 +18,7 @@ export default async function PageSearchResults({
 }: {
 	className?: string;
 	locale: SupportedLocale;
-	releases: Readonly<Array<Release>>;
+	releases: Readonly<Array<NormalizedRelease>>;
 	view: ComponentProps<typeof SearchResults>["view"];
 }) {
 	const { t } = await loadPageTranslations(
@@ -35,7 +35,7 @@ export default async function PageSearchResults({
 	return (
 		<SearchResults {...{ className, locale, view }} records={releases}>
 			<SearchResults.List>
-				{(release: Release) => (
+				{(release: NormalizedRelease) => (
 					<KeyValueCard
 						{...{ locale }}
 						edition={release.edition}
@@ -145,13 +145,13 @@ export default async function PageSearchResults({
 				caption={t("table.caption", { count: releases.length })}
 			>
 				<Field fieldPath="edition" label={t("edition.label")}>
-					{({ edition }: Release) =>
+					{({ edition }: NormalizedRelease) =>
 						t("edition.value", { context: edition })
 					}
 				</Field>
 
 				<Field fieldPath="version" label={t("version.label")}>
-					{({ id, version }: Release) =>
+					{({ id, version }: NormalizedRelease) =>
 						mayEditReleases ? (
 							<Anchor
 								href={`/${locale}/command/releases/${id}`}
@@ -166,13 +166,13 @@ export default async function PageSearchResults({
 				</Field>
 
 				<Field fieldPath="cycle.name" label={t("cycle-name.label")}>
-					{({ cycle }: Release) =>
+					{({ cycle }: NormalizedRelease) =>
 						t("cycle-name.value", { name: cycle?.name })
 					}
 				</Field>
 
 				<Field fieldPath="changelog" label={t("changelog.label")}>
-					{({ changelog }: Release) =>
+					{({ changelog }: NormalizedRelease) =>
 						changelog ? (
 							<a href={changelog} rel="noreferrer">
 								{changelog}
@@ -185,7 +185,7 @@ export default async function PageSearchResults({
 					fieldPath="developmentReleasedOn"
 					label={t("development-released-on.label")}
 				>
-					{({ developmentReleasedOn }: Release) =>
+					{({ developmentReleasedOn }: NormalizedRelease) =>
 						developmentReleasedOn
 							? t("development-released-on.value", {
 									developmentReleasedOn: parseISO(
@@ -200,7 +200,7 @@ export default async function PageSearchResults({
 					fieldPath="firstProductionReleasedOn"
 					label={t("first-production-released-on.label")}
 				>
-					{({ firstProductionReleasedOn }: Release) =>
+					{({ firstProductionReleasedOn }: NormalizedRelease) =>
 						firstProductionReleasedOn
 							? t("first-production-released-on.value", {
 									firstProductionReleasedOn: parseISO(
@@ -216,7 +216,7 @@ export default async function PageSearchResults({
 						fieldPath="isAvailableForTools"
 						label={t("is-available-for-tools.label")}
 					>
-						{({ isAvailableForTools }: Release) =>
+						{({ isAvailableForTools }: NormalizedRelease) =>
 							t("is-available-for-tools.value", {
 								context: isAvailableForTools ? "yes" : "no"
 							})
@@ -225,7 +225,7 @@ export default async function PageSearchResults({
 				) : null}
 
 				<Field fieldPath="isLatest" label={t("is-latest.label")}>
-					{({ isLatest }: Release) =>
+					{({ isLatest }: NormalizedRelease) =>
 						t("is-latest.value", {
 							context: isLatest ? "yes" : "no"
 						})
@@ -236,11 +236,11 @@ export default async function PageSearchResults({
 					fieldPath="platforms"
 					label={t("platform-releases.label")}
 				>
-					{({ platforms }: Release) =>
+					{({ platforms }: NormalizedRelease) =>
 						platforms.length ? (
 							<ol>
 								{platforms.map((p) => (
-									<li key={p.platformId}>
+									<li key={p.id}>
 										<span>
 											{t("platform-name.value", {
 												platformName: p.name

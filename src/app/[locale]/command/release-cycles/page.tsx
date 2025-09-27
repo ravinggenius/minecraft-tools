@@ -5,6 +5,10 @@ import BreadcrumbTrailPortal from "@/components/BreadcrumbTrail/BreadcrumbTrailP
 import { Pagination } from "@/components/Pagination/Pagination";
 import SearchForm from "@/components/SearchForm/SearchForm";
 import * as releaseCycleModel from "@/domains/release-cycle/model";
+import {
+	FlattenedReleaseCycle,
+	NormalizedReleaseCycle
+} from "@/domains/release-cycle/search.schema";
 import { loadPageTranslations } from "@/i18n/server";
 import { enforceAuthorization } from "@/library/authorization";
 import { buildBreadcrumbsWithPrefix } from "@/library/breadcrumbs";
@@ -16,7 +20,8 @@ import {
 
 import styles from "./page.module.scss";
 import { QUERY } from "./schema";
-import PageSearchResults from "./search-results";
+import PageSearchResultsFlattened from "./search-results-flattened";
+import PageSearchResultsNormalized from "./search-results-normalized";
 
 export const generateMetadata = async ({
 	params
@@ -59,7 +64,9 @@ export default async function Page({
 		}
 	);
 
-	const releaseCycles = await releaseCycleModel.search(query);
+	const releaseCycles = query.expand
+		? await releaseCycleModel.searchFlattened(query)
+		: await releaseCycleModel.searchNormalized(query);
 
 	return (
 		<>
@@ -77,12 +84,25 @@ export default async function Page({
 
 				<SearchForm {...{ query }} className={styles.form} />
 
-				<PageSearchResults
-					{...{ locale }}
-					className={styles.results}
-					releaseCycles={releaseCycles.data}
-					view={query.view}
-				/>
+				{query.expand ? (
+					<PageSearchResultsFlattened
+						{...{ locale }}
+						className={styles.results}
+						releaseCycles={
+							releaseCycles.data as Array<FlattenedReleaseCycle>
+						}
+						view={query.view}
+					/>
+				) : (
+					<PageSearchResultsNormalized
+						{...{ locale }}
+						className={styles.results}
+						releaseCycles={
+							releaseCycles.data as Array<NormalizedReleaseCycle>
+						}
+						view={query.view}
+					/>
+				)}
 
 				<Pagination
 					{...{ locale, query }}

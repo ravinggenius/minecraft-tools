@@ -1,15 +1,16 @@
+import { parseISO } from "date-fns";
 import { ComponentProps } from "react";
 
 import Anchor from "@/components/Anchor/Anchor";
 import { Field } from "@/components/DataTable/DataTable";
 import KeyValueCard from "@/components/Pagination/KeyValueCard/KeyValueCard";
 import SearchResults from "@/components/SearchResults/SearchResults";
-import { ExtendedReleaseCycle } from "@/domains/release-cycle/model";
+import { NormalizedReleaseCycle } from "@/domains/release-cycle/search.schema";
 import { loadPageTranslations } from "@/i18n/server";
 import { SupportedLocale } from "@/i18n/settings";
 import { confirmAuthorization } from "@/library/authorization";
 
-export default async function PageSearchResults({
+export default async function PageSearchResultsNormalized({
 	className,
 	locale,
 	releaseCycles,
@@ -17,7 +18,7 @@ export default async function PageSearchResults({
 }: {
 	className?: string;
 	locale: SupportedLocale;
-	releaseCycles: Readonly<Array<ExtendedReleaseCycle>>;
+	releaseCycles: Readonly<Array<NormalizedReleaseCycle>>;
 	view: ComponentProps<typeof SearchResults>["view"];
 }) {
 	const { t } = await loadPageTranslations(
@@ -34,7 +35,7 @@ export default async function PageSearchResults({
 	return (
 		<SearchResults {...{ className, locale, view }} records={releaseCycles}>
 			<SearchResults.List>
-				{(releaseCycle: ExtendedReleaseCycle) => (
+				{(releaseCycle: NormalizedReleaseCycle) => (
 					<KeyValueCard
 						{...{ locale }}
 						href={
@@ -46,16 +47,44 @@ export default async function PageSearchResults({
 							{
 								key: t("releases-count.label"),
 								value: t("releases-count.value", {
-									count: releaseCycle.releasesCount
+									count: Number(releaseCycle.releasesCount)
 								})
 							},
-							,
 							{
 								key: t("editions.label"),
 								value: releaseCycle.editions.map((edition) =>
 									t("editions.value", { context: edition })
 								)
-							}
+							},
+							{
+								key: t("first-production-released-on.label"),
+								value: t("first-production-released-on.value", {
+									context:
+										releaseCycle.firstProductionReleasedOn
+											? undefined
+											: "upcoming",
+									firstProductionReleasedOn:
+										releaseCycle.firstProductionReleasedOn
+											? parseISO(
+													releaseCycle.firstProductionReleasedOn
+												)
+											: undefined
+								})
+							},
+							mayEditReleaseCycle
+								? {
+										key: t("is-available-for-tools.label"),
+										value: t(
+											"is-available-for-tools.value",
+											{
+												context:
+													releaseCycle.isAvailableForTools
+														? "yes"
+														: "no"
+											}
+										)
+									}
+								: undefined
 						]}
 						title={t("list.card.title", {
 							name: releaseCycle.name
@@ -69,7 +98,7 @@ export default async function PageSearchResults({
 				caption={t("table.caption", { count: releaseCycles.length })}
 			>
 				<Field fieldPath="name" label={t("name.label")}>
-					{({ id, name }: ExtendedReleaseCycle) =>
+					{({ id, name }: NormalizedReleaseCycle) =>
 						mayEditReleaseCycle ? (
 							<Anchor
 								href={`/${locale}/command/release-cycles/${id}`}
@@ -87,13 +116,15 @@ export default async function PageSearchResults({
 					fieldPath="releasesCount"
 					label={t("releases-count.label")}
 				>
-					{({ releasesCount }: ExtendedReleaseCycle) =>
-						t("releases-count.value", { count: releasesCount })
+					{({ releasesCount }: NormalizedReleaseCycle) =>
+						t("releases-count.value", {
+							count: Number(releasesCount)
+						})
 					}
 				</Field>
 
 				<Field fieldPath="editions" label={t("editions.label")}>
-					{({ editions }: ExtendedReleaseCycle) => (
+					{({ editions }: NormalizedReleaseCycle) => (
 						<ol>
 							{editions.map((edition) => (
 								<li key={edition}>
@@ -103,6 +134,34 @@ export default async function PageSearchResults({
 						</ol>
 					)}
 				</Field>
+
+				<Field
+					fieldPath="firstProductionReleasedOn"
+					label={t("first-production-released-on.label")}
+				>
+					{({ firstProductionReleasedOn }: NormalizedReleaseCycle) =>
+						firstProductionReleasedOn
+							? t("first-production-released-on.value", {
+									firstProductionReleasedOn: parseISO(
+										firstProductionReleasedOn
+									)
+								})
+							: null
+					}
+				</Field>
+
+				{mayEditReleaseCycle ? (
+					<Field
+						fieldPath="isAvailableForTools"
+						label={t("is-available-for-tools.label")}
+					>
+						{({ isAvailableForTools }: NormalizedReleaseCycle) =>
+							t("is-available-for-tools.value", {
+								context: isAvailableForTools ? "yes" : "no"
+							})
+						}
+					</Field>
+				) : null}
 			</SearchResults.Table>
 		</SearchResults>
 	);

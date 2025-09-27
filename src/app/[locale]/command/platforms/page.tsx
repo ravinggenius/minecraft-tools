@@ -16,7 +16,7 @@ import {
 
 import styles from "./page.module.scss";
 import { QUERY } from "./schema";
-import PageSearchResults from "./search-results";
+import PageSearchResultsNormalized from "./search-results-normalized";
 
 export const generateMetadata = async ({
 	params
@@ -51,7 +51,7 @@ export default async function Page({
 		keyPrefix: "content"
 	});
 
-	const platforms = await platformModel.search(query);
+	const platforms = await platformModel.searchNormalized(query);
 
 	return (
 		<>
@@ -69,7 +69,7 @@ export default async function Page({
 
 				<SearchForm {...{ query }} className={styles.form} hideExpand />
 
-				<PageSearchResults
+				<PageSearchResultsNormalized
 					{...{ locale }}
 					className={styles.results}
 					platforms={platforms.data}

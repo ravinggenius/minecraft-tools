@@ -146,101 +146,13 @@ export const search = async ({
 			: undefined
 	].filter(Boolean);
 
-	const countQuery = expand
-		? sql.type(COUNT)`
+	const countQuery = sql.type(COUNT)`
+		SELECT
+			count(*) AS count
+		FROM
+			(
 				SELECT
-					count(*) AS count
-				FROM
-					(
-						SELECT
-							count(*) AS count
-						FROM
-							platforms AS p
-							LEFT OUTER JOIN platform_releases AS pr ON p.id = pr.platform_id
-							LEFT OUTER JOIN releases AS r ON pr.release_id = r.id
-						${
-							whereClauses.length
-								? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-								: sql.fragment``
-						}
-						GROUP BY
-							p.id,
-							r.edition
-					)
-			`
-		: sql.type(COUNT)`
-				SELECT
-					count(*) AS count
-				FROM
-					(
-						SELECT
-							count(*)
-						FROM
-							platforms AS p
-							LEFT OUTER JOIN platform_releases AS pr ON p.id = pr.platform_id
-							LEFT OUTER JOIN releases AS r ON pr.release_id = r.id
-						${
-							whereClauses.length
-								? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-								: sql.fragment``
-						}
-						GROUP BY
-							p.id
-					)
-			`;
-
-	const dataQuery = expand
-		? sql.type(EXTENDED_PLATFORM)`
-				SELECT
-					p.id,
-					p.name,
-					count(r.id)::int AS "releases_count",
-					COALESCE(
-						json_agg(
-							DISTINCT r.edition
-							ORDER BY
-								r.edition
-						) FILTER (
-							WHERE
-								r.edition IS NOT NULL
-						),
-						'[]'::json
-					) AS editions
-				FROM
-					platforms AS p
-					LEFT OUTER JOIN platform_releases AS pr ON p.id = pr.platform_id
-					LEFT OUTER JOIN releases AS r ON pr.release_id = r.id
-				${
-					whereClauses.length
-						? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-						: sql.fragment``
-				}
-				GROUP BY
-					p.id,
-					r.edition
-				ORDER BY
-					p.name ASC
-				LIMIT
-					${limit}
-				OFFSET
-					${offset}
-			`
-		: sql.type(EXTENDED_PLATFORM)`
-				SELECT
-					p.id,
-					p.name,
-					count(r.id)::int AS "releases_count",
-					COALESCE(
-						json_agg(
-							DISTINCT r.edition
-							ORDER BY
-								r.edition
-						) FILTER (
-							WHERE
-								r.edition IS NOT NULL
-						),
-						'[]'::json
-					) AS editions
+					count(*)
 				FROM
 					platforms AS p
 					LEFT OUTER JOIN platform_releases AS pr ON p.id = pr.platform_id
@@ -252,13 +164,43 @@ export const search = async ({
 				}
 				GROUP BY
 					p.id
-				ORDER BY
-					p.name ASC
-				LIMIT
-					${limit}
-				OFFSET
-					${offset}
-			`;
+			)
+	`;
+
+	const dataQuery = sql.type(EXTENDED_PLATFORM)`
+		SELECT
+			p.id,
+			p.name,
+			count(r.id)::int AS "releases_count",
+			COALESCE(
+				json_agg(
+					DISTINCT r.edition
+					ORDER BY
+						r.edition
+				) FILTER (
+					WHERE
+						r.edition IS NOT NULL
+				),
+				'[]'::json
+			) AS editions
+		FROM
+			platforms AS p
+			LEFT OUTER JOIN platform_releases AS pr ON p.id = pr.platform_id
+			LEFT OUTER JOIN releases AS r ON pr.release_id = r.id
+		${
+			whereClauses.length
+				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+				: sql.fragment``
+		}
+		GROUP BY
+			p.id
+		ORDER BY
+			p.name ASC
+		LIMIT
+			${limit}
+		OFFSET
+			${offset}
+	`;
 
 	return (await pool).transaction(
 		async (tx) =>

@@ -67,7 +67,7 @@ export default async function Page({
 					{t("new-cta")}
 				</Anchor>
 
-				<SearchForm {...{ query }} className={styles.form} />
+				<SearchForm {...{ query }} className={styles.form} hideExpand />
 
 				<PageSearchResults
 					{...{ locale }}

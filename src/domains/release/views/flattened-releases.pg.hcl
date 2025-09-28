@@ -7,9 +7,14 @@ view "flattened_releases" {
       r.id AS release_id,
       r.edition,
       r.version,
-      jsonb_build_object(
-        'id', rc.id,
-        'name', rc.name
+      NULLIF(
+        jsonb_strip_nulls(
+          jsonb_build_object(
+            'id', rc.id,
+            'name', rc.name
+          )
+        ),
+        '{}'::jsonb
       ) AS cycle,
       r.development_released_on,
       pr.production_released_on AS "first_production_released_on",

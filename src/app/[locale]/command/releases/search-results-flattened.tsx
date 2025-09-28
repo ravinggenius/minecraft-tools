@@ -5,12 +5,12 @@ import Anchor from "@/components/Anchor/Anchor";
 import { Field } from "@/components/DataTable/DataTable";
 import KeyValueCard from "@/components/Pagination/KeyValueCard/KeyValueCard";
 import SearchResults from "@/components/SearchResults/SearchResults";
-import { Release } from "@/domains/release/schema";
+import { FlattenedRelease } from "@/domains/release/schema";
 import { loadPageTranslations } from "@/i18n/server";
 import { SupportedLocale } from "@/i18n/settings";
 import { confirmAuthorization } from "@/library/authorization";
 
-export default async function PageSearchResults({
+export default async function PageSearchResultsFlattened({
 	className,
 	locale,
 	releases,
@@ -18,7 +18,7 @@ export default async function PageSearchResults({
 }: {
 	className?: string;
 	locale: SupportedLocale;
-	releases: Readonly<Array<Release>>;
+	releases: Readonly<Array<FlattenedRelease>>;
 	view: ComponentProps<typeof SearchResults>["view"];
 }) {
 	const { t } = await loadPageTranslations(
@@ -35,13 +35,13 @@ export default async function PageSearchResults({
 	return (
 		<SearchResults {...{ className, locale, view }} records={releases}>
 			<SearchResults.List>
-				{(release: Release) => (
+				{(release: FlattenedRelease) => (
 					<KeyValueCard
 						{...{ locale }}
 						edition={release.edition}
 						href={
 							mayEditReleases
-								? `/${locale}/command/releases/${release.id}`
+								? `/${locale}/command/releases/${release.releaseId}`
 								: undefined
 						}
 						pairs={[
@@ -59,38 +59,42 @@ export default async function PageSearchResults({
 									}
 								: undefined,
 							{
-								key: t("first-production-released-on.label"),
+								key: t("production-released-on.label"),
 								value: release.changelog
 									? {
 											href: release.changelog,
 											text: t(
-												"first-production-released-on.value",
+												"production-released-on.value",
 												{
-													context:
-														release.firstProductionReleasedOn
-															? undefined
-															: "upcoming",
-													firstProductionReleasedOn:
-														release.firstProductionReleasedOn
+													context: release.platform
+														?.productionReleasedOn
+														? undefined
+														: "upcoming",
+													productionReleasedOn:
+														release.platform
+															?.productionReleasedOn
 															? parseISO(
-																	release.firstProductionReleasedOn
+																	release
+																		.platform
+																		.productionReleasedOn
 																)
 															: undefined
 												}
 											),
 											isExternal: true
 										}
-									: t("first-production-released-on.value", {
-											context:
-												release.firstProductionReleasedOn
-													? undefined
-													: "upcoming",
-											firstProductionReleasedOn:
-												release.firstProductionReleasedOn
-													? parseISO(
-															release.firstProductionReleasedOn
-														)
-													: undefined
+									: t("production-released-on.value", {
+											context: release.platform
+												?.productionReleasedOn
+												? undefined
+												: "upcoming",
+											productionReleasedOn: release
+												.platform?.productionReleasedOn
+												? parseISO(
+														release.platform
+															.productionReleasedOn
+													)
+												: undefined
 										})
 							},
 							mayEditReleases
@@ -114,27 +118,24 @@ export default async function PageSearchResults({
 								}),
 								isHighlighted: release.isLatest || undefined
 							},
-							release.platforms.length
-								? {
-										key: t("platform-releases.label"),
-										value: release.platforms.map(
-											({ name }) =>
-												t("platform-name.value", {
-													platformName: name
-												})
-										),
-										isLarge: true
-									}
-								: undefined
+							{
+								key: t("platform-name.label"),
+								value: t("platform-name.value", {
+									context: release.platform?.name
+										? undefined
+										: "upcoming",
+									platformName: release.platform?.name
+								})
+							}
 						]}
 						title={t("list.card.title", {
 							context:
-								release.cycleName &&
-								!release.version.startsWith(release.cycleName)
+								release.cycle?.name &&
+								!release.version.startsWith(release.cycle.name)
 									? "named"
 									: undefined,
 							version: release.version,
-							name: release.cycleName
+							name: release.cycle?.name
 						})}
 						variant="flat"
 					/>
@@ -145,16 +146,16 @@ export default async function PageSearchResults({
 				caption={t("table.caption", { count: releases.length })}
 			>
 				<Field fieldPath="edition" label={t("edition.label")}>
-					{({ edition }: Release) =>
+					{({ edition }: FlattenedRelease) =>
 						t("edition.value", { context: edition })
 					}
 				</Field>
 
 				<Field fieldPath="version" label={t("version.label")}>
-					{({ id, version }: Release) =>
+					{({ releaseId, version }: FlattenedRelease) =>
 						mayEditReleases ? (
 							<Anchor
-								href={`/${locale}/command/releases/${id}`}
+								href={`/${locale}/command/releases/${releaseId}`}
 								variant="inline"
 							>
 								{t("version.value", { version })}
@@ -165,14 +166,14 @@ export default async function PageSearchResults({
 					}
 				</Field>
 
-				<Field fieldPath="cycleName" label={t("cycle-name.label")}>
-					{({ cycleName: name }: Release) =>
-						t("cycle-name.value", { name })
+				<Field fieldPath="cycle.name" label={t("cycle-name.label")}>
+					{({ cycle }: FlattenedRelease) =>
+						t("cycle-name.value", { name: cycle?.name })
 					}
 				</Field>
 
 				<Field fieldPath="changelog" label={t("changelog.label")}>
-					{({ changelog }: Release) =>
+					{({ changelog }: FlattenedRelease) =>
 						changelog ? (
 							<a href={changelog} rel="noreferrer">
 								{changelog}
@@ -185,7 +186,7 @@ export default async function PageSearchResults({
 					fieldPath="developmentReleasedOn"
 					label={t("development-released-on.label")}
 				>
-					{({ developmentReleasedOn }: Release) =>
+					{({ developmentReleasedOn }: FlattenedRelease) =>
 						developmentReleasedOn
 							? t("development-released-on.value", {
 									developmentReleasedOn: parseISO(
@@ -197,14 +198,14 @@ export default async function PageSearchResults({
 				</Field>
 
 				<Field
-					fieldPath="firstProductionReleasedOn"
-					label={t("first-production-released-on.label")}
+					fieldPath="platform.productionReleasedOn"
+					label={t("production-released-on.label")}
 				>
-					{({ firstProductionReleasedOn }: Release) =>
-						firstProductionReleasedOn
-							? t("first-production-released-on.value", {
-									firstProductionReleasedOn: parseISO(
-										firstProductionReleasedOn
+					{({ platform }: FlattenedRelease) =>
+						platform
+							? t("production-released-on.value", {
+									productionReleasedOn: parseISO(
+										platform.productionReleasedOn
 									)
 								})
 							: null
@@ -216,7 +217,7 @@ export default async function PageSearchResults({
 						fieldPath="isAvailableForTools"
 						label={t("is-available-for-tools.label")}
 					>
-						{({ isAvailableForTools }: Release) =>
+						{({ isAvailableForTools }: FlattenedRelease) =>
 							t("is-available-for-tools.value", {
 								context: isAvailableForTools ? "yes" : "no"
 							})
@@ -225,7 +226,7 @@ export default async function PageSearchResults({
 				) : null}
 
 				<Field fieldPath="isLatest" label={t("is-latest.label")}>
-					{({ isLatest }: Release) =>
+					{({ isLatest }: FlattenedRelease) =>
 						t("is-latest.value", {
 							context: isLatest ? "yes" : "no"
 						})
@@ -233,30 +234,15 @@ export default async function PageSearchResults({
 				</Field>
 
 				<Field
-					fieldPath="platforms"
-					label={t("platform-releases.label")}
+					fieldPath="platform.name"
+					label={t("platform-name.label")}
 				>
-					{({ platforms }: Release) =>
-						platforms.length ? (
-							<ol>
-								{platforms.map((p) => (
-									<li key={p.platformId}>
-										<span>
-											{t("platform-name.value", {
-												platformName: p.name
-											})}
-										</span>
-										<span>
-											{t("production-released-on.value", {
-												productionReleasedOn: parseISO(
-													p.productionReleasedOn
-												)
-											})}
-										</span>
-									</li>
-								))}
-							</ol>
-						) : null
+					{({ platform }: FlattenedRelease) =>
+						platform
+							? t("platform-name.value", {
+									platformName: platform.name
+								})
+							: null
 					}
 				</Field>
 			</SearchResults.Table>

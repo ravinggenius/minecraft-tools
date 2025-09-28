@@ -4,12 +4,12 @@ import Anchor from "@/components/Anchor/Anchor";
 import { Field } from "@/components/DataTable/DataTable";
 import KeyValueCard from "@/components/Pagination/KeyValueCard/KeyValueCard";
 import SearchResults from "@/components/SearchResults/SearchResults";
-import { ExtendedPlatform } from "@/domains/platform/model";
+import { NormalizedPlatform } from "@/domains/platform/search.schema";
 import { loadPageTranslations } from "@/i18n/server";
 import { SupportedLocale } from "@/i18n/settings";
 import { confirmAuthorization } from "@/library/authorization";
 
-export default async function PageSearchResults({
+export default async function PageSearchResultsNormalized({
 	className,
 	locale,
 	platforms,
@@ -17,7 +17,7 @@ export default async function PageSearchResults({
 }: {
 	className?: string;
 	locale: SupportedLocale;
-	platforms: Readonly<Array<ExtendedPlatform>>;
+	platforms: Readonly<Array<NormalizedPlatform>>;
 	view: ComponentProps<typeof SearchResults>["view"];
 }) {
 	const { t } = await loadPageTranslations(
@@ -34,7 +34,7 @@ export default async function PageSearchResults({
 	return (
 		<SearchResults {...{ className, locale, view }} records={platforms}>
 			<SearchResults.List>
-				{(platform: ExtendedPlatform) => (
+				{(platform: NormalizedPlatform) => (
 					<KeyValueCard
 						{...{ locale }}
 						href={
@@ -46,16 +46,29 @@ export default async function PageSearchResults({
 							{
 								key: t("releases-count.label"),
 								value: t("releases-count.value", {
-									count: platform.releasesCount
+									count: Number(platform.releasesCount)
 								})
 							},
 							{
 								key: t("editions.label"),
 								value: platform.editions.map((edition) =>
 									t("editions.value", { context: edition })
-								),
-								isLarge: true
-							}
+								)
+							},
+							mayEditPlatform
+								? {
+										key: t("is-available-for-tools.label"),
+										value: t(
+											"is-available-for-tools.value",
+											{
+												context:
+													platform.isAvailableForTools
+														? "yes"
+														: "no"
+											}
+										)
+									}
+								: undefined
 						]}
 						title={t("list.card.title", {
 							name: platform.name
@@ -69,7 +82,7 @@ export default async function PageSearchResults({
 				caption={t("table.caption", { count: platforms.length })}
 			>
 				<Field fieldPath="name" label={t("name.label")}>
-					{({ id, name }: ExtendedPlatform) =>
+					{({ id, name }: NormalizedPlatform) =>
 						mayEditPlatform ? (
 							<Anchor
 								href={`/${locale}/command/platforms/${id}`}
@@ -87,13 +100,15 @@ export default async function PageSearchResults({
 					fieldPath="releasesCount"
 					label={t("releases-count.label")}
 				>
-					{({ releasesCount }: ExtendedPlatform) =>
-						t("releases-count.value", { count: releasesCount })
+					{({ releasesCount }: NormalizedPlatform) =>
+						t("releases-count.value", {
+							count: Number(releasesCount)
+						})
 					}
 				</Field>
 
 				<Field fieldPath="editions" label={t("editions.label")}>
-					{({ editions }: ExtendedPlatform) => (
+					{({ editions }: NormalizedPlatform) => (
 						<ol>
 							{editions.map((edition) => (
 								<li key={edition}>
@@ -103,6 +118,19 @@ export default async function PageSearchResults({
 						</ol>
 					)}
 				</Field>
+
+				{mayEditPlatform ? (
+					<Field
+						fieldPath="isAvailableForTools"
+						label={t("is-available-for-tools.label")}
+					>
+						{({ isAvailableForTools }: NormalizedPlatform) =>
+							t("is-available-for-tools.value", {
+								context: isAvailableForTools ? "yes" : "no"
+							})
+						}
+					</Field>
+				) : null}
 			</SearchResults.Table>
 		</SearchResults>
 	);

@@ -46,7 +46,7 @@ export default async function Page({
 		{ name: "new" }
 	]);
 
-	const cycleName = await releaseModel.mostRecentName();
+	const cycleId = await releaseModel.mostRecentCycleId();
 
 	return (
 		<>
@@ -58,7 +58,9 @@ export default async function Page({
 					attrs={{
 						edition: "" as ReleaseAttrs["edition"],
 						version: "",
-						cycleName,
+						cycle: {
+							id: cycleId
+						},
 						developmentReleasedOn: undefined,
 						changelog: "",
 						isAvailableForTools: false,

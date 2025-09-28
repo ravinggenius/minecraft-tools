@@ -25,7 +25,15 @@ export default function SearchForm<
 		TRanges,
 		TInclude
 	>
->({ className, query }: { className?: string; query: TQuery }) {
+>({
+	className,
+	hideExpand = false,
+	query
+}: {
+	className?: string;
+	hideExpand?: boolean;
+	query: TQuery;
+}) {
 	const { t } = useTranslation("component-search-form");
 
 	const pathname = usePathname();
@@ -70,14 +78,16 @@ export default function SearchForm<
 				)}
 			</form.AppField>
 
-			<form.AppField name="e">
-				{(field) => (
-					<field.CheckboxField
-						className={styles.expand}
-						label={t("expand.label")}
-					/>
-				)}
-			</form.AppField>
+			{hideExpand ? null : (
+				<form.AppField name="e">
+					{(field) => (
+						<field.CheckboxField
+							className={styles.expand}
+							label={t("expand.label")}
+						/>
+					)}
+				</form.AppField>
+			)}
 
 			<Button className={styles.submit} type="submit" variant="primary">
 				{t("submit.label")}

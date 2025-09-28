@@ -7,7 +7,7 @@
     "label": "Version",
     "placeholder": "1.22.0"
   },
-  "cycle-name": {
+  "cycle-id": {
     "label": "Cycle"
   },
   "changelog": {

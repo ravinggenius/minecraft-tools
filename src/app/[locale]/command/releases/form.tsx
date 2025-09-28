@@ -35,7 +35,9 @@ export default function ReleaseForm({
 		defaultValues: {
 			edition: attrs.edition,
 			version: attrs.version,
-			cycleName: attrs.cycleName,
+			cycle: {
+				id: attrs.cycle.id ?? ""
+			},
 			developmentReleasedOn: attrs.developmentReleasedOn,
 			changelog: attrs.changelog ?? "",
 			isAvailableForTools: attrs.isAvailableForTools,
@@ -54,7 +56,11 @@ export default function ReleaseForm({
 		>
 			<form.AppField
 				name="edition"
-				validators={{ onChange: RELEASE_ATTRS.shape.edition }}
+				validators={
+					{
+						// onChange: RELEASE_ATTRS.shape.edition
+					}
+				}
 			>
 				{(field) => (
 					<field.SelectField
@@ -71,9 +77,11 @@ export default function ReleaseForm({
 
 			<form.AppField
 				name="version"
-				validators={{
-					onChange: RELEASE_ATTRS.shape.version
-				}}
+				validators={
+					{
+						// onChange: RELEASE_ATTRS.shape.version
+					}
+				}
 			>
 				{(field) => (
 					<field.TextField label={t("version.label")} required />
@@ -81,15 +89,17 @@ export default function ReleaseForm({
 			</form.AppField>
 
 			<form.AppField
-				name="cycleName"
-				validators={{
-					onChange: RELEASE_ATTRS.shape.cycleName
-				}}
+				name="cycle.id"
+				validators={
+					{
+						// onChange: RELEASE_ATTRS.shape.cycle.shape.id
+					}
+				}
 			>
 				{(field) => (
 					<field.SelectField
 						includeBlank
-						label={t("cycle-name.label")}
+						label={t("cycle-id.label")}
 						options={cycles}
 						serialize={({ id }) => id}
 					>
@@ -146,11 +156,11 @@ export default function ReleaseForm({
 						{field.state.value.map((_, index) => (
 							<div className={styles.platformRelease} key={index}>
 								<form.AppField
-									name={`platforms[${index}].platformId`}
+									name={`platforms[${index}].id`}
 									validators={{
 										onChange: RELEASE_ATTRS.shape.platforms
 											.unwrap()
-											.unwrap().shape.platformId
+											.unwrap().shape.id
 									}}
 								>
 									{(subField) => (
@@ -202,7 +212,7 @@ export default function ReleaseForm({
 							className={styles.addButton}
 							onClick={() =>
 								field.pushValue({
-									platformId: "",
+									id: "",
 									productionReleasedOn: formatISO(
 										new Date(),
 										{ representation: "date" }

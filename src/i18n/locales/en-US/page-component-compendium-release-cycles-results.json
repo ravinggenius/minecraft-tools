@@ -21,10 +21,33 @@
     "value_other": "{{count}} releases"
   },
 
+  "edition": {
+    "label": "Edition",
+    "value_bedrock": "Bedrock",
+    "value_java": "Java"
+  },
+
+  "version": {
+    "label": "Version",
+    "value": "{{version}}"
+  },
+
   "editions": {
     "label": "Editions",
     "value_bedrock": "Bedrock",
     "value_java": "Java"
+  },
+
+  "production-released-on": {
+    "label": "Production Release",
+    "value": "{{productionReleasedOn, dateTime(year: numeric; month: short; day: numeric)}}",
+    "value_upcoming": "UPCOMING"
+  },
+
+  "first-production-released-on": {
+    "label": "First Production Release",
+    "value": "{{firstProductionReleasedOn, dateTime(year: numeric; month: short; day: numeric)}}",
+    "value_upcoming": "UPCOMING"
   },
 
   "is-available-for-tools": {

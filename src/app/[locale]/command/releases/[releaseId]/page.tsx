@@ -81,7 +81,12 @@ export default async function Page({
 			<article className={styles.main}>
 				<ReleaseForm
 					action={updateRelease(releaseId)}
-					attrs={release}
+					attrs={{
+						...release,
+						cycle: {
+							id: release.cycle?.id
+						}
+					}}
 					cycles={await releaseCycleModel.listAll()}
 					platforms={await platformModel.listAll()}
 				/>

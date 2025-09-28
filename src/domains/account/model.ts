@@ -42,7 +42,7 @@ export const create = async (
 			})
 		)`
 			SELECT
-				count(id) > 0 AS "alreadyExists"
+				count(id) > 0 AS "already_exists"
 			FROM
 				accounts
 			WHERE
@@ -95,7 +95,7 @@ export const create = async (
 				)
 			RETURNING
 				email,
-				token_nonce AS "tokenNonce"
+				token_nonce
 		`);
 	});
 };
@@ -106,14 +106,14 @@ export const findByEmail = async (email: Account["email"]) => {
 	).maybeOne(sql.type(ACCOUNT.extend({ hashword: z.string() }))`
 		SELECT
 			id,
-			created_at AS "createdAt",
-			updated_at AS "updatedAt",
-			profile_id AS "profileId",
+			created_at,
+			updated_at,
+			profile_id,
 			email,
-			email_verified_at AS "emailVerifiedAt",
+			email_verified_at,
 			hashword,
-			token_nonce AS "tokenNonce",
-			token_nonce_count AS "tokenNonceCount"
+			token_nonce,
+			token_nonce_count
 		FROM
 			accounts
 		WHERE
@@ -146,15 +146,15 @@ export const updateVerificationNonce = async (
 			profile_id = ${profileId}
 		RETURNING
 			id,
-			profile_id AS "profileId",
+			profile_id,
 			email,
-			token_nonce AS "tokenNonce"
+			token_nonce
 	`);
 
 export const getTokenNonceCount = async (profileId: Profile["id"]) =>
 	(await pool).oneFirst(sql.type(ACCOUNT.pick({ tokenNonceCount: true }))`
 		SELECT
-			token_nonce_count AS "tokenNonceCount"
+			token_nonce_count
 		FROM
 			accounts
 		WHERE
@@ -182,7 +182,7 @@ export const isEmailVerified = async (email: Account["email"]) => {
 		await pool
 	).maybeOneFirst(sql.type(z.object({ isVerified: z.boolean() }))`
 		SELECT
-			email_verified_at < now() AS "isVerified"
+			email_verified_at < now() AS "is_verified"
 		FROM
 			accounts
 		WHERE

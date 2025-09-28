@@ -5,12 +5,12 @@ import Anchor from "@/components/Anchor/Anchor";
 import { Field } from "@/components/DataTable/DataTable";
 import KeyValueCard from "@/components/Pagination/KeyValueCard/KeyValueCard";
 import SearchResults from "@/components/SearchResults/SearchResults";
-import { SpecificRelease } from "@/domains/release/schema";
+import { NormalizedRelease } from "@/domains/release/schema";
 import { loadPageTranslations } from "@/i18n/server";
 import { SupportedLocale } from "@/i18n/settings";
 import { confirmAuthorization } from "@/library/authorization";
 
-export default async function PageSearchResultsExpanded({
+export default async function PageSearchResultsNormalized({
 	className,
 	locale,
 	releases,
@@ -18,7 +18,7 @@ export default async function PageSearchResultsExpanded({
 }: {
 	className?: string;
 	locale: SupportedLocale;
-	releases: Readonly<Array<SpecificRelease>>;
+	releases: Readonly<Array<NormalizedRelease>>;
 	view: ComponentProps<typeof SearchResults>["view"];
 }) {
 	const { t } = await loadPageTranslations(
@@ -35,13 +35,13 @@ export default async function PageSearchResultsExpanded({
 	return (
 		<SearchResults {...{ className, locale, view }} records={releases}>
 			<SearchResults.List>
-				{(release: SpecificRelease) => (
+				{(release: NormalizedRelease) => (
 					<KeyValueCard
 						{...{ locale }}
 						edition={release.edition}
 						href={
 							mayEditReleases
-								? `/${locale}/command/releases/${release.releaseId}`
+								? `/${locale}/command/releases/${release.id}`
 								: undefined
 						}
 						pairs={[
@@ -59,36 +59,36 @@ export default async function PageSearchResultsExpanded({
 									}
 								: undefined,
 							{
-								key: t("production-released-on.label"),
+								key: t("first-production-released-on.label"),
 								value: release.changelog
 									? {
 											href: release.changelog,
 											text: t(
-												"production-released-on.value",
+												"first-production-released-on.value",
 												{
 													context:
-														release.productionReleasedOn
+														release.firstProductionReleasedOn
 															? undefined
 															: "upcoming",
-													productionReleasedOn:
-														release.productionReleasedOn
+													firstProductionReleasedOn:
+														release.firstProductionReleasedOn
 															? parseISO(
-																	release.productionReleasedOn
+																	release.firstProductionReleasedOn
 																)
 															: undefined
 												}
 											),
 											isExternal: true
 										}
-									: t("production-released-on.value", {
+									: t("first-production-released-on.value", {
 											context:
-												release.productionReleasedOn
+												release.firstProductionReleasedOn
 													? undefined
 													: "upcoming",
-											productionReleasedOn:
-												release.productionReleasedOn
+											firstProductionReleasedOn:
+												release.firstProductionReleasedOn
 													? parseISO(
-															release.productionReleasedOn
+															release.firstProductionReleasedOn
 														)
 													: undefined
 										})
@@ -114,24 +114,27 @@ export default async function PageSearchResultsExpanded({
 								}),
 								isHighlighted: release.isLatest || undefined
 							},
-							{
-								key: t("platform-name.label"),
-								value: t("platform-name.value", {
-									context: release.platformName
-										? undefined
-										: "upcoming",
-									platformName: release.platformName
-								})
-							}
+							release.platforms.length
+								? {
+										key: t("platform-releases.label"),
+										value: release.platforms.map(
+											({ name }) =>
+												t("platform-name.value", {
+													platformName: name
+												})
+										),
+										isLarge: true
+									}
+								: undefined
 						]}
 						title={t("list.card.title", {
 							context:
-								release.cycleName &&
-								!release.version.startsWith(release.cycleName)
+								release.cycle?.name &&
+								!release.version.startsWith(release.cycle.name)
 									? "named"
 									: undefined,
 							version: release.version,
-							name: release.cycleName
+							name: release.cycle?.name
 						})}
 						variant="flat"
 					/>
@@ -142,16 +145,16 @@ export default async function PageSearchResultsExpanded({
 				caption={t("table.caption", { count: releases.length })}
 			>
 				<Field fieldPath="edition" label={t("edition.label")}>
-					{({ edition }: SpecificRelease) =>
+					{({ edition }: NormalizedRelease) =>
 						t("edition.value", { context: edition })
 					}
 				</Field>
 
 				<Field fieldPath="version" label={t("version.label")}>
-					{({ releaseId, version }: SpecificRelease) =>
+					{({ id, version }: NormalizedRelease) =>
 						mayEditReleases ? (
 							<Anchor
-								href={`/${locale}/command/releases/${releaseId}`}
+								href={`/${locale}/command/releases/${id}`}
 								variant="inline"
 							>
 								{t("version.value", { version })}
@@ -162,14 +165,14 @@ export default async function PageSearchResultsExpanded({
 					}
 				</Field>
 
-				<Field fieldPath="cycleName" label={t("cycle-name.label")}>
-					{({ cycleName: name }: SpecificRelease) =>
-						t("cycle-name.value", { name })
+				<Field fieldPath="cycle.name" label={t("cycle-name.label")}>
+					{({ cycle }: NormalizedRelease) =>
+						t("cycle-name.value", { name: cycle?.name })
 					}
 				</Field>
 
 				<Field fieldPath="changelog" label={t("changelog.label")}>
-					{({ changelog }: SpecificRelease) =>
+					{({ changelog }: NormalizedRelease) =>
 						changelog ? (
 							<a href={changelog} rel="noreferrer">
 								{changelog}
@@ -182,7 +185,7 @@ export default async function PageSearchResultsExpanded({
 					fieldPath="developmentReleasedOn"
 					label={t("development-released-on.label")}
 				>
-					{({ developmentReleasedOn }: SpecificRelease) =>
+					{({ developmentReleasedOn }: NormalizedRelease) =>
 						developmentReleasedOn
 							? t("development-released-on.value", {
 									developmentReleasedOn: parseISO(
@@ -194,15 +197,15 @@ export default async function PageSearchResultsExpanded({
 				</Field>
 
 				<Field
-					fieldPath="productionReleasedOn"
-					label={t("production-released-on.label")}
+					fieldPath="firstProductionReleasedOn"
+					label={t("first-production-released-on.label")}
 				>
-					{({ productionReleasedOn }: SpecificRelease) =>
-						productionReleasedOn
-							? t("production-released-on.value", {
-									productionReleasedOn: productionReleasedOn
-										? parseISO(productionReleasedOn)
-										: undefined
+					{({ firstProductionReleasedOn }: NormalizedRelease) =>
+						firstProductionReleasedOn
+							? t("first-production-released-on.value", {
+									firstProductionReleasedOn: parseISO(
+										firstProductionReleasedOn
+									)
 								})
 							: null
 					}
@@ -213,7 +216,7 @@ export default async function PageSearchResultsExpanded({
 						fieldPath="isAvailableForTools"
 						label={t("is-available-for-tools.label")}
 					>
-						{({ isAvailableForTools }: SpecificRelease) =>
+						{({ isAvailableForTools }: NormalizedRelease) =>
 							t("is-available-for-tools.value", {
 								context: isAvailableForTools ? "yes" : "no"
 							})
@@ -222,7 +225,7 @@ export default async function PageSearchResultsExpanded({
 				) : null}
 
 				<Field fieldPath="isLatest" label={t("is-latest.label")}>
-					{({ isLatest }: SpecificRelease) =>
+					{({ isLatest }: NormalizedRelease) =>
 						t("is-latest.value", {
 							context: isLatest ? "yes" : "no"
 						})
@@ -230,15 +233,30 @@ export default async function PageSearchResultsExpanded({
 				</Field>
 
 				<Field
-					fieldPath="platformName"
-					label={t("platform-name.label")}
+					fieldPath="platforms"
+					label={t("platform-releases.label")}
 				>
-					{({ platformName }: SpecificRelease) =>
-						platformName
-							? t("platform-name.value", {
-									platformName
-								})
-							: null
+					{({ platforms }: NormalizedRelease) =>
+						platforms.length ? (
+							<ol>
+								{platforms.map((p) => (
+									<li key={p.id}>
+										<span>
+											{t("platform-name.value", {
+												platformName: p.name
+											})}
+										</span>
+										<span>
+											{t("production-released-on.value", {
+												productionReleasedOn: parseISO(
+													p.productionReleasedOn
+												)
+											})}
+										</span>
+									</li>
+								))}
+							</ol>
+						) : null
 					}
 				</Field>
 			</SearchResults.Table>

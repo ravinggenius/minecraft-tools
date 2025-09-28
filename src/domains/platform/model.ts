@@ -11,7 +11,11 @@ import { pool, sql } from "@/services/datastore-service/service";
 import { EDITION } from "../release/schema";
 
 import { Platform, PLATFORM, PlatformAttrs } from "./schema";
-import { Include } from "./search.schema";
+import {
+	Include,
+	NORMALIZED_PLATFORM,
+	NormalizedPlatform
+} from "./search.schema";
 
 if (process.env.NEXT_RUNTIME === "nodejs") {
 	await import("server-only");
@@ -20,14 +24,14 @@ if (process.env.NEXT_RUNTIME === "nodejs") {
 export const listAll = async () =>
 	(await pool).any(sql.type(PLATFORM)`
 		SELECT
-			p.id,
-			p.created_at AS "createdAt",
-			p.updated_at AS "updatedAt",
-			p.name
+			id,
+			created_at,
+			updated_at,
+			name
 		FROM
-			platforms AS p
+			platforms
 		ORDER BY
-			p.name ASC
+			name ASC
 	`);
 
 export const create = async (attrs: PlatformAttrs) => {
@@ -41,8 +45,8 @@ export const create = async (attrs: PlatformAttrs) => {
 			updated_at = DEFAULT
 		RETURNING
 			id,
-			created_at AS "createdAt",
-			updated_at AS "updatedAt",
+			created_at,
+			updated_at,
 			name
 	`);
 };
@@ -52,14 +56,14 @@ export const get = async (platformId: Platform["id"]) => {
 
 	return (await pool).one(sql.type(PLATFORM)`
 		SELECT
-			p.id,
-			p.created_at AS "createdAt",
-			p.updated_at AS "updatedAt",
-			p.name
+			id,
+			created_at,
+			updated_at,
+			name
 		FROM
-			platforms AS p
+			platforms
 		WHERE
-			p.id = ${platformId}
+			id = ${platformId}
 	`);
 };
 
@@ -76,7 +80,7 @@ export const update = async (
 			})
 		)`
 			SELECT
-				count(id) > 0 AS "alreadyExists"
+				count(id) > 0 AS "already_exists"
 			FROM
 				platforms
 			WHERE
@@ -97,24 +101,14 @@ export const update = async (
 			WHERE id = ${platformId}
 			RETURNING
 				id,
-				created_at AS "createdAt",
-				updated_at AS "updatedAt",
+				created_at,
+				updated_at,
 				name
 		`);
 	});
 };
 
-export const EXTENDED_PLATFORM = PLATFORM.omit({
-	createdAt: true,
-	updatedAt: true
-}).extend({
-	editions: z.array(EDITION),
-	releasesCount: z.int().nonnegative()
-});
-
-export type ExtendedPlatform = z.infer<typeof EXTENDED_PLATFORM>;
-
-export const search = async ({
+export const searchNormalized = async ({
 	conditions: { include, exclude },
 	expand,
 	pagination: { limit, offset }
@@ -125,146 +119,72 @@ export const search = async ({
 
 	const whereClauses = [
 		mayRead && include.isAvailableForTools !== undefined
-			? sql.fragment`(r.is_available_for_tools = ${include.isAvailableForTools})`
+			? sql.fragment`(is_available_for_tools = ${include.isAvailableForTools})`
 			: undefined,
-		mayRead ? undefined : sql.fragment`r.is_available_for_tools = ${true}`,
+		mayRead ? undefined : sql.fragment`is_available_for_tools = ${true}`,
 		includeText
 			? sql.fragment`(
-				(p.name LIKE ANY(${sql.array(includeText, "text")}))
+				(name LIKE ANY(${sql.array(includeText, "text")}))
 				OR
-				(r.edition::citext LIKE ANY(${sql.array(includeText, "text")}))
+				(
+					EXISTS (
+						SELECT 1
+						FROM unnest(editions) AS e
+						WHERE e::citext LIKE ANY(${sql.array(includeText, "citext")})
+					)
+				)
 			)`
 			: undefined,
 		include.name
-			? sql.fragment`(p.name LIKE ANY(${sql.array(
+			? sql.fragment`(name LIKE ANY(${sql.array(
 					include.name.map((name) => `%${name}%`),
 					"text"
 				)}))`
 			: undefined,
 		include.edition
-			? sql.fragment`(r.edition = ANY(${sql.array(include.edition, "edition")}))`
+			? sql.fragment`(editions::citext[] && ${sql.array(include.edition, "citext")})`
 			: undefined
 	].filter(Boolean);
 
-	const countQuery = expand
-		? sql.type(COUNT)`
-				SELECT
-					count(*) AS count
-				FROM
-					(
-						SELECT
-							count(*) AS count
-						FROM
-							platforms AS p
-							LEFT OUTER JOIN platform_releases AS pr ON p.id = pr.platform_id
-							LEFT OUTER JOIN releases AS r ON pr.release_id = r.id
-						${
-							whereClauses.length
-								? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-								: sql.fragment``
-						}
-						GROUP BY
-							p.id,
-							r.edition
-					)
-			`
-		: sql.type(COUNT)`
-				SELECT
-					count(*) AS count
-				FROM
-					(
-						SELECT
-							count(*)
-						FROM
-							platforms AS p
-							LEFT OUTER JOIN platform_releases AS pr ON p.id = pr.platform_id
-							LEFT OUTER JOIN releases AS r ON pr.release_id = r.id
-						${
-							whereClauses.length
-								? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-								: sql.fragment``
-						}
-						GROUP BY
-							p.id
-					)
-			`;
+	const countQuery = sql.type(COUNT)`
+		SELECT
+			count(*) AS count
+		FROM
+			normalized_platforms
+		${
+			whereClauses.length
+				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+				: sql.fragment``
+		}
+	`;
 
-	const dataQuery = expand
-		? sql.type(EXTENDED_PLATFORM)`
-				SELECT
-					p.id,
-					p.name,
-					count(r.id)::int AS "releasesCount",
-					COALESCE(
-						json_agg(
-							DISTINCT r.edition
-							ORDER BY
-								r.edition
-						) FILTER (
-							WHERE
-								r.edition IS NOT NULL
-						),
-						'[]'::json
-					) AS editions
-				FROM
-					platforms AS p
-					LEFT OUTER JOIN platform_releases AS pr ON p.id = pr.platform_id
-					LEFT OUTER JOIN releases AS r ON pr.release_id = r.id
-				${
-					whereClauses.length
-						? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-						: sql.fragment``
-				}
-				GROUP BY
-					p.id,
-					r.edition
-				ORDER BY
-					p.name ASC
-				LIMIT
-					${limit}
-				OFFSET
-					${offset}
-			`
-		: sql.type(EXTENDED_PLATFORM)`
-				SELECT
-					p.id,
-					p.name,
-					count(r.id)::int AS "releasesCount",
-					COALESCE(
-						json_agg(
-							DISTINCT r.edition
-							ORDER BY
-								r.edition
-						) FILTER (
-							WHERE
-								r.edition IS NOT NULL
-						),
-						'[]'::json
-					) AS editions
-				FROM
-					platforms AS p
-					LEFT OUTER JOIN platform_releases AS pr ON p.id = pr.platform_id
-					LEFT OUTER JOIN releases AS r ON pr.release_id = r.id
-				${
-					whereClauses.length
-						? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-						: sql.fragment``
-				}
-				GROUP BY
-					p.id
-				ORDER BY
-					p.name ASC
-				LIMIT
-					${limit}
-				OFFSET
-					${offset}
-			`;
+	const dataQuery = sql.type(NORMALIZED_PLATFORM)`
+		SELECT
+			id,
+			name,
+			releases_count,
+			editions::text[],
+			is_available_for_tools
+		FROM
+			normalized_platforms
+		${
+			whereClauses.length
+				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
+				: sql.fragment``
+		}
+		ORDER BY
+			name ASC
+		LIMIT
+			${limit}
+		OFFSET
+			${offset}
+	`;
 
 	return (await pool).transaction(
 		async (tx) =>
 			({
 				count: await tx.oneFirst(countQuery),
 				data: await tx.any(dataQuery)
-			}) satisfies SearchResults<ExtendedPlatform>
+			}) satisfies SearchResults<NormalizedPlatform>
 	);
 };

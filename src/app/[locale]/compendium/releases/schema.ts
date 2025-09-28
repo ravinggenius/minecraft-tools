@@ -7,7 +7,7 @@ const BOOL = z.coerce.boolean().optional();
 
 export const QUERY = SEACH_QUERY(
 	["edition", "version", "cycle", "is-latest", "platform"] as const,
-	["production-released-on"] as const,
+	["first-released-on"] as const,
 	(rawQuery) =>
 		({
 			text: rawQuery.text,
@@ -17,9 +17,10 @@ export const QUERY = SEACH_QUERY(
 			isLatest: BOOL.parse(
 				rawQuery["is-latest"]?.[rawQuery["is-latest"].length - 1]
 			),
-			platform: rawQuery.platform,
-			productionReleasedOn: INCLUDE.shape.productionReleasedOn.parse(
-				rawQuery["production-released-on"]
-			)
+			platformName: rawQuery.platform,
+			firstProductionReleasedOn:
+				INCLUDE.shape.firstProductionReleasedOn.parse(
+					rawQuery["first-released-on"]
+				)
 		}) satisfies Include
 );

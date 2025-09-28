@@ -4,14 +4,44 @@
     "version": "1.21.120",
     "cycleName": "The Copper Age",
     "developmentReleasedOn": "2025-09-03",
-    "platformsCondensed": {}
+    "platformsCondensed": {
+      "upcoming": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
   },
   {
     "edition": "bedrock",
     "version": "1.21.110",
     "cycleName": "The Copper Age",
     "developmentReleasedOn": "2025-07-22",
-    "platformsCondensed": {}
+    "platformsCondensed": {
+      "2025-09-30": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
   },
   {
     "edition": "bedrock",
@@ -3424,7 +3454,9 @@
     "version": "1.21.9",
     "cycleName": "The Copper Age",
     "developmentReleasedOn": "2025-07-29",
-    "platformsCondensed": {}
+    "platformsCondensed": {
+      "2025-09-30": ["Linux", "macOS", "Windows"]
+    }
   },
   {
     "edition": "java",

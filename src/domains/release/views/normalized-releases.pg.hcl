@@ -12,7 +12,11 @@ view "normalized_releases" {
       is_latest,
       is_available_for_tools,
       COALESCE(
-        jsonb_agg(platform) FILTER (
+        jsonb_agg(
+          platform
+          ORDER BY
+            platform ->> 'name'
+        ) FILTER (
           WHERE
             platform ->> 'id' IS NOT NULL
         ),

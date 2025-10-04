@@ -91,6 +91,7 @@
     "edition": "bedrock",
     "version": "1.21.94",
     "cycleName": "Chase The Skies",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/37810171798029-Minecraft-1-21-93-94-Bedrock",
     "platformsCondensed": {
       "2025-07-14": [
         "ChromeOS",
@@ -112,6 +113,7 @@
     "edition": "bedrock",
     "version": "1.21.93",
     "cycleName": "Chase The Skies",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/37810171798029-Minecraft-1-21-93-94-Bedrock",
     "platformsCondensed": {
       "2025-07-03": [
         "ChromeOS",
@@ -133,6 +135,7 @@
     "edition": "bedrock",
     "version": "1.21.92",
     "cycleName": "Chase The Skies",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/37486954069645-Minecraft-1-21-92-Bedrock",
     "platformsCondensed": {
       "2025-06-19": [
         "ChromeOS",
@@ -159,6 +162,7 @@
     "edition": "bedrock",
     "version": "1.21.90",
     "cycleName": "Chase The Skies",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/37393460002957-Minecraft-Bedrock-Edition-1-21-90-Chase-the-Skies",
     "developmentReleasedOn": "2025-04-22",
     "platformsCondensed": {
       "2025-06-17": [
@@ -190,6 +194,7 @@
     "edition": "bedrock",
     "version": "1.21.82",
     "cycleName": "Spring To Life",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/36539685655053-Minecraft-1-21-81-82-Bedrock",
     "platformsCondensed": {
       "2025-05-19": ["Windows"]
     }
@@ -198,6 +203,7 @@
     "edition": "bedrock",
     "version": "1.21.81",
     "cycleName": "Spring To Life",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/36539685655053-Minecraft-1-21-81-82-Bedrock",
     "platformsCondensed": {
       "2025-05-14": [
         "ChromeOS",
@@ -216,6 +222,7 @@
     "edition": "bedrock",
     "version": "1.21.80",
     "cycleName": "Spring To Life",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/36236281562637-Minecraft-1-21-80-Bedrock",
     "developmentReleasedOn": "2025-03-11",
     "platformsCondensed": {
       "2025-05-06": [
@@ -244,6 +251,7 @@
     "edition": "bedrock",
     "version": "1.21.72",
     "cycleName": "Spring To Life",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/35674713271949-Minecraft-1-21-72-Bedrock",
     "platformsCondensed": {
       "2025-04-08": [
         "ChromeOS",
@@ -263,6 +271,7 @@
     "edition": "bedrock",
     "version": "1.21.71",
     "cycleName": "Spring To Life",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/35325099799821-Minecraft-1-21-71-Bedrock",
     "platformsCondensed": {
       "2025-03-28": [
         "ChromeOS",
@@ -281,6 +290,7 @@
     "edition": "bedrock",
     "version": "1.21.70",
     "cycleName": "Spring To Life",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/35256043330189-Minecraft-Bedrock-Edition-1-21-70-Spring-to-Life",
     "developmentReleasedOn": "2025-01-30",
     "platformsCondensed": {
       "2025-03-25": [
@@ -301,6 +311,7 @@
     "edition": "bedrock",
     "version": "1.21.62",
     "cycleName": "The Garden Awakens",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/34543756347021-Minecraft-1-21-62-Bedrock",
     "platformsCondensed": {
       "2025-02-25": [
         "ChromeOS",
@@ -320,6 +331,7 @@
     "edition": "bedrock",
     "version": "1.21.61",
     "cycleName": "The Garden Awakens",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/34397126341389-Minecraft-1-21-61-Bedrock",
     "platformsCondensed": {
       "2025-02-19": [
         "ChromeOS",
@@ -339,6 +351,7 @@
     "edition": "bedrock",
     "version": "1.21.60",
     "cycleName": "The Garden Awakens",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/34034576387469-Minecraft-1-21-60-Bedrock",
     "developmentReleasedOn": "2024-11-20",
     "platformsCondensed": {
       "2025-02-11": [
@@ -359,6 +372,7 @@
     "edition": "bedrock",
     "version": "1.21.51",
     "cycleName": "The Garden Awakens",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/32611282671245-Minecraft-1-21-51-Bedrock",
     "platformsCondensed": {
       "2024-12-09": ["ChromeOS", "Android"],
       "2024-12-10": ["iOS", "iPadOS", "Fire"],
@@ -370,6 +384,7 @@
     "edition": "bedrock",
     "version": "1.21.50",
     "cycleName": "The Garden Awakens",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/32344904160397-Minecraft-Bedrock-Edition-1-21-50-The-Garden-Awakens",
     "developmentReleasedOn": "2024-10-09",
     "platformsCondensed": {
       "2024-12-03": [
@@ -390,6 +405,7 @@
     "edition": "bedrock",
     "version": "1.21.44",
     "cycleName": "Bundles Of Bravery",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/31541927200141-Minecraft-1-21-44-Bedrock",
     "platformsCondensed": {
       "2024-10-31": [
         "ChromeOS",
@@ -409,6 +425,7 @@
     "edition": "bedrock",
     "version": "1.21.43",
     "cycleName": "Bundles Of Bravery",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/31349577190541-Minecraft-1-21-43-Bedrock",
     "platformsCondensed": {
       "2024-10-25": ["PlayStation 5"],
       "2024-10-28": [
@@ -437,6 +454,7 @@
     "edition": "bedrock",
     "version": "1.21.41",
     "cycleName": "Bundles Of Bravery",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/31233546925453-Minecraft-1-21-41-Bedrock",
     "platformsCondensed": {
       "2024-10-22": [
         "ChromeOS",
@@ -456,6 +474,7 @@
     "edition": "bedrock",
     "version": "1.21.40",
     "cycleName": "Bundles Of Bravery",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/31222183227149-Minecraft-Bedrock-Edition-1-21-40-Bundles-of-Bravery",
     "developmentReleasedOn": "2024-09-04",
     "platformsCondensed": {
       "2024-10-22": [
@@ -475,6 +494,7 @@
   {
     "edition": "bedrock",
     "version": "1.21.31",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/30677359777805-Minecraft-1-21-31-Bedrock",
     "cycleName": "Tricky Trials",
     "platformsCondensed": {
       "2024-09-30": [
@@ -496,6 +516,7 @@
     "edition": "bedrock",
     "version": "1.21.30",
     "cycleName": "Tricky Trials",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/30220110283533-Minecraft-1-21-30-Bedrock",
     "developmentReleasedOn": "2024-08-01",
     "platformsCondensed": {
       "2024-09-17": [
@@ -516,6 +537,7 @@
     "edition": "bedrock",
     "version": "1.21.23",
     "cycleName": "Tricky Trials",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/29737731225741-Minecraft-1-21-23-Bedrock",
     "platformsCondensed": {
       "2024-09-03": [
         "ChromeOS",
@@ -535,6 +557,7 @@
     "edition": "bedrock",
     "version": "1.21.22",
     "cycleName": "Tricky Trials",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/29644784178317-Minecraft-1-21-22-Bedrock",
     "platformsCondensed": {
       "2024-08-26": [
         "ChromeOS",
@@ -552,6 +575,7 @@
     "edition": "bedrock",
     "version": "1.21.21",
     "cycleName": "Tricky Trials",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/29279683879949-Minecraft-1-21-21-Bedrock",
     "platformsCondensed": {
       "2024-08-14": [
         "ChromeOS",
@@ -571,6 +595,7 @@
     "edition": "bedrock",
     "version": "1.21.20",
     "cycleName": "Tricky Trials",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/29110275666957-Minecraft-1-21-20-Bedrock",
     "developmentReleasedOn": "2024-05-22",
     "platformsCondensed": {
       "2024-08-13": [
@@ -591,6 +616,7 @@
     "edition": "bedrock",
     "version": "1.21.3",
     "cycleName": "Tricky Trials",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/28374515841037-Minecraft-1-21-3-PS4-Only",
     "platformsCondensed": {
       "2024-07-15": ["PlayStation 4", "PlayStation VR"]
     }
@@ -599,6 +625,7 @@
     "edition": "bedrock",
     "version": "1.21.2",
     "cycleName": "Tricky Trials",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/28105668043661-Minecraft-1-21-2-Bedrock",
     "platformsCondensed": {
       "2024-07-09": [
         "ChromeOS",
@@ -618,6 +645,7 @@
     "edition": "bedrock",
     "version": "1.21.1",
     "cycleName": "Tricky Trials",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/27737332869133-Minecraft-1-21-1-Bedrock",
     "platformsCondensed": {
       "2024-06-20": [
         "ChromeOS",
@@ -637,6 +665,7 @@
     "edition": "bedrock",
     "version": "1.21.0",
     "cycleName": "Tricky Trials",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/27451789924237-Minecraft-Bedrock-Edition-1-21-Tricky-Trials",
     "developmentReleasedOn": "2024-04-03",
     "platformsCondensed": {
       "2024-06-13": [

@@ -1,0 +1,153 @@
+#!/usr/bin/env node
+import nextEnv from "@next/env";
+import { spawn } from "child_process";
+import { resolve } from "path";
+
+function showUsage() {
+	console.log(`
+Usage: next-env [options] <command> [args...]
+
+Execute a command with Next.js environment variables loaded.
+
+Options:
+  --debug          Show debug information about loaded environment files
+  --dir <path>     Directory to load .env files from (default: current directory)
+  --help, -h       Show this help message
+
+Examples:
+  next-env npm run db:migrate
+  next-env --debug --dir ./my-project node server.js
+  next-env sh -c 'echo $DATABASE_URL'
+
+This utility picks a "mode" based on the NODE_ENV environment variable:
+  - If NODE_ENV is one of "development", "production" or "test", that value is used.
+  - Otherwise, "development" is used.
+`);
+}
+
+function parseArgs() {
+	const args = process.argv.slice(2);
+	const options = {
+		debug: false,
+		dir: process.cwd(),
+		command: [],
+		mode: ["development", "production", "test"].includes(
+			process.env.NODE_ENV
+		)
+			? process.env.NODE_ENV
+			: "development"
+	};
+
+	let i = 0;
+	while (i < args.length) {
+		const arg = args[i];
+
+		if (arg === "--help" || arg === "-h") {
+			showUsage();
+			process.exit(0);
+		} else if (arg === "--dir") {
+			if (i + 1 >= args.length) {
+				console.error("Error: --dir requires a directory path");
+				process.exit(1);
+			}
+			options.dir = resolve(args[i + 1]);
+			i += 2;
+		} else if (arg === "--debug") {
+			options.debug = true;
+			i++;
+		} else {
+			options.command = args.slice(i);
+			break;
+		}
+	}
+
+	if (options.command.length === 0) {
+		console.error("Error: No command specified");
+		showUsage();
+		process.exit(1);
+	}
+
+	return options;
+}
+
+function main() {
+	const options = parseArgs();
+
+	const originalEnv = { ...process.env };
+
+	if (!process.env.NODE_ENV) {
+		process.env.NODE_ENV = "development";
+	}
+
+	let childEnv;
+	try {
+		if (options.debug) {
+			console.log(`Loading environment variables from: ${options.dir}`);
+			console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
+			console.log(`mode: ${options.mode}`);
+		}
+		const envConfig = nextEnv.loadEnvConfig(
+			options.dir,
+			options.mode === "development"
+		);
+
+		if (options.debug && envConfig.loadedEnvFiles.length > 0) {
+			console.log("Loaded env files:");
+			envConfig.loadedEnvFiles.forEach((file) => {
+				console.log(`  - ${file.path}`);
+			});
+		}
+
+		if (options.debug) {
+			console.log(`Executing: ${options.command.join(" ")}\n`);
+		}
+
+		childEnv = { ...process.env };
+
+		Object.keys(process.env).forEach((key) => {
+			if (originalEnv.hasOwnProperty(key)) {
+				process.env[key] = originalEnv[key];
+			} else {
+				delete process.env[key];
+			}
+		});
+	} catch (error) {
+		console.error(`Error loading environment config: ${error.message}`);
+		process.exit(1);
+	}
+
+	const [command, ...args] = options.command;
+
+	const child = spawn(command, args, {
+		stdio: "inherit",
+		env: childEnv,
+		cwd: options.dir
+	});
+
+	child.on("error", (error) => {
+		if (error.code === "ENOENT") {
+			console.error(`Error: Command '${command}' not found`);
+		} else {
+			console.error(`Error executing command: ${error.message}`);
+		}
+		process.exit(1);
+	});
+
+	child.on("close", (code, signal) => {
+		if (signal) {
+			console.log(`Process terminated by signal: ${signal}`);
+			process.exit(1);
+		}
+		process.exit(code || 0);
+	});
+
+	["SIGINT", "SIGTERM", "SIGQUIT"].forEach((signal) => {
+		process.on(signal, () => {
+			if (child.killed === false) {
+				child.kill(signal);
+			}
+		});
+	});
+}
+
+main();

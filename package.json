@@ -8,12 +8,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "migrate": "atlas schema apply --env default",
+    "migrate": "src/scripts/next-env atlas schema apply --env default",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
     "lint:check": "eslint . --ignore-pattern '.next/*' --ignore-pattern 'node_modules/*'",
     "lint:fix": "npm run lint:check -- --fix",
-    "load": "bun ./src/scripts/runner.ts",
+    "load": "npm run load:releases",
+    "load:releases": "src/scripts/next-env bun ./src/scripts/import-releases.ts",
     "test": "NODE_ENV=test playwright test"
   },
   "dependencies": {

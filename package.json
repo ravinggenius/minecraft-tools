@@ -8,7 +8,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "migrate": "atlas schema apply --env default",
+    "migrate": "src/scripts/next-env atlas schema apply --env default",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
     "lint:check": "eslint . --ignore-pattern '.next/*' --ignore-pattern 'node_modules/*'",

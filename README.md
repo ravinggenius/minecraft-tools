@@ -4,12 +4,11 @@ Tools and structured notes for keeping track of things while playing Minecraft.
 
 ## Project Roadmap
 
-- [x] Next 14
 - [x] Authentication
 - [x] Internationalization
 - [x] Email Verification
 - [x] Forgot Password
-- [x] Design System
+- [x] Design System (basics are in place, but it needs work)
 - [ ] Bot Protection (https://www.youtube.com/watch?v=YzaChz8rCn0)
   - header analysis
   - captcha (browser fingerprint analysis)
@@ -35,6 +34,22 @@ Tools and structured notes for keeping track of things while playing Minecraft.
 
 This project is a labor of love. If you want to help (thank you!), please open an issue to coordinate work on the roadmap above.
 
+To get started clone the project:
+
+```shell
+# github
+git clone origin git@github.com:ravinggenius/minecraft-tools.git
+# or gitlab if you like
+# git clone origin git@gitlab.com:ravinggenius/minecraft-tools.git
+cd minecraft-tools
+```
+
+Make sure you have the expected versions of JavaScript runtimes. I use `asdf` (install via Homebrew on macOS) to manage these:
+
+```shell
+cat .tool-versions
+```
+
 Install dependencies:
 
 ```shell
@@ -47,15 +62,25 @@ While that's running, copy `.env` to `.env.local`. Fill in or adjust any values 
 cp .env .env.local
 ```
 
-You will also need [Atlas](https://atlasgo.io/) to manage database migrations. On macOS this can be installed with `homebrew`, but it is available for mutliple platforms. Some features that are used require a free account, so make sure you are logged in.
+You will also need a Postgres connection string. I use `Postgres.app` on macOS, but any recent release of Postgres should work. [Atlas](https://atlasgo.io/) is used to manage database migrations. On macOS this can be installed with `homebrew`, but it is available for mutliple platforms. Some features that are used require a free account, so make sure you are logged in:
+
+```shell
+atlas login
+```
 
 To run migrations locally:
 
 ```shell
-npm run migrate -- --url "postgresql://localhost/minecraft-tools?sslmode=disable"
+npm run migrate
 ```
 
-`?sslmode=disable` is required if you aren't using a secure connection. This is the default for `Postgres.app` on macOS.
+Atlas requires `?sslmode=disable` if you aren't using a secure connection, which is the default for `Postgres.app` on macOS.
+
+You may want to load some seed data:
+
+```shell
+npm run load | npx roarr
+```
 
 Then run the development server:
 

@@ -88,7 +88,7 @@ export const nextSearchParams = <
 		TInclude
 	>
 >(
-	query: TQuery,
+	query: Pick<TQuery, "query" | "expand" | "view" | "pagination">,
 	pageNumber: number
 ) => {
 	const { limit } = query.pagination;

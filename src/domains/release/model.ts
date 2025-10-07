@@ -1,3 +1,5 @@
+import { z } from "zod/v4";
+
 import {
 	confirmAuthorization,
 	enforceAuthorization
@@ -14,6 +16,7 @@ import {
 	ImportRelease,
 	NORMALIZED_RELEASE,
 	NormalizedRelease,
+	PLATFORM_RELEASE,
 	Release,
 	RELEASE,
 	ReleaseAttrs,
@@ -364,6 +367,32 @@ export const searchNormalized = async ({
 			}) satisfies SearchResults<NormalizedRelease> as SearchResults<NormalizedRelease>
 	);
 };
+
+export const listByEdition = async <T extends Release["edition"]>(edition: T) =>
+	(await pool).any(sql.type(
+		RELEASE.pick({
+			version: true
+		}).extend({
+			position: z.number().nonnegative(),
+			edition: z.literal(edition),
+			cycleName: RELEASE_CYCLE.shape.name,
+			firstProductionReleasedOn:
+				PLATFORM_RELEASE.shape.productionReleasedOn.optional()
+		})
+	)`
+		SELECT
+			(ROW_NUMBER() OVER (ORDER BY first_production_released_on ASC))::int AS position,
+			edition,
+			"version",
+			cycle ->> 'name' AS cycle_name,
+			first_production_released_on
+		FROM
+			normalized_releases
+		WHERE
+			edition = ${edition}
+		ORDER BY
+			first_production_released_on ASC
+	`);
 
 export const doImport = async (release: ImportRelease) => {
 	return (await pool).transaction(async (tx) => {

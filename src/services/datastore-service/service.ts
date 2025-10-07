@@ -6,16 +6,20 @@ import { createQueryNormalisationInterceptor } from "slonik-interceptor-query-no
 
 import * as config from "../config-service/service";
 
-const normalizeKeys = (data: unknown) => {
+const normalizeKeys = (excludeKeyPattern: RegExp, data: unknown) => {
 	if (Array.isArray(data)) {
-		return data.map<unknown>(normalizeKeys);
+		return data.map<unknown>((d): unknown =>
+			normalizeKeys(excludeKeyPattern, d)
+		);
 	}
 
 	if (data && typeof data === "object") {
 		return Object.entries(data).reduce(
 			(memo, [k, v]): Record<string, unknown> => ({
 				...memo,
-				[camelCase(k)]: normalizeKeys(v)
+				[camelCase(k)]: excludeKeyPattern.test(k)
+					? v
+					: normalizeKeys(excludeKeyPattern, v)
 			}),
 			{}
 		);
@@ -24,11 +28,11 @@ const normalizeKeys = (data: unknown) => {
 	return data;
 };
 
-const createFieldNameInterceptor = () =>
+const createFieldNameInterceptor = (excludeKeyPattern: RegExp) =>
 	({
 		name: "app-field-name-interceptor",
 		transformRow: (_context, _query, row, _fields) =>
-			normalizeKeys(row) as QueryResultRow
+			normalizeKeys(excludeKeyPattern, row) as QueryResultRow
 	}) satisfies Interceptor;
 
 const createQueryTrimInterceptor = () =>
@@ -43,7 +47,7 @@ const createQueryTrimInterceptor = () =>
 export const pool = createPool(config.databaseUrl, {
 	captureStackTrace: true,
 	interceptors: [
-		createFieldNameInterceptor(),
+		createFieldNameInterceptor(/^(?:raw_\w+)|(?:all_raw_\w+)$/),
 		config.isProduction
 			? createQueryNormalisationInterceptor()
 			: createQueryTrimInterceptor(),

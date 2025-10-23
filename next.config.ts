@@ -4,10 +4,5 @@ export default {
 	experimental: {
 		authInterrupts: true
 	},
-	typedRoutes: true,
-	webpack: (config) => {
-		config.externals.push("@node-rs/argon2", "@node-rs/bcrypt");
-
-		return config;
-	}
+	typedRoutes: true
 } satisfies NextConfig;

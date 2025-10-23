@@ -42,25 +42,91 @@ view "normalized_items" {
         ),
         '{}'::jsonb
       ) AS stack_sizes,
-      array_agg(
+      jsonb_agg(
         DISTINCT edition
         ORDER BY
           edition
       ) AS editions,
+      count(DISTINCT cycle_name)::integer AS cycles_count,
+      (
+        SELECT
+          jsonb_agg(
+            cycles.cycle_name
+            ORDER BY
+              cycles.min_release_date
+          ) AS jsonb_agg
+        FROM
+          (
+            SELECT
+              fi.cycle_name,
+              min(fi.first_production_released_on) AS min_release_date
+            FROM
+              public.flattened_items AS fi
+            WHERE
+              fi.identifier OPERATOR(public.=) flattened_items.identifier
+              AND NOT fi.variant IS DISTINCT
+            FROM
+              flattened_items.variant
+            GROUP BY
+              fi.cycle_name
+          ) AS cycles
+      ) AS cycle_names,
       count(edition)::integer AS releases_count,
       (
-        SELECT jsonb_object_agg(edition_versions.edition, edition_versions.versions) AS jsonb_object_agg
-        FROM (
-          SELECT
-            fi.edition,
-            jsonb_agg(DISTINCT fi.version ORDER BY fi.version) AS versions
-          FROM public.flattened_items AS fi
-          WHERE fi.item_id = flattened_items.item_id
-            AND fi.identifier OPERATOR(public.=) flattened_items.identifier
-            AND NOT fi.variant IS DISTINCT FROM flattened_items.variant
-          GROUP BY fi.edition
-        ) AS edition_versions
+        SELECT
+          jsonb_agg(
+            jsonb_build_object(
+              'edition',
+              edition_version.edition,
+              'version',
+              edition_version.version
+            )
+            ORDER BY
+              edition_version.min_release_date
+          ) AS jsonb_agg
+        FROM
+          (
+            SELECT
+              fi.edition,
+              fi.version,
+              min(fi.first_production_released_on) AS min_release_date
+            FROM
+              public.flattened_items AS fi
+            WHERE
+              fi.identifier OPERATOR(public.=) flattened_items.identifier
+              AND NOT fi.variant IS DISTINCT
+            FROM
+              flattened_items.variant
+            GROUP BY
+              fi.edition,
+              fi.version
+          ) AS edition_version
       ) AS releases,
+      (
+        SELECT
+          jsonb_agg(
+            edition_version.version
+            ORDER BY
+              edition_version.min_release_date
+          ) AS jsonb_agg
+        FROM
+          (
+            SELECT
+              fi.version,
+              min(fi.first_production_released_on) AS min_release_date
+            FROM
+              public.flattened_items AS fi
+            WHERE
+              fi.identifier OPERATOR(public.=) flattened_items.identifier
+              AND NOT fi.variant IS DISTINCT
+            FROM
+              flattened_items.variant
+            GROUP BY
+              fi.edition,
+              fi.version
+          ) AS edition_version
+      ) AS versions,
+      min(first_production_released_on) AS first_production_released_on,
       COALESCE(bool_or(is_available_for_tools), false) AS is_available_for_tools
     FROM
       public.flattened_items

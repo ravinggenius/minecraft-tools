@@ -1,6 +1,28 @@
 [
   {
     "edition": "bedrock",
+    "version": "1.21.130",
+    "cycleName": "Mounts of Mayhem",
+    "developmentReleasedOn": "2025-10-14",
+    "platformsCondensed": {
+      "upcoming": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
     "version": "1.21.120",
     "cycleName": "The Copper Age",
     "developmentReleasedOn": "2025-09-03",
@@ -19,6 +41,59 @@
         "PlayStation 4",
         "PlayStation 5"
       ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.114",
+    "cycleName": "The Copper Age",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/40380755991181-Minecraft-1-21-114-Bedrock",
+    "platformsCondensed": {
+      "2025-10-16": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.113",
+    "cycleName": "The Copper Age",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/40208685845005-Minecraft-1-21-113",
+    "platformsCondensed": {
+      "2025-10-09": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.112",
+    "cycleName": "The Copper Age",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/40112424372749-Minecraft-1-21-112-PlayStation-Only",
+    "platformsCondensed": {
+      "2025-10-03": ["PlayStation 5"]
     }
   },
   {
@@ -3482,10 +3557,20 @@
   {
     "edition": "java",
     "version": "1.21.10",
-    "cycleName": "The Copper Age",
-    "developmentReleasedOn": "2025-10-02",
+    "cycleName": "Mounts of Mayhem",
+    "developmentReleasedOn": "2025-10-09",
     "platformsCondensed": {
       "upcoming": ["Linux", "macOS", "Windows"]
+    }
+  },
+  {
+    "edition": "java",
+    "version": "1.21.10",
+    "cycleName": "The Copper Age",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/40290064247693-Minecraft-Java-Edition-1-21-10-Hotfix",
+    "developmentReleasedOn": "2025-10-02",
+    "platformsCondensed": {
+      "2025-10-07": ["Linux", "macOS", "Windows"]
     }
   },
   {

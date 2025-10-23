@@ -13,7 +13,8 @@
     "format:fix": "prettier --write .",
     "lint:check": "eslint . --ignore-pattern '.next/*' --ignore-pattern 'node_modules/*'",
     "lint:fix": "npm run lint:check -- --fix",
-    "load": "npm run load:releases",
+    "load": "npm run load:releases && npm run load:items",
+    "load:items": "src/scripts/next-env bun ./src/scripts/import-items.ts",
     "load:releases": "src/scripts/next-env bun ./src/scripts/import-releases.ts",
     "test:integration": "NODE_ENV=test playwright test",
     "test:unit": "NODE_ENV=test src/scripts/next-env vitest"

@@ -29,7 +29,7 @@ export default function ReleaseForm({
 	isNew?: boolean;
 	platforms: ReadonlyArray<Platform>;
 }) {
-	const { t } = useTranslation(["page-component-release-form", "domains"]);
+	const { t } = useTranslation("page-component-release-form");
 
 	const form = useAppForm({
 		defaultValues: {

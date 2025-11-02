@@ -5,7 +5,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import resourcesToBackend from "i18next-resources-to-backend";
 import { initReactI18next } from "react-i18next";
 
-import { getOptions } from "./settings";
+import { SHARED_OPTIONS } from "./settings";
 
 i18next
 	.use(initReactI18next)
@@ -17,7 +17,7 @@ i18next
 		)
 	)
 	.init({
-		...getOptions(),
+		...SHARED_OPTIONS,
 		detection: {
 			caches: ["cookie"],
 			order: ["cookie", "navigator"]

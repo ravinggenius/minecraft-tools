@@ -19872,5 +19872,262 @@
     "rawComponents": { "bedrock": null, "java": null },
     "firstProductionReleased": { "bedrock": null, "java": "1.21.9" },
     "lastProductionReleasedBefore": { "bedrock": null, "java": null }
+  },
+
+  {
+    "identifier": "minecraft:copper_nautilus_armor",
+    "variant": null,
+    "rarity": "common",
+    "stackSize": 1,
+    "name": "Copper Nautilus Armor",
+    "translationKey": {
+      "bedrock": "item.copper_nautilus_armor.name",
+      "java": "item.minecraft.copper_nautilus_armor"
+    },
+    "components": { "bedrock": null, "java": null },
+    "rawComponents": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.21.130", "java": "1.21.11" },
+    "lastProductionReleasedBefore": { "bedrock": null, "java": null }
+  },
+  {
+    "identifier": "minecraft:iron_nautilus_armor",
+    "variant": null,
+    "rarity": "common",
+    "stackSize": 1,
+    "name": "Iron Nautilus Armor",
+    "translationKey": {
+      "bedrock": "item.iron_nautilus_armor.name",
+      "java": "item.minecraft.iron_nautilus_armor"
+    },
+    "components": { "bedrock": null, "java": null },
+    "rawComponents": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.21.130", "java": "1.21.11" },
+    "lastProductionReleasedBefore": { "bedrock": null, "java": null }
+  },
+  {
+    "identifier": "minecraft:diamond_nautilus_armor",
+    "variant": null,
+    "rarity": "common",
+    "stackSize": 1,
+    "name": "Diamond Nautilus Armor",
+    "translationKey": {
+      "bedrock": "item.diamond_nautilus_armor.name",
+      "java": "item.minecraft.diamond_nautilus_armor"
+    },
+    "components": { "bedrock": null, "java": null },
+    "rawComponents": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.21.130", "java": "1.21.11" },
+    "lastProductionReleasedBefore": { "bedrock": null, "java": null }
+  },
+  {
+    "identifier": "minecraft:golden_nautilus_armor",
+    "variant": null,
+    "rarity": "common",
+    "stackSize": 1,
+    "name": "Golden Nautilus Armor",
+    "translationKey": {
+      "bedrock": "item.golden_nautilus_armor.name",
+      "java": "item.minecraft.golden_nautilus_armor"
+    },
+    "components": { "bedrock": null, "java": null },
+    "rawComponents": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.21.130", "java": "1.21.11" },
+    "lastProductionReleasedBefore": { "bedrock": null, "java": null }
+  },
+  {
+    "identifier": "minecraft:netherite_nautilus_armor",
+    "variant": null,
+    "rarity": "common",
+    "stackSize": 1,
+    "name": "Netherite Nautilus Armor",
+    "translationKey": {
+      "bedrock": "item.netherite_nautilus_armor.name",
+      "java": "item.minecraft.netherite_nautilus_armor"
+    },
+    "components": { "bedrock": null, "java": null },
+    "rawComponents": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.21.130", "java": "1.21.11" },
+    "lastProductionReleasedBefore": { "bedrock": null, "java": null }
+  },
+  {
+    "identifier": "minecraft:netherite_horse_armor",
+    "variant": null,
+    "rarity": "common",
+    "stackSize": 1,
+    "name": "Netherite Horse Armor",
+    "translationKey": {
+      "bedrock": "item.netherite_horse_armor.name",
+      "java": "item.minecraft.netherite_horse_armor"
+    },
+    "components": { "bedrock": null, "java": null },
+    "rawComponents": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.21.130", "java": "1.21.11" },
+    "lastProductionReleasedBefore": { "bedrock": null, "java": null }
+  },
+  {
+    "identifier": "minecraft:camel_husk_spawn_egg",
+    "variant": null,
+    "rarity": "common",
+    "stackSize": 64,
+    "name": "Camel Husk Spawn Egg",
+    "translationKey": {
+      "bedrock": "item.spawn_egg.entity.camel_husk_spawn_egg.name",
+      "java": "item.minecraft.camel_husk_spawn_egg"
+    },
+    "components": { "bedrock": null, "java": null },
+    "rawComponents": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.21.130", "java": "1.21.11" },
+    "lastProductionReleasedBefore": { "bedrock": null, "java": null }
+  },
+  {
+    "identifier": "minecraft:nautilus_spawn_egg",
+    "variant": null,
+    "rarity": "common",
+    "stackSize": 64,
+    "name": "Nautilus Spawn Egg",
+    "translationKey": {
+      "bedrock": "item.spawn_egg.entity.nautilus.name",
+      "java": "item.minecraft.nautilus_spawn_egg"
+    },
+    "components": { "bedrock": null, "java": null },
+    "rawComponents": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.21.130", "java": "1.21.11" },
+    "lastProductionReleasedBefore": { "bedrock": null, "java": null }
+  },
+  {
+    "identifier": "minecraft:parched_spawn_egg",
+    "variant": null,
+    "rarity": "common",
+    "stackSize": 64,
+    "name": "Parched Spawn Egg",
+    "translationKey": {
+      "bedrock": "item.spawn_egg.entity.parched_spawn_egg.name",
+      "java": "item.minecraft.parched_spawn_egg"
+    },
+    "components": { "bedrock": null, "java": null },
+    "rawComponents": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.21.130", "java": "1.21.11" },
+    "lastProductionReleasedBefore": { "bedrock": null, "java": null }
+  },
+  {
+    "identifier": "minecraft:zombie_nautilus_spawn_egg",
+    "variant": null,
+    "rarity": "common",
+    "stackSize": 64,
+    "name": "Zombie Nautilus Spawn Egg",
+    "translationKey": {
+      "bedrock": "item.spawn_egg.entity.zombie_nautilus.name",
+      "java": "item.minecraft.zombie_nautilus_spawn_egg"
+    },
+    "components": { "bedrock": null, "java": null },
+    "rawComponents": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.21.130", "java": "1.21.11" },
+    "lastProductionReleasedBefore": { "bedrock": null, "java": null }
+  },
+
+  {
+    "identifier": "minecraft:wooden_spear",
+    "variant": null,
+    "rarity": "common",
+    "stackSize": 1,
+    "name": "Wooden Spear",
+    "translationKey": {
+      "bedrock": "item.wooden_spear.name",
+      "java": "item.minecraft.wooden_spear"
+    },
+    "components": { "bedrock": null, "java": null },
+    "rawComponents": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.21.130", "java": "1.21.11" },
+    "lastProductionReleasedBefore": { "bedrock": null, "java": null }
+  },
+  {
+    "identifier": "minecraft:stone_spear",
+    "variant": null,
+    "rarity": "common",
+    "stackSize": 1,
+    "name": "Stone Spear",
+    "translationKey": {
+      "bedrock": "item.stone_spear.name",
+      "java": "item.minecraft.stone_spear"
+    },
+    "components": { "bedrock": null, "java": null },
+    "rawComponents": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.21.130", "java": "1.21.11" },
+    "lastProductionReleasedBefore": { "bedrock": null, "java": null }
+  },
+  {
+    "identifier": "minecraft:copper_spear",
+    "variant": null,
+    "rarity": "common",
+    "stackSize": 1,
+    "name": "Copper Spear",
+    "translationKey": {
+      "bedrock": "item.copper_spear.name",
+      "java": "item.minecraft.copper_spear"
+    },
+    "components": { "bedrock": null, "java": null },
+    "rawComponents": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.21.130", "java": "1.21.11" },
+    "lastProductionReleasedBefore": { "bedrock": null, "java": null }
+  },
+  {
+    "identifier": "minecraft:iron_spear",
+    "variant": null,
+    "rarity": "common",
+    "stackSize": 1,
+    "name": "Iron Spear",
+    "translationKey": {
+      "bedrock": "item.iron_spear.name",
+      "java": "item.minecraft.iron_spear"
+    },
+    "components": { "bedrock": null, "java": null },
+    "rawComponents": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.21.130", "java": "1.21.11" },
+    "lastProductionReleasedBefore": { "bedrock": null, "java": null }
+  },
+  {
+    "identifier": "minecraft:diamond_spear",
+    "variant": null,
+    "rarity": "common",
+    "stackSize": 1,
+    "name": "Diamond Spear",
+    "translationKey": {
+      "bedrock": "item.diamond_spear.name",
+      "java": "item.minecraft.diamond_spear"
+    },
+    "components": { "bedrock": null, "java": null },
+    "rawComponents": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.21.130", "java": "1.21.11" },
+    "lastProductionReleasedBefore": { "bedrock": null, "java": null }
+  },
+  {
+    "identifier": "minecraft:golden_spear",
+    "variant": null,
+    "rarity": "common",
+    "stackSize": 1,
+    "name": "Golden Spear",
+    "translationKey": {
+      "bedrock": "item.golden_spear.name",
+      "java": "item.minecraft.golden_spear"
+    },
+    "components": { "bedrock": null, "java": null },
+    "rawComponents": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.21.130", "java": "1.21.11" },
+    "lastProductionReleasedBefore": { "bedrock": null, "java": null }
+  },
+  {
+    "identifier": "minecraft:netherite_spear",
+    "variant": null,
+    "rarity": "common",
+    "stackSize": 1,
+    "name": "Netherite Spear",
+    "translationKey": {
+      "bedrock": "item.netherite_spear.name",
+      "java": "item.minecraft.netherite_spear"
+    },
+    "components": { "bedrock": null, "java": null },
+    "rawComponents": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.21.130", "java": "1.21.11" },
+    "lastProductionReleasedBefore": { "bedrock": null, "java": null }
   }
 ]

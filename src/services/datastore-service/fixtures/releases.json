@@ -23,11 +23,43 @@
   },
   {
     "edition": "bedrock",
+    "version": "1.21.122",
+    "cycleName": "The Copper Age",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/40947085632141-Minecraft-1-21-122-Bedrock",
+    "platformsCondensed": {
+      "2025-11-10": ["Windows"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "1.21.121",
+    "cycleName": "The Copper Age",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/40877613133709-Minecraft-1-21-121-Bedrock",
+    "platformsCondensed": {
+      "2025-11-04": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
     "version": "1.21.120",
     "cycleName": "The Copper Age",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/40566672351885-Minecraft-1-21-120-Bedrock",
     "developmentReleasedOn": "2025-09-03",
     "platformsCondensed": {
-      "upcoming": [
+      "2025-10-28": [
         "ChromeOS",
         "Android",
         "iOS",
@@ -3556,7 +3588,7 @@
   },
   {
     "edition": "java",
-    "version": "1.21.10",
+    "version": "1.21.11",
     "cycleName": "Mounts of Mayhem",
     "developmentReleasedOn": "2025-10-09",
     "platformsCondensed": {

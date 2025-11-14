@@ -6,6 +6,7 @@
   "content": {
     "description": "Admin area",
     "table-of-contents": {
+      "items": "Items",
       "platforms": "Platforms",
       "releases": "Releases",
       "release-cycles": "Release Cycles"

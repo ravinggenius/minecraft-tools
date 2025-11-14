@@ -5,10 +5,21 @@ import FLEXIBLE_BOOL from "./utility-schemas/flexible-boolean";
 
 export const OPTIONAL_STRING_ARRAY = z.array(z.string()).optional();
 
+const INTEGER = z.coerce.number().refine((n) => n === Math.round(n));
+
+export const OPTIONAL_INTEGER_ARRAY = z.array(INTEGER).optional();
+
 export const OPTIONAL_RANGE = z
 	.object({
 		from: z.string(),
 		to: z.string().optional()
+	})
+	.optional();
+
+export const OPTIONAL_INTEGER_RANGE = z
+	.object({
+		from: INTEGER,
+		to: INTEGER.optional()
 	})
 	.optional();
 

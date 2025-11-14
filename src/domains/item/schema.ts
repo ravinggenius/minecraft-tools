@@ -77,7 +77,8 @@ export const FLATTENED_ITEM = ITEM.pick({
 		id: ITEM_RELEASE.shape.id,
 		itemId: ITEM.shape.id,
 		cycleName: RELEASE_CYCLE.shape.name,
-		firstProductionReleasedOn: PLATFORM_RELEASE.shape.productionReleasedOn
+		firstProductionReleasedOn:
+			PLATFORM_RELEASE.shape.productionReleasedOn.optional()
 	})
 	.and(
 		ITEM_NAME.pick({
@@ -173,6 +174,8 @@ export const NORMALIZED_ITEM = ITEM.omit({
 			version: true
 		})
 	),
+	firstProductionReleasedOn:
+		PLATFORM_RELEASE.shape.productionReleasedOn.optional(),
 	isAvailableForTools: RELEASE.shape.isAvailableForTools
 });
 

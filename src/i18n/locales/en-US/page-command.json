@@ -5,7 +5,7 @@
 
   "content": {
     "description": "Admin area",
-    "menu": {
+    "table-of-contents": {
       "platforms": "Platforms",
       "releases": "Releases",
       "release-cycles": "Release Cycles"

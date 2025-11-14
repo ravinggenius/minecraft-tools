@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 
-import Anchor from "@/components/Anchor/Anchor";
 import BreadcrumbTrailPortal from "@/components/BreadcrumbTrail/BreadcrumbTrailPortal";
+import TableOfContents, {
+	TableOfContentsEntry
+} from "@/components/TableOfContents/TableOfContents";
 import { loadPageTranslations } from "@/i18n/server";
 import { enforceAuthorization } from "@/library/authorization";
 import { buildBreadcrumbsWithPrefix } from "@/library/breadcrumbs";
@@ -36,42 +38,30 @@ export default async function Page({ params }: PageProps<"/[locale]/command">) {
 		keyPrefix: "content"
 	});
 
+	const entries: Array<TableOfContentsEntry> = [
+		{
+			href: `/${locale}/command/platforms` as TableOfContentsEntry["href"],
+			text: t("table-of-contents.platforms")
+		},
+		{
+			href: `/${locale}/command/releases` as TableOfContentsEntry["href"],
+			text: t("table-of-contents.releases")
+		},
+		{
+			href: `/${locale}/command/release-cycles` as TableOfContentsEntry["href"],
+			text: t("table-of-contents.release-cycles")
+		}
+	];
+
 	return (
 		<>
 			<BreadcrumbTrailPortal {...{ crumbs }} />
 
-			<article className={styles.main}>
-				<p>{t("description")}</p>
-
-				<ol>
-					<li>
-						<Anchor
-							href={`/${locale}/command/platforms`}
-							variant="inline"
-						>
-							{t("menu.platforms")}
-						</Anchor>
-					</li>
-
-					<li>
-						<Anchor
-							href={`/${locale}/command/releases`}
-							variant="inline"
-						>
-							{t("menu.releases")}
-						</Anchor>
-					</li>
-
-					<li>
-						<Anchor
-							href={`/${locale}/command/release-cycles`}
-							variant="inline"
-						>
-							{t("menu.release-cycles")}
-						</Anchor>
-					</li>
-				</ol>
-			</article>
+			<TableOfContents
+				{...{ entries }}
+				className={styles["table-of-contents"]}
+				description={t("description")}
+			/>
 		</>
 	);
 }

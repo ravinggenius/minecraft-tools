@@ -4,10 +4,10 @@
 
   "glue": "...",
 
-  "page-number": "{{pageNumber}}",
+  "page-number": "{{pageNumber, number}}",
 
   "summary": {
-    "display": "{{countStart}} - {{countEnd}} / {{totalMatchingCount}}",
-    "reader": "results {{countStart}} through {{countEnd}} of {{totalMatchingCount}} total"
+    "display": "{{countStart, number}} - {{countEnd, number}} / {{totalMatchingCount, number}}",
+    "reader": "results {{countStart, number}} through {{countEnd, number}} of {{totalMatchingCount, number}} total"
   }
 }

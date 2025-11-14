@@ -56,25 +56,28 @@ export default function KeyValueCard<HREF>({
 		>
 			{pairs.length ? (
 				<dl className={styles.list}>
-					{pairs.filter(Boolean).map((pair) => (
-						<div
-							className={styles.pair}
-							data-highlight={pair.isHighlighted}
-							data-size={pair.isLarge ? "large" : undefined}
-							key={pair.key}
-						>
-							<dt className={styles.key}>{pair.key}</dt>
-
-							<dd
-								className={styles.value}
-								data-multiple={
-									Array.isArray(pair.value) || undefined
-								}
+					{pairs.filter(Boolean).map((pair) =>
+						Array.isArray(pair.value) &&
+						pair.value.length === 0 ? null : (
+							<div
+								className={styles.pair}
+								data-highlight={pair.isHighlighted}
+								data-size={pair.isLarge ? "large" : undefined}
+								key={pair.key}
 							>
-								<ValueDisplay value={pair.value} />
-							</dd>
-						</div>
-					))}
+								<dt className={styles.key}>{pair.key}</dt>
+
+								<dd
+									className={styles.value}
+									data-multiple={
+										Array.isArray(pair.value) || undefined
+									}
+								>
+									<ValueDisplay value={pair.value} />
+								</dd>
+							</div>
+						)
+					)}
 				</dl>
 			) : null}
 		</Card>

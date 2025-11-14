@@ -1,6 +1,8 @@
 import { parse } from "date-fns";
 import { z, ZodType } from "zod/v4";
 
+import FLEXIBLE_BOOL from "./utility-schemas/flexible-boolean";
+
 export const OPTIONAL_STRING_ARRAY = z.array(z.string()).optional();
 
 export const OPTIONAL_RANGE = z
@@ -25,7 +27,7 @@ export const OPTIONAL_DATE_RANGE = OPTIONAL_RANGE.transform((range) =>
 		: undefined
 );
 
-export const OPTIONAL_BOOLEAN = z.boolean().optional();
+export const OPTIONAL_BOOLEAN = FLEXIBLE_BOOL.optional();
 
 export const DEFAULT_QUERY = "";
 

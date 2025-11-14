@@ -2,8 +2,8 @@ import { ComponentProps } from "react";
 
 import Anchor from "@/components/Anchor/Anchor";
 import { Field } from "@/components/DataTable/DataTable";
-import KeyValueCard from "@/components/Pagination/KeyValueCard/KeyValueCard";
 import SearchResults from "@/components/SearchResults/SearchResults";
+import StatsCard from "@/components/StatsCard/StatsCard";
 import { NormalizedPlatform } from "@/domains/platform/search.schema";
 import { loadPageTranslations } from "@/i18n/server";
 import { SupportedLocale } from "@/i18n/settings";
@@ -35,7 +35,7 @@ export default async function PageSearchResultsNormalized({
 		<SearchResults {...{ className, locale, view }} records={platforms}>
 			<SearchResults.List>
 				{(platform: NormalizedPlatform) => (
-					<KeyValueCard
+					<StatsCard
 						{...{ locale }}
 						href={
 							mayEditPlatform

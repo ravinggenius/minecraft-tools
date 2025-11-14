@@ -4,7 +4,7 @@ import { ComponentProps } from "react";
 import Badge from "@/components/Badge/Badge";
 import Card from "@/components/Card/Card";
 
-import styles from "./KeyValueCard.module.scss";
+import styles from "./StatsCard.module.scss";
 
 type Link = { href: string; text: string; isExternal: boolean };
 
@@ -38,7 +38,7 @@ function ValueDisplay({ value }: { value: KeyValuePair["value"] }) {
 	}
 }
 
-export default function KeyValueCard<HREF>({
+export default function StatsCard<HREF>({
 	className,
 	pairs,
 	...cardProps
@@ -84,5 +84,5 @@ export default function KeyValueCard<HREF>({
 	);
 }
 
-export type KeyValueCardProps<HREF> = ComponentProps<typeof KeyValueCard<HREF>>;
-export type KeyValueCardHref<HREF> = KeyValueCardProps<HREF>["href"];
+export type StatsCardProps<HREF> = ComponentProps<typeof StatsCard<HREF>>;
+export type StatsCardHref<HREF> = StatsCardProps<HREF>["href"];

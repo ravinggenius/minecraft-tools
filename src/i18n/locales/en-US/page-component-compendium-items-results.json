@@ -1,0 +1,118 @@
+{
+  "list": {
+    "card": {
+      "title": "{{identifier}}",
+      "title_is-variant": "{{identifier}}/{{variant}}",
+      "title_has-name": "{{name}}"
+    }
+  },
+
+  "table": {
+    "caption": "One item listed",
+    "caption_other": "{{count}} items listed"
+  },
+
+  "identifier": {
+    "label": "Identifier",
+    "value": "{{identifier}}"
+  },
+
+  "variant": {
+    "label": "Variant",
+    "value": "{{variant}}"
+  },
+
+  "name": {
+    "label": "Name",
+    "value": "{{name}}"
+  },
+
+  "names": {
+    "label": "Name",
+    "value": "$t(name.value, { \"name\": \"{{name}}\" })",
+    "value_editioned": "$t(name.value, { \"name\": \"{{name}}\" }) ($t(domains:release.edition.name, { \"context\": \"{{edition}}\" }))"
+  },
+
+  "translation-key": {
+    "label": "Translation Key",
+    "value": "{{translationKey}}"
+  },
+
+  "translation-keys": {
+    "label": "Translation Key",
+    "value": "$t(translation-key.value, { \"translationKey\": \"{{translationKey}}\" })",
+    "value_editioned": "$t(translation-key.value, { \"translationKey\": \"{{translationKey}}\" }) ($t(domains:release.edition.name, { \"context\": \"{{edition}}\" }))"
+  },
+
+  "rarity": {
+    "label": "Rarity",
+    "value_common": "Common",
+    "value_uncommon": "Uncommon",
+    "value_rare": "Rare",
+    "value_epic": "Epic"
+  },
+
+  "rarities": {
+    "label": "Rarity",
+    "value": "$t(rarity.value, { \"context\": \"{{rarity}}\" })",
+    "value_editioned": "$t(rarity.value, { \"context\": \"{{rarity}}\" }) ($t(domains:release.edition.name, { \"context\": \"{{edition}}\" }))"
+  },
+
+  "stack-size": {
+    "label": "Stack Size",
+    "value": "{{count, number}}"
+  },
+
+  "stack-sizes": {
+    "label": "Stack Size",
+    "value": "$t(stack-size.value, { \"count\": {{stackSize}} })",
+    "value_editioned": "$t(stack-size.value, { \"count\": {{stackSize}} }) ($t(domains:release.edition.name, { \"context\": \"{{edition}}\" }))"
+  },
+
+  "edition": {
+    "label": "Edition",
+    "value": "$t(domains:release.edition.name, { \"context\": \"{{edition}}\" })"
+  },
+
+  "editions": {
+    "label": "Editions",
+    "value": "$t(edition.value, { \"edition\": \"{{edition}}\" })"
+  },
+
+  "version": {
+    "label": "Version",
+    "value": "{{version}}"
+  },
+
+  "cycles-count": {
+    "label": "Cycles",
+    "value": "{{count, number}}"
+  },
+
+  "cycle-name": {
+    "label": "Cycle",
+    "value": "{{name}}"
+  },
+
+  "releases-count": {
+    "label": "Releases",
+    "value": "{{count, number}}"
+  },
+
+  "release-version": {
+    "label": "Version",
+    "value": "{{version}}"
+  },
+
+  "first-production-released-on": {
+    "label": "First Production Release",
+    "value": "{{firstProductionReleasedOn, dateTime(year: numeric; month: short; day: numeric)}}",
+    "value_upcoming": "UPCOMING"
+  },
+
+  "is-available-for-tools": {
+    "label": "Available For Tools?",
+    "value_yes": "Y",
+    "value_no": "N"
+  }
+}

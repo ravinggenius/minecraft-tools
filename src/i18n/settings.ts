@@ -8,15 +8,17 @@ export const FALLBACK_LOCALE = SUPPORTED_LOCALES[0];
 
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
 
+const SHARED_NAMESPACES = ["branding", "domains"] as const;
+
 export const cookieName = config.i18nName;
 
-export const getOptions = () =>
-	({
-		debug: config.debugI18n,
-		fallbackLng: FALLBACK_LOCALE,
-		interpolation: {
-			escapeValue: false
-		},
-		load: "currentOnly",
-		supportedLngs: SUPPORTED_LOCALES
-	}) satisfies InitOptions as InitOptions;
+export const SHARED_OPTIONS: InitOptions = {
+	debug: config.debugI18n,
+	fallbackLng: FALLBACK_LOCALE,
+	interpolation: {
+		escapeValue: false
+	},
+	load: "currentOnly",
+	ns: SHARED_NAMESPACES,
+	supportedLngs: SUPPORTED_LOCALES
+};

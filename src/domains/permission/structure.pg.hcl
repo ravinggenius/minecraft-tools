@@ -23,6 +23,7 @@ enum "permission_subject" {
   schema = schema.public
   values = [
     "compendium",
+    "item",
     "profile",
     "platform",
     "release",

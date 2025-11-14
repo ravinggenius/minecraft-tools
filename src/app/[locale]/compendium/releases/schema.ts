@@ -1,9 +1,6 @@
-import { z } from "zod/v4";
-
 import { SEACH_QUERY } from "@/components/SearchForm/SearchForm.schema";
 import { INCLUDE, Include } from "@/domains/release/search.schema";
-
-const BOOL = z.coerce.boolean().optional();
+import FLEXIBLE_BOOL from "@/library/utility-schemas/flexible-boolean";
 
 export const QUERY = SEACH_QUERY(
 	["edition", "version", "cycle", "is-latest", "platform"] as const,
@@ -14,7 +11,7 @@ export const QUERY = SEACH_QUERY(
 			edition: rawQuery.edition,
 			version: rawQuery.version,
 			cycleName: rawQuery.cycle,
-			isLatest: BOOL.parse(
+			isLatest: FLEXIBLE_BOOL.parse(
 				rawQuery["is-latest"]?.[rawQuery["is-latest"].length - 1]
 			),
 			platformName: rawQuery.platform,

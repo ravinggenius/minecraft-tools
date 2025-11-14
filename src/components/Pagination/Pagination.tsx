@@ -114,14 +114,14 @@ export async function Pagination<
 				aria-label={t("summary.reader", {
 					countStart: offset + 1,
 					countEnd: offset + count,
-					totalMatchingCount
+					totalMatchingCount: Number(totalMatchingCount)
 				})}
 				className={styles.summary}
 			>
 				{t("summary.display", {
 					countStart: offset + 1,
 					countEnd: offset + count,
-					totalMatchingCount
+					totalMatchingCount: Number(totalMatchingCount)
 				})}
 			</p>
 		</nav>

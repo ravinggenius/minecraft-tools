@@ -3,8 +3,8 @@ import { ComponentProps } from "react";
 
 import Anchor from "@/components/Anchor/Anchor";
 import { Field } from "@/components/DataTable/DataTable";
-import KeyValueCard from "@/components/Pagination/KeyValueCard/KeyValueCard";
 import SearchResults from "@/components/SearchResults/SearchResults";
+import StatsCard from "@/components/StatsCard/StatsCard";
 import { FlattenedReleaseCycle } from "@/domains/release-cycle/search.schema";
 import { loadPageTranslations } from "@/i18n/server";
 import { SupportedLocale } from "@/i18n/settings";
@@ -36,7 +36,7 @@ export default async function PageSearchResultsFlattened({
 		<SearchResults {...{ className, locale, view }} records={releaseCycles}>
 			<SearchResults.List>
 				{(releaseCycle: FlattenedReleaseCycle) => (
-					<KeyValueCard
+					<StatsCard
 						{...{ locale }}
 						href={
 							mayEditReleaseCycle

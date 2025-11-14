@@ -8,7 +8,7 @@ import { initReactI18next } from "react-i18next/initReactI18next";
 import {
 	cookieName,
 	FALLBACK_LOCALE,
-	getOptions,
+	SHARED_OPTIONS,
 	SUPPORTED_LOCALES,
 	SupportedLocale
 } from "./settings";
@@ -32,9 +32,9 @@ const initI18next = async (
 			)
 		)
 		.init({
-			...getOptions(),
+			...SHARED_OPTIONS,
 			lng: locale,
-			ns
+			ns: [SHARED_OPTIONS.ns].concat(ns).flat().filter(Boolean)
 		});
 
 	return i18nInstance;

@@ -1,6 +1,7 @@
 import { z, ZodType } from "zod/v4";
 
-import { EDITION, RELEASE } from "../release/schema";
+import { RELEASE_CYCLE } from "../release-cycle/schema";
+import { EDITION, PLATFORM_RELEASE, RELEASE } from "../release/schema";
 
 export const ITEM = z.object({
 	id: z.uuid(),
@@ -49,8 +50,8 @@ export const ITEM_NAME = z.object({
 	id: z.uuid(),
 	createdAt: z.iso.date(),
 	updatedAt: z.iso.date(),
-	name: z.string(),
-	translationKey: z.string().optional()
+	translationKey: z.string().optional(),
+	name: z.string()
 });
 
 export type ItemName = z.infer<typeof ITEM_NAME>;
@@ -74,20 +75,21 @@ export const FLATTENED_ITEM = ITEM.pick({
 })
 	.extend({
 		id: ITEM_RELEASE.shape.id,
-		itemId: ITEM.shape.id
+		itemId: ITEM.shape.id,
+		cycleName: RELEASE_CYCLE.shape.name,
+		firstProductionReleasedOn:
+			PLATFORM_RELEASE.shape.productionReleasedOn.optional()
 	})
 	.and(
-		ITEM_METADATA.pick({
-			rarity: true,
-			stackSize: true,
-			components: true,
-			rawComponents: true
+		ITEM_NAME.pick({
+			translationKey: true,
+			name: true
 		})
 	)
 	.and(
-		ITEM_NAME.pick({
-			name: true,
-			translationKey: true
+		ITEM_METADATA.pick({
+			rarity: true,
+			stackSize: true
 		})
 	)
 	.and(
@@ -98,44 +100,73 @@ export const FLATTENED_ITEM = ITEM.pick({
 		})
 	);
 
-export type FlattenedItem = z.infer<typeof FLATTENED_ITEM>;
+export type FlattenedItem = Prettify<z.infer<typeof FLATTENED_ITEM>>;
 
-const EDITION_WRAPPED = <T>(schema: ZodType<T>) =>
-	z
-		.union([
-			z.object({
-				bedrock: schema,
-				java: schema
-			}),
-			z.object({
-				bedrock: schema
-			}),
-			z.object({
-				java: schema
-			}),
-			z.object({
-				both: schema
-			})
-		])
-		.optional();
+interface EditionWrappedBedrockJava<T> {
+	bedrock: T;
+	java: T;
+	both?: never;
+}
+
+interface EditionWrappedBedrock<T> {
+	bedrock: T;
+	java?: never;
+	both?: never;
+}
+
+interface EditionWrappedJava<T> {
+	bedrock?: never;
+	java: T;
+	both?: never;
+}
+
+interface EditionWrappedBoth<T> {
+	bedrock?: never;
+	java?: never;
+	both: T;
+}
+
+export type EditionWrapped<T> =
+	| EditionWrappedBedrockJava<T>
+	| EditionWrappedBedrock<T>
+	| EditionWrappedJava<T>
+	| EditionWrappedBoth<T>;
+
+const EDITION_WRAPPED = <T>(schema: ZodType<T>): ZodType<EditionWrapped<T>> =>
+	z.union([
+		z.object({
+			bedrock: schema,
+			java: schema,
+			both: z.never().optional()
+		}),
+		z.object({
+			bedrock: schema,
+			java: z.never().optional(),
+			both: z.never().optional()
+		}),
+		z.object({
+			bedrock: z.never().optional(),
+			java: schema,
+			both: z.never().optional()
+		}),
+		z.object({
+			bedrock: z.never().optional(),
+			java: z.never().optional(),
+			both: schema
+		})
+	]);
 
 export const NORMALIZED_ITEM = ITEM.omit({
 	createdAt: true,
 	updatedAt: true
 }).extend({
-	names: EDITION_WRAPPED(ITEM_NAME.shape.name),
-	translationKeys: EDITION_WRAPPED(
-		ITEM_NAME.shape.translationKey.nonoptional()
-	),
-	rarities: EDITION_WRAPPED(ITEM_METADATA.shape.rarity),
-	stackSizes: EDITION_WRAPPED(ITEM_METADATA.shape.stackSize),
-	allComponents: EDITION_WRAPPED(
-		ITEM_METADATA.shape.components.nonoptional()
-	),
-	allRawComponents: EDITION_WRAPPED(
-		ITEM_METADATA.shape.rawComponents.nonoptional()
-	),
+	translationKeys: EDITION_WRAPPED(ITEM_NAME.shape.translationKey).optional(),
+	names: EDITION_WRAPPED(ITEM_NAME.shape.name).optional(),
+	rarities: EDITION_WRAPPED(ITEM_METADATA.shape.rarity).optional(),
+	stackSizes: EDITION_WRAPPED(ITEM_METADATA.shape.stackSize).optional(),
 	editions: z.array(EDITION),
+	cyclesCount: z.int().nonnegative(),
+	cycleNames: z.array(RELEASE_CYCLE.shape.name),
 	releasesCount: z.int().nonnegative(),
 	releases: z.array(
 		RELEASE.pick({
@@ -143,6 +174,8 @@ export const NORMALIZED_ITEM = ITEM.omit({
 			version: true
 		})
 	),
+	firstProductionReleasedOn:
+		PLATFORM_RELEASE.shape.productionReleasedOn.optional(),
 	isAvailableForTools: RELEASE.shape.isAvailableForTools
 });
 
@@ -162,8 +195,8 @@ export const IMPORT_ITEM = ITEM.pick({
 	)
 	.and(
 		ITEM_NAME.pick({
-			name: true,
-			translationKey: true
+			translationKey: true,
+			name: true
 		})
 	)
 	.and(

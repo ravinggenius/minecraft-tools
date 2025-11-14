@@ -6,6 +6,7 @@
   "content": {
     "description": "Structured technical data covering nearly everything in Minecraft.",
     "table-of-contents": {
+      "items": "Items",
       "releases": "Releases"
     }
   }

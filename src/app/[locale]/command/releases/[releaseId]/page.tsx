@@ -58,7 +58,7 @@ export default async function Page({
 
 	const { t } = await loadPageTranslations(
 		locale,
-		["domains", "page-command-releases-show"],
+		"page-command-releases-show",
 		{
 			keyPrefix: "content"
 		}

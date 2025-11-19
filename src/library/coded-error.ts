@@ -1,5 +1,3 @@
-import { pick } from "rambda";
-
 export const ERROR_CODE = {
 	CONFIRMATION_MISMATCH: "confirmation-mismatch",
 	CREDENTIALS_INVALID: "credentials-invalid",
@@ -28,21 +26,24 @@ export interface CodedErrorAttrs extends CodedErrorOptions {
 }
 
 class CodedError extends Error {
+	code: ErrorCode;
+
 	path: CodedErrorOptions["path"];
 
 	constructor(code: ErrorCode, { path, ...rest }: CodedErrorOptions = {}) {
 		super(code, rest);
 
 		this.name = "CodedError";
+		this.code = code;
 		this.path = path;
 	}
 
-	get code() {
-		return this.message as ErrorCode;
-	}
-
 	toJson() {
-		return pick(["code", "name", "path"])(this);
+		return {
+			code: this.code,
+			name: this.name,
+			path: this.path
+		};
 	}
 }
 

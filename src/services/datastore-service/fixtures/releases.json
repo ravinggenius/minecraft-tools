@@ -23,6 +23,28 @@
   },
   {
     "edition": "bedrock",
+    "version": "1.21.124",
+    "cycleName": "The Copper Age",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/41224903492621-Minecraft-1-21-124-Bedrock",
+    "platformsCondensed": {
+      "2025-11-21": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
     "version": "1.21.123",
     "cycleName": "The Copper Age",
     "changelog": "https://feedback.minecraft.net/hc/en-us/articles/41112550913677-Minecraft-1-21-123-Bedrock",

@@ -3278,7 +3278,7 @@
     "edition": "bedrock",
     "version": "1.1.5",
     "cycleName": "Discovery Update",
-    "changelog": 
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004168591-MCPE-WIN10-GEAR-VR-1-1-5",
     "platformsCondensed": {
       "2017-08-03": [
         "Android",
@@ -3296,7 +3296,7 @@
     "edition": "bedrock",
     "version": "1.1.4",
     "cycleName": "Discovery Update",
-    "changelog": 
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004127552-MCPE-WIN10-GEAR-VR-1-1-4",
     "platformsCondensed": {
       "2017-07-19": [
         "Android",
@@ -3315,7 +3315,7 @@
     "edition": "bedrock",
     "version": "1.1.3",
     "cycleName": "Discovery Update",
-    "changelog": 
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004127592-MCPE-WIN10-GEAR-VR-1-1-3",
     "developmentReleasedOn": "2017-06-23",
     "platformsCondensed": {
       "2017-07-06": [
@@ -3335,7 +3335,7 @@
     "edition": "bedrock",
     "version": "1.1.2",
     "cycleName": "Discovery Update",
-    "changelog": 
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004168651-MCPE-WIN10-GEAR-VR-1-1-2",
     "platformsCondensed": {
       "2017-06-23": [
         "Android",
@@ -3354,7 +3354,7 @@
     "edition": "bedrock",
     "version": "1.1.1",
     "cycleName": "Discovery Update",
-    "changelog": 
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004127612-MCPE-WIN10-GEAR-VR-1-1-1",
     "developmentReleasedOn": "2017-06-13",
     "platformsCondensed": {
       "2017-06-20": [
@@ -3374,7 +3374,7 @@
     "edition": "bedrock",
     "version": "1.1.0",
     "cycleName": "Discovery Update",
-    "changelog": 
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004125192-MCPE-WIN10-GEAR-VR-1-1",
     "developmentReleasedOn": "2017-03-31",
     "platformsCondensed": {
       "2017-06-01": [
@@ -3394,7 +3394,7 @@
     "edition": "bedrock",
     "version": "1.0.9",
     "cycleName": "Ender Update",
-    "changelog": 
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004127692-MCPE-WIN10-Gear-VR-1-0-9",
     "platformsCondensed": {
       "2017-05-18": [
         "Android",
@@ -3413,7 +3413,7 @@
     "edition": "bedrock",
     "version": "1.0.8",
     "cycleName": "Ender Update",
-    "changelog": 
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004127712-MCPE-WIN-10-Gear-VR-1-0-8",
     "platformsCondensed": {
       "2017-05-04": [
         "Android",
@@ -3432,7 +3432,7 @@
     "edition": "bedrock",
     "version": "1.0.7",
     "cycleName": "Ender Update",
-    "changelog": 
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004168671-MCPE-WIN-10-Gear-VR-1-0-7",
     "platformsCondensed": {
       "2017-04-20": [
         "Android",
@@ -3451,7 +3451,7 @@
     "edition": "bedrock",
     "version": "1.0.6",
     "cycleName": "Ender Update",
-    "changelog": 
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004127752-MCPE-WIN-10-Gear-VR-1-0-6",
     "developmentReleasedOn": "2017-03-24",
     "platformsCondensed": {
       "2017-04-11": [
@@ -3471,7 +3471,7 @@
     "edition": "bedrock",
     "version": "1.0.5",
     "cycleName": "Ender Update",
-    "changelog": 
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004127792-MCPE-WIN-10-Gear-VR-1-0-5",
     "developmentReleasedOn": "2017-03-10",
     "platformsCondensed": {
       "2017-03-28": [
@@ -3491,7 +3491,7 @@
     "edition": "bedrock",
     "version": "1.0.4",
     "cycleName": "Ender Update",
-    "changelog": 
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004168711-MCPE-WIN-10-Gear-VR-1-0-4",
     "developmentReleasedOn": "2017-02-14",
     "platformsCondensed": {
       "2017-03-09": [
@@ -3511,7 +3511,7 @@
     "edition": "bedrock",
     "version": "1.0.3",
     "cycleName": "Ender Update",
-    "changelog": 
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004127812-MCPE-WIN-10-Gear-VR-1-0-3",
     "developmentReleasedOn": "2017-02-01",
     "platformsCondensed": {
       "2017-02-08": ["Android"],
@@ -3524,7 +3524,7 @@
     "edition": "bedrock",
     "version": "1.0.2",
     "cycleName": "Ender Update",
-    "changelog": 
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004125752-MCPE-WIN-10-Gear-VR-1-0-2",
     "platformsCondensed": {
       "2017-01-19": [
         "Android",
@@ -3540,7 +3540,7 @@
   {
     "edition": "bedrock",
     "version": "1.0.1",
-    "changelog": 
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004168751-MCPE-iOS-ONLY-1-0-1",
     "cycleName": "Ender Update",
     "platformsCondensed": {
       "2017-01-06": ["iOS"]
@@ -3550,7 +3550,7 @@
     "edition": "bedrock",
     "version": "1.0.0",
     "cycleName": "Ender Update",
-    "changelog": 
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004127872-MCPE-WIN-10-Gear-VR-1-0",
     "developmentReleasedOn": "2016-11-11",
     "platformsCondensed": {
       "2016-12-19": [
@@ -3569,7 +3569,6 @@
     "edition": "bedrock",
     "version": "0.16.2",
     "cycleName": "Boss Update",
-    "changelog": 
     "platformsCondensed": {
       "2016-11-17": ["Android"],
       "2016-11-18": [
@@ -3585,7 +3584,6 @@
     "edition": "bedrock",
     "version": "0.16.1",
     "cycleName": "Boss Update",
-    "changelog": 
     "platformsCondensed": {
       "2016-11-04": [
         "Android",
@@ -3601,7 +3599,6 @@
     "edition": "bedrock",
     "version": "0.16.0",
     "cycleName": "Boss Update",
-    "changelog": 
     "developmentReleasedOn": "2016-08-29",
     "platformsCondensed": {
       "2016-10-21": [

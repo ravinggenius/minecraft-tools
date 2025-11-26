@@ -18,11 +18,6 @@ export const RARITY = z.enum(["common", "uncommon", "rare", "epic"]);
 
 export type Rarity = z.infer<typeof RARITY>;
 
-const NORMALIZED_COMPONENTS = z.record(
-	z.string(),
-	z.union([z.string(), z.int()])
-);
-
 const RAW_COMPONENTS_BEDROCK = z.object({
 	aliasId: z.string().optional(),
 	numericId: z.int().optional()
@@ -38,8 +33,7 @@ export const ITEM_METADATA = z.object({
 	updatedAt: z.iso.date(),
 	rarity: RARITY.optional().default("common"),
 	stackSize: z.int().positive().optional().default(64),
-	components: NORMALIZED_COMPONENTS.optional(),
-	rawComponents: z
+	components: z
 		.union([RAW_COMPONENTS_BEDROCK, RAW_COMPONENTS_JAVA])
 		.optional()
 });
@@ -189,8 +183,7 @@ export const IMPORT_ITEM = ITEM.pick({
 		ITEM_METADATA.pick({
 			rarity: true,
 			stackSize: true,
-			components: true,
-			rawComponents: true
+			components: true
 		})
 	)
 	.and(

@@ -1,5 +1,5 @@
 {
-  "note": "This maps development versions (snapshots, pre-releases, release candidates) to their final production releases",
+  "note": "Comprehensive mapping of development versions (snapshots, pre-releases, release candidates) to their final production releases for Minecraft Java and Bedrock Editions. Use this to convert wiki item version references to production releases.",
   "java_edition": {
     "1.21.11": {
       "release_date": "December 2025 (Planned)",
@@ -10,14 +10,14 @@
       "release_candidates": []
     },
     "1.21.10": {
-      "release_date": "2025",
+      "release_date": "October 2025",
       "edition": "java",
       "snapshots": [],
       "pre_releases": [],
       "release_candidates": ["1.21.10-rc1"]
     },
     "1.21.9": {
-      "release_date": "2025",
+      "release_date": "September 2025",
       "edition": "java",
       "snapshots": ["25w36a", "25w36b", "25w37a"],
       "pre_releases": [
@@ -36,6 +36,13 @@
       "pre_releases": [],
       "release_candidates": []
     },
+    "1.21.4": {
+      "release_date": "November 2024",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": ["1.21.4-pre1"],
+      "release_candidates": []
+    },
     "1.21": {
       "release_date": "June 13, 2024",
       "release_name": "Tricky Trials",
@@ -45,14 +52,14 @@
       "release_candidates": ["1.21-rc1"]
     },
     "1.20.5": {
-      "release_date": "2024",
+      "release_date": "April 2024",
       "edition": "java",
       "snapshots": ["23w51a", "24w03a", "24w04a", "24w05a", "24w05b", "24w06a"],
       "pre_releases": ["1.20.5-pre1", "1.20.5-pre2", "1.20.5-pre3"],
       "release_candidates": ["1.20.5-rc1", "1.20.5-rc2", "1.20.5-rc3"]
     },
     "1.20.3": {
-      "release_date": "2023",
+      "release_date": "December 2023",
       "edition": "java",
       "snapshots": ["23w40a", "23w42a", "23w44a", "23w45a", "23w46a"],
       "pre_releases": [
@@ -64,7 +71,7 @@
       "release_candidates": ["1.20.3-rc1"]
     },
     "1.20.2": {
-      "release_date": "2023",
+      "release_date": "September 2023",
       "edition": "java",
       "snapshots": ["23w31a", "23w32a", "23w33a", "23w35a", "24w38a"],
       "pre_releases": [
@@ -109,9 +116,9 @@
       "release_candidates": ["1.20-rc1"]
     },
     "1.19.4": {
-      "release_date": "March 2023",
+      "release_date": "March 14, 2023",
       "edition": "java",
-      "snapshots": [],
+      "snapshots": ["23w07a"],
       "pre_releases": [
         "1.19.4-pre1",
         "1.19.4-pre2",
@@ -124,14 +131,62 @@
       "release_date": "December 7, 2022",
       "edition": "java",
       "snapshots": ["22w42a", "22w43a", "22w44a", "22w45a", "22w46a"],
-      "pre_releases": [],
-      "release_candidates": []
+      "pre_releases": ["1.19.3-pre1", "1.19.3-pre2", "1.19.3-pre3"],
+      "release_candidates": ["1.19.3-rc1", "1.19.3-rc2", "1.19.3-rc3"]
+    },
+    "1.19": {
+      "release_date": "June 7, 2022",
+      "release_name": "The Wild Update",
+      "edition": "java",
+      "snapshots": [
+        "22w03a",
+        "22w11a",
+        "22w12a",
+        "22w13a",
+        "22w14a",
+        "22w15a",
+        "22w16a",
+        "22w17a",
+        "22w18a",
+        "22w19a"
+      ],
+      "pre_releases": [
+        "1.19-pre1",
+        "1.19-pre2",
+        "1.19-pre3",
+        "1.19-pre4",
+        "1.19-pre5"
+      ],
+      "release_candidates": ["1.19-rc1", "1.19-rc2"]
+    },
+    "1.18.2": {
+      "release_date": "February 28, 2022",
+      "edition": "java",
+      "snapshots": ["22w03a"],
+      "pre_releases": ["1.18.2-pre1", "1.18.2-pre2", "1.18.2-pre3"],
+      "release_candidates": ["1.18.2-rc1"]
+    },
+    "1.18.1": {
+      "release_date": "December 10, 2021",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": ["1.18.1-pre1"],
+      "release_candidates": ["1.18.1-rc1", "1.18.1-rc2", "1.18.1-rc3"]
     },
     "1.18": {
       "release_date": "November 30, 2021",
       "release_name": "Caves & Cliffs Part II",
       "edition": "java",
-      "snapshots": [],
+      "snapshots": [
+        "21w37a",
+        "21w38a",
+        "21w39a",
+        "21w40a",
+        "21w41a",
+        "21w42a",
+        "21w43a",
+        "21w44a"
+      ],
       "pre_releases": [
         "1.18-pre1",
         "1.18-pre2",
@@ -142,13 +197,103 @@
         "1.18-pre7",
         "1.18-pre8"
       ],
-      "release_candidates": []
+      "release_candidates": ["1.18-rc1", "1.18-rc2", "1.18-rc3", "1.18-rc4"]
+    },
+    "1.17.1": {
+      "release_date": "July 6, 2021",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": ["1.17.1-pre1", "1.17.1-pre2", "1.17.1-pre3"],
+      "release_candidates": ["1.17.1-rc1", "1.17.1-rc2"]
+    },
+    "1.17": {
+      "release_date": "June 8, 2021",
+      "release_name": "Caves & Cliffs Part I",
+      "edition": "java",
+      "snapshots": [
+        "21w03a",
+        "21w05a",
+        "21w06a",
+        "21w07a",
+        "21w08a",
+        "21w10a",
+        "21w11a",
+        "21w13a",
+        "21w14a",
+        "21w15a",
+        "21w16a",
+        "21w17a",
+        "21w18a",
+        "21w19a",
+        "21w20a"
+      ],
+      "pre_releases": [
+        "1.17-pre1",
+        "1.17-pre2",
+        "1.17-pre3",
+        "1.17-pre4",
+        "1.17-pre5"
+      ],
+      "release_candidates": ["1.17-rc1", "1.17-rc2"]
+    },
+    "1.16.5": {
+      "release_date": "January 14, 2021",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": ["1.16.5-pre1"],
+      "release_candidates": ["1.16.5-rc1"]
+    },
+    "1.16.4": {
+      "release_date": "October 29, 2020",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": ["1.16.4-pre1", "1.16.4-pre2"],
+      "release_candidates": ["1.16.4-rc1"]
+    },
+    "1.16.3": {
+      "release_date": "September 10, 2020",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": [],
+      "release_candidates": ["1.16.3-rc1"]
+    },
+    "1.16.2": {
+      "release_date": "August 11, 2020",
+      "edition": "java",
+      "snapshots": ["20w27a", "20w28a", "20w29a", "20w30a"],
+      "pre_releases": ["1.16.2-pre1", "1.16.2-pre2", "1.16.2-pre3"],
+      "release_candidates": ["1.16.2-rc1", "1.16.2-rc2"]
+    },
+    "1.16.1": {
+      "release_date": "June 24, 2020",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": ["1.16.1-pre1", "1.16.1-pre2", "1.16.1-pre3"],
+      "release_candidates": ["1.16.1-rc1"]
     },
     "1.16": {
       "release_date": "June 23, 2020",
       "release_name": "Nether Update",
       "edition": "java",
-      "snapshots": [],
+      "snapshots": [
+        "20w06a",
+        "20w07a",
+        "20w08a",
+        "20w09a",
+        "20w10a",
+        "20w11a",
+        "20w12a",
+        "20w13a",
+        "20w14a",
+        "20w15a",
+        "20w16a",
+        "20w17a",
+        "20w18a",
+        "20w19a",
+        "20w20a",
+        "20w21a",
+        "20w22a"
+      ],
       "pre_releases": [
         "1.16-pre1",
         "1.16-pre2",
@@ -161,8 +306,52 @@
       ],
       "release_candidates": ["1.16-rc1"]
     },
+    "1.15.2": {
+      "release_date": "January 17, 2020",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": ["1.15.2-pre1", "1.15.2-pre2"],
+      "release_candidates": []
+    },
+    "1.15.1": {
+      "release_date": "December 16, 2019",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": ["1.15.1-pre1"],
+      "release_candidates": []
+    },
+    "1.15": {
+      "release_date": "December 10, 2019",
+      "release_name": "Buzzy Bees",
+      "edition": "java",
+      "snapshots": [
+        "19w34a",
+        "19w35a",
+        "19w36a",
+        "19w37a",
+        "19w38a",
+        "19w39a",
+        "19w40a",
+        "19w41a",
+        "19w42a",
+        "19w44a",
+        "19w45a",
+        "19w46a",
+        "19w46b"
+      ],
+      "pre_releases": [
+        "1.15-pre1",
+        "1.15-pre2",
+        "1.15-pre3",
+        "1.15-pre4",
+        "1.15-pre5",
+        "1.15-pre6",
+        "1.15-pre7"
+      ],
+      "release_candidates": []
+    },
     "1.14.4": {
-      "release_date": "2019",
+      "release_date": "July 19, 2019",
       "edition": "java",
       "snapshots": [],
       "pre_releases": [
@@ -176,11 +365,117 @@
       ],
       "release_candidates": []
     },
+    "1.14.3": {
+      "release_date": "June 24, 2019",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": [
+        "1.14.3-pre1",
+        "1.14.3-pre2",
+        "1.14.3-pre3",
+        "1.14.3-pre4"
+      ],
+      "release_candidates": []
+    },
+    "1.14.2": {
+      "release_date": "May 27, 2019",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": [
+        "1.14.2-pre1",
+        "1.14.2-pre2",
+        "1.14.2-pre3",
+        "1.14.2-pre4"
+      ],
+      "release_candidates": []
+    },
+    "1.14.1": {
+      "release_date": "May 13, 2019",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": ["1.14.1-pre1", "1.14.1-pre2"],
+      "release_candidates": []
+    },
+    "1.14": {
+      "release_date": "April 23, 2019",
+      "release_name": "Village & Pillage",
+      "edition": "java",
+      "snapshots": [
+        "18w43a",
+        "18w44a",
+        "18w45a",
+        "18w46a",
+        "18w47a",
+        "18w48a",
+        "18w49a",
+        "18w50a",
+        "19w02a",
+        "19w03a",
+        "19w04a",
+        "19w05a",
+        "19w06a",
+        "19w07a",
+        "19w08a",
+        "19w09a",
+        "19w11a",
+        "19w12a",
+        "19w13a",
+        "19w14a"
+      ],
+      "pre_releases": [
+        "1.14-pre1",
+        "1.14-pre2",
+        "1.14-pre3",
+        "1.14-pre4",
+        "1.14-pre5"
+      ],
+      "release_candidates": []
+    },
+    "1.13.2": {
+      "release_date": "October 22, 2018",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": ["1.13.2-pre1", "1.13.2-pre2"],
+      "release_candidates": []
+    },
+    "1.13.1": {
+      "release_date": "August 22, 2018",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": ["1.13.1-pre1", "1.13.1-pre2"],
+      "release_candidates": []
+    },
     "1.13": {
       "release_date": "July 18, 2018",
       "release_name": "Update Aquatic",
       "edition": "java",
-      "snapshots": [],
+      "snapshots": [
+        "17w43a",
+        "17w43b",
+        "17w45a",
+        "17w46a",
+        "17w47a",
+        "17w48a",
+        "17w49a",
+        "17w50a",
+        "18w01a",
+        "18w02a",
+        "18w03a",
+        "18w05a",
+        "18w06a",
+        "18w07a",
+        "18w08a",
+        "18w09a",
+        "18w10a",
+        "18w11a",
+        "18w14a",
+        "18w15a",
+        "18w16a",
+        "18w19a",
+        "18w20a",
+        "18w21a",
+        "18w22a"
+      ],
       "pre_releases": [
         "1.13-pre1",
         "1.13-pre2",
@@ -195,24 +490,279 @@
       ],
       "release_candidates": []
     },
-    "1.8.2": {
-      "release_date": "February 19, 2015",
+    "1.12.2": {
+      "release_date": "September 18, 2017",
       "edition": "java",
       "snapshots": [],
-      "pre_releases": [
-        "1.8.2-pre1",
-        "1.8.2-pre2",
-        "1.8.2-pre3",
-        "1.8.2-pre4",
-        "1.8.2-pre5",
-        "1.8.2-pre6",
-        "1.8.2-pre7"
+      "pre_releases": ["1.12.2-pre1", "1.12.2-pre2"],
+      "release_candidates": []
+    },
+    "1.12.1": {
+      "release_date": "August 3, 2017",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": ["1.12.1-pre1"],
+      "release_candidates": []
+    },
+    "1.12": {
+      "release_date": "June 2, 2017",
+      "release_name": "World of Color Update",
+      "edition": "java",
+      "snapshots": [
+        "17w06a",
+        "17w13a",
+        "17w14a",
+        "17w15a",
+        "17w16a",
+        "17w17a",
+        "17w18a"
       ],
+      "pre_releases": [
+        "1.12-pre1",
+        "1.12-pre2",
+        "1.12-pre3",
+        "1.12-pre4",
+        "1.12-pre5",
+        "1.12-pre6",
+        "1.12-pre7"
+      ],
+      "release_candidates": []
+    },
+    "1.11.2": {
+      "release_date": "December 21, 2016",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": [],
+      "release_candidates": []
+    },
+    "1.11.1": {
+      "release_date": "December 20, 2016",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": [],
+      "release_candidates": []
+    },
+    "1.11": {
+      "release_date": "November 14, 2016",
+      "release_name": "Exploration Update",
+      "edition": "java",
+      "snapshots": [
+        "16w32a",
+        "16w33a",
+        "16w35a",
+        "16w36a",
+        "16w38a",
+        "16w39a",
+        "16w40a",
+        "16w41a",
+        "16w42a",
+        "16w43a",
+        "16w44a"
+      ],
+      "pre_releases": ["1.11-pre1"],
+      "release_candidates": []
+    },
+    "1.10.2": {
+      "release_date": "June 23, 2016",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": [],
+      "release_candidates": []
+    },
+    "1.10": {
+      "release_date": "June 8, 2016",
+      "release_name": "Frostburn Update",
+      "edition": "java",
+      "snapshots": ["16w20a", "16w21a", "16w21b"],
+      "pre_releases": [],
+      "release_candidates": []
+    },
+    "1.9.4": {
+      "release_date": "May 10, 2016",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": [],
+      "release_candidates": []
+    },
+    "1.9": {
+      "release_date": "February 29, 2016",
+      "release_name": "Combat Update",
+      "edition": "java",
+      "snapshots": [
+        "15w31a",
+        "15w32a",
+        "15w33a",
+        "15w34a",
+        "15w35a",
+        "15w35b",
+        "15w35c",
+        "15w35d",
+        "15w35e",
+        "15w36a",
+        "15w36b",
+        "15w36c",
+        "15w36d",
+        "15w37a",
+        "15w38a",
+        "15w38b",
+        "15w39a",
+        "15w39b",
+        "15w39c",
+        "15w40a",
+        "15w40b",
+        "15w41a",
+        "15w41b",
+        "15w42a",
+        "15w43a",
+        "15w43b",
+        "15w43c",
+        "15w44a",
+        "15w44b",
+        "15w45a",
+        "15w46a",
+        "15w47a",
+        "15w47b",
+        "15w47c",
+        "15w49a",
+        "15w49b",
+        "15w50a",
+        "15w51a",
+        "15w51b",
+        "16w02a",
+        "16w03a",
+        "16w04a",
+        "16w05a",
+        "16w05b",
+        "16w06a",
+        "16w07a",
+        "16w07b"
+      ],
+      "pre_releases": ["1.9-pre1", "1.9-pre2", "1.9-pre3", "1.9-pre4"],
+      "release_candidates": []
+    },
+    "1.8.9": {
+      "release_date": "December 9, 2015",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": [],
+      "release_candidates": []
+    },
+    "1.8": {
+      "release_date": "September 2, 2014",
+      "release_name": "Bountiful Update",
+      "edition": "java",
+      "snapshots": [
+        "14w02a",
+        "14w03a",
+        "14w04a",
+        "14w05a",
+        "14w06a",
+        "14w07a",
+        "14w08a",
+        "14w10a",
+        "14w11a",
+        "14w17a",
+        "14w18a",
+        "14w19a",
+        "14w20a",
+        "14w21a",
+        "14w21b",
+        "14w25a",
+        "14w25b",
+        "14w26a",
+        "14w26b",
+        "14w26c",
+        "14w27a",
+        "14w27b",
+        "14w28a",
+        "14w28b",
+        "14w29a",
+        "14w30a",
+        "14w30b",
+        "14w30c",
+        "14w31a",
+        "14w32a",
+        "14w32b",
+        "14w32c",
+        "14w32d",
+        "14w33a",
+        "14w33b",
+        "14w33c",
+        "14w34a",
+        "14w34b",
+        "14w34c",
+        "14w34d"
+      ],
+      "pre_releases": ["1.8-pre1", "1.8-pre2", "1.8-pre3"],
+      "release_candidates": []
+    },
+    "1.7.10": {
+      "release_date": "June 26, 2014",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": [],
+      "release_candidates": []
+    },
+    "1.7.2": {
+      "release_date": "October 25, 2013",
+      "release_name": "The Update that Changed the World",
+      "edition": "java",
+      "snapshots": [
+        "13w36a",
+        "13w36b",
+        "13w37a",
+        "13w37b",
+        "13w38a",
+        "13w38b",
+        "13w38c",
+        "13w39a",
+        "13w39b",
+        "13w41a",
+        "13w41b",
+        "13w42a",
+        "13w42b",
+        "13w43a"
+      ],
+      "pre_releases": ["1.7-pre"],
+      "release_candidates": []
+    },
+    "1.6.4": {
+      "release_date": "September 19, 2013",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": [],
+      "release_candidates": []
+    },
+    "1.6.1": {
+      "release_date": "July 1, 2013",
+      "release_name": "Horse Update",
+      "edition": "java",
+      "snapshots": [
+        "13w16a",
+        "13w16b",
+        "13w17a",
+        "13w18a",
+        "13w18b",
+        "13w18c",
+        "13w19a",
+        "13w21a",
+        "13w21b",
+        "13w22a",
+        "13w23a",
+        "13w23b",
+        "13w24a",
+        "13w24b",
+        "13w25a",
+        "13w25b",
+        "13w25c",
+        "13w26a"
+      ],
+      "pre_releases": ["1.6-pre"],
       "release_candidates": []
     }
   },
   "bedrock_edition": {
-    "note": "Bedrock Edition uses numeric versioning. Preview/Beta versions share version numbers with their releases.",
+    "note": "Bedrock Edition uses numeric versioning. Preview/Beta versions share version numbers with their releases. Pocket Edition and Console Edition are both considered 'bedrock' edition.",
     "1.21.130": {
       "release_date": "December 2025 (Expected)",
       "edition": "bedrock",
@@ -226,14 +776,23 @@
     },
     "general_pattern": {
       "edition": "bedrock",
-      "note": "Bedrock preview/beta versions increment the 4th digit (e.g., 1.21.130.20, 1.21.130.22) leading to a final release that drops the 4th digit (e.g., 1.21.130). Pocket Edition and Console Edition are both considered bedrock."
+      "explanation": "Bedrock preview/beta versions increment the 4th digit (e.g., 1.21.130.20, 1.21.130.22) leading to a final release that drops the 4th digit or uses .0 (e.g., 1.21.130 or 1.21.130.0). To map a preview/beta to its release, take the first 3 version segments."
     }
   },
-  "lookup_instructions": {
-    "for_java_snapshots": "Snapshots use format YYwWWn (e.g., 23w07a = year 2023, week 7, variant a). Look up the snapshot in the arrays above to find which release it belongs to.",
-    "for_java_pre_releases": "Pre-releases use format X.XX-preN or X.XX Pre-Release N. Match the version number to find the corresponding release.",
-    "for_java_release_candidates": "Release candidates use format X.XX-rcN or X.XX Release Candidate N. These are the final testing versions before release.",
-    "for_bedrock_previews": "Match the first 3 version segments (e.g., 1.21.130.XX maps to 1.21.130).",
-    "legacy_versions": "Pre-1.7.6 Java versions had different naming conventions. Pre-releases were often released as full minor versions."
+  "lookup_guide": {
+    "java_snapshot_format": "YYwWWn (e.g., 23w07a = year 2023, week 7, variant a)",
+    "java_pre_release_format": "X.XX-preN or 'X.XX Pre-Release N' (e.g., 1.20-pre1 or 1.14 Pre-Release 1)",
+    "java_release_candidate_format": "X.XX-rcN or 'X.XX Release Candidate N' (e.g., 1.16-rc1)",
+    "bedrock_preview_format": "Match first 3 segments: X.XX.XXX.YY → X.XX.XXX",
+    "usage_for_item_compilation": {
+      "step_1": "Find the development version listed on wiki (e.g., '23w07a' or '1.20-pre3')",
+      "step_2": "Look up that version in the appropriate array (snapshots, pre_releases, or release_candidates)",
+      "step_3": "Use the parent release version as the production release for your item list"
+    },
+    "special_notes": {
+      "legacy_pre_releases": "Pre-1.7.6 Java versions had different naming. Pre-releases were often full minor versions (e.g., 1.4 and 1.4.1 were pre-releases for 1.4.2)",
+      "snapshot_week_numbers": "Snapshot week numbers don't match ISO week numbers",
+      "april_fools": "April Fools snapshots (like 20w14∞, 22w13oneBlockAtATime) are joke versions and don't map to production releases"
+    }
   }
 }

@@ -1,0 +1,239 @@
+{
+  "note": "This maps development versions (snapshots, pre-releases, release candidates) to their final production releases",
+  "java_edition": {
+    "1.21.11": {
+      "release_date": "December 2025 (Planned)",
+      "release_name": "Mounts of Mayhem",
+      "edition": "java",
+      "snapshots": ["25w41a", "25w42a", "25w43a", "25w44a", "25w45a", "25w46a"],
+      "pre_releases": ["1.21.11-pre1", "1.21.11-pre2", "1.21.11-pre3"],
+      "release_candidates": []
+    },
+    "1.21.10": {
+      "release_date": "2025",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": [],
+      "release_candidates": ["1.21.10-rc1"]
+    },
+    "1.21.9": {
+      "release_date": "2025",
+      "edition": "java",
+      "snapshots": ["25w36a", "25w36b", "25w37a"],
+      "pre_releases": [
+        "1.21.9-pre1",
+        "1.21.9-pre2",
+        "1.21.9-pre3",
+        "1.21.9-pre4"
+      ],
+      "release_candidates": ["1.21.9-rc1"]
+    },
+    "1.21.6": {
+      "release_date": "June 17, 2025",
+      "release_name": "Chase the Skies",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": [],
+      "release_candidates": []
+    },
+    "1.21": {
+      "release_date": "June 13, 2024",
+      "release_name": "Tricky Trials",
+      "edition": "java",
+      "snapshots": ["24w18a", "24w19a", "24w20a", "24w21a"],
+      "pre_releases": ["1.21-pre1", "1.21-pre2", "1.21-pre3", "1.21-pre4"],
+      "release_candidates": ["1.21-rc1"]
+    },
+    "1.20.5": {
+      "release_date": "2024",
+      "edition": "java",
+      "snapshots": ["23w51a", "24w03a", "24w04a", "24w05a", "24w05b", "24w06a"],
+      "pre_releases": ["1.20.5-pre1", "1.20.5-pre2", "1.20.5-pre3"],
+      "release_candidates": ["1.20.5-rc1", "1.20.5-rc2", "1.20.5-rc3"]
+    },
+    "1.20.3": {
+      "release_date": "2023",
+      "edition": "java",
+      "snapshots": ["23w40a", "23w42a", "23w44a", "23w45a", "23w46a"],
+      "pre_releases": [
+        "1.20.3-pre1",
+        "1.20.3-pre2",
+        "1.20.3-pre3",
+        "1.20.3-pre4"
+      ],
+      "release_candidates": ["1.20.3-rc1"]
+    },
+    "1.20.2": {
+      "release_date": "2023",
+      "edition": "java",
+      "snapshots": ["23w31a", "23w32a", "23w33a", "23w35a", "24w38a"],
+      "pre_releases": [
+        "1.20.2-pre1",
+        "1.20.2-pre2",
+        "1.20.2-pre3",
+        "1.20.2-pre4"
+      ],
+      "release_candidates": []
+    },
+    "1.20": {
+      "release_date": "June 7, 2023",
+      "release_name": "Trails & Tales",
+      "edition": "java",
+      "snapshots": [
+        "22w42a",
+        "22w43a",
+        "22w44a",
+        "22w45a",
+        "22w46a",
+        "23w03a",
+        "23w04a",
+        "23w05a",
+        "23w06a",
+        "23w07a",
+        "23w12a",
+        "23w13a",
+        "23w14a",
+        "23w16a",
+        "23w17a",
+        "23w18a"
+      ],
+      "pre_releases": [
+        "1.20-pre1",
+        "1.20-pre2",
+        "1.20-pre3",
+        "1.20-pre4",
+        "1.20-pre5",
+        "1.20-pre6",
+        "1.20-pre7"
+      ],
+      "release_candidates": ["1.20-rc1"]
+    },
+    "1.19.4": {
+      "release_date": "March 2023",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": [
+        "1.19.4-pre1",
+        "1.19.4-pre2",
+        "1.19.4-pre3",
+        "1.19.4-pre4"
+      ],
+      "release_candidates": []
+    },
+    "1.19.3": {
+      "release_date": "December 7, 2022",
+      "edition": "java",
+      "snapshots": ["22w42a", "22w43a", "22w44a", "22w45a", "22w46a"],
+      "pre_releases": [],
+      "release_candidates": []
+    },
+    "1.18": {
+      "release_date": "November 30, 2021",
+      "release_name": "Caves & Cliffs Part II",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": [
+        "1.18-pre1",
+        "1.18-pre2",
+        "1.18-pre3",
+        "1.18-pre4",
+        "1.18-pre5",
+        "1.18-pre6",
+        "1.18-pre7",
+        "1.18-pre8"
+      ],
+      "release_candidates": []
+    },
+    "1.16": {
+      "release_date": "June 23, 2020",
+      "release_name": "Nether Update",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": [
+        "1.16-pre1",
+        "1.16-pre2",
+        "1.16-pre3",
+        "1.16-pre4",
+        "1.16-pre5",
+        "1.16-pre6",
+        "1.16-pre7",
+        "1.16-pre8"
+      ],
+      "release_candidates": ["1.16-rc1"]
+    },
+    "1.14.4": {
+      "release_date": "2019",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": [
+        "1.14.4-pre1",
+        "1.14.4-pre2",
+        "1.14.4-pre3",
+        "1.14.4-pre4",
+        "1.14.4-pre5",
+        "1.14.4-pre6",
+        "1.14.4-pre7"
+      ],
+      "release_candidates": []
+    },
+    "1.13": {
+      "release_date": "July 18, 2018",
+      "release_name": "Update Aquatic",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": [
+        "1.13-pre1",
+        "1.13-pre2",
+        "1.13-pre3",
+        "1.13-pre4",
+        "1.13-pre5",
+        "1.13-pre6",
+        "1.13-pre7",
+        "1.13-pre8",
+        "1.13-pre9",
+        "1.13-pre10"
+      ],
+      "release_candidates": []
+    },
+    "1.8.2": {
+      "release_date": "February 19, 2015",
+      "edition": "java",
+      "snapshots": [],
+      "pre_releases": [
+        "1.8.2-pre1",
+        "1.8.2-pre2",
+        "1.8.2-pre3",
+        "1.8.2-pre4",
+        "1.8.2-pre5",
+        "1.8.2-pre6",
+        "1.8.2-pre7"
+      ],
+      "release_candidates": []
+    }
+  },
+  "bedrock_edition": {
+    "note": "Bedrock Edition uses numeric versioning. Preview/Beta versions share version numbers with their releases.",
+    "1.21.130": {
+      "release_date": "December 2025 (Expected)",
+      "edition": "bedrock",
+      "previews_betas": [
+        "1.21.130.20",
+        "1.21.130.22",
+        "1.21.130.26",
+        "1.21.130.27",
+        "1.21.130.28"
+      ]
+    },
+    "general_pattern": {
+      "edition": "bedrock",
+      "note": "Bedrock preview/beta versions increment the 4th digit (e.g., 1.21.130.20, 1.21.130.22) leading to a final release that drops the 4th digit (e.g., 1.21.130). Pocket Edition and Console Edition are both considered bedrock."
+    }
+  },
+  "lookup_instructions": {
+    "for_java_snapshots": "Snapshots use format YYwWWn (e.g., 23w07a = year 2023, week 7, variant a). Look up the snapshot in the arrays above to find which release it belongs to.",
+    "for_java_pre_releases": "Pre-releases use format X.XX-preN or X.XX Pre-Release N. Match the version number to find the corresponding release.",
+    "for_java_release_candidates": "Release candidates use format X.XX-rcN or X.XX Release Candidate N. These are the final testing versions before release.",
+    "for_bedrock_previews": "Match the first 3 version segments (e.g., 1.21.130.XX maps to 1.21.130).",
+    "legacy_versions": "Pre-1.7.6 Java versions had different naming conventions. Pre-releases were often released as full minor versions."
+  }
+}

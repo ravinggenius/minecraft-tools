@@ -1692,6 +1692,7 @@
     "edition": "bedrock",
     "version": "1.18.33",
     "cycleName": "Caves & Cliffs: Part II",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/6213367123597-Minecraft-1-18-33-Switch",
     "platformsCondensed": {
       "2022-05-13": ["Nintendo Switch"]
     }
@@ -1700,6 +1701,7 @@
     "edition": "bedrock",
     "version": "1.18.32",
     "cycleName": "Caves & Cliffs: Part II",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/6031356127117-Minecraft-1-18-32-Android-Switch",
     "platformsCondensed": {
       "2022-05-05": ["Android"],
       "2022-05-06": ["Fire", "Nintendo Switch"]
@@ -1709,6 +1711,7 @@
     "edition": "bedrock",
     "version": "1.18.31",
     "cycleName": "Caves & Cliffs: Part II",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/5842521639693-Minecraft-1-18-31-Bedrock",
     "platformsCondensed": {
       "2022-04-27": [
         "Android",
@@ -1727,6 +1730,7 @@
     "edition": "bedrock",
     "version": "1.18.30",
     "cycleName": "Caves & Cliffs: Part II",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/5520890863245-Minecraft-1-18-30-Bedrock",
     "developmentReleasedOn": "2022-01-27",
     "platformsCondensed": {
       "2022-04-19": [
@@ -1746,6 +1750,7 @@
     "edition": "bedrock",
     "version": "1.18.12",
     "cycleName": "Caves & Cliffs: Part II",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4432393403149-Minecraft-1-18-12-Bedrock",
     "platformsCondensed": {
       "2022-02-16": [
         "Android",
@@ -1764,6 +1769,7 @@
     "edition": "bedrock",
     "version": "1.18.11",
     "cycleName": "Caves & Cliffs: Part II",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4424805981069-Minecraft-1-18-11-Switch-Only",
     "platformsCondensed": {
       "2022-02-11": ["Nintendo Switch"]
     }
@@ -1772,6 +1778,7 @@
     "edition": "bedrock",
     "version": "1.18.10",
     "cycleName": "Caves & Cliffs: Part II",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4422385469837-Minecraft-1-18-10-Bedrock",
     "developmentReleasedOn": "2021-11-18",
     "platformsCondensed": {
       "2022-02-08": [
@@ -1791,6 +1798,7 @@
     "edition": "bedrock",
     "version": "1.18.2",
     "cycleName": "Caves & Cliffs: Part II",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4416080068109-Minecraft-1-18-2-Bedrock",
     "platformsCondensed": {
       "2021-12-09": [
         "Android",
@@ -1809,6 +1817,7 @@
     "edition": "bedrock",
     "version": "1.18.1",
     "cycleName": "Caves & Cliffs: Part II",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4415394258317-Minecraft-1-18-1-Bedrock",
     "platformsCondensed": {
       "2021-12-06": ["Android", "iOS", "iPadOS", "Fire", "Windows", "Xbox One"],
       "2021-12-02": ["PlayStation 4", "PlayStation VR"]
@@ -1818,6 +1827,7 @@
     "edition": "bedrock",
     "version": "1.18.0",
     "cycleName": "Caves & Cliffs: Part II",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4414284658701-Minecraft-Caves-Cliffs-Part-II-1-18-0-Bedrock",
     "developmentReleasedOn": "2021-10-06",
     "platformsCondensed": {
       "2021-11-30": [
@@ -1837,6 +1847,7 @@
     "edition": "bedrock",
     "version": "1.17.41",
     "cycleName": "Caves & Cliffs: Part I",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4411858037005-Minecraft-1-17-41-Bedrock",
     "platformsCondensed": {
       "2021-10-27": [
         "Android",
@@ -1855,6 +1866,7 @@
     "edition": "bedrock",
     "version": "1.17.40",
     "cycleName": "Caves & Cliffs: Part I",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4411311573133-Minecraft-1-17-40-Bedrock",
     "developmentReleasedOn": "2021-09-15",
     "platformsCondensed": {
       "2021-10-19": [
@@ -1874,6 +1886,7 @@
     "edition": "bedrock",
     "version": "1.17.34",
     "cycleName": "Caves & Cliffs: Part I",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4410708945293-Minecraft-1-17-34-Bedrock",
     "platformsCondensed": {
       "2021-10-05": ["Android", "iOS", "iPadOS"],
       "2021-10-07": ["Fire"],
@@ -1890,6 +1903,7 @@
     "edition": "bedrock",
     "version": "1.17.33",
     "cycleName": "Caves & Cliffs: Part I",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4410607953677-Minecraft-1-17-33-Amazon",
     "platformsCondensed": {
       "2021-10-04": ["Fire"]
     }
@@ -1898,6 +1912,7 @@
     "edition": "bedrock",
     "version": "1.17.32",
     "cycleName": "Caves & Cliffs: Part I",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4410304508429-Minecraft-1-17-32-Bedrock",
     "platformsCondensed": {
       "2021-09-30": [
         "Android",
@@ -1916,6 +1931,7 @@
     "edition": "bedrock",
     "version": "1.17.30",
     "cycleName": "Caves & Cliffs: Part I",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4409292961677-Minecraft-1-17-30-Bedrock",
     "developmentReleasedOn": "2021-06-23",
     "platformsCondensed": {
       "2021-09-21": [
@@ -1935,6 +1951,7 @@
     "edition": "bedrock",
     "version": "1.17.11",
     "cycleName": "Caves & Cliffs: Part I",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4406729569933-Minecraft-1-17-11-Bedrock",
     "platformsCondensed": {
       "2021-08-09": [
         "Android",
@@ -1953,6 +1970,7 @@
     "edition": "bedrock",
     "version": "1.17.10",
     "cycleName": "Caves & Cliffs: Part I",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4404454406285-Minecraft-1-17-10-Bedrock",
     "developmentReleasedOn": "2021-05-26",
     "platformsCondensed": {
       "2021-07-13": [
@@ -1972,6 +1990,7 @@
     "edition": "bedrock",
     "version": "1.17.2",
     "cycleName": "Caves & Cliffs: Part I",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4403547028237-Minecraft-1-17-2-Bedrock",
     "platformsCondensed": {
       "2021-06-22": [
         "Android",
@@ -1990,6 +2009,7 @@
     "edition": "bedrock",
     "version": "1.17.1",
     "cycleName": "Caves & Cliffs: Part I",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4402856034573-Minecraft-1-17-1-Switch-Only",
     "platformsCondensed": {
       "2021-06-14": ["Nintendo Switch"]
     }
@@ -1998,6 +2018,7 @@
     "edition": "bedrock",
     "version": "1.17.0",
     "cycleName": "Caves & Cliffs: Part I",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4402427632013-Minecraft-Caves-Cliffs-Part-I-1-17-0-Bedrock",
     "developmentReleasedOn": "2021-03-25",
     "platformsCondensed": {
       "2021-06-08": [
@@ -2017,6 +2038,7 @@
     "edition": "bedrock",
     "version": "1.16.221",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360059800372-Minecraft-1-16-221-Bedrock",
     "platformsCondensed": {
       "2021-04-22": [
         "Android",
@@ -2036,6 +2058,7 @@
     "edition": "bedrock",
     "version": "1.16.220",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360059426071-Minecraft-1-16-220-Bedrock",
     "developmentReleasedOn": "2021-03-04",
     "platformsCondensed": {
       "2021-04-06": [
@@ -2056,6 +2079,7 @@
     "edition": "bedrock",
     "version": "1.16.210",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360057677072-Minecraft-1-16-210-Bedrock",
     "developmentReleasedOn": "2020-12-02",
     "platformsCondensed": {
       "2021-03-09": [
@@ -2076,6 +2100,7 @@
     "edition": "bedrock",
     "version": "1.16.201",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360053622851-Minecraft-1-16-201-Bedrock",
     "platformsCondensed": {
       "2020-12-15": [
         "Android",
@@ -2096,6 +2121,7 @@
     "edition": "bedrock",
     "version": "1.16.200",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360052712132-Minecraft-1-16-200-Bedrock",
     "developmentReleasedOn": "2020-10-22",
     "platformsCondensed": {
       "2020-12-08": [
@@ -2117,6 +2143,7 @@
     "edition": "bedrock",
     "version": "1.16.101",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360052372592-Minecraft-1-16-101-Bedrock",
     "platformsCondensed": {
       "2020-11-23": [
         "Android",
@@ -2133,6 +2160,7 @@
     "edition": "bedrock",
     "version": "1.16.100",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360052592091-Minecraft-1-16-100-Bedrock",
     "developmentReleasedOn": "2020-07-30",
     "platformsCondensed": {
       "2020-11-17": [
@@ -2154,6 +2182,7 @@
     "edition": "bedrock",
     "version": "1.16.61",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360050155151-Minecraft-1-16-61-PS4-Only",
     "platformsCondensed": {
       "2020-09-25": ["PlayStation 4", "PlayStation VR"]
     }
@@ -2162,6 +2191,7 @@
     "edition": "bedrock",
     "version": "1.16.60",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360050084571-Minecraft-1-16-60-PS4-Only",
     "platformsCondensed": {
       "2020-09-23": ["PlayStation 4", "PlayStation VR"]
     }
@@ -2170,6 +2200,7 @@
     "edition": "bedrock",
     "version": "1.16.50",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360049438972-Minecraft-1-16-50-iOS-Only",
     "platformsCondensed": {
       "2020-09-22": ["iOS", "iPadOS"]
     }
@@ -2178,6 +2209,7 @@
     "edition": "bedrock",
     "version": "1.16.42",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360049439612-Minecraft-1-16-42-PlayStation-VR",
     "platformsCondensed": {
       "2020-09-22": ["PlayStation 4", "PlayStation VR"]
     }
@@ -2186,6 +2218,7 @@
     "edition": "bedrock",
     "version": "1.16.40",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360048253952-Minecraft-1-16-40-Bedrock",
     "platformsCondensed": {
       "2020-09-03": [
         "Android",
@@ -2205,6 +2238,7 @@
     "edition": "bedrock",
     "version": "1.16.21",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360048475071-Minecraft-1-16-21-Switch-Only",
     "platformsCondensed": {
       "2020-08-20": ["Nintendo Switch"]
     }
@@ -2213,6 +2247,7 @@
     "edition": "bedrock",
     "version": "1.16.20",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360046901272-Minecraft-1-16-20-Bedrock",
     "developmentReleasedOn": "2020-06-25",
     "platformsCondensed": {
       "2020-08-11": [
@@ -2235,6 +2270,7 @@
     "edition": "bedrock",
     "version": "1.16.10",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360046591051-Minecraft-1-16-10-Bedrock",
     "platformsCondensed": {
       "2020-07-21": [
         "Android",
@@ -2266,6 +2302,7 @@
     "edition": "bedrock",
     "version": "1.16.1",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360045602971-Minecraft-1-16-1-Bedrock",
     "platformsCondensed": {
       "2020-06-29": ["Android", "Windows 10", "Windows 10 Mobile", "Gear VR"],
       "2020-07-06": ["iOS", "iPadOS"],
@@ -2278,6 +2315,7 @@
     "edition": "bedrock",
     "version": "1.16.0",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360044928311-Minecraft-Nether-Update-1-16-0-Bedrock",
     "developmentReleasedOn": "2020-02-12",
     "platformsCondensed": {
       "2020-06-23": [
@@ -2300,6 +2338,7 @@
     "edition": "bedrock",
     "version": "1.14.60",
     "cycleName": "Buzzy Bees",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360041875292-Minecraft-1-14-60-Bedrock",
     "platformsCondensed": {
       "2020-04-15": [
         "Android",
@@ -2321,6 +2360,7 @@
     "edition": "bedrock",
     "version": "1.14.41",
     "cycleName": "Buzzy Bees",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360040449071-Minecraft-1-14-41-PS4-Only",
     "platformsCondensed": {
       "2020-03-03": ["PlayStation 4"]
     }
@@ -2329,6 +2369,7 @@
     "edition": "bedrock",
     "version": "1.14.30",
     "cycleName": "Buzzy Bees",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360039685691-Minecraft-1-14-30-Bedrock",
     "developmentReleasedOn": "2020-01-29",
     "platformsCondensed": {
       "2020-02-11": [
@@ -2359,6 +2400,7 @@
     "edition": "bedrock",
     "version": "1.14.20",
     "cycleName": "Buzzy Bees",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360038848252-Minecraft-1-14-20-Bedrock",
     "developmentReleasedOn": "2019-12-18",
     "platformsCondensed": {
       "2020-01-28": [
@@ -2381,6 +2423,7 @@
     "edition": "bedrock",
     "version": "1.14.1",
     "cycleName": "Buzzy Bees",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360037581632-Minecraft-1-14-1-Bedrock",
     "developmentReleasedOn": "2019-11-13",
     "platformsCondensed": {
       "2019-12-18": [
@@ -2402,6 +2445,7 @@
     "edition": "bedrock",
     "version": "1.14.0.12",
     "cycleName": "Buzzy Bees",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360037910991-Minecraft-1-14-0-12-PS4-Only",
     "platformsCondensed": {
       "2019-12-13": ["PlayStation 4"]
     }
@@ -2410,6 +2454,7 @@
     "edition": "bedrock",
     "version": "1.14.0",
     "cycleName": "Buzzy Bees",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360037105792-Minecraft-Buzzy-Bees-1-14-0-Bedrock",
     "developmentReleasedOn": "2019-10-09",
     "platformsCondensed": {
       "2019-12-10": [
@@ -2432,6 +2477,7 @@
     "edition": "bedrock",
     "version": "1.13.3",
     "cycleName": "1.13",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360036461291-Minecraft-1-13-3-iOS-Only",
     "platformsCondensed": {
       "2019-11-20": ["iOS", "iPadOS"]
     }
@@ -2440,6 +2486,7 @@
     "edition": "bedrock",
     "version": "1.13.2",
     "cycleName": "1.13",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360035931632-Minecraft-1-13-2-iOS-Only",
     "platformsCondensed": {
       "2019-11-14": ["iOS", "iPadOS"]
     }
@@ -2448,6 +2495,7 @@
     "edition": "bedrock",
     "version": "1.13.1",
     "cycleName": "1.13",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360036147331-Minecraft-1-13-1-Bedrock",
     "platformsCondensed": {
       "2019-11-12": [
         "Android",
@@ -2468,6 +2516,7 @@
     "edition": "bedrock",
     "version": "1.13.0",
     "cycleName": "1.13",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360035247792-Minecraft-1-13-0-Bedrock",
     "developmentReleasedOn": "2019-06-27",
     "platformsCondensed": {
       "2019-10-29": [
@@ -2489,6 +2538,7 @@
     "edition": "bedrock",
     "version": "1.12.1",
     "cycleName": "1.12",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360032928992-Minecraft-1-12-1-Bedrock",
     "platformsCondensed": {
       "2019-09-02": ["Android"],
       "2019-09-03": [
@@ -2509,6 +2559,7 @@
     "edition": "bedrock",
     "version": "1.12.0",
     "cycleName": "1.12",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360030428752-Minecraft-1-12-0-Bedrock",
     "developmentReleasedOn": "2019-04-17",
     "platformsCondensed": {
       "2019-07-10": ["Android"],
@@ -2529,6 +2580,7 @@
     "edition": "bedrock",
     "version": "1.11.4",
     "cycleName": "Village & Pillage",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360028691471-Minecraft-1-11-4-Bedrock",
     "platformsCondensed": {
       "2019-05-23": [
         "Android",
@@ -2548,6 +2600,7 @@
     "edition": "bedrock",
     "version": "1.11.3",
     "cycleName": "Village & Pillage",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360028439431-Minecraft-1-11-3-Bedrock",
     "platformsCondensed": {
       "2019-05-17": [
         "Android",
@@ -2566,6 +2619,7 @@
     "edition": "bedrock",
     "version": "1.11.2",
     "cycleName": "Village & Pillage",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360027611172-Minecraft-1-11-2-Xbox-One-Only",
     "platformsCondensed": {
       "2019-05-02": ["Xbox One"]
     }
@@ -2574,6 +2628,7 @@
     "edition": "bedrock",
     "version": "1.11.1",
     "cycleName": "Village & Pillage",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360027682131-Minecraft-1-11-1-Bedrock",
     "platformsCondensed": {
       "2019-04-26": [
         "Android",
@@ -2593,6 +2648,7 @@
     "edition": "bedrock",
     "version": "1.11.0",
     "cycleName": "Village & Pillage",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360026977492-Minecraft-Village-Pillage-1-11-0-Bedrock",
     "developmentReleasedOn": "2019-02-21",
     "platformsCondensed": {
       "2019-04-23": [
@@ -2613,6 +2669,7 @@
     "edition": "bedrock",
     "version": "1.10.1",
     "cycleName": "Texture Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360025955991-Minecraft-1-10-1-Windows-10-Only",
     "platformsCondensed": {
       "2019-03-27": ["Windows 10"]
     }
@@ -2621,6 +2678,7 @@
     "edition": "bedrock",
     "version": "1.10.0",
     "cycleName": "Texture Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360025059512-Minecraft-1-10-0-Bedrock",
     "developmentReleasedOn": "2019-01-30",
     "platformsCondensed": {
       "2019-03-19": [
@@ -2641,6 +2699,7 @@
     "edition": "bedrock",
     "version": "1.9.0",
     "cycleName": "1.9",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360021523671-Minecraft-1-9-0-Bedrock",
     "developmentReleasedOn": "2018-11-15",
     "platformsCondensed": {
       "2019-02-05": [
@@ -2661,6 +2720,7 @@
     "edition": "bedrock",
     "version": "1.8.1",
     "cycleName": "1.8",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360020828092-Minecraft-1-8-1-Bedrock",
     "platformsCondensed": {
       "2019-01-08": [
         "Android",
@@ -2680,6 +2740,7 @@
     "edition": "bedrock",
     "version": "1.8.0",
     "cycleName": "1.8",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360020386452-Minecraft-1-8-0-Bedrock",
     "developmentReleasedOn": "2018-10-10",
     "platformsCondensed": {
       "2018-12-11": [
@@ -2700,6 +2761,7 @@
     "edition": "bedrock",
     "version": "1.7.1",
     "cycleName": "1.7",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360019026771-Minecraft-1-7-1-Bedrock",
     "platformsCondensed": {
       "2018-11-07": ["Windows 10", "Xbox One"]
     }
@@ -2708,6 +2770,7 @@
     "edition": "bedrock",
     "version": "1.7.0",
     "cycleName": "1.7",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360017865652-Minecraft-1-7-0-Bedrock",
     "developmentReleasedOn": "2018-08-23",
     "platformsCondensed": {
       "2018-10-16": [
@@ -2728,6 +2791,7 @@
     "edition": "bedrock",
     "version": "1.6.2",
     "cycleName": "1.6",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360016523391-Minecraft-1-6-2-Bedrock",
     "platformsCondensed": {
       "2018-10-01": ["iOS"]
     }
@@ -2736,6 +2800,7 @@
     "edition": "bedrock",
     "version": "1.6.1",
     "cycleName": "1.6",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360015779511-Minecraft-1-6-1-Bedrock",
     "platformsCondensed": {
       "2018-09-17": [
         "Android",
@@ -2755,6 +2820,7 @@
     "edition": "bedrock",
     "version": "1.6.0",
     "cycleName": "1.6",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360015202451-Minecraft-1-6-0-Bedrock",
     "developmentReleasedOn": "2018-06-14",
     "platformsCondensed": {
       "2018-08-28": [
@@ -2775,6 +2841,7 @@
     "edition": "bedrock",
     "version": "1.5.3",
     "cycleName": "Update Aquatic (Phase Two)",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360012149892-Minecraft-1-5-3-Bedrock",
     "platformsCondensed": {
       "2018-08-07": [
         "Android",
@@ -2794,6 +2861,7 @@
     "edition": "bedrock",
     "version": "1.5.2",
     "cycleName": "Update Aquatic (Phase Two)",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360008485871-Minecraft-1-5-2-Bedrock",
     "platformsCondensed": {
       "2018-07-24": [
         "Android",
@@ -2810,6 +2878,7 @@
     "edition": "bedrock",
     "version": "1.5.1",
     "cycleName": "Update Aquatic (Phase Two)",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360007536772-Minecraft-1-5-1-Bedrock",
     "platformsCondensed": {
       "2018-07-20": [
         "Android",
@@ -2829,6 +2898,7 @@
     "edition": "bedrock",
     "version": "1.5.0",
     "cycleName": "Update Aquatic (Phase Two)",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360007164271-Minecraft-1-5-0-Bedrock",
     "developmentReleasedOn": "2018-04-25",
     "platformsCondensed": {
       "2018-07-10": [
@@ -2849,6 +2919,7 @@
     "edition": "bedrock",
     "version": "1.4.4",
     "cycleName": "Update Aquatic (Phase One)",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004597552-Minecraft-1-4-4-Android-Only",
     "platformsCondensed": {
       "2018-06-07": ["Android", "Fire", "Fire Phone", "Fire TV"]
     }
@@ -2857,6 +2928,7 @@
     "edition": "bedrock",
     "version": "1.4.3",
     "cycleName": "Update Aquatic (Phase One)",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004506952-Minecraft-1-4-3-iOS-Only",
     "platformsCondensed": {
       "2018-06-05": ["iOS"]
     }
@@ -2865,6 +2937,7 @@
     "edition": "bedrock",
     "version": "1.4.2",
     "cycleName": "Update Aquatic (Phase One)",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004235051-Minecraft-1-4-2-Bedrock",
     "platformsCondensed": {
       "2018-05-23": [
         "Android",
@@ -2883,6 +2956,7 @@
     "edition": "bedrock",
     "version": "1.4.1",
     "cycleName": "Update Aquatic (Phase One)",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004158932-Minecraft-1-4-1-Android-Only",
     "platformsCondensed": {
       "2018-05-17": ["Android", "Fire", "Fire Phone", "Fire TV"],
       "2018-06-21": ["Nintendo Switch"]
@@ -2892,6 +2966,7 @@
     "edition": "bedrock",
     "version": "1.4.0",
     "cycleName": "Update Aquatic (Phase One)",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004203351-Minecraft-1-4-0-Bedrock",
     "developmentReleasedOn": "2018-03-16",
     "platformsCondensed": {
       "2018-05-16": [
@@ -2911,6 +2986,7 @@
     "edition": "bedrock",
     "version": "1.2.13.60",
     "cycleName": "Better Together Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004167211-Minecraft-1-2-13-60-1-2-16-iOS",
     "platformsCondensed": {
       "2018-04-20": [
         "Android",
@@ -2928,6 +3004,7 @@
     "edition": "bedrock",
     "version": "1.2.16",
     "cycleName": "Better Together Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004167211-Minecraft-1-2-13-60-1-2-16-iOS",
     "platformsCondensed": {
       "2018-04-20": ["iOS"]
     }
@@ -2936,6 +3013,7 @@
     "edition": "bedrock",
     "version": "1.2.15",
     "cycleName": "Better Together Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004167231-Minecraft-1-2-15-iOS-Only",
     "platformsCondensed": {
       "2018-04-12": ["iOS"]
     }
@@ -2944,6 +3022,7 @@
     "edition": "bedrock",
     "version": "1.2.14",
     "cycleName": "Better Together Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004167311-Minecraft-1-2-14-iOS-Only",
     "platformsCondensed": {
       "2018-04-04": ["iOS"]
     }
@@ -2952,6 +3031,7 @@
     "edition": "bedrock",
     "version": "1.2.13",
     "cycleName": "Better Together Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004167331-Minecraft-1-2-13-Bedrock",
     "developmentReleasedOn": "2018-03-02",
     "platformsCondensed": {
       "2018-04-03": [
@@ -2971,6 +3051,7 @@
     "edition": "bedrock",
     "version": "1.2.11",
     "cycleName": "Better Together Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004167871-Minecraft-1-2-11-Bedrock",
     "platformsCondensed": {
       "2018-03-09": ["Android", "iOS"],
       "2018-03-08": [
@@ -2988,6 +3069,7 @@
     "edition": "bedrock",
     "version": "1.2.10",
     "cycleName": "Better Together Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004127032-Minecraft-1-2-10-Bedrock",
     "developmentReleasedOn": "2018-01-24",
     "platformsCondensed": {
       "2018-02-07": [
@@ -3007,6 +3089,7 @@
     "edition": "bedrock",
     "version": "1.2.9",
     "cycleName": "Better Together Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004127072-Minecraft-1-2-9-Bedrock",
     "platformsCondensed": {
       "2018-01-16": [
         "Android",
@@ -3025,6 +3108,7 @@
     "edition": "bedrock",
     "version": "1.2.8",
     "cycleName": "Better Together Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004168271-Minecraft-1-2-8-Bedrock",
     "platformsCondensed": {
       "2017-12-18": ["Android", "iOS", "Gear VR"],
       "2017-12-19": [
@@ -3041,6 +3125,7 @@
     "edition": "bedrock",
     "version": "1.2.7",
     "cycleName": "Better Together Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004127132-Minecraft-1-2-7-Bedrock",
     "platformsCondensed": {
       "2017-12-14": [
         "Android",
@@ -3067,6 +3152,7 @@
     "edition": "bedrock",
     "version": "1.2.6",
     "cycleName": "Better Together Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004168311-Minecraft-1-2-6-Bedrock",
     "developmentReleasedOn": "2017-11-08",
     "platformsCondensed": {
       "2017-12-06": [
@@ -3086,6 +3172,7 @@
     "edition": "bedrock",
     "version": "1.2.5",
     "cycleName": "Better Together Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004168331-Minecraft-1-2-5-Bedrock",
     "developmentReleasedOn": "2017-10-13",
     "platformsCondensed": {
       "2017-11-21": [
@@ -3105,6 +3192,7 @@
     "edition": "bedrock",
     "version": "1.2.3",
     "cycleName": "Better Together Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004168411-Minecraft-1-2-3-Bedrock",
     "developmentReleasedOn": "2017-10-04",
     "platformsCondensed": {
       "2017-10-18": [
@@ -3124,6 +3212,7 @@
     "edition": "bedrock",
     "version": "1.2.2",
     "cycleName": "Better Together Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004168431-Minecraft-1-2-2-Bedrock",
     "platformsCondensed": {
       "2017-10-04": [
         "Android",
@@ -3142,6 +3231,7 @@
     "edition": "bedrock",
     "version": "1.2.1",
     "cycleName": "Better Together Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004127392-Minecraft-1-2-1-Bedrock",
     "platformsCondensed": {
       "2017-09-26": [
         "Android",
@@ -3160,6 +3250,7 @@
     "edition": "bedrock",
     "version": "1.2.0",
     "cycleName": "Better Together Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004127432-Minecraft-1-2-Bedrock",
     "developmentReleasedOn": "2017-07-31",
     "platformsCondensed": {
       "2017-09-20": [
@@ -3187,6 +3278,7 @@
     "edition": "bedrock",
     "version": "1.1.5",
     "cycleName": "Discovery Update",
+    "changelog": 
     "platformsCondensed": {
       "2017-08-03": [
         "Android",
@@ -3204,6 +3296,7 @@
     "edition": "bedrock",
     "version": "1.1.4",
     "cycleName": "Discovery Update",
+    "changelog": 
     "platformsCondensed": {
       "2017-07-19": [
         "Android",
@@ -3222,6 +3315,7 @@
     "edition": "bedrock",
     "version": "1.1.3",
     "cycleName": "Discovery Update",
+    "changelog": 
     "developmentReleasedOn": "2017-06-23",
     "platformsCondensed": {
       "2017-07-06": [
@@ -3241,6 +3335,7 @@
     "edition": "bedrock",
     "version": "1.1.2",
     "cycleName": "Discovery Update",
+    "changelog": 
     "platformsCondensed": {
       "2017-06-23": [
         "Android",
@@ -3259,6 +3354,7 @@
     "edition": "bedrock",
     "version": "1.1.1",
     "cycleName": "Discovery Update",
+    "changelog": 
     "developmentReleasedOn": "2017-06-13",
     "platformsCondensed": {
       "2017-06-20": [
@@ -3278,6 +3374,7 @@
     "edition": "bedrock",
     "version": "1.1.0",
     "cycleName": "Discovery Update",
+    "changelog": 
     "developmentReleasedOn": "2017-03-31",
     "platformsCondensed": {
       "2017-06-01": [
@@ -3297,6 +3394,7 @@
     "edition": "bedrock",
     "version": "1.0.9",
     "cycleName": "Ender Update",
+    "changelog": 
     "platformsCondensed": {
       "2017-05-18": [
         "Android",
@@ -3315,6 +3413,7 @@
     "edition": "bedrock",
     "version": "1.0.8",
     "cycleName": "Ender Update",
+    "changelog": 
     "platformsCondensed": {
       "2017-05-04": [
         "Android",
@@ -3333,6 +3432,7 @@
     "edition": "bedrock",
     "version": "1.0.7",
     "cycleName": "Ender Update",
+    "changelog": 
     "platformsCondensed": {
       "2017-04-20": [
         "Android",
@@ -3351,6 +3451,7 @@
     "edition": "bedrock",
     "version": "1.0.6",
     "cycleName": "Ender Update",
+    "changelog": 
     "developmentReleasedOn": "2017-03-24",
     "platformsCondensed": {
       "2017-04-11": [
@@ -3370,6 +3471,7 @@
     "edition": "bedrock",
     "version": "1.0.5",
     "cycleName": "Ender Update",
+    "changelog": 
     "developmentReleasedOn": "2017-03-10",
     "platformsCondensed": {
       "2017-03-28": [
@@ -3389,6 +3491,7 @@
     "edition": "bedrock",
     "version": "1.0.4",
     "cycleName": "Ender Update",
+    "changelog": 
     "developmentReleasedOn": "2017-02-14",
     "platformsCondensed": {
       "2017-03-09": [
@@ -3408,6 +3511,7 @@
     "edition": "bedrock",
     "version": "1.0.3",
     "cycleName": "Ender Update",
+    "changelog": 
     "developmentReleasedOn": "2017-02-01",
     "platformsCondensed": {
       "2017-02-08": ["Android"],
@@ -3420,6 +3524,7 @@
     "edition": "bedrock",
     "version": "1.0.2",
     "cycleName": "Ender Update",
+    "changelog": 
     "platformsCondensed": {
       "2017-01-19": [
         "Android",
@@ -3435,6 +3540,7 @@
   {
     "edition": "bedrock",
     "version": "1.0.1",
+    "changelog": 
     "cycleName": "Ender Update",
     "platformsCondensed": {
       "2017-01-06": ["iOS"]
@@ -3444,6 +3550,7 @@
     "edition": "bedrock",
     "version": "1.0.0",
     "cycleName": "Ender Update",
+    "changelog": 
     "developmentReleasedOn": "2016-11-11",
     "platformsCondensed": {
       "2016-12-19": [
@@ -3462,6 +3569,7 @@
     "edition": "bedrock",
     "version": "0.16.2",
     "cycleName": "Boss Update",
+    "changelog": 
     "platformsCondensed": {
       "2016-11-17": ["Android"],
       "2016-11-18": [
@@ -3477,6 +3585,7 @@
     "edition": "bedrock",
     "version": "0.16.1",
     "cycleName": "Boss Update",
+    "changelog": 
     "platformsCondensed": {
       "2016-11-04": [
         "Android",
@@ -3492,6 +3601,7 @@
     "edition": "bedrock",
     "version": "0.16.0",
     "cycleName": "Boss Update",
+    "changelog": 
     "developmentReleasedOn": "2016-08-29",
     "platformsCondensed": {
       "2016-10-21": [

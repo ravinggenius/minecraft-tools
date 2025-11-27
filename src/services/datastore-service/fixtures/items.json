@@ -5,7 +5,10 @@
     "rarity": "common",
     "stackSize": 1,
     "name": "Leather Cap",
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": "item.leather_helmet.name",
+      "java": "item.minecraft.leather_helmet"
+    },
     "components": { "bedrock": null, "java": null },
     "firstProductionReleased": { "bedrock": "0.14.0", "java": "1.0.0" }
   },
@@ -15,7 +18,10 @@
     "rarity": "common",
     "stackSize": 1,
     "name": "Leather Tunic",
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": "item.leather_chestplate.name",
+      "java": "item.minecraft.leather_chestplate"
+    },
     "components": { "bedrock": null, "java": null },
     "firstProductionReleased": { "bedrock": "0.14.0", "java": "1.0.0" }
   },
@@ -25,7 +31,10 @@
     "rarity": "common",
     "stackSize": 1,
     "name": "Leather Pants",
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": "item.leather_leggings.name",
+      "java": "item.minecraft.leather_leggings"
+    },
     "components": { "bedrock": null, "java": null },
     "firstProductionReleased": { "bedrock": "0.14.0", "java": "1.0.0" }
   },
@@ -35,49 +44,108 @@
     "rarity": "common",
     "stackSize": 1,
     "name": "Leather Boots",
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": "item.leather_boots.name",
+      "java": "item.minecraft.leather_boots"
+    },
     "components": { "bedrock": null, "java": null },
     "firstProductionReleased": { "bedrock": "0.14.0", "java": "1.0.0" }
   },
   {
     "identifier": "minecraft:chain_helmet",
     "variant": null,
-    "rarity": "common",
+    "rarity": "uncommon",
     "stackSize": 1,
     "name": "Chain Helmet",
     "translationKey": { "bedrock": null, "java": null },
     "components": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": "0.14.0", "java": "1.0.0" },
+    "lastProductionReleasedBefore": { "bedrock": "1.4.4", "java": "1.12.1" }
   },
   {
     "identifier": "minecraft:chain_chestplate",
     "variant": null,
-    "rarity": "common",
+    "rarity": "uncommon",
     "stackSize": 1,
     "name": "Chain Chestplate",
     "translationKey": { "bedrock": null, "java": null },
     "components": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": "0.14.0", "java": "1.0.0" },
+    "lastProductionReleasedBefore": { "bedrock": "1.4.4", "java": "1.12.1" }
   },
   {
     "identifier": "minecraft:chain_leggings",
     "variant": null,
-    "rarity": "common",
+    "rarity": "uncommon",
     "stackSize": 1,
     "name": "Chain Leggings",
     "translationKey": { "bedrock": null, "java": null },
     "components": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": "0.14.0", "java": "1.0.0" },
+    "lastProductionReleasedBefore": { "bedrock": "1.4.4", "java": "1.12.1" }
   },
   {
     "identifier": "minecraft:chain_boots",
     "variant": null,
-    "rarity": "common",
+    "rarity": "uncommon",
     "stackSize": 1,
     "name": "Chain Boots",
     "translationKey": { "bedrock": null, "java": null },
     "components": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": "0.14.0", "java": "1.0.0" },
+    "lastProductionReleasedBefore": { "bedrock": "1.4.4", "java": "1.12.1" }
+  },
+  {
+    "identifier": "minecraft:chainmail_helmet",
+    "variant": null,
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "name": "Chainmail Helmet",
+    "translationKey": {
+      "bedrock": "item.chainmail_helmet.name",
+      "java": "item.minecraft.chainmail_helmet"
+    },
+    "components": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.5.0", "java": "1.13" }
+  },
+  {
+    "identifier": "minecraft:chainmail_chestplate",
+    "variant": null,
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "name": "Chainmail Chestplate",
+    "translationKey": {
+      "bedrock": "item.chainmail_chestplate.name",
+      "java": "item.minecraft.chainmail_chestplate"
+    },
+    "components": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.5.0", "java": "1.13" }
+  },
+  {
+    "identifier": "minecraft:chainmail_leggings",
+    "variant": null,
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "name": "Chainmail Leggings",
+    "translationKey": {
+      "bedrock": "item.chainmail_leggings.name",
+      "java": "item.minecraft.chainmail_leggings"
+    },
+    "components": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.5.0", "java": "1.13" }
+  },
+  {
+    "identifier": "minecraft:chainmail_boots",
+    "variant": null,
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "name": "Chainmail Boots",
+    "translationKey": {
+      "bedrock": "item.chainmail_boots.name",
+      "java": "item.minecraft.chainmail_boots"
+    },
+    "components": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "1.5.0", "java": "1.13" }
   },
   {
     "identifier": "minecraft:iron_helmet",
@@ -85,9 +153,12 @@
     "rarity": "common",
     "stackSize": 1,
     "name": "Iron Helmet",
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": "item.iron_helmet.name",
+      "java": "item.minecraft.iron_helmet"
+    },
     "components": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": "0.14.0", "java": "1.0.0" }
   },
   {
     "identifier": "minecraft:iron_chestplate",
@@ -95,9 +166,12 @@
     "rarity": "common",
     "stackSize": 1,
     "name": "Iron Chestplate",
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": "item.iron_chestplate.name",
+      "java": "item.minecraft.iron_chestplate"
+    },
     "components": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": "0.14.0", "java": "1.0.0" }
   },
   {
     "identifier": "minecraft:iron_leggings",
@@ -105,9 +179,12 @@
     "rarity": "common",
     "stackSize": 1,
     "name": "Iron Leggings",
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": "item.iron_leggings.name",
+      "java": "item.minecraft.iron_leggings"
+    },
     "components": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": "0.14.0", "java": "1.0.0" }
   },
   {
     "identifier": "minecraft:iron_boots",
@@ -115,9 +192,12 @@
     "rarity": "common",
     "stackSize": 1,
     "name": "Iron Boots",
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": "item.iron_boots.name",
+      "java": "item.minecraft.iron_boots"
+    },
     "components": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": "0.14.0", "java": "1.0.0" }
   },
   {
     "identifier": "minecraft:apple",
@@ -125,9 +205,12 @@
     "rarity": "common",
     "stackSize": 64,
     "name": "Apple",
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": "item.apple.name",
+      "java": "item.minecraft.apple"
+    },
     "components": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": "0.14.0", "java": "1.0.0" }
   },
   {
     "identifier": "minecraft:iron_shovel",

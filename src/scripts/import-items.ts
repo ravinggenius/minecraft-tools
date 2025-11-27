@@ -46,7 +46,10 @@ const RAW_IMPORT_ITEM = (context: { edition: Edition }) =>
 		rarity: VALUE_OF(RARITY, context),
 		stackSize: VALUE_OF(z.number().positive(), context),
 		firstProductionReleased: EDITION_VALUE_OF(z.string(), context),
-		lastProductionReleasedBefore: EDITION_VALUE_OF(z.string(), context)
+		lastProductionReleasedBefore: EDITION_VALUE_OF(
+			z.string(),
+			context
+		).optional()
 	});
 
 const RAW_IMPORT_ITEM_BY_EDITION = {

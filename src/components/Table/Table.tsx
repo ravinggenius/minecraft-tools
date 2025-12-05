@@ -18,9 +18,11 @@ export default function Table({
 	className?: string;
 } & TableHTMLAttributes<HTMLTableElement>) {
 	return (
-		<table {...rest} className={classNames(styles.table, className)}>
-			{children}
-		</table>
+		<div className={styles.wrapper}>
+			<table {...rest} className={classNames(styles.table, className)}>
+				{children}
+			</table>
+		</div>
 	);
 }
 

@@ -1,6 +1,28 @@
 [
   {
     "edition": "bedrock",
+    "version": "26.0",
+    "cycleName": "Mounts of Mayhem",
+    "developmentReleasedOn": "2025-12-03",
+    "platformsCondensed": {
+      "upcoming": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
     "version": "1.21.130",
     "cycleName": "Mounts of Mayhem",
     "changelog": "https://feedback.minecraft.net/hc/en-us/articles/41446685014669-Minecraft-Bedrock-Edition-1-21-130-Mounts-of-Mayhem",

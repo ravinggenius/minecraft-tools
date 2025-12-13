@@ -3808,6 +3808,7 @@
     "edition": "java",
     "version": "1.21.11",
     "cycleName": "Mounts of Mayhem",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/41809981427213-Minecraft-Java-Edition-1-21-11-Mounts-of-Mayhem",
     "developmentReleasedOn": "2025-10-09",
     "platformsCondensed": {
       "2025-12-09": ["Linux", "macOS", "Windows"]

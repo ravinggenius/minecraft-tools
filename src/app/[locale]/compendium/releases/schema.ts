@@ -11,7 +11,7 @@ export const QUERY = SEACH_QUERY(
 			edition: rawQuery.edition,
 			version: rawQuery.version,
 			cycleName: rawQuery.cycle,
-			isLatest: FLEXIBLE_BOOL.parse(
+			isLatest: FLEXIBLE_BOOL.optional().parse(
 				rawQuery["is-latest"]?.[rawQuery["is-latest"].length - 1]
 			),
 			platformName: rawQuery.platform,

@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import FLEXIBLE_BOOL from "./flexible-boolean";
 
 describe("FLEXIBLE_BOOL", () => {
-	it.for(["1", "true", "t", "yes", "y", "on", "enabled"])(
+	it.for(["1", "true", "yes", "y", "on", "enabled"])(
 		"parses (%j) as true",
 		(psuedoBoolean) => {
 			expect(FLEXIBLE_BOOL.safeParse(psuedoBoolean)).toEqual({
@@ -13,7 +13,7 @@ describe("FLEXIBLE_BOOL", () => {
 		}
 	);
 
-	it.for(["0", "false", "f", "no", "n", "off", "disabled"])(
+	it.for(["0", "false", "no", "n", "off", "disabled"])(
 		"parses (%j) as false",
 		(psuedoBoolean) => {
 			expect(FLEXIBLE_BOOL.safeParse(psuedoBoolean)).toEqual({

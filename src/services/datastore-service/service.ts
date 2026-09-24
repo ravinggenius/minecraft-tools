@@ -1,6 +1,12 @@
 import camelCase from "camelcase";
 import dedent from "dedent";
-import { createPool, Interceptor, QueryResultRow, sql } from "slonik";
+import {
+	createPool,
+	Interceptor,
+	QueryResultRow,
+	SchemaValidationError,
+	sql
+} from "slonik";
 import { createQueryLoggingInterceptor } from "slonik-interceptor-query-logging";
 import { createQueryNormalisationInterceptor } from "slonik-interceptor-query-normalisation";
 
@@ -44,10 +50,31 @@ const createQueryTrimInterceptor = () =>
 		})
 	}) satisfies Interceptor;
 
+const createResultParserInterceptor = () =>
+	({
+		name: "runtime-zod-validation-interceptor",
+		transformRowAsync: async (context, query, row) => {
+			const { log, resultParser } = context;
+
+			if (!resultParser) {
+				return row;
+			}
+
+			const reply = await resultParser["~standard"].validate(row);
+
+			if (reply.issues) {
+				throw new SchemaValidationError(query, row, reply.issues);
+			}
+
+			return reply.value as QueryResultRow;
+		}
+	}) satisfies Interceptor;
+
 export const pool = createPool(config.databaseUrl, {
 	captureStackTrace: true,
 	interceptors: [
 		createFieldNameInterceptor(/^(?:raw_\w+)|(?:all_raw_\w+)$/),
+		createResultParserInterceptor(),
 		config.isProduction
 			? createQueryNormalisationInterceptor()
 			: createQueryTrimInterceptor(),

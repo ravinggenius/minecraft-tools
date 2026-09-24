@@ -250,6 +250,7 @@ export const searchFlattened = async ({
 			changelog,
 			is_latest,
 			is_available_for_tools,
+			platform_release_id,
 			platform
 		FROM
 			flattened_releases
@@ -377,7 +378,7 @@ export const listByEdition = async <T extends Release["edition"]>(edition: T) =>
 			edition: z.literal(edition),
 			cycleName: RELEASE_CYCLE.shape.name,
 			firstProductionReleasedOn:
-				PLATFORM_RELEASE.shape.productionReleasedOn.optional()
+				PLATFORM_RELEASE.shape.productionReleasedOn.nullish()
 		})
 	)`
 		SELECT

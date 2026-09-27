@@ -50,42 +50,107 @@ export default async function PageSearchResultsNormalized({
 										})
 									}
 								: undefined,
-							item.names
+							item.colors
 								? {
-										key: t("names.label"),
+										key: t("colors.label"),
 										value:
-											item.names.bedrock ||
-											item.names.java
+											item.colors.bedrock ||
+											item.colors.java
 												? [
-														item.names.bedrock
-															? t("names.value", {
-																	context:
-																		"editioned",
-																	edition:
-																		"bedrock",
-																	name: item
-																		.names
-																		.bedrock
-																})
+														item.colors.bedrock
+															? t(
+																	"colors.value",
+																	{
+																		context:
+																			"editioned",
+																		edition:
+																			"bedrock",
+																		color: item
+																			.colors
+																			.bedrock
+																	}
+																)
 															: null,
-														item.names.java
-															? t("names.value", {
-																	context:
-																		"editioned",
-																	edition:
-																		"java",
-																	name: item
-																		.names
-																		.java
-																})
+														item.colors.java
+															? t(
+																	"colors.value",
+																	{
+																		context:
+																			"editioned",
+																		edition:
+																			"java",
+																		color: item
+																			.colors
+																			.java
+																	}
+																)
 															: null
 													].filter(Boolean)
-												: t("names.value", {
-														name: item.names.both
-													}),
-										isLarge: true
+												: t("colors.value", {
+														color: item.colors.both
+													})
 									}
 								: undefined,
+							{
+								key: t("rarities.label"),
+								value:
+									item.rarities.bedrock || item.rarities.java
+										? [
+												item.rarities.bedrock
+													? t("rarities.value", {
+															context:
+																"editioned",
+															edition: "bedrock",
+															rarity: item
+																.rarities
+																.bedrock
+														})
+													: null,
+												item.rarities.java
+													? t("rarities.value", {
+															context:
+																"editioned",
+															edition: "java",
+															rarity: item
+																.rarities.java
+														})
+													: null
+											].filter(Boolean)
+										: t("rarities.value", {
+												rarity: item.rarities.both
+											})
+							},
+							{
+								key: t("stack-sizes.label"),
+								value:
+									item.stackSizes.bedrock ||
+									item.stackSizes.java
+										? [
+												item.stackSizes.bedrock
+													? t("stack-sizes.value", {
+															context:
+																"editioned",
+															edition: "bedrock",
+															stackSize:
+																item.stackSizes
+																	.bedrock
+														})
+													: null,
+												item.stackSizes.java
+													? t("stack-sizes.value", {
+															context:
+																"editioned",
+															edition: "java",
+															stackSize:
+																item.stackSizes
+																	.java
+														})
+													: null
+											].filter(Boolean)
+										: t("stack-sizes.value", {
+												stackSize: item.stackSizes.both
+											})
+							},
 							item.translationKeys
 								? {
 										key: t("translation-keys.label"),
@@ -132,92 +197,6 @@ export default async function PageSearchResultsNormalized({
 																.both
 													}),
 										isLarge: true
-									}
-								: undefined,
-							item.rarities
-								? {
-										key: t("rarities.label"),
-										value:
-											item.rarities.bedrock ||
-											item.rarities.java
-												? [
-														item.rarities.bedrock
-															? t(
-																	"rarities.value",
-																	{
-																		context:
-																			"editioned",
-																		edition:
-																			"bedrock",
-																		rarity: item
-																			.rarities
-																			.bedrock
-																	}
-																)
-															: null,
-														item.rarities.java
-															? t(
-																	"rarities.value",
-																	{
-																		context:
-																			"editioned",
-																		edition:
-																			"java",
-																		rarity: item
-																			.rarities
-																			.java
-																	}
-																)
-															: null
-													].filter(Boolean)
-												: t("rarities.value", {
-														rarity: item.rarities
-															.both
-													})
-									}
-								: undefined,
-							item.stackSizes
-								? {
-										key: t("stack-sizes.label"),
-										value:
-											item.stackSizes.bedrock ||
-											item.stackSizes.java
-												? [
-														item.stackSizes.bedrock
-															? t(
-																	"stack-sizes.value",
-																	{
-																		context:
-																			"editioned",
-																		edition:
-																			"bedrock",
-																		stackSize:
-																			item
-																				.stackSizes
-																				.bedrock
-																	}
-																)
-															: null,
-														item.stackSizes.java
-															? t(
-																	"stack-sizes.value",
-																	{
-																		context:
-																			"editioned",
-																		edition:
-																			"java",
-																		stackSize:
-																			item
-																				.stackSizes
-																				.java
-																	}
-																)
-															: null
-													].filter(Boolean)
-												: t("stack-sizes.value", {
-														stackSize:
-															item.stackSizes.both
-													})
 									}
 								: undefined,
 							{
@@ -268,19 +247,8 @@ export default async function PageSearchResultsNormalized({
 								: undefined
 						]}
 						title={t("list.card.title", {
-							context:
-								(item.names?.bedrock ??
-								item.names?.java ??
-								item.names?.both)
-									? "has-name"
-									: item.isVariant
-										? "is-variant"
-										: undefined,
+							context: item.isVariant ? "is-variant" : undefined,
 							identifier: item.identifier,
-							name:
-								item.names?.bedrock ??
-								item.names?.java ??
-								item.names?.both,
 							variant: item.variant
 						})}
 						variant="flat"
@@ -303,32 +271,94 @@ export default async function PageSearchResultsNormalized({
 					}
 				</Field>
 
-				<Field fieldPath="names" label={t("names.label")}>
-					{({ names }: NormalizedItem) =>
-						names?.bedrock || names?.java ? (
+				<Field fieldPath="colors" label={t("colors.label")}>
+					{({ colors }: NormalizedItem) =>
+						colors?.bedrock || colors?.java ? (
 							<ul>
-								{names.bedrock ? (
+								{colors.bedrock ? (
 									<li>
-										{t("names.value", {
+										{t("colors.value", {
 											context: "editioned",
 											edition: "bedrock",
-											name: names.bedrock
+											color: colors.bedrock
 										})}
 									</li>
 								) : null}
-								{names.java ? (
+								{colors.java ? (
 									<li>
-										{t("names.value", {
+										{t("colors.value", {
 											context: "editioned",
 											edition: "java",
-											name: names.java
+											color: colors.java
 										})}
 									</li>
 								) : null}
 							</ul>
-						) : names?.both ? (
-							t("names.value", {
-								name: names.both
+						) : colors?.both ? (
+							t("colors.value", {
+								color: colors.both
+							})
+						) : null
+					}
+				</Field>
+
+				<Field fieldPath="rarities" label={t("rarities.label")}>
+					{({ rarities }: NormalizedItem) =>
+						rarities.bedrock || rarities.java ? (
+							<ul>
+								{rarities.bedrock ? (
+									<li>
+										{t("rarities.value", {
+											context: "editioned",
+											edition: "bedrock",
+											rarity: rarities.bedrock
+										})}
+									</li>
+								) : null}
+								{rarities.java ? (
+									<li>
+										{t("rarities.value", {
+											context: "editioned",
+											edition: "java",
+											rarity: rarities.java
+										})}
+									</li>
+								) : null}
+							</ul>
+						) : rarities.both ? (
+							t("rarities.value", {
+								rarity: rarities.both
+							})
+						) : null
+					}
+				</Field>
+
+				<Field fieldPath="stackSizes" label={t("stack-sizes.label")}>
+					{({ stackSizes }: NormalizedItem) =>
+						stackSizes.bedrock || stackSizes.java ? (
+							<ul>
+								{stackSizes.bedrock ? (
+									<li>
+										{t("stack-sizes.value", {
+											context: "editioned",
+											edition: "bedrock",
+											stackSize: stackSizes.bedrock
+										})}
+									</li>
+								) : null}
+								{stackSizes.java ? (
+									<li>
+										{t("stack-sizes.value", {
+											context: "editioned",
+											edition: "java",
+											stackSize: stackSizes.java
+										})}
+									</li>
+								) : null}
+							</ul>
+						) : stackSizes.both ? (
+							t("stack-sizes.value", {
+								stackSize: stackSizes.both
 							})
 						) : null
 					}
@@ -364,68 +394,6 @@ export default async function PageSearchResultsNormalized({
 						) : translationKeys?.both ? (
 							t("translation-keys.value", {
 								translationKey: translationKeys.both
-							})
-						) : null
-					}
-				</Field>
-
-				<Field fieldPath="rarities" label={t("rarities.label")}>
-					{({ rarities }: NormalizedItem) =>
-						rarities?.bedrock || rarities?.java ? (
-							<ul>
-								{rarities.bedrock ? (
-									<li>
-										{t("rarities.value", {
-											context: "editioned",
-											edition: "bedrock",
-											rarity: rarities.bedrock
-										})}
-									</li>
-								) : null}
-								{rarities.java ? (
-									<li>
-										{t("rarities.value", {
-											context: "editioned",
-											edition: "java",
-											rarity: rarities.java
-										})}
-									</li>
-								) : null}
-							</ul>
-						) : rarities?.both ? (
-							t("rarities.value", {
-								rarity: rarities.both
-							})
-						) : null
-					}
-				</Field>
-
-				<Field fieldPath="stackSizes" label={t("stack-sizes.label")}>
-					{({ stackSizes }: NormalizedItem) =>
-						stackSizes?.bedrock || stackSizes?.java ? (
-							<ul>
-								{stackSizes.bedrock ? (
-									<li>
-										{t("stack-sizes.value", {
-											context: "editioned",
-											edition: "bedrock",
-											stackSize: stackSizes.bedrock
-										})}
-									</li>
-								) : null}
-								{stackSizes.java ? (
-									<li>
-										{t("stack-sizes.value", {
-											context: "editioned",
-											edition: "java",
-											stackSize: stackSizes.java
-										})}
-									</li>
-								) : null}
-							</ul>
-						) : stackSizes?.both ? (
-							t("stack-sizes.value", {
-								stackSize: stackSizes.both
 							})
 						) : null
 					}

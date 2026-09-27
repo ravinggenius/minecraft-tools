@@ -1,5 +1,3 @@
-CREATE TYPE public.rarity AS ENUM ('common', 'uncommon', 'rare', 'epic');
-
 CREATE TABLE public.items (
   id uuid NOT NULL DEFAULT public.uuid_generate_v4(),
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -11,27 +9,44 @@ CREATE TABLE public.items (
   PRIMARY KEY (id)
 );
 CREATE INDEX items_identifier_key ON public.items (identifier);
+CREATE INDEX items_variant_key ON public.items (variant);
 CREATE INDEX items_is_variant_key ON public.items (is_variant);
 CREATE UNIQUE INDEX items_all_unique_key ON public.items (identifier, variant) NULLS NOT DISTINCT;
 
-CREATE TABLE public.item_metadata (
+CREATE TABLE public.item_colors (
   id uuid NOT NULL DEFAULT public.uuid_generate_v4(),
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz NOT NULL DEFAULT now(),
-  rarity public.rarity NOT NULL DEFAULT 'common',
-  stack_size integer NOT NULL DEFAULT 64,
+  identifier public.citext NOT NULL,
   PRIMARY KEY (id),
-  CONSTRAINT item_metadata_rarity_stack_size_unique_key UNIQUE (rarity, stack_size)
+  CONSTRAINT item_colors_identifier_key UNIQUE (identifier)
 );
 
-CREATE TABLE public.item_names (
+CREATE TABLE public.item_rarities (
   id uuid NOT NULL DEFAULT public.uuid_generate_v4(),
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz NOT NULL DEFAULT now(),
-  translation_key public.citext,
-  name public.citext NOT NULL,
+  identifier public.citext NOT NULL,
   PRIMARY KEY (id),
-  CONSTRAINT item_names_translation_key_name_key UNIQUE NULLS NOT DISTINCT (translation_key, name)
+  CONSTRAINT item_rarities_identifier_key UNIQUE (identifier)
+);
+
+CREATE TABLE public.item_stack_sizes (
+  id uuid NOT NULL DEFAULT public.uuid_generate_v4(),
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now(),
+  identifier integer NOT NULL,
+  PRIMARY KEY (id),
+  CONSTRAINT item_stack_sizes_identifier_key UNIQUE (identifier)
+);
+
+CREATE TABLE public.item_translation_keys (
+  id uuid NOT NULL DEFAULT public.uuid_generate_v4(),
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now(),
+  identifier public.citext NOT NULL,
+  PRIMARY KEY (id),
+  CONSTRAINT item_translation_keys_identifier_key UNIQUE (identifier)
 );
 
 CREATE TABLE public.item_releases (
@@ -40,17 +55,29 @@ CREATE TABLE public.item_releases (
   updated_at timestamptz NOT NULL DEFAULT now(),
   release_id uuid NOT NULL,
   item_id uuid NOT NULL,
-  item_metadata_id uuid NOT NULL,
-  item_name_id uuid NOT NULL,
+  item_color_id uuid,
+  item_rarity_id uuid NOT NULL,
+  item_stack_size_id uuid NOT NULL,
+  item_translation_key_id uuid,
   PRIMARY KEY (id),
   CONSTRAINT item_releases_release_id_fkey FOREIGN KEY (release_id)
     REFERENCES public.releases (id) ON UPDATE CASCADE ON DELETE CASCADE,
   CONSTRAINT item_releases_item_id_fkey FOREIGN KEY (item_id)
     REFERENCES public.items (id) ON UPDATE CASCADE ON DELETE CASCADE,
-  CONSTRAINT item_releases_item_metadata_id_fkey FOREIGN KEY (item_metadata_id)
-    REFERENCES public.item_metadata (id) ON UPDATE CASCADE ON DELETE CASCADE,
-  CONSTRAINT item_releases_item_name_id_fkey FOREIGN KEY (item_name_id)
-    REFERENCES public.item_names (id) ON UPDATE CASCADE ON DELETE CASCADE,
-  CONSTRAINT item_releases_release_id_item_ids_key
-    UNIQUE (release_id, item_id, item_metadata_id, item_name_id)
+  CONSTRAINT item_releases_item_color_id_fkey FOREIGN KEY (item_color_id)
+    REFERENCES public.item_colors (id) ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT item_releases_item_rarity_id_fkey FOREIGN KEY (item_rarity_id)
+    REFERENCES public.item_rarities (id) ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT item_releases_item_stack_size_id_fkey FOREIGN KEY (item_stack_size_id)
+    REFERENCES public.item_stack_sizes (id) ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT item_releases_item_translation_key_id_fkey FOREIGN KEY (item_translation_key_id)
+    REFERENCES public.item_translation_keys (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
+CREATE UNIQUE INDEX item_releases_release_id_item_ids_key ON public.item_releases (
+  release_id,
+  item_id,
+  item_color_id,
+  item_rarity_id,
+  item_stack_size_id,
+  item_translation_key_id
+) NULLS NOT DISTINCT;

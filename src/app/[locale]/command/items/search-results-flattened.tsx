@@ -51,22 +51,14 @@ export default async function PageSearchResultsFlattened({
 										})
 									}
 								: undefined,
-							item.translationKey
+							item.color
 								? {
-										key: t("translation-keys.label"),
-										value: t("translation-keys.value", {
-											translationKey: item.translationKey
-										}),
-										isLarge: true
+										key: t("colors.label"),
+										value: t("colors.value", {
+											color: item.color
+										})
 									}
-								: undefined,
-							{
-								key: t("names.label"),
-								value: t("names.value", {
-									name: item.name
-								}),
-								isLarge: true
-							},
+								: null,
 							{
 								key: t("rarities.label"),
 								value: t("rarities.value", {
@@ -79,6 +71,15 @@ export default async function PageSearchResultsFlattened({
 									stackSize: item.stackSize
 								})
 							},
+							item.translationKey
+								? {
+										key: t("translation-keys.label"),
+										value: t("translation-keys.value", {
+											translationKey: item.translationKey
+										}),
+										isLarge: true
+									}
+								: undefined,
 							{
 								key: t("edition.label"),
 								value: t("edition.value", {
@@ -127,13 +128,8 @@ export default async function PageSearchResultsFlattened({
 								: undefined
 						]}
 						title={t("list.card.title", {
-							context: item.name
-								? "has-name"
-								: item.isVariant
-									? "is-variant"
-									: undefined,
+							context: item.isVariant ? "is-variant" : undefined,
 							identifier: item.identifier,
-							name: item.name,
 							variant: item.variant
 						})}
 						variant="flat"
@@ -156,18 +152,9 @@ export default async function PageSearchResultsFlattened({
 					}
 				</Field>
 
-				<Field fieldPath="name" label={t("name.label")}>
-					{({ name }: FlattenedItem) => t("name.value", { name })}
-				</Field>
-
-				<Field
-					fieldPath="translationKey"
-					label={t("translation-key.label")}
-				>
-					{({ translationKey }: FlattenedItem) =>
-						t("translation-key.value", {
-							translationKey
-						})
+				<Field fieldPath="color" label={t("color.label")}>
+					{({ color }: FlattenedItem) =>
+						t("color.value", { context: color })
 					}
 				</Field>
 
@@ -180,6 +167,17 @@ export default async function PageSearchResultsFlattened({
 				<Field fieldPath="stackSize" label={t("stack-size.label")}>
 					{({ stackSize }: FlattenedItem) =>
 						t("stack-size.value", { count: stackSize })
+					}
+				</Field>
+
+				<Field
+					fieldPath="translationKey"
+					label={t("translation-key.label")}
+				>
+					{({ translationKey }: FlattenedItem) =>
+						t("translation-key.value", {
+							translationKey: translationKey
+						})
 					}
 				</Field>
 

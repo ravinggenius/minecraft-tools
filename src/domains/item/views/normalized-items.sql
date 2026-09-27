@@ -7,21 +7,12 @@ SELECT
   NULLIF(
     jsonb_strip_nulls(
       CASE
-        WHEN count(DISTINCT translation_key) = 1 AND count(DISTINCT edition) > 1 THEN jsonb_object_agg('both', translation_key)
-        ELSE jsonb_object_agg(edition, translation_key)
+        WHEN count(DISTINCT color) = 1 AND count(DISTINCT edition) > 1 THEN jsonb_object_agg('both', color)
+        ELSE jsonb_object_agg(edition, color)
       END
     ),
     '{}'::jsonb
-  ) AS translation_keys,
-  NULLIF(
-    jsonb_strip_nulls(
-      CASE
-        WHEN count(DISTINCT name) = 1 AND count(DISTINCT edition) > 1 THEN jsonb_object_agg('both', name)
-        ELSE jsonb_object_agg(edition, name)
-      END
-    ),
-    '{}'::jsonb
-  ) AS names,
+  ) AS colors,
   NULLIF(
     jsonb_strip_nulls(
       CASE
@@ -40,6 +31,15 @@ SELECT
     ),
     '{}'::jsonb
   ) AS stack_sizes,
+  NULLIF(
+    jsonb_strip_nulls(
+      CASE
+        WHEN count(DISTINCT translation_key) = 1 AND count(DISTINCT edition) > 1 THEN jsonb_object_agg('both', translation_key)
+        ELSE jsonb_object_agg(edition, translation_key)
+      END
+    ),
+    '{}'::jsonb
+  ) AS translation_keys,
   jsonb_agg(
     DISTINCT edition
     ORDER BY

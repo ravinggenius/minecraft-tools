@@ -1,7 +1,7 @@
 import { z, ZodError, ZodType } from "zod/v4";
 
 import * as itemModel from "@/domains/item/model";
-import { IMPORT_ITEM, RARITY } from "@/domains/item/schema";
+import { IMPORT_ITEM, ITEM_RELEASE } from "@/domains/item/schema";
 import * as releaseModel from "@/domains/release/model";
 import { Edition, EDITION } from "@/domains/release/schema";
 import rawImportItems from "@/services/datastore-service/fixtures/items.json" with { type: "json" };
@@ -41,10 +41,20 @@ const RAW_IMPORT_ITEM = (context: { edition: Edition }) =>
 			.nullable()
 			.optional()
 			.transform((v) => v ?? undefined),
-		translationKey: VALUE_OF(z.string(), context),
-		name: VALUE_OF(z.string(), context),
-		rarity: VALUE_OF(RARITY, context),
-		stackSize: VALUE_OF(z.number().positive(), context),
+		color: VALUE_OF(
+			ITEM_RELEASE.shape.color.unwrap().unwrap().shape.identifier,
+			context
+		),
+		rarity: VALUE_OF(ITEM_RELEASE.shape.rarity.shape.identifier, context),
+		stackSize: VALUE_OF(
+			ITEM_RELEASE.shape.stackSize.shape.identifier,
+			context
+		),
+		translationKey: VALUE_OF(
+			ITEM_RELEASE.shape.translationKey.unwrap().unwrap().shape
+				.identifier,
+			context
+		),
 		firstProductionReleased: EDITION_VALUE_OF(z.string(), context),
 		lastProductionReleasedBefore: EDITION_VALUE_OF(
 			z.string(),

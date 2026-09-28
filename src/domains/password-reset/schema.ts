@@ -4,9 +4,9 @@ import { ACCOUNT, ACCOUNT_PASSWORD_ATTRS } from "../account/schema";
 
 export const PASSWORD_RESET = z.object({
 	id: z.uuid(),
-	createdAt: z.iso.date(),
-	updatedAt: z.iso.date(),
-	expiresAt: z.iso.date(),
+	createdAt: z.iso.datetime(),
+	updatedAt: z.iso.datetime(),
+	expiresAt: z.iso.datetime(),
 	email: ACCOUNT.shape.email,
 	nonce: z.string()
 });

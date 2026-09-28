@@ -9,8 +9,8 @@ export type Edition = z.infer<typeof EDITION>;
 
 export const RELEASE = z.object({
 	id: z.uuid(),
-	createdAt: z.iso.date(),
-	updatedAt: z.iso.date(),
+	createdAt: z.iso.datetime(),
+	updatedAt: z.iso.datetime(),
 	edition: EDITION,
 	version: z.string().regex(/\d+(?:\.\d+){1,3}/),
 	cycleId: RELEASE_CYCLE.shape.id.optional(),
@@ -24,8 +24,8 @@ export type Release = z.infer<typeof RELEASE>;
 
 export const PLATFORM_RELEASE = z.object({
 	id: z.uuid(),
-	createdAt: z.iso.date(),
-	updatedAt: z.iso.date(),
+	createdAt: z.iso.datetime(),
+	updatedAt: z.iso.datetime(),
 	platformId: PLATFORM.shape.id,
 	releaseId: RELEASE.shape.id,
 	productionReleasedOn: z.iso.date()

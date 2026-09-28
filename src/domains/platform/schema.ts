@@ -2,8 +2,8 @@ import { z } from "zod/v4";
 
 export const PLATFORM = z.object({
 	id: z.uuid(),
-	createdAt: z.iso.date(),
-	updatedAt: z.iso.date(),
+	createdAt: z.iso.datetime(),
+	updatedAt: z.iso.datetime(),
 	name: z.string()
 });
 

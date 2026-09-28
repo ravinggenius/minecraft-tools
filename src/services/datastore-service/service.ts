@@ -2,6 +2,7 @@ import camelCase from "camelcase";
 import dedent from "dedent";
 import {
 	createPool,
+	createTypeParserPreset,
 	Interceptor,
 	QueryResultRow,
 	SchemaValidationError,
@@ -79,7 +80,29 @@ export const pool = createPool(config.databaseUrl, {
 			? createQueryNormalisationInterceptor()
 			: createQueryTrimInterceptor(),
 		createQueryLoggingInterceptor()
-	]
+	],
+	typeParsers: createTypeParserPreset().map((parser) =>
+		parser.name === "timestamptz"
+			? {
+					name: parser.name,
+					parse: (value: string | null) => {
+						if (value === null) {
+							return value;
+						}
+
+						if (value === "infinity") {
+							return Number.POSITIVE_INFINITY;
+						}
+
+						if (value === "-infinity") {
+							return Number.NEGATIVE_INFINITY;
+						}
+
+						return new Date(value).toISOString();
+					}
+				}
+			: parser
+	)
 });
 
 export { sql };

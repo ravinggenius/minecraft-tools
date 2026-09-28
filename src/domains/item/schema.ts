@@ -5,8 +5,8 @@ import { EDITION, PLATFORM_RELEASE, RELEASE } from "../release/schema";
 
 export const ITEM = z.object({
 	id: z.uuid(),
-	createdAt: z.iso.date(),
-	updatedAt: z.iso.date(),
+	createdAt: z.iso.datetime(),
+	updatedAt: z.iso.datetime(),
 	identifier: z.string(),
 	variant: z.string().nullish(),
 	isVariant: z.boolean().readonly()
@@ -17,8 +17,8 @@ export type Item = z.infer<typeof ITEM>;
 const ITEM_COMPONENT = <T>(identifier: ZodType<T>) =>
 	z.object({
 		id: z.uuid(),
-		createdAt: z.iso.date(),
-		updatedAt: z.iso.date(),
+		createdAt: z.iso.datetime(),
+		updatedAt: z.iso.datetime(),
 		identifier
 	});
 
@@ -33,8 +33,8 @@ const ITEM_TRANSLATION_KEY = ITEM_COMPONENT(z.string());
 // TODO Add aliasId (bedrock), numericId (bedrock), tags (java/both)
 export const ITEM_RELEASE = z.object({
 	id: z.uuid(),
-	createdAt: z.iso.date(),
-	updatedAt: z.iso.date(),
+	createdAt: z.iso.datetime(),
+	updatedAt: z.iso.datetime(),
 	releaseId: RELEASE.shape.id,
 	itemId: ITEM.shape.id,
 	color: ITEM_COLOR.pick({ id: true, identifier: true }).nullish(),

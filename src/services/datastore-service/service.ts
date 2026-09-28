@@ -71,7 +71,7 @@ const createResultParserInterceptor = () =>
 	}) satisfies Interceptor;
 
 export const pool = createPool(config.databaseUrl, {
-	captureStackTrace: true,
+	captureStackTrace: config.databaseStackTrace,
 	interceptors: [
 		createFieldNameInterceptor(/^(?:raw_\w+)|(?:all_raw_\w+)$/),
 		createResultParserInterceptor(),

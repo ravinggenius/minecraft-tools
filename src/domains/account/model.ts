@@ -122,7 +122,7 @@ export const findByEmail = async (email: Account["email"]) => {
 			1
 	`);
 
-	return maybeAccountPlusHashword || undefined;
+	return maybeAccountPlusHashword ?? undefined;
 };
 
 export const updateVerificationNonce = async (

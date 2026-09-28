@@ -54,8 +54,8 @@ export default async function PageSearchResultsNormalized({
 								? {
 										key: t("colors.label"),
 										value:
-											item.colors.bedrock ||
-											item.colors.java
+											(item.colors.bedrock ??
+											item.colors.java)
 												? [
 														item.colors.bedrock
 															? t(
@@ -94,7 +94,8 @@ export default async function PageSearchResultsNormalized({
 							{
 								key: t("rarities.label"),
 								value:
-									item.rarities.bedrock || item.rarities.java
+									(item.rarities.bedrock ??
+									item.rarities.java)
 										? [
 												item.rarities.bedrock
 													? t("rarities.value", {
@@ -123,8 +124,8 @@ export default async function PageSearchResultsNormalized({
 							{
 								key: t("stack-sizes.label"),
 								value:
-									item.stackSizes.bedrock ||
-									item.stackSizes.java
+									(item.stackSizes.bedrock ??
+									item.stackSizes.java)
 										? [
 												item.stackSizes.bedrock
 													? t("stack-sizes.value", {
@@ -155,8 +156,8 @@ export default async function PageSearchResultsNormalized({
 								? {
 										key: t("translation-keys.label"),
 										value:
-											item.translationKeys.bedrock ||
-											item.translationKeys.java
+											(item.translationKeys.bedrock ??
+											item.translationKeys.java)
 												? [
 														item.translationKeys
 															.bedrock
@@ -273,7 +274,7 @@ export default async function PageSearchResultsNormalized({
 
 				<Field fieldPath="colors" label={t("colors.label")}>
 					{({ colors }: NormalizedItem) =>
-						colors?.bedrock || colors?.java ? (
+						(colors?.bedrock ?? colors?.java) ? (
 							<ul>
 								{colors.bedrock ? (
 									<li>
@@ -304,7 +305,7 @@ export default async function PageSearchResultsNormalized({
 
 				<Field fieldPath="rarities" label={t("rarities.label")}>
 					{({ rarities }: NormalizedItem) =>
-						rarities.bedrock || rarities.java ? (
+						(rarities.bedrock ?? rarities.java) ? (
 							<ul>
 								{rarities.bedrock ? (
 									<li>
@@ -335,7 +336,7 @@ export default async function PageSearchResultsNormalized({
 
 				<Field fieldPath="stackSizes" label={t("stack-sizes.label")}>
 					{({ stackSizes }: NormalizedItem) =>
-						stackSizes.bedrock || stackSizes.java ? (
+						(stackSizes.bedrock ?? stackSizes.java) ? (
 							<ul>
 								{stackSizes.bedrock ? (
 									<li>
@@ -369,7 +370,7 @@ export default async function PageSearchResultsNormalized({
 					label={t("translation-keys.label")}
 				>
 					{({ translationKeys }: NormalizedItem) =>
-						translationKeys?.bedrock || translationKeys?.java ? (
+						(translationKeys?.bedrock ?? translationKeys?.java) ? (
 							<ul>
 								{translationKeys.bedrock ? (
 									<li>

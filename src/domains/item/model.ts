@@ -4,7 +4,7 @@ import {
 } from "@/library/authorization";
 import { COUNT, SearchParams, SearchResults } from "@/library/search";
 import { VOID } from "@/services/datastore-service/schema";
-import { pool, sql } from "@/services/datastore-service/service";
+import { parenMembers, pool, sql } from "@/services/datastore-service/service";
 
 import {
 	FLATTENED_ITEM,
@@ -42,25 +42,25 @@ const commonSearchConditions = async ({
 
 	return [
 		mayReadAny && include.isAvailableForTools !== undefined
-			? sql.fragment`(is_available_for_tools = ${include.isAvailableForTools})`
+			? sql.fragment`is_available_for_tools = ${include.isAvailableForTools}`
 			: undefined,
 		mayReadAny ? undefined : sql.fragment`is_available_for_tools = ${true}`,
 		include.identifier
-			? sql.fragment`(identifier LIKE ANY(${sql.array(
+			? sql.fragment`identifier LIKE ANY(${sql.array(
 					include.identifier.map((identifier) => `%${identifier}%`),
 					"citext"
-				)}))`
+				)})`
 			: undefined,
 		include.variant
-			? sql.fragment`(variant LIKE ANY(${sql.array(
+			? sql.fragment`variant LIKE ANY(${sql.array(
 					include.variant.map((variant) => `%${variant}%`),
 					"citext"
-				)}))`
+				)})`
 			: undefined,
 		include.isVariant === undefined
 			? undefined
-			: sql.fragment`(is_variant IS ${include.isVariant})`
-	].filter(Boolean);
+			: sql.fragment`is_variant IS ${include.isVariant}`
+	];
 };
 
 export const searchFlattened = async ({
@@ -72,78 +72,69 @@ export const searchFlattened = async ({
 	const whereClauses = [
 		...(await commonSearchConditions({ include, exclude })),
 		includeText
-			? sql.fragment`(
-				(identifier LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				(variant LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				(color::citext LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				(rarity::citext LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				(translation_key LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				(edition::citext LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				(version LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				(cycle_name LIKE ANY(${sql.array(includeText, "citext")}))
-			)`
+			? sql.or(
+					parenMembers([
+						sql.fragment`identifier LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`variant LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`color::citext LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`rarity::citext LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`translation_key LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`edition::citext LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`version LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`cycle_name LIKE ANY(${sql.array(includeText, "citext")})`
+					])
+				)
 			: undefined,
 		include.color
-			? sql.fragment`(color LIKE ANY(${sql.array(
+			? sql.fragment`color LIKE ANY(${sql.array(
 					include.color.map((color) => `%${color}%`),
 					"citext"
-				)}))`
+				)})`
 			: undefined,
 		include.rarity
-			? sql.fragment`(rarity::citext LIKE ANY(${sql.array(
+			? sql.fragment`rarity::citext LIKE ANY(${sql.array(
 					include.rarity.map((rarity) => `%${rarity}%`),
 					"citext"
-				)}))`
+				)})`
 			: undefined,
 		include.stackSize
-			? sql.fragment`(stack_size = ANY(${sql.array(
+			? sql.fragment`stack_size = ANY(${sql.array(
 					include.stackSize,
 					"int4"
-				)}))`
+				)})`
 			: undefined,
 		include.translationKey
-			? sql.fragment`(translation_key LIKE ANY(${sql.array(
+			? sql.fragment`translation_key LIKE ANY(${sql.array(
 					include.translationKey.map((key) => `%${key}%`),
 					"citext"
-				)}))`
+				)})`
 			: undefined,
 		include.edition
-			? sql.fragment`(edition::citext LIKE ANY(${sql.array(
+			? sql.fragment`edition::citext LIKE ANY(${sql.array(
 					include.edition.map((edition) => `%${edition}%`),
 					"citext"
-				)}))`
+				)})`
 			: undefined,
 		include.version
-			? sql.fragment`(version LIKE ANY(${sql.array(
+			? sql.fragment`version LIKE ANY(${sql.array(
 					include.version.map((version) => `${version}%`),
 					"citext"
-				)}))`
+				)})`
 			: undefined,
 		include.cycleName
-			? sql.fragment`(cycle_name LIKE ANY(${sql.array(
+			? sql.fragment`cycle_name LIKE ANY(${sql.array(
 					include.cycleName.map((name) => `%${name}%`),
 					"citext"
-				)}))`
+				)})`
 			: undefined
-	].filter(Boolean);
+	];
 
 	const countQuery = sql.type(COUNT)`
 		SELECT
 			count(*) AS count
 		FROM
 			flattened_items
-		${
-			whereClauses.length
-				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-				: sql.fragment``
-		}
+		WHERE ${sql.and(parenMembers(whereClauses))}
 	`;
 
 	const dataQuery = sql.type(FLATTENED_ITEM)`
@@ -164,11 +155,7 @@ export const searchFlattened = async ({
 			is_available_for_tools
 		FROM
 			flattened_items
-		${
-			whereClauses.length
-				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-				: sql.fragment``
-		}
+		WHERE ${sql.and(parenMembers(whereClauses))}
 		ORDER BY
 			identifier ASC,
 			variant ASC,
@@ -198,105 +185,95 @@ export const searchNormalized = async ({
 	const whereClauses = [
 		...(await commonSearchConditions({ include, exclude })),
 		includeText
-			? sql.fragment`(
-				(identifier LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				(variant LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				((colors ->> 'bedrock') LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				((colors ->> 'java') LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				((colors ->> 'both') LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				((rarities ->> 'bedrock') LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				((rarities ->> 'java') LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				((rarities ->> 'both') LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				((translation_keys ->> 'bedrock') LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				((translation_keys ->> 'java') LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				((translation_keys ->> 'both') LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				(editions::citext LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				(
-					EXISTS (
-						SELECT TRUE
-						FROM jsonb_array_elements_text(cycle_names) AS cycle_name
-						WHERE cycle_name::citext LIKE ANY(${sql.array(includeText, "citext")})
-					)
+			? sql.or(
+					parenMembers([
+						sql.fragment`identifier LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`variant LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`(colors ->> 'bedrock') LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`(colors ->> 'java') LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`(colors ->> 'both') LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`(rarities ->> 'bedrock') LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`(rarities ->> 'java') LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`(rarities ->> 'both') LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`(translation_keys ->> 'bedrock') LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`(translation_keys ->> 'java') LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`(translation_keys ->> 'both') LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`editions::citext LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`
+							EXISTS (
+								SELECT TRUE
+								FROM jsonb_array_elements_text(cycle_names) AS cycle_name
+								WHERE cycle_name::citext LIKE ANY(${sql.array(includeText, "citext")})
+							)
+						`
+					])
 				)
-			)`
 			: undefined,
 		include.color
-			? sql.fragment`(
-				((colors ->> 'bedrock') LIKE ANY(${sql.array(
-					include.color.map((color) => `%${color}%`),
-					"citext"
-				)}))
-				OR
-				((colors ->> 'java') LIKE ANY(${sql.array(
-					include.color.map((color) => `%${color}%`),
-					"citext"
-				)}))
-				OR
-				((colors ->> 'both') LIKE ANY(${sql.array(
-					include.color.map((color) => `%${color}%`),
-					"citext"
-				)}))
-			)`
+			? sql.or(
+					parenMembers([
+						sql.fragment`(colors ->> 'bedrock') LIKE ANY(${sql.array(
+							include.color.map((color) => `%${color}%`),
+							"citext"
+						)})`,
+						sql.fragment`(colors ->> 'java') LIKE ANY(${sql.array(
+							include.color.map((color) => `%${color}%`),
+							"citext"
+						)})`,
+						sql.fragment`(colors ->> 'both') LIKE ANY(${sql.array(
+							include.color.map((color) => `%${color}%`),
+							"citext"
+						)})`
+					])
+				)
 			: undefined,
 		include.rarity
-			? sql.fragment`(
-				((rarities ->> 'bedrock') LIKE ANY(${sql.array(
-					include.rarity.map((rarity) => `%${rarity}%`),
-					"citext"
-				)}))
-				OR
-				((rarities ->> 'java') LIKE ANY(${sql.array(
-					include.rarity.map((rarity) => `%${rarity}%`),
-					"citext"
-				)}))
-				OR
-				((rarities ->> 'both') LIKE ANY(${sql.array(
-					include.rarity.map((rarity) => `%${rarity}%`),
-					"citext"
-				)}))
-			)`
+			? sql.or(
+					parenMembers([
+						sql.fragment`(rarities ->> 'bedrock') LIKE ANY(${sql.array(
+							include.rarity.map((rarity) => `%${rarity}%`),
+							"citext"
+						)})`,
+						sql.fragment`(rarities ->> 'java') LIKE ANY(${sql.array(
+							include.rarity.map((rarity) => `%${rarity}%`),
+							"citext"
+						)})`,
+						sql.fragment`(rarities ->> 'both') LIKE ANY(${sql.array(
+							include.rarity.map((rarity) => `%${rarity}%`),
+							"citext"
+						)})`
+					])
+				)
 			: undefined,
 		include.stackSize
-			? sql.fragment`(
-				((stack_sizes ->> 'bedrock')::integer = ANY(${sql.array(include.stackSize, "int4")}))
-				OR
-				((stack_sizes ->> 'java')::integer = ANY(${sql.array(include.stackSize, "int4")}))
-				OR
-				((stack_sizes ->> 'both')::integer = ANY(${sql.array(include.stackSize, "int4")}))
-			)`
+			? sql.or(
+					parenMembers([
+						sql.fragment`(stack_sizes ->> 'bedrock')::integer = ANY(${sql.array(include.stackSize, "int4")})`,
+						sql.fragment`(stack_sizes ->> 'java')::integer = ANY(${sql.array(include.stackSize, "int4")})`,
+						sql.fragment`(stack_sizes ->> 'both')::integer = ANY(${sql.array(include.stackSize, "int4")})`
+					])
+				)
 			: undefined,
 		include.translationKey
-			? sql.fragment`(
-				((translation_keys ->> 'bedrock') LIKE ANY(${sql.array(
-					include.translationKey.map((key) => `%${key}%`),
-					"citext"
-				)}))
-				OR
-				((translation_keys ->> 'java') LIKE ANY(${sql.array(
-					include.translationKey.map((key) => `%${key}%`),
-					"citext"
-				)}))
-				OR
-				((translation_keys ->> 'both') LIKE ANY(${sql.array(
-					include.translationKey.map((key) => `%${key}%`),
-					"citext"
-				)}))
-			)`
+			? sql.or(
+					parenMembers([
+						sql.fragment`(translation_keys ->> 'bedrock') LIKE ANY(${sql.array(
+							include.translationKey.map((key) => `%${key}%`),
+							"citext"
+						)})`,
+						sql.fragment`(translation_keys ->> 'java') LIKE ANY(${sql.array(
+							include.translationKey.map((key) => `%${key}%`),
+							"citext"
+						)})`,
+						sql.fragment`(translation_keys ->> 'both') LIKE ANY(${sql.array(
+							include.translationKey.map((key) => `%${key}%`),
+							"citext"
+						)})`
+					])
+				)
 			: undefined,
 		include.edition
-			? sql.fragment`(
+			? sql.fragment`
 				EXISTS (
 					SELECT TRUE
 					FROM jsonb_array_elements_text(editions) AS edition
@@ -305,10 +282,10 @@ export const searchNormalized = async ({
 						"citext"
 					)})
 				)
-			)`
+			`
 			: undefined,
 		include.cycleName
-			? sql.fragment`(
+			? sql.fragment`
 				EXISTS (
 					SELECT TRUE
 					FROM jsonb_array_elements_text(cycle_names) AS cycle_name
@@ -317,16 +294,16 @@ export const searchNormalized = async ({
 						"citext"
 					)})
 				)
-			)`
+			`
 			: undefined,
 		include.cyclesCount
-			? sql.fragment`(cycles_count >= ${include.cyclesCount.from})`
+			? sql.fragment`cycles_count >= ${include.cyclesCount.from}`
 			: undefined,
 		include.cyclesCount?.to === undefined
 			? undefined
-			: sql.fragment`(cycles_count <= ${include.cyclesCount.to})`,
+			: sql.fragment`cycles_count <= ${include.cyclesCount.to}`,
 		include.version
-			? sql.fragment`(
+			? sql.fragment`
 				EXISTS (
 					SELECT TRUE
 					FROM jsonb_array_elements_text(versions) AS release_version
@@ -335,26 +312,22 @@ export const searchNormalized = async ({
 						"citext"
 					)})
 				)
-			)`
+			`
 			: undefined,
 		include.releasesCount
-			? sql.fragment`(releases_count >= ${include.releasesCount.from})`
+			? sql.fragment`releases_count >= ${include.releasesCount.from}`
 			: undefined,
 		include.releasesCount?.to === undefined
 			? undefined
-			: sql.fragment`(releases_count <= ${include.releasesCount.to})`
-	].filter(Boolean);
+			: sql.fragment`releases_count <= ${include.releasesCount.to}`
+	];
 
 	const countQuery = sql.type(COUNT)`
 		SELECT
 			count(*) AS count
 		FROM
 			normalized_items
-		${
-			whereClauses.length
-				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-				: sql.fragment``
-		}
+		WHERE ${sql.and(parenMembers(whereClauses))}
 	`;
 
 	const dataQuery = sql.type(NORMALIZED_ITEM)`
@@ -376,11 +349,7 @@ export const searchNormalized = async ({
 			is_available_for_tools
 		FROM
 			normalized_items
-		${
-			whereClauses.length
-				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-				: sql.fragment``
-		}
+		WHERE ${sql.and(parenMembers(whereClauses))}
 		ORDER BY
 			first_production_released_on DESC,
 			identifier ASC,

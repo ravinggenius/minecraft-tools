@@ -6,7 +6,7 @@ import {
 } from "@/library/authorization";
 import CodedError, { ERROR_CODE } from "@/library/coded-error";
 import { COUNT, SearchParams, SearchResults } from "@/library/search";
-import { pool, sql } from "@/services/datastore-service/service";
+import { parenMembers, pool, sql } from "@/services/datastore-service/service";
 
 import { RELEASE_CYCLE, ReleaseCycle, ReleaseCycleAttrs } from "./schema";
 import {
@@ -111,15 +111,14 @@ export const update = async (
 const commonSearchConditions = async ({
 	include,
 	exclude
-}: SearchParams<Include>["conditions"]) =>
-	[
-		include.name
-			? sql.fragment`(name LIKE ANY(${sql.array(
-					include.name.map((name) => `%${name}%`),
-					"citext"
-				)}))`
-			: undefined
-	].filter(Boolean);
+}: SearchParams<Include>["conditions"]) => [
+	include.name
+		? sql.fragment`name LIKE ANY(${sql.array(
+				include.name.map((name) => `%${name}%`),
+				"citext"
+			)})`
+		: undefined
+];
 
 export const searchFlattened = async ({
 	conditions: { include, exclude },
@@ -137,33 +136,28 @@ export const searchFlattened = async ({
 	const whereClauses = [
 		...(await commonSearchConditions({ include, exclude })),
 		mayRead && include.isAvailableForTools !== undefined
-			? sql.fragment`((release ->> 'is_available_for_tools') = ${include.isAvailableForTools})`
+			? sql.fragment`(release ->> 'is_available_for_tools') = ${include.isAvailableForTools}`
 			: undefined,
 		mayRead
 			? undefined
-			: sql.fragment`((release ->> 'is_available_for_tools') = ${true})`,
+			: sql.fragment`(release ->> 'is_available_for_tools') = ${true}`,
 		includeText
-			? sql.fragment`(
-				(name LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				((release ->> 'edition')::citext LIKE ANY(${sql.array(includeText, "citext")}))
-			)`
+			? sql.or([
+					sql.fragment`name LIKE ANY(${sql.array(includeText, "citext")})`,
+					sql.fragment`(release ->> 'edition')::citext LIKE ANY(${sql.array(includeText, "citext")})`
+				])
 			: undefined,
 		include.edition
-			? sql.fragment`((release ->> 'edition')::citext = ANY(${sql.array(include.edition, "citext")}))`
+			? sql.fragment`(release ->> 'edition')::citext = ANY(${sql.array(include.edition, "citext")})`
 			: undefined
-	].filter(Boolean);
+	];
 
 	const countQuery = sql.type(COUNT)`
 		SELECT
 			count(*) AS count
 		FROM
 			flattened_release_cycles
-		${
-			whereClauses.length
-				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-				: sql.fragment``
-		}
+		WHERE ${sql.and(parenMembers(whereClauses))}
 	`;
 
 	const dataQuery = sql.type(FLATTENED_RELEASE_CYCLE)`
@@ -173,11 +167,7 @@ export const searchFlattened = async ({
 			release
 		FROM
 			flattened_release_cycles
-		${
-			whereClauses.length
-				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-				: sql.fragment``
-		}
+		WHERE ${sql.and(parenMembers(whereClauses))}
 		ORDER BY
 			release ->> 'production_released_on' DESC NULLS FIRST
 		LIMIT
@@ -211,37 +201,34 @@ export const searchNormalized = async ({
 	const whereClauses = [
 		...(await commonSearchConditions({ include, exclude })),
 		mayRead && include.isAvailableForTools !== undefined
-			? sql.fragment`(is_available_for_tools = ${include.isAvailableForTools})`
+			? sql.fragment`is_available_for_tools = ${include.isAvailableForTools}`
 			: undefined,
-		mayRead ? undefined : sql.fragment`(is_available_for_tools = ${true})`,
+		mayRead ? undefined : sql.fragment`is_available_for_tools = ${true}`,
 		includeText
-			? sql.fragment`(
-				(name LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				(
-					EXISTS (
-						SELECT 1
-						FROM unnest(editions) AS e
-						WHERE e::citext LIKE ANY(${sql.array(includeText, "citext")})
-					)
+			? sql.or(
+					parenMembers([
+						sql.fragment`name LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`
+							EXISTS (
+								SELECT 1
+								FROM unnest(editions) AS e
+								WHERE e::citext LIKE ANY(${sql.array(includeText, "citext")})
+							)
+						`
+					])
 				)
-			)`
 			: undefined,
 		include.edition
-			? sql.fragment`(editions::citext[] && ${sql.array(include.edition, "citext")})`
+			? sql.fragment`editions::citext[] && ${sql.array(include.edition, "citext")}`
 			: undefined
-	].filter(Boolean);
+	];
 
 	const countQuery = sql.type(COUNT)`
 		SELECT
 			count(*) AS count
 		FROM
 			normalized_release_cycles
-		${
-			whereClauses.length
-				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-				: sql.fragment``
-		}
+		WHERE ${sql.and(parenMembers(whereClauses))}
 	`;
 
 	const dataQuery = sql.type(NORMALIZED_RELEASE_CYCLE)`
@@ -254,11 +241,7 @@ export const searchNormalized = async ({
 			is_available_for_tools
 		FROM
 			normalized_release_cycles
-		${
-			whereClauses.length
-				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-				: sql.fragment``
-		}
+		WHERE ${sql.and(parenMembers(whereClauses))}
 		ORDER BY
 			first_production_released_on DESC NULLS FIRST
 		LIMIT

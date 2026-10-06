@@ -6,7 +6,7 @@ import {
 } from "@/library/authorization";
 import CodedError, { ERROR_CODE } from "@/library/coded-error";
 import { COUNT, SearchParams, SearchResults } from "@/library/search";
-import { pool, sql } from "@/services/datastore-service/service";
+import { parenMembers, pool, sql } from "@/services/datastore-service/service";
 
 import { EDITION } from "../release/schema";
 
@@ -119,43 +119,40 @@ export const searchNormalized = async ({
 
 	const whereClauses = [
 		mayRead && include.isAvailableForTools !== undefined
-			? sql.fragment`(is_available_for_tools = ${include.isAvailableForTools})`
+			? sql.fragment`is_available_for_tools = ${include.isAvailableForTools}`
 			: undefined,
 		mayRead ? undefined : sql.fragment`is_available_for_tools = ${true}`,
 		includeText
-			? sql.fragment`(
-				(name LIKE ANY(${sql.array(includeText, "text")}))
-				OR
-				(
-					EXISTS (
-						SELECT 1
-						FROM unnest(editions) AS e
-						WHERE e::citext LIKE ANY(${sql.array(includeText, "citext")})
-					)
+			? sql.or(
+					parenMembers([
+						sql.fragment`name LIKE ANY(${sql.array(includeText, "text")})`,
+						sql.fragment`
+							EXISTS (
+								SELECT 1
+								FROM unnest(editions) AS e
+								WHERE e::citext LIKE ANY(${sql.array(includeText, "citext")})
+							)
+						`
+					])
 				)
-			)`
 			: undefined,
 		include.name
-			? sql.fragment`(name LIKE ANY(${sql.array(
+			? sql.fragment`name LIKE ANY(${sql.array(
 					include.name.map((name) => `%${name}%`),
 					"text"
-				)}))`
+				)})`
 			: undefined,
 		include.edition
-			? sql.fragment`(editions::citext[] && ${sql.array(include.edition, "citext")})`
+			? sql.fragment`editions::citext[] && ${sql.array(include.edition, "citext")}`
 			: undefined
-	].filter(Boolean);
+	];
 
 	const countQuery = sql.type(COUNT)`
 		SELECT
 			count(*) AS count
 		FROM
 			normalized_platforms
-		${
-			whereClauses.length
-				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-				: sql.fragment``
-		}
+		WHERE ${sql.and(parenMembers(whereClauses))}
 	`;
 
 	const dataQuery = sql.type(NORMALIZED_PLATFORM)`
@@ -167,11 +164,7 @@ export const searchNormalized = async ({
 			is_available_for_tools
 		FROM
 			normalized_platforms
-		${
-			whereClauses.length
-				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-				: sql.fragment``
-		}
+		WHERE ${sql.and(parenMembers(whereClauses))}
 		ORDER BY
 			name ASC
 		LIMIT

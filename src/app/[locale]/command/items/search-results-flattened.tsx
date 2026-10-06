@@ -153,14 +153,12 @@ export default async function PageSearchResultsFlattened({
 				</Field>
 
 				<Field fieldPath="color" label={t("color.label")}>
-					{({ color }: FlattenedItem) =>
-						t("color.value", { context: color })
-					}
+					{({ color }: FlattenedItem) => t("color.value", { color })}
 				</Field>
 
 				<Field fieldPath="rarity" label={t("rarity.label")}>
 					{({ rarity }: FlattenedItem) =>
-						t("rarity.value", { context: rarity })
+						t("rarity.value", { rarity })
 					}
 				</Field>
 
@@ -176,7 +174,7 @@ export default async function PageSearchResultsFlattened({
 				>
 					{({ translationKey }: FlattenedItem) =>
 						t("translation-key.value", {
-							translationKey: translationKey
+							translationKey
 						})
 					}
 				</Field>

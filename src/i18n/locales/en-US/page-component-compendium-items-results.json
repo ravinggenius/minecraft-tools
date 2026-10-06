@@ -35,16 +35,13 @@
 
   "rarity": {
     "label": "Rarity",
-    "value_common": "Common",
-    "value_uncommon": "Uncommon",
-    "value_rare": "Rare",
-    "value_epic": "Epic"
+    "value": "{{rarity}}"
   },
 
   "rarities": {
     "label": "Rarity",
-    "value": "$t(rarity.value, { \"context\": \"{{rarity}}\" })",
-    "value_editioned": "$t(rarity.value, { \"context\": \"{{rarity}}\" }) ($t(domains:release.edition.name, { \"context\": \"{{edition}}\" }))"
+    "value": "$t(rarity.value, { \"rarity\": \"{{rarity}}\" })",
+    "value_editioned": "$t(rarity.value, { \"rarity\": \"{{rarity}}\" }) ($t(domains:release.edition.name, { \"context\": \"{{edition}}\" }))"
   },
 
   "stack-size": {

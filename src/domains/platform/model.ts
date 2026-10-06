@@ -123,17 +123,18 @@ export const searchNormalized = async ({
 			: undefined,
 		mayRead ? undefined : sql.fragment`is_available_for_tools = ${true}`,
 		includeText
-			? sql.fragment`
-				(name LIKE ANY(${sql.array(includeText, "text")}))
-				OR
-				(
-					EXISTS (
-						SELECT 1
-						FROM unnest(editions) AS e
-						WHERE e::citext LIKE ANY(${sql.array(includeText, "citext")})
-					)
+			? sql.or(
+					parenMembers([
+						sql.fragment`name LIKE ANY(${sql.array(includeText, "text")})`,
+						sql.fragment`
+							EXISTS (
+								SELECT 1
+								FROM unnest(editions) AS e
+								WHERE e::citext LIKE ANY(${sql.array(includeText, "citext")})
+							)
+						`
+					])
 				)
-			`
 			: undefined,
 		include.name
 			? sql.fragment`name LIKE ANY(${sql.array(

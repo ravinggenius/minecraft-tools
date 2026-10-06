@@ -209,15 +209,14 @@ export const searchFlattened = async ({
 	const whereClauses = [
 		...(await commonSearchConditions({ include, exclude })),
 		includeText
-			? sql.fragment`
-				(edition::citext LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				(version LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				((cycle ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				((platform ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")}))
-			`
+			? sql.or(
+					parenMembers([
+						sql.fragment`edition::citext LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`version LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`(cycle ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`(platform ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")})`
+					])
+				)
 			: undefined,
 		include.platformName
 			? sql.fragment`(platform ->> 'name')::citext LIKE ANY(${sql.array(
@@ -281,21 +280,20 @@ export const searchNormalized = async ({
 	const whereClauses = [
 		...(await commonSearchConditions({ include, exclude })),
 		includeText
-			? sql.fragment`
-				(edition::citext LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				(version LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				((cycle ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				(
-					EXISTS (
-						SELECT TRUE
-						FROM jsonb_array_elements(platforms) AS platform
-						WHERE (platform ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")})
-					)
+			? sql.or(
+					parenMembers([
+						sql.fragment`edition::citext LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`version LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`(cycle ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`
+							EXISTS (
+								SELECT TRUE
+								FROM jsonb_array_elements(platforms) AS platform
+								WHERE (platform ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")})
+							)
+						`
+					])
 				)
-			`
 			: undefined,
 		include.platformName
 			? sql.fragment`

@@ -142,11 +142,10 @@ export const searchFlattened = async ({
 			? undefined
 			: sql.fragment`(release ->> 'is_available_for_tools') = ${true}`,
 		includeText
-			? sql.fragment`
-				(name LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				((release ->> 'edition')::citext LIKE ANY(${sql.array(includeText, "citext")}))
-			`
+			? sql.or([
+					sql.fragment`name LIKE ANY(${sql.array(includeText, "citext")})`,
+					sql.fragment`(release ->> 'edition')::citext LIKE ANY(${sql.array(includeText, "citext")})`
+				])
 			: undefined,
 		include.edition
 			? sql.fragment`(release ->> 'edition')::citext = ANY(${sql.array(include.edition, "citext")})`
@@ -206,17 +205,18 @@ export const searchNormalized = async ({
 			: undefined,
 		mayRead ? undefined : sql.fragment`is_available_for_tools = ${true}`,
 		includeText
-			? sql.fragment`
-				(name LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				(
-					EXISTS (
-						SELECT 1
-						FROM unnest(editions) AS e
-						WHERE e::citext LIKE ANY(${sql.array(includeText, "citext")})
-					)
+			? sql.or(
+					parenMembers([
+						sql.fragment`name LIKE ANY(${sql.array(includeText, "citext")})`,
+						sql.fragment`
+							EXISTS (
+								SELECT 1
+								FROM unnest(editions) AS e
+								WHERE e::citext LIKE ANY(${sql.array(includeText, "citext")})
+							)
+						`
+					])
 				)
-			`
 			: undefined,
 		include.edition
 			? sql.fragment`editions::citext[] && ${sql.array(include.edition, "citext")}`

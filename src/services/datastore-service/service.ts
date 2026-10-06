@@ -3,6 +3,7 @@ import dedent from "dedent";
 import {
 	createPool,
 	createTypeParserPreset,
+	FragmentSqlToken,
 	Interceptor,
 	QueryResultRow,
 	SchemaValidationError,
@@ -106,3 +107,17 @@ export const pool = createPool(config.databaseUrl, {
 });
 
 export { sql };
+
+export const parenMembers = (
+	members: Array<FragmentSqlToken | false | null | undefined>
+): Array<FragmentSqlToken> =>
+	members
+		.filter(
+			(maybeMember): maybeMember is FragmentSqlToken =>
+				!(
+					[false, null, undefined] as Array<
+						FragmentSqlToken | false | null | undefined
+					>
+				).includes(maybeMember)
+		)
+		.map((member) => sql.fragment`(${member})`);

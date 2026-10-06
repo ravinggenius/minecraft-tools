@@ -6,7 +6,7 @@ import {
 } from "@/library/authorization";
 import { COUNT, SearchParams, SearchResults } from "@/library/search";
 import { VOID } from "@/services/datastore-service/schema";
-import { pool, sql } from "@/services/datastore-service/service";
+import { parenMembers, pool, sql } from "@/services/datastore-service/service";
 
 import { RELEASE_CYCLE } from "../release-cycle/schema";
 
@@ -169,34 +169,34 @@ const commonSearchConditions = async ({
 
 	return [
 		mayReadAny && include.isAvailableForTools !== undefined
-			? sql.fragment`(is_available_for_tools = ${include.isAvailableForTools})`
+			? sql.fragment`is_available_for_tools = ${include.isAvailableForTools}`
 			: undefined,
 		mayReadAny ? undefined : sql.fragment`is_available_for_tools = ${true}`,
 		include.edition
-			? sql.fragment`(edition = ANY(${sql.array(include.edition, "edition")}))`
+			? sql.fragment`edition = ANY(${sql.array(include.edition, "edition")})`
 			: undefined,
 		include.version
-			? sql.fragment`(version LIKE ANY(${sql.array(
+			? sql.fragment`version LIKE ANY(${sql.array(
 					include.version.map((version) => `${version}%`),
 					"citext"
-				)}))`
+				)})`
 			: undefined,
 		include.cycleName
-			? sql.fragment`((cycle ->> 'name')::citext LIKE ANY(${sql.array(
+			? sql.fragment`(cycle ->> 'name')::citext LIKE ANY(${sql.array(
 					include.cycleName.map((name) => `%${name}%`),
 					"citext"
-				)}))`
+				)})`
 			: undefined,
 		include.isLatest === undefined
 			? undefined
-			: sql.fragment`(is_latest = ${include.isLatest})`,
+			: sql.fragment`is_latest = ${include.isLatest}`,
 		include.firstProductionReleasedOn?.from
-			? sql.fragment`(first_production_released_on >= ${sql.date(include.firstProductionReleasedOn.from)})`
+			? sql.fragment`first_production_released_on >= ${sql.date(include.firstProductionReleasedOn.from)}`
 			: undefined,
 		include.firstProductionReleasedOn?.to
-			? sql.fragment`(first_production_released_on <= ${sql.date(include.firstProductionReleasedOn.to)})`
+			? sql.fragment`first_production_released_on <= ${sql.date(include.firstProductionReleasedOn.to)}`
 			: undefined
-	].filter(Boolean);
+	];
 };
 
 export const searchFlattened = async ({
@@ -209,7 +209,7 @@ export const searchFlattened = async ({
 	const whereClauses = [
 		...(await commonSearchConditions({ include, exclude })),
 		includeText
-			? sql.fragment`(
+			? sql.fragment`
 				(edition::citext LIKE ANY(${sql.array(includeText, "citext")}))
 				OR
 				(version LIKE ANY(${sql.array(includeText, "citext")}))
@@ -217,26 +217,22 @@ export const searchFlattened = async ({
 				((cycle ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")}))
 				OR
 				((platform ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")}))
-			)`
+			`
 			: undefined,
 		include.platformName
-			? sql.fragment`((platform ->> 'name')::citext LIKE ANY(${sql.array(
+			? sql.fragment`(platform ->> 'name')::citext LIKE ANY(${sql.array(
 					include.platformName.map((platform) => `%${platform}%`),
 					"citext"
-				)}))`
+				)})`
 			: undefined
-	].filter(Boolean);
+	];
 
 	const countQuery = sql.type(COUNT)`
 		SELECT
 			count(*) AS count
 		FROM
 			flattened_releases
-		${
-			whereClauses.length
-				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-				: sql.fragment``
-		}
+		WHERE ${sql.and(parenMembers(whereClauses))}
 	`;
 
 	const dataQuery = sql.type(FLATTENED_RELEASE)`
@@ -254,11 +250,7 @@ export const searchFlattened = async ({
 			platform
 		FROM
 			flattened_releases
-		${
-			whereClauses.length
-				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-				: sql.fragment``
-		}
+		WHERE ${sql.and(parenMembers(whereClauses))}
 		ORDER BY
 			platform ->> 'production_released_on' DESC,
 			edition ASC,
@@ -289,7 +281,7 @@ export const searchNormalized = async ({
 	const whereClauses = [
 		...(await commonSearchConditions({ include, exclude })),
 		includeText
-			? sql.fragment`(
+			? sql.fragment`
 				(edition::citext LIKE ANY(${sql.array(includeText, "citext")}))
 				OR
 				(version LIKE ANY(${sql.array(includeText, "citext")}))
@@ -303,10 +295,10 @@ export const searchNormalized = async ({
 						WHERE (platform ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")})
 					)
 				)
-			)`
+			`
 			: undefined,
 		include.platformName
-			? sql.fragment`(
+			? sql.fragment`
 				EXISTS (
 					SELECT TRUE
 					FROM jsonb_array_elements(platforms) AS platform
@@ -315,20 +307,16 @@ export const searchNormalized = async ({
 						"citext"
 					)})
 				)
-			)`
+			`
 			: undefined
-	].filter(Boolean);
+	];
 
 	const countQuery = sql.type(COUNT)`
 		SELECT
 			count(*) AS count
 		FROM
 			normalized_releases
-		${
-			whereClauses.length
-				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-				: sql.fragment``
-		}
+		WHERE ${sql.and(parenMembers(whereClauses))}
 	`;
 
 	const dataQuery = sql.type(NORMALIZED_RELEASE)`
@@ -345,11 +333,7 @@ export const searchNormalized = async ({
 			platforms
 		FROM
 			normalized_releases
-		${
-			whereClauses.length
-				? sql.fragment`WHERE ${sql.join(whereClauses, sql.fragment` AND `)}`
-				: sql.fragment``
-		}
+		WHERE ${sql.and(parenMembers(whereClauses))}
 		ORDER BY
 			first_production_released_on DESC,
 			edition ASC,

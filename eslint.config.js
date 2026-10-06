@@ -3,6 +3,7 @@ import js from "@eslint/js";
 import nextPlugin from "@next/eslint-plugin-next";
 import prettier from "eslint-config-prettier";
 import react from "eslint-plugin-react";
+import slonik from "eslint-plugin-slonik";
 import sql from "eslint-plugin-sql";
 
 export default [
@@ -12,6 +13,7 @@ export default [
 	{
 		plugins: {
 			react,
+			slonik,
 			sql,
 			"@c-ehrlich/use-server": useServer
 		},
@@ -28,6 +30,18 @@ export default [
 			"react/jsx-no-leaked-render": [
 				"error",
 				{ validStrategies: ["ternary"] }
+			],
+			"slonik/check-sql": [
+				"error",
+				{
+					connections: {
+						targets: [
+							{
+								tag: "sql.+(type\\(*\\)|typeAlias\\(*\\)|unsafe)"
+							}
+						]
+					}
+				}
 			],
 			"sql/format": [
 				"off",

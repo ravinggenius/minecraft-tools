@@ -5,62 +5,58 @@ import { EDITION, PLATFORM_RELEASE, RELEASE } from "../release/schema";
 
 export const ITEM = z.object({
 	id: z.uuid(),
-	createdAt: z.iso.date(),
-	updatedAt: z.iso.date(),
+	createdAt: z.iso.datetime(),
+	updatedAt: z.iso.datetime(),
 	identifier: z.string(),
-	variant: z.string().optional(),
+	variant: z.string().nullish(),
 	isVariant: z.boolean().readonly()
 });
 
 export type Item = z.infer<typeof ITEM>;
 
-export const RARITY = z.enum(["common", "uncommon", "rare", "epic"]);
+const ITEM_COMPONENT = <T>(identifier: ZodType<T>) =>
+	z.object({
+		id: z.uuid(),
+		createdAt: z.iso.datetime(),
+		updatedAt: z.iso.datetime(),
+		identifier
+	});
 
-export type Rarity = z.infer<typeof RARITY>;
+const ITEM_COLOR = ITEM_COMPONENT(z.string());
 
-const RAW_COMPONENTS_BEDROCK = z.object({
-	aliasId: z.string().optional(),
-	numericId: z.int().optional()
-});
+const ITEM_RARITY = ITEM_COMPONENT(z.string());
 
-const RAW_COMPONENTS_JAVA = z.object({
-	tags: z.array(z.string()).optional()
-});
+const ITEM_STACK_SIZE = ITEM_COMPONENT(z.int().positive());
 
-export const ITEM_METADATA = z.object({
-	id: z.uuid(),
-	createdAt: z.iso.date(),
-	updatedAt: z.iso.date(),
-	rarity: RARITY.optional().default("common"),
-	stackSize: z.int().positive().optional().default(64),
-	components: z
-		.union([RAW_COMPONENTS_BEDROCK, RAW_COMPONENTS_JAVA])
-		.optional()
-});
+const ITEM_TRANSLATION_KEY = ITEM_COMPONENT(z.string());
 
-export type ItemMetadata = z.infer<typeof ITEM_METADATA>;
-
-export const ITEM_NAME = z.object({
-	id: z.uuid(),
-	createdAt: z.iso.date(),
-	updatedAt: z.iso.date(),
-	translationKey: z.string().optional(),
-	name: z.string()
-});
-
-export type ItemName = z.infer<typeof ITEM_NAME>;
-
+// TODO Add aliasId (bedrock), numericId (bedrock), tags (java/both)
 export const ITEM_RELEASE = z.object({
 	id: z.uuid(),
-	createdAt: z.iso.date(),
-	updatedAt: z.iso.date(),
-	itemId: ITEM.shape.id,
-	itemMetadataId: ITEM_METADATA.shape.id,
+	createdAt: z.iso.datetime(),
+	updatedAt: z.iso.datetime(),
 	releaseId: RELEASE.shape.id,
-	productionReleasedOn: z.iso.date()
+	itemId: ITEM.shape.id,
+	color: ITEM_COLOR.pick({ id: true, identifier: true }).nullish(),
+	rarity: ITEM_RARITY.pick({ id: true, identifier: true }),
+	stackSize: ITEM_STACK_SIZE.pick({ id: true, identifier: true }),
+	translationKey: ITEM_TRANSLATION_KEY.pick({
+		id: true,
+		identifier: true
+	}).nullish(),
+	productionReleasedOn: PLATFORM_RELEASE.shape.productionReleasedOn
 });
 
 export type ItemRelease = z.infer<typeof ITEM_RELEASE>;
+
+export const ITEM_ATTRS = ITEM.omit({
+	id: true,
+	createdAt: true,
+	updatedAt: true,
+	isVariant: true
+});
+
+export type ItemAttrs = z.infer<typeof ITEM_ATTRS>;
 
 export const FLATTENED_ITEM = ITEM.pick({
 	identifier: true,
@@ -72,20 +68,18 @@ export const FLATTENED_ITEM = ITEM.pick({
 		itemId: ITEM.shape.id,
 		cycleName: RELEASE_CYCLE.shape.name,
 		firstProductionReleasedOn:
-			PLATFORM_RELEASE.shape.productionReleasedOn.optional()
+			PLATFORM_RELEASE.shape.productionReleasedOn.nullish(),
+		color: ITEM_RELEASE.shape.color
+			.unwrap()
+			.unwrap()
+			.shape.identifier.nullish(),
+		rarity: ITEM_RELEASE.shape.rarity.shape.identifier,
+		stackSize: ITEM_RELEASE.shape.stackSize.shape.identifier,
+		translationKey: ITEM_RELEASE.shape.translationKey
+			.unwrap()
+			.unwrap()
+			.shape.identifier.nullish()
 	})
-	.and(
-		ITEM_NAME.pick({
-			translationKey: true,
-			name: true
-		})
-	)
-	.and(
-		ITEM_METADATA.pick({
-			rarity: true,
-			stackSize: true
-		})
-	)
 	.and(
 		RELEASE.pick({
 			edition: true,
@@ -154,10 +148,14 @@ export const NORMALIZED_ITEM = ITEM.omit({
 	createdAt: true,
 	updatedAt: true
 }).extend({
-	translationKeys: EDITION_WRAPPED(ITEM_NAME.shape.translationKey).optional(),
-	names: EDITION_WRAPPED(ITEM_NAME.shape.name).optional(),
-	rarities: EDITION_WRAPPED(ITEM_METADATA.shape.rarity).optional(),
-	stackSizes: EDITION_WRAPPED(ITEM_METADATA.shape.stackSize).optional(),
+	colors: EDITION_WRAPPED(
+		ITEM_RELEASE.shape.color.unwrap().unwrap().shape.identifier
+	).nullish(),
+	rarities: EDITION_WRAPPED(ITEM_RELEASE.shape.rarity.shape.identifier),
+	stackSizes: EDITION_WRAPPED(ITEM_RELEASE.shape.stackSize.shape.identifier),
+	translationKeys: EDITION_WRAPPED(
+		ITEM_RELEASE.shape.translationKey.unwrap().unwrap().shape.identifier
+	).nullish(),
 	editions: z.array(EDITION),
 	cyclesCount: z.int().nonnegative(),
 	cycleNames: z.array(RELEASE_CYCLE.shape.name),
@@ -169,7 +167,7 @@ export const NORMALIZED_ITEM = ITEM.omit({
 		})
 	),
 	firstProductionReleasedOn:
-		PLATFORM_RELEASE.shape.productionReleasedOn.optional(),
+		PLATFORM_RELEASE.shape.productionReleasedOn.nullish(),
 	isAvailableForTools: RELEASE.shape.isAvailableForTools
 });
 
@@ -180,17 +178,21 @@ export const IMPORT_ITEM = ITEM.pick({
 	variant: true
 })
 	.and(
-		ITEM_METADATA.pick({
-			rarity: true,
-			stackSize: true,
-			components: true
+		z.object({
+			rarity: ITEM_RELEASE.shape.rarity.shape.identifier,
+			stackSize: ITEM_RELEASE.shape.stackSize.shape.identifier
 		})
 	)
 	.and(
-		ITEM_NAME.pick({
-			translationKey: true,
-			name: true
-		})
+		z
+			.object({
+				color: ITEM_RELEASE.shape.color.unwrap().unwrap().shape
+					.identifier,
+				translationKey: ITEM_RELEASE.shape.translationKey
+					.unwrap()
+					.unwrap().shape.identifier
+			})
+			.partial()
 	)
 	.and(
 		z.object({

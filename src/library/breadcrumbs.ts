@@ -16,9 +16,7 @@ type CrumbAttrsAutoLabel = Pick<Crumb, "name" | "value">;
 type CrumbAttrsAutoLabelValue = Pick<Crumb, "name">;
 
 export type CrumbAttrs =
-	| CrumbAttrsFull
-	| CrumbAttrsAutoLabel
-	| CrumbAttrsAutoLabelValue;
+	CrumbAttrsFull | CrumbAttrsAutoLabel | CrumbAttrsAutoLabelValue;
 
 const hasLabel = (attrs: CrumbAttrs): attrs is CrumbAttrsFull =>
 	Boolean((attrs as CrumbAttrsFull).label);

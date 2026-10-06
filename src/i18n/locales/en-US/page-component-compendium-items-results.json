@@ -22,40 +22,26 @@
     "value": "{{variant}}"
   },
 
-  "name": {
-    "label": "Name",
-    "value": "{{name}}"
+  "color": {
+    "label": "Color",
+    "value": "{{color}}"
   },
 
-  "names": {
-    "label": "Name",
-    "value": "$t(name.value, { \"name\": \"{{name}}\" })",
-    "value_editioned": "$t(name.value, { \"name\": \"{{name}}\" }) ($t(domains:release.edition.name, { \"context\": \"{{edition}}\" }))"
-  },
-
-  "translation-key": {
-    "label": "Translation Key",
-    "value": "{{translationKey}}"
-  },
-
-  "translation-keys": {
-    "label": "Translation Key",
-    "value": "$t(translation-key.value, { \"translationKey\": \"{{translationKey}}\" })",
-    "value_editioned": "$t(translation-key.value, { \"translationKey\": \"{{translationKey}}\" }) ($t(domains:release.edition.name, { \"context\": \"{{edition}}\" }))"
+  "colors": {
+    "label": "Color",
+    "value": "$t(color.value, { \"color\": \"{{color}}\" })",
+    "value_editioned": "$t(color.value, { \"color\": \"{{color}}\" }) ($t(domains:release.edition.name, { \"context\": \"{{edition}}\" }))"
   },
 
   "rarity": {
     "label": "Rarity",
-    "value_common": "Common",
-    "value_uncommon": "Uncommon",
-    "value_rare": "Rare",
-    "value_epic": "Epic"
+    "value": "{{rarity}}"
   },
 
   "rarities": {
     "label": "Rarity",
-    "value": "$t(rarity.value, { \"context\": \"{{rarity}}\" })",
-    "value_editioned": "$t(rarity.value, { \"context\": \"{{rarity}}\" }) ($t(domains:release.edition.name, { \"context\": \"{{edition}}\" }))"
+    "value": "$t(rarity.value, { \"rarity\": \"{{rarity}}\" })",
+    "value_editioned": "$t(rarity.value, { \"rarity\": \"{{rarity}}\" }) ($t(domains:release.edition.name, { \"context\": \"{{edition}}\" }))"
   },
 
   "stack-size": {
@@ -67,6 +53,17 @@
     "label": "Stack Size",
     "value": "$t(stack-size.value, { \"count\": {{stackSize}} })",
     "value_editioned": "$t(stack-size.value, { \"count\": {{stackSize}} }) ($t(domains:release.edition.name, { \"context\": \"{{edition}}\" }))"
+  },
+
+  "translation-key": {
+    "label": "Translation Key",
+    "value": "{{translationKey}}"
+  },
+
+  "translation-keys": {
+    "label": "Translation Key",
+    "value": "$t(translation-key.value, { \"translationKey\": \"{{translationKey}}\" })",
+    "value_editioned": "$t(translation-key.value, { \"translationKey\": \"{{translationKey}}\" }) ($t(domains:release.edition.name, { \"context\": \"{{edition}}\" }))"
   },
 
   "edition": {

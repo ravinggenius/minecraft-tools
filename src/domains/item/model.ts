@@ -1,4 +1,7 @@
-import { confirmAuthorization } from "@/library/authorization";
+import {
+	confirmAuthorization,
+	enforceAuthorization
+} from "@/library/authorization";
 import { COUNT, SearchParams, SearchResults } from "@/library/search";
 import { VOID } from "@/services/datastore-service/schema";
 import { pool, sql } from "@/services/datastore-service/service";
@@ -7,6 +10,8 @@ import {
 	FLATTENED_ITEM,
 	FlattenedItem,
 	ImportItem,
+	Item,
+	ItemAttrs,
 	NORMALIZED_ITEM,
 	NormalizedItem
 } from "./schema";
@@ -15,6 +20,19 @@ import { Include } from "./search.schema";
 if (process.env.NEXT_RUNTIME === "nodejs") {
 	await import("server-only");
 }
+
+export const get = async (itemId: Item["id"]) => {
+	//
+	return undefined as Item | undefined;
+};
+
+export const create = async (attrs: ItemAttrs) => {
+	await enforceAuthorization(["create", "new", "item"]);
+};
+
+export const update = async (itemId: Item["id"], attrs: ItemAttrs) => {
+	await enforceAuthorization(["update", "any", "item"]);
+};
 
 const commonSearchConditions = async ({
 	include,
@@ -59,11 +77,11 @@ export const searchFlattened = async ({
 				OR
 				(variant LIKE ANY(${sql.array(includeText, "citext")}))
 				OR
-				(translation_key LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				(name LIKE ANY(${sql.array(includeText, "citext")}))
+				(color::citext LIKE ANY(${sql.array(includeText, "citext")}))
 				OR
 				(rarity::citext LIKE ANY(${sql.array(includeText, "citext")}))
+				OR
+				(translation_key LIKE ANY(${sql.array(includeText, "citext")}))
 				OR
 				(edition::citext LIKE ANY(${sql.array(includeText, "citext")}))
 				OR
@@ -72,15 +90,9 @@ export const searchFlattened = async ({
 				(cycle_name LIKE ANY(${sql.array(includeText, "citext")}))
 			)`
 			: undefined,
-		include.translationKey
-			? sql.fragment`(translation_key LIKE ANY(${sql.array(
-					include.translationKey.map((key) => `%${key}%`),
-					"citext"
-				)}))`
-			: undefined,
-		include.name
-			? sql.fragment`(name LIKE ANY(${sql.array(
-					include.name.map((name) => `%${name}%`),
+		include.color
+			? sql.fragment`(color LIKE ANY(${sql.array(
+					include.color.map((color) => `%${color}%`),
 					"citext"
 				)}))`
 			: undefined,
@@ -94,6 +106,12 @@ export const searchFlattened = async ({
 			? sql.fragment`(stack_size = ANY(${sql.array(
 					include.stackSize,
 					"int4"
+				)}))`
+			: undefined,
+		include.translationKey
+			? sql.fragment`(translation_key LIKE ANY(${sql.array(
+					include.translationKey.map((key) => `%${key}%`),
+					"citext"
 				)}))`
 			: undefined,
 		include.edition
@@ -135,10 +153,10 @@ export const searchFlattened = async ({
 			identifier,
 			variant,
 			is_variant,
-			translation_key,
-			name,
+			color,
 			rarity,
 			stack_size,
+			translation_key,
 			edition,
 			cycle_name,
 			version,
@@ -185,23 +203,23 @@ export const searchNormalized = async ({
 				OR
 				(variant LIKE ANY(${sql.array(includeText, "citext")}))
 				OR
-				((translation_keys ->> 'bedrock') LIKE ANY(${sql.array(includeText, "citext")}))
+				((colors ->> 'bedrock') LIKE ANY(${sql.array(includeText, "citext")}))
 				OR
-				((translation_keys ->> 'java') LIKE ANY(${sql.array(includeText, "citext")}))
+				((colors ->> 'java') LIKE ANY(${sql.array(includeText, "citext")}))
 				OR
-				((translation_keys ->> 'both') LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				((names ->> 'bedrock') LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				((names ->> 'java') LIKE ANY(${sql.array(includeText, "citext")}))
-				OR
-				((names ->> 'both') LIKE ANY(${sql.array(includeText, "citext")}))
+				((colors ->> 'both') LIKE ANY(${sql.array(includeText, "citext")}))
 				OR
 				((rarities ->> 'bedrock') LIKE ANY(${sql.array(includeText, "citext")}))
 				OR
 				((rarities ->> 'java') LIKE ANY(${sql.array(includeText, "citext")}))
 				OR
 				((rarities ->> 'both') LIKE ANY(${sql.array(includeText, "citext")}))
+				OR
+				((translation_keys ->> 'bedrock') LIKE ANY(${sql.array(includeText, "citext")}))
+				OR
+				((translation_keys ->> 'java') LIKE ANY(${sql.array(includeText, "citext")}))
+				OR
+				((translation_keys ->> 'both') LIKE ANY(${sql.array(includeText, "citext")}))
 				OR
 				(editions::citext LIKE ANY(${sql.array(includeText, "citext")}))
 				OR
@@ -214,38 +232,20 @@ export const searchNormalized = async ({
 				)
 			)`
 			: undefined,
-		include.translationKey
+		include.color
 			? sql.fragment`(
-				((translation_keys ->> 'bedrock') LIKE ANY(${sql.array(
-					include.translationKey.map((key) => `%${key}%`),
+				((colors ->> 'bedrock') LIKE ANY(${sql.array(
+					include.color.map((color) => `%${color}%`),
 					"citext"
 				)}))
 				OR
-				((translation_keys ->> 'java') LIKE ANY(${sql.array(
-					include.translationKey.map((key) => `%${key}%`),
+				((colors ->> 'java') LIKE ANY(${sql.array(
+					include.color.map((color) => `%${color}%`),
 					"citext"
 				)}))
 				OR
-				((translation_keys ->> 'both') LIKE ANY(${sql.array(
-					include.translationKey.map((key) => `%${key}%`),
-					"citext"
-				)}))
-			)`
-			: undefined,
-		include.name
-			? sql.fragment`(
-				((names ->> 'bedrock') LIKE ANY(${sql.array(
-					include.name.map((name) => `%${name}%`),
-					"citext"
-				)}))
-				OR
-				((names ->> 'java') LIKE ANY(${sql.array(
-					include.name.map((name) => `%${name}%`),
-					"citext"
-				)}))
-				OR
-				((names ->> 'both') LIKE ANY(${sql.array(
-					include.name.map((name) => `%${name}%`),
+				((colors ->> 'both') LIKE ANY(${sql.array(
+					include.color.map((color) => `%${color}%`),
 					"citext"
 				)}))
 			)`
@@ -275,6 +275,24 @@ export const searchNormalized = async ({
 				((stack_sizes ->> 'java')::integer = ANY(${sql.array(include.stackSize, "int4")}))
 				OR
 				((stack_sizes ->> 'both')::integer = ANY(${sql.array(include.stackSize, "int4")}))
+			)`
+			: undefined,
+		include.translationKey
+			? sql.fragment`(
+				((translation_keys ->> 'bedrock') LIKE ANY(${sql.array(
+					include.translationKey.map((key) => `%${key}%`),
+					"citext"
+				)}))
+				OR
+				((translation_keys ->> 'java') LIKE ANY(${sql.array(
+					include.translationKey.map((key) => `%${key}%`),
+					"citext"
+				)}))
+				OR
+				((translation_keys ->> 'both') LIKE ANY(${sql.array(
+					include.translationKey.map((key) => `%${key}%`),
+					"citext"
+				)}))
 			)`
 			: undefined,
 		include.edition
@@ -345,10 +363,10 @@ export const searchNormalized = async ({
 			identifier,
 			variant,
 			is_variant,
-			translation_keys,
-			names,
+			colors,
 			rarities,
 			stack_sizes,
+			translation_keys,
 			editions,
 			cycles_count,
 			cycle_names,
@@ -386,76 +404,110 @@ export const doImport = async (item: ImportItem) =>
 	(await pool).any(
 		sql.type(VOID)`
 			WITH
-			the_release AS (
-				SELECT r,id
-				FROM releases AS r
-				INNER JOIN unnest(
-				${sql.array(
-					item.releases.map(({ edition }) => edition),
-					"edition"
-				)}::edition[],
-				${sql.array(
-					item.releases.map(({ version }) => version),
-					"text"
-				)}::text[]
-				) AS criteria(edition, version)
-				ON r.edition = criteria.edition 
-				AND r.version = criteria.version
-			),
-			the_item AS (
-				INSERT INTO items
-					(identifier, variant)
-				VALUES
-					(
-						${item.identifier},
-						${item.variant ?? null}
-					)
-				ON CONFLICT (identifier, variant) DO UPDATE
-				SET
-					updated_at = DEFAULT
-				RETURNING
-					id
-			),
-			the_metadata AS (
-				INSERT INTO item_metadata
-					(rarity, stack_size)
-				VALUES
-					(
-						${item.rarity},
-						${item.stackSize}
-					)
-				ON CONFLICT (rarity, stack_size) DO UPDATE
-				SET
-					updated_at = DEFAULT
-				RETURNING
-					id
-			),
-			the_name AS (
-				INSERT INTO item_names
-					(translation_key, name)
-				VALUES
-					(
-						${item.translationKey ?? null},
-						${item.name}
-					)
-				ON CONFLICT (translation_key, name) DO UPDATE
-				SET
-					updated_at = DEFAULT
-				RETURNING
-					id
-			)
+				the_release AS (
+					SELECT r,id
+					FROM releases AS r
+					INNER JOIN unnest(
+					${sql.array(
+						item.releases.map(({ edition }) => edition),
+						"edition"
+					)}::edition[],
+					${sql.array(
+						item.releases.map(({ version }) => version),
+						"text"
+					)}::text[]
+					) AS criteria(edition, version)
+					ON r.edition = criteria.edition
+					AND r.version = criteria.version
+				),
+				the_item AS (
+					INSERT INTO items
+						(identifier, variant)
+					VALUES
+						(
+							${item.identifier},
+							${item.variant ?? null}
+						)
+					ON CONFLICT (identifier, variant) DO UPDATE
+					SET
+						updated_at = DEFAULT
+					RETURNING
+						id
+				),
+				the_color AS (
+					INSERT INTO item_colors
+						(identifier)
+					SELECT source.identifier
+					FROM (VALUES (${item.color ?? null}::citext)) AS source(identifier)
+					WHERE source.identifier IS NOT NULL
+					ON CONFLICT (identifier) DO UPDATE
+					SET
+						updated_at = DEFAULT
+					RETURNING
+						id
+				),
+				the_rarity AS (
+					INSERT INTO item_rarities
+						(identifier)
+					SELECT source.identifier
+					FROM (VALUES (${item.rarity ?? null}::citext)) AS source(identifier)
+					WHERE source.identifier IS NOT NULL
+					ON CONFLICT (identifier) DO UPDATE
+					SET
+						updated_at = DEFAULT
+					RETURNING
+						id
+				),
+				the_stack_size AS (
+					INSERT INTO item_stack_sizes
+						(identifier)
+					SELECT source.identifier
+					FROM (VALUES (${item.stackSize ?? null}::integer)) AS source(identifier)
+					WHERE source.identifier IS NOT NULL
+					ON CONFLICT (identifier) DO UPDATE
+					SET
+						updated_at = DEFAULT
+					RETURNING
+						id
+				),
+				the_translation_key AS (
+					INSERT INTO item_translation_keys
+						(identifier)
+					SELECT source.identifier
+					FROM (VALUES (${item.translationKey ?? null}::citext)) AS source(identifier)
+					WHERE source.identifier IS NOT NULL
+					ON CONFLICT (identifier) DO UPDATE
+					SET
+						updated_at = DEFAULT
+					RETURNING
+						id
+				)
 			INSERT INTO item_releases
-				(release_id, item_id, item_metadata_id, item_name_id)
+				(
+					release_id,
+					item_id,
+					item_color_id,
+					item_rarity_id,
+					item_stack_size_id,
+					item_translation_key_id
+				)
 			SELECT
 				r.id,
 				i.id,
-				m.id,
-				n.id
+				(SELECT id FROM the_color),
+				(SELECT id FROM the_rarity),
+				(SELECT id FROM the_stack_size),
+				(SELECT id FROM the_translation_key)
 			FROM the_release AS r
 			CROSS JOIN the_item AS i
-			CROSS JOIN the_metadata AS m
-			CROSS JOIN the_name AS n
-			ON CONFLICT (release_id, item_id, item_metadata_id, item_name_id) DO UPDATE
+			ON CONFLICT (
+				release_id,
+				item_id,
+				item_color_id,
+				item_rarity_id,
+				item_stack_size_id,
+				item_translation_key_id
+			) DO UPDATE
 			SET
 				updated_at = DEFAULT
 		`

@@ -9,6 +9,10 @@ export * from "./service-public";
  */
 export const databaseUrl = z.url().parse(process.env.DATABASE_URL);
 
+export const databaseStackTrace = FLEXIBLE_BOOL.parse(
+	process.env.DATABASE_STACK_TRACE
+);
+
 export const email = {
 	auth: {
 		username: z.string().parse(process.env.EMAIL_AUTH_USERNAME),

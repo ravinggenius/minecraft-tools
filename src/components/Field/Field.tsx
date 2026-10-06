@@ -13,9 +13,7 @@ import styles from "./Field.module.scss";
 
 type BooleanFieldMeta = BooleanOnly<AnyFieldMeta>;
 type OptionalFieldMetaProperties =
-	| "isBlurred"
-	| "isDefaultValue"
-	| "isValidating";
+	"isBlurred" | "isDefaultValue" | "isValidating";
 export type FieldMeta = Prettify<
 	Omit<BooleanFieldMeta, OptionalFieldMetaProperties> &
 		Partial<Pick<BooleanFieldMeta, OptionalFieldMetaProperties>> & {

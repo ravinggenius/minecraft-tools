@@ -4,9 +4,9 @@ import { ACCOUNT } from "../account/schema";
 
 export const SESSION = z.object({
 	id: z.uuid(),
-	createdAt: z.iso.date(),
-	updatedAt: z.iso.date(),
-	expiresAt: z.iso.date(),
+	createdAt: z.iso.datetime(),
+	updatedAt: z.iso.datetime(),
+	expiresAt: z.iso.datetime(),
 	accountId: ACCOUNT.shape.id
 });
 

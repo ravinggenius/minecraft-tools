@@ -51,7 +51,7 @@ const extractFeedbackFrom = (error: unknown) => {
 				return {
 					...memo,
 					[pathKey]: [
-						...(memo[pathKey] || []),
+						...(memo[pathKey] ?? []),
 						{ message: issue.message, type: "negative" }
 					]
 				};

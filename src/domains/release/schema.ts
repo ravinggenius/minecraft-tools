@@ -9,13 +9,13 @@ export type Edition = z.infer<typeof EDITION>;
 
 export const RELEASE = z.object({
 	id: z.uuid(),
-	createdAt: z.iso.date(),
-	updatedAt: z.iso.date(),
+	createdAt: z.iso.datetime(),
+	updatedAt: z.iso.datetime(),
 	edition: EDITION,
 	version: z.string().regex(/\d+(?:\.\d+){1,3}/),
 	cycleId: RELEASE_CYCLE.shape.id.optional(),
-	developmentReleasedOn: z.iso.date().optional(),
-	changelog: z.url().optional(),
+	developmentReleasedOn: z.iso.date().nullish(),
+	changelog: z.url().nullish(),
 	isAvailableForTools: z.coerce.boolean(),
 	isLatest: z.boolean().readonly()
 });
@@ -24,8 +24,8 @@ export type Release = z.infer<typeof RELEASE>;
 
 export const PLATFORM_RELEASE = z.object({
 	id: z.uuid(),
-	createdAt: z.iso.date(),
-	updatedAt: z.iso.date(),
+	createdAt: z.iso.datetime(),
+	updatedAt: z.iso.datetime(),
 	platformId: PLATFORM.shape.id,
 	releaseId: RELEASE.shape.id,
 	productionReleasedOn: z.iso.date()
@@ -49,9 +49,9 @@ export const FLATTENED_RELEASE = RELEASE.pick({
 		cycle: RELEASE_CYCLE.pick({
 			id: true,
 			name: true
-		}).optional(),
+		}).nullish(),
 		firstProductionReleasedOn:
-			PLATFORM_RELEASE.shape.productionReleasedOn.optional()
+			PLATFORM_RELEASE.shape.productionReleasedOn.nullish()
 	})
 	.and(
 		z.union([
@@ -66,8 +66,8 @@ export const FLATTENED_RELEASE = RELEASE.pick({
 				})
 			}),
 			z.object({
-				platformReleaseId: z.never().optional(),
-				platform: z.never().optional()
+				platformReleaseId: z.never().nullish(),
+				platform: z.never().nullish()
 			})
 		])
 	);
@@ -83,13 +83,13 @@ export const NORMALIZED_RELEASE = RELEASE.omit({
 		cycle: RELEASE_CYCLE.pick({
 			id: true,
 			name: true
-		}).optional()
+		}).nullish()
 	})
 	.and(
 		z.union([
 			z.object({
 				firstProductionReleasedOn:
-					PLATFORM_RELEASE.shape.productionReleasedOn.optional(),
+					PLATFORM_RELEASE.shape.productionReleasedOn.nullish(),
 				platforms: z.array(
 					PLATFORM.pick({
 						id: true,
@@ -101,7 +101,7 @@ export const NORMALIZED_RELEASE = RELEASE.omit({
 				)
 			}),
 			z.object({
-				firstProductionReleasedOn: z.never().optional(),
+				firstProductionReleasedOn: z.never().nullish(),
 				platforms: z.array(z.never())
 			})
 		])

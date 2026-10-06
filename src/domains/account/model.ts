@@ -122,7 +122,7 @@ export const findByEmail = async (email: Account["email"]) => {
 			1
 	`);
 
-	return maybeAccountPlusHashword || undefined;
+	return maybeAccountPlusHashword ?? undefined;
 };
 
 export const updateVerificationNonce = async (
@@ -141,7 +141,7 @@ export const updateVerificationNonce = async (
 		SET
 			token_nonce = ${tokenNonce},
 			token_nonce_count = token_nonce_count + 1,
-			updated_at = NOW()
+			updated_at = DEFAULT
 		WHERE
 			profile_id = ${profileId}
 		RETURNING
@@ -169,7 +169,7 @@ export const markEmailAsVerified = async (id: Account["id"]) => {
 	).query(sql.type(VOID)`
 		UPDATE accounts
 		SET
-			updated_at = NOW(),
+			updated_at = DEFAULT,
 			email_verified_at = NOW(),
 			token_nonce = ''
 		WHERE

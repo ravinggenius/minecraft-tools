@@ -20,6 +20,5 @@ export const SHARED_OPTIONS: InitOptions = {
 	},
 	load: "currentOnly",
 	ns: SHARED_NAMESPACES,
-	showSupportNotice: false,
 	supportedLngs: SUPPORTED_LOCALES
 };

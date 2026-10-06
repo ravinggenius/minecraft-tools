@@ -12,10 +12,10 @@ export const QUERY = SEACH_QUERY(
 		"is-available-for-tools",
 		"identifier",
 		"variant",
-		"translation-key",
-		"name",
+		"color",
 		"rarity",
-		"stack-size"
+		"stack-size",
+		"translation-key"
 	] as const,
 	["cycles-count", "releases-count"] as const,
 	(rawQuery) =>
@@ -31,10 +31,10 @@ export const QUERY = SEACH_QUERY(
 			),
 			identifier: rawQuery.identifier,
 			variant: rawQuery.variant,
-			translationKey: rawQuery["translation-key"],
-			name: rawQuery.name,
+			color: rawQuery.color,
 			rarity: rawQuery.rarity,
 			stackSize: INCLUDE.shape.stackSize.parse(rawQuery["stack-size"]),
+			translationKey: rawQuery["translation-key"],
 			cyclesCount: INCLUDE.shape.cyclesCount.parse(
 				rawQuery["cycles-count"]
 			),

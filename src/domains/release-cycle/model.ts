@@ -6,7 +6,7 @@ import {
 } from "@/library/authorization";
 import CodedError, { ERROR_CODE } from "@/library/coded-error";
 import { COUNT, SearchParams, SearchResults } from "@/library/search";
-import { parenMembers, pool, sql } from "@/services/datastore-service/service";
+import { pool, sql } from "@/services/datastore-service/service";
 
 import { RELEASE_CYCLE, ReleaseCycle, ReleaseCycleAttrs } from "./schema";
 import {
@@ -157,7 +157,7 @@ export const searchFlattened = async ({
 			count(*) AS count
 		FROM
 			flattened_release_cycles
-		WHERE ${sql.and(parenMembers(whereClauses))}
+		WHERE ${sql.and(whereClauses)}
 	`;
 
 	const dataQuery = sql.type(FLATTENED_RELEASE_CYCLE)`
@@ -167,7 +167,7 @@ export const searchFlattened = async ({
 			release
 		FROM
 			flattened_release_cycles
-		WHERE ${sql.and(parenMembers(whereClauses))}
+		WHERE ${sql.and(whereClauses)}
 		ORDER BY
 			release ->> 'production_released_on' DESC NULLS FIRST
 		LIMIT
@@ -205,18 +205,16 @@ export const searchNormalized = async ({
 			: undefined,
 		mayRead ? undefined : sql.fragment`is_available_for_tools = ${true}`,
 		includeText
-			? sql.or(
-					parenMembers([
-						sql.fragment`name LIKE ANY(${sql.array(includeText, "citext")})`,
-						sql.fragment`
-							EXISTS (
-								SELECT 1
-								FROM unnest(editions) AS e
-								WHERE e::citext LIKE ANY(${sql.array(includeText, "citext")})
-							)
-						`
-					])
-				)
+			? sql.or([
+					sql.fragment`name LIKE ANY(${sql.array(includeText, "citext")})`,
+					sql.fragment`
+						EXISTS (
+							SELECT 1
+							FROM unnest(editions) AS e
+							WHERE e::citext LIKE ANY(${sql.array(includeText, "citext")})
+						)
+					`
+				])
 			: undefined,
 		include.edition
 			? sql.fragment`editions::citext[] && ${sql.array(include.edition, "citext")}`
@@ -228,7 +226,7 @@ export const searchNormalized = async ({
 			count(*) AS count
 		FROM
 			normalized_release_cycles
-		WHERE ${sql.and(parenMembers(whereClauses))}
+		WHERE ${sql.and(whereClauses)}
 	`;
 
 	const dataQuery = sql.type(NORMALIZED_RELEASE_CYCLE)`
@@ -241,7 +239,7 @@ export const searchNormalized = async ({
 			is_available_for_tools
 		FROM
 			normalized_release_cycles
-		WHERE ${sql.and(parenMembers(whereClauses))}
+		WHERE ${sql.and(whereClauses)}
 		ORDER BY
 			first_production_released_on DESC NULLS FIRST
 		LIMIT

@@ -6,7 +6,7 @@ import {
 } from "@/library/authorization";
 import CodedError, { ERROR_CODE } from "@/library/coded-error";
 import { COUNT, SearchParams, SearchResults } from "@/library/search";
-import { parenMembers, pool, sql } from "@/services/datastore-service/service";
+import { pool, sql } from "@/services/datastore-service/service";
 
 import { EDITION } from "../release/schema";
 
@@ -123,18 +123,16 @@ export const searchNormalized = async ({
 			: undefined,
 		mayRead ? undefined : sql.fragment`is_available_for_tools = ${true}`,
 		includeText
-			? sql.or(
-					parenMembers([
-						sql.fragment`name LIKE ANY(${sql.array(includeText, "text")})`,
-						sql.fragment`
-							EXISTS (
-								SELECT 1
-								FROM unnest(editions) AS e
-								WHERE e::citext LIKE ANY(${sql.array(includeText, "citext")})
-							)
-						`
-					])
-				)
+			? sql.or([
+					sql.fragment`name LIKE ANY(${sql.array(includeText, "text")})`,
+					sql.fragment`
+						EXISTS (
+							SELECT 1
+							FROM unnest(editions) AS e
+							WHERE e::citext LIKE ANY(${sql.array(includeText, "citext")})
+						)
+					`
+				])
 			: undefined,
 		include.name
 			? sql.fragment`name LIKE ANY(${sql.array(
@@ -152,7 +150,7 @@ export const searchNormalized = async ({
 			count(*) AS count
 		FROM
 			normalized_platforms
-		WHERE ${sql.and(parenMembers(whereClauses))}
+		WHERE ${sql.and(whereClauses)}
 	`;
 
 	const dataQuery = sql.type(NORMALIZED_PLATFORM)`
@@ -164,7 +162,7 @@ export const searchNormalized = async ({
 			is_available_for_tools
 		FROM
 			normalized_platforms
-		WHERE ${sql.and(parenMembers(whereClauses))}
+		WHERE ${sql.and(whereClauses)}
 		ORDER BY
 			name ASC
 		LIMIT

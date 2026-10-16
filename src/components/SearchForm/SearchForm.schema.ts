@@ -1,15 +1,6 @@
 import parser, { SearchParserResult } from "search-query-parser";
 import { z } from "zod/v4";
 
-import {
-	DEFAULT_EXPAND_VERSIONS,
-	DEFAULT_OFFSET,
-	DEFAULT_PAGE_SIZE,
-	DEFAULT_QUERY,
-	DEFAULT_VIEW,
-	MAX_PAGE_SIZE
-} from "@/library/search";
-
 export type Keywords = readonly [string, ...Array<string>];
 
 export type Ranges = Readonly<Array<string>>;
@@ -34,6 +25,17 @@ export type Include = {
 	text?: Array<string>;
 	[key: string]: unknown;
 };
+
+export const DEFAULT_QUERY = "";
+
+export const DEFAULT_OFFSET = 0;
+
+export const DEFAULT_PAGE_SIZE = 20;
+export const MAX_PAGE_SIZE = 50;
+
+export const DEFAULT_EXPAND_VERSIONS = false;
+
+export const DEFAULT_VIEW = "list";
 
 export const RAW_SEACH_QUERY = z.object({
 	q: z.string().optional().default(DEFAULT_QUERY).catch(DEFAULT_QUERY),

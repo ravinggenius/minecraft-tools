@@ -3,10 +3,7 @@ import {
 	DEFAULT_OFFSET,
 	DEFAULT_PAGE_SIZE,
 	DEFAULT_QUERY,
-	DEFAULT_VIEW
-} from "@/library/search";
-
-import {
+	DEFAULT_VIEW,
 	Include,
 	Keywords,
 	Query,

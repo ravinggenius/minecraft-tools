@@ -4,7 +4,7 @@ import * as itemModel from "@/domains/item/model";
 import { IMPORT_ITEM, ITEM_RELEASE } from "@/domains/item/schema";
 import * as releaseModel from "@/domains/release/model";
 import { Edition, EDITION } from "@/domains/release/schema";
-import rawImportItems from "@/services/datastore-service/fixtures/items.json" with { type: "json" };
+import rawImportItems from "@/services/datastore-service/fixtures/item-releases.json" with { type: "json" };
 
 const EDITION_VALUE_OF = <TValue>(
 	value: ZodType<TValue>,

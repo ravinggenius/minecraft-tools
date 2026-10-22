@@ -6,7 +6,7 @@ import {
 } from "@/library/authorization";
 import { COUNT, SearchParams, SearchResults } from "@/library/search";
 import { VOID } from "@/services/datastore-service/schema";
-import { parenMembers, pool, sql } from "@/services/datastore-service/service";
+import { pool, sql } from "@/services/datastore-service/service";
 
 import { RELEASE_CYCLE } from "../release-cycle/schema";
 
@@ -209,14 +209,12 @@ export const searchFlattened = async ({
 	const whereClauses = [
 		...(await commonSearchConditions({ include, exclude })),
 		includeText
-			? sql.or(
-					parenMembers([
-						sql.fragment`edition::citext LIKE ANY(${sql.array(includeText, "citext")})`,
-						sql.fragment`version LIKE ANY(${sql.array(includeText, "citext")})`,
-						sql.fragment`(cycle ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")})`,
-						sql.fragment`(platform ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")})`
-					])
-				)
+			? sql.or([
+					sql.fragment`edition::citext LIKE ANY(${sql.array(includeText, "citext")})`,
+					sql.fragment`version LIKE ANY(${sql.array(includeText, "citext")})`,
+					sql.fragment`(cycle ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")})`,
+					sql.fragment`(platform ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")})`
+				])
 			: undefined,
 		include.platformName
 			? sql.fragment`(platform ->> 'name')::citext LIKE ANY(${sql.array(
@@ -231,7 +229,7 @@ export const searchFlattened = async ({
 			count(*) AS count
 		FROM
 			flattened_releases
-		WHERE ${sql.and(parenMembers(whereClauses))}
+		WHERE ${sql.and(whereClauses)}
 	`;
 
 	const dataQuery = sql.type(FLATTENED_RELEASE)`
@@ -249,7 +247,7 @@ export const searchFlattened = async ({
 			platform
 		FROM
 			flattened_releases
-		WHERE ${sql.and(parenMembers(whereClauses))}
+		WHERE ${sql.and(whereClauses)}
 		ORDER BY
 			platform ->> 'production_released_on' DESC,
 			edition ASC,
@@ -280,20 +278,18 @@ export const searchNormalized = async ({
 	const whereClauses = [
 		...(await commonSearchConditions({ include, exclude })),
 		includeText
-			? sql.or(
-					parenMembers([
-						sql.fragment`edition::citext LIKE ANY(${sql.array(includeText, "citext")})`,
-						sql.fragment`version LIKE ANY(${sql.array(includeText, "citext")})`,
-						sql.fragment`(cycle ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")})`,
-						sql.fragment`
-							EXISTS (
-								SELECT TRUE
-								FROM jsonb_array_elements(platforms) AS platform
-								WHERE (platform ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")})
-							)
-						`
-					])
-				)
+			? sql.or([
+					sql.fragment`edition::citext LIKE ANY(${sql.array(includeText, "citext")})`,
+					sql.fragment`version LIKE ANY(${sql.array(includeText, "citext")})`,
+					sql.fragment`(cycle ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")})`,
+					sql.fragment`
+						EXISTS (
+							SELECT TRUE
+							FROM jsonb_array_elements(platforms) AS platform
+							WHERE (platform ->> 'name')::citext LIKE ANY(${sql.array(includeText, "citext")})
+						)
+					`
+				])
 			: undefined,
 		include.platformName
 			? sql.fragment`
@@ -314,7 +310,7 @@ export const searchNormalized = async ({
 			count(*) AS count
 		FROM
 			normalized_releases
-		WHERE ${sql.and(parenMembers(whereClauses))}
+		WHERE ${sql.and(whereClauses)}
 	`;
 
 	const dataQuery = sql.type(NORMALIZED_RELEASE)`
@@ -331,7 +327,7 @@ export const searchNormalized = async ({
 			platforms
 		FROM
 			normalized_releases
-		WHERE ${sql.and(parenMembers(whereClauses))}
+		WHERE ${sql.and(whereClauses)}
 		ORDER BY
 			first_production_released_on DESC,
 			edition ASC,

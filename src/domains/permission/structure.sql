@@ -1,6 +1,23 @@
-CREATE TYPE public.permission_action AS ENUM ('create', 'read', 'share', 'update', 'destroy');
+CREATE TYPE public.permission_action AS ENUM (
+  'create',
+  'read',
+  'share',
+  'update',
+  'destroy'
+);
+
 CREATE TYPE public.permission_scope AS ENUM ('any', 'new', 'own', 'one');
-CREATE TYPE public.permission_subject AS ENUM ('compendium', 'item', 'profile', 'platform', 'release', 'release-cycle', 'world');
+
+CREATE TYPE public.permission_subject AS ENUM (
+  'compendium',
+  'item',
+  'item-release',
+  'profile',
+  'platform',
+  'release',
+  'release-cycle',
+  'world'
+);
 
 CREATE TABLE public.permissions (
   id uuid NOT NULL DEFAULT public.uuid_generate_v4(),

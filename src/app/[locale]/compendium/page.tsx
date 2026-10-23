@@ -39,6 +39,10 @@ export default async function Page({
 
 	const entries: Array<TableOfContentsEntry> = [
 		{
+			href: `/${locale}/compendium/items` as TableOfContentsEntry["href"],
+			text: t("table-of-contents.items")
+		},
+		{
 			href: `/${locale}/compendium/releases` as TableOfContentsEntry["href"],
 			text: t("table-of-contents.releases")
 		}

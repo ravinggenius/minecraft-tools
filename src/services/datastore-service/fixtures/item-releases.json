@@ -868,14 +868,6 @@
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
-    "identifier": "minecraft:filled_map",
-    "variant": "map",
-    "rarity": "common",
-    "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
-  },
-  {
     "identifier": "minecraft:shears",
     "rarity": "common",
     "stackSize": 1,
@@ -2763,13 +2755,6 @@
     "variant": "invisibility",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.4.2" }
-  },
-  {
-    "identifier": "minecraft:map",
-    "rarity": "common",
-    "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
     "firstProductionReleased": { "bedrock": null, "java": "1.4.2" }
   },
@@ -5166,22 +5151,6 @@
     "firstProductionReleased": { "bedrock": null, "java": "1.11" }
   },
   {
-    "identifier": "minecraft:filled_map",
-    "variant": "woodland_explorer",
-    "rarity": "common",
-    "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.11" }
-  },
-  {
-    "identifier": "minecraft:filled_map",
-    "variant": "ocean_explorer",
-    "rarity": "common",
-    "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.11" }
-  },
-  {
     "identifier": "minecraft:observer",
     "rarity": "common",
     "stackSize": 64,
@@ -5998,14 +5967,6 @@
     "firstProductionReleased": { "bedrock": null, "java": "1.13" }
   },
   {
-    "identifier": "minecraft:filled_map",
-    "variant": "buried_treasure",
-    "rarity": "common",
-    "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.13" }
-  },
-  {
     "identifier": "minecraft:drowned_spawn_egg",
     "rarity": "common",
     "stackSize": 64,
@@ -6691,14 +6652,6 @@
   },
   {
     "identifier": "minecraft:sweet_berries",
-    "rarity": "common",
-    "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.14" }
-  },
-  {
-    "identifier": "minecraft:filled_map",
-    "variant": "locked",
     "rarity": "common",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
@@ -10292,63 +10245,6 @@
   },
 
   {
-    "identifier": "minecraft:filled_map",
-    "variant": "jungle_explorer",
-    "rarity": "common",
-    "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.2" }
-  },
-  {
-    "identifier": "minecraft:filled_map",
-    "variant": "swamp_explorer",
-    "rarity": "common",
-    "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.2" }
-  },
-  {
-    "identifier": "minecraft:filled_map",
-    "variant": "desert_village",
-    "rarity": "common",
-    "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.2" }
-  },
-  {
-    "identifier": "minecraft:filled_map",
-    "variant": "plains_village",
-    "rarity": "common",
-    "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.2" }
-  },
-  {
-    "identifier": "minecraft:filled_map",
-    "variant": "savanna_village",
-    "rarity": "common",
-    "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.2" }
-  },
-  {
-    "identifier": "minecraft:filled_map",
-    "variant": "snowy_village",
-    "rarity": "common",
-    "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.2" }
-  },
-  {
-    "identifier": "minecraft:filled_map",
-    "variant": "taiga_village",
-    "rarity": "common",
-    "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.2" }
-  },
-
-  {
     "identifier": "minecraft:trial_key",
     "rarity": "common",
     "stackSize": 64,
@@ -10842,14 +10738,6 @@
   {
     "identifier": "minecraft:flow_armor_trim_smithing_template",
     "rarity": "uncommon",
-    "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
-  },
-  {
-    "identifier": "minecraft:filled_map",
-    "variant": "trail_explorer",
-    "rarity": "common",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
     "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
@@ -12334,5 +12222,1863 @@
       "java": "item.minecraft.netherite_spear"
     },
     "firstProductionReleased": { "bedrock": "1.21.130", "java": "1.21.11" }
+  },
+
+  {
+    "identifier": "minecraft:golden_dandelion",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.golden_dandelion.name",
+      "java": "block.minecraft.golden_dandelion"
+    },
+    "firstProductionReleased": { "bedrock": "26.10", "java": "26.1" }
+  },
+
+  {
+    "identifier": "minecraft:cinnabar",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.cinnabar.name",
+      "java": "block.minecraft.cinnabar"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:cinnabar_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.cinnabar_slab.name",
+      "java": "block.minecraft.cinnabar_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:cinnabar_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.cinnabar_stairs.name",
+      "java": "block.minecraft.cinnabar_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:cinnabar_wall",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.cinnabar_wall.name",
+      "java": "block.minecraft.cinnabar_wall"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:polished_cinnabar",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.polished_cinnabar.name",
+      "java": "block.minecraft.polished_cinnabar"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:polished_cinnabar_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.polished_cinnabar_slab.name",
+      "java": "block.minecraft.polished_cinnabar_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:polished_cinnabar_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.polished_cinnabar_stairs.name",
+      "java": "block.minecraft.polished_cinnabar_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:polished_cinnabar_wall",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.polished_cinnabar_wall.name",
+      "java": "block.minecraft.polished_cinnabar_wall"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:cinnabar_bricks",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.cinnabar_bricks.name",
+      "java": "block.minecraft.cinnabar_bricks"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:cinnabar_brick_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.cinnabar_brick_slab.name",
+      "java": "block.minecraft.cinnabar_brick_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:cinnabar_brick_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.cinnabar_brick_stairs.name",
+      "java": "block.minecraft.cinnabar_brick_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:cinnabar_brick_wall",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.cinnabar_brick_wall.name",
+      "java": "block.minecraft.cinnabar_brick_wall"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:chiseled_cinnabar",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.chiseled_cinnabar.name",
+      "java": "block.minecraft.chiseled_cinnabar"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:potent_sulfur",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.potent_sulfur.name",
+      "java": "block.minecraft.potent_sulfur"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:sulfur",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.sulfur.name",
+      "java": "block.minecraft.sulfur"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:sulfur_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.sulfur_slab.name",
+      "java": "block.minecraft.sulfur_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:sulfur_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.sulfur_stairs.name",
+      "java": "block.minecraft.sulfur_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:sulfur_wall",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.sulfur_wall.name",
+      "java": "block.minecraft.sulfur_wall"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:polished_sulfur",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.polished_sulfur.name",
+      "java": "block.minecraft.polished_sulfur"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:polished_sulfur_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.polished_sulfur_slab.name",
+      "java": "block.minecraft.polished_sulfur_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:polished_sulfur_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.polished_sulfur_stairs.name",
+      "java": "block.minecraft.polished_sulfur_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:polished_sulfur_wall",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.polished_sulfur_wall.name",
+      "java": "block.minecraft.polished_sulfur_wall"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:sulfur_bricks",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.sulfur_bricks.name",
+      "java": "block.minecraft.sulfur_bricks"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:sulfur_brick_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.sulfur_brick_slab.name",
+      "java": "block.minecraft.sulfur_brick_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:sulfur_brick_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.sulfur_brick_stairs.name",
+      "java": "block.minecraft.sulfur_brick_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:sulfur_brick_wall",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.sulfur_brick_wall.name",
+      "java": "block.minecraft.sulfur_brick_wall"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:chiseled_sulfur",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.chiseled_sulfur.name",
+      "java": "block.minecraft.chiseled_sulfur"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:sulfur_spike",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.sulfur_spike.name",
+      "java": "block.minecraft.sulfur_spike"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:sulfur_cube_bucket",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.bucketSulfurCube.name",
+      "java": "item.minecraft.sulfur_cube_bucket"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:sulfur_cube_spawn_egg",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+  {
+    "identifier": "minecraft:music_disc_bounce",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": {
+      "bedrock": "item.record_bounce.desc",
+      "java": "item.minecraft.music_disc_bounce"
+    },
+    "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
+  },
+
+  {
+    "identifier": "minecraft:poplar_log",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.poplar_log.name",
+      "java": "block.minecraft.poplar_log"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:stripped_poplar_log",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.stripped_poplar_log.name",
+      "java": "block.minecraft.stripped_poplar_log"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:poplar_wood",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.poplar_wood.name",
+      "java": "block.minecraft.poplar_wood"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:stripped_poplar_wood",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.stripped_poplar_wood.name",
+      "java": "block.minecraft.stripped_poplar_wood"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:poplar_planks",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.poplar_planks.name",
+      "java": "block.minecraft.poplar_planks"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:poplar_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.poplar_stairs.name",
+      "java": "block.minecraft.poplar_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:poplar_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.poplar_slab.name",
+      "java": "block.minecraft.poplar_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:poplar_sign",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.poplar_sign.name",
+      "java": "block.minecraft.poplar_sign"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:poplar_hanging_sign",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.poplar_hanging_sign.name",
+      "java": "block.minecraft.poplar_hanging_sign"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:poplar_button",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.poplar_button.name",
+      "java": "block.minecraft.poplar_button"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:poplar_pressure_plate",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.poplar_pressure_plate.name",
+      "java": "block.minecraft.poplar_pressure_plate"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:poplar_door",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.poplar_door.name",
+      "java": "block.minecraft.poplar_door"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:poplar_fence",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.poplar_fence.name",
+      "java": "block.minecraft.poplar_fence"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:poplar_fence_gate",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.poplar_fence_gate.name",
+      "java": "block.minecraft.poplar_fence_gate"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:poplar_trapdoor",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.poplar_trapdoor.name",
+      "java": "block.minecraft.poplar_trapdoor"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:poplar_shelf",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.poplar_shelf.name",
+      "java": "block.minecraft.poplar_shelf"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:poplar_boat",
+    "rarity": "common",
+    "stackSize": 1,
+    "translationKey": {
+      "bedrock": "item.boat.poplar.name",
+      "java": "item.minecraft.poplar_boat"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:poplar_chest_boat",
+    "rarity": "common",
+    "stackSize": 1,
+    "translationKey": {
+      "bedrock": "item.chest_boat.poplar.name",
+      "java": "item.minecraft.poplar_chest_boat"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:red_poplar_leaves",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.red_poplar_leaves.name",
+      "java": "block.minecraft.red_poplar_leaves"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:orange_poplar_leaves",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.orange_poplar_leaves.name",
+      "java": "block.minecraft.orange_poplar_leaves"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:yellow_poplar_leaves",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.yellow_poplar_leaves.name",
+      "java": "block.minecraft.yellow_poplar_leaves"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:poplar_sapling",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.poplar_sapling.name",
+      "java": "block.minecraft.poplar_sapling"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:red_shrub",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.red_shrub.name",
+      "java": "block.minecraft.red_shrub"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:shelf_mushroom",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.shelf_mushroom.name",
+      "java": "block.minecraft.shelf_mushroom"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:white_wool_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.white_wool_stairs.name",
+      "java": "block.minecraft.white_wool_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:white_wool_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.white_wool_slab.name",
+      "java": "block.minecraft.white_wool_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:white_cushion",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.cushion.white.name",
+      "java": "item.minecraft.white_cushion"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:orange_wool_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.orange_wool_stairs.name",
+      "java": "block.minecraft.orange_wool_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:orange_wool_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.orange_wool_slab.name",
+      "java": "block.minecraft.orange_wool_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:orange_cushion",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.cushion.orange.name",
+      "java": "item.minecraft.orange_cushion"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:magenta_wool_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.magenta_wool_stairs.name",
+      "java": "block.minecraft.magenta_wool_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:magenta_wool_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.magenta_wool_slab.name",
+      "java": "block.minecraft.magenta_wool_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:magenta_cushion",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.cushion.magenta.name",
+      "java": "item.minecraft.magenta_cushion"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:light_blue_wool_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.light_blue_wool_stairs.name",
+      "java": "block.minecraft.light_blue_wool_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:light_blue_wool_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.light_blue_wool_slab.name",
+      "java": "block.minecraft.light_blue_wool_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:light_blue_cushion",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.cushion.light_blue.name",
+      "java": "item.minecraft.light_blue_cushion"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:yellow_wool_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.yellow_wool_stairs.name",
+      "java": "block.minecraft.yellow_wool_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:yellow_wool_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.yellow_wool_slab.name",
+      "java": "block.minecraft.yellow_wool_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:yellow_cushion",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.cushion.yellow.name",
+      "java": "item.minecraft.yellow_cushion"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:lime_wool_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.lime_wool_stairs.name",
+      "java": "block.minecraft.lime_wool_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:lime_wool_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.lime_wool_slab.name",
+      "java": "block.minecraft.lime_wool_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:lime_cushion",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.cushion.lime.name",
+      "java": "item.minecraft.lime_cushion"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:pink_wool_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.pink_wool_stairs.name",
+      "java": "block.minecraft.pink_wool_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:pink_wool_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.pink_wool_slab.name",
+      "java": "block.minecraft.pink_wool_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:pink_cushion",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.cushion.pink.name",
+      "java": "item.minecraft.pink_cushion"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:gray_wool_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.gray_wool_stairs.name",
+      "java": "block.minecraft.gray_wool_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:gray_wool_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.gray_wool_slab.name",
+      "java": "block.minecraft.gray_wool_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:gray_cushion",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.cushion.gray.name",
+      "java": "item.minecraft.gray_cushion"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:light_gray_wool_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.light_gray_wool_stairs.name",
+      "java": "block.minecraft.light_gray_wool_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:light_gray_wool_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.light_gray_wool_slab.name",
+      "java": "block.minecraft.light_gray_wool_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:light_gray_cushion",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.cushion.light_gray.name",
+      "java": "item.minecraft.light_gray_cushion"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:cyan_wool_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.cyan_wool_stairs.name",
+      "java": "block.minecraft.cyan_wool_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:cyan_wool_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.cyan_wool_slab.name",
+      "java": "block.minecraft.cyan_wool_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:cyan_cushion",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.cushion.cyan.name",
+      "java": "item.minecraft.cyan_cushion"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:purple_wool_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.purple_wool_stairs.name",
+      "java": "block.minecraft.purple_wool_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:purple_wool_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.purple_wool_slab.name",
+      "java": "block.minecraft.purple_wool_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:purple_cushion",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.cushion.purple.name",
+      "java": "item.minecraft.purple_cushion"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:blue_wool_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.blue_wool_stairs.name",
+      "java": "block.minecraft.blue_wool_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:blue_wool_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.blue_wool_slab.name",
+      "java": "block.minecraft.blue_wool_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:blue_cushion",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.cushion.blue.name",
+      "java": "item.minecraft.blue_cushion"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:brown_wool_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.brown_wool_stairs.name",
+      "java": "block.minecraft.brown_wool_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:brown_wool_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.brown_wool_slab.name",
+      "java": "block.minecraft.brown_wool_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:brown_cushion",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.cushion.brown.name",
+      "java": "item.minecraft.brown_cushion"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:green_wool_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.green_wool_stairs.name",
+      "java": "block.minecraft.green_wool_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:green_wool_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.green_wool_slab.name",
+      "java": "block.minecraft.green_wool_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:green_cushion",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.cushion.green.name",
+      "java": "item.minecraft.green_cushion"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:red_wool_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.red_wool_stairs.name",
+      "java": "block.minecraft.red_wool_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:red_wool_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.red_wool_slab.name",
+      "java": "block.minecraft.red_wool_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:red_cushion",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.cushion.red.name",
+      "java": "item.minecraft.red_cushion"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:black_wool_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.black_wool_stairs.name",
+      "java": "block.minecraft.black_wool_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:black_wool_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.black_wool_slab.name",
+      "java": "block.minecraft.black_wool_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:black_cushion",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.cushion.black.name",
+      "java": "item.minecraft.black_cushion"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:straw_bed",
+    "rarity": "common",
+    "stackSize": 16,
+    "translationKey": {
+      "bedrock": "item.straw_bed.name",
+      "java": "block.minecraft.straw_bed"
+    },
+    "firstProductionReleased": { "bedrock": "26.50", "java": "26.3" }
+  },
+  {
+    "identifier": "minecraft:portfolio",
+    "rarity": { "bedrock": "common" },
+    "stackSize": { "bedrock": 64 },
+    "translationKey": { "bedrock": "item.portfolio.name" },
+    "firstProductionReleased": { "bedrock": "26.50" }
+  },
+
+  {
+    "identifier": "minecraft:brittle_ice",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.brittle_ice.name",
+      "java": "block.minecraft.brittle_ice"
+    },
+    "firstProductionReleased": { "bedrock": "26.70", "java": "26.4" }
+  },
+  {
+    "identifier": "minecraft:icicle",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.icicle.name",
+      "java": "block.minecraft.icicle"
+    },
+    "firstProductionReleased": { "bedrock": "26.70", "java": "26.4" }
+  },
+  {
+    "identifier": "minecraft:ice_crystal",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.ice_crystal.name",
+      "java": "block.minecraft.ice_crystal"
+    },
+    "firstProductionReleased": { "bedrock": "26.70", "java": "26.4" }
+  },
+  {
+    "identifier": "minecraft:ice_ball",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.ice_ball.name",
+      "java": "item.minecraft.ice_ball"
+    },
+    "firstProductionReleased": { "bedrock": "26.70", "java": "26.4" }
+  },
+  {
+    "identifier": "minecraft:packed_ice_bricks",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.packed_ice_bricks.name",
+      "java": "block.minecraft.packed_ice_bricks"
+    },
+    "firstProductionReleased": { "bedrock": "26.70", "java": "26.4" }
+  },
+  {
+    "identifier": "minecraft:packed_ice_brick_stairs",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.packed_ice_brick_stairs.name",
+      "java": "block.minecraft.packed_ice_brick_stairs"
+    },
+    "firstProductionReleased": { "bedrock": "26.70", "java": "26.4" }
+  },
+  {
+    "identifier": "minecraft:packed_ice_brick_slab",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.packed_ice_brick_slab.name",
+      "java": "block.minecraft.packed_ice_brick_slab"
+    },
+    "firstProductionReleased": { "bedrock": "26.70", "java": "26.4" }
+  },
+  {
+    "identifier": "minecraft:packed_ice_brick_wall",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.packed_ice_brick_wall.name",
+      "java": "block.minecraft.packed_ice_brick_wall"
+    },
+    "firstProductionReleased": { "bedrock": "26.70", "java": "26.4" }
+  },
+  {
+    "identifier": "minecraft:chiseled_packed_ice",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "tile.chiseled_packed_ice.name",
+      "java": "block.minecraft.chiseled_packed_ice"
+    },
+    "firstProductionReleased": { "bedrock": "26.70", "java": "26.4" }
+  },
+  {
+    "identifier": "minecraft:frostbite_spawn_egg",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.spawn_egg.entity.frostbite.name",
+      "java": "item.minecraft.frostbite_spawn_egg"
+    },
+    "firstProductionReleased": { "bedrock": "26.70", "java": "26.4" }
+  },
+  {
+    "identifier": "minecraft:potion",
+    "variant": "freezing",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "potion.freezing.name",
+      "java": "item.minecraft.potion.effect.freezing"
+    },
+    "firstProductionReleased": { "bedrock": "26.70", "java": "26.4" }
+  },
+  {
+    "identifier": "minecraft:splash_potion",
+    "variant": "freezing",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "potion.freezing.splash.name",
+      "java": "item.minecraft.splash_potion.effect.freezing"
+    },
+    "firstProductionReleased": { "bedrock": "26.70", "java": "26.4" }
+  },
+  {
+    "identifier": "minecraft:lingering_potion",
+    "variant": "freezing",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "potion.freezing.linger.name",
+      "java": "item.minecraft.lingering_potion.effect.freezing"
+    },
+    "firstProductionReleased": { "bedrock": "26.70", "java": "26.4" }
+  },
+  {
+    "identifier": "minecraft:tipped_arrow",
+    "variant": "freezing",
+    "rarity": { "java": "common" },
+    "stackSize": { "java": 64 },
+    "translationKey": {
+      "java": "item.minecraft.tipped_arrow.effect.freezing"
+    },
+    "firstProductionReleased": { "java": "26.4" }
+  },
+  {
+    "identifier": "minecraft:arrow",
+    "variant": "freezing",
+    "rarity": { "bedrock": "common" },
+    "stackSize": { "bedrock": 64 },
+    "translationKey": {
+      "java": "tipped_arrow.effect.freezing"
+    },
+    "firstProductionReleased": { "bedrock": "26.70" }
+  },
+
+  {
+    "identifier": "minecraft:emptymap",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.emptyMap.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "0.14.0"
+    },
+    "lastProductionReleased": {
+      "bedrock": "1.16.100"
+    }
+  },
+  {
+    "identifier": "minecraft:empty_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.emptyMap.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "1.16.100"
+    }
+  },
+  {
+    "identifier": "minecraft:map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": null
+    },
+    "firstProductionReleased": {
+      "bedrock": "0.14.0"
+    },
+    "lastProductionReleased": {
+      "bedrock": "1.16.100"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "1.16.100"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "monument",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.monument.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "1.20.40"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "mansion",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.mansion.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "1.20.40"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "jungle_temple",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.jungle_temple.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "1.20.40"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "swamp_hut",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.swamp_hut.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "1.20.40"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "buried_treasure",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.buried_treasure.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "1.20.40"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "trial_chambers",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.trial_chambers.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "1.20.80"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "village_desert",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.village_desert.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "26.50"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "village_plains",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.village_plains.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "26.50"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "village_savanna",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.village_savanna.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "26.50"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "village_snowy",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.village_snowy.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "26.50"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "village_taiga",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.village_taiga.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "26.50"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "item.minecraft.filled_map"
+    },
+    "firstProductionReleased": {
+      "java": "1.0.0"
+    }
+  },
+  {
+    "identifier": "minecraft:map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "item.minecraft.map"
+    },
+    "firstProductionReleased": {
+      "java": "1.4.2"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "locked",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "item.minecraft.filled_map"
+    },
+    "firstProductionReleased": {
+      "java": "1.14"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "woodland_explorer",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": null
+    },
+    "firstProductionReleased": {
+      "java": "1.11"
+    },
+    "lastProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "ocean_explorer",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": null
+    },
+    "firstProductionReleased": {
+      "java": "1.11"
+    },
+    "lastProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "buried_treasure",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": null
+    },
+    "firstProductionReleased": {
+      "java": "1.13"
+    },
+    "lastProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "jungle_explorer",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": null
+    },
+    "firstProductionReleased": {
+      "java": "1.20.2"
+    },
+    "lastProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "swamp_explorer",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": null
+    },
+    "firstProductionReleased": {
+      "java": "1.20.2"
+    },
+    "lastProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "desert_village",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": null
+    },
+    "firstProductionReleased": {
+      "java": "1.20.2"
+    },
+    "lastProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "plains_village",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": null
+    },
+    "firstProductionReleased": {
+      "java": "1.20.2"
+    },
+    "lastProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "savanna_village",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": null
+    },
+    "firstProductionReleased": {
+      "java": "1.20.2"
+    },
+    "lastProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "snowy_village",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": null
+    },
+    "firstProductionReleased": {
+      "java": "1.20.2"
+    },
+    "lastProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "taiga_village",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": null
+    },
+    "firstProductionReleased": {
+      "java": "1.20.2"
+    },
+    "lastProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "trail_explorer",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": null
+    },
+    "firstProductionReleased": {
+      "java": "1.20.5"
+    },
+    "lastProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:abandoned_camp_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "item.minecraft.abandoned_camp_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:abandoned_camp_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "filled_map.bamboo_camp_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:abandoned_camp_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "filled_map.birch_forest_camp_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:abandoned_camp_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "filled_map.cherry_grove_camp_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:abandoned_camp_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "filled_map.dappled_forest_camp_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:abandoned_camp_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "filled_map.flower_forest_camp_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:abandoned_camp_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "filled_map.pale_garden_camp_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:abandoned_camp_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "filled_map.swamp_camp_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:abandoned_camp_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "filled_map.windswept_forest_camp_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:buried_ancient_city_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "item.minecraft.buried_ancient_city_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:buried_mineshaft_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "item.minecraft.buried_mineshaft_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:buried_treasure_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "item.minecraft.buried_treasure_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:buried_trial_chambers_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "item.minecraft.buried_trial_chambers_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:desert_pyramid_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "item.minecraft.desert_pyramid_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:desert_village_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "item.minecraft.desert_village_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:jungle_pyramid_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "item.minecraft.jungle_pyramid_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:ocean_monument_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "item.minecraft.ocean_monument_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:plains_village_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "item.minecraft.plains_village_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:savanna_village_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "item.minecraft.savanna_village_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:snowy_village_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "item.minecraft.snowy_village_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:swamp_hut_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "item.minecraft.swamp_hut_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:taiga_village_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "item.minecraft.taiga_village_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:warm_ocean_ruins_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "item.minecraft.warm_ocean_ruins_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
+  },
+  {
+    "identifier": "minecraft:woodland_mansion_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "item.minecraft.woodland_mansion_map"
+    },
+    "firstProductionReleased": {
+      "java": "26.3"
+    }
   }
 ]

@@ -1,11 +1,94 @@
 [
   {
     "edition": "bedrock",
-    "version": "26.10",
-    "cycleName": "Mounts of Mayhem",
-    "developmentReleasedOn": "2026-01-27",
+    "version": "26.70",
+    "cycleName": "Fourth Drop 2026",
+    "developmentReleasedOn": "2026-10-13",
     "platformsCondensed": {
       "upcoming": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "Nintendo Switch 2",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.60",
+    "cycleName": "Wilderness Bound",
+    "developmentReleasedOn": "2026-09-02",
+    "platformsCondensed": {
+      "2026-10-27": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "Nintendo Switch 2",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.52",
+    "cycleName": "Wilderness Bound",
+    "platformsCondensed": {
+      "2026-09-25": [
+        "ChromeOS",
+        "Android",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "PlayStation 4",
+        "PlayStation 5"
+      ],
+      "2026-09-28": ["iOS", "iPadOS", "Fire"],
+      "2026-09-29": ["Nintendo Switch"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.51",
+    "cycleName": "Wilderness Bound",
+    "platformsCondensed": {
+      "2026-09-15": ["Windows", "PlayStation 4", "PlayStation 5"],
+      "2026-09-16": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.50",
+    "cycleName": "Wilderness Bound",
+    "developmentReleasedOn": "2026-07-21",
+    "platformsCondensed": {
+      "2026-09-15": [
         "ChromeOS",
         "Android",
         "iOS",
@@ -19,6 +102,370 @@
         "PlayStation 4",
         "PlayStation 5"
       ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.45",
+    "cycleName": "Chaos Cubed",
+    "platformsCondensed": {
+      "2026-08-28": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.44",
+    "cycleName": "Chaos Cubed",
+    "platformsCondensed": {
+      "2026-08-14": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "PlayStation 4",
+        "PlayStation 5"
+      ],
+      "2026-08-18": ["Nintendo Switch"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.41",
+    "cycleName": "Chaos Cubed",
+    "platformsCondensed": {
+      "2026-08-07": ["Windows", "Nintendo Switch"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.40",
+    "cycleName": "Chaos Cubed",
+    "developmentReleasedOn": "2026-06-02",
+    "platformsCondensed": {
+      "2026-08-04": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.35",
+    "cycleName": "Chaos Cubed",
+    "platformsCondensed": {
+      "2026-07-28": ["Nintendo Switch"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.34",
+    "cycleName": "Chaos Cubed",
+    "platformsCondensed": {
+      "2026-07-23": ["Nintendo Switch", "PlayStation 4", "PlayStation 5"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.33",
+    "cycleName": "Chaos Cubed",
+    "platformsCondensed": {
+      "2026-07-09": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "PlayStation 5"
+      ],
+      "2026-07-10": ["Nintendo Switch", "PlayStation 4"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.32",
+    "cycleName": "Chaos Cubed",
+    "platformsCondensed": {
+      "2026-06-25": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "PlayStation 4",
+        "PlayStation 5"
+      ],
+      "2026-06-27": ["Nintendo Switch"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.31",
+    "cycleName": "Chaos Cubed",
+    "platformsCondensed": {
+      "2026-06-19": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "PlayStation 4",
+        "PlayStation 5"
+      ],
+      "2026-06-21": ["Fire"],
+      "2026-06-25": ["Nintendo Switch"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.30",
+    "cycleName": "Chaos Cubed",
+    "developmentReleasedOn": "2026-04-21",
+    "platformsCondensed": {
+      "2026-06-16": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.23",
+    "cycleName": "Tiny Takeover",
+    "platformsCondensed": {
+      "2026-05-21": ["Android"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.22",
+    "cycleName": "Tiny Takeover",
+    "platformsCondensed": {
+      "2026-05-21": ["Android"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.21",
+    "cycleName": "Tiny Takeover",
+    "platformsCondensed": {
+      "2026-05-14": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "PlayStation 4",
+        "PlayStation 5"
+      ],
+      "2026-05-18": ["Nintendo Switch"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.20",
+    "cycleName": "Tiny Takeover",
+    "developmentReleasedOn": "2026-03-10",
+    "platformsCondensed": {
+      "2026-05-05": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.13",
+    "cycleName": "Tiny Takeover",
+    "platformsCondensed": {
+      "2026-04-06": ["iOS", "iPadOS"],
+      "2026-04-07": [
+        "ChromeOS",
+        "Android",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ],
+      "2026-04-09": ["Fire"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.12",
+    "cycleName": "Tiny Takeover",
+    "platformsCondensed": {
+      "2026-03-31": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ],
+      "2026-04-01": ["Windows"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.11",
+    "cycleName": "Tiny Takeover",
+    "platformsCondensed": {
+      "2026-03-26": ["Windows"]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.10",
+    "cycleName": "Tiny Takeover",
+    "developmentReleasedOn": "2026-01-27",
+    "platformsCondensed": {
+      "2026-03-24": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.3",
+    "cycleName": "Mounts of Mayhem",
+    "platformsCondensed": {
+      "2026-03-02": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.2",
+    "cycleName": "Mounts of Mayhem",
+    "platformsCondensed": {
+      "2026-02-25": [
+        "ChromeOS",
+        "Android",
+        "iOS",
+        "iPadOS",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ]
+    }
+  },
+  {
+    "edition": "bedrock",
+    "version": "26.1",
+    "cycleName": "Mounts of Mayhem",
+    "platformsCondensed": {
+      "2026-02-19": [
+        "ChromeOS",
+        "Android",
+        "Fire",
+        "Windows",
+        "Xbox One",
+        "Xbox Series S",
+        "Xbox Series X",
+        "Nintendo Switch",
+        "PlayStation 4",
+        "PlayStation 5"
+      ],
+      "2026-02-23": ["iOS", "iPadOS"]
     }
   },
   {
@@ -3873,11 +4320,56 @@
   },
   {
     "edition": "java",
-    "version": "26.1",
-    "cycleName": "Mounts of Mayhem",
-    "developmentReleasedOn": "2025-12-16",
+    "version": "26.4",
+    "cycleName": "Fourth Drop 2026",
+    "developmentReleasedOn": "2026-09-22",
     "platformsCondensed": {
       "upcoming": ["Linux", "macOS", "Windows"]
+    }
+  },
+  {
+    "edition": "java",
+    "version": "26.3",
+    "cycleName": "Wilderness Bound",
+    "developmentReleasedOn": "2026-06-23",
+    "platformsCondensed": {
+      "2026-09-15": ["Linux", "macOS", "Windows"]
+    }
+  },
+  {
+    "edition": "java",
+    "version": "26.2",
+    "cycleName": "Chaos Cubed",
+    "developmentReleasedOn": "2026-04-07",
+    "platformsCondensed": {
+      "2026-06-16": ["Linux", "macOS", "Windows"]
+    }
+  },
+  {
+    "edition": "java",
+    "version": "26.1.2",
+    "cycleName": "Tiny Takeover",
+    "developmentReleasedOn": "2026-04-08",
+    "platformsCondensed": {
+      "2026-04-09": ["Linux", "macOS", "Windows"]
+    }
+  },
+  {
+    "edition": "java",
+    "version": "26.1.1",
+    "cycleName": "Tiny Takeover",
+    "developmentReleasedOn": "2026-03-31",
+    "platformsCondensed": {
+      "2026-04-01": ["Linux", "macOS", "Windows"]
+    }
+  },
+  {
+    "edition": "java",
+    "version": "26.1",
+    "cycleName": "Tiny Takeover",
+    "developmentReleasedOn": "2025-12-16",
+    "platformsCondensed": {
+      "2026-03-24": ["Linux", "macOS", "Windows"]
     }
   },
   {

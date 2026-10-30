@@ -4,19 +4,19 @@ import { ComponentProps } from "react";
 import { Field } from "@/components/DataTable/DataTable";
 import SearchResults from "@/components/SearchResults/SearchResults";
 import StatsCard from "@/components/StatsCard/StatsCard";
-import { NormalizedItem } from "@/domains/item/schema";
+import { NormalizedItemRelease } from "@/domains/item-release/schema";
 import { loadPageTranslations } from "@/i18n/server";
 import { SupportedLocale } from "@/i18n/settings";
 import { confirmAuthorization } from "@/library/authorization";
 
 export default async function PageSearchResultsNormalized({
 	className,
-	items,
+	itemReleases,
 	locale,
 	view
 }: {
 	className?: string;
-	items: Readonly<Array<NormalizedItem>>;
+	itemReleases: Readonly<Array<NormalizedItemRelease>>;
 	locale: SupportedLocale;
 	view: ComponentProps<typeof SearchResults>["view"];
 }) {
@@ -25,39 +25,44 @@ export default async function PageSearchResultsNormalized({
 		"page-component-compendium-items-results"
 	);
 
-	const mayEditItems = await confirmAuthorization(["update", "any", "item"]);
+	const mayEditItemReleases = await confirmAuthorization([
+		"update",
+		"any",
+		"item-release"
+	]);
 
 	return (
-		<SearchResults {...{ className, locale, view }} records={items}>
+		<SearchResults {...{ className, locale, view }} records={itemReleases}>
 			<SearchResults.List>
-				{(item: NormalizedItem) => (
+				{(itemRelease: NormalizedItemRelease) => (
 					<StatsCard
 						{...{ locale }}
 						pairs={[
 							{
 								key: t("identifier.label"),
 								value: t("identifier.value", {
-									identifier: item.identifier
+									identifier: itemRelease.identifier
 								}),
 								isHighlighted: true,
 								isLarge: true
 							},
-							item.isVariant
+							itemRelease.isVariant
 								? {
 										key: t("variant.label"),
 										value: t("variant.value", {
-											variant: item.variant
+											variant: itemRelease.variant
 										})
 									}
 								: undefined,
-							item.colors
+							itemRelease.colors
 								? {
 										key: t("colors.label"),
 										value:
-											(item.colors.bedrock ??
-											item.colors.java)
+											(itemRelease.colors.bedrock ??
+											itemRelease.colors.java)
 												? [
-														item.colors.bedrock
+														itemRelease.colors
+															.bedrock
 															? t(
 																	"colors.value",
 																	{
@@ -65,13 +70,13 @@ export default async function PageSearchResultsNormalized({
 																			"editioned",
 																		edition:
 																			"bedrock",
-																		color: item
+																		color: itemRelease
 																			.colors
 																			.bedrock
 																	}
 																)
 															: null,
-														item.colors.java
+														itemRelease.colors.java
 															? t(
 																	"colors.value",
 																	{
@@ -79,7 +84,7 @@ export default async function PageSearchResultsNormalized({
 																			"editioned",
 																		edition:
 																			"java",
-																		color: item
+																		color: itemRelease
 																			.colors
 																			.java
 																	}
@@ -87,79 +92,86 @@ export default async function PageSearchResultsNormalized({
 															: null
 													].filter(Boolean)
 												: t("colors.value", {
-														color: item.colors.both
+														color: itemRelease
+															.colors.both
 													})
 									}
 								: undefined,
 							{
 								key: t("rarities.label"),
 								value:
-									(item.rarities.bedrock ??
-									item.rarities.java)
+									(itemRelease.rarities.bedrock ??
+									itemRelease.rarities.java)
 										? [
-												item.rarities.bedrock
+												itemRelease.rarities.bedrock
 													? t("rarities.value", {
 															context:
 																"editioned",
 															edition: "bedrock",
-															rarity: item
+															rarity: itemRelease
 																.rarities
 																.bedrock
 														})
 													: null,
-												item.rarities.java
+												itemRelease.rarities.java
 													? t("rarities.value", {
 															context:
 																"editioned",
 															edition: "java",
-															rarity: item
+															rarity: itemRelease
 																.rarities.java
 														})
 													: null
 											].filter(Boolean)
 										: t("rarities.value", {
-												rarity: item.rarities.both
+												rarity: itemRelease.rarities
+													.both
 											})
 							},
 							{
 								key: t("stack-sizes.label"),
 								value:
-									(item.stackSizes.bedrock ??
-									item.stackSizes.java)
+									(itemRelease.stackSizes.bedrock ??
+									itemRelease.stackSizes.java)
 										? [
-												item.stackSizes.bedrock
+												itemRelease.stackSizes.bedrock
 													? t("stack-sizes.value", {
 															context:
 																"editioned",
 															edition: "bedrock",
 															stackSize:
-																item.stackSizes
+																itemRelease
+																	.stackSizes
 																	.bedrock
 														})
 													: null,
-												item.stackSizes.java
+												itemRelease.stackSizes.java
 													? t("stack-sizes.value", {
 															context:
 																"editioned",
 															edition: "java",
 															stackSize:
-																item.stackSizes
+																itemRelease
+																	.stackSizes
 																	.java
 														})
 													: null
 											].filter(Boolean)
 										: t("stack-sizes.value", {
-												stackSize: item.stackSizes.both
+												stackSize:
+													itemRelease.stackSizes.both
 											})
 							},
-							item.translationKeys
+							itemRelease.translationKeys
 								? {
 										key: t("translation-keys.label"),
 										value:
-											(item.translationKeys.bedrock ??
-											item.translationKeys.java)
+											(itemRelease.translationKeys
+												.bedrock ??
+											itemRelease.translationKeys.java)
 												? [
-														item.translationKeys
+														itemRelease
+															.translationKeys
 															.bedrock
 															? t(
 																	"translation-keys.value",
@@ -169,13 +181,14 @@ export default async function PageSearchResultsNormalized({
 																		edition:
 																			"bedrock",
 																		translationKey:
-																			item
+																			itemRelease
 																				.translationKeys
 																				.bedrock
 																	}
 																)
 															: null,
-														item.translationKeys
+														itemRelease
+															.translationKeys
 															.java
 															? t(
 																	"translation-keys.value",
@@ -185,7 +198,7 @@ export default async function PageSearchResultsNormalized({
 																		edition:
 																			"java",
 																		translationKey:
-																			item
+																			itemRelease
 																				.translationKeys
 																				.java
 																	}
@@ -194,7 +207,8 @@ export default async function PageSearchResultsNormalized({
 													].filter(Boolean)
 												: t("translation-keys.value", {
 														translationKey:
-															item.translationKeys
+															itemRelease
+																.translationKeys
 																.both
 													}),
 										isLarge: true
@@ -202,44 +216,45 @@ export default async function PageSearchResultsNormalized({
 								: undefined,
 							{
 								key: t("editions.label"),
-								value: item.editions.map((edition) =>
+								value: itemRelease.editions.map((edition) =>
 									t("editions.value", { edition })
 								)
 							},
 							{
 								key: t("cycles-count.label"),
 								value: t("cycles-count.value", {
-									count: item.cyclesCount
+									count: itemRelease.cyclesCount
 								})
 							},
 							{
 								key: t("releases-count.label"),
 								value: t("releases-count.value", {
-									count: item.releasesCount
+									count: itemRelease.releasesCount
 								})
 							},
 							{
 								key: t("first-production-released-on.label"),
 								value: t("first-production-released-on.value", {
-									context: item.firstProductionReleasedOn
-										? undefined
-										: "upcoming",
+									context:
+										itemRelease.firstProductionReleasedOn
+											? undefined
+											: "upcoming",
 									firstProductionReleasedOn:
-										item.firstProductionReleasedOn
+										itemRelease.firstProductionReleasedOn
 											? parseISO(
-													item.firstProductionReleasedOn
+													itemRelease.firstProductionReleasedOn
 												)
 											: undefined
 								})
 							},
-							mayEditItems
+							mayEditItemReleases
 								? {
 										key: t("is-available-for-tools.label"),
 										value: t(
 											"is-available-for-tools.value",
 											{
 												context:
-													item.isAvailableForTools
+													itemRelease.isAvailableForTools
 														? "yes"
 														: "no"
 											}
@@ -248,9 +263,11 @@ export default async function PageSearchResultsNormalized({
 								: undefined
 						]}
 						title={t("list.card.title", {
-							context: item.isVariant ? "is-variant" : undefined,
-							identifier: item.identifier,
-							variant: item.variant
+							context: itemRelease.isVariant
+								? "is-variant"
+								: undefined,
+							identifier: itemRelease.identifier,
+							variant: itemRelease.variant
 						})}
 						variant="flat"
 					/>
@@ -258,22 +275,22 @@ export default async function PageSearchResultsNormalized({
 			</SearchResults.List>
 
 			<SearchResults.Table
-				caption={t("table.caption", { count: items.length })}
+				caption={t("table.caption", { count: itemReleases.length })}
 			>
 				<Field fieldPath="identifier" label={t("identifier.label")}>
-					{({ identifier }: NormalizedItem) =>
+					{({ identifier }: NormalizedItemRelease) =>
 						t("identifier.value", { identifier })
 					}
 				</Field>
 
 				<Field fieldPath="variant" label={t("variant.label")}>
-					{({ variant }: NormalizedItem) =>
+					{({ variant }: NormalizedItemRelease) =>
 						t("variant.value", { variant })
 					}
 				</Field>
 
 				<Field fieldPath="colors" label={t("colors.label")}>
-					{({ colors }: NormalizedItem) =>
+					{({ colors }: NormalizedItemRelease) =>
 						(colors?.bedrock ?? colors?.java) ? (
 							<ul>
 								{colors.bedrock ? (
@@ -304,7 +321,7 @@ export default async function PageSearchResultsNormalized({
 				</Field>
 
 				<Field fieldPath="rarities" label={t("rarities.label")}>
-					{({ rarities }: NormalizedItem) =>
+					{({ rarities }: NormalizedItemRelease) =>
 						(rarities.bedrock ?? rarities.java) ? (
 							<ul>
 								{rarities.bedrock ? (
@@ -335,7 +352,7 @@ export default async function PageSearchResultsNormalized({
 				</Field>
 
 				<Field fieldPath="stackSizes" label={t("stack-sizes.label")}>
-					{({ stackSizes }: NormalizedItem) =>
+					{({ stackSizes }: NormalizedItemRelease) =>
 						(stackSizes.bedrock ?? stackSizes.java) ? (
 							<ul>
 								{stackSizes.bedrock ? (
@@ -369,7 +386,7 @@ export default async function PageSearchResultsNormalized({
 					fieldPath="translationKeys"
 					label={t("translation-keys.label")}
 				>
-					{({ translationKeys }: NormalizedItem) =>
+					{({ translationKeys }: NormalizedItemRelease) =>
 						(translationKeys?.bedrock ?? translationKeys?.java) ? (
 							<ul>
 								{translationKeys.bedrock ? (
@@ -401,7 +418,7 @@ export default async function PageSearchResultsNormalized({
 				</Field>
 
 				<Field fieldPath="editions" label={t("editions.label")}>
-					{({ editions }: NormalizedItem) => (
+					{({ editions }: NormalizedItemRelease) => (
 						<ul>
 							{editions.map((edition) => (
 								<li key={edition}>
@@ -415,7 +432,7 @@ export default async function PageSearchResultsNormalized({
 				</Field>
 
 				<Field fieldPath="cyclesCount" label={t("cycles-count.label")}>
-					{({ cyclesCount }: NormalizedItem) =>
+					{({ cyclesCount }: NormalizedItemRelease) =>
 						t("cycles-count.value", {
 							count: cyclesCount
 						})
@@ -426,7 +443,7 @@ export default async function PageSearchResultsNormalized({
 					fieldPath="releasesCount"
 					label={t("releases-count.label")}
 				>
-					{({ releasesCount }: NormalizedItem) =>
+					{({ releasesCount }: NormalizedItemRelease) =>
 						t("releases-count.value", {
 							count: releasesCount
 						})
@@ -437,7 +454,7 @@ export default async function PageSearchResultsNormalized({
 					fieldPath="releasesCount"
 					label={t("first-production-released-on.label")}
 				>
-					{({ firstProductionReleasedOn }: NormalizedItem) =>
+					{({ firstProductionReleasedOn }: NormalizedItemRelease) =>
 						t("first-production-released-on.value", {
 							context: firstProductionReleasedOn
 								? undefined
@@ -449,12 +466,12 @@ export default async function PageSearchResultsNormalized({
 					}
 				</Field>
 
-				{mayEditItems ? (
+				{mayEditItemReleases ? (
 					<Field
 						fieldPath="isAvailableForTools"
 						label={t("is-available-for-tools.label")}
 					>
-						{({ isAvailableForTools }: NormalizedItem) =>
+						{({ isAvailableForTools }: NormalizedItemRelease) =>
 							t("is-available-for-tools.value", {
 								context: isAvailableForTools ? "yes" : "no"
 							})

@@ -27,5 +27,7 @@
 \i platform/views/normalized-platforms.sql
 
 \i item/structure.sql
-\i item/views/flattened-items.sql
-\i item/views/normalized-items.sql
+
+\i item-release/structure.sql
+\i item-release/views/flattened-item-releases.sql
+\i item-release/views/normalized-item-releases.sql

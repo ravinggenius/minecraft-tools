@@ -3,8 +3,11 @@ import { Metadata } from "next";
 import BreadcrumbTrailPortal from "@/components/BreadcrumbTrail/BreadcrumbTrailPortal";
 import { Pagination } from "@/components/Pagination/Pagination";
 import SearchForm from "@/components/SearchForm/SearchForm";
-import * as itemModel from "@/domains/item/model";
-import { FlattenedItem, NormalizedItem } from "@/domains/item/schema";
+import * as itemReleaseModel from "@/domains/item-release/model";
+import {
+	FlattenedItemRelease,
+	NormalizedItemRelease
+} from "@/domains/item-release/schema";
 import { loadPageTranslations } from "@/i18n/server";
 import { buildBreadcrumbsWithPrefix } from "@/library/breadcrumbs";
 import {
@@ -13,8 +16,8 @@ import {
 	LOCALE_PARAMS as PARAMS
 } from "@/library/route-meta";
 
-import PageSearchResultsFlattened from "../../command/items/search-results-flattened";
-import PageSearchResultsNormalized from "../../command/items/search-results-normalized";
+import PageSearchResultsFlattened from "../../command/item-releases/search-results-flattened";
+import PageSearchResultsNormalized from "../../command/item-releases/search-results-normalized";
 
 import styles from "./page.module.scss";
 import { QUERY } from "./schema";
@@ -47,8 +50,8 @@ export default async function Page({
 	const query = await ensureSearchParams(QUERY, searchParams);
 
 	const items = query.expand
-		? await itemModel.searchFlattened(query)
-		: await itemModel.searchNormalized(query);
+		? await itemReleaseModel.searchFlattened(query)
+		: await itemReleaseModel.searchNormalized(query);
 
 	return (
 		<>
@@ -61,14 +64,16 @@ export default async function Page({
 					<PageSearchResultsFlattened
 						{...{ locale }}
 						className={styles.results}
-						items={items.data as Array<FlattenedItem>}
+						itemReleases={items.data as Array<FlattenedItemRelease>}
 						view={query.view}
 					/>
 				) : (
 					<PageSearchResultsNormalized
 						{...{ locale }}
 						className={styles.results}
-						items={items.data as Array<NormalizedItem>}
+						itemReleases={
+							items.data as Array<NormalizedItemRelease>
+						}
 						view={query.view}
 					/>
 				)}

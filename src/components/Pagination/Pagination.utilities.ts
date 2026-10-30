@@ -105,8 +105,8 @@ export const nextSearchParams = <
 	};
 
 	return Object.fromEntries(
-		Object.entries(pageParams).filter((pair): pair is [string, string] =>
-			Boolean(pair[1])
+		Object.entries(pageParams).filter(
+			(pair): pair is [string, string] => pair[1] !== undefined
 		)
 	);
 };

@@ -4,20 +4,20 @@ import { ComponentProps } from "react";
 import { Field } from "@/components/DataTable/DataTable";
 import SearchResults from "@/components/SearchResults/SearchResults";
 import StatsCard from "@/components/StatsCard/StatsCard";
-import { FlattenedItem } from "@/domains/item/schema";
+import { FlattenedItemRelease } from "@/domains/item-release/schema";
 import { loadPageTranslations } from "@/i18n/server";
 import { SupportedLocale } from "@/i18n/settings";
 import { confirmAuthorization } from "@/library/authorization";
 
 export default async function PageSearchResultsFlattened({
 	className,
-	items,
+	itemReleases,
 	locale,
 	view
 }: {
 	className?: string;
 	locale: SupportedLocale;
-	items: Readonly<Array<FlattenedItem>>;
+	itemReleases: Readonly<Array<FlattenedItemRelease>>;
 	view: ComponentProps<typeof SearchResults>["view"];
 }) {
 	const { t } = await loadPageTranslations(
@@ -25,57 +25,62 @@ export default async function PageSearchResultsFlattened({
 		"page-component-compendium-items-results"
 	);
 
-	const mayEditItems = await confirmAuthorization(["update", "any", "item"]);
+	const mayEditItemReleases = await confirmAuthorization([
+		"update",
+		"any",
+		"item-release"
+	]);
 
 	return (
-		<SearchResults {...{ className, locale, view }} records={items}>
+		<SearchResults {...{ className, locale, view }} records={itemReleases}>
 			<SearchResults.List>
-				{(item: FlattenedItem) => (
+				{(itemRelease: FlattenedItemRelease) => (
 					<StatsCard
 						{...{ locale }}
-						edition={item.edition}
+						edition={itemRelease.edition}
 						pairs={[
 							{
 								key: t("identifier.label"),
 								value: t("identifier.value", {
-									identifier: item.identifier
+									identifier: itemRelease.identifier
 								}),
 								isHighlighted: true,
 								isLarge: true
 							},
-							item.isVariant
+							itemRelease.isVariant
 								? {
 										key: t("variant.label"),
 										value: t("variant.value", {
-											variant: item.variant
+											variant: itemRelease.variant
 										})
 									}
 								: undefined,
-							item.color
+							itemRelease.color
 								? {
 										key: t("colors.label"),
 										value: t("colors.value", {
-											color: item.color
+											color: itemRelease.color
 										})
 									}
 								: null,
 							{
 								key: t("rarities.label"),
 								value: t("rarities.value", {
-									rarity: item.rarity
+									rarity: itemRelease.rarity
 								})
 							},
 							{
 								key: t("stack-sizes.label"),
 								value: t("stack-sizes.value", {
-									stackSize: item.stackSize
+									stackSize: itemRelease.stackSize
 								})
 							},
-							item.translationKey
+							itemRelease.translationKey
 								? {
 										key: t("translation-keys.label"),
 										value: t("translation-keys.value", {
-											translationKey: item.translationKey
+											translationKey:
+												itemRelease.translationKey
 										}),
 										isLarge: true
 									}
@@ -83,43 +88,44 @@ export default async function PageSearchResultsFlattened({
 							{
 								key: t("edition.label"),
 								value: t("edition.value", {
-									edition: item.edition
+									edition: itemRelease.edition
 								})
 							},
 							{
 								key: t("cycle-name.label"),
 								value: t("cycle-name.value", {
-									name: item.cycleName
+									name: itemRelease.cycleName
 								})
 							},
 							{
 								key: t("release-version.label"),
 								value: t("release-version.value", {
-									version: item.version
+									version: itemRelease.version
 								})
 							},
 							{
 								key: t("first-production-released-on.label"),
 								value: t("first-production-released-on.value", {
-									context: item.firstProductionReleasedOn
-										? undefined
-										: "upcoming",
+									context:
+										itemRelease.firstProductionReleasedOn
+											? undefined
+											: "upcoming",
 									firstProductionReleasedOn:
-										item.firstProductionReleasedOn
+										itemRelease.firstProductionReleasedOn
 											? parseISO(
-													item.firstProductionReleasedOn
+													itemRelease.firstProductionReleasedOn
 												)
 											: undefined
 								})
 							},
-							mayEditItems
+							mayEditItemReleases
 								? {
 										key: t("is-available-for-tools.label"),
 										value: t(
 											"is-available-for-tools.value",
 											{
 												context:
-													item.isAvailableForTools
+													itemRelease.isAvailableForTools
 														? "yes"
 														: "no"
 											}
@@ -128,9 +134,11 @@ export default async function PageSearchResultsFlattened({
 								: undefined
 						]}
 						title={t("list.card.title", {
-							context: item.isVariant ? "is-variant" : undefined,
-							identifier: item.identifier,
-							variant: item.variant
+							context: itemRelease.isVariant
+								? "is-variant"
+								: undefined,
+							identifier: itemRelease.identifier,
+							variant: itemRelease.variant
 						})}
 						variant="flat"
 					/>
@@ -138,32 +146,34 @@ export default async function PageSearchResultsFlattened({
 			</SearchResults.List>
 
 			<SearchResults.Table
-				caption={t("table.caption", { count: items.length })}
+				caption={t("table.caption", { count: itemReleases.length })}
 			>
 				<Field fieldPath="identifier" label={t("identifier.label")}>
-					{({ identifier }: FlattenedItem) =>
+					{({ identifier }: FlattenedItemRelease) =>
 						t("identifier.value", { identifier })
 					}
 				</Field>
 
 				<Field fieldPath="variant" label={t("variant.label")}>
-					{({ variant }: FlattenedItem) =>
+					{({ variant }: FlattenedItemRelease) =>
 						t("variant.value", { variant })
 					}
 				</Field>
 
 				<Field fieldPath="color" label={t("color.label")}>
-					{({ color }: FlattenedItem) => t("color.value", { color })}
+					{({ color }: FlattenedItemRelease) =>
+						t("color.value", { color })
+					}
 				</Field>
 
 				<Field fieldPath="rarity" label={t("rarity.label")}>
-					{({ rarity }: FlattenedItem) =>
+					{({ rarity }: FlattenedItemRelease) =>
 						t("rarity.value", { rarity })
 					}
 				</Field>
 
 				<Field fieldPath="stackSize" label={t("stack-size.label")}>
-					{({ stackSize }: FlattenedItem) =>
+					{({ stackSize }: FlattenedItemRelease) =>
 						t("stack-size.value", { count: stackSize })
 					}
 				</Field>
@@ -172,7 +182,7 @@ export default async function PageSearchResultsFlattened({
 					fieldPath="translationKey"
 					label={t("translation-key.label")}
 				>
-					{({ translationKey }: FlattenedItem) =>
+					{({ translationKey }: FlattenedItemRelease) =>
 						t("translation-key.value", {
 							translationKey
 						})
@@ -180,19 +190,19 @@ export default async function PageSearchResultsFlattened({
 				</Field>
 
 				<Field fieldPath="edition" label={t("edition.label")}>
-					{({ edition }: FlattenedItem) =>
+					{({ edition }: FlattenedItemRelease) =>
 						t("edition.value", { edition })
 					}
 				</Field>
 
 				<Field fieldPath="version" label={t("version.label")}>
-					{({ version }: FlattenedItem) =>
+					{({ version }: FlattenedItemRelease) =>
 						t("version.value", { version })
 					}
 				</Field>
 
 				<Field fieldPath="cycleName" label={t("cycle-name.label")}>
-					{({ cycleName }: FlattenedItem) =>
+					{({ cycleName }: FlattenedItemRelease) =>
 						t("cycle-name.value", { name: cycleName })
 					}
 				</Field>
@@ -201,7 +211,7 @@ export default async function PageSearchResultsFlattened({
 					fieldPath="firstProductionReleasedOn"
 					label={t("first-production-released-on.label")}
 				>
-					{({ firstProductionReleasedOn }: FlattenedItem) =>
+					{({ firstProductionReleasedOn }: FlattenedItemRelease) =>
 						t("first-production-released-on.value", {
 							context: firstProductionReleasedOn
 								? undefined
@@ -213,12 +223,12 @@ export default async function PageSearchResultsFlattened({
 					}
 				</Field>
 
-				{mayEditItems ? (
+				{mayEditItemReleases ? (
 					<Field
 						fieldPath="isAvailableForTools"
 						label={t("is-available-for-tools.label")}
 					>
-						{({ isAvailableForTools }: FlattenedItem) =>
+						{({ isAvailableForTools }: FlattenedItemRelease) =>
 							t("is-available-for-tools.value", {
 								context: isAvailableForTools ? "yes" : "no"
 							})

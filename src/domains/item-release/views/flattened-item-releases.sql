@@ -1,4 +1,4 @@
-CREATE VIEW public.flattened_items AS
+CREATE VIEW public.flattened_item_releases AS
 SELECT
   irr.id,
   i.id AS item_id,

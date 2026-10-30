@@ -1,6 +1,7 @@
-CREATE VIEW public.normalized_items AS
+CREATE VIEW public.normalized_item_releases AS
 SELECT
   item_id AS id,
+  item_id,
   identifier,
   variant,
   is_variant,
@@ -59,10 +60,10 @@ SELECT
           fi.cycle_name,
           min(fi.first_production_released_on) AS min_release_date
         FROM
-          public.flattened_items AS fi
+          public.flattened_item_releases AS fi
         WHERE
-          fi.identifier = flattened_items.identifier
-          AND NOT fi.variant IS DISTINCT FROM flattened_items.variant
+          fi.identifier = flattened_item_releases.identifier
+          AND NOT fi.variant IS DISTINCT FROM flattened_item_releases.variant
         GROUP BY
           fi.cycle_name
       ) AS cycles
@@ -87,10 +88,10 @@ SELECT
           fi.version,
           min(fi.first_production_released_on) AS min_release_date
         FROM
-          public.flattened_items AS fi
+          public.flattened_item_releases AS fi
         WHERE
-          fi.identifier = flattened_items.identifier
-          AND NOT fi.variant IS DISTINCT FROM flattened_items.variant
+          fi.identifier = flattened_item_releases.identifier
+          AND NOT fi.variant IS DISTINCT FROM flattened_item_releases.variant
         GROUP BY
           fi.edition,
           fi.version
@@ -109,10 +110,10 @@ SELECT
           fi.version,
           min(fi.first_production_released_on) AS min_release_date
         FROM
-          public.flattened_items AS fi
+          public.flattened_item_releases AS fi
         WHERE
-          fi.identifier = flattened_items.identifier
-          AND NOT fi.variant IS DISTINCT FROM flattened_items.variant
+          fi.identifier = flattened_item_releases.identifier
+          AND NOT fi.variant IS DISTINCT FROM flattened_item_releases.variant
         GROUP BY
           fi.edition,
           fi.version
@@ -121,7 +122,7 @@ SELECT
   min(first_production_released_on) AS first_production_released_on,
   COALESCE(bool_or(is_available_for_tools), false) AS is_available_for_tools
 FROM
-  public.flattened_items
+  public.flattened_item_releases
 GROUP BY
   item_id,
   identifier,

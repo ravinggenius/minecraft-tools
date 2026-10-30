@@ -40,6 +40,10 @@ export default async function Page({ params }: PageProps<"/[locale]/command">) {
 
 	const entries: Array<TableOfContentsEntry> = [
 		{
+			href: `/${locale}/command/item-releases` as TableOfContentsEntry["href"],
+			text: t("table-of-contents.item-releases")
+		},
+		{
 			href: `/${locale}/command/platforms` as TableOfContentsEntry["href"],
 			text: t("table-of-contents.platforms")
 		},

@@ -491,10 +491,13 @@
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
-    "identifier": "minecraft:golden_helmey",
+    "identifier": "minecraft:golden_helmet",
     "rarity": "common",
-    "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "stackSize": 1,
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.golden_helmet"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -575,10 +578,10 @@
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
-    "identifier": "minecraft:raw_porkchop",
+    "identifier": "minecraft:porkchop",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": null, "java": "item.minecraft.porkchop" },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -793,10 +796,10 @@
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
-    "identifier": "minecraft:raw_cod",
+    "identifier": "minecraft:cod",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": null, "java": "item.minecraft.cod" },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -968,10 +971,10 @@
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
-    "identifier": "minecraft:raw_chicken",
+    "identifier": "minecraft:chicken",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": null, "java": "item.minecraft.chicken" },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -985,10 +988,10 @@
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
-    "identifier": "minecraft:raw_beef",
+    "identifier": "minecraft:beef",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": null, "java": "item.minecraft.beef" },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -3609,10 +3612,13 @@
     "firstProductionReleased": { "bedrock": "0.15.0", "java": "1.6.1" }
   },
   {
-    "identifier": "minecraft:gold_horse_armor",
+    "identifier": "minecraft:golden_horse_armor",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.golden_horse_armor"
+    },
     "firstProductionReleased": { "bedrock": "0.15.0", "java": "1.6.1" }
   },
   {
@@ -4031,10 +4037,10 @@
     "firstProductionReleased": { "bedrock": null, "java": "1.7.2" }
   },
   {
-    "identifier": "minecraft:raw_salmon",
+    "identifier": "minecraft:salmon",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": null, "java": "item.minecraft.salmon" },
     "firstProductionReleased": { "bedrock": null, "java": "1.7.2" }
   },
   {
@@ -4785,10 +4791,10 @@
     "firstProductionReleased": { "bedrock": null, "java": "1.8" }
   },
   {
-    "identifier": "minecraft:raw_mutton",
+    "identifier": "minecraft:mutton",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": null, "java": "item.minecraft.mutton" },
     "firstProductionReleased": { "bedrock": null, "java": "1.8" }
   },
   {
@@ -4802,10 +4808,10 @@
     "firstProductionReleased": { "bedrock": null, "java": "1.8" }
   },
   {
-    "identifier": "minecraft:raw_rabbit",
+    "identifier": "minecraft:rabbit",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": null, "java": "item.minecraft.rabbit" },
     "firstProductionReleased": { "bedrock": null, "java": "1.8" }
   },
   {
@@ -5358,10 +5364,13 @@
     "firstProductionReleased": { "bedrock": null, "java": "1.8" }
   },
   {
-    "identifier": "minecraft:dark_oak_dooor",
+    "identifier": "minecraft:dark_oak_door",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "block.minecraft.dark_oak_door"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.8" }
   },
 
@@ -6014,10 +6023,13 @@
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
-    "identifier": "minecraft:repeating_commannd_block",
+    "identifier": "minecraft:repeating_command_block",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "block.minecraft.repeating_command_block"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -8384,10 +8396,13 @@
     "firstProductionReleased": { "bedrock": null, "java": "1.14" }
   },
   {
-    "identifier": "minecraft:polished_Diorite_slab",
+    "identifier": "minecraft:polished_diorite_slab",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "block.minecraft.polished_diorite_slab"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.14" }
   },
   {
@@ -10913,10 +10928,13 @@
     "firstProductionReleased": { "bedrock": null, "java": "1.17" }
   },
   {
-    "identifier": "minecraft:deepslate_lapis_lazuli_ore",
+    "identifier": "minecraft:deepslate_lapis_ore",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "block.minecraft.deepslate_lapis_ore"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.17" }
   },
   {
@@ -11735,10 +11753,13 @@
     "firstProductionReleased": { "bedrock": null, "java": "1.19" }
   },
   {
-    "identifier": "minecraft:perlescent_froglight",
+    "identifier": "minecraft:pearlescent_froglight",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "block.minecraft.pearlescent_froglight"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.19" }
   },
   {
@@ -14135,24 +14156,33 @@
     "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
   },
   {
-    "identifier": "minecraft:pale_hanging_sign",
+    "identifier": "minecraft:pale_oak_hanging_sign",
     "rarity": "common",
     "stackSize": 16,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "block.minecraft.pale_oak_hanging_sign"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
   },
   {
-    "identifier": "minecraft:pale_oak_buttom",
+    "identifier": "minecraft:pale_oak_button",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "block.minecraft.pale_oak_button"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
   },
   {
-    "identifier": "minecraft:pale_pressure_plate",
+    "identifier": "minecraft:pale_oak_pressure_plate",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "block.minecraft.pale_oak_pressure_plate"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
   },
   {
@@ -14258,10 +14288,13 @@
     "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
-    "identifier": "minecraft:chiseled_resin_brick",
+    "identifier": "minecraft:chiseled_resin_bricks",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "block.minecraft.chiseled_resin_bricks"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {

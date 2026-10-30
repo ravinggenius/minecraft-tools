@@ -12361,84 +12361,84 @@
     "rarity": "uncommon",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.19.4" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
   },
   {
     "identifier": "minecraft:sentry_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.19.4" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
   },
   {
     "identifier": "minecraft:vex_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.19.4" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
   },
   {
     "identifier": "minecraft:wild_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.19.4" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
   },
   {
     "identifier": "minecraft:coast_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.19.4" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
   },
   {
     "identifier": "minecraft:dune_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.19.4" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
   },
   {
     "identifier": "minecraft:ward_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.19.4" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
   },
   {
     "identifier": "minecraft:tide_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.19.4" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
   },
   {
     "identifier": "minecraft:snout_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.19.4" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
   },
   {
     "identifier": "minecraft:rib_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.19.4" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
   },
   {
     "identifier": "minecraft:eye_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.19.4" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
   },
   {
     "identifier": "minecraft:spire_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.19.4" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
   },
   {
     "identifier": "minecraft:cherry_boat",
@@ -12462,28 +12462,28 @@
     "rarity": "common",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.19.4" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
   },
   {
     "identifier": "minecraft:arms_up_pottery_sherd",
     "rarity": "common",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.19.4" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
   },
   {
     "identifier": "minecraft:prize_pottery_sherd",
     "rarity": "common",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.19.4" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
   },
   {
     "identifier": "minecraft:skull_pottery_sherd",
     "rarity": "common",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.19.4" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
   },
   {
     "identifier": "minecraft:sniffer_spawn_egg",
@@ -13598,7 +13598,7 @@
       "bedrock": null,
       "java": "item.minecraft.flow_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:guster_pottery_sherd",
@@ -13608,7 +13608,7 @@
       "bedrock": null,
       "java": "item.minecraft.guster_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:scrape_pottery_sherd",
@@ -13618,7 +13618,7 @@
       "bedrock": null,
       "java": "item.minecraft.scrape_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:bolt_armor_trim_smithing_template",
@@ -13628,7 +13628,7 @@
       "bedrock": null,
       "java": "item.minecraft.bolt_armor_trim_smithing_template"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:flow_armor_trim_smithing_template",
@@ -13638,7 +13638,7 @@
       "bedrock": null,
       "java": "item.minecraft.flow_armor_trim_smithing_template"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:ominous_bottle",
@@ -14027,7 +14027,7 @@
       "bedrock": null,
       "java": "item.minecraft.creaking_spawn_egg"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:pale_oak_boat",
@@ -14037,7 +14037,7 @@
       "bedrock": null,
       "java": "item.minecraft.pale_oak_boat"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:pale_oak_chest_boat",
@@ -14047,7 +14047,7 @@
       "bedrock": null,
       "java": "item.minecraft.pale_oak_chest_boat"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:creaking_heart",
@@ -14057,7 +14057,7 @@
       "bedrock": null,
       "java": "block.minecraft.creaking_heart"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:pale_hanging_moss",
@@ -14067,7 +14067,7 @@
       "bedrock": null,
       "java": "block.minecraft.pale_hanging_moss"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:pale_moss_block",
@@ -14077,7 +14077,7 @@
       "bedrock": null,
       "java": "block.minecraft.pale_moss_block"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:pale_moss_carpet",
@@ -14087,7 +14087,7 @@
       "bedrock": null,
       "java": "block.minecraft.pale_moss_carpet"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:pale_oak_leaves",
@@ -14097,7 +14097,7 @@
       "bedrock": null,
       "java": "block.minecraft.pale_oak_leaves"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:pale_oak_log",
@@ -14107,7 +14107,7 @@
       "bedrock": null,
       "java": "block.minecraft.pale_oak_log"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:stripped_pale_oak_log",
@@ -14117,7 +14117,7 @@
       "bedrock": null,
       "java": "block.minecraft.stripped_pale_oak_log"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:pale_oak_wood",
@@ -14127,7 +14127,7 @@
       "bedrock": null,
       "java": "block.minecraft.pale_oak_wood"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:stripped_pale_oak_wood",
@@ -14137,7 +14137,7 @@
       "bedrock": null,
       "java": "block.minecraft.stripped_pale_oak_wood"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:pale_oak_planks",
@@ -14147,7 +14147,7 @@
       "bedrock": null,
       "java": "block.minecraft.pale_oak_planks"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:pale_oak_slab",
@@ -14157,7 +14157,7 @@
       "bedrock": null,
       "java": "block.minecraft.pale_oak_slab"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:pale_oak_stairs",
@@ -14167,7 +14167,7 @@
       "bedrock": null,
       "java": "block.minecraft.pale_oak_stairs"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:pale_oak_sign",
@@ -14177,7 +14177,7 @@
       "bedrock": null,
       "java": "block.minecraft.pale_oak_sign"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:pale_oak_hanging_sign",
@@ -14187,7 +14187,7 @@
       "bedrock": null,
       "java": "block.minecraft.pale_oak_hanging_sign"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:pale_oak_button",
@@ -14197,7 +14197,7 @@
       "bedrock": null,
       "java": "block.minecraft.pale_oak_button"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:pale_oak_pressure_plate",
@@ -14207,7 +14207,7 @@
       "bedrock": null,
       "java": "block.minecraft.pale_oak_pressure_plate"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:pale_oak_door",
@@ -14217,7 +14217,7 @@
       "bedrock": null,
       "java": "block.minecraft.pale_oak_door"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:pale_oak_fence",
@@ -14227,7 +14227,7 @@
       "bedrock": null,
       "java": "block.minecraft.pale_oak_fence"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:pale_oak_fence_gate",
@@ -14237,7 +14237,7 @@
       "bedrock": null,
       "java": "block.minecraft.pale_oak_fence_gate"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:pale_oak_trapdoor",
@@ -14247,7 +14247,7 @@
       "bedrock": null,
       "java": "block.minecraft.pale_oak_trapdoor"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {
     "identifier": "minecraft:pale_oak_sapling",
@@ -14257,7 +14257,7 @@
       "bedrock": null,
       "java": "block.minecraft.pale_oak_sapling"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
 
   {

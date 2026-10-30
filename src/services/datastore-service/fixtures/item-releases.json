@@ -12462,28 +12462,60 @@
     "rarity": "common",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:archer_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:arms_up_pottery_sherd",
     "rarity": "common",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:arms_up_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:prize_pottery_sherd",
     "rarity": "common",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:prize_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:skull_pottery_sherd",
     "rarity": "common",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:skull_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:sniffer_spawn_egg",
@@ -12735,7 +12767,15 @@
       "bedrock": null,
       "java": "item.minecraft.angler_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:angler_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.angler_pottery_sherd" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:blade_pottery_sherd",
@@ -12745,7 +12785,15 @@
       "bedrock": null,
       "java": "item.minecraft.blade_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:blade_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.blade_pottery_sherd" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:brewer_pottery_sherd",
@@ -12755,7 +12803,15 @@
       "bedrock": null,
       "java": "item.minecraft.brewer_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:brewer_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.brewer_pottery_sherd" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:burn_pottery_sherd",
@@ -12765,7 +12821,15 @@
       "bedrock": null,
       "java": "item.minecraft.burn_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:burn_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.burn_pottery_sherd" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:danger_pottery_sherd",
@@ -12775,7 +12839,15 @@
       "bedrock": null,
       "java": "item.minecraft.danger_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:danger_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.danger_pottery_sherd" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:explorer_pottery_sherd",
@@ -12785,7 +12857,15 @@
       "bedrock": null,
       "java": "item.minecraft.explorer_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:explorer_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.explorer_pottery_sherd" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:friend_pottery_sherd",
@@ -12795,7 +12875,15 @@
       "bedrock": null,
       "java": "item.minecraft.friend_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:friend_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.friend_pottery_sherd" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:heart_pottery_sherd",
@@ -12805,7 +12893,15 @@
       "bedrock": null,
       "java": "item.minecraft.heart_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:heart_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.heart_pottery_sherd" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:heartbreak_pottery_sherd",
@@ -12815,7 +12911,15 @@
       "bedrock": null,
       "java": "item.minecraft.heartbreak_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:heartbreak_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.heartbreak_pottery_sherd" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:howl_pottery_sherd",
@@ -12825,7 +12929,15 @@
       "bedrock": null,
       "java": "item.minecraft.howl_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:howl_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.howl_pottery_sherd" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:miner_pottery_sherd",
@@ -12835,7 +12947,15 @@
       "bedrock": null,
       "java": "item.minecraft.miner_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:miner_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.miner_pottery_sherd" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:mourner_pottery_sherd",
@@ -12845,7 +12965,15 @@
       "bedrock": null,
       "java": "item.minecraft.mourner_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:mourner_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.mourner_pottery_sherd" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:plenty_pottery_sherd",
@@ -12855,7 +12983,15 @@
       "bedrock": null,
       "java": "item.minecraft.plenty_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:plenty_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.plenty_pottery_sherd" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:sheaf_pottery_sherd",
@@ -12865,7 +13001,15 @@
       "bedrock": null,
       "java": "item.minecraft.sheaf_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:sheaf_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.sheaf_pottery_sherd" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:shelter_pottery_sherd",
@@ -12875,7 +13019,15 @@
       "bedrock": null,
       "java": "item.minecraft.shelter_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:shelter_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.shelter_pottery_sherd" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:snort_pottery_sherd",
@@ -12885,7 +13037,15 @@
       "bedrock": null,
       "java": "item.minecraft.snort_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:snort_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.snort_pottery_sherd" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:wayfinder_armor_trim_smithing_template",
@@ -13598,7 +13758,15 @@
       "bedrock": null,
       "java": "item.minecraft.flow_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:flow_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.flow_pottery_sherd" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:guster_pottery_sherd",
@@ -13608,7 +13776,15 @@
       "bedrock": null,
       "java": "item.minecraft.guster_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:guster_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.guster_pottery_sherd" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:scrape_pottery_sherd",
@@ -13618,7 +13794,15 @@
       "bedrock": null,
       "java": "item.minecraft.scrape_pottery_sherd"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:scrape_pottery_sherd",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.scrape_pottery_sherd" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:bolt_armor_trim_smithing_template",

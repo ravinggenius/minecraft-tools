@@ -104,6 +104,7 @@ rawImportItems
 					...rawItemRelease,
 					edition
 				});
+				console.error(z.treeifyError(error));
 				console.log("--------------------------");
 
 				throw error;
@@ -151,6 +152,7 @@ rawImportItems
 
 			console.log("==========================");
 			console.log("INCOMING (map):", itemRelease);
+			console.error(z.treeifyError(error));
 			console.log("--------------------------");
 
 			throw error;

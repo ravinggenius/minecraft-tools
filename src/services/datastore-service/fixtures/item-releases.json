@@ -13445,7 +13445,22 @@
     "firstProductionReleased": {
       "bedrock": "0.14.0"
     },
-    "lastProductionReleased": {
+    "lastProductionReleasedBefore": {
+      "bedrock": "1.16.100"
+    }
+  },
+  {
+    "identifier": "minecraft:emptymap",
+    "variant": "locator",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.emptyLocatorMap.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "1.1.0"
+    },
+    "lastProductionReleasedBefore": {
       "bedrock": "1.16.100"
     }
   },
@@ -13461,21 +13476,126 @@
     }
   },
   {
+    "identifier": "minecraft:empty_map",
+    "variant": "locator",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.emptyLocatorMap.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "1.16.100"
+    }
+  },
+  {
     "identifier": "minecraft:map",
     "rarity": "common",
     "stackSize": 64,
     "translationKey": {
-      "bedrock": null
+      "bedrock": "item.map.name"
     },
     "firstProductionReleased": {
       "bedrock": "0.14.0"
     },
-    "lastProductionReleased": {
+    "lastProductionReleasedBefore": {
+      "bedrock": "1.16.100"
+    }
+  },
+  {
+    "identifier": "minecraft:map",
+    "variant": "locator",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "1.1.0"
+    },
+    "lastProductionReleasedBefore": {
+      "bedrock": "1.16.100"
+    }
+  },
+  {
+    "identifier": "minecraft:map",
+    "variant": "locked",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "1.11.0"
+    },
+    "lastProductionReleasedBefore": {
+      "bedrock": "1.16.100"
+    }
+  },
+  {
+    "identifier": "minecraft:map",
+    "variant": "monument",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.monument.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "1.1.0"
+    },
+    "lastProductionReleasedBefore": {
+      "bedrock": "1.16.100"
+    }
+  },
+  {
+    "identifier": "minecraft:map",
+    "variant": "mansion",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.mansion.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "1.1.0"
+    },
+    "lastProductionReleasedBefore": {
+      "bedrock": "1.16.100"
+    }
+  },
+  {
+    "identifier": "minecraft:map",
+    "variant": "buried_treasure",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": { "bedrock": "item.map.exploration.treasure.name" },
+    "firstProductionReleased": { "bedrock": "1.4.0" },
+    "lastProductionReleasedBefore": { "bedrock": "1.16.100" }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.name"
+    },
+    "firstProductionReleased": {
       "bedrock": "1.16.100"
     }
   },
   {
     "identifier": "minecraft:filled_map",
+    "variant": "locator",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "1.16.100"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "locked",
     "rarity": "common",
     "stackSize": 64,
     "translationKey": {
@@ -13494,7 +13614,7 @@
       "bedrock": "item.map.exploration.monument.name"
     },
     "firstProductionReleased": {
-      "bedrock": "1.20.40"
+      "bedrock": "1.16.100"
     }
   },
   {
@@ -13506,32 +13626,17 @@
       "bedrock": "item.map.exploration.mansion.name"
     },
     "firstProductionReleased": {
-      "bedrock": "1.20.40"
+      "bedrock": "1.16.100"
     }
   },
   {
     "identifier": "minecraft:filled_map",
-    "variant": "jungle_temple",
+    "variant": "buried_treasure",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "bedrock": "item.map.exploration.jungle_temple.name"
-    },
-    "firstProductionReleased": {
-      "bedrock": "1.20.40"
-    }
-  },
-  {
-    "identifier": "minecraft:filled_map",
-    "variant": "swamp_hut",
-    "rarity": "common",
-    "stackSize": 64,
-    "translationKey": {
-      "bedrock": "item.map.exploration.swamp_hut.name"
-    },
-    "firstProductionReleased": {
-      "bedrock": "1.20.40"
-    }
+    "translationKey": { "bedrock": "item.map.exploration.treasure.name" },
+    "firstProductionReleased": { "bedrock": "1.16.100" },
+    "lastProductionReleasedBefore": { "bedrock": "1.20.40" }
   },
   {
     "identifier": "minecraft:filled_map",
@@ -13541,45 +13646,47 @@
     "translationKey": {
       "bedrock": "item.map.exploration.buried_treasure.name"
     },
-    "firstProductionReleased": {
-      "bedrock": "1.20.40"
-    }
+    "firstProductionReleased": { "bedrock": "1.20.40" }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "jungle_temple",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": { "bedrock": "item.map.exploration.jungle_temple.name" },
+    "firstProductionReleased": { "bedrock": "1.21.70" }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "swamp_hut",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": { "bedrock": "item.map.exploration.swamp_hut.name" },
+    "firstProductionReleased": { "bedrock": "1.21.70" }
   },
   {
     "identifier": "minecraft:filled_map",
     "variant": "trial_chambers",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "bedrock": "item.map.exploration.trial_chambers.name"
-    },
-    "firstProductionReleased": {
-      "bedrock": "1.20.80"
-    }
+    "translationKey": { "bedrock": "item.map.exploration.trial_chambers.name" },
+    "firstProductionReleased": { "bedrock": "1.21.0" }
   },
   {
     "identifier": "minecraft:filled_map",
     "variant": "village_desert",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "bedrock": "item.map.exploration.village_desert.name"
-    },
-    "firstProductionReleased": {
-      "bedrock": "26.50"
-    }
+    "translationKey": { "bedrock": "item.map.exploration.village_desert.name" },
+    "firstProductionReleased": { "bedrock": "1.21.70" }
   },
   {
     "identifier": "minecraft:filled_map",
     "variant": "village_plains",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "bedrock": "item.map.exploration.village_plains.name"
-    },
-    "firstProductionReleased": {
-      "bedrock": "26.50"
-    }
+    "translationKey": { "bedrock": "item.map.exploration.village_plains.name" },
+    "firstProductionReleased": { "bedrock": "1.21.70" }
   },
   {
     "identifier": "minecraft:filled_map",
@@ -13589,17 +13696,31 @@
     "translationKey": {
       "bedrock": "item.map.exploration.village_savanna.name"
     },
-    "firstProductionReleased": {
-      "bedrock": "26.50"
-    }
+    "firstProductionReleased": { "bedrock": "1.21.70" }
   },
   {
     "identifier": "minecraft:filled_map",
     "variant": "village_snowy",
     "rarity": "common",
     "stackSize": 64,
+    "translationKey": { "bedrock": "item.map.exploration.village_snowy.name" },
+    "firstProductionReleased": { "bedrock": "1.21.70" }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "village_taiga",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": { "bedrock": "item.map.exploration.village_taiga.name" },
+    "firstProductionReleased": { "bedrock": "1.21.70" }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "abandoned_camp_bamboo_jungle",
+    "rarity": "common",
+    "stackSize": 64,
     "translationKey": {
-      "bedrock": "item.map.exploration.village_snowy.name"
+      "bedrock": "item.map.exploration.abandoned_camp_bamboo_jungle.name"
     },
     "firstProductionReleased": {
       "bedrock": "26.50"
@@ -13607,11 +13728,131 @@
   },
   {
     "identifier": "minecraft:filled_map",
-    "variant": "village_taiga",
+    "variant": "abandoned_camp_birch_forest",
     "rarity": "common",
     "stackSize": 64,
     "translationKey": {
-      "bedrock": "item.map.exploration.village_taiga.name"
+      "bedrock": "item.map.exploration.abandoned_camp_birch_forest.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "26.50"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "abandoned_camp_cherry_grove",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.abandoned_camp_cherry_grove.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "26.50"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "abandoned_camp_dappled_forest",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.abandoned_camp_dappled_forest.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "26.50"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "abandoned_camp_extreme_hills_plus_trees",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.abandoned_camp_extreme_hills_plus_trees.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "26.50"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "abandoned_camp_flower_forest",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.abandoned_camp_flower_forest.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "26.50"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "abandoned_camp_pale_garden",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.abandoned_camp_pale_garden.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "26.50"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "abandoned_camp_swampland",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.abandoned_camp_swampland.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "26.50"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "buried_ancient_city",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.buried_ancient_city.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "26.50"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "buried_mineshaft",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.buried_mineshaft.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "26.50"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "desert_pyramid",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.desert_pyramid.name"
+    },
+    "firstProductionReleased": {
+      "bedrock": "26.50"
+    }
+  },
+  {
+    "identifier": "minecraft:filled_map",
+    "variant": "warm_ocean_ruins",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": "item.map.exploration.warm_ocean_ruins.name"
     },
     "firstProductionReleased": {
       "bedrock": "26.50"
@@ -13657,165 +13898,99 @@
     "variant": "woodland_explorer",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "java": null
-    },
-    "firstProductionReleased": {
-      "java": "1.11"
-    },
-    "lastProductionReleased": {
-      "java": "26.3"
-    }
+    "translationKey": { "java": "item.minecraft.filled_map" },
+    "firstProductionReleased": { "java": "1.11" },
+    "lastProductionReleasedBefore": { "java": "26.3" }
   },
   {
     "identifier": "minecraft:filled_map",
     "variant": "ocean_explorer",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "java": null
-    },
-    "firstProductionReleased": {
-      "java": "1.11"
-    },
-    "lastProductionReleased": {
-      "java": "26.3"
-    }
+    "translationKey": { "java": "item.minecraft.filled_map" },
+    "firstProductionReleased": { "java": "1.11" },
+    "lastProductionReleasedBefore": { "java": "26.3" }
   },
   {
     "identifier": "minecraft:filled_map",
     "variant": "buried_treasure",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "java": null
-    },
-    "firstProductionReleased": {
-      "java": "1.13"
-    },
-    "lastProductionReleased": {
-      "java": "26.3"
-    }
+    "translationKey": { "java": "item.minecraft.filled_map" },
+    "firstProductionReleased": { "java": "1.13" },
+    "lastProductionReleasedBefore": { "java": "26.3" }
   },
   {
     "identifier": "minecraft:filled_map",
     "variant": "jungle_explorer",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "java": null
-    },
-    "firstProductionReleased": {
-      "java": "1.20.2"
-    },
-    "lastProductionReleased": {
-      "java": "26.3"
-    }
+    "translationKey": { "java": "item.minecraft.filled_map" },
+    "firstProductionReleased": { "java": "1.21.5" },
+    "lastProductionReleasedBefore": { "java": "26.3" }
   },
   {
     "identifier": "minecraft:filled_map",
     "variant": "swamp_explorer",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "java": null
-    },
-    "firstProductionReleased": {
-      "java": "1.20.2"
-    },
-    "lastProductionReleased": {
-      "java": "26.3"
-    }
+    "translationKey": { "java": "item.minecraft.filled_map" },
+    "firstProductionReleased": { "java": "1.21.5" },
+    "lastProductionReleasedBefore": { "java": "26.3" }
   },
   {
     "identifier": "minecraft:filled_map",
     "variant": "desert_village",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "java": null
-    },
-    "firstProductionReleased": {
-      "java": "1.20.2"
-    },
-    "lastProductionReleased": {
-      "java": "26.3"
-    }
+    "translationKey": { "java": "item.minecraft.filled_map" },
+    "firstProductionReleased": { "java": "1.21.5" },
+    "lastProductionReleasedBefore": { "java": "26.3" }
   },
   {
     "identifier": "minecraft:filled_map",
     "variant": "plains_village",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "java": null
-    },
-    "firstProductionReleased": {
-      "java": "1.20.2"
-    },
-    "lastProductionReleased": {
-      "java": "26.3"
-    }
+    "translationKey": { "java": "item.minecraft.filled_map" },
+    "firstProductionReleased": { "java": "1.21.5" },
+    "lastProductionReleasedBefore": { "java": "26.3" }
   },
   {
     "identifier": "minecraft:filled_map",
     "variant": "savanna_village",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "java": null
-    },
-    "firstProductionReleased": {
-      "java": "1.20.2"
-    },
-    "lastProductionReleased": {
-      "java": "26.3"
-    }
+    "translationKey": { "java": "item.minecraft.filled_map" },
+    "firstProductionReleased": { "java": "1.21.5" },
+    "lastProductionReleasedBefore": { "java": "26.3" }
   },
   {
     "identifier": "minecraft:filled_map",
     "variant": "snowy_village",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "java": null
-    },
-    "firstProductionReleased": {
-      "java": "1.20.2"
-    },
-    "lastProductionReleased": {
-      "java": "26.3"
-    }
+    "translationKey": { "java": "item.minecraft.filled_map" },
+    "firstProductionReleased": { "java": "1.21.5" },
+    "lastProductionReleasedBefore": { "java": "26.3" }
   },
   {
     "identifier": "minecraft:filled_map",
     "variant": "taiga_village",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "java": null
-    },
-    "firstProductionReleased": {
-      "java": "1.20.2"
-    },
-    "lastProductionReleased": {
-      "java": "26.3"
-    }
+    "translationKey": { "java": "item.minecraft.filled_map" },
+    "firstProductionReleased": { "java": "1.21.5" },
+    "lastProductionReleasedBefore": { "java": "26.3" }
   },
   {
     "identifier": "minecraft:filled_map",
-    "variant": "trail_explorer",
+    "variant": "trial_explorer",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "java": null
-    },
-    "firstProductionReleased": {
-      "java": "1.20.5"
-    },
-    "lastProductionReleased": {
-      "java": "26.3"
-    }
+    "translationKey": { "java": "item.minecraft.filled_map" },
+    "firstProductionReleased": { "java": "1.21" },
+    "lastProductionReleasedBefore": { "java": "26.3" }
   },
   {
     "identifier": "minecraft:abandoned_camp_map",
@@ -13830,91 +14005,67 @@
   },
   {
     "identifier": "minecraft:abandoned_camp_map",
+    "variant": "bamboo",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "java": "filled_map.bamboo_camp_map"
-    },
-    "firstProductionReleased": {
-      "java": "26.3"
-    }
+    "translationKey": { "java": "item.minecraft.abandoned_camp_map" },
+    "firstProductionReleased": { "java": "26.3" }
   },
   {
     "identifier": "minecraft:abandoned_camp_map",
+    "variant": "birch_forest",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "java": "filled_map.birch_forest_camp_map"
-    },
-    "firstProductionReleased": {
-      "java": "26.3"
-    }
+    "translationKey": { "java": "item.minecraft.abandoned_camp_map" },
+    "firstProductionReleased": { "java": "26.3" }
   },
   {
     "identifier": "minecraft:abandoned_camp_map",
+    "variant": "cherry_grove",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "java": "filled_map.cherry_grove_camp_map"
-    },
-    "firstProductionReleased": {
-      "java": "26.3"
-    }
+    "translationKey": { "java": "item.minecraft.abandoned_camp_map" },
+    "firstProductionReleased": { "java": "26.3" }
   },
   {
     "identifier": "minecraft:abandoned_camp_map",
+    "variant": "dappled_forest",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "java": "filled_map.dappled_forest_camp_map"
-    },
-    "firstProductionReleased": {
-      "java": "26.3"
-    }
+    "translationKey": { "java": "item.minecraft.abandoned_camp_map" },
+    "firstProductionReleased": { "java": "26.3" }
   },
   {
     "identifier": "minecraft:abandoned_camp_map",
+    "variant": "flower_forest",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "java": "filled_map.flower_forest_camp_map"
-    },
-    "firstProductionReleased": {
-      "java": "26.3"
-    }
+    "translationKey": { "java": "item.minecraft.abandoned_camp_map" },
+    "firstProductionReleased": { "java": "26.3" }
   },
   {
     "identifier": "minecraft:abandoned_camp_map",
+    "variant": "pale_garden",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "java": "filled_map.pale_garden_camp_map"
-    },
-    "firstProductionReleased": {
-      "java": "26.3"
-    }
+    "translationKey": { "java": "item.minecraft.abandoned_camp_map" },
+    "firstProductionReleased": { "java": "26.3" }
   },
   {
     "identifier": "minecraft:abandoned_camp_map",
+    "variant": "swamp",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "java": "filled_map.swamp_camp_map"
-    },
-    "firstProductionReleased": {
-      "java": "26.3"
-    }
+    "translationKey": { "java": "item.minecraft.abandoned_camp_map" },
+    "firstProductionReleased": { "java": "26.3" }
   },
   {
     "identifier": "minecraft:abandoned_camp_map",
+    "variant": "windswept_forest",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": {
-      "java": "filled_map.windswept_forest_camp_map"
-    },
-    "firstProductionReleased": {
-      "java": "26.3"
-    }
+    "translationKey": { "java": "item.minecraft.abandoned_camp_map" },
+    "firstProductionReleased": { "java": "26.3" }
   },
   {
     "identifier": "minecraft:buried_ancient_city_map",

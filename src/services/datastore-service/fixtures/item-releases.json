@@ -9903,7 +9903,15 @@
     "rarity": "common",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": "block.minecraft.chain" },
-    "firstProductionReleased": { "bedrock": null, "java": "1.16" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.16" },
+    "lastProductionReleasedBefore": { "java": "1.21.9" }
+  },
+  {
+    "identifier": "minecraft:iron_chain",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": { "java": "block.minecraft.iron_chain" },
+    "firstProductionReleased": { "java": "1.21.9" }
   },
 
   {

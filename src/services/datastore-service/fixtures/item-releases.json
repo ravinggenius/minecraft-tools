@@ -2283,11 +2283,19 @@
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
+    "identifier": "minecraft:grass",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": { "bedrock": null, "java": "block.minecraft.grass" },
+    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" },
+    "lastProductionReleasedBefore": { "java": "1.20.3" }
+  },
+  {
     "identifier": "minecraft:short_grass",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "translationKey": { "java": "block.minecraft.short_grass" },
+    "firstProductionReleased": { "java": "1.20.3" }
   },
   {
     "identifier": "minecraft:fern",
@@ -5899,11 +5907,19 @@
     "lastProductionReleasedBefore": { "bedrock": null }
   },
   {
+    "identifier": "minecraft:grass_path",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": { "bedrock": null, "java": "block.minecraft.grass_path" },
+    "firstProductionReleased": { "bedrock": null, "java": "1.9" },
+    "lastProductionReleasedBefore": { "java": "1.17" }
+  },
+  {
     "identifier": "minecraft:dirt_path",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.9" }
+    "translationKey": { "java": "block.minecraft.dirt_path" },
+    "firstProductionReleased": { "java": "1.17" }
   },
   {
     "identifier": "minecraft:structure_block",
@@ -7149,11 +7165,19 @@
     "firstProductionReleased": { "bedrock": null, "java": "1.13" }
   },
   {
+    "identifier": "minecraft:scute",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": { "bedrock": null, "java": "item.minecraft.scute" },
+    "firstProductionReleased": { "bedrock": null, "java": "1.13" },
+    "lastProductionReleasedBefore": { "java": "1.20.5" }
+  },
+  {
     "identifier": "minecraft:turtle_scute",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.13" }
+    "translationKey": { "java": "item.minecraft.turtle_scute" },
+    "firstProductionReleased": { "java": "1.20.5" }
   },
   {
     "identifier": "minecraft:turtle_shell",

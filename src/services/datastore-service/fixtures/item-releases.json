@@ -5781,10 +5781,13 @@
   },
   {
     "identifier": "minecraft:tipped_arrow",
-    "variant": "splashing",
+    "variant": "water",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.tipped_arrow.effect.water"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -6051,10 +6054,13 @@
   },
   {
     "identifier": "minecraft:lingering_potion",
-    "variant": "lingering",
+    "variant": "water",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.water"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -6362,39 +6368,41 @@
   },
   {
     "identifier": "minecraft:potion",
-    "variant": "uncraftable",
+    "variant": "empty",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "java": null },
+    "translationKey": { "java": "item.minecraft.potion.effect.empty" },
     "firstProductionReleased": { "java": "1.9" },
-    "lastProductionReleasedBefore": { "java": null }
+    "lastProductionReleasedBefore": { "java": "1.20.5" }
   },
   {
     "identifier": "minecraft:splash_potion",
-    "variant": "uncraftable",
+    "variant": "empty",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "java": null },
+    "translationKey": { "java": "item.minecraft.splash_potion.effect.empty" },
     "firstProductionReleased": { "java": "1.9" },
-    "lastProductionReleasedBefore": { "java": null }
+    "lastProductionReleasedBefore": { "java": "1.20.5" }
   },
   {
     "identifier": "minecraft:lingering_potion",
-    "variant": "uncraftable",
+    "variant": "empty",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "java": null },
+    "translationKey": {
+      "java": "item.minecraft.lingering_potion.effect.empty"
+    },
     "firstProductionReleased": { "java": "1.9" },
-    "lastProductionReleasedBefore": { "java": null }
+    "lastProductionReleasedBefore": { "java": "1.20.5" }
   },
   {
     "identifier": "minecraft:tipped_arrow",
-    "variant": "uncraftable",
+    "variant": "empty",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "java": null },
+    "translationKey": { "java": "item.minecraft.tipped_arrow.effect.empty" },
     "firstProductionReleased": { "java": "1.9" },
-    "lastProductionReleasedBefore": { "java": null }
+    "lastProductionReleasedBefore": { "java": "1.20.5" }
   },
   {
     "identifier": "minecraft:potion",
@@ -14817,14 +14825,14 @@
   },
   {
     "identifier": "minecraft:potion",
-    "variant": "infestation",
+    "variant": "infested",
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.potion.effect.infested"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:potion",
@@ -14835,7 +14843,7 @@
       "bedrock": null,
       "java": "item.minecraft.potion.effect.oozing"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:potion",
@@ -14846,29 +14854,29 @@
       "bedrock": null,
       "java": "item.minecraft.potion.effect.weaving"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:potion",
-    "variant": "wind_charging",
+    "variant": "wind_charged",
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.potion.effect.wind_charged"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:splash_potion",
-    "variant": "infestation",
+    "variant": "infested",
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.splash_potion.effect.infested"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:splash_potion",
@@ -14879,7 +14887,7 @@
       "bedrock": null,
       "java": "item.minecraft.splash_potion.effect.oozing"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:splash_potion",
@@ -14890,29 +14898,29 @@
       "bedrock": null,
       "java": "item.minecraft.splash_potion.effect.weaving"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:splash_potion",
-    "variant": "wind_charging",
+    "variant": "wind_charged",
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.splash_potion.effect.wind_charged"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:lingering_potion",
-    "variant": "infestation",
+    "variant": "infested",
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.lingering_potion.effect.infested"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:lingering_potion",
@@ -14923,7 +14931,7 @@
       "bedrock": null,
       "java": "item.minecraft.lingering_potion.effect.oozing"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:lingering_potion",
@@ -14934,29 +14942,29 @@
       "bedrock": null,
       "java": "item.minecraft.lingering_potion.effect.weaving"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:lingering_potion",
-    "variant": "wind_charging",
+    "variant": "wind_charged",
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.lingering_potion.effect.wind_charged"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:tipped_arrow",
-    "variant": "infestation",
+    "variant": "infested",
     "rarity": "common",
     "stackSize": 64,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.tipped_arrow.effect.infested"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:tipped_arrow",
@@ -14967,7 +14975,7 @@
       "bedrock": null,
       "java": "item.minecraft.tipped_arrow.effect.oozing"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:tipped_arrow",
@@ -14978,18 +14986,18 @@
       "bedrock": null,
       "java": "item.minecraft.tipped_arrow.effect.weaving"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:tipped_arrow",
-    "variant": "wind_charging",
+    "variant": "wind_charged",
     "rarity": "common",
     "stackSize": 64,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.tipped_arrow.effect.wind_charged"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:vault",

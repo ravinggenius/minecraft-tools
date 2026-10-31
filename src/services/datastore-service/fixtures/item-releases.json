@@ -687,7 +687,10 @@
     "identifier": "minecraft:minecart",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": "item.minecraft.minecart" },
+    "translationKey": {
+      "bedrock": "item.minecart.name",
+      "java": "item.minecraft.minecart"
+    },
     "firstProductionReleased": { "bedrock": "0.14.0", "java": "1.0.0" }
   },
   {
@@ -816,7 +819,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.chest_minecart.name",
       "java": "item.minecraft.chest_minecart"
     },
     "firstProductionReleased": { "bedrock": "0.14.0", "java": "1.0.0" }
@@ -1345,7 +1348,10 @@
     "variant": "awkward",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.awkward"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1353,7 +1359,10 @@
     "variant": "thick",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.thick"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1361,7 +1370,10 @@
     "variant": "mundane",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.mundane"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1376,7 +1388,10 @@
     "variant": "water",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.water"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1384,7 +1399,10 @@
     "variant": "swiftness",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.swiftness"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1392,7 +1410,10 @@
     "variant": "slowness",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.slowness"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1400,7 +1421,10 @@
     "variant": "strength",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.strength"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1408,7 +1432,10 @@
     "variant": "weakness",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.weakness"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1416,7 +1443,10 @@
     "variant": "healing",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.healing"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1424,7 +1454,10 @@
     "variant": "harming",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.harming"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1432,7 +1465,10 @@
     "variant": "regeneration",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.regeneration"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1440,7 +1476,10 @@
     "variant": "fire_resistance",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.fire_resistance"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1448,7 +1487,10 @@
     "variant": "poison",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.poison"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1466,7 +1508,10 @@
     "variant": "swiftness",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.swiftness"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1474,7 +1519,10 @@
     "variant": "slowness",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.slowness"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1482,7 +1530,10 @@
     "variant": "strength",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.strength"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1490,7 +1541,10 @@
     "variant": "weakness",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.weakness"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1498,7 +1552,10 @@
     "variant": "healing",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.healing"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1506,7 +1563,10 @@
     "variant": "harming",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.harming"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1514,7 +1574,10 @@
     "variant": "regeneration",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.regeneration"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1522,7 +1585,10 @@
     "variant": "fire_resistance",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.fire_resistance"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1530,7 +1596,10 @@
     "variant": "poison",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.poison"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -2314,7 +2383,7 @@
     "identifier": "minecraft:cake",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null },
+    "translationKey": { "bedrock": "item.cake.name" },
     "firstProductionReleased": { "bedrock": "1.2.0" },
     "lastProductionReleasedBefore": { "bedrock": null }
   },
@@ -3329,7 +3398,10 @@
     "variant": "night_vision",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.night_vision"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.4.2" }
   },
   {
@@ -3337,7 +3409,10 @@
     "variant": "night_vision",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.night_vision"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.4.2" }
   },
   {
@@ -3396,7 +3471,10 @@
     "variant": "invisibility",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.invisibility"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.4.2" }
   },
   {
@@ -3404,7 +3482,10 @@
     "variant": "invisibility",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.invisibility"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.4.2" }
   },
   {
@@ -3412,7 +3493,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.carrotOnAStick.name",
       "java": "item.minecraft.carrot_on_a_stick"
     },
     "firstProductionReleased": { "bedrock": "0.15.0", "java": "1.4.2" }
@@ -3730,7 +3811,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.tnt_minecart.name",
       "java": "item.minecraft.tnt_minecart"
     },
     "firstProductionReleased": { "bedrock": "0.14.0", "java": "1.5" }
@@ -3740,7 +3821,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.hopper_minecart.name",
       "java": "item.minecraft.hopper_minecart"
     },
     "firstProductionReleased": { "bedrock": "0.14.0", "java": "1.5" }
@@ -3892,7 +3973,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.horsearmordiamond.name",
       "java": "item.minecraft.diamond_horse_armor"
     },
     "firstProductionReleased": { "bedrock": "0.15.0", "java": "1.6.1" }
@@ -3902,7 +3983,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.horsearmorgold.name",
       "java": "item.minecraft.golden_horse_armor"
     },
     "firstProductionReleased": { "bedrock": "0.15.0", "java": "1.6.1" }
@@ -3912,7 +3993,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.horsearmoriron.name",
       "java": "item.minecraft.iron_horse_armor"
     },
     "firstProductionReleased": { "bedrock": "0.15.0", "java": "1.6.1" }
@@ -4351,7 +4432,10 @@
     "variant": "water_breathing",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.water_breathing"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.7.2" }
   },
   {
@@ -4359,7 +4443,10 @@
     "variant": "water_breathing",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.water_breathing"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.7.2" }
   },
   {
@@ -4367,7 +4454,7 @@
     "rarity": { "bedrock": "common", "java": "common" },
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.command_block_minecart.name",
       "java": "item.minecraft.command_block_minecart"
     },
     "firstProductionReleased": { "bedrock": "1.0.5", "java": "1.7.2" },
@@ -5123,7 +5210,10 @@
     "variant": "leaping",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.leaping"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.8" }
   },
   {
@@ -5131,7 +5221,10 @@
     "variant": "leaping",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.leaping"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.8" }
   },
   {
@@ -5699,7 +5792,10 @@
     "variant": "night_vision",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.tipped_arrow.effect.night_vision"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5707,7 +5803,10 @@
     "variant": "invisibility",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.tipped_arrow.effect.invisibility"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5715,7 +5814,10 @@
     "variant": "leaping",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.tipped_arrow.effect.leaping"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5723,7 +5825,10 @@
     "variant": "fire_resistance",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.tipped_arrow.effect.fire_resistance"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5731,7 +5836,10 @@
     "variant": "swiftness",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.tipped_arrow.effect.swiftness"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5739,7 +5847,10 @@
     "variant": "slowness",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.tipped_arrow.effect.slowness"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5747,7 +5858,10 @@
     "variant": "water_breathing",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.tipped_arrow.effect.water_breathing"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5755,7 +5869,10 @@
     "variant": "healing",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.tipped_arrow.effect.healing"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5763,7 +5880,10 @@
     "variant": "harming",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.tipped_arrow.effect.harming"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5771,7 +5891,10 @@
     "variant": "poison",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.tipped_arrow.effect.poison"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5779,7 +5902,10 @@
     "variant": "regeneration",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.tipped_arrow.effect.regeneration"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5787,7 +5913,10 @@
     "variant": "strength",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.tipped_arrow.effect.strength"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5795,7 +5924,10 @@
     "variant": "weakness",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.tipped_arrow.effect.weakness"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5860,7 +5992,10 @@
     "variant": "water",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.water"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5868,7 +6003,10 @@
     "variant": "mundane",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.mundane"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5876,7 +6014,10 @@
     "variant": "thick",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.thick"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5884,7 +6025,10 @@
     "variant": "awkward",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.awkward"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5918,7 +6062,10 @@
     "variant": "mundane",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.mundane"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5926,7 +6073,10 @@
     "variant": "thick",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.thick"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5934,7 +6084,10 @@
     "variant": "awkward",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.awkward"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5942,7 +6095,10 @@
     "variant": "night_vision",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.night_vision"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5950,7 +6106,10 @@
     "variant": "invisibility",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.invisibility"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5958,7 +6117,10 @@
     "variant": "leaping",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.leaping"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5966,7 +6128,10 @@
     "variant": "fire_resistance",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.fire_resistance"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5974,7 +6139,10 @@
     "variant": "swiftness",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.swiftness"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5982,7 +6150,10 @@
     "variant": "slowness",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.slowness"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5990,7 +6161,10 @@
     "variant": "water_breathing",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.water_breathing"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -5998,7 +6172,10 @@
     "variant": "healing",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.healing"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -6006,7 +6183,10 @@
     "variant": "harming",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.harming"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -6014,7 +6194,10 @@
     "variant": "poison",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.poison"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -6022,7 +6205,10 @@
     "variant": "regeneration",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.regeneration"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -6030,7 +6216,10 @@
     "variant": "strength",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.strength"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -6038,7 +6227,10 @@
     "variant": "weakness",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.weakness"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.9" }
   },
   {
@@ -6137,7 +6329,7 @@
     "variant": "luck",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "java": null },
+    "translationKey": { "java": "item.minecraft.potion.effect.luck" },
     "firstProductionReleased": { "java": "1.9" },
     "lastProductionReleasedBefore": { "java": null }
   },
@@ -6146,7 +6338,7 @@
     "variant": "luck",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "java": null },
+    "translationKey": { "java": "item.minecraft.splash_potion.effect.luck" },
     "firstProductionReleased": { "java": "1.9" },
     "lastProductionReleasedBefore": { "java": null }
   },
@@ -6155,7 +6347,7 @@
     "variant": "luck",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "java": null },
+    "translationKey": { "java": "item.minecraft.lingering_potion.effect.luck" },
     "firstProductionReleased": { "java": "1.9" },
     "lastProductionReleasedBefore": { "java": null }
   },
@@ -6164,7 +6356,7 @@
     "variant": "luck",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "java": null },
+    "translationKey": { "java": "item.minecraft.tipped_arrow.effect.luck" },
     "firstProductionReleased": { "java": "1.9" },
     "lastProductionReleasedBefore": { "java": null }
   },
@@ -6236,7 +6428,7 @@
     "variant": "decay",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null },
+    "translationKey": { "bedrock": "item.tipped_arrow.name" },
     "firstProductionReleased": { "bedrock": "1.0.0" },
     "lastProductionReleasedBefore": { "bedrock": null }
   },
@@ -6670,7 +6862,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "tile.shulkerBoxWhite.name",
       "java": "block.minecraft.white_shulker_box"
     },
     "firstProductionReleased": { "bedrock": "1.1.0", "java": "1.11" }
@@ -6681,7 +6873,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "tile.shulkerBoxSilver.name",
       "java": "block.minecraft.light_gray_shulker_box"
     },
     "firstProductionReleased": { "bedrock": "1.1.0", "java": "1.11" }
@@ -6692,7 +6884,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "tile.shulkerBoxGray.name",
       "java": "block.minecraft.gray_shulker_box"
     },
     "firstProductionReleased": { "bedrock": "1.1.0", "java": "1.11" }
@@ -6703,7 +6895,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "tile.shulkerBoxBlack.name",
       "java": "block.minecraft.black_shulker_box"
     },
     "firstProductionReleased": { "bedrock": "1.1.0", "java": "1.11" }
@@ -6714,7 +6906,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "tile.shulkerBoxBrown.name",
       "java": "block.minecraft.brown_shulker_box"
     },
     "firstProductionReleased": { "bedrock": "1.1.0", "java": "1.11" }
@@ -6725,7 +6917,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "tile.shulkerBoxRed.name",
       "java": "block.minecraft.red_shulker_box"
     },
     "firstProductionReleased": { "bedrock": "1.1.0", "java": "1.11" }
@@ -6736,7 +6928,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "tile.shulkerBoxOrange.name",
       "java": "block.minecraft.orange_shulker_box"
     },
     "firstProductionReleased": { "bedrock": "1.1.0", "java": "1.11" }
@@ -6747,7 +6939,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "tile.shulkerBoxYellow.name",
       "java": "block.minecraft.yellow_shulker_box"
     },
     "firstProductionReleased": { "bedrock": "1.1.0", "java": "1.11" }
@@ -6758,7 +6950,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "tile.shulkerBoxLime.name",
       "java": "block.minecraft.lime_shulker_box"
     },
     "firstProductionReleased": { "bedrock": "1.1.0", "java": "1.11" }
@@ -6769,7 +6961,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "tile.shulkerBoxGreen.name",
       "java": "block.minecraft.green_shulker_box"
     },
     "firstProductionReleased": { "bedrock": "1.1.0", "java": "1.11" }
@@ -6780,7 +6972,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "tile.shulkerBoxCyan.name",
       "java": "block.minecraft.cyan_shulker_box"
     },
     "firstProductionReleased": { "bedrock": "1.1.0", "java": "1.11" }
@@ -6791,7 +6983,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "tile.shulkerBoxLightBlue.name",
       "java": "block.minecraft.light_blue_shulker_box"
     },
     "firstProductionReleased": { "bedrock": "1.1.0", "java": "1.11" }
@@ -6802,7 +6994,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "tile.shulkerBoxBlue.name",
       "java": "block.minecraft.blue_shulker_box"
     },
     "firstProductionReleased": { "bedrock": "1.1.0", "java": "1.11" }
@@ -6813,7 +7005,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "tile.shulkerBoxPurple.name",
       "java": "block.minecraft.purple_shulker_box"
     },
     "firstProductionReleased": { "bedrock": "1.1.0", "java": "1.11" }
@@ -6824,7 +7016,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "tile.shulkerBoxMagenta.name",
       "java": "block.minecraft.magenta_shulker_box"
     },
     "firstProductionReleased": { "bedrock": "1.1.0", "java": "1.11" }
@@ -6835,7 +7027,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "tile.shulkerBoxPink.name",
       "java": "block.minecraft.pink_shulker_box"
     },
     "firstProductionReleased": { "bedrock": "1.1.0", "java": "1.11" }
@@ -7618,7 +7810,10 @@
     "variant": "turtle_master",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.turtle_master"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.13" }
   },
   {
@@ -7626,7 +7821,10 @@
     "variant": "turtle_master",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.turtle_master"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.13" }
   },
   {
@@ -7634,7 +7832,10 @@
     "variant": "turtle_master",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.turtle_master"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.13" }
   },
   {
@@ -7642,7 +7843,10 @@
     "variant": "turtle_master",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.tipped_arrow.effect.turtle_master"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.13" }
   },
   {
@@ -7767,7 +7971,10 @@
     "variant": "slow_falling",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.slow_falling"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.13" }
   },
   {
@@ -7775,7 +7982,10 @@
     "variant": "slow_falling",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.slow_falling"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.13" }
   },
   {
@@ -7783,7 +7993,10 @@
     "variant": "slow_falling",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.slow_falling"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.13" }
   },
   {
@@ -7791,7 +8004,10 @@
     "variant": "slow_falling",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.tipped_arrow.effect.slow_falling"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.13" }
   },
   {
@@ -8288,7 +8504,7 @@
     "identifier": "minecraft:undyed_shulker_box",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null },
+    "translationKey": { "bedrock": "tile.shulkerBox.name" },
     "firstProductionReleased": { "bedrock": "1.2.0" },
     "lastProductionReleasedBefore": { "bedrock": null }
   },
@@ -8556,7 +8772,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.flower_banner_pattern.name",
       "java": "item.minecraft.flower_banner_pattern"
     },
     "firstProductionReleased": { "bedrock": "1.10.0", "java": "1.14" }
@@ -8566,7 +8782,7 @@
     "rarity": "uncommon",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.creeper_banner_pattern.name",
       "java": "item.minecraft.creeper_banner_pattern"
     },
     "firstProductionReleased": { "bedrock": "1.10.0", "java": "1.14" }
@@ -8576,7 +8792,7 @@
     "rarity": "uncommon",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.skull_banner_pattern.name",
       "java": "item.minecraft.skull_banner_pattern"
     },
     "firstProductionReleased": { "bedrock": "1.10.0", "java": "1.14" },
@@ -8594,7 +8810,7 @@
     "rarity": "epic",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.mojang_banner_pattern.name",
       "java": "item.minecraft.mojang_banner_pattern"
     },
     "firstProductionReleased": { "bedrock": "1.10.0", "java": "1.14" },
@@ -8731,7 +8947,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.horsearmorleather.name",
       "java": "item.minecraft.leather_horse_armor"
     },
     "firstProductionReleased": { "bedrock": "0.15.0", "java": "1.14" }
@@ -8741,7 +8957,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.globe_banner_pattern.name",
       "java": "item.minecraft.globe_banner_pattern"
     },
     "firstProductionReleased": { "bedrock": "1.18.10", "java": "1.14" }
@@ -9586,7 +9802,7 @@
     "rarity": "common",
     "stackSize": 64,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.spawn_egg.entity.zombie_pigman.name",
       "java": "item.minecraft.zombified_piglin_spawn_egg"
     },
     "firstProductionReleased": { "bedrock": "1.16.0", "java": "1.16" }
@@ -9596,7 +9812,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.warped_fungus_on_a_stick.name",
       "java": "item.minecraft.warped_fungus_on_a_stick"
     },
     "firstProductionReleased": { "bedrock": "1.16.0", "java": "1.16" }
@@ -9626,7 +9842,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.piglin_banner_pattern.name",
       "java": "item.minecraft.piglin_banner_pattern"
     },
     "firstProductionReleased": { "bedrock": "1.16.0", "java": "1.16" },
@@ -12157,7 +12373,7 @@
     "variant": "ponder",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": "item.goat_horn.name", "java": null },
     "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" },
     "lastProductionReleasedBefore": { "java": "1.21.2" }
   },
@@ -12174,7 +12390,7 @@
     "variant": "sing",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": "item.goat_horn.name", "java": null },
     "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" },
     "lastProductionReleasedBefore": { "java": "1.21.2" }
   },
@@ -12191,7 +12407,7 @@
     "variant": "seek",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": "item.goat_horn.name", "java": null },
     "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" },
     "lastProductionReleasedBefore": { "java": "1.21.2" }
   },
@@ -12208,7 +12424,7 @@
     "variant": "feel",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": "item.goat_horn.name", "java": null },
     "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" },
     "lastProductionReleasedBefore": { "java": "1.21.2" }
   },
@@ -12225,7 +12441,7 @@
     "variant": "admire",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": "item.goat_horn.name", "java": null },
     "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" },
     "lastProductionReleasedBefore": { "java": "1.21.2" }
   },
@@ -12242,7 +12458,7 @@
     "variant": "call",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": "item.goat_horn.name", "java": null },
     "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" },
     "lastProductionReleasedBefore": { "java": "1.21.2" }
   },
@@ -12259,7 +12475,7 @@
     "variant": "yearn",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": "item.goat_horn.name", "java": null },
     "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" },
     "lastProductionReleasedBefore": { "java": "1.21.2" }
   },
@@ -12276,7 +12492,7 @@
     "variant": "dream",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": "item.goat_horn.name", "java": null },
     "firstProductionReleased": { "bedrock": "1.19.10", "java": "1.19" },
     "lastProductionReleasedBefore": { "java": "1.21.2" }
   },
@@ -13841,7 +14057,10 @@
     "identifier": "minecraft:trial_key",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": "item.minecraft.trial_key" },
+    "translationKey": {
+      "bedrock": "item.trial_key.name",
+      "java": "item.minecraft.trial_key"
+    },
     "firstProductionReleased": { "bedrock": "1.21.0", "java": "1.21" }
   },
   {
@@ -14390,7 +14609,7 @@
     "rarity": "common",
     "stackSize": 64,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "tile.trial_spawner.name",
       "java": "block.minecraft.trial_spawner"
     },
     "firstProductionReleased": { "bedrock": "1.21.0", "java": "1.21" }
@@ -14459,7 +14678,7 @@
     "rarity": "rare",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.flow_banner_pattern.name",
       "java": "item.minecraft.flow_banner_pattern"
     },
     "firstProductionReleased": { "bedrock": "1.21.0", "java": "1.21" }
@@ -14469,7 +14688,7 @@
     "rarity": "rare",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.guster_banner_pattern.name",
       "java": "item.minecraft.guster_banner_pattern"
     },
     "firstProductionReleased": { "bedrock": "1.21.0", "java": "1.21" }
@@ -14573,7 +14792,7 @@
     "rarity": "common",
     "stackSize": 64,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.ominous_bottle.name",
       "java": "item.minecraft.ominous_bottle"
     },
     "firstProductionReleased": { "bedrock": "1.21.0", "java": "1.21" },
@@ -14591,7 +14810,7 @@
     "rarity": "common",
     "stackSize": 64,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.ominous_trial_key.name",
       "java": "item.minecraft.ominous_trial_key"
     },
     "firstProductionReleased": { "bedrock": "1.21.0", "java": "1.21" }
@@ -14601,7 +14820,10 @@
     "variant": "infestation",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.infested"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
   },
   {
@@ -14609,7 +14831,10 @@
     "variant": "oozing",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.oozing"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
   },
   {
@@ -14617,7 +14842,10 @@
     "variant": "weaving",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.weaving"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
   },
   {
@@ -14625,7 +14853,10 @@
     "variant": "wind_charging",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.potion.effect.wind_charged"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
   },
   {
@@ -14633,7 +14864,10 @@
     "variant": "infestation",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.infested"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
   },
   {
@@ -14641,7 +14875,10 @@
     "variant": "oozing",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.oozing"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
   },
   {
@@ -14649,7 +14886,10 @@
     "variant": "weaving",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.weaving"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
   },
   {
@@ -14657,7 +14897,10 @@
     "variant": "wind_charging",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.splash_potion.effect.wind_charged"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
   },
   {
@@ -14665,7 +14908,10 @@
     "variant": "infestation",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.infested"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
   },
   {
@@ -14673,7 +14919,10 @@
     "variant": "oozing",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.oozing"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
   },
   {
@@ -14681,7 +14930,10 @@
     "variant": "weaving",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.weaving"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
   },
   {
@@ -14689,7 +14941,10 @@
     "variant": "wind_charging",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.lingering_potion.effect.wind_charged"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
   },
   {
@@ -14697,7 +14952,10 @@
     "variant": "infestation",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.tipped_arrow.effect.infested"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
   },
   {
@@ -14705,7 +14963,10 @@
     "variant": "oozing",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.tipped_arrow.effect.oozing"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
   },
   {
@@ -14713,7 +14974,10 @@
     "variant": "weaving",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.tipped_arrow.effect.weaving"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
   },
   {
@@ -14721,14 +14985,20 @@
     "variant": "wind_charging",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.tipped_arrow.effect.wind_charged"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
   },
   {
     "identifier": "minecraft:vault",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": "block.minecraft.vault" },
+    "translationKey": {
+      "bedrock": "tile.vault.name",
+      "java": "block.minecraft.vault"
+    },
     "firstProductionReleased": { "bedrock": "1.21.0", "java": "1.21" }
   },
   {
@@ -14790,7 +15060,10 @@
     "identifier": "minecraft:bundle",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": "item.minecraft.bundle" },
+    "translationKey": {
+      "bedrock": "item.bundle",
+      "java": "item.minecraft.bundle"
+    },
     "firstProductionReleased": { "bedrock": "1.21.40", "java": "1.21.2" }
   },
   {
@@ -14799,7 +15072,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.white_bundle",
       "java": "item.minecraft.white_bundle"
     },
     "firstProductionReleased": { "bedrock": "1.21.40", "java": "1.21.2" }
@@ -14810,7 +15083,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.light_gray_bundle",
       "java": "item.minecraft.light_gray_bundle"
     },
     "firstProductionReleased": { "bedrock": "1.21.40", "java": "1.21.2" }
@@ -14820,7 +15093,10 @@
     "color": "gray",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": "item.minecraft.gray_bundle" },
+    "translationKey": {
+      "bedrock": "item.gray_bundle",
+      "java": "item.minecraft.gray_bundle"
+    },
     "firstProductionReleased": { "bedrock": "1.21.40", "java": "1.21.2" }
   },
   {
@@ -14829,7 +15105,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.black_bundle",
       "java": "item.minecraft.black_bundle"
     },
     "firstProductionReleased": { "bedrock": "1.21.40", "java": "1.21.2" }
@@ -14840,7 +15116,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.brown_bundle",
       "java": "item.minecraft.brown_bundle"
     },
     "firstProductionReleased": { "bedrock": "1.21.40", "java": "1.21.2" }
@@ -14850,7 +15126,10 @@
     "color": "red",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": "item.minecraft.red_bundle" },
+    "translationKey": {
+      "bedrock": "item.red_bundle",
+      "java": "item.minecraft.red_bundle"
+    },
     "firstProductionReleased": { "bedrock": "1.21.40", "java": "1.21.2" }
   },
   {
@@ -14859,7 +15138,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.orange_bundle",
       "java": "item.minecraft.orange_bundle"
     },
     "firstProductionReleased": { "bedrock": "1.21.40", "java": "1.21.2" }
@@ -14870,7 +15149,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.yellow_bundle",
       "java": "item.minecraft.yellow_bundle"
     },
     "firstProductionReleased": { "bedrock": "1.21.40", "java": "1.21.2" }
@@ -14880,7 +15159,10 @@
     "color": "lime",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": "item.minecraft.lime_bundle" },
+    "translationKey": {
+      "bedrock": "item.lime_bundle",
+      "java": "item.minecraft.lime_bundle"
+    },
     "firstProductionReleased": { "bedrock": "1.21.40", "java": "1.21.2" }
   },
   {
@@ -14889,7 +15171,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.green_bundle",
       "java": "item.minecraft.green_bundle"
     },
     "firstProductionReleased": { "bedrock": "1.21.40", "java": "1.21.2" }
@@ -14899,7 +15181,10 @@
     "color": "cyan",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": "item.minecraft.cyan_bundle" },
+    "translationKey": {
+      "bedrock": "item.cyan_bundle",
+      "java": "item.minecraft.cyan_bundle"
+    },
     "firstProductionReleased": { "bedrock": "1.21.40", "java": "1.21.2" }
   },
   {
@@ -14908,7 +15193,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.light_blue_bundle",
       "java": "item.minecraft.light_blue_bundle"
     },
     "firstProductionReleased": { "bedrock": "1.21.40", "java": "1.21.2" }
@@ -14918,7 +15203,10 @@
     "color": "blue",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": "item.minecraft.blue_bundle" },
+    "translationKey": {
+      "bedrock": "item.blue_bundle",
+      "java": "item.minecraft.blue_bundle"
+    },
     "firstProductionReleased": { "bedrock": "1.21.40", "java": "1.21.2" }
   },
   {
@@ -14927,7 +15215,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.purple_bundle",
       "java": "item.minecraft.purple_bundle"
     },
     "firstProductionReleased": { "bedrock": "1.21.40", "java": "1.21.2" }
@@ -14938,7 +15226,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.magenta_bundle",
       "java": "item.minecraft.magenta_bundle"
     },
     "firstProductionReleased": { "bedrock": "1.21.40", "java": "1.21.2" }
@@ -14948,7 +15236,10 @@
     "color": "pink",
     "rarity": "common",
     "stackSize": 1,
-    "translationKey": { "bedrock": null, "java": "item.minecraft.pink_bundle" },
+    "translationKey": {
+      "bedrock": "item.pink_bundle",
+      "java": "item.minecraft.pink_bundle"
+    },
     "firstProductionReleased": { "bedrock": "1.21.40", "java": "1.21.2" }
   },
   {
@@ -14956,7 +15247,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.field_masoned_banner_pattern.name",
       "java": "item.minecraft.field_masoned_banner_pattern"
     },
     "firstProductionReleased": { "bedrock": "1.10.0", "java": "1.21.2" }
@@ -14966,7 +15257,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.bordure_indented_banner_pattern.name",
       "java": "item.minecraft.bordure_indented_banner_pattern"
     },
     "firstProductionReleased": { "bedrock": "1.10.0", "java": "1.21.2" }
@@ -15718,7 +16009,7 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.copper_horse_armor.name",
       "java": "item.minecraft.copper_horse_armor"
     },
     "firstProductionReleased": { "bedrock": "1.21.111", "java": "1.21.9" }
@@ -16809,7 +17100,7 @@
     "rarity": "common",
     "stackSize": 64,
     "translationKey": {
-      "bedrock": null,
+      "bedrock": "item.spawn_egg.entity.sulfur_cube.name",
       "java": "item.minecraft.sulfur_cube_spawn_egg"
     },
     "firstProductionReleased": { "bedrock": "26.30", "java": "26.2" }
@@ -17712,7 +18003,8 @@
     "rarity": { "bedrock": "common" },
     "stackSize": { "bedrock": 64 },
     "translationKey": {
-      "java": "tipped_arrow.effect.freezing"
+      "java": "tipped_arrow.effect.freezing",
+      "bedrock": "item.arrow.name"
     },
     "firstProductionReleased": { "bedrock": "26.70" }
   },

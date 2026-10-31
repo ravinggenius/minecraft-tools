@@ -25859,7 +25859,7 @@
     "rarity": "common",
     "stackSize": 64,
     "translationKey": {
-      "bedrock": "item.spawn_egg.entity.camel_husk_spawn_egg.name",
+      "bedrock": "item.spawn_egg.entity.camel_husk.name",
       "java": "item.minecraft.camel_husk_spawn_egg"
     },
     "numericId": { "bedrock": 669 },
@@ -25887,7 +25887,7 @@
     "rarity": "common",
     "stackSize": 64,
     "translationKey": {
-      "bedrock": "item.spawn_egg.entity.parched_spawn_egg.name",
+      "bedrock": "item.spawn_egg.entity.parched.name",
       "java": "item.minecraft.parched_spawn_egg"
     },
     "numericId": { "bedrock": 760 },
@@ -27124,7 +27124,7 @@
     "rarity": "common",
     "stackSize": 16,
     "translationKey": {
-      "bedrock": "item.cushion.light_blue.name",
+      "bedrock": "item.cushion.lightBlue.name",
       "java": "item.minecraft.light_blue_cushion"
     },
     "numericId": { "bedrock": 781 },
@@ -27389,7 +27389,7 @@
     "rarity": "common",
     "stackSize": 16,
     "translationKey": {
-      "bedrock": "item.cushion.light_gray.name",
+      "bedrock": "item.cushion.silver.name",
       "java": "item.minecraft.light_gray_cushion"
     },
     "numericId": { "bedrock": 782 },

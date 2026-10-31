@@ -26,6 +26,7 @@
     "edition": "bedrock",
     "version": "26.60",
     "cycleName": "Wilderness Bound",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/49852828563853-Minecraft-Bedrock-Edition-26-60-Changelog",
     "developmentReleasedOn": "2026-09-02",
     "platformsCondensed": {
       "2026-10-27": [
@@ -49,6 +50,7 @@
     "edition": "bedrock",
     "version": "26.52",
     "cycleName": "Wilderness Bound",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/49175370527501-Minecraft-Bedrock-Edition-26-52-Hotfix-Changelog",
     "platformsCondensed": {
       "2026-09-25": [
         "ChromeOS",
@@ -68,6 +70,7 @@
     "edition": "bedrock",
     "version": "26.51",
     "cycleName": "Wilderness Bound",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/48915928859789-Minecraft-Bedrock-Edition-26-51-Hotfix-Changelog",
     "platformsCondensed": {
       "2026-09-15": ["Windows", "PlayStation 4", "PlayStation 5"],
       "2026-09-16": [
@@ -86,6 +89,7 @@
     "edition": "bedrock",
     "version": "26.50",
     "cycleName": "Wilderness Bound",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/48826825649933-Minecraft-Bedrock-Edition-26-50-Changelog-Wilderness-Bound",
     "developmentReleasedOn": "2026-07-21",
     "platformsCondensed": {
       "2026-09-15": [
@@ -108,6 +112,7 @@
     "edition": "bedrock",
     "version": "26.45",
     "cycleName": "Chaos Cubed",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/48149564061965-Minecraft-Bedrock-Edition-26-44-45-Hotfix-Changelog",
     "platformsCondensed": {
       "2026-08-28": [
         "ChromeOS",
@@ -129,6 +134,7 @@
     "edition": "bedrock",
     "version": "26.44",
     "cycleName": "Chaos Cubed",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/48149564061965-Minecraft-Bedrock-Edition-26-44-45-Hotfix-Changelog",
     "platformsCondensed": {
       "2026-08-14": [
         "ChromeOS",
@@ -150,6 +156,7 @@
     "edition": "bedrock",
     "version": "26.41",
     "cycleName": "Chaos Cubed",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/48021584755341-Minecraft-Bedrock-Edition-26-41-42-43-Hotfix-Changelog",
     "platformsCondensed": {
       "2026-08-07": ["Windows", "Nintendo Switch"]
     }
@@ -158,6 +165,7 @@
     "edition": "bedrock",
     "version": "26.40",
     "cycleName": "Chaos Cubed",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/47787720931213-Minecraft-Bedrock-Edition-26-40",
     "developmentReleasedOn": "2026-06-02",
     "platformsCondensed": {
       "2026-08-04": [
@@ -180,6 +188,7 @@
     "edition": "bedrock",
     "version": "26.35",
     "cycleName": "Chaos Cubed",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/47592941525517-Minecraft-Bedrock-Edition-26-34-35-Hotfix-Changelog",
     "platformsCondensed": {
       "2026-07-28": ["Nintendo Switch"]
     }
@@ -188,6 +197,7 @@
     "edition": "bedrock",
     "version": "26.34",
     "cycleName": "Chaos Cubed",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/47592941525517-Minecraft-Bedrock-Edition-26-34-35-Hotfix-Changelog",
     "platformsCondensed": {
       "2026-07-23": ["Nintendo Switch", "PlayStation 4", "PlayStation 5"]
     }
@@ -196,6 +206,7 @@
     "edition": "bedrock",
     "version": "26.33",
     "cycleName": "Chaos Cubed",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/47262667617677-Minecraft-Bedrock-Edition-26-33-Hotfix-Changelog",
     "platformsCondensed": {
       "2026-07-09": [
         "ChromeOS",
@@ -216,6 +227,7 @@
     "edition": "bedrock",
     "version": "26.32",
     "cycleName": "Chaos Cubed",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/46916326665485-Minecraft-Bedrock-Edition-26-32-Hotfix-Changelog",
     "platformsCondensed": {
       "2026-06-25": [
         "ChromeOS",
@@ -237,6 +249,7 @@
     "edition": "bedrock",
     "version": "26.31",
     "cycleName": "Chaos Cubed",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/46826058100621-Minecraft-Bedrock-Edition-26-31-Hotfix-Changelog",
     "platformsCondensed": {
       "2026-06-19": [
         "ChromeOS",
@@ -258,6 +271,7 @@
     "edition": "bedrock",
     "version": "26.30",
     "cycleName": "Chaos Cubed",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/46570672409997-Minecraft-Bedrock-Edition-26-30-Changelog-Chaos-Cubed",
     "developmentReleasedOn": "2026-04-21",
     "platformsCondensed": {
       "2026-06-16": [
@@ -280,6 +294,7 @@
     "edition": "bedrock",
     "version": "26.23",
     "cycleName": "Tiny Takeover",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/46043306833805-Minecraft-Bedrock-Edition-26-23-Hotfix-Changelog",
     "platformsCondensed": {
       "2026-05-21": ["Android"]
     }
@@ -296,6 +311,7 @@
     "edition": "bedrock",
     "version": "26.21",
     "cycleName": "Tiny Takeover",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/45844706302221-Minecraft-Bedrock-Edition-26-21-Hotfix-Changelog",
     "platformsCondensed": {
       "2026-05-14": [
         "ChromeOS",
@@ -317,6 +333,7 @@
     "edition": "bedrock",
     "version": "26.20",
     "cycleName": "Tiny Takeover",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/45400537384333-Minecraft-Bedrock-Edition-26-20-Changelog",
     "developmentReleasedOn": "2026-03-10",
     "platformsCondensed": {
       "2026-05-05": [
@@ -339,6 +356,7 @@
     "edition": "bedrock",
     "version": "26.13",
     "cycleName": "Tiny Takeover",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/44799887672973-Minecraft-Bedrock-Edition-26-13-Hotfix-Changelog",
     "platformsCondensed": {
       "2026-04-06": ["iOS", "iPadOS"],
       "2026-04-07": [
@@ -359,6 +377,7 @@
     "edition": "bedrock",
     "version": "26.12",
     "cycleName": "Tiny Takeover",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/44732288765837-Minecraft-Bedrock-Edition-26-12-Hotfix-Changelog",
     "platformsCondensed": {
       "2026-03-31": [
         "ChromeOS",
@@ -380,6 +399,7 @@
     "edition": "bedrock",
     "version": "26.11",
     "cycleName": "Tiny Takeover",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/44610903078797-Minecraft-Bedrock-Edition-26-11-Hotfix-Changelog",
     "platformsCondensed": {
       "2026-03-26": ["Windows"]
     }
@@ -388,6 +408,7 @@
     "edition": "bedrock",
     "version": "26.10",
     "cycleName": "Tiny Takeover",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/44418129038733-Minecraft-Bedrock-Edition-26-10-Tiny-Takeover",
     "developmentReleasedOn": "2026-01-27",
     "platformsCondensed": {
       "2026-03-24": [
@@ -410,6 +431,7 @@
     "edition": "bedrock",
     "version": "26.3",
     "cycleName": "Mounts of Mayhem",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/43861703542925-Minecraft-Bedrock-Edition-26-3-Changelog",
     "platformsCondensed": {
       "2026-03-02": [
         "ChromeOS",
@@ -431,6 +453,7 @@
     "edition": "bedrock",
     "version": "26.2",
     "cycleName": "Mounts of Mayhem",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/43812188348813-Minecraft-Bedrock-Edition-26-2-Changelog",
     "platformsCondensed": {
       "2026-02-25": [
         "ChromeOS",
@@ -452,6 +475,7 @@
     "edition": "bedrock",
     "version": "26.1",
     "cycleName": "Mounts of Mayhem",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/43648860943245-Minecraft-Bedrock-Edition-26-1-Changelog",
     "platformsCondensed": {
       "2026-02-19": [
         "ChromeOS",
@@ -1182,8 +1206,8 @@
   {
     "edition": "bedrock",
     "version": "1.21.31",
-    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/30677359777805-Minecraft-1-21-31-Bedrock",
     "cycleName": "Tricky Trials",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/30677359777805-Minecraft-1-21-31-Bedrock",
     "platformsCondensed": {
       "2024-09-30": [
         "ChromeOS",
@@ -1196,9 +1220,9 @@
         "Nintendo Switch",
         "PlayStation 4",
         "PlayStation VR"
-      ]
-    },
-    "2024-10-22": ["PlayStation 5"]
+      ],
+      "2024-10-22": ["PlayStation 5"]
+    }
   },
   {
     "edition": "bedrock",
@@ -4077,8 +4101,8 @@
   {
     "edition": "bedrock",
     "version": "1.0.1",
-    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004168751-MCPE-iOS-ONLY-1-0-1",
     "cycleName": "Ender Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360004168751-MCPE-iOS-ONLY-1-0-1",
     "platformsCondensed": {
       "2017-01-06": ["iOS"]
     }
@@ -4331,6 +4355,7 @@
     "edition": "java",
     "version": "26.3",
     "cycleName": "Wilderness Bound",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3",
     "developmentReleasedOn": "2026-06-23",
     "platformsCondensed": {
       "2026-09-15": ["Linux", "macOS", "Windows"]
@@ -4340,6 +4365,7 @@
     "edition": "java",
     "version": "26.2",
     "cycleName": "Chaos Cubed",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/46690753273997-Minecraft-Java-Edition-26-2",
     "developmentReleasedOn": "2026-04-07",
     "platformsCondensed": {
       "2026-06-16": ["Linux", "macOS", "Windows"]
@@ -4358,6 +4384,7 @@
     "edition": "java",
     "version": "26.1.1",
     "cycleName": "Tiny Takeover",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/44759148669325-Minecraft-Java-Edition-26-1-1-Hotfix",
     "developmentReleasedOn": "2026-03-31",
     "platformsCondensed": {
       "2026-04-01": ["Linux", "macOS", "Windows"]
@@ -4367,6 +4394,7 @@
     "edition": "java",
     "version": "26.1",
     "cycleName": "Tiny Takeover",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/44551668333837-Minecraft-Java-Edition-26-1",
     "developmentReleasedOn": "2025-12-16",
     "platformsCondensed": {
       "2026-03-24": ["Linux", "macOS", "Windows"]
@@ -4515,6 +4543,7 @@
     "edition": "java",
     "version": "1.20.4",
     "cycleName": "Bats And Pots",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/22046600558221-Minecraft-Java-Edition-1-20-4",
     "developmentReleasedOn": "2023-12-06",
     "platformsCondensed": {
       "2023-12-07": ["Linux", "macOS", "Windows"]
@@ -4524,6 +4553,7 @@
     "edition": "java",
     "version": "1.20.3",
     "cycleName": "Bats And Pots",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/21968446892173-Minecraft-Java-Edition-1-20-3",
     "developmentReleasedOn": "2023-10-04",
     "platformsCondensed": {
       "2023-12-05": ["Linux", "macOS", "Windows"]
@@ -4533,6 +4563,7 @@
     "edition": "java",
     "version": "1.20.2",
     "cycleName": "Trails & Tales",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/19703470383757-Minecraft-Java-Edition-1-20-2",
     "developmentReleasedOn": "2023-08-02",
     "platformsCondensed": {
       "2023-09-21": ["Linux", "macOS", "Windows"]
@@ -4542,6 +4573,7 @@
     "edition": "java",
     "version": "1.20.1",
     "cycleName": "Trails & Tales",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/34595082538637-Minecraft-Java-Edition-1-20-1",
     "developmentReleasedOn": "2023-06-09",
     "platformsCondensed": {
       "2023-06-12": ["Linux", "macOS", "Windows"]
@@ -4551,6 +4583,7 @@
     "edition": "java",
     "version": "1.20",
     "cycleName": "Trails & Tales",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/16499677456781-Minecraft-Java-Edition-1-20-Trails-Tales",
     "developmentReleasedOn": "2023-03-22",
     "platformsCondensed": {
       "2023-06-07": ["Linux", "macOS", "Windows"]
@@ -4560,6 +4593,7 @@
     "edition": "java",
     "version": "1.19.4",
     "cycleName": "The Wild Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/13987663727757-Minecraft-Java-Edition-1-19-4",
     "developmentReleasedOn": "2023-01-18",
     "platformsCondensed": {
       "2023-03-14": ["Linux", "macOS", "Windows"]
@@ -4569,6 +4603,7 @@
     "edition": "java",
     "version": "1.19.3",
     "cycleName": "The Wild Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/11280166737293-Minecraft-Java-Edition-1-19-3",
     "developmentReleasedOn": "2022-10-19",
     "platformsCondensed": {
       "2022-12-07": ["Linux", "macOS", "Windows"]
@@ -4578,6 +4613,7 @@
     "edition": "java",
     "version": "1.19.2",
     "cycleName": "The Wild Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/8204540058253-Minecraft-Java-Edition-1-19-2",
     "developmentReleasedOn": "2022-08-04",
     "platformsCondensed": {
       "2022-08-05": ["Linux", "macOS", "Windows"]
@@ -4587,6 +4623,7 @@
     "edition": "java",
     "version": "1.19.1",
     "cycleName": "The Wild Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/34593554333197-Minecraft-Java-Edition-1-19-1",
     "developmentReleasedOn": "2022-06-15",
     "platformsCondensed": {
       "2022-07-27": ["Linux", "macOS", "Windows"]
@@ -4596,6 +4633,7 @@
     "edition": "java",
     "version": "1.19",
     "cycleName": "The Wild Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/6731464524941-Minecraft-Java-Edition-1-19",
     "developmentReleasedOn": "2022-02-17",
     "platformsCondensed": {
       "2022-06-07": ["Linux", "macOS", "Windows"]
@@ -4605,6 +4643,7 @@
     "edition": "java",
     "version": "1.18.2",
     "cycleName": "Caves & Cliffs: Part II",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4531177623437-Minecraft-Java-Edition-1-18-2",
     "developmentReleasedOn": "2022-01-19",
     "platformsCondensed": {
       "2022-02-28": ["Linux", "macOS", "Windows"]
@@ -4614,6 +4653,7 @@
     "edition": "java",
     "version": "1.18.1",
     "cycleName": "Caves & Cliffs: Part II",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4416161161101-Minecraft-Java-Edition-1-18-1",
     "developmentReleasedOn": "2021-12-03",
     "platformsCondensed": {
       "2021-12-10": ["Linux", "macOS", "Windows"]
@@ -4623,6 +4663,7 @@
     "edition": "java",
     "version": "1.18",
     "cycleName": "Caves & Cliffs: Part II",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4415128577293-Minecraft-Java-Edition-1-18",
     "developmentReleasedOn": "2021-07-13",
     "platformsCondensed": {
       "2021-11-30": ["Linux", "macOS", "Windows"]
@@ -4632,6 +4673,7 @@
     "edition": "java",
     "version": "1.17.1",
     "cycleName": "Caves & Cliffs: Part I",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4404449719949-Minecraft-Java-Edition-1-17-1",
     "developmentReleasedOn": "2021-06-18",
     "platformsCondensed": {
       "2021-07-06": ["Linux", "macOS", "Windows"]
@@ -4641,6 +4683,7 @@
     "edition": "java",
     "version": "1.17",
     "cycleName": "Caves & Cliffs: Part I",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/4402626897165-Minecraft-Caves-Cliffs-Part-1-1-17-Java",
     "developmentReleasedOn": "2020-11-04",
     "platformsCondensed": {
       "2021-06-08": ["Linux", "macOS", "Windows"]
@@ -4650,6 +4693,7 @@
     "edition": "java",
     "version": "1.16.5",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360055096392-Minecraft-Java-Edition-1-16-5",
     "developmentReleasedOn": "2021-01-13",
     "platformsCondensed": {
       "2021-01-15": ["Linux", "macOS", "Windows"]
@@ -4659,6 +4703,7 @@
     "edition": "java",
     "version": "1.16.4",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360052100531-Minecraft-Java-Edition-1-16-4",
     "developmentReleasedOn": "2020-10-15",
     "platformsCondensed": {
       "2020-11-02": ["Linux", "macOS", "Windows"]
@@ -4668,6 +4713,7 @@
     "edition": "java",
     "version": "1.16.3",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/34595687730829-Minecraft-Java-Edition-1-16-3",
     "developmentReleasedOn": "2020-09-07",
     "platformsCondensed": {
       "2020-09-10": ["Linux", "macOS", "Windows"]
@@ -4677,6 +4723,7 @@
     "edition": "java",
     "version": "1.16.2",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360047630831-Minecraft-Java-Edition-1-16-2",
     "developmentReleasedOn": "2020-07-01",
     "platformsCondensed": {
       "2020-08-11": ["Linux", "macOS", "Windows"]
@@ -4686,6 +4733,7 @@
     "edition": "java",
     "version": "1.16.1",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/34595576709133-Minecraft-Java-Edition-1-16-1",
     "platformsCondensed": {
       "2020-06-24": ["Linux", "macOS", "Windows"]
     }
@@ -4694,6 +4742,7 @@
     "edition": "java",
     "version": "1.16",
     "cycleName": "Nether Update",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360044911972-Minecraft-Java-Edition-Nether-Release",
     "developmentReleasedOn": "2020-02-05",
     "platformsCondensed": {
       "2020-06-23": ["Linux", "macOS", "Windows"]
@@ -4703,6 +4752,7 @@
     "edition": "java",
     "version": "1.15.2",
     "cycleName": "Buzzy Bees",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360038800232-Minecraft-Java-Edition-1-15-2",
     "developmentReleasedOn": "2020-01-14",
     "platformsCondensed": {
       "2020-01-21": ["Linux", "macOS", "Windows"]
@@ -4712,6 +4762,7 @@
     "edition": "java",
     "version": "1.15.1",
     "cycleName": "Buzzy Bees",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360038054332-Minecraft-Java-Edition-1-15-1",
     "developmentReleasedOn": "2019-12-12",
     "platformsCondensed": {
       "2019-12-17": ["Linux", "macOS", "Windows"]
@@ -4721,6 +4772,7 @@
     "edition": "java",
     "version": "1.15",
     "cycleName": "Buzzy Bees",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360037384972-Minecraft-Java-Edition-Buzzy-Bees",
     "developmentReleasedOn": "2019-08-22",
     "platformsCondensed": {
       "2019-12-10": ["Linux", "macOS", "Windows"]
@@ -4730,6 +4782,7 @@
     "edition": "java",
     "version": "1.14.4",
     "cycleName": "Village & Pillage",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360030780172-Minecraft-Java-Edition-1-14-4",
     "developmentReleasedOn": "2019-07-03",
     "platformsCondensed": {
       "2019-07-19": ["Linux", "macOS", "Windows"]
@@ -4739,6 +4792,7 @@
     "edition": "java",
     "version": "1.14.3",
     "cycleName": "Village & Pillage",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360030771451-Minecraft-Java-Edition-1-14-3",
     "developmentReleasedOn": "2019-06-03",
     "platformsCondensed": {
       "2019-06-24": ["Linux", "macOS", "Windows"]
@@ -4748,6 +4802,7 @@
     "edition": "java",
     "version": "1.14.2",
     "cycleName": "Village & Pillage",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360028919851-Minecraft-Java-Edition-1-14-2",
     "developmentReleasedOn": "2019-05-16",
     "platformsCondensed": {
       "2019-05-27": ["Linux", "macOS", "Windows"]
@@ -4757,6 +4812,7 @@
     "edition": "java",
     "version": "1.14.1",
     "cycleName": "Village & Pillage",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360028025252-Minecraft-Java-Edition-1-14-1",
     "developmentReleasedOn": "2019-05-07",
     "platformsCondensed": {
       "2019-05-13": ["Linux", "macOS", "Windows"]
@@ -4766,6 +4822,7 @@
     "edition": "java",
     "version": "1.14",
     "cycleName": "Village & Pillage",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360027306551-Minecraft-Village-Pillage-1-14-0-Java",
     "developmentReleasedOn": "2018-10-24",
     "platformsCondensed": {
       "2019-04-23": ["Linux", "macOS", "Windows"]
@@ -4793,6 +4850,7 @@
     "edition": "java",
     "version": "1.13",
     "cycleName": "Update Aquatic",
+    "changelog": "https://feedback.minecraft.net/hc/en-us/articles/360007323492-Minecraft-Java-Edition-1-13-Update-Aquatic",
     "developmentReleasedOn": "2017-10-25",
     "platformsCondensed": {
       "2018-07-18": ["Linux", "macOS", "Windows"]

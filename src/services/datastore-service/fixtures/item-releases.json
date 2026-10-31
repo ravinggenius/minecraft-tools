@@ -477,7 +477,7 @@
     "identifier": "minecraft:wheat",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": null, "java": "item.minecraft.wheat" },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1131,7 +1131,7 @@
     "identifier": "minecraft:nether_wart",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": null, "java": "item.minecraft.nether_wart" },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -1834,7 +1834,7 @@
     "identifier": "minecraft:wheat",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": null, "java": "item.minecraft.wheat" },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -2694,7 +2694,7 @@
     "identifier": "minecraft:nether_wart",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": null, "java": "item.minecraft.nether_wart" },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -2711,14 +2711,17 @@
     "identifier": "minecraft:brewing_stand",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.brewing_stand"
+    },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
     "identifier": "minecraft:cauldron",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": null, "java": "item.minecraft.cauldron" },
     "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
   },
   {
@@ -2817,7 +2820,10 @@
     "identifier": "minecraft:zombie_pigman_spawn_egg",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.zombie_pigman_spawn_egg"
+    },
     "firstProductionReleased": { "bedrock": "0.14.0", "java": "1.1" },
     "lastProductionReleasedBefore": { "bedrock": "1.16.0", "java": "1.16" }
   },
@@ -3452,7 +3458,7 @@
     "identifier": "minecraft:flower_pot",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": null, "java": "item.minecraft.flower_pot" },
     "firstProductionReleased": { "bedrock": null, "java": "1.4.2" }
   },
   {
@@ -15004,7 +15010,7 @@
     "identifier": "minecraft:resin_clump",
     "rarity": "common",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
+    "translationKey": { "bedrock": null, "java": "item.minecraft.resin_clump" },
     "firstProductionReleased": { "bedrock": null, "java": "1.21.4" }
   },
   {

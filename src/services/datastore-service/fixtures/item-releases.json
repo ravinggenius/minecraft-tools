@@ -73,43 +73,75 @@
   },
   {
     "identifier": "minecraft:chainmail_helmet",
-    "rarity": "uncommon",
+    "rarity": "common",
     "stackSize": 1,
     "translationKey": {
       "bedrock": "item.chainmail_helmet.name",
       "java": "item.minecraft.chainmail_helmet"
     },
-    "firstProductionReleased": { "bedrock": "1.5.0", "java": "1.13" }
+    "firstProductionReleased": { "bedrock": "1.5.0", "java": "1.13" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:chainmail_helmet",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.chainmail_helmet" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:chainmail_chestplate",
-    "rarity": "uncommon",
+    "rarity": "common",
     "stackSize": 1,
     "translationKey": {
       "bedrock": "item.chainmail_chestplate.name",
       "java": "item.minecraft.chainmail_chestplate"
     },
-    "firstProductionReleased": { "bedrock": "1.5.0", "java": "1.13" }
+    "firstProductionReleased": { "bedrock": "1.5.0", "java": "1.13" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:chainmail_chestplate",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.chainmail_chestplate" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:chainmail_leggings",
-    "rarity": "uncommon",
+    "rarity": "common",
     "stackSize": 1,
     "translationKey": {
       "bedrock": "item.chainmail_leggings.name",
       "java": "item.minecraft.chainmail_leggings"
     },
-    "firstProductionReleased": { "bedrock": "1.5.0", "java": "1.13" }
+    "firstProductionReleased": { "bedrock": "1.5.0", "java": "1.13" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:chainmail_leggings",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.chainmail_leggings" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:chainmail_boots",
-    "rarity": "uncommon",
+    "rarity": "common",
     "stackSize": 1,
     "translationKey": {
       "bedrock": "item.chainmail_boots.name",
       "java": "item.minecraft.chainmail_boots"
     },
-    "firstProductionReleased": { "bedrock": "1.5.0", "java": "1.13" }
+    "firstProductionReleased": { "bedrock": "1.5.0", "java": "1.13" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:chainmail_boots",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.chainmail_boots" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:iron_helmet",
@@ -603,13 +635,29 @@
   },
   {
     "identifier": "minecraft:golden_apple",
-    "rarity": "common",
+    "rarity": "epic",
     "stackSize": 64,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.golden_apple"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" },
+    "lastProductionReleasedBefore": { "java": "1.3.1" }
+  },
+  {
+    "identifier": "minecraft:golden_apple",
+    "rarity": "rare",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.golden_apple" },
+    "firstProductionReleased": { "java": "1.3.1" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:golden_apple",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.golden_apple" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:bucket",
@@ -721,23 +769,39 @@
   },
   {
     "identifier": "minecraft:music_disc_13",
-    "rarity": "uncommon",
+    "rarity": "rare",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.music_disc_13"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:music_disc_13",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.music_disc_13" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:music_disc_cat",
-    "rarity": "uncommon",
+    "rarity": "rare",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.music_disc_cat"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:music_disc_cat",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.music_disc_cat" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:furnace_minecart",
@@ -1109,93 +1173,165 @@
   },
   {
     "identifier": "minecraft:music_disc_11",
-    "rarity": "uncommon",
+    "rarity": "rare",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.music_disc_11"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:music_disc_11",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.music_disc_11" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:music_disc_blocks",
-    "rarity": "uncommon",
+    "rarity": "rare",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.music_disc_blocks"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:music_disc_blocks",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.music_disc_blocks" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:music_disc_chirp",
-    "rarity": "uncommon",
+    "rarity": "rare",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.music_disc_chirp"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:music_disc_chirp",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.music_disc_chirp" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:music_disc_far",
-    "rarity": "uncommon",
+    "rarity": "rare",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.music_disc_far"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:music_disc_far",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.music_disc_far" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:music_disc_mall",
-    "rarity": "uncommon",
+    "rarity": "rare",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.music_disc_mall"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:music_disc_mall",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.music_disc_mall" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:music_disc_mellohi",
-    "rarity": "uncommon",
+    "rarity": "rare",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.music_disc_mellohi"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:music_disc_mellohi",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.music_disc_mellohi" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:music_disc_stal",
-    "rarity": "uncommon",
+    "rarity": "rare",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.music_disc_stal"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:music_disc_stal",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.music_disc_stal" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:music_disc_strad",
-    "rarity": "uncommon",
+    "rarity": "rare",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.music_disc_strad"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:music_disc_strad",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.music_disc_strad" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:music_disc_ward",
-    "rarity": "uncommon",
+    "rarity": "rare",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.music_disc_ward"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.0.0" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:music_disc_ward",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.music_disc_ward" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:spider_eye",
@@ -2971,13 +3107,21 @@
   },
   {
     "identifier": "minecraft:enchanted_golden_apple",
-    "rarity": "common",
+    "rarity": "epic",
     "stackSize": 64,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.enchanted_golden_apple"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.3.1" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.3.1" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:enchanted_golden_apple",
+    "rarity": "rare",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.enchanted_golden_apple" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:oak_slab",
@@ -3237,10 +3381,18 @@
   },
   {
     "identifier": "minecraft:nether_star",
-    "rarity": "common",
+    "rarity": "uncommon",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": "item.minecraft.nether_star" },
-    "firstProductionReleased": { "bedrock": null, "java": "1.4.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.4.2" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:nether_star",
+    "rarity": "rare",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.nether_star" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:pumpkin_pie",
@@ -3332,13 +3484,21 @@
   },
   {
     "identifier": "minecraft:wither_skeleton_skull",
-    "rarity": "common",
+    "rarity": "uncommon",
     "stackSize": 64,
     "translationKey": {
       "bedrock": null,
       "java": "block.minecraft.wither_skeleton_skull"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.4.2" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.4.2" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:wither_skeleton_skull",
+    "rarity": "rare",
+    "stackSize": 64,
+    "translationKey": { "java": "block.minecraft.wither_skeleton_skull" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:zombie_head",
@@ -3380,13 +3540,21 @@
 
   {
     "identifier": "minecraft:music_disc_wait",
-    "rarity": "uncommon",
+    "rarity": "rare",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.music_disc_wait"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.4.4" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.4.4" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:music_disc_wait",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.music_disc_wait" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
 
   {
@@ -5748,10 +5916,18 @@
   },
   {
     "identifier": "minecraft:elytra",
-    "rarity": "epic",
+    "rarity": "uncommon",
     "stackSize": 1,
     "translationKey": { "bedrock": null, "java": "item.minecraft.elytra" },
-    "firstProductionReleased": { "bedrock": null, "java": "1.9" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.9" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:elytra",
+    "rarity": "epic",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.elytra" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:spruce_boat",
@@ -5793,10 +5969,18 @@
   },
   {
     "identifier": "minecraft:end_crystal",
-    "rarity": "common",
+    "rarity": "rare",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": "item.minecraft.end_crystal" },
-    "firstProductionReleased": { "bedrock": null, "java": "1.9" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.9" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:end_crystal",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.end_crystal" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:potion",
@@ -5933,13 +6117,21 @@
   },
   {
     "identifier": "minecraft:dragon_head",
-    "rarity": "epic",
+    "rarity": "uncommon",
     "stackSize": 64,
     "translationKey": {
       "bedrock": null,
       "java": "block.minecraft.dragon_head"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.9" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.9" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:dragon_head",
+    "rarity": "epic",
+    "stackSize": 64,
+    "translationKey": { "java": "block.minecraft.dragon_head" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:end_gateway",
@@ -7148,7 +7340,23 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": { "bedrock": null, "java": "item.minecraft.trident" },
-    "firstProductionReleased": { "bedrock": null, "java": "1.13" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.13" },
+    "lastProductionReleasedBefore": { "java": "1.21" }
+  },
+  {
+    "identifier": "minecraft:trident",
+    "rarity": "epic",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.trident" },
+    "firstProductionReleased": { "java": "1.21" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:trident",
+    "rarity": "rare",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.trident" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:kelp",
@@ -7392,7 +7600,15 @@
       "bedrock": null,
       "java": "item.minecraft.nautilus_shell"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.13" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.13" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:nautilus_shell",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.nautilus_shell" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:dolphin_spawn_egg",
@@ -7938,10 +8154,18 @@
   },
   {
     "identifier": "minecraft:conduit",
-    "rarity": "common",
+    "rarity": "rare",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": "block.minecraft.conduit" },
-    "firstProductionReleased": { "bedrock": null, "java": "1.13" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.13" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:conduit",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "block.minecraft.conduit" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:stripped_oak_wood",
@@ -8137,23 +8361,39 @@
   },
   {
     "identifier": "minecraft:skull_banner_pattern",
-    "rarity": "common",
+    "rarity": "uncommon",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.skull_banner_pattern"
     },
-    "firstProductionReleased": { "bedrock": "1.10.0", "java": "1.14" }
+    "firstProductionReleased": { "bedrock": "1.10.0", "java": "1.14" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:skull_banner_pattern",
+    "rarity": "rare",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.skull_banner_pattern" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:mojang_banner_pattern",
-    "rarity": "common",
+    "rarity": "epic",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.mojang_banner_pattern"
     },
-    "firstProductionReleased": { "bedrock": "1.10.0", "java": "1.14" }
+    "firstProductionReleased": { "bedrock": "1.10.0", "java": "1.14" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:mojang_banner_pattern",
+    "rarity": "rare",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.mojang_banner_pattern" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:crossbow",
@@ -9177,7 +9417,15 @@
       "bedrock": null,
       "java": "item.minecraft.piglin_banner_pattern"
     },
-    "firstProductionReleased": { "bedrock": "1.16.0", "java": "1.16" }
+    "firstProductionReleased": { "bedrock": "1.16.0", "java": "1.16" },
+    "lastProductionReleasedBefore": { "java": "1.21" }
+  },
+  {
+    "identifier": "minecraft:piglin_banner_pattern",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.piglin_banner_pattern" },
+    "firstProductionReleased": { "java": "1.21" }
   },
   {
     "identifier": "minecraft:music_disc_pigstep",
@@ -11628,7 +11876,15 @@
     "rarity": "common",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": "item.minecraft.echo_shard" },
-    "firstProductionReleased": { "bedrock": null, "java": "1.19" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.19" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:echo_shard",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.echo_shard" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:recovery_compass",
@@ -11638,17 +11894,33 @@
       "bedrock": null,
       "java": "item.minecraft.recovery_compass"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.19" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.19" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:recovery_compass",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.recovery_compass" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:music_disc_5",
-    "rarity": "uncommon",
+    "rarity": "rare",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.music_disc_5"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.19" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.19" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:music_disc_5",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.music_disc_5" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:disc_fragment_5",
@@ -11658,7 +11930,15 @@
       "bedrock": null,
       "java": "item.minecraft.disc_fragment_5"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.19" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.19" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:disc_fragment_5",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.disc_fragment_5" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:goat_horn",
@@ -11666,7 +11946,16 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" }
+    "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:goat_horn",
+    "variant": "ponder",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:goat_horn",
@@ -11674,7 +11963,16 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" }
+    "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:goat_horn",
+    "variant": "sing",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:goat_horn",
@@ -11682,7 +11980,16 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" }
+    "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:goat_horn",
+    "variant": "seek",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:goat_horn",
@@ -11690,7 +11997,16 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" }
+    "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:goat_horn",
+    "variant": "feel",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:goat_horn",
@@ -11698,7 +12014,16 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" }
+    "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:goat_horn",
+    "variant": "admire",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:goat_horn",
@@ -11706,7 +12031,16 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" }
+    "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:goat_horn",
+    "variant": "call",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:goat_horn",
@@ -11714,7 +12048,16 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" }
+    "firstProductionReleased": { "bedrock": "1.19.0", "java": "1.19" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:goat_horn",
+    "variant": "yearn",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:goat_horn",
@@ -11722,7 +12065,16 @@
     "rarity": "common",
     "stackSize": 1,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": "1.19.10", "java": "1.19" }
+    "firstProductionReleased": { "bedrock": "1.19.10", "java": "1.19" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:goat_horn",
+    "variant": "dream",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:goat_horn",
@@ -12366,87 +12718,183 @@
 
   {
     "identifier": "minecraft:netherite_upgrade_smithing_template",
-    "rarity": "uncommon",
+    "rarity": "common",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:netherite_upgrade_smithing_template",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:sentry_armor_trim_smithing_template",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:sentry_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:vex_armor_trim_smithing_template",
-    "rarity": "uncommon",
+    "rarity": "common",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:vex_armor_trim_smithing_template",
+    "rarity": "rare",
+    "stackSize": 64,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:wild_armor_trim_smithing_template",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:wild_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:coast_armor_trim_smithing_template",
+    "rarity": "common",
+    "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:coast_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:dune_armor_trim_smithing_template",
+    "rarity": "common",
+    "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:dune_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:ward_armor_trim_smithing_template",
-    "rarity": "uncommon",
+    "rarity": "common",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:ward_armor_trim_smithing_template",
+    "rarity": "rare",
+    "stackSize": 64,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:tide_armor_trim_smithing_template",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:tide_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:snout_armor_trim_smithing_template",
+    "rarity": "common",
+    "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:snout_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:rib_armor_trim_smithing_template",
+    "rarity": "common",
+    "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:rib_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:eye_armor_trim_smithing_template",
-    "rarity": "uncommon",
+    "rarity": "common",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:eye_armor_trim_smithing_template",
+    "rarity": "rare",
+    "stackSize": 64,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:spire_armor_trim_smithing_template",
-    "rarity": "uncommon",
+    "rarity": "common",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:spire_armor_trim_smithing_template",
+    "rarity": "rare",
+    "stackSize": 64,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:cherry_boat",
@@ -12758,7 +13206,15 @@
       "bedrock": null,
       "java": "block.minecraft.sniffer_egg"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:sniffer_egg",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "block.minecraft.sniffer_egg" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:pitcher_pod",
@@ -13057,48 +13513,96 @@
   },
   {
     "identifier": "minecraft:wayfinder_armor_trim_smithing_template",
-    "rarity": "uncommon",
+    "rarity": "common",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:wayfinder_armor_trim_smithing_template",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:raiser_armor_trim_smithing_template",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": { "bedrock": null, "java": null },
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:raiser_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:shaper_armor_trim_smithing_template",
+    "rarity": "common",
+    "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:shaper_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:host_armor_trim_smithing_template",
+    "rarity": "common",
+    "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:host_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:silence_armor_trim_smithing_template",
+    "rarity": "common",
+    "stackSize": 64,
     "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:silence_armor_trim_smithing_template",
     "rarity": "epic",
     "stackSize": 64,
-    "translationKey": { "bedrock": null, "java": null },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "translationKey": { "java": null },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:music_disc_relic",
-    "rarity": "uncommon",
+    "rarity": "rare",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.music_disc_relic"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.20" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:music_disc_relic",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.music_disc_relic" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:suspicious_gravel",
@@ -13729,7 +14233,7 @@
     "rarity": "epic",
     "stackSize": 1,
     "translationKey": { "bedrock": null, "java": "item.minecraft.mace" },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
   {
     "identifier": "minecraft:breeze_rod",
@@ -13814,33 +14318,61 @@
   },
   {
     "identifier": "minecraft:bolt_armor_trim_smithing_template",
-    "rarity": "uncommon",
+    "rarity": "common",
     "stackSize": 64,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.bolt_armor_trim_smithing_template"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:bolt_armor_trim_smithing_template",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": {
+      "java": "item.minecraft.bolt_armor_trim_smithing_template"
+    },
+    "firstProductionReleased": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:flow_armor_trim_smithing_template",
+    "rarity": "common",
+    "stackSize": 64,
+    "translationKey": {
+      "bedrock": null,
+      "java": "item.minecraft.flow_armor_trim_smithing_template"
+    },
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:flow_armor_trim_smithing_template",
     "rarity": "uncommon",
     "stackSize": 64,
     "translationKey": {
-      "bedrock": null,
       "java": "item.minecraft.flow_armor_trim_smithing_template"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:ominous_bottle",
-    "rarity": "uncommon",
+    "rarity": "common",
     "stackSize": 64,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.ominous_bottle"
     },
-    "firstProductionReleased": { "bedrock": "1.21.0", "java": "1.21" }
+    "firstProductionReleased": { "bedrock": "1.21.0", "java": "1.21" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:ominous_bottle",
+    "rarity": "uncommon",
+    "stackSize": 64,
+    "translationKey": { "java": "item.minecraft.ominous_bottle" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:ominous_trial_key",
@@ -13992,7 +14524,7 @@
     "rarity": "epic",
     "stackSize": 64,
     "translationKey": { "bedrock": null, "java": "block.minecraft.heavy_core" },
-    "firstProductionReleased": { "bedrock": null, "java": "1.20.5" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
   },
 
   {
@@ -14007,23 +14539,39 @@
   },
   {
     "identifier": "minecraft:music_disc_creator_music_box",
-    "rarity": "uncommon",
+    "rarity": "rare",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.music_disc_creator_music_box"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:music_disc_creator_music_box",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.music_disc_creator_music_box" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
   {
     "identifier": "minecraft:music_disc_precipice",
-    "rarity": "uncommon",
+    "rarity": "rare",
     "stackSize": 1,
     "translationKey": {
       "bedrock": null,
       "java": "item.minecraft.music_disc_precipice"
     },
-    "firstProductionReleased": { "bedrock": null, "java": "1.21" }
+    "firstProductionReleased": { "bedrock": null, "java": "1.21" },
+    "lastProductionReleasedBefore": { "java": "1.21.2" }
+  },
+  {
+    "identifier": "minecraft:music_disc_precipice",
+    "rarity": "uncommon",
+    "stackSize": 1,
+    "translationKey": { "java": "item.minecraft.music_disc_precipice" },
+    "firstProductionReleased": { "java": "1.21.2" }
   },
 
   {

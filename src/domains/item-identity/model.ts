@@ -7,7 +7,11 @@ import { VOID } from "@/services/datastore-service/schema";
 import { pool, sql } from "@/services/datastore-service/service";
 
 import { ITEM_IDENTITY, ItemIdentity, ItemIdentityAttrs } from "./schema";
-import { Include } from "./search.schema";
+import {
+	Include,
+	NORMALIZED_ITEM_IDENTITY,
+	NormalizedItemIdentity
+} from "./search.schema";
 
 if (process.env.NEXT_RUNTIME === "nodejs") {
 	await import("server-only");
@@ -30,14 +34,19 @@ export const listAll = async () =>
 	`);
 
 export const get = async (itemIdentityId: ItemIdentity["id"]) =>
-	(await pool).maybeOne(sql.type(ITEM_IDENTITY)`
+	(await pool).maybeOne(sql.type(NORMALIZED_ITEM_IDENTITY)`
 		SELECT
 			id,
 			created_at,
 			updated_at,
 			identifier,
 			variant,
-			is_variant
+			is_variant,
+			(
+				SELECT count(*)::integer
+				FROM items
+				WHERE items.item_identity_id = item_identities.id
+			) AS usage_count
 		FROM
 			item_identities
 		WHERE
@@ -164,14 +173,19 @@ export const search = async ({
 		WHERE ${sql.and(whereClauses)}
 	`;
 
-	const dataQuery = sql.type(ITEM_IDENTITY)`
+	const dataQuery = sql.type(NORMALIZED_ITEM_IDENTITY)`
 		SELECT
 			id,
 			created_at,
 			updated_at,
 			identifier,
 			variant,
-			is_variant
+			is_variant,
+			(
+				SELECT count(*)::integer
+				FROM items
+				WHERE items.item_identity_id = item_identities.id
+			) AS usage_count
 		FROM
 			item_identities
 		WHERE ${sql.and(whereClauses)}
@@ -189,6 +203,6 @@ export const search = async ({
 			({
 				count: await tx.oneFirst(countQuery),
 				data: await tx.any(dataQuery)
-			}) satisfies SearchResults<ItemIdentity> as SearchResults<ItemIdentity>
+			}) satisfies SearchResults<NormalizedItemIdentity> as SearchResults<NormalizedItemIdentity>
 	);
 };

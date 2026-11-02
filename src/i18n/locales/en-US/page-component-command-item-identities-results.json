@@ -1,0 +1,28 @@
+{
+  "identifier": {
+    "label": "Identifier",
+    "value": "{{identifier}}"
+  },
+  "variant": {
+    "label": "Variant",
+    "value": "{{variant}}"
+  },
+  "is-variant": {
+    "label": "Is Variant?",
+    "value_yes": "Yes",
+    "value_no": "No"
+  },
+  "usage-count": {
+    "label": "Usage Count",
+    "value": "{{count}}"
+  },
+  "list": {
+    "card": {
+      "title": "{{identifier}}",
+      "title_is-variant": "{{identifier}} ({{variant}})"
+    }
+  },
+  "table": {
+    "caption": "{{count}} item identities"
+  }
+}

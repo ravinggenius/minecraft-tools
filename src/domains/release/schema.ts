@@ -144,6 +144,8 @@ export const IMPORT_RELEASE = RELEASE.pick({
 	changelog: true
 }).extend({
 	cycleName: RELEASE_CYCLE.shape.name,
+	// Fixture imports are available to the tools unless explicitly disabled.
+	isAvailableForTools: RELEASE.shape.isAvailableForTools.default(true),
 	platformsCondensed: z.record(
 		z.union([UPCOMING, PLATFORM_RELEASE.shape.productionReleasedOn]),
 		z.array(PLATFORM.shape.name)

@@ -417,7 +417,8 @@ export const doImport = async (release: ImportRelease) => {
 					edition,
 					version,
 					development_released_on,
-					changelog
+					changelog,
+					is_available_for_tools
 				)
 			SELECT
 				c.id,
@@ -428,7 +429,8 @@ export const doImport = async (release: ImportRelease) => {
 						? sql.date(new Date(release.developmentReleasedOn))
 						: null
 				},
-				${release.changelog ?? null}
+				${release.changelog ?? null},
+				${release.isAvailableForTools}
 			FROM
 				the_cycle AS c
 			ON CONFLICT (edition, version) DO UPDATE
@@ -436,7 +438,8 @@ export const doImport = async (release: ImportRelease) => {
 				updated_at = DEFAULT,
 				cycle_id = EXCLUDED.cycle_id,
 				development_released_on = EXCLUDED.development_released_on,
-				changelog = EXCLUDED.changelog
+				changelog = EXCLUDED.changelog,
+				is_available_for_tools = EXCLUDED.is_available_for_tools
 			RETURNING
 				id
 		`);

@@ -1,4 +1,10 @@
-import { confirmAuthorization } from "@/library/authorization";
+import { z } from "zod/v4";
+
+import {
+	confirmAuthorization,
+	enforceAuthorization
+} from "@/library/authorization";
+import CodedError, { ERROR_CODE } from "@/library/coded-error";
 import { COUNT, SearchParams, SearchResults } from "@/library/search";
 import { VOID } from "@/services/datastore-service/schema";
 import { pool, sql } from "@/services/datastore-service/service";
@@ -7,6 +13,10 @@ import {
 	FLATTENED_ITEM_RELEASE,
 	FlattenedItemRelease,
 	ImportItemRelease,
+	ITEM_RELEASE,
+	ITEM_RELEASE_ATTRS,
+	ItemRelease,
+	ItemReleaseAttrs,
 	NORMALIZED_ITEM_RELEASE,
 	NormalizedItemRelease
 } from "./schema";
@@ -15,6 +25,105 @@ import { Include } from "./search.schema";
 if (process.env.NEXT_RUNTIME === "nodejs") {
 	await import("server-only");
 }
+
+export const get = async (itemReleaseId: ItemRelease["id"]) => {
+	await enforceAuthorization(["read", "any", "item-release"]);
+
+	return (await pool).maybeOne(sql.type(FLATTENED_ITEM_RELEASE)`
+		SELECT
+			id,
+			release_id,
+			item_id,
+			identifier,
+			variant,
+			is_variant,
+			color,
+			rarity,
+			stack_size,
+			translation_key,
+			edition,
+			cycle_name,
+			version,
+			first_production_released_on,
+			is_available_for_tools
+		FROM
+			flattened_item_releases
+		WHERE
+			id = ${itemReleaseId}
+	`);
+};
+
+export const create = async (attrs: ItemReleaseAttrs) => {
+	await enforceAuthorization(["create", "new", "item-release"]);
+
+	return (await pool).one(sql.type(ITEM_RELEASE)`
+		INSERT INTO item_releases (release_id, item_id)
+		VALUES (${attrs.releaseId}, ${attrs.itemId})
+		ON CONFLICT (release_id, item_id) DO UPDATE
+		SET
+			updated_at = DEFAULT
+		RETURNING
+			id,
+			created_at,
+			updated_at,
+			release_id,
+			item_id
+	`);
+};
+
+export const update = async (
+	itemReleaseId: ItemRelease["id"],
+	attrs: ItemReleaseAttrs
+) => {
+	await enforceAuthorization(["update", "any", "item-release"]);
+
+	return (await pool).transaction(async (transaction) => {
+		const alreadyExists = await transaction.oneFirst(sql.type(
+			z.object({
+				alreadyExists: z.boolean()
+			})
+		)`
+			SELECT
+				count(id) > 0 AS "already_exists"
+			FROM
+				item_releases
+			WHERE
+				release_id = ${attrs.releaseId}
+				AND item_id = ${attrs.itemId}
+				AND id <> ${itemReleaseId}
+		`);
+
+		if (alreadyExists) {
+			throw new CodedError(ERROR_CODE.DUPLICATE_ENTRY, {
+				path: ["releaseId"]
+			});
+		}
+
+		return transaction.one(sql.type(ITEM_RELEASE)`
+			UPDATE item_releases
+			SET
+				updated_at = DEFAULT,
+				release_id = ${attrs.releaseId},
+				item_id = ${attrs.itemId}
+			WHERE id = ${itemReleaseId}
+			RETURNING
+				id,
+				created_at,
+				updated_at,
+				release_id,
+				item_id
+		`);
+	});
+};
+
+export const destroy = async (itemReleaseId: ItemRelease["id"]) => {
+	await enforceAuthorization(["destroy", "any", "item-release"]);
+
+	return (await pool).any(sql.type(VOID)`
+		DELETE FROM item_releases
+		WHERE id = ${itemReleaseId}
+	`);
+};
 
 const commonSearchConditions = async ({
 	include,
@@ -45,7 +154,7 @@ const commonSearchConditions = async ({
 			: undefined,
 		include.isVariant === undefined
 			? undefined
-			: sql.fragment`is_variant IS ${include.isVariant}`
+			: sql.fragment`is_variant = ${include.isVariant}`
 	];
 };
 
@@ -61,8 +170,8 @@ export const searchFlattened = async ({
 			? sql.or([
 					sql.fragment`identifier LIKE ANY(${sql.array(includeText, "citext")})`,
 					sql.fragment`variant LIKE ANY(${sql.array(includeText, "citext")})`,
-					sql.fragment`color::citext LIKE ANY(${sql.array(includeText, "citext")})`,
-					sql.fragment`rarity::citext LIKE ANY(${sql.array(includeText, "citext")})`,
+					sql.fragment`color LIKE ANY(${sql.array(includeText, "citext")})`,
+					sql.fragment`rarity LIKE ANY(${sql.array(includeText, "citext")})`,
 					sql.fragment`translation_key LIKE ANY(${sql.array(includeText, "citext")})`,
 					sql.fragment`edition::citext LIKE ANY(${sql.array(includeText, "citext")})`,
 					sql.fragment`version LIKE ANY(${sql.array(includeText, "citext")})`,
@@ -76,7 +185,7 @@ export const searchFlattened = async ({
 				)})`
 			: undefined,
 		include.rarity
-			? sql.fragment`rarity::citext LIKE ANY(${sql.array(
+			? sql.fragment`rarity LIKE ANY(${sql.array(
 					include.rarity.map((rarity) => `%${rarity}%`),
 					"citext"
 				)})`
@@ -124,6 +233,7 @@ export const searchFlattened = async ({
 	const dataQuery = sql.type(FLATTENED_ITEM_RELEASE)`
 		SELECT
 			id,
+			release_id,
 			item_id,
 			identifier,
 			variant,
@@ -349,7 +459,7 @@ export const doImport = async (itemRelease: ImportItemRelease) =>
 		sql.type(VOID)`
 			WITH
 				the_release AS (
-					SELECT r,id
+					SELECT r.id
 					FROM releases AS r
 					INNER JOIN unnest(
 					${sql.array(
@@ -364,8 +474,8 @@ export const doImport = async (itemRelease: ImportItemRelease) =>
 					ON r.edition = criteria.edition
 					AND r.version = criteria.version
 				),
-				the_item AS (
-					INSERT INTO items
+				the_item_identity AS (
+					INSERT INTO item_identities
 						(identifier, variant)
 					VALUES
 						(
@@ -425,33 +535,44 @@ export const doImport = async (itemRelease: ImportItemRelease) =>
 						updated_at = DEFAULT
 					RETURNING
 						id
+				),
+				the_item AS (
+					INSERT INTO items
+						(
+							item_identity_id,
+							item_color_id,
+							item_rarity_id,
+							item_stack_size_id,
+							item_translation_key_id
+						)
+					VALUES
+						(
+							(SELECT id FROM the_item_identity),
+							(SELECT id FROM the_color),
+							(SELECT id FROM the_rarity),
+							(SELECT id FROM the_stack_size),
+							(SELECT id FROM the_translation_key)
+						)
+					ON CONFLICT (
+						item_identity_id,
+						item_color_id,
+						item_rarity_id,
+						item_stack_size_id,
+						item_translation_key_id
+					) DO UPDATE
+					SET
+						updated_at = DEFAULT
+					RETURNING
+						id
 				)
 			INSERT INTO item_releases
-				(
-					release_id,
-					item_id,
-					item_color_id,
-					item_rarity_id,
-					item_stack_size_id,
-					item_translation_key_id
-				)
+				(release_id, item_id)
 			SELECT
 				r.id,
-				i.id,
-				(SELECT id FROM the_color),
-				(SELECT id FROM the_rarity),
-				(SELECT id FROM the_stack_size),
-				(SELECT id FROM the_translation_key)
+				i.id
 			FROM the_release AS r
 			CROSS JOIN the_item AS i
-			ON CONFLICT (
-				release_id,
-				item_id,
-				item_color_id,
-				item_rarity_id,
-				item_stack_size_id,
-				item_translation_key_id
-			) DO UPDATE
+			ON CONFLICT (release_id, item_id) DO UPDATE
 			SET
 				updated_at = DEFAULT
 		`

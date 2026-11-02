@@ -15,6 +15,7 @@ const SCOPE_ONE = z.literal("one");
 
 const SUBJECT_COMPENDIUM = z.literal("compendium");
 const SUBJECT_ITEM = z.literal("item");
+const SUBJECT_ITEM_IDENTITY = z.literal("item-identity");
 const SUBJECT_ITEM_RELEASE = z.literal("item-release");
 const SUBJECT_PROFILE = z.literal("profile");
 const SUBJECT_PLATFORM = z.literal("platform");
@@ -53,6 +54,7 @@ export const ASSERTION_COMPENDIUM_CREATE = z
 		SCOPE_NEW,
 		z.union([
 			SUBJECT_ITEM,
+			SUBJECT_ITEM_IDENTITY,
 			SUBJECT_ITEM_RELEASE,
 			SUBJECT_PLATFORM,
 			SUBJECT_RELEASE,
@@ -76,6 +78,7 @@ export const ASSERTION_COMPENDIUM_MANAGE = z
 		SCOPE_ANY,
 		z.union([
 			SUBJECT_ITEM,
+			SUBJECT_ITEM_IDENTITY,
 			SUBJECT_ITEM_RELEASE,
 			SUBJECT_PLATFORM,
 			SUBJECT_RELEASE,

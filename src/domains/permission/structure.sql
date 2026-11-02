@@ -11,6 +11,7 @@ CREATE TYPE public.permission_scope AS ENUM ('any', 'new', 'own', 'one');
 CREATE TYPE public.permission_subject AS ENUM (
   'compendium',
   'item',
+  'item-identity',
   'item-release',
   'profile',
   'platform',

@@ -1,10 +1,11 @@
 import { z, ZodError, ZodType } from "zod/v4";
 
+import { ITEM_COLOR } from "@/domains/item-color/schema";
+import { ITEM_RARITY } from "@/domains/item-rarity/schema";
 import * as itemReleaseModel from "@/domains/item-release/model";
-import {
-	IMPORT_ITEM_RELEASE,
-	ITEM_RELEASE
-} from "@/domains/item-release/schema";
+import { IMPORT_ITEM_RELEASE } from "@/domains/item-release/schema";
+import { ITEM_STACK_SIZE } from "@/domains/item-stack-size/schema";
+import { ITEM_TRANSLATION_KEY } from "@/domains/item-translation-key/schema";
 import * as releaseModel from "@/domains/release/model";
 import { Edition, EDITION, IMPORT_RELEASE } from "@/domains/release/schema";
 import rawImportItems from "@/services/datastore-service/fixtures/item-releases.json" with { type: "json" };
@@ -44,18 +45,11 @@ const RAW_IMPORT_ITEM_RELEASE = (context: { edition: Edition }) =>
 			.nullable()
 			.optional()
 			.transform((v) => v ?? undefined),
-		color: VALUE_OF(
-			ITEM_RELEASE.shape.color.unwrap().unwrap().shape.identifier,
-			context
-		),
-		rarity: VALUE_OF(ITEM_RELEASE.shape.rarity.shape.identifier, context),
-		stackSize: VALUE_OF(
-			ITEM_RELEASE.shape.stackSize.shape.identifier,
-			context
-		),
+		color: VALUE_OF(ITEM_COLOR.shape.identifier, context),
+		rarity: VALUE_OF(ITEM_RARITY.shape.identifier, context),
+		stackSize: VALUE_OF(ITEM_STACK_SIZE.shape.identifier, context),
 		translationKey: VALUE_OF(
-			ITEM_RELEASE.shape.translationKey.unwrap().unwrap().shape
-				.identifier,
+			ITEM_TRANSLATION_KEY.shape.identifier,
 			context
 		),
 		firstProductionReleased: EDITION_VALUE_OF(

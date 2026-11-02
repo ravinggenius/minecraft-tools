@@ -47,6 +47,27 @@ export const get = async (releaseId: Release["id"]) =>
 			id = ${releaseId}
 	`);
 
+export const listAll = async () =>
+	(await pool).any(sql.type(RELEASE)`
+		SELECT
+			id,
+			created_at,
+			updated_at,
+			edition,
+			version,
+			cycle_id,
+			development_released_on,
+			changelog,
+			is_available_for_tools,
+			is_latest
+		FROM
+			releases
+		ORDER BY
+			edition ASC,
+			development_released_on ASC NULLS LAST,
+			version ASC
+	`);
+
 export const mostRecentCycleId = async () =>
 	(await pool).oneFirst(sql.type(RELEASE_CYCLE.pick({ id: true }).partial())`
 		SELECT

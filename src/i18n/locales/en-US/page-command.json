@@ -6,6 +6,8 @@
   "content": {
     "description": "Admin area",
     "table-of-contents": {
+      "item-identities": "Item Identities",
+      "items": "Items",
       "item-releases": "Item Releases",
       "platforms": "Platforms",
       "releases": "Releases",

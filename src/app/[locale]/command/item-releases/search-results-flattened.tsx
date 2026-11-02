@@ -1,6 +1,7 @@
 import { parseISO } from "date-fns";
 import { ComponentProps } from "react";
 
+import Anchor, { AnchorHref } from "@/components/Anchor/Anchor";
 import { Field } from "@/components/DataTable/DataTable";
 import SearchResults from "@/components/SearchResults/SearchResults";
 import StatsCard from "@/components/StatsCard/StatsCard";
@@ -11,11 +12,13 @@ import { confirmAuthorization } from "@/library/authorization";
 
 export default async function PageSearchResultsFlattened({
 	className,
+	editHrefPrefix,
 	itemReleases,
 	locale,
 	view
 }: {
 	className?: string;
+	editHrefPrefix?: string;
 	locale: SupportedLocale;
 	itemReleases: Readonly<Array<FlattenedItemRelease>>;
 	view: ComponentProps<typeof SearchResults>["view"];
@@ -38,6 +41,11 @@ export default async function PageSearchResultsFlattened({
 					<StatsCard
 						{...{ locale }}
 						edition={itemRelease.edition}
+						href={
+							editHrefPrefix && mayEditItemReleases
+								? (`${editHrefPrefix}/${itemRelease.id}` as AnchorHref<unknown>)
+								: undefined
+						}
 						pairs={[
 							{
 								key: t("identifier.label"),
@@ -149,8 +157,19 @@ export default async function PageSearchResultsFlattened({
 				caption={t("table.caption", { count: itemReleases.length })}
 			>
 				<Field fieldPath="identifier" label={t("identifier.label")}>
-					{({ identifier }: FlattenedItemRelease) =>
-						t("identifier.value", { identifier })
+					{({ id, identifier }: FlattenedItemRelease) =>
+						editHrefPrefix && mayEditItemReleases ? (
+							<Anchor
+								href={
+									`${editHrefPrefix}/${id}` as AnchorHref<unknown>
+								}
+								variant="inline"
+							>
+								{t("identifier.value", { identifier })}
+							</Anchor>
+						) : (
+							t("identifier.value", { identifier })
+						)
 					}
 				</Field>
 

@@ -4,6 +4,7 @@
   },
 
   "content": {
-    "description": "Item Releases"
+    "description": "Manage item releases.",
+    "new-cta": "New Item Release"
   }
 }

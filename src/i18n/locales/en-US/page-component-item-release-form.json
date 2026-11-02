@@ -1,0 +1,17 @@
+{
+  "edition": {
+    "name_bedrock": "Bedrock",
+    "name_java": "Java"
+  },
+  "release": {
+    "option": "{{edition}} {{version}}"
+  },
+  "release-id": {
+    "label": "Release"
+  },
+  "item-id": {
+    "label": "Item"
+  },
+  "submit_edit": "Update Item Release",
+  "submit_new": "Create Item Release"
+}

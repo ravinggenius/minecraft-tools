@@ -82,6 +82,7 @@ export default function SelectField<TOption extends Option>({
 		>
 			<ObjectSelect
 				{...{
+					id,
 					name,
 					onChange,
 					onFocus,

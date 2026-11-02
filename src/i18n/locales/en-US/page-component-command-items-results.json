@@ -1,0 +1,35 @@
+{
+  "identifier": {
+    "label": "Identifier",
+    "value": "{{identifier}}"
+  },
+  "variant": {
+    "label": "Variant",
+    "value": "{{variant}}"
+  },
+  "color": {
+    "label": "Color",
+    "value": "{{color}}"
+  },
+  "rarity": {
+    "label": "Rarity",
+    "value": "{{rarity}}"
+  },
+  "stack-size": {
+    "label": "Stack Size",
+    "value": "{{count}}"
+  },
+  "translation-key": {
+    "label": "Translation Key",
+    "value": "{{translationKey}}"
+  },
+  "list": {
+    "card": {
+      "title": "{{identifier}}",
+      "title_is-variant": "{{identifier}} ({{variant}})"
+    }
+  },
+  "table": {
+    "caption": "{{count}} items"
+  }
+}

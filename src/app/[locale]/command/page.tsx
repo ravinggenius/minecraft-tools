@@ -52,6 +52,22 @@ export default async function Page({ params }: PageProps<"/[locale]/command">) {
 			text: t("table-of-contents.item-releases")
 		},
 		{
+			href: `/${locale}/command/item-colors` as TableOfContentsEntry["href"],
+			text: t("table-of-contents.item-colors")
+		},
+		{
+			href: `/${locale}/command/item-rarities` as TableOfContentsEntry["href"],
+			text: t("table-of-contents.item-rarities")
+		},
+		{
+			href: `/${locale}/command/item-stack-sizes` as TableOfContentsEntry["href"],
+			text: t("table-of-contents.item-stack-sizes")
+		},
+		{
+			href: `/${locale}/command/item-translation-keys` as TableOfContentsEntry["href"],
+			text: t("table-of-contents.item-translation-keys")
+		},
+		{
 			href: `/${locale}/command/platforms` as TableOfContentsEntry["href"],
 			text: t("table-of-contents.platforms")
 		},

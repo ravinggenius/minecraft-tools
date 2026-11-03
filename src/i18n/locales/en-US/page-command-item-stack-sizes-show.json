@@ -1,0 +1,16 @@
+{
+  "metadata": {
+    "title": "Item Stack Size"
+  },
+
+  "content": {
+    "breadcrumb": {
+      "short-name": "{{count}}"
+    },
+    "description": "Item Stack Size",
+    "usage-count": "Used by {{count}} items",
+    "delete-cta": {
+      "label": "Delete Item Stack Size"
+    }
+  }
+}

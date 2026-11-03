@@ -95,6 +95,8 @@ export default async function Page({
 			<BreadcrumbTrailPortal {...{ crumbs }} />
 
 			<article className={styles.root}>
+				<p>{t("releases-count", { count: item.releasesCount })}</p>
+
 				<ItemForm
 					action={updateItemAction(item.id)}
 					attrs={item}

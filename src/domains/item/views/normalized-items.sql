@@ -14,7 +14,12 @@ SELECT
   i.item_stack_size_id,
   iss.identifier AS stack_size,
   i.item_translation_key_id,
-  itk.identifier AS translation_key
+  itk.identifier AS translation_key,
+  (
+    SELECT count(*)::integer
+    FROM public.item_releases AS ir
+    WHERE ir.item_id = i.id
+  ) AS releases_count
 FROM
   public.items AS i
   INNER JOIN public.item_identities AS ii ON i.item_identity_id = ii.id

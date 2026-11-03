@@ -34,7 +34,8 @@ export const NORMALIZED_ITEM = ITEM.extend({
 	color: ITEM_COLOR.shape.identifier.nullish(),
 	rarity: ITEM_RARITY.shape.identifier,
 	stackSize: ITEM_STACK_SIZE.shape.identifier,
-	translationKey: ITEM_TRANSLATION_KEY.shape.identifier.nullish()
+	translationKey: ITEM_TRANSLATION_KEY.shape.identifier.nullish(),
+	releasesCount: z.int().nonnegative()
 });
 
 export type NormalizedItem = Prettify<z.infer<typeof NORMALIZED_ITEM>>;

@@ -1,0 +1,7 @@
+{
+  "identifier": {
+    "label": "Stack Size"
+  },
+  "submit_edit": "Update Item Stack Size",
+  "submit_new": "Create Item Stack Size"
+}

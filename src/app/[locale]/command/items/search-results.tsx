@@ -83,7 +83,13 @@ export default async function PageSearchResults({
 										}),
 										isLarge: true
 									}
-								: undefined
+								: undefined,
+							{
+								key: t("releases-count.label"),
+								value: t("releases-count.value", {
+									count: item.releasesCount
+								})
+							}
 						]}
 						title={t("list.card.title", {
 							context: item.isVariant ? "is-variant" : undefined,
@@ -141,6 +147,15 @@ export default async function PageSearchResults({
 				>
 					{({ translationKey }: NormalizedItem) =>
 						t("translation-key.value", { translationKey })
+					}
+				</Field>
+
+				<Field
+					fieldPath="releasesCount"
+					label={t("releases-count.label")}
+				>
+					{({ releasesCount }: NormalizedItem) =>
+						t("releases-count.value", { count: releasesCount })
 					}
 				</Field>
 			</SearchResults.Table>

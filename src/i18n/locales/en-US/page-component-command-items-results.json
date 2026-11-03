@@ -23,6 +23,10 @@
     "label": "Translation Key",
     "value": "{{translationKey}}"
   },
+  "releases-count": {
+    "label": "Item Releases",
+    "value": "{{count}}"
+  },
   "list": {
     "card": {
       "title": "{{identifier}}",

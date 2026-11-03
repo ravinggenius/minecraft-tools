@@ -37,7 +37,8 @@ export const listAll = async () =>
 			item_stack_size_id,
 			stack_size,
 			item_translation_key_id,
-			translation_key
+			translation_key,
+			releases_count
 		FROM
 			normalized_items
 		ORDER BY
@@ -68,7 +69,8 @@ export const get = async (itemId: Item["id"]) => {
 			item_stack_size_id,
 			stack_size,
 			item_translation_key_id,
-			translation_key
+			translation_key,
+			releases_count
 		FROM
 			normalized_items
 		WHERE
@@ -267,7 +269,8 @@ export const searchNormalized = async ({
 			item_stack_size_id,
 			stack_size,
 			item_translation_key_id,
-			translation_key
+			translation_key,
+			releases_count
 		FROM
 			normalized_items
 		WHERE ${sql.and(whereClauses)}

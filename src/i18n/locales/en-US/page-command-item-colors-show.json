@@ -1,0 +1,16 @@
+{
+  "metadata": {
+    "title": "Item Color"
+  },
+
+  "content": {
+    "breadcrumb": {
+      "short-name": "{{identifier}}"
+    },
+    "description": "Item Color",
+    "usage-count": "Used by {{count}} items",
+    "delete-cta": {
+      "label": "Delete Item Color"
+    }
+  }
+}

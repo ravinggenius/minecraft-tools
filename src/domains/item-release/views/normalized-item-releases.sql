@@ -62,8 +62,7 @@ SELECT
         FROM
           public.flattened_item_releases AS fi
         WHERE
-          fi.identifier = flattened_item_releases.identifier
-          AND NOT fi.variant IS DISTINCT FROM flattened_item_releases.variant
+          fi.item_id = flattened_item_releases.item_id
         GROUP BY
           fi.cycle_name
       ) AS cycles
@@ -90,8 +89,7 @@ SELECT
         FROM
           public.flattened_item_releases AS fi
         WHERE
-          fi.identifier = flattened_item_releases.identifier
-          AND NOT fi.variant IS DISTINCT FROM flattened_item_releases.variant
+          fi.item_id = flattened_item_releases.item_id
         GROUP BY
           fi.edition,
           fi.version
@@ -112,8 +110,7 @@ SELECT
         FROM
           public.flattened_item_releases AS fi
         WHERE
-          fi.identifier = flattened_item_releases.identifier
-          AND NOT fi.variant IS DISTINCT FROM flattened_item_releases.variant
+          fi.item_id = flattened_item_releases.item_id
         GROUP BY
           fi.edition,
           fi.version

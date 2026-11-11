@@ -1,0 +1,18 @@
+{
+  "identifier": {
+    "label": "Identifier",
+    "value": "{{identifier}}"
+  },
+  "usage-count": {
+    "label": "Usage Count",
+    "value": "{{count}}"
+  },
+  "list": {
+    "card": {
+      "title": "{{identifier}}"
+    }
+  },
+  "table": {
+    "caption": "{{count}} item rarities"
+  }
+}

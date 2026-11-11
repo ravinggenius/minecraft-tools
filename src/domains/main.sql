@@ -26,8 +26,16 @@
 
 \i platform/views/normalized-platforms.sql
 
+\i item-identity/structure.sql
+
+\i item-color/structure.sql
+\i item-rarity/structure.sql
+\i item-stack-size/structure.sql
+\i item-translation-key/structure.sql
+
 \i item/structure.sql
 
 \i item-release/structure.sql
+\i item/views/normalized-items.sql
 \i item-release/views/flattened-item-releases.sql
 \i item-release/views/normalized-item-releases.sql

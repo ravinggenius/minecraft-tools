@@ -1,0 +1,17 @@
+{
+  "metadata": {
+    "title": "Item Identity"
+  },
+
+  "content": {
+    "breadcrumb": {
+      "short-name": "{{identifier}}",
+      "short-name_is-variant": "{{identifier}} ({{variant}})"
+    },
+    "description": "Item Identity",
+    "usage-count": "Used by {{count}} items",
+    "delete-cta": {
+      "label": "Delete Item Identity"
+    }
+  }
+}

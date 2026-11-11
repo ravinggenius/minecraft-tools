@@ -1,0 +1,18 @@
+{
+  "identifier": {
+    "label": "Stack Size",
+    "value": "{{count}}"
+  },
+  "usage-count": {
+    "label": "Usage Count",
+    "value": "{{count}}"
+  },
+  "list": {
+    "card": {
+      "title": "{{count}}"
+    }
+  },
+  "table": {
+    "caption": "{{count}} item stack sizes"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "metadata": {
+    "title": "Item"
+  },
+
+  "content": {
+    "breadcrumb": {
+      "short-name": "{{identifier}}",
+      "short-name_is-variant": "{{identifier}} ({{variant}})"
+    },
+    "description": "Item",
+    "releases-count": "Appears in {{count}} item releases",
+    "delete-cta": {
+      "label": "Delete Item"
+    }
+  }
+}

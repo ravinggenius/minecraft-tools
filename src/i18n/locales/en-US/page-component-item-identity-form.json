@@ -1,0 +1,10 @@
+{
+  "identifier": {
+    "label": "Identifier"
+  },
+  "variant": {
+    "label": "Variant"
+  },
+  "submit_edit": "Update Item Identity",
+  "submit_new": "Create Item Identity"
+}

@@ -1,0 +1,16 @@
+{
+  "metadata": {
+    "title": "Item Translation Key"
+  },
+
+  "content": {
+    "breadcrumb": {
+      "short-name": "{{identifier}}"
+    },
+    "description": "Item Translation Key",
+    "usage-count": "Used by {{count}} items",
+    "delete-cta": {
+      "label": "Delete Item Translation Key"
+    }
+  }
+}

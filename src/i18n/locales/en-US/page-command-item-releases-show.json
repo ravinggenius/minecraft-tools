@@ -1,0 +1,16 @@
+{
+  "metadata": {
+    "title": "Item Release"
+  },
+
+  "content": {
+    "breadcrumb": {
+      "short-name": "{{identifier}} ({{version}}, $t(domains:release.edition.name, { \"context\": \"{{edition}}\" }))",
+      "short-name_is-variant": "{{identifier}} ({{variant}}) ({{version}}, $t(domains:release.edition.name, { \"context\": \"{{edition}}\" }))"
+    },
+    "description": "Item Release",
+    "delete-cta": {
+      "label": "Delete Item Release"
+    }
+  }
+}

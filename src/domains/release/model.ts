@@ -47,6 +47,27 @@ export const get = async (releaseId: Release["id"]) =>
 			id = ${releaseId}
 	`);
 
+export const listAll = async () =>
+	(await pool).any(sql.type(RELEASE)`
+		SELECT
+			id,
+			created_at,
+			updated_at,
+			edition,
+			version,
+			cycle_id,
+			development_released_on,
+			changelog,
+			is_available_for_tools,
+			is_latest
+		FROM
+			releases
+		ORDER BY
+			edition ASC,
+			development_released_on ASC NULLS LAST,
+			version ASC
+	`);
+
 export const mostRecentCycleId = async () =>
 	(await pool).oneFirst(sql.type(RELEASE_CYCLE.pick({ id: true }).partial())`
 		SELECT
@@ -396,7 +417,8 @@ export const doImport = async (release: ImportRelease) => {
 					edition,
 					version,
 					development_released_on,
-					changelog
+					changelog,
+					is_available_for_tools
 				)
 			SELECT
 				c.id,
@@ -407,7 +429,8 @@ export const doImport = async (release: ImportRelease) => {
 						? sql.date(new Date(release.developmentReleasedOn))
 						: null
 				},
-				${release.changelog ?? null}
+				${release.changelog ?? null},
+				${release.isAvailableForTools}
 			FROM
 				the_cycle AS c
 			ON CONFLICT (edition, version) DO UPDATE
@@ -415,7 +438,8 @@ export const doImport = async (release: ImportRelease) => {
 				updated_at = DEFAULT,
 				cycle_id = EXCLUDED.cycle_id,
 				development_released_on = EXCLUDED.development_released_on,
-				changelog = EXCLUDED.changelog
+				changelog = EXCLUDED.changelog,
+				is_available_for_tools = EXCLUDED.is_available_for_tools
 			RETURNING
 				id
 		`);

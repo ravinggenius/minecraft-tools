@@ -1,0 +1,19 @@
+{
+  "item-identity-id": {
+    "label": "Item Identity"
+  },
+  "item-color-id": {
+    "label": "Color"
+  },
+  "item-rarity-id": {
+    "label": "Rarity"
+  },
+  "item-stack-size-id": {
+    "label": "Stack Size"
+  },
+  "item-translation-key-id": {
+    "label": "Translation Key"
+  },
+  "submit_edit": "Update Item",
+  "submit_new": "Create Item"
+}

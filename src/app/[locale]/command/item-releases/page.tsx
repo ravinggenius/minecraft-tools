@@ -1,13 +1,10 @@
 import { Metadata } from "next";
 
+import Anchor from "@/components/Anchor/Anchor";
 import BreadcrumbTrailPortal from "@/components/BreadcrumbTrail/BreadcrumbTrailPortal";
 import { Pagination } from "@/components/Pagination/Pagination";
 import SearchForm from "@/components/SearchForm/SearchForm";
 import * as itemReleaseModel from "@/domains/item-release/model";
-import {
-	FlattenedItemRelease,
-	NormalizedItemRelease
-} from "@/domains/item-release/schema";
 import { loadPageTranslations } from "@/i18n/server";
 import { enforceAuthorization } from "@/library/authorization";
 import { buildBreadcrumbsWithPrefix } from "@/library/breadcrumbs";
@@ -20,7 +17,6 @@ import {
 import styles from "./page.module.scss";
 import { QUERY } from "./schema";
 import PageSearchResultsFlattened from "./search-results-flattened";
-import PageSearchResultsNormalized from "./search-results-normalized";
 
 export const generateMetadata = async ({
 	params
@@ -63,9 +59,7 @@ export default async function Page({
 		}
 	);
 
-	const itemReleases = query.expand
-		? await itemReleaseModel.searchFlattened(query)
-		: await itemReleaseModel.searchNormalized(query);
+	const itemReleases = await itemReleaseModel.searchFlattened(query);
 
 	return (
 		<>
@@ -74,27 +68,22 @@ export default async function Page({
 			<article className={styles.root}>
 				<p>{t("description")}</p>
 
-				<SearchForm {...{ query }} className={styles.form} />
+				<Anchor
+					href={`/${locale}/command/item-releases/new`}
+					variant="primary"
+				>
+					{t("new-cta")}
+				</Anchor>
 
-				{query.expand ? (
-					<PageSearchResultsFlattened
-						{...{ locale }}
-						className={styles.results}
-						itemReleases={
-							itemReleases.data as Array<FlattenedItemRelease>
-						}
-						view={query.view}
-					/>
-				) : (
-					<PageSearchResultsNormalized
-						{...{ locale }}
-						className={styles.results}
-						itemReleases={
-							itemReleases.data as Array<NormalizedItemRelease>
-						}
-						view={query.view}
-					/>
-				)}
+				<SearchForm {...{ query }} className={styles.form} hideExpand />
+
+				<PageSearchResultsFlattened
+					{...{ locale }}
+					className={styles.results}
+					editHrefPrefix={`/${locale}/command/item-releases`}
+					itemReleases={itemReleases.data}
+					view={query.view}
+				/>
 
 				<Pagination
 					{...{ locale, query }}

@@ -1,0 +1,16 @@
+{
+  "metadata": {
+    "title": "Item Rarity"
+  },
+
+  "content": {
+    "breadcrumb": {
+      "short-name": "{{identifier}}"
+    },
+    "description": "Item Rarity",
+    "usage-count": "Used by {{count}} items",
+    "delete-cta": {
+      "label": "Delete Item Rarity"
+    }
+  }
+}

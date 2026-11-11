@@ -40,8 +40,32 @@ export default async function Page({ params }: PageProps<"/[locale]/command">) {
 
 	const entries: Array<TableOfContentsEntry> = [
 		{
+			href: `/${locale}/command/item-identities` as TableOfContentsEntry["href"],
+			text: t("table-of-contents.item-identities")
+		},
+		{
+			href: `/${locale}/command/items` as TableOfContentsEntry["href"],
+			text: t("table-of-contents.items")
+		},
+		{
 			href: `/${locale}/command/item-releases` as TableOfContentsEntry["href"],
 			text: t("table-of-contents.item-releases")
+		},
+		{
+			href: `/${locale}/command/item-colors` as TableOfContentsEntry["href"],
+			text: t("table-of-contents.item-colors")
+		},
+		{
+			href: `/${locale}/command/item-rarities` as TableOfContentsEntry["href"],
+			text: t("table-of-contents.item-rarities")
+		},
+		{
+			href: `/${locale}/command/item-stack-sizes` as TableOfContentsEntry["href"],
+			text: t("table-of-contents.item-stack-sizes")
+		},
+		{
+			href: `/${locale}/command/item-translation-keys` as TableOfContentsEntry["href"],
+			text: t("table-of-contents.item-translation-keys")
 		},
 		{
 			href: `/${locale}/command/platforms` as TableOfContentsEntry["href"],

@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 
 import { SEACH_QUERY } from "@/components/SearchForm/SearchForm.schema";
-import { INCLUDE, Include } from "@/domains/item/search.schema";
+import { INCLUDE, Include } from "@/domains/item-release/search.schema";
 import FLEXIBLE_BOOL from "@/library/utility-schemas/flexible-boolean";
 
 export const QUERY = SEACH_QUERY(

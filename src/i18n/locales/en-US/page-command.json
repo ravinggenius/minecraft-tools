@@ -6,7 +6,13 @@
   "content": {
     "description": "Admin area",
     "table-of-contents": {
+      "item-identities": "Item Identities",
+      "items": "Items",
       "item-releases": "Item Releases",
+      "item-colors": "Item Colors",
+      "item-rarities": "Item Rarities",
+      "item-stack-sizes": "Item Stack Sizes",
+      "item-translation-keys": "Item Translation Keys",
       "platforms": "Platforms",
       "releases": "Releases",
       "release-cycles": "Release Cycles"

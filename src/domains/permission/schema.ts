@@ -15,7 +15,12 @@ const SCOPE_ONE = z.literal("one");
 
 const SUBJECT_COMPENDIUM = z.literal("compendium");
 const SUBJECT_ITEM = z.literal("item");
+const SUBJECT_ITEM_COLOR = z.literal("item-color");
+const SUBJECT_ITEM_IDENTITY = z.literal("item-identity");
+const SUBJECT_ITEM_RARITY = z.literal("item-rarity");
 const SUBJECT_ITEM_RELEASE = z.literal("item-release");
+const SUBJECT_ITEM_STACK_SIZE = z.literal("item-stack-size");
+const SUBJECT_ITEM_TRANSLATION_KEY = z.literal("item-translation-key");
 const SUBJECT_PROFILE = z.literal("profile");
 const SUBJECT_PLATFORM = z.literal("platform");
 const SUBJECT_RELEASE = z.literal("release");
@@ -53,7 +58,12 @@ export const ASSERTION_COMPENDIUM_CREATE = z
 		SCOPE_NEW,
 		z.union([
 			SUBJECT_ITEM,
+			SUBJECT_ITEM_COLOR,
+			SUBJECT_ITEM_IDENTITY,
+			SUBJECT_ITEM_RARITY,
 			SUBJECT_ITEM_RELEASE,
+			SUBJECT_ITEM_STACK_SIZE,
+			SUBJECT_ITEM_TRANSLATION_KEY,
 			SUBJECT_PLATFORM,
 			SUBJECT_RELEASE,
 			SUBJECT_RELEASE_CYCLE
@@ -76,7 +86,12 @@ export const ASSERTION_COMPENDIUM_MANAGE = z
 		SCOPE_ANY,
 		z.union([
 			SUBJECT_ITEM,
+			SUBJECT_ITEM_COLOR,
+			SUBJECT_ITEM_IDENTITY,
+			SUBJECT_ITEM_RARITY,
 			SUBJECT_ITEM_RELEASE,
+			SUBJECT_ITEM_STACK_SIZE,
+			SUBJECT_ITEM_TRANSLATION_KEY,
 			SUBJECT_PLATFORM,
 			SUBJECT_RELEASE,
 			SUBJECT_RELEASE_CYCLE

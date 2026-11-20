@@ -1,2 +1,4 @@
 .next
 package-lock.json
+# psql include script: SQL formatters can't parse \i directives
+src/domains/main.sql

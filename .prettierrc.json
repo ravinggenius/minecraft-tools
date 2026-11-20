@@ -1,5 +1,5 @@
 {
-  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-sql"],
   "importOrder": ["^@/(.*)$", "^../", "^./"],
   "importOrderCaseInsensitive": true,
   "importOrderSeparation": true,
@@ -15,6 +15,21 @@
       "options": {
         "tabWidth": 2,
         "useTabs": false
+      }
+    },
+    {
+      "files": ["*.sql"],
+      "options": {
+        "parser": "sql",
+        "formatter": "sql-formatter",
+        "language": "postgresql",
+        "database": "postgresql",
+        "keywordCase": "upper",
+        "dataTypeCase": "upper",
+        "functionCase": "lower",
+        "identifierCase": "preserve",
+        "tabWidth": 1,
+        "useTabs": true
       }
     }
   ]

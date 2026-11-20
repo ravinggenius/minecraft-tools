@@ -7,31 +7,31 @@
     "copy-cta": "copy",
     "examples": {
       "primary-title": {
-        "description": ""
+        "description": "The site name, set in the mono typeface."
       },
       "secondary-title": {
-        "description": ""
+        "description": "Headings for cards and section pages."
       },
       "tertiary-title": {
-        "description": ""
+        "description": "Subheadings set in bold small caps."
       },
       "hero": {
-        "description": ""
+        "description": "Large display text for statistics and page headers."
       },
       "technical": {
-        "description": ""
+        "description": "Monospaced text for data, codes and navigation."
       },
       "primary-body": {
         "description": "These styles are copied to the body element as defaults."
       },
       "secondary-body": {
-        "description": ""
+        "description": "Smaller body text for badges and supporting copy."
       },
       "label": {
-        "description": ""
+        "description": "Compact labels for form fields and statistics."
       },
       "fine": {
-        "description": ""
+        "description": "Small monospace text for the site footer."
       }
     }
   }
